@@ -5,7 +5,9 @@ gem 'rails', '3.0.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+
+gem 'pg', '0.9.0'
+gem 'formtastic'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -29,3 +31,7 @@ gem 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+
+#carrierwave
+#kaminari
