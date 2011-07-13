@@ -9,6 +9,7 @@
 
 <% @characters.each do |character| %>
   <tr>
+    <td><%= image_tag(character.avatar_url(:thumb)) if character.avatar? %> <%= character.name %></td>
     <td><%= link_to 'Show', character %></td>
     <td><%= link_to 'Edit', edit_character_path(character) %></td>
     <td><%= link_to 'Destroy', character, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -18,4 +19,4 @@
 
 <br />
 
-<%= link_to 'New Character', new_character_path %>
+<%= link_to 'New Character', new_character_path %> <%= link_to 'Back to Home', root_path %>

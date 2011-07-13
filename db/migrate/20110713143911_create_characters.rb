@@ -5,6 +5,13 @@ class CreateCharacters < ActiveRecord::Migration
       t.text :description
       t.string :gender
       t.string :character_class
+      t.string :alignment
+      t.integer :strength
+      t.integer :dexterity
+      t.integer :constitution
+      t.integer :intelligence
+      t.integer :wisdom
+      t.integer :charisma
       t.timestamps
     end
   end

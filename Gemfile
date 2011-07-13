@@ -7,8 +7,9 @@ gem 'rails', '3.0.9'
 
 
 gem 'pg', '0.9.0'
-gem 'formtastic'
 gem 'devise'
+gem 'carrierwave'
+gem 'rmagick'
 
 # Use unicorn as the web server
 # gem 'unicorn'

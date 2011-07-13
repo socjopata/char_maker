@@ -1,17 +1,60 @@
-<%= form_for(@character) do |f| %>
-  <% if @character.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@character.errors.count, "error") %> prohibited this character from being saved:</h2>
+<%= form_for @character, :html => {:multipart => true} do |f| %>
+    <% if @character.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@character.errors.count, "error") %> prohibited this character from being saved:</h2>
 
-      <ul>
-      <% @character.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @character.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <h3>Avatar</h3>
+    <p>
+      <label>My Avatar</label>
+      <%= image_tag(@character.avatar_url(:regular)) if @character.avatar? %>
+      <%= f.file_field :avatar %>
+      <%= f.hidden_field :avatar_cache %>
+    </p>
+
+    <h3>General info</h3><p>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br/>
+  <%= f.label :description %>
+  <%= f.text_area :description %><br/>
+  <%= f.label :gender %>
+  <%= f.select :gender, options_for_select(["Male", 'Female'], @character.gender) %><br/>
+  <%= f.label :character_class %>
+  <%= f.select :character_class, options_for_select(["Paladin", 'Warrior', 'Mage', 'Druid', 'Bard', 'Thief', 'Cleric'], @character.character_class) %>
+  <br/>
+</p>
+
+
+    <h3 id="stats">Statistics</h3>
+    <%= link_to_function("randomize!", "randomize_stats()") %><br/>
+    <%= f.label :strength %>
+    <%= f.text_field :strength, :size => 3 %><br/>
+    <%= f.label :dexterity %>
+    <%= f.text_field :dexterity, :size => 3 %><br/>
+    <%= f.label :intelligence %>
+    <%= f.text_field :intelligence, :size => 3 %><br/>
+    <%= f.label :wisdom %>
+    <%= f.text_field :wisdom, :size => 3 %><br/>
+    <%= f.label :constitution %>
+    <%= f.text_field :constitution, :size => 3 %><br/>
+    <%= f.label :charisma %>
+    <%= f.text_field :charisma, :size => 3 %><br/>
+
+    <br/><br/>
+
+    <div class="actions">
+      <%= f.submit %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
+
+<script>
+    randomize_stats = function() {
+
+    }
+</script>
