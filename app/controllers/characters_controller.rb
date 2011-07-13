@@ -1,6 +1,8 @@
 class CharactersController < ApplicationController
-  # GET /characters
-  # GET /characters.xml
+
+  before_filter :user_signed_in?
+
+
   def index
     @characters = Character.all
 
@@ -10,8 +12,7 @@ class CharactersController < ApplicationController
     end
   end
 
-  # GET /characters/1
-  # GET /characters/1.xml
+
   def show
     @character = Character.find(params[:id])
 
@@ -21,8 +22,7 @@ class CharactersController < ApplicationController
     end
   end
 
-  # GET /characters/new
-  # GET /characters/new.xml
+
   def new
     @character = Character.new
 
@@ -32,13 +32,12 @@ class CharactersController < ApplicationController
     end
   end
 
-  # GET /characters/1/edit
+
   def edit
     @character = Character.find(params[:id])
   end
 
-  # POST /characters
-  # POST /characters.xml
+
   def create
     @character = Character.new(params[:character])
 
@@ -53,8 +52,7 @@ class CharactersController < ApplicationController
     end
   end
 
-  # PUT /characters/1
-  # PUT /characters/1.xml
+
   def update
     @character = Character.find(params[:id])
 
@@ -69,8 +67,6 @@ class CharactersController < ApplicationController
     end
   end
 
-  # DELETE /characters/1
-  # DELETE /characters/1.xml
   def destroy
     @character = Character.find(params[:id])
     @character.destroy
