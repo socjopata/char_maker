@@ -1,0 +1,21 @@
+<h1>Hello there!</h1><br/>
+
+<p>Welcome to online character generator for Artur's great RPG system!</p>
+
+<div id="user_nav">
+  <% if user_signed_in? %>
+      Signed in as <%= current_user.email %>. Not you?
+      <%= link_to "Sign out", destroy_user_session_path %>
+  <% else %>
+      <%= link_to "Sign up", new_user_registration_path %> or
+      <%= link_to "Sign in", new_user_session_path %>
+  <% end %>
+</div>
+
+
+<br/>
+<br/>
+<br/>
+<% if current_user %>
+<%= link_to "Click here", "#" %> if you want to generate a new character!
+<% end %>

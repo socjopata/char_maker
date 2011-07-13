@@ -1,4 +1,8 @@
 CharMaker::Application.routes.draw do
+  resources :characters
+
+  get "home/index"
+  root :to => "home#index"
   devise_for :users
 
   # The priority is based upon order of creation:
