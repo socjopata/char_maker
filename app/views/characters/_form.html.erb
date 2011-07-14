@@ -30,8 +30,8 @@
   <br/>
 </p>
 
-
-    <h3 id="stats">Statistics</h3>
+    <div id="stats">
+    <h3>Statistics</h3>
     <%= link_to_function("randomize!", "randomize_stats()") %><br/>
     <%= f.label :strength %>
     <%= f.text_field :strength, :size => 3 %><br/>
@@ -45,7 +45,7 @@
     <%= f.text_field :constitution, :size => 3 %><br/>
     <%= f.label :charisma %>
     <%= f.text_field :charisma, :size => 3 %><br/>
-
+    </div>
     <br/><br/>
 
     <div class="actions">
@@ -55,6 +55,7 @@
 
 <script>
     randomize_stats = function() {
+        $("#stats")
 
     }
 </script>

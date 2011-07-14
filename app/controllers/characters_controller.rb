@@ -4,7 +4,7 @@ class CharactersController < ApplicationController
   before_filter :fetch_character, :except => [:index, :create, :new]
 
   def index
-    @characters = Character.belongs_to_user(current_user)
+    @characters = current_user.characters
 
     respond_to do |format|
       format.html # index.html.erb
