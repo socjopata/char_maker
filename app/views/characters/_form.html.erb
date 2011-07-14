@@ -31,20 +31,27 @@
 </p>
 
     <div id="stats">
-    <h3>Statistics</h3>
-    <%= link_to_function("randomize!", "randomize_stats()") %><br/>
-    <%= f.label :strength %>
-    <%= f.text_field :strength, :size => 3 %><br/>
-    <%= f.label :dexterity %>
-    <%= f.text_field :dexterity, :size => 3 %><br/>
-    <%= f.label :intelligence %>
-    <%= f.text_field :intelligence, :size => 3 %><br/>
-    <%= f.label :wisdom %>
-    <%= f.text_field :wisdom, :size => 3 %><br/>
-    <%= f.label :constitution %>
-    <%= f.text_field :constitution, :size => 3 %><br/>
-    <%= f.label :charisma %>
-    <%= f.text_field :charisma, :size => 3 %><br/>
+      <h3>Statistics</h3>
+      <%= link_to_function("randomize!", "randomize_stats()") %>
+      <br/>
+      <%= f.label :strength %>
+      <%= f.text_field :strength, :size => 3 %>
+      <br/>
+      <%= f.label :dexterity %>
+      <%= f.text_field :dexterity, :size => 3 %>
+      <br/>
+      <%= f.label :intelligence %>
+      <%= f.text_field :intelligence, :size => 3 %>
+      <br/>
+      <%= f.label :wisdom %>
+      <%= f.text_field :wisdom, :size => 3 %>
+      <br/>
+      <%= f.label :constitution %>
+      <%= f.text_field :constitution, :size => 3 %>
+      <br/>
+      <%= f.label :charisma %>
+      <%= f.text_field :charisma, :size => 3 %>
+      <br/>
     </div>
     <br/><br/>
 
@@ -54,8 +61,19 @@
 <% end %>
 
 <script>
+      Math.RandomInteger = function(n, m) {
+        if (! m) {m = 1;} // default range starts at 1
+        var max = n > m ? n : m; // doesn't matter which value is min or max
+        var min = n === max ? m : n; // min is value that is not max
+        var d = max - min + 1; // distribution range
+        return Math.floor(Math.random() * d + min);
+    };
+
     randomize_stats = function() {
-        $("#stats")
+        var fields = $('#stats input')
+        fields.each(function(i) {
+            $(fields[i]).val(Math.RandomInteger(3, 18));
+        });
 
     }
 </script>
