@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<h3><%= image_tag(@character.avatar_url(:regular)) if @character.avatar? %><%= @character.name %></h3><br/>
+<strong>Description:</strong><br/>
+<%= @character.description %>.
+<%= @character.name %> is a <%= [@character.gender.downcase, @character.character_class.downcase].join(" ") %>.
+<br/>
+<p>His stats are...</p><br/>
 
 <%= link_to 'Edit', edit_character_path(@character) %> |
 <%= link_to 'Back', characters_path %>

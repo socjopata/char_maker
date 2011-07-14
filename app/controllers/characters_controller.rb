@@ -1,10 +1,10 @@
 class CharactersController < ApplicationController
 
   before_filter :user_signed_in?
-
+  before_filter :fetch_character, :except => [:index, :create, :new]
 
   def index
-    @characters = Character.all
+    @characters = Character.belongs_to_user(current_user)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class CharactersController < ApplicationController
 
 
   def show
-    @character = Character.find(params[:id])
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class CharactersController < ApplicationController
 
 
   def new
-    @character = Character.new
+    @character = current_user.characters.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,12 +34,12 @@ class CharactersController < ApplicationController
 
 
   def edit
-    @character = Character.find(params[:id])
+
   end
 
 
   def create
-    @character = Character.new(params[:character])
+    @character = current_user.characters.build(params[:character])
 
     respond_to do |format|
       if @character.save
@@ -54,7 +54,7 @@ class CharactersController < ApplicationController
 
 
   def update
-    @character = Character.find(params[:id])
+
 
     respond_to do |format|
       if @character.update_attributes(params[:character])
@@ -68,7 +68,7 @@ class CharactersController < ApplicationController
   end
 
   def destroy
-    @character = Character.find(params[:id])
+
     @character.destroy
 
     respond_to do |format|
@@ -76,4 +76,12 @@ class CharactersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private
+
+  def fetch_character
+
+    @character = current_user.characters.find(params[:id])
+  end
+
 end
