@@ -77,6 +77,10 @@ class CharactersController < ApplicationController
     end
   end
 
+  def print
+    render :action => :print, :layout => false
+  end
+
   private
 
   def fetch_character

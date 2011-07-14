@@ -13,7 +13,7 @@
     <td><%= link_to 'Show', character %></td>
     <td><%= link_to 'Edit', edit_character_path(character) %></td>
     <td><%= link_to 'Destroy', character, :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to image_tag("printer.png"), "#" %></td>
+    <td><%= link_to image_tag("printer.png"), print_character_path(character) %></td>
   </tr>
 <% end %>
 </table>

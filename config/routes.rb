@@ -1,5 +1,9 @@
 CharMaker::Application.routes.draw do
-  resources :characters
+  resources :characters do
+    member do
+      get :print
+    end
+  end
 
   get "home/index"
   root :to => "home#index"
