@@ -4,76 +4,42 @@ class CharactersController < ApplicationController
   before_filter :fetch_character, :except => [:index, :create, :new]
 
   def index
-    @characters = current_user.characters
-
+    @characters = current_user.characters.order("name").page(params[:page]).per(5)
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @characters }
     end
   end
 
 
   def show
-
-
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @character }
     end
   end
 
 
   def new
     @character = current_user.characters.build
-
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @character }
     end
   end
-
-
-  def edit
-
-  end
-
 
   def create
     @character = current_user.characters.build(params[:character])
-
     respond_to do |format|
       if @character.save
-        format.html { redirect_to(@character, :notice => 'Character was successfully created.') }
-        format.xml  { render :xml => @character, :status => :created, :location => @character }
+        format.html { redirect_to(first_step_character_wizard_path(:char_id => @character.id), :notice => 'Pierwszy krok za nami...') }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @character.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-
-  def update
-
-
-    respond_to do |format|
-      if @character.update_attributes(params[:character])
-        format.html { redirect_to(@character, :notice => 'Character was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @character.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   def destroy
-
     @character.destroy
-
     respond_to do |format|
       format.html { redirect_to(characters_url) }
-      format.xml  { head :ok }
     end
   end
 
@@ -84,7 +50,6 @@ class CharactersController < ApplicationController
   private
 
   def fetch_character
-
     @character = current_user.characters.find(params[:id])
   end
 

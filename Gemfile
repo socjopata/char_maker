@@ -10,6 +10,7 @@ gem 'pg', '0.9.0'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
+gem "kaminari"
 
 # Use unicorn as the web server
 # gem 'unicorn'

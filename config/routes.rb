@@ -5,6 +5,13 @@ CharMaker::Application.routes.draw do
     end
   end
 
+  resource 'character_wizard' do
+    member do
+      get :first_step
+      put :first_step
+    end
+  end
+
   get "home/index"
   root :to => "home#index"
   devise_for :users
