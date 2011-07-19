@@ -21,6 +21,7 @@ config/environments/development.rb
 .nbproject/**/*
 rerun.txt
 public/system/*
+public/uploads/*
 coverage*
 scratch_directory*
 capybara*.html
