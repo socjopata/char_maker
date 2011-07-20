@@ -4,4 +4,8 @@ class Character < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
   scope :belongs_to_user, lambda {|user| {:conditions => {:user_id => user.id}}  }
+
+  validates_presence_of :name, :gender, :user_id
 end
+
+

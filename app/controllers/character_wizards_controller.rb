@@ -6,7 +6,9 @@ class CharacterWizardsController < ApplicationController
   def first_step
    if request.get?
       @character = Character.find(params[:char_id])
-
+      @character_background = @character.build_character_background
+      @character_background.draw_a_trait
+     # @character_background = CharacterBackground.new
       #do a show
     elsif request.post?
       #update and redirect to step two
