@@ -9,6 +9,8 @@ CharMaker::Application.routes.draw do
     member do
       get :first_step
       put :first_step
+      get :second_step
+      put :second_step
     end
   end
 

@@ -17,6 +17,9 @@ class CharactersController < ApplicationController
     end
   end
 
+  def edit
+
+  end
 
   def new
     @character = current_user.characters.build
@@ -36,6 +39,16 @@ class CharactersController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @character.update_attributes(params[:character])
+        format.html { redirect_to(first_step_character_wizard_path(:char_id => @character.id), :notice => 'Pierwszy krok za nami...') }
+      else
+        format.html { render :action => "edit" }
+      end
+    end
+  end
+
   def destroy
     @character.destroy
     respond_to do |format|
@@ -50,7 +63,7 @@ class CharactersController < ApplicationController
   private
 
   def fetch_character
-    @character = current_user.characters.find(params[:id])
+    @character = current_user.characters.find_by_id(params[:id])
   end
 
 end

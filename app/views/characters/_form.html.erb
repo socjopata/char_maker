@@ -25,7 +25,7 @@
   <%= f.text_area :description %><br/>
   <%= f.label :gender %>
   <%= f.select :gender, options_for_select(["Male", 'Female'], @character.gender) %><br/>
-   <br/>
+  <br/>
 </p>
 
     <div id="stats">
@@ -36,21 +36,21 @@
       <%= f.submit "Dalej" %>
     </div>
 <% end %>
-
+<%= button_to 'Wróć do indeksu', characters_path, :method => :get %>
 <script>
-//      Math.RandomInteger = function(n, m) {
-//        if (! m) {m = 1;} // default range starts at 1
-//        var max = n > m ? n : m; // doesn't matter which value is min or max
-//        var min = n === max ? m : n; // min is value that is not max
-//        var d = max - min + 1; // distribution range
-//        return Math.floor(Math.random() * d + min);
-//    };
-//
-//    randomize_stats = function() {
-//        var fields = $('#stats input')
-//        fields.each(function(i) {
-//            $(fields[i]).val(Math.RandomInteger(3, 18));
-//        });
-//
-//    }
+    //      Math.RandomInteger = function(n, m) {
+    //        if (! m) {m = 1;} // default range starts at 1
+    //        var max = n > m ? n : m; // doesn't matter which value is min or max
+    //        var min = n === max ? m : n; // min is value that is not max
+    //        var d = max - min + 1; // distribution range
+    //        return Math.floor(Math.random() * d + min);
+    //    };
+    //
+    //    randomize_stats = function() {
+    //        var fields = $('#stats input')
+    //        fields.each(function(i) {
+    //            $(fields[i]).val(Math.RandomInteger(3, 18));
+    //        });
+    //
+    //    }
 </script>

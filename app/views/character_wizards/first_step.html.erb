@@ -1,5 +1,9 @@
-Hi.<br/>
+<strong>Imię: </strong><%= @character.name %><br/>
+<strong>Płeć: </strong><%= translate_gender(@character.gender) %><br/>
+<%= raw display_curse_or_blessing(@character) %>
 
-Here be dragons soon.<br/>
+<!--make a form with "dalej" button that proceeds to step two-->
+<!--first_step_character_wizard-->
 
-Now only: <%= @character.name %>
+<br/>
+<%= button_to "Wróć", edit_character_path(@character), :method => :get %>
