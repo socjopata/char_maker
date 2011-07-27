@@ -11,6 +11,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
 gem "kaminari"
+gem 'jquery-rails', '>= 1.0.12'
 
 # Use unicorn as the web server
 # gem 'unicorn'
