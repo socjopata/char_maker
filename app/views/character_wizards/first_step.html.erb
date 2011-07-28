@@ -3,6 +3,7 @@
 <%= raw display_curse_or_blessing(@character) %>
 <br/><br/>
 <strong>Parametry: </strong>
+<div id="display_container">
 <div class="dragArea">
 
   <% @character.statistics.initial_dice_roll_set.each_with_index do |roll, index| %>
@@ -45,10 +46,35 @@
     </tbody>
   </table>
 </div>
-
+</div>
 <br/>
 <%= button_to "Wróć", edit_character_path(@character), :method => :get %>
+<!--$('#input-field-id').val($('#input-field-id').val() + 'more text');-->
 
 
+<script type="text/javascript">
+
+    function make_draggable() {
+        $(".drag").draggable(
+                {containment: "#display_container",revert: true,
+					revertDuration: 1000});
+    }
+
+
+    function make_droppable() {
+        $(".drop").droppable({
+            accept: ".drag",
+            hoverClass: "active",
+            drop: function(event, props) {
+                $(this).text($(props.draggable).text());
+            }
+        });
+    }
+    $(function() {
+       make_draggable();
+       make_droppable();
+    });
+
+</script>
 
 
