@@ -4,6 +4,9 @@ class Statistics < ActiveRecord::Base
   serialize :initial_dice_roll_set
   belongs_to :character
 
+  validates_presence_of :strength, :dexterity, :endurance, :inteligence, :faith, :polish
+  #TODO make a validation so user doesn't fill all stats with highest value dice roll.
+
   DICE_TYPE = 20 #k20
 
 

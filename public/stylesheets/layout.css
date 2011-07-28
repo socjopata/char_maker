@@ -54,3 +54,27 @@
     margin-left: 10px;
     float: left;
 }
+
+.flash-notice
+{
+    background: url(/images/success.png) no-repeat 10px center #b5e060;
+    border: 1px solid #9acb3c;
+    color: #2F7038;
+    border-radius: 4px;
+    font-weight: bold;
+    clear: both;
+    margin: 10px 0 10px;
+    padding: 12px 12px 12px 43px;
+}
+
+.flash-error
+{
+    background: url(/images/error.png) no-repeat 10px center #d8412d;
+    border: 1px solid #ab2e1e;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: bold;
+    clear: both;
+    margin: 10px 0 10px;
+    padding: 12px 12px 12px 43px;
+}

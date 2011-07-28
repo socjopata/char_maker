@@ -4,60 +4,78 @@
 <br/><br/>
 <strong>Parametry: </strong>
 <div id="display_container">
-<div class="dragArea">
+  <div class="dragArea">
 
-  <% @character.statistics.initial_dice_roll_set.each_with_index do |roll, index| %>
-      <%= content_tag(:div, roll, :id => index, :class => "drag") %>
-  <% end %>
-</div>
+    <% @character.statistics.initial_dice_roll_set.each_with_index do |roll, index| %>
+        <%= content_tag(:div, roll, :id => index, :class => "drag") %>
+    <% end %>
+  </div>
 
-<div class="dropArea">
-  <table>
-    <thead>
-    <th>S</th>
-    <th>ZR</th>
-    <th>WT</th>
-    <th>INT</th>
-    <th>WI</th>
-    <th>O</th>
-    </thead>
-    <tbody>
-    <tr>
-      <td>
-        <div id="0" class="drop"></div>
-      </td>
-      <td>
-        <div id="1" class="drop"></div>
-      </td>
-      <td>
-        <div id="2" class="drop"></div>
-      </td>
-      <td>
-        <div id="3" class="drop"></div>
-      </td>
-      <td>
-        <div id="4" class="drop"></div>
-      </td>
-      <td>
-        <div id="5" class="drop"></div>
-      </td>
-    </tr>
+  <div class="dropArea">
+    <table>
+      <thead>
+      <th>S</th>
+      <th>ZR</th>
+      <th>WT</th>
+      <th>INT</th>
+      <th>WI</th>
+      <th>O</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>
+          <div id="strength" class="drop"></div>
+        </td>
+        <td>
+          <div id="dexterity" class="drop"></div>
+        </td>
+        <td>
+          <div id="endurance" class="drop"></div>
+        </td>
+        <td>
+          <div id="inteligence" class="drop"></div>
+        </td>
+        <td>
+          <div id="faith" class="drop"></div>
+        </td>
+        <td>
+          <div id="polish" class="drop"></div>
+        </td>
+      </tr>
 
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
 </div>
 <br/>
-<%= button_to "Wróć", edit_character_path(@character), :method => :get %>
-<!--$('#input-field-id').val($('#input-field-id').val() + 'more text');-->
+<% form_for @character.statistics, :url => first_step_character_wizard_path(:char_id => @character.id), :html => {:id => "stats_form", :method => :post} do |f| %>
+    <%= f.hidden_field :strength %>
+    <%= f.hidden_field :dexterity %>
+    <%= f.hidden_field :endurance %>
+    <%= f.hidden_field :inteligence %>
+    <%= f.hidden_field :faith %>
+    <%= f.hidden_field :polish %>
+<% end %>
 
+<%= button_to "Wróć", edit_character_path(@character), :method => :get %>
+<%= button_to "Dalej", "javascript:void(0)", :method => :post, :onclick => "attach_choices_and_proceed()" %>
 
 <script type="text/javascript">
+
+    function attach_choices_and_proceed() {
+        $("#statistics_strength").val($("#strength").text());
+        $("#statistics_dexterity").val($("#dexterity").text());
+        $("#statistics_endurance").val($("#endurance").text());
+        $("#statistics_inteligence").val($("#inteligence").text());
+        $("#statistics_faith").val($("#faith").text());
+        $("#statistics_polish").val($("#polish").text());
+        $("#stats_form").submit();
+    }
 
     function make_draggable() {
         $(".drag").draggable(
                 {containment: "#display_container",revert: true,
-					revertDuration: 1000});
+                    revertDuration: 1000});
     }
 
 
@@ -67,12 +85,13 @@
             hoverClass: "active",
             drop: function(event, props) {
                 $(this).text($(props.draggable).text());
+                $(props.draggable).hide();
             }
         });
     }
     $(function() {
-       make_draggable();
-       make_droppable();
+        make_draggable();
+        make_droppable();
     });
 
 </script>

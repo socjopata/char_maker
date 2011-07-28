@@ -1,7 +1,7 @@
 class CharacterWizardsController < ApplicationController
 
-  #TODO do routes
-  #TODO brainsotrm this ;)
+
+  #TODO refactor fatty controllers, make them thin
 
   def first_step
     if request.get?
@@ -14,16 +14,17 @@ class CharacterWizardsController < ApplicationController
       if @character.statistics.blank?
         @stats = @character.build_statistics
         @stats.draw_stats
-        @stats.save
+        @stats.save(false)
       end
       # @character_background = CharacterBackground.new
       #do a show
     elsif request.post?
-
-      #update and redirect to step two
-
-      #...update_attributes(params[:blah])
-      redirect_to second_step_character_wizard_path(:char_id => @character.id), :notice => 'Teraz widzisz drugi krok?' #or back to page_1 if errors
+      @character = Character.find(params[:char_id])
+      if @character.statistics.update_attributes(params[:statistics])
+        redirect_to second_step_character_wizard_path(:char_id => @character.id)
+      else
+        redirect_to first_step_character_wizard_path(:char_id => @character.id), :alert => "Napewno uzupełniłeś statystyki?"
+      end
     end
   end
 

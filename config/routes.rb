@@ -8,9 +8,9 @@ CharMaker::Application.routes.draw do
   resource 'character_wizard' do
     member do
       get :first_step
-      put :first_step
+      post :first_step
       get :second_step
-      put :second_step
+      post :second_step
     end
   end
 
