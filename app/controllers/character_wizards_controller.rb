@@ -10,6 +10,10 @@ class CharacterWizardsController < ApplicationController
         @character_background = @character.build_character_background
         @character_background.draw_a_trait
         @character_background.save
+
+        @stats = @character.build_statistics
+        @stats.draw_stats
+        @stats.save
       end
       # @character_background = CharacterBackground.new
       #do a show
