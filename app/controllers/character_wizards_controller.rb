@@ -10,7 +10,8 @@ class CharacterWizardsController < ApplicationController
         @character_background = @character.build_character_background
         @character_background.draw_a_trait
         @character_background.save
-
+      end
+      if @character.statistics.blank?
         @stats = @character.build_statistics
         @stats.draw_stats
         @stats.save

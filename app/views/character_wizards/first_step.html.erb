@@ -1,9 +1,54 @@
 <strong>Imię: </strong><%= @character.name %><br/>
 <strong>Płeć: </strong><%= translate_gender(@character.gender) %><br/>
 <%= raw display_curse_or_blessing(@character) %>
+<br/><br/>
+<strong>Parametry: </strong>
+<div class="dragArea">
 
-<!--make a form with "dalej" button that proceeds to step two-->
-<!--first_step_character_wizard-->
+  <% @character.statistics.initial_dice_roll_set.each_with_index do |roll, index| %>
+      <%= content_tag(:div, roll, :id => index, :class => "drag") %>
+  <% end %>
+</div>
+
+<div class="dropArea">
+  <table>
+    <thead>
+    <th>S</th>
+    <th>ZR</th>
+    <th>WT</th>
+    <th>INT</th>
+    <th>WI</th>
+    <th>O</th>
+    </thead>
+    <tbody>
+    <tr>
+      <td>
+        <div id="0" class="drop"></div>
+      </td>
+      <td>
+        <div id="1" class="drop"></div>
+      </td>
+      <td>
+        <div id="2" class="drop"></div>
+      </td>
+      <td>
+        <div id="3" class="drop"></div>
+      </td>
+      <td>
+        <div id="4" class="drop"></div>
+      </td>
+      <td>
+        <div id="5" class="drop"></div>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
 
 <br/>
 <%= button_to "Wróć", edit_character_path(@character), :method => :get %>
+
+
+
+

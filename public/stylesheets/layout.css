@@ -1,8 +1,56 @@
-.fltr
-{
-float: right;
+.fltr {
+    float: right;
 }
-.fltl
-{
-float: left;
+
+.fltl {
+    float: left;
+}
+
+.dragArea {
+    background-color: Blue;
+    opacity: 0.5;
+    width: 400px;
+    height: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.dropArea {
+    background-color: Red;
+    opacity: 0.5;
+    width: 400px;
+    height: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.drag {
+    background-color: white;
+    width: 30px;
+    height: 20px;
+    border-style: solid;
+    border-color: green;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: move;
+    float: left;
+}
+
+.drop {
+    background-color: white;
+    width: 30px;
+    height: 20px;
+    border-style: solid;
+    border-color: green;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    float: left;
 }
