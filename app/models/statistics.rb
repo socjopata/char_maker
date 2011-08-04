@@ -17,6 +17,7 @@ class Statistics < ActiveRecord::Base
         initial_stats << 1 + rand(Statistics::DICE_TYPE)
       end
       initial_stats = initial_stats.tap{|a| a.delete_at(initial_stats.rindex(initial_stats.min)) } #delete min value from dice roll set
+      #TODO special case for "Blogoslawiony" trait
       initial_stats = initial_stats.tap{|a| a.delete_at(initial_stats.rindex(initial_stats.max)) } #delete max value from dice roll set
       break if initial_stats.sum > 55
     end
