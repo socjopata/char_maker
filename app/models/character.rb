@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Character < ActiveRecord::Base
   belongs_to :user
   has_one :character_background,  :dependent => :destroy

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class SocialClass < ActiveRecord::Base
  #TODO ask Artur if he wants description of a social class presented somewhere
  #TODO ask Artur about barbarian and not barbarian social classes   !!!

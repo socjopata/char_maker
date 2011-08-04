@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddAvatarToUser < ActiveRecord::Migration
   def self.up
     add_column :characters, :avatar, :string

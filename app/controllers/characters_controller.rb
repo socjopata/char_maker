@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CharactersController < ApplicationController
 
   before_filter :user_signed_in?

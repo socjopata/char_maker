@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateCharacterBackgrounds < ActiveRecord::Migration
   def self.up
     create_table :character_backgrounds do |t|

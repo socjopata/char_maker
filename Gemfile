@@ -12,6 +12,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem "kaminari"
 gem 'jquery-rails', '>= 1.0.12'
+gem 'magic_encoding' ## coding: utf-8
 
 # Use unicorn as the web server
 # gem 'unicorn'

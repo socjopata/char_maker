@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 CharMaker::Application.routes.draw do
   resources :characters do
     member do

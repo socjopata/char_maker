@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module CharacterWizardHelper
 
 def  display_curse_or_blessing(char)

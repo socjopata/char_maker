@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CharacterBackgroundJointables < ActiveRecord::Migration
   def self.up
     create_table :character_backgrounds_traits, :id => false do |t|

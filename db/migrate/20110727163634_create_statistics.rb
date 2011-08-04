@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateStatistics < ActiveRecord::Migration
   def self.up
     create_table :statistics do |t|

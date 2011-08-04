@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateSocialClasses < ActiveRecord::Migration
   def self.up
     create_table :social_classes do |t|
