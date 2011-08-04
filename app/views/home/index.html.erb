@@ -1,22 +1,14 @@
-<h1>Hello there!</h1><br/>
+<h1>Witaj graczu!</h1><br/>
 
-<p>Welcome to online character generator for Artur's great RPG system!</p>
+<p>Witaj w kreatorze postaci online dla systemu RPG Alantar!</p>
 
-<div id="user_nav">
-  <% if user_signed_in? %>
-      You're signed in as <%= current_user.email %>. Not you?
-      <%= link_to "Sign out", destroy_user_session_path %>
-  <% else %>
-      <%= link_to "Sign up", new_user_registration_path %> or
-      <%= link_to "Sign in", new_user_session_path %>
-  <% end %>
-</div>
+
 
 
 <br/>
 <br/>
 <br/>
 <% if current_user %>
-<%= link_to "Click here", new_character_path %> if you want to generate a new character!  <br/>
-    Or <%= link_to "click here", characters_path %> if you want to browse existing ones
+<%= link_to "Kliknij tutaj", new_character_path %> jeśli chcesz utworzyć nową psotać!  <br/>
+    Lub <%= link_to "kliknij tutaj", characters_path %> jeśli chcesz przeglądnąć dotychczas utworzone postacie.
 <% end %>

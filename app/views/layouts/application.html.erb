@@ -7,16 +7,34 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
-<div id="page">
-  <% if flash[:alert] %>
-    <p class="flash-error"><%= flash[:alert] %></p>
-  <% end %>
-  <% if flash[:notice] %>
-    <p class="flash-notice"><%= flash[:notice] %></p>
-  <% end %>
-  <%= yield %>
+<div class=templateholder>
+  <div class=Layout8_header>
+    <div id="page">
+      <% if flash[:alert] %>
+          <p class="flash-error"><%= flash[:alert] %></p>
+      <% end %>
+      <% if flash[:notice] %>
+          <p class="flash-notice"><%= flash[:notice] %></p>
+      <% end %>
+      <div id="user_nav" class="fltr">
+        <% if user_signed_in? %>
+            Zalogowany jako <%= current_user.email %>. To nie Ty?
+            <%= link_to "Wyloguj", destroy_user_session_path %>
+        <% else %>
+            <%= link_to "Zarejestruj się", new_user_registration_path %> lub
+            <%= link_to "Zaloguj", new_user_session_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class=Layout8_1><%= yield %></div>
+  <div class=Layout8_2></div>
+  <div class=Layout8_3></div>
+  <div class=Layout8_4></div>
+  <div class=Layout8_5></div>
 </div>
-
 </body>
 </html>
+
+
+
