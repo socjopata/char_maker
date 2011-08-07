@@ -1,6 +1,6 @@
-<h1>Witaj graczu!</h1><br/>
+<h1 style="font-size: 30pt">Witaj graczu!</h1><br/>
 
-<p>Witaj w kreatorze postaci online dla systemu RPG Alantar!</p>
+<p style="font-size: 14pt">Witaj w kreatorze postaci online dla systemu RPG Alantar!</p>
 
 
 
@@ -9,6 +9,7 @@
 <br/>
 <br/>
 <% if current_user %>
-<%= link_to "Kliknij tutaj", new_character_path %> jeśli chcesz utworzyć nową psotać!  <br/>
+<%= link_to "Kliknij tutaj", new_character_path %> jeśli chcesz utworzyć nową postać!  <br/>
     Lub <%= link_to "kliknij tutaj", characters_path %> jeśli chcesz przeglądnąć dotychczas utworzone postacie.
 <% end %>
+<% radek = "fajny gość" %>

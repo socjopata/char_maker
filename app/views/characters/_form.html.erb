@@ -12,19 +12,19 @@
     <% end %>
     <h3>Avatar</h3>
     <p>
-      <label>My Avatar</label>
+      <label>Mój Avatar</label>
       <%= image_tag(@character.avatar_url(:regular)) if @character.avatar? %>
       <%= f.file_field :avatar %>
       <%= f.hidden_field :avatar_cache %>
     </p>
 
-    <h3>General info</h3><p>
-  <%= f.label :name %>
+    <h3>Informacje ogólne</h3><p>
+  <%= f.label "Imię" %>
   <%= f.text_field :name %><br/>
-  <%= f.label :description %>
+  <%= f.label "Opis" %>
   <%= f.text_area :description %><br/>
-  <%= f.label :gender %>
-  <%= f.select :gender, options_for_select(["Male", 'Female'], @character.gender) %><br/>
+  <%= f.label "Płeć" %>
+  <%= f.select :gender, options_for_select(["Mężczyzna", 'Kobieta'], @character.gender) %><br/>
   <br/>
 </p>
 

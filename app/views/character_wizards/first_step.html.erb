@@ -46,6 +46,7 @@
       </tbody>
     </table>
   </div>
+  <%= link_to_function "Resetuj pola", "reset_stat_fields()"  %>
 </div>
 <br/>
 <% form_for @character.statistics, :url => first_step_character_wizard_path(:char_id => @character.id), :html => {:id => "stats_form", :method => :post} do |f| %>
@@ -61,6 +62,11 @@
 <%= button_to "Dalej", "javascript:void(0)", :method => :post, :onclick => "attach_choices_and_proceed()" %>
 
 <script type="text/javascript">
+
+    function reset_stat_fields() {
+     $('.ui-draggable').show();
+     $('.drop').text('');
+    }
 
     function attach_choices_and_proceed() {
         $("#statistics_strength").val($("#strength").text());
