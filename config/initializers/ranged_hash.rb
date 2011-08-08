@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RangedHash
     def initialize(hash)
       @ranges = hash

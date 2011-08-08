@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddTypeToStatistics < ActiveRecord::Migration
   def self.up
       add_column :statistics, :type, :string
