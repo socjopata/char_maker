@@ -39,4 +39,10 @@ class SocialClass < ActiveRecord::Base
   30 => "Wielmoża"
   }
 
+  DICE_RESULT_FOR_NON_RISKY_PLAYERS = RangedHash.new(
+    1..10 => 'Mieszczanin Ubogi',
+    11..20 => 'Mieszczanin',
+    21..30 => 'Mieszczanin Bogaty'
+  )
+
 end
