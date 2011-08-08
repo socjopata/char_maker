@@ -1,0 +1,2 @@
+class StatsModifier < Statistics
+end
