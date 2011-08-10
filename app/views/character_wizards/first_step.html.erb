@@ -2,104 +2,31 @@
 <strong>Płeć: </strong><%= translate_gender(@character.gender) %><br/>
 <%= raw display_curse_or_blessing(@character) %>
 <br/><br/>
-<strong>Parametry: </strong>
-<div id="display_container">
-  <div class="dragArea">
+<strong>Profesja i pochodzenie: </strong>
+<br/><br/>
+<% form_tag :url => first_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
+<label>Wybierz profesję: </label><%= select_tag 'professions', options_from_collection_for_select(@professions, "id", "name") %><br/>
 
-    <% @character.statistics.initial_dice_roll_set.each_with_index do |roll, index| %>
-        <%= content_tag(:div, roll, :id => index, :class => "drag") %>
-    <% end %>
-  </div>
+    <div id="addressCountries">
+      <%= render :partial => 'countries', :locals => {:countries => @countries} %>
+    </div>
 
-  <div class="dropArea">
-    <table>
-      <thead>
-      <th>S</th>
-      <th>ZR</th>
-      <th>WT</th>
-      <th>INT</th>
-      <th>WI</th>
-      <th>O</th>
-      </thead>
-      <tbody>
-      <tr>
-        <td>
-          <div id="strength" class="drop"></div>
-        </td>
-        <td>
-          <div id="dexterity" class="drop"></div>
-        </td>
-        <td>
-          <div id="endurance" class="drop"></div>
-        </td>
-        <td>
-          <div id="inteligence" class="drop"></div>
-        </td>
-        <td>
-          <div id="faith" class="drop"></div>
-        </td>
-        <td>
-          <div id="polish" class="drop"></div>
-        </td>
-      </tr>
-
-      </tbody>
-    </table>
-  </div>
-  <%= link_to_function "Resetuj pola", "reset_stat_fields()"  %>
-</div>
-<br/>
-<% form_for @character.statistics, :url => first_step_character_wizard_path(:char_id => @character.id), :html => {:id => "stats_form", :method => :post} do |f| %>
-    <%= f.hidden_field :strength %>
-    <%= f.hidden_field :dexterity %>
-    <%= f.hidden_field :endurance %>
-    <%= f.hidden_field :inteligence %>
-    <%= f.hidden_field :faith %>
-    <%= f.hidden_field :polish %>
 <% end %>
 
-<%= button_to "Wróć", edit_character_path(@character), :method => :get %>
-<%= button_to "Dalej", "javascript:void(0)", :method => :post, :onclick => "attach_choices_and_proceed()" %>
+<!--#TODO make a form that submits data, finish models used here, add buttons-->
 
 <script type="text/javascript">
-
-    function reset_stat_fields() {
-     $('.ui-draggable').show();
-     $('.drop').text('');
-    }
-
-    function attach_choices_and_proceed() {
-        $("#statistics_strength").val($("#strength").text());
-        $("#statistics_dexterity").val($("#dexterity").text());
-        $("#statistics_endurance").val($("#endurance").text());
-        $("#statistics_inteligence").val($("#inteligence").text());
-        $("#statistics_faith").val($("#faith").text());
-        $("#statistics_polish").val($("#polish").text());
-        $("#stats_form").submit();
-    }
-
-    function make_draggable() {
-        $(".drag").draggable(
-                {containment: "#display_container",revert: true,
-                    revertDuration: 1000});
-    }
-
-
-    function make_droppable() {
-        $(".drop").droppable({
-            accept: ".drag",
-            hoverClass: "active",
-            drop: function(event, props) {
-                $(this).text($(props.draggable).text());
-                $(props.draggable).hide();
-            }
+    jQuery(function($) {
+        // when the #country field changes
+        $("#professions").change(function() {
+            // make a POST call and replace the content
+            var country = $('select#professions :selected').val();
+            if (country == "") country = "0";
+            jQuery.get('/character_wizards/update_countries_select/' + country, function(data) {
+                $("#addressCountries").html(data);
+            })
+            return false;
         });
-    }
-    $(function() {
-        make_draggable();
-        make_droppable();
-    });
 
+    })
 </script>
-
-
