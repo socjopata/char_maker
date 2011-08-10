@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class SocialClass < ActiveRecord::Base
 
+  #TODO rewrite this...
 
   has_and_belongs_to_many :character_backgrounds
 
