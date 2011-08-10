@@ -9,7 +9,7 @@ class CharacterWizardsController < ApplicationController
       @character = Character.find(params[:char_id])
       if @character.character_background.blank?
         @character_background = @character.build_character_background
-        @character_background.draw_a_trait
+        @character_background.draw_a_trait if @character.hardcore_trait_picking
         @character_background.save
       end
       if @character.statistics.blank?

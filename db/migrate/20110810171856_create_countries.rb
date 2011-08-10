@@ -1,15 +1,15 @@
 # -*- encoding : utf-8 -*-
-class CreateProfessions < ActiveRecord::Migration
+class CreateCountries < ActiveRecord::Migration
   def self.up
-    create_table :professions do |t|
+    create_table :countries do |t|
       t.string :name
       t.text :description
-      t.type :string
+      t.string :type
       t.timestamps
     end
   end
 
   def self.down
-    drop_table :professions
+    drop_table :countries
   end
 end

@@ -22,10 +22,15 @@
   <%= f.label "Imię" %>
   <%= f.text_field :name %><br/>
   <%= f.label "Opis" %>
-  <%= f.text_area :description %><br/>
+  <%= f.text_area :description, :cols => 60, :rows => 3 %><br/>
   <%= f.label "Płeć" %>
   <%= f.select :gender, options_for_select(["Mężczyzna", 'Kobieta'], @character.gender) %><br/>
+  <%= f.label "Gram hardcorowo - wylosuj dla mnie pochodzenie." %>
+  <%= f.check_box :hardcore_social_class_picking %><br/>
+  <%= f.label "Gram hardcorowo - niech komputer rzuci za mnie na klątwę lub dar." %>
+  <%= f.check_box :hardcore_trait_picking %><br/>
   <br/>
+
 </p>
 
     <div id="stats">

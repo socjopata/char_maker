@@ -3,6 +3,8 @@ class CharacterBackground < ActiveRecord::Base
   belongs_to :character
   has_and_belongs_to_many :traits
   has_and_belongs_to_many :social_classes
+  has_one :origin
+  has_one :country, :through => :origin
 
   def draw_a_trait
     if self.new_record?
