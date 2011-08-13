@@ -43,5 +43,9 @@ class CharacterBackground < ActiveRecord::Base
     end
   end
 
+  def set_origin(country_id)
+
+  end
+
 
 end

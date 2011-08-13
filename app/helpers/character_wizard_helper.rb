@@ -14,7 +14,7 @@ def  display_curse_or_blessing(char)
 end
 
   def translate_gender(gender)
-    gender=="Male" ? "Mężczyzna" : "Kobieta" #I should prolly go with i18n  :\
+    gender=="Mężczyzna" ? "Mężczyzna" : "Kobieta" #I should prolly go with i18n  :\
   end
 
 end

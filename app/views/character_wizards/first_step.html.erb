@@ -4,16 +4,22 @@
 <br/><br/>
 <strong>Profesja i pochodzenie: </strong>
 <br/><br/>
-<% form_tag :url => first_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
+<% form_tag  :url => first_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
 <label>Wybierz profesję: </label><%= select_tag 'professions', options_from_collection_for_select(@professions, "id", "name") %><br/>
 
     <div id="addressCountries">
       <%= render :partial => 'countries', :locals => {:countries => @countries} %>
     </div>
-
+ <%= hidden_field_tag :char_id, @character.id %>
 <% end %>
 
-<!--#TODO make a form that submits data, finish models used here, add buttons-->
+<br/><br/><br/><br/>
+
+<div class="clear">
+<%= button_link_to "Wróć", new_character_path(:char_id => @character.id), :class => "fltl" %>
+<%= button_link_to "Dalej", "javascript:void(0)", :class => "fltr", :onclick => "submit_form_and_proceed()" %>
+</div>
+
 
 <script type="text/javascript">
     jQuery(function($) {
@@ -29,4 +35,10 @@
         });
 
     })
+    function submit_form_and_proceed() {
+
+    $("form").submit();
+    }
+
 </script>
+

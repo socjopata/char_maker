@@ -13,8 +13,12 @@ class CharacterWizardsController < ApplicationController
         @character_background.save
       end
       @professions = Profession.all
-      @countries = []
+      @countries ||= Profession.find_by_name("Alchemik").countries
     elsif request.post?
+      @character = Character.find(params[:char_id])
+      #TODO finish this
+      @character.character_background.set_origin(params[:countries])
+      @character.pick_a_profession(params[:professions])
 
     end
   end

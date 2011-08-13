@@ -12,6 +12,11 @@ class Character < ActiveRecord::Base
   scope :belongs_to_user, lambda {|user| {:conditions => {:user_id => user.id}}  }
 
   validates_presence_of :name, :gender, :user_id
+
+  def pick_a_profession(prof_id)
+
+  end
+
 end
 
 
