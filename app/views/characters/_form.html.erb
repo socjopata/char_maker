@@ -38,11 +38,16 @@
     <br/><br/>
 
     <div class="actions">
-      <%= f.submit "Dalej" %>
+      <%= button_link_to "Dalej", "javascript:void(0)", :class => "button", :onclick => "submit_form()" %>
     </div>
 <% end %>
-<%= button_to 'Wróć do indeksu', characters_path, :method => :get %>
+<br/>
+<%= button_link_to "Wróć do indeksu", characters_path %>
 <script>
+
+  function submit_form() {
+      $("form").submit();
+  }
     //      Math.RandomInteger = function(n, m) {
     //        if (! m) {m = 1;} // default range starts at 1
     //        var max = n > m ? n : m; // doesn't matter which value is min or max

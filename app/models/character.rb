@@ -14,7 +14,7 @@ class Character < ActiveRecord::Base
   validates_presence_of :name, :gender, :user_id
 
   def pick_a_profession(prof_id)
-
+      self.create_character_profession(:profession_id => prof_id)
   end
 
 end

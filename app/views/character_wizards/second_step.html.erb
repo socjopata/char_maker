@@ -1,4 +1,10 @@
-
+<strong>Imię: </strong><%= @character.name %><br/>
+<strong>Płeć: </strong><%= translate_gender(@character.gender) %><br/>
+<%= raw display_curse_or_blessing(@character) %>
+<br/><br/>
+<strong>Profesja:</strong> <%= @character.character_profession  %><br/>
+<strong>Pochodzenie:</strong> <%= @character.character_background.origin  %><br/>
+<br/><br/>
 <strong>Parametry: </strong>
 <div id="display_container">
   <div class="dragArea">
@@ -55,8 +61,8 @@
     <%= f.hidden_field :polish %>
 <% end %>
 
-<%= button_to "Wróć", edit_character_path(@character), :method => :get %>
-<%= button_to "Dalej", "javascript:void(0)", :method => :post, :onclick => "attach_choices_and_proceed()" %>
+<%= button_link_to "Wróć", first_step_character_wizard_path(:char_id => @character.id) %>
+<%= button_link_to "Dalej", "javascript:void(0)", :onclick => "attach_choices_and_proceed()" %>
 
 <script type="text/javascript">
 

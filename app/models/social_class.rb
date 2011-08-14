@@ -2,6 +2,8 @@
 class SocialClass < ActiveRecord::Base
 
   #TODO rewrite this...
+  #to differ by type (origin)
+  # to has one through association
 
   has_and_belongs_to_many :character_backgrounds
 

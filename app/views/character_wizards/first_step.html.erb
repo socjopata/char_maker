@@ -5,6 +5,7 @@
 <strong>Profesja i pochodzenie: </strong>
 <br/><br/>
 <% form_tag  :url => first_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
+
 <label>Wybierz profesję: </label><%= select_tag 'professions', options_from_collection_for_select(@professions, "id", "name") %><br/>
 
     <div id="addressCountries">

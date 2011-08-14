@@ -14,12 +14,14 @@ class CharacterWizardsController < ApplicationController
       end
       @professions = Profession.all
       @countries ||= Profession.find_by_name("Alchemik").countries
+      #TODO fix double popualte error
     elsif request.post?
       @character = Character.find(params[:char_id])
       #TODO finish this
-      @character.character_background.set_origin(params[:countries])
-      @character.pick_a_profession(params[:professions])
-
+      @character.character_background.set_origin(params[:countries]) if @character.character_background.origin.blank?
+      @character.pick_a_profession(params[:professions]) if @character.character_profession.blank?
+      @character.character_background.set_social_class        #TODO unless social class exists
+      redirect_to second_step_character_wizard_path(:char_id => @character.id)
     end
   end
 
