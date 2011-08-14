@@ -4,4 +4,6 @@ class Profession < ActiveRecord::Base
   has_and_belongs_to_many :countries
   has_many :characters, :through => :character_professions
   has_many :character_professions
+
+  validates_uniqueness_of :name
 end

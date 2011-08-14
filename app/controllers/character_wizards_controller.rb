@@ -14,7 +14,6 @@ class CharacterWizardsController < ApplicationController
       end
       @professions = Profession.all
       @countries ||= Profession.find_by_name("Alchemik").countries
-      #TODO fix double popualte error
     elsif request.post?
       @character = Character.find(params[:char_id])
       #TODO finish this
