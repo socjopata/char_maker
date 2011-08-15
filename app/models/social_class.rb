@@ -1,10 +1,7 @@
 # -*- encoding : utf-8 -*-
 class SocialClass < ActiveRecord::Base
 
-  #TODO rewrite this...
-  #to differ by type (origin)
-
-
+  has_many :stats_choices, :as => :resource, :dependent => :destroy
   has_and_belongs_to_many :character_backgrounds
 
   DICE_TYPE = 30 #k30
@@ -29,6 +26,7 @@ class SocialClass < ActiveRecord::Base
     25..28 => 'Członek rady plemienia',
     29..30 => 'Potomek Wodza'
   )
+
 
 
 

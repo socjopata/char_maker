@@ -1,0 +1,21 @@
+Script started on Mon 15 Aug 2011 07:39:00 PM CEST
+[32mUsing /home/socjopata/.rvm/gems/ruby-1.9.2-p290 with gemset char_maker(B[m
+]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ ./bin/rubymine.sh [K./bin/rubymine.sh cd RubyMine-3.2.3/./bin/rubymine.sh [K./bin/rubymine.sh cd RubyMine-3.2.3/[11Prails ccd RubyMine-3.2.3/./bin/rubymine.sh [Kscript/generate model StatsC hoice
+bash: script/generate: No such file or directory
+]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ script/generate model StatsChhoice[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C.script/generate model StatsChoice[A]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ [C
+
+bash: .script/generate: No such file or directory
+]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ .script/generate model StatsCChoice[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cscript/generate model StatsCh[1Poice[A]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ rscript/generate model StatsChoice[A]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ [Cuscript/generate model StatsChoice[A]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ [C[Cbscript/generate model StatsChoice[A]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ [C[C[Cyscript/generate model StatsChoice[A]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ [C[C[C[C script/generate model StatsChoice[A]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ [C[C[C[C[C
+
+ruby: No such file or directory -- script/generate (LoadError)
+]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ raisl generate model StatsCh oice
+No command 'raisl' found, did you mean:
+ Command 'rails' from package 'rails' (universe)
+raisl: command not found
+]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ cd ..
+]0;socjopata@socjopata: ~/SelleoProjectssocjopata@socjopata:~/SelleoProjects$ cd char_maker/
+[32mUsing /home/socjopata/.rvm/gems/ruby-1.9.2-p290 with gemset char_maker(B[m
+]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ cd char_maker/..[Kraisl generate model StatsChooice[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cl generate model StatsChoi[1Pce[A]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ [C[C[C[Cs generate model StatsChoice[A]0;socjopata@socjopata: ~/SelleoProjects/char_makersocjopata@socjopata:~/SelleoProjects/char_maker$ [C[C[C[C[C
+
+You did not specify how you would like Rails to report deprecation notices for your development environment, please set config.active_support.deprecation to :log at config/environments/development.rb
+[1m[37m      invoke

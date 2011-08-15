@@ -4,7 +4,7 @@ class CreateCountries < ActiveRecord::Migration
     create_table :countries do |t|
       t.string :name
       t.text :description
-      t.string :type
+      t.string :c_type
       t.timestamps
     end
   end
