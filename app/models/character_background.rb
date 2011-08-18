@@ -49,24 +49,29 @@ class CharacterBackground < ActiveRecord::Base
 
   def set_social_class
     country.c_type=="civilized" ? attach_civilized_origin : attach_barbarian_origin
+    fill_the_purse_with_gold
   end
 
   def attach_civilized_origin
     if self.character.hardcore_social_class_picking?
       dice_roll = 1 + rand(SocialClass::DICE_TYPE)
-      self << SocialClass.find_by_name(SocialClass::DICE_RESULT___CIVILIZED[dice_roll])
+      self.social_classes << SocialClass.find_by_name(SocialClass::DICE_RESULT___CIVILIZED[dice_roll])
     else
-      self << SocialClass.find_by_name(SocialClass.find_by_name("Mieszczanin"))
+      self.social_classes << SocialClass.find_by_name(SocialClass.find_by_name("Mieszczanin"))
     end
   end
 
   def attach_barbarian_origin
     if self.character.hardcore_social_class_picking?
       dice_roll = 1 + rand(SocialClass::DICE_TYPE)
-      self << SocialClass.find_by_name(SocialClass::DICE_RESULT___BARBARIAN[dice_roll])
+      self.social_classes << SocialClass.find_by_name(SocialClass::DICE_RESULT___BARBARIAN[dice_roll])
     else
-      self << SocialClass.find_by_name(SocialClass.find_by_name("Wojownik"))
+      self.social_classes << SocialClass.find_by_name(SocialClass.find_by_name("Wojownik"))
     end
+  end
+
+  def fill_the_purse_with_gold
+    #TODO throw a dice for amount of coins. Save this info in background or char ?
   end
 
 end

@@ -10,6 +10,14 @@ class Statistics < ActiveRecord::Base
 
   DICE_TYPE = 20 #k20
 
+  NAMES =
+      {"S" => "Siła",
+       "ZR" => "Zręczność",
+       "WT" => "Wytrzymałość",
+       "INT" => "Inteligencja",
+       "WI" => "Wiara",
+       "O" => "Ogłada"
+      }
 
   def draw_stats
     initial_stats = []

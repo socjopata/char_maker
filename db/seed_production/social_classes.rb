@@ -23,26 +23,25 @@ s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "S", :value => 2, :group_name => "mordercza praca")
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 2, :group_name => "mordercza praca")
 # S and WT or skills
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "edukacja") #MG choice
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Jedna wolna umiejętność") #MG choice
 
 
 s_class = SocialClass.find_by_name("Chłop Ubogi")
-s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "INT", :value => -1, :group_name => "default")
-s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "default")
-s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "default")
-s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "INT", :value => -1, :group_name => "domyślne")
+s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "domyślne")
+s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "domyślne")
+s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
 
 s_class = SocialClass.find_by_name("Chłop Bogaty")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "INT", :value => -1, :group_name => "default")
-s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "default")
-s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "default")
-s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "INT", :value => -1, :group_name => "domyślne")
+s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "domyślne")
+s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "domyślne")
+s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
 
 s_class = SocialClass.find_by_name("Mieszczanin Ubogi")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
 # O *and* S or WT
 s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "siła")
@@ -58,21 +57,21 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "
 
 s_class = SocialClass.find_by_name("Mieszczanin Bogaty")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Czytanie i Pisanie")
+s_choice.stats_modifiers.create(:modifies => "skill: Czytanie i Pisanie", :value => 0, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "O", :value => 1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "O", :value => 1, :group_name => "domyślne")
 
 s_class = SocialClass.find_by_name("Szlachcic Zaściankowy")
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "other", :value => 0, :group_name => "herb i tytuł szlachecki")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "edukacja") #free choice
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Jedna wolna umiejętność") #free choice
 
 s_class = SocialClass.find_by_name("Szlachcic")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "O", :value => 3, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "O", :value => 3, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "other", :value => 0, :group_name => "herb i tytuł szlachecki")
 s_choice = s_class.stats_choices.create
@@ -82,7 +81,7 @@ s_choice.stats_modifiers.create(:modifies => "fencing", :value => 3, :group_name
 
 s_class = SocialClass.find_by_name("Wielmoża")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "O", :value => 5, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "O", :value => 5, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Czytanie i Pisanie")
 s_choice = s_class.stats_choices.create
@@ -94,58 +93,58 @@ s_choice.stats_modifiers.create(:modifies => "fencing", :value => 3, :group_name
 
 s_class = SocialClass.find_by_name("Niewolnik barbarzyński")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "S", :value => 2, :group_name => "mordercza praca")
+s_choice.stats_modifiers.create(:modifies => "S", :value => 2, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "WT", :value => 2, :group_name => "mordercza praca")
+s_choice.stats_modifiers.create(:modifies => "WT", :value => 2, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "domyślne")
 
 s_class = SocialClass.find_by_name("Wyrzutek")
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "S", :value => 2, :group_name => "siła")
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 2, :group_name => "wytrzymałość")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "INT", :value => -1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "INT", :value => -1, :group_name => "domyślne")
 
 s_class = SocialClass.find_by_name("Wojownik")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
 
 s_class = SocialClass.find_by_name("Znany wojownik")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "fencing", :value => 1, :group_name => "wszystkie Biegłości jakie postać zdobędzie zwiększone zostają o +1pkt")
 
 s_class = SocialClass.find_by_name("Członek rady plemienia")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "WI", :value => 1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "WI", :value => 1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "edukacja") #free choice
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Jedna wolna umiejętność") #free choice
 
 s_class = SocialClass.find_by_name("Potomek Wodza")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "default")
+s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "fencing", :value => 2, :group_name => "wszystkie Biegłości jakie postać zdobędzie zwiększone zostają o +2pkt")
 

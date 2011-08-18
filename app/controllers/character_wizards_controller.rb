@@ -16,15 +16,25 @@ class CharacterWizardsController < ApplicationController
       @countries ||= Profession.find_by_name("Alchemik").countries
     elsif request.post?
       @character = Character.find(params[:char_id])
-      #TODO finish this
       @character.character_background.set_origin(params[:countries]) if @character.character_background.origin.blank?
       @character.pick_a_profession(params[:professions]) if @character.character_profession.blank?
-      @character.character_background.set_social_class        #TODO unless social class exists
+      @character.character_background.set_social_class if @character.character_background.social_classes.blank?
       redirect_to second_step_character_wizard_path(:char_id => @character.id)
     end
   end
 
   def second_step
+    if request.get?
+      @character = Character.find(params[:char_id])
+
+      #do a show
+    elsif request.post?
+      @character = Character.find(params[:char_id])
+
+    end
+  end
+
+  def third_step
     if request.get?
       @character = Character.find(params[:char_id])
       if @character.statistics.blank?
@@ -36,15 +46,11 @@ class CharacterWizardsController < ApplicationController
     elsif request.post?
       @character = Character.find(params[:char_id])
       if @character.statistics.update_attributes(params[:statistics])
-        redirect_to third_step_character_wizard_path(:char_id => @character.id)
+        redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
       else
-        redirect_to second_step_character_wizard_path(:char_id => @character.id), :alert => "Napewno uzupełniłeś statystyki?"
+        redirect_to third_step_character_wizard_path(:char_id => @character.id), :alert => "Napewno uzupełniłeś statystyki?"
       end
     end
-  end
-
-  def third_step
-
   end
 
   def update_countries_select
