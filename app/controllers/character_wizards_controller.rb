@@ -24,7 +24,6 @@ class CharacterWizardsController < ApplicationController
     elsif request.post?
       @character = Character.find(params[:char_id])
       @character.character_background.set_origin(params[:countries]) if @character.character_background.origin.blank?
-      #TODO add stats modifiers from origin, in a callback
       @character.pick_a_profession(params[:professions]) if @character.character_profession.blank?
       @character.character_background.set_social_class if @character.character_background.social_classes.blank?
       redirect_to second_step_character_wizard_path(:char_id => @character.id)
@@ -34,11 +33,13 @@ class CharacterWizardsController < ApplicationController
   def second_step
     if request.get?
       @character = Character.find(params[:char_id])
+      #TODO flush stats modifiers from character statistics in case user gets back here from third step
       #do a show
     elsif request.post?
       @character = Character.find(params[:char_id])
       @character.lead_parameter = params[:main_skill]
       @character.statistics.push_social_class_stats_modifiers(params[:stat_choice])
+      #TODO add stats modifiers from origin, in a callback
       @character.save(false)
       redirect_to third_step_character_wizard_path(:char_id => @character.id)
     end
