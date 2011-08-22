@@ -71,7 +71,7 @@ class CharacterBackground < ActiveRecord::Base
   end
 
   def fill_the_purse_with_gold
-    #TODO throw a dice for amount of coins. Save this info in background or char ?
+    #TODO throw a dice for amount of coins. Save this in Purse model ;p
   end
 
 end

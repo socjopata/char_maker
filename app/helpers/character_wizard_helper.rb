@@ -23,9 +23,15 @@ module CharacterWizardHelper
       "#{Statistics::NAMES[choice_part.modifies]} zostanie zmodyfikowana o #{choice_part.value}"
     elsif choice_part.modifies=="skills"
        "Postać otrzyma: #{choice_part.group_name}"
+    elsif choice_part.modifies=="other"
+        "Postać otrzyma: #{choice_part.group_name}"
     else
       "nie zdefiniowano #TODO"
     end
+  end
+
+  def fetch_possible_lead_parameters_choices(char_profession)
+    char_profession.profession.lead_parameters
   end
 
 end

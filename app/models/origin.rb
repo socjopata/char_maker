@@ -3,8 +3,8 @@ class Origin < ActiveRecord::Base
   belongs_to :character_background
   belongs_to :country
 
-    def to_s
+  def to_s
     self.country.name
-    end
-
   end
+
+end

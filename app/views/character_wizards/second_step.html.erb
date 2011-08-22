@@ -4,10 +4,14 @@
 <br/>
 <strong>Profesja:</strong> <%= @character.character_profession %><br/>
 <strong>Pochodzenie:</strong> <%= @character.character_background.origin %><br/>
+<strong>Klasa Społeczna:</strong> <%= @character.character_background.social_classes.first.name %><br/>
 <br/><br/>
 
 <% form_tag :url => second_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
-    <h3>Wybierz parametr wiodący dla swojej postaci:</h3> #TODO <br/>
+    <%= hidden_field_tag :char_id, @character.id %>
+    <h3>Wybierz parametr wiodący dla swojej postaci:</h3>
+    <br/>
+    <%= select_tag "main_skill", options_from_collection_for_select(fetch_possible_lead_parameters_choices(@character.character_profession), :name, :display_name) %>
     <h3>Określ konsekwencje swojego pochodzenia:</h3>   <br/>
     <!--#TODO move this spaghetti logic to a helper where it belongs...-->
     <% @character.stats_choices.each do |choice| %>
@@ -37,8 +41,12 @@
 
 <br/><br/>
 <%= button_link_to "Wróć", first_step_character_wizard_path(:char_id => @character.id) %>
-<%= button_link_to "Dalej", "javascript:void(0)" %>
+<%= button_link_to "Dalej", "javascript:void(0)", :class => "fltr", :onclick => "submit_form_and_proceed()" %>
 
 
-
+<script type="text/javascript">
+     function submit_form_and_proceed() {
+        $("form").submit();
+    }
+</script>
 
