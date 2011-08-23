@@ -44,7 +44,7 @@ class CharacterBackground < ActiveRecord::Base
   end
 
   def set_origin(country_id)
-     self.create_origin(:country_id => country_id)
+    self.create_origin(:country_id => country_id)
   end
 
   def set_social_class
@@ -71,7 +71,13 @@ class CharacterBackground < ActiveRecord::Base
   end
 
   def fill_the_purse_with_gold
-    #TODO throw a dice for amount of coins. Save this in Purse model ;p
+    #TODO test it
+    sc = social_classes.first
+    cooper = Purse::BASE[sc.name]
+    Purse::MULTIPLIER[sc.name].times do
+      cooper += ((1 + rand(Purse::DICE_TYPE)) * (sc.name=="Chłop Ubogi" or sc.name=="Wyrzutek" ? 10 : 100))
+    end
+    character.create_purse(:cooper => cooper)
   end
 
 end

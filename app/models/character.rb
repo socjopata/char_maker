@@ -21,6 +21,16 @@ class Character < ActiveRecord::Base
     character_background.social_classes.first.stats_choices
   end
 
+  def valid_for_step_three?
+    m_choose = StatsModifier.must_choose_for_social_class(character_background.social_classes.first.id)
+    if m_choose.present?
+      choosen_ids = self.statistics.stats_modifiers.map(&:id)
+      return m_choose.map(&:id).find_all { |item| choosen_ids.include? item }.present?
+    else
+      true
+    end
+  end
+
 end
 
 

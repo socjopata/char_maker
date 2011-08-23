@@ -21,7 +21,19 @@ class StatsModifier < ActiveRecord::Base
         :from => "stats_modifiers, stats_choices, social_classes",
         :conditions => "
         stats_modifiers.stats_choice_id = stats_choices.id AND
-        stats_modifiers.group_name = 'domyślne' AND
+        stats_modifiers.default_for_social_class is TRUE AND
+        stats_choices.resource_id = social_classes.id AND
+        social_classes.id = #{social_class_id.to_i}"
+    }
+  }
+
+  scope :must_choose_for_social_class, lambda { |social_class_id|
+    {
+        :select => "stats_modifiers.*",
+        :from => "stats_modifiers, stats_choices, social_classes",
+        :conditions => "
+        stats_modifiers.stats_choice_id = stats_choices.id AND
+        stats_modifiers.default_for_social_class is FALSE AND
         stats_choices.resource_id = social_classes.id AND
         social_classes.id = #{social_class_id.to_i}"
     }
@@ -31,3 +43,5 @@ class StatsModifier < ActiveRecord::Base
 
 
 end
+
+

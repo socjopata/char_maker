@@ -25,6 +25,8 @@ module CharacterWizardHelper
        "Postać otrzyma: #{choice_part.group_name}"
     elsif choice_part.modifies=="other"
         "Postać otrzyma: #{choice_part.group_name}"
+    elsif choice_part.modifies=="fencing"
+        "Postać otrzyma: biegłości w broni."
     else
       "nie zdefiniowano #TODO"
     end
