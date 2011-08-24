@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class StatisticsStatsModifiersJoinTable < ActiveRecord::Migration
   def self.up
     create_table :statistics_stats_modifiers, :id => false do |t|

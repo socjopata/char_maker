@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Purse < ActiveRecord::Base
   belongs_to :character
 

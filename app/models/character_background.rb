@@ -49,7 +49,6 @@ class CharacterBackground < ActiveRecord::Base
 
   def set_social_class
     country.c_type=="civilized" ? attach_civilized_origin : attach_barbarian_origin
-    fill_the_purse_with_gold
   end
 
   def attach_civilized_origin
@@ -71,7 +70,7 @@ class CharacterBackground < ActiveRecord::Base
   end
 
   def fill_the_purse_with_gold
-    #TODO test it
+
     sc = social_classes.first
     cooper = Purse::BASE[sc.name]
     Purse::MULTIPLIER[sc.name].times do

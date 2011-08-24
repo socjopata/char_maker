@@ -36,6 +36,14 @@ module CharacterWizardHelper
     char_profession.profession.lead_parameters
   end
 
+  def humanize_purse_content(cooper)
+      values = sprintf('%0.2f', (cooper.to_f / 100)).split '.'
+      gold = values[0]
+      silver = values[1][0]
+      cooper = values[1][1]
+      "#{gold} złota, #{silver} srebra i #{cooper} miedzi"
+  end
+
 end
 
 

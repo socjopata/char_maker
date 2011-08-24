@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddFieldsToCharacter < ActiveRecord::Migration
     def self.up
     add_column :characters, :lead_parameter, :string
