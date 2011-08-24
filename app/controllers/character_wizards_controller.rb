@@ -25,7 +25,7 @@ class CharacterWizardsController < ApplicationController
       @character.character_background.set_origin(params[:countries]) if @character.character_background.origin.blank?
       @character.pick_a_profession(params[:professions]) if @character.character_profession.blank?
       @character.character_background.set_social_class if @character.character_background.social_classes.blank?
-      @character.character_background.fill_the_purse_with_gold unless @character.purse.exists?
+      @character.character_background.fill_the_purse_with_gold unless @character.purse.present?
       redirect_to second_step_character_wizard_path(:char_id => @character.id)
     end
   end

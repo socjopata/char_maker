@@ -47,4 +47,13 @@ CharMaker::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  config.after_initialize do
+    LoggedExceptionsController.class_eval do
+      #TODO check for admin rights... when admin use feature will e implemented...
+      before_filter :user_signed_in?
+    end
+  end
+
+
 end

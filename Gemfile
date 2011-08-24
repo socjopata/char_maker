@@ -13,6 +13,7 @@ gem 'rmagick'
 gem "kaminari"
 gem 'jquery-rails', '>= 1.0.12'
 gem 'magic_encoding' ## coding: utf-8
+gem "exception_logger", :require => "exception_logger"   #TODO run rails g exception_logger:stylescripts if needed
 
 # Use unicorn as the web server
 # gem 'unicorn'
