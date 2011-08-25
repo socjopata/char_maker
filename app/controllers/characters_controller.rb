@@ -5,7 +5,7 @@ class CharactersController < ApplicationController
   before_filter :fetch_character, :except => [:index, :create, :new]
 
   def index
-    @characters = current_user.characters.order("name").page(params[:page]).per(5)
+    @characters = current_user.characters.order("name")
     respond_to do |format|
       format.html # index.html.erb
     end

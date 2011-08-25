@@ -52,11 +52,15 @@ class CharacterBackground < ActiveRecord::Base
   end
 
   def attach_civilized_origin
-    if self.character.hardcore_social_class_picking?
-      dice_roll = 1 + rand(SocialClass::DICE_TYPE)
-      self.social_classes << SocialClass.find_by_name(SocialClass::DICE_RESULT___CIVILIZED[dice_roll])
+    if (self.character.profession.name=="Fircyk (żołnierz)" or self.character.profession.name=="Fircyk (łotr)")
+      self.social_classes << SocialClass.find_by_name(SocialClass.find_by_name("Szlachcic Zaściankowy"))
     else
-      self.social_classes << SocialClass.find_by_name(SocialClass.find_by_name("Mieszczanin"))
+      if self.character.hardcore_social_class_picking?
+        dice_roll = 1 + rand(SocialClass::DICE_TYPE)
+        self.social_classes << SocialClass.find_by_name(SocialClass::DICE_RESULT___CIVILIZED[dice_roll])
+      else
+        self.social_classes << SocialClass.find_by_name(SocialClass.find_by_name("Mieszczanin"))
+      end
     end
   end
 

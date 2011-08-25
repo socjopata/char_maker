@@ -10,7 +10,7 @@ gem 'pg', '0.9.0'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
-gem "kaminari"
+#gem "kaminari"  #TODO unknown problem, undefined per / page and other methods...
 gem 'jquery-rails', '>= 1.0.12'
 gem 'magic_encoding' ## coding: utf-8
 gem "exception_logger", :require => "exception_logger"   #TODO run rails g exception_logger:stylescripts if needed
