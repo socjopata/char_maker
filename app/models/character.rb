@@ -7,6 +7,7 @@ class Character < ActiveRecord::Base
   has_one :character_profession
   has_one :profession, :through => :character_profession
   has_one :purse
+  has_one :auxiliary_parameter_set
 
   mount_uploader :avatar, AvatarUploader
   scope :belongs_to_user, lambda { |user| {:conditions => {:user_id => user.id}} }

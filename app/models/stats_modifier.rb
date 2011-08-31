@@ -11,6 +11,7 @@ class StatsModifier < ActiveRecord::Base
         :conditions => "
         stats_modifiers.stats_choice_id = stats_choices.id AND
         stats_choices.resource_id = social_classes.id AND
+        stats_choices.resource_type = 'SocialClass' AND
         social_classes.id = #{social_class_id.to_i}"
     }
   }
@@ -23,6 +24,7 @@ class StatsModifier < ActiveRecord::Base
         stats_modifiers.stats_choice_id = stats_choices.id AND
         stats_modifiers.default_for_social_class is TRUE AND
         stats_choices.resource_id = social_classes.id AND
+        stats_choices.resource_type = 'SocialClass' AND
         social_classes.id = #{social_class_id.to_i}"
     }
   }
@@ -35,6 +37,7 @@ class StatsModifier < ActiveRecord::Base
         stats_modifiers.stats_choice_id = stats_choices.id AND
         stats_modifiers.default_for_social_class is FALSE AND
         stats_choices.resource_id = social_classes.id AND
+        stats_choices.resource_type = 'SocialClass' AND
         social_classes.id = #{social_class_id.to_i}"
     }
   }
