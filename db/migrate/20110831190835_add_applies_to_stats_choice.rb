@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddAppliesToStatsChoice < ActiveRecord::Migration
   def self.up
     add_column :stats_choices, :applies_to, :string

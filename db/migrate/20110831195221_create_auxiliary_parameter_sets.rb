@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateAuxiliaryParameterSets < ActiveRecord::Migration
   def self.up
     create_table :auxiliary_parameter_sets do |t|
