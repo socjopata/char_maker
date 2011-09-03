@@ -22,11 +22,15 @@ module CharacterWizardHelper
     if ["S", "ZR", "WT", "INT", "WI", "O"].include?(choice_part.modifies)
       "#{Statistics::NAMES[choice_part.modifies]} zostanie zmodyfikowana o #{choice_part.value}"
     elsif choice_part.modifies=="skills"
-       "Postać otrzyma: #{choice_part.group_name}"
+      "Postać otrzyma: #{choice_part.group_name}"
     elsif choice_part.modifies=="other"
-        "Postać otrzyma: #{choice_part.group_name}"
+      "Postać otrzyma: #{choice_part.group_name}"
     elsif choice_part.modifies=="fencing"
-        "Postać otrzyma: biegłości w broni."
+      "Postać otrzyma: biegłości w broni."
+    elsif choice_part.modifies=="magic resistance"
+      "Postać otrzyma: #{choice_part.value} pkt odporności na magię"
+    elsif choice_part.modifies=="auxiliary"
+      "Paramter #{choice_part.group_name} zostanie zmodyfikowany o #{choice_part.value}"
     else
       "nie zdefiniowano #TODO"
     end
@@ -37,11 +41,19 @@ module CharacterWizardHelper
   end
 
   def humanize_purse_content(cooper)
-      values = sprintf('%0.2f', (cooper.to_f / 100)).split '.'
-      gold = values[0]
-      silver = values[1][0]
-      cooper = values[1][1]
-      "#{gold} złota, #{silver} srebra i #{cooper} miedzi"
+    values = sprintf('%0.2f', (cooper.to_f / 100)).split '.'
+    gold = values[0]
+    silver = values[1][0]
+    cooper = values[1][1]
+    "#{gold} złota, #{silver} srebra i #{cooper} miedzi"
+  end
+
+  def display_default_for_profession_and_origin(character)
+    stats_choice = character.character_background.origin.country.stats_choices.find_by_applies_to(character.profession.general_type)
+
+    stats_choice.stats_modifiers.collect do |choice_part|
+      content_tag("li", display_choice_part(choice_part))
+    end.join(" ")
   end
 
 end

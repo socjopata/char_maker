@@ -18,7 +18,7 @@ class Character < ActiveRecord::Base
     self.create_character_profession(:profession_id => prof_id)
   end
 
-  def stats_choices
+  def social_class_stats_choices
     character_background.social_classes.first.stats_choices
   end
 

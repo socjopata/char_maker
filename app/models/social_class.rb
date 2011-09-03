@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 class SocialClass < ActiveRecord::Base
 
+
+  #TODO no dice roll in case of "Rycerza, Rycerza Zakonnego lub Fircyka"
   has_many :stats_choices, :as => :resource, :dependent => :destroy
   has_and_belongs_to_many :character_backgrounds
 
@@ -15,7 +17,7 @@ class SocialClass < ActiveRecord::Base
     20..22 => 'Mieszczanin Bogaty',
     23..25 => 'Szlachcic Zaściankowy',
     25..28 => 'Szlachcic',
-    29..30 => "Wielmoża"
+    29..30 => 'Wielmoża'
   )
 
     DICE_RESULT___BARBARIAN = RangedHash.new(
@@ -27,7 +29,9 @@ class SocialClass < ActiveRecord::Base
     29..30 => 'Potomek Wodza'
   )
 
-
+  def is_noble?
+    ['Szlachcic Zaściankowy', 'Szlachcic', 'Wielmoża', 'Członek rady plemienia', 'Potomek Wodza'].include?(name)
+  end
 
 
 end

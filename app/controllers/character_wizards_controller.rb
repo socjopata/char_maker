@@ -38,6 +38,7 @@ class CharacterWizardsController < ApplicationController
       @character = Character.find(params[:char_id])
       @character.lead_parameter = params[:main_skill]
       @character.statistics.push_social_class_stats_modifiers(params[:stat_choice])
+   #   @character.statistics.push_origin_stats_modifiers(params[:stat_choice])
       #TODO add stats modifiers from origin, in a callback
       @character.save(false)
       if @character.valid_for_step_three?

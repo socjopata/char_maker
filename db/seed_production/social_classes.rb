@@ -29,15 +29,21 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_class = SocialClass.find_by_name("Chłop Ubogi")
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "INT", :value => -1, :group_name => "domyślne", :default_for_social_class => true)
+s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "domyślne", :default_for_social_class => true)
+s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "domyślne", :default_for_social_class => true)
+s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne", :default_for_social_class => true)
 
 s_class = SocialClass.find_by_name("Chłop Bogaty")
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "INT", :value => -1, :group_name => "domyślne", :default_for_social_class => true)
+s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "O", :value => -1, :group_name => "domyślne", :default_for_social_class => true)
+s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "domyślne", :default_for_social_class => true)
+s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne", :default_for_social_class => true)
 
 s_class = SocialClass.find_by_name("Mieszczanin Ubogi")

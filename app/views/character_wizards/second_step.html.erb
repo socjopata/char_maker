@@ -15,7 +15,7 @@
     <%= select_tag "main_skill", options_from_collection_for_select(fetch_possible_lead_parameters_choices(@character.character_profession), :name, :display_name) %>
     <h3>Wybierz profity wynikające z klasy społecznej Twojej postaci:</h3>   <br/>
     <!--#TODO move this spaghetti logic to a helper where it belongs...-->
-    <% @character.stats_choices.each do |choice| %>
+    <% @character.social_class_stats_choices.each do |choice| %>
         <% if choice.stats_modifiers.size == 1 %>
             <label><strong><%= choice.stats_modifiers.first.group_name.humanize %></strong></label>
             <%= radio_button_tag choice.stats_modifiers.first.group_name, choice.stats_modifiers.first.group_name, true, :disabled => true %><br/>
@@ -23,7 +23,7 @@
               <li><%= display_choice_part(choice.stats_modifiers.first) %></li>
             </ul>
         <% else %>
-            <% stats = choice.stats_modifiers.to_set.classify { |stat| stat.group_name } %>
+            <% stats = choice.stats_modifiers.to_set.classify { |stat| stat.group_name.humanize } %>
             <% stats.each do |group_name, choice_parts| %>
                 <label><strong><%= group_name %></strong></label><%= radio_button_tag "stat_choice", group_name %><br/>
                 <ul>
@@ -34,7 +34,14 @@
             <% end %>
         <% end %>
     <% end %>
-    <br/><br/>
+    <h3>Wybierz profity wynikające z kraju pochodzenia i profesji Twojej postaci:</h3>   <br/>
+    <label><strong>Domyślne:</strong></label>
+    <%= radio_button_tag "checked", "checked" , true,  :disabled => true %>
+    <ul>
+      <%= display_default_for_profession_and_origin(@character).html_safe %>
+      <!--#TODO special ones-->
+      <br/>
+    </ul>
 <% end %>
 
 
@@ -46,7 +53,7 @@
 
 
 <script type="text/javascript">
-     function submit_form_and_proceed() {
+    function submit_form_and_proceed() {
         $("form").submit();
     }
 </script>

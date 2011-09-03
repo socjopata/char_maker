@@ -4,7 +4,7 @@ class CreateProfessions < ActiveRecord::Migration
     create_table :professions do |t|
       t.string :name
       t.text :description
-      t.string :type
+      t.string :general_type
       t.timestamps
     end
   end

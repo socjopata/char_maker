@@ -50,6 +50,10 @@ class Statistics < ActiveRecord::Base
     end
   end
 
+  def push_origin_stats_modifiers(params)
+    throw params
+  end
+
 
 
 end
