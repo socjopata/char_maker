@@ -6,8 +6,13 @@
     float: left;
 }
 
+.stats_area {
+  background: url(/images/papyrus4.gif) no-repeat center;
+  width: 400px;
+
+}
+
 .dragArea {
-    background-color: Blue;
     opacity: 0.5;
     width: 400px;
     height: 100px;
@@ -18,7 +23,6 @@
 }
 
 .dropArea {
-    background-color: Red;
     opacity: 0.5;
     width: 400px;
     height: 100px;
@@ -81,7 +85,7 @@
 .Layout8_1 {
     width: 100%;
     background-color: white;
-    height: 1200px;
+    height: 1400px;
     float: left;
     background: url(/images/background.jpg);
     padding: 0px 12px 0px 12px;

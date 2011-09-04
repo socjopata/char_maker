@@ -42,14 +42,6 @@ class Statistics < ActiveRecord::Base
     result = roll_set.tap { |a| a.delete_at(roll_set.rindex(blessed ? roll_set.min : roll_set.max)) } #delete max(or min for special traited) value from dice roll set
   end
 
-  #def push_social_class_stats_modifiers(choice_group_name)
-  #  modifiers = StatsModifier.default_for_social_class(self.character.character_background.social_classes.first.id)
-  #  modifiers << StatsModifier.belongs_to_social_class(self.character.character_background.social_classes.first.id).of_group(choice_group_name)
-  #  modifiers.flatten.each do |modifier|
-  #    self.stats_modifiers << modifier unless self.stats_modifiers.exists?(:id => modifier.id)
-  #  end
-  #end
-
   def push_social_class_stats_modifiers(params)
      push_stats(params)
   end

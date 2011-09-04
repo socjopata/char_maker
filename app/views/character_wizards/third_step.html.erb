@@ -1,5 +1,8 @@
 <strong>Parametry: </strong>
-<div id="display_container">
+<br/><br/>
+<p>Twój najwyższy rzut został przyporządkowany do parametru wiodącego.</p>
+<p>Ponadto, rzut który przyporządkowujesz Ogładzie nie może być nizszy niż nominalny, czyli <%=  @character.statistics.initial_dice_roll_set.last  %></p>
+<div id="display_container" class="stats_area">
   <div class="dragArea">
 
     <% @character.statistics.initial_dice_roll_set.each_with_index do |roll, index| %>
