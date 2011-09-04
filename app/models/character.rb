@@ -38,15 +38,10 @@ class Character < ActiveRecord::Base
     oracle_matrix.include?(false) ? false : true
   end
 
-  #def has_chosen_all_required_social_class_perks?
-  #  m_choose = StatsModifier.must_choose_for_social_class(social_class.id)
-  #  if m_choose.present?
-  #    choosen_ids = self.statistics.stats_modifiers.map(&:id)
-  #    return m_choose.map(&:id).find_all { |item| choosen_ids.include? item }.present?
-  #  else
-  #    true
-  #  end
-  #end
+  def valid_for_step_fourth?
+
+   statistics.polish >= statistics.initial_dice_roll_set.last.to_i
+  end
 
   def has_chosen_all_required_social_class_perks?
     collection_of_must_choose_stats_modifiers = StatsModifier.must_choose_for_social_class(social_class.id)

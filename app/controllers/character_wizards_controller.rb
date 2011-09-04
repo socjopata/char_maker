@@ -52,15 +52,22 @@ class CharacterWizardsController < ApplicationController
     def third_step
       if request.get?
         @character = Character.find(params[:char_id])
+        roll_set = @character.statistics.initial_dice_roll_set
+        @lead_parameter = roll_set.max
+        @stats = roll_set.tap { |a| a.delete_at(roll_set.rindex(roll_set.max)) }
         #do a show
       elsif request.post?
         @character = Character.find(params[:char_id])
-        if @character.statistics.update_attributes(params[:statistics])
+        if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth?
           redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
         else
-          redirect_to third_step_character_wizard_path(:char_id => @character.id), :alert => "Napewno uzupełniłeś statystyki?"
+          redirect_to third_step_character_wizard_path(:char_id => @character.id), :alert => "Napewno dobrze uzupełniłeś statystyki?"
         end
       end
+    end
+
+    def fourth_step
+      throw "TODO"
     end
 
     def update_countries_select

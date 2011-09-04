@@ -8,7 +8,7 @@
 <strong>Sakiewka:</strong> <%= humanize_purse_content(@character.purse.cooper) %><br/>
 <br/><br/>
 
-<% form_tag :url => second_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
+<%= form_tag :url => second_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
     <%= hidden_field_tag :char_id, @character.id %>
     <h3>Wybierz parametr wiodący dla swojej postaci:</h3>
     <br/>

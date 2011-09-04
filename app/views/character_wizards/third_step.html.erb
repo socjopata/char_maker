@@ -1,13 +1,27 @@
 <strong>Parametry: </strong>
 <br/><br/>
-<p>Twój najwyższy rzut został przyporządkowany do parametru wiodącego.</p>
-<p>Ponadto, rzut który przyporządkowujesz Ogładzie nie może być nizszy niż nominalny, czyli <%=  @character.statistics.initial_dice_roll_set.last  %></p>
+<p style="font-size: 16px">Twój najwyższy rzut został przyporządkowany do parametru wiodącego.</p>
+<p style="font-size: 16px">Ponadto, rzut który przyporządkowujesz Ogładzie <strong>nie może być nizszy</strong> niż nominalny, czyli: <%= @stats.last %></p>
 <div id="display_container" class="stats_area">
   <div class="dragArea">
-
-    <% @character.statistics.initial_dice_roll_set.each_with_index do |roll, index| %>
-        <%= content_tag(:div, roll, :id => index, :class => "drag") %>
-    <% end %>
+    <br/>
+    <table>
+      <thead>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      </thead>
+      <tbody>
+      <tr>
+        <% @stats.each_with_index do |roll, index| %>
+            <%= content_tag(:td, roll, :id => index, :class => "drag") %>
+        <% end %>
+      </tr>
+      </tbody>
+    </table>
   </div>
 
   <div class="dropArea">
@@ -23,32 +37,32 @@
       <tbody>
       <tr>
         <td>
-          <div id="strength" class="drop"></div>
+          <div id="strength" class="drop"><%= @lead_parameter if @character.lead_parameter=="S" %></div>
         </td>
         <td>
-          <div id="dexterity" class="drop"></div>
+          <div id="dexterity" class="drop"><%= @lead_parameter if @character.lead_parameter=="ZR" %></div>
         </td>
         <td>
-          <div id="endurance" class="drop"></div>
+          <div id="endurance" class="drop"><%= @lead_parameter if @character.lead_parameter=="WT" %></div>
         </td>
         <td>
-          <div id="inteligence" class="drop"></div>
+          <div id="inteligence" class="drop"><%= @lead_parameter if @character.lead_parameter=="INT" %></div>
         </td>
         <td>
-          <div id="faith" class="drop"></div>
+          <div id="faith" class="drop"><%= @lead_parameter if @character.lead_parameter=="WI" %></div>
         </td>
         <td>
-          <div id="polish" class="drop"></div>
+          <div id="polish" class="drop"><%= @lead_parameter if @character.lead_parameter=="O" %></div>
         </td>
       </tr>
 
       </tbody>
     </table>
   </div>
-  <%= link_to_function "Resetuj pola", "reset_stat_fields()"  %>
+  <%= link_to_function "Resetuj pola", "reset_stat_fields()" %>
 </div>
 <br/>
-<% form_for @character.statistics, :url => second_step_character_wizard_path(:char_id => @character.id), :html => {:id => "stats_form", :method => :post} do |f| %>
+<%= form_for @character.statistics, :url => third_step_character_wizard_path(:char_id => @character.id), :html => {:id => "stats_form", :method => :post} do |f| %>
     <%= f.hidden_field :strength %>
     <%= f.hidden_field :dexterity %>
     <%= f.hidden_field :endurance %>
@@ -63,8 +77,8 @@
 <script type="text/javascript">
 
     function reset_stat_fields() {
-     $('.ui-draggable').show();
-     $('.drop').text('');
+        $('.ui-draggable').show();
+        $('.drop').text('');
     }
 
     function attach_choices_and_proceed() {

@@ -16,6 +16,8 @@ CharMaker::Application.routes.draw do
       post :second_step
       get :third_step
       post :third_step
+      get :fourth_step
+      post :fourth_step
     end
   end
 
