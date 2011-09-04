@@ -42,6 +42,19 @@ class StatsModifier < ActiveRecord::Base
     }
   }
 
+  scope :must_choose_for_origin , lambda { |country_id|
+    {
+        :select => "stats_modifiers.*",
+        :from => "stats_modifiers",
+        :joins => "
+        join stats_choices on stats_modifiers.stats_choice_id = stats_choices.id
+        join countries on stats_choices.resource_id = countries.id" ,
+        :conditions =>
+        "stats_modifiers.default_for_origin is FALSE AND
+        stats_choices.resource_type = 'Country' AND
+        countries.id = #{country_id.to_i}"
+    }
+  }
   scope :of_group, lambda { |group_name| where(:group_name => group_name ) }
 
 

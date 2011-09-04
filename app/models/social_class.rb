@@ -33,5 +33,10 @@ class SocialClass < ActiveRecord::Base
     ['Szlachcic Zaściankowy', 'Szlachcic', 'Wielmoża', 'Członek rady plemienia', 'Potomek Wodza'].include?(name)
   end
 
+  #Magic.
+  def true
+    true
+  end
+
 
 end

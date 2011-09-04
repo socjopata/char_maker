@@ -22,14 +22,36 @@ class Character < ActiveRecord::Base
     character_background.social_classes.first.stats_choices
   end
 
+  def social_class
+    character_background.social_classes.first
+  end
+
+
+  def default_origin_modifiers_set
+    character_background.origin.country.stats_choices.find_by_applies_to(profession.general_type)
+  end
+
   def valid_for_step_three?
-    m_choose = StatsModifier.must_choose_for_social_class(character_background.social_classes.first.id)
+    oracle_matrix = []
+    oracle_matrix << has_chosen_all_required_social_class_perks?
+    oracle_matrix << has_chosen_all_required_origin_perks?
+    oracle_matrix.include?(false) ? false : true
+  end
+
+  def has_chosen_all_required_social_class_perks?
+    m_choose = StatsModifier.must_choose_for_social_class(social_class.id)
     if m_choose.present?
       choosen_ids = self.statistics.stats_modifiers.map(&:id)
       return m_choose.map(&:id).find_all { |item| choosen_ids.include? item }.present?
     else
       true
     end
+  end
+
+  def has_chosen_all_required_origin_perks?
+      true
+
+      #TODO case where scope reeturns ids for a Noble which can be N/A for current char...
   end
 
 end

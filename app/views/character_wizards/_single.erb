@@ -1,0 +1,5 @@
+<label><strong><%= choice.stats_modifiers.first.group_name.humanize %></strong></label>
+<%= radio_button_tag radio_group, choice.stats_modifiers.first.group_name, true, :disabled => false %><br/>
+<ul>
+  <li><%= display_choice_part(choice.stats_modifiers.first) %></li>
+</ul>

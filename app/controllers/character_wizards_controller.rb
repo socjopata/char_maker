@@ -37,14 +37,14 @@ class CharacterWizardsController < ApplicationController
     elsif request.post?
       @character = Character.find(params[:char_id])
       @character.lead_parameter = params[:main_skill]
-      @character.statistics.push_social_class_stats_modifiers(params[:stat_choice])
-   #   @character.statistics.push_origin_stats_modifiers(params[:stat_choice])
+      @character.statistics.push_social_class_stats_modifiers(params[:social_stat_choices])
+      @character.statistics.push_origin_stats_modifiers(params[:origin_stat_choices])
       #TODO add stats modifiers from origin, in a callback
       @character.save(false)
       if @character.valid_for_step_three?
         redirect_to third_step_character_wizard_path(:char_id => @character.id)
       else
-        redirect_to second_step_character_wizard_path(:char_id => @character.id), :alert => "Musisz dokonać wyboru konsekwencji swojego pochodzenia..."
+        redirect_to second_step_character_wizard_path(:char_id => @character.id), :alert => "Zdaję się, że nie dokonałeś jeszcze wszystkich wyborów wymaganych przez kreator postaci"
       end
     end
    end

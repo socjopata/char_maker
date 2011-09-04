@@ -17,34 +17,28 @@
     <!--#TODO move this spaghetti logic to a helper where it belongs...-->
     <% @character.social_class_stats_choices.each do |choice| %>
         <% if choice.stats_modifiers.size == 1 %>
-            <label><strong><%= choice.stats_modifiers.first.group_name.humanize %></strong></label>
-            <%= radio_button_tag choice.stats_modifiers.first.group_name, choice.stats_modifiers.first.group_name, true, :disabled => true %><br/>
-            <ul>
-              <li><%= display_choice_part(choice.stats_modifiers.first) %></li>
-            </ul>
+            <%= render :partial => 'single', :locals => {:choice => choice, :radio_group => "social_stat_choices[#{choice.id}]"} %>
         <% else %>
-            <% stats = choice.stats_modifiers.to_set.classify { |stat| stat.group_name.humanize } %>
-            <% stats.each do |group_name, choice_parts| %>
-                <label><strong><%= group_name %></strong></label><%= radio_button_tag "stat_choice", group_name %><br/>
-                <ul>
-                  <% choice_parts.each do |choice_part| %>
-                      <li><%= display_choice_part(choice_part) %></li>
-                  <% end %>
-                </ul>
-            <% end %>
+            <%= render :partial => 'choices', :locals => {:stats => choice.stats_modifiers.to_set.classify { |stat| stat.group_name.humanize }, :radio_group => "social_stat_choices[#{choice.id}]"} %>
         <% end %>
     <% end %>
     <h3>Wybierz profity wynikające z kraju pochodzenia i profesji Twojej postaci:</h3>   <br/>
     <label><strong>Domyślne:</strong></label>
-    <%= radio_button_tag "checked", "checked" , true,  :disabled => true %>
+    <% default = @character.default_origin_modifiers_set %>
+    <%= radio_button_tag "origin_stat_choices[#{default.id}]", "checked", true, :disabled => false %>
     <ul>
-      <%= display_default_for_profession_and_origin(@character).html_safe %>
-      <!--#TODO special ones-->
-      <br/>
-    </ul>
+      <%= display_default_for_profession_and_origin(default).html_safe %> </ul>
+    <br/>
+    <% choices_for_profession_and_origin(@character).each do |choice| %>
+        <% if applies?(@character.social_class, choice) %>
+            <% if choice.stats_modifiers.size == 1 %>
+                <%= render :partial => 'single', :locals => {:choice => choice, :radio_group => "origin_stat_choices[#{choice.id}]"} %>
+            <% else %>
+                <%= render :partial => 'choices', :locals => {:stats => choice.stats_modifiers.to_set.classify { |stat| stat.group_name.humanize }, :radio_group => "origin_stat_choices[#{choice.id}]"} %>
+            <% end %>
+        <% end %>
+    <% end %>
 <% end %>
-
-
 
 
 <br/><br/>

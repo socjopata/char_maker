@@ -48,12 +48,18 @@ module CharacterWizardHelper
     "#{gold} złota, #{silver} srebra i #{cooper} miedzi"
   end
 
-  def display_default_for_profession_and_origin(character)
-    stats_choice = character.character_background.origin.country.stats_choices.find_by_applies_to(character.profession.general_type)
-
+  def display_default_for_profession_and_origin(stats_choice)
     stats_choice.stats_modifiers.collect do |choice_part|
       content_tag("li", display_choice_part(choice_part))
     end.join(" ")
+  end
+
+  def choices_for_profession_and_origin(character)
+    stats_choices = character.character_background.origin.country.stats_choices.find_all_by_applies_to("special")
+  end
+
+  def applies?(social_class, stats_choice)
+     social_class.send(stats_choice.condition.intern)
   end
 
 end

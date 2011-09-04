@@ -7,7 +7,7 @@ class Statistics < ActiveRecord::Base
   has_and_belongs_to_many :stats_modifiers
 
   validates_presence_of :strength, :dexterity, :endurance, :inteligence, :faith, :polish
-   #TODO make a validation so user assigns highest value to lead parameter.
+  #TODO make a validation so user assigns highest value to lead parameter.
 
   DICE_TYPE = 20 #k20
 
@@ -42,18 +42,31 @@ class Statistics < ActiveRecord::Base
     result = roll_set.tap { |a| a.delete_at(roll_set.rindex(blessed ? roll_set.min : roll_set.max)) } #delete max(or min for special traited) value from dice roll set
   end
 
-  def push_social_class_stats_modifiers(choice_group_name)
-    modifiers = StatsModifier.default_for_social_class(self.character.character_background.social_classes.first.id)
-    modifiers << StatsModifier.belongs_to_social_class(self.character.character_background.social_classes.first.id).of_group(choice_group_name)
-    modifiers.flatten.each do |modifier|
-      self.stats_modifiers << modifier unless self.stats_modifiers.exists?(:id => modifier.id)
-    end
+  #def push_social_class_stats_modifiers(choice_group_name)
+  #  modifiers = StatsModifier.default_for_social_class(self.character.character_background.social_classes.first.id)
+  #  modifiers << StatsModifier.belongs_to_social_class(self.character.character_background.social_classes.first.id).of_group(choice_group_name)
+  #  modifiers.flatten.each do |modifier|
+  #    self.stats_modifiers << modifier unless self.stats_modifiers.exists?(:id => modifier.id)
+  #  end
+  #end
+
+  def push_social_class_stats_modifiers(params)
+     push_stats(params)
   end
 
   def push_origin_stats_modifiers(params)
-    throw params
+     push_stats(params)
   end
 
+  def push_stats(params)
+     if params.present?
+      modifiers = []
+      modifiers << StatsChoice.find_all_by_id(params.keys).collect(&:stats_modifiers)
+      modifiers.flatten.each do |modifier|
+        self.stats_modifiers << modifier unless self.stats_modifiers.exists?(:id => modifier.id)
+      end
+    end
+  end
 
 
 end
