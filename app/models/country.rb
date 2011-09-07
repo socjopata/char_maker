@@ -4,7 +4,7 @@ class Country < ActiveRecord::Base
     has_many :origins
     has_many :character_backgrounds, :through => :origins
 
-    #TODO stats modifiers for character origin...
+
     has_many :stats_choices, :as => :resource, :dependent => :destroy
 
 end
@@ -21,8 +21,3 @@ end
 #s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Język Klasyczny oraz Something Else", :default_for_origin => false)
 #while applying it later to a char, I'll split by "oraz" and iterate, searching for instances of Skill mode.l
 
-
-#EXTRA IDEA - maybe a requirement will be stored as a string which will be evaluated. For example:
-# :requirement => "character.social_class == 'bla'"
-# display object if eval object.requirement
-#TODO explore the idea above, is this elegant/safe?

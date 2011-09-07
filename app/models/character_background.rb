@@ -52,7 +52,7 @@ class CharacterBackground < ActiveRecord::Base
   end
 
   def attach_civilized_origin
-    if (self.character.profession.name=="Fircyk (żołnierz)" or self.character.profession.name=="Fircyk (łotr)")
+    if Profession::DEFAULT_NOBLE.include?(self.character.profession.name)
       self.social_classes << SocialClass.find_by_name(SocialClass.find_by_name("Szlachcic Zaściankowy"))
     else
       if self.character.hardcore_social_class_picking?

@@ -57,6 +57,10 @@ class StatsModifier < ActiveRecord::Base
   }
   scope :of_group, lambda { |group_name| where(:group_name => group_name ) }
 
+#TODO implement these requirements:
+#"Jeśli gracz podczas tworzenia postaci miałby automatycznie dostać dwa takie same skille, np jeden z kraju pochodzenia, a drugi z profesji, to zamień dubel na 1WU".
+#
+#"Jeśli gracz podczas tworzenia postaci automatycznie dostał skill X, a potem zaistniałaby sytuacja, gdzie miałby wybrać z czegoś tam pomiędzy znowu skillem X a skillem Y to automatycznie ma zostać wybrany Y"
 
 end
 

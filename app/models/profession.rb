@@ -7,4 +7,7 @@ class Profession < ActiveRecord::Base
   has_many :lead_parameters
 
   validates_uniqueness_of :name
+
+  DEFAULT_NOBLE = ["Fircyk (żołnierz)", "Fircyk (łotr)", "Rycerz", "Rycerz Zakonny"]
+
 end

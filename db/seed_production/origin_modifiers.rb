@@ -40,7 +40,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Podstawy Medytacji", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt", :default_for_origin => true)
 
-#TODO Noble of Alantar special case condition
+# Noble of Alantar special case condition
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "is_noble?" )
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Wykształcenie Akademickie", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Heraldyka i Historia", :default_for_origin => false)
@@ -86,7 +86,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Pływanie i Nurkowanie", :default_for_origin => false)
 
 
-#TODO Noble of Archipelag Południowy special case condition
+#Noble of Archipelag Południowy special case condition
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "is_noble?" )
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Zakazana wiedza", :default_for_origin => false)
 
@@ -128,7 +128,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Nieustraszony", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Odporność", :default_for_origin => true)
 
-#TODO Noble of Góry Księżycowe i Niczyje special case condition
+#Noble of Góry Księżycowe i Niczyje special case condition
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "is_noble?" )
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Posłuch i Zastraszanie", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Runy Proste", :default_for_origin => false)
@@ -169,7 +169,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Żeglarstwo i Nawigacja", :default_for_origin => true)
 
 
-#TODO Noble of Księstwa Wysp Północy special case condition
+#Noble of Księstwa Wysp Północy special case condition
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "is_noble?" )
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Astrologia", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Kusznik", :default_for_origin => false)
@@ -215,7 +215,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Fanatyzm", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Nimer", :default_for_origin => true)
 
-#TODO Noble of Nimer special case condition
+#Noble of Nimer special case condition
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "is_noble?" )
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Wiedza Akademicka", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Religioznawstwo", :default_for_origin => false)
@@ -264,7 +264,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Żeglarstwo i Nawigacja oraz Pływanie i Nurkowanie", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Handel oraz Pływanie i Nurkowanie", :default_for_origin => false)
 
-#TODO Noble of Pelmir special case condition
+#Noble of Pelmir special case condition
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "is_noble?" )
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Heraldyka i Historia", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Dworskość", :default_for_origin => false)
@@ -309,7 +309,7 @@ s_choice = country.stats_choices.create(:applies_to => "special", :condition => 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Sokoli Wzrok", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Tropienie, Polowanie i Kamuflaż", :default_for_origin => false)
 
-#TODO Noble of Wielkie Stepy special case condition
+#Noble of Wielkie Stepy special case condition
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "is_noble?" )
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Handel", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Woltyżerka", :default_for_origin => false)
@@ -355,7 +355,7 @@ s_choice = country.stats_choices.create(:applies_to => "special", :condition => 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Szulerka", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Półświatka", :default_for_origin => false)
 
-#TODO Noble of Sirtol special case condition
+#Noble of Sirtol special case condition
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "is_noble?" )
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Wyrób Trucizn", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Zakazana Wiedza", :default_for_origin => false)
@@ -401,7 +401,7 @@ s_choice = country.stats_choices.create(:applies_to => "special", :condition => 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Pływanie i Nurkowanie", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Handel", :default_for_origin => false)
 
-#TODO Noble of Złote Królestwa special case condition
+#Noble of Złote Królestwa special case condition
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "is_noble?" )
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Dykcja i Przemawianie", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Historia i Heraldyka", :default_for_origin => false)

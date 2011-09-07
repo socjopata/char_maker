@@ -1,8 +1,6 @@
 # -*- encoding : utf-8 -*-
 class SocialClass < ActiveRecord::Base
 
-
-  #TODO no dice roll in case of "Rycerza, Rycerza Zakonnego lub Fircyka"
   has_many :stats_choices, :as => :resource, :dependent => :destroy
   has_and_belongs_to_many :character_backgrounds
 
