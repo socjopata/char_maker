@@ -6,8 +6,14 @@ class Profession < ActiveRecord::Base
   has_many :character_professions
   has_many :lead_parameters
 
+
   validates_uniqueness_of :name
 
   DEFAULT_NOBLE = ["Fircyk (żołnierz)", "Fircyk (łotr)", "Rycerz", "Rycerz Zakonny"]
 
+
+  #after pushing all check for doubles
+  #while rendering add extra check for choice.
+
+  #all skills, auxilairy parameters will be set as stats schoice
 end

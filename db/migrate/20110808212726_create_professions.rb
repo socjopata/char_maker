@@ -5,6 +5,13 @@ class CreateProfessions < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :general_type
+      t.integer :skill_points
+      t.integer :attack
+      t.integer :defense
+      t.integer :shooting
+      t.integer :starting_weapon_proficiency
+      t.string :preferred_weapon_proficiency
+      t.string :available_armors
       t.timestamps
     end
   end

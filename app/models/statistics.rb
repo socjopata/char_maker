@@ -7,7 +7,7 @@ class Statistics < ActiveRecord::Base
   has_and_belongs_to_many :stats_modifiers
 
   validates_presence_of :strength, :dexterity, :endurance, :inteligence, :faith, :polish
-  #TODO make a validation so user assigns highest value to lead parameter.
+
 
   DICE_TYPE = 20 #k20
 

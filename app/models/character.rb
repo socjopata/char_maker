@@ -14,6 +14,8 @@ class Character < ActiveRecord::Base
 
   validates_presence_of :name, :gender, :user_id
 
+  attr_accessor :double_skill_free_assignment
+
   def pick_a_profession(prof_id)
     self.create_character_profession(:profession_id => prof_id)
   end
