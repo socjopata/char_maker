@@ -43,21 +43,30 @@ class Statistics < ActiveRecord::Base
   end
 
   def push_social_class_stats_modifiers(params)
-     push_stats(params)
+    push_stats(params)
   end
 
   def push_origin_stats_modifiers(params)
-     push_stats(params)
+    push_stats(params)
   end
 
   def push_stats(params)
-     if params.present?
+    if params.present?
       modifiers = []
       modifiers << StatsChoice.find_all_by_id(params.keys).collect(&:stats_modifiers)
       modifiers.flatten.each do |modifier|
         self.stats_modifiers << modifier unless self.stats_modifiers.exists?(:id => modifier.id)
       end
     end
+  end
+
+  def push_profession_modifiers
+    modifiers = []
+    modifiers << character.profession.stats_choices.collect(&:stats_modifiers)
+    modifiers.flatten.each do |modifier|
+      self.stats_modifiers << modifier unless self.stats_modifiers.exists?(:id => modifier.id)
+    end
+    modifiers.flatten.select{|modifier| modifier.modifies=="skills"}.collect(&:group_name) #return skills on exit
   end
 
 

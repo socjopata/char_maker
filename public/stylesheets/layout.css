@@ -84,7 +84,6 @@
 /*	Layout 8	*/
 .Layout8_1 {
     width: 100%;
-    background-color: white;
     height: 1400px;
     float: left;
     background: url(/images/background.jpg);
@@ -123,7 +122,8 @@ a.button {
     float: left;
     font: normal 12px arial, sans-serif;
     height: 24px;
-    margin-right: 6px;
+    margin-right: 12px;
+    margin-left: 12px;
     padding-right: 18px; /* sliding doors padding */
     text-decoration: none;
 
@@ -133,7 +133,8 @@ a.button span {
     background: transparent url('/images/bg_button_span.gif') no-repeat;
     display: block;
     line-height: 14px;
-    padding: 5px 0 5px 18px;
+    padding: 5px 0px 5px 18px;
+
 }
 
 a.button:active {

@@ -34,12 +34,13 @@ class CharacterWizardsController < ApplicationController
     if request.get?
       @character = Character.find(params[:char_id])
       @character.statistics.stats_modifiers.clear #flush stats modifiers from character statistics in case user gets back here from third step
+      @profession_skillset = @character.statistics.push_profession_modifiers
+      #TODO enchance view by forcing "no dobules" rule
     elsif request.post?
       @character = Character.find(params[:char_id])
       @character.lead_parameter = params[:main_skill]
       @character.statistics.push_social_class_stats_modifiers(params[:social_stat_choices])
       @character.statistics.push_origin_stats_modifiers(params[:origin_stat_choices])
-      #TODO add stats modifiers from origin, in a callback
       @character.save(false)
       if @character.valid_for_step_three?
         redirect_to third_step_character_wizard_path(:char_id => @character.id)
