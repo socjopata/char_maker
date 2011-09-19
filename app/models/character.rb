@@ -14,7 +14,6 @@ class Character < ActiveRecord::Base
 
   validates_presence_of :name, :gender, :user_id
 
-  attr_accessor :double_skill_free_assignment
 
   def pick_a_profession(prof_id)
     self.create_character_profession(:profession_id => prof_id)
@@ -34,44 +33,14 @@ class Character < ActiveRecord::Base
   end
 
   def valid_for_step_three?
-    oracle_matrix = []
-    oracle_matrix << has_chosen_all_required_social_class_perks?
-    oracle_matrix << has_chosen_all_required_origin_perks?
-    oracle_matrix.include?(false) ? false : true
+   all_stats_choices_for_character = social_class_stats_choices +  character_background.origin.country.stats_choices.find_all_by_applies_to("special").select{|stats_choice| social_class.send(stats_choice.condition.intern)}  + [default_origin_modifiers_set] + profession.stats_choices
+   all_stats_choices_made = statistics.stats_modifiers.collect(&:stats_choice).uniq
+   (all_stats_choices_made - all_stats_choices_for_character).blank? ? true : false
+  #TODO niewolnik and free skill case. make a free skill that belongs to stats choice that belongs to nil. or fake such behaviour
   end
 
   def valid_for_step_fourth?
-
    statistics.polish >= statistics.initial_dice_roll_set.last.to_i
-  end
-
-  def has_chosen_all_required_social_class_perks?
-    collection_of_must_choose_stats_modifiers = StatsModifier.must_choose_for_social_class(social_class.id)
-    oracle_matrix = []
-    if collection_of_must_choose_stats_modifiers.present?
-      collection_of_stats_modifiers_ids_choosen_by_user = self.statistics.stats_modifiers.map(&:id)
-      collection_of_must_choose_stats_modifiers.collect(&:stats_choice).each do |stats_choice|
-        oracle_matrix << stats_choice.stats_modifiers.map(&:id).find_all { |item| collection_of_stats_modifiers_ids_choosen_by_user.include? item }.present?
-      end
-    else
-      true
-    end
-    oracle_matrix.include?(false) ? false : true
-  end
-
-
-  def has_chosen_all_required_origin_perks?
-    collection_of_must_choose_stats_modifiers = StatsModifier.must_choose_for_origin(character_background.country.id)
-    oracle_matrix = []
-    if collection_of_must_choose_stats_modifiers.present?
-      collection_of_stats_modifiers_ids_choosen_by_user = self.statistics.stats_modifiers.map(&:id)
-      collection_of_must_choose_stats_modifiers.collect(&:stats_choice).each do |stats_choice|
-        oracle_matrix << stats_choice.stats_modifiers.map(&:id).find_all { |item| collection_of_stats_modifiers_ids_choosen_by_user.include? item }.present? if  social_class.send(stats_choice.condition.intern)
-      end
-    else
-      true
-    end
-    oracle_matrix.include?(false) ? false : true
   end
 
 end

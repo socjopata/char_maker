@@ -34,8 +34,8 @@ class CharacterWizardsController < ApplicationController
     if request.get?
       @character = Character.find(params[:char_id])
       @character.statistics.stats_modifiers.clear #flush stats modifiers from character statistics in case user gets back here from third step
+      @character.statistics.double_skill_free_assignment = nil
       @profession_skillset = @character.statistics.push_profession_modifiers
-      #TODO enchance view by forcing "no dobules" rule
     elsif request.post?
       @character = Character.find(params[:char_id])
       @character.lead_parameter = params[:main_skill]
@@ -43,6 +43,8 @@ class CharacterWizardsController < ApplicationController
       @character.statistics.push_origin_stats_modifiers(params[:origin_stat_choices])
       @character.save(false)
       if @character.valid_for_step_three?
+        #TODO code this method
+        @character.statistics.grant_free_skill_assignments_if_applicable
         redirect_to third_step_character_wizard_path(:char_id => @character.id)
       else
         redirect_to second_step_character_wizard_path(:char_id => @character.id), :alert => "Zdaję się, że nie dokonałeś jeszcze wszystkich wyborów wymaganych przez kreator postaci"

@@ -8,6 +8,7 @@ class Statistics < ActiveRecord::Base
 
   validates_presence_of :strength, :dexterity, :endurance, :inteligence, :faith, :polish
 
+  attr_accessor :double_skill_free_assignment
 
   DICE_TYPE = 20 #k20
 
@@ -69,6 +70,10 @@ class Statistics < ActiveRecord::Base
     modifiers.flatten.select{|modifier| modifier.modifies=="skills"}.collect(&:group_name) #return skills on exit
   end
 
+  def grant_free_skill_assignments_if_applicable
+    #TODO
+    throw stats_modifiers
+  end
 
 end
 

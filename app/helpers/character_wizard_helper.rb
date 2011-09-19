@@ -62,6 +62,10 @@ module CharacterWizardHelper
      social_class.send(stats_choice.condition.intern)
   end
 
+  def one_free_skill
+    StatsModifier.find_by_name("Jedna wolna umiejętność")
+  end
+
 end
 
 
