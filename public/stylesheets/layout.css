@@ -12,6 +12,13 @@
 
 }
 
+.itermediate_div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
 .dragArea {
     opacity: 0.5;
     width: 500px;

@@ -33,7 +33,7 @@
         <% if applies?(@character.social_class, choice) %>
             <% _choice = choice.stats_modifiers.map(&:group_name) - @profession_skillset %>
             <% if _choice.blank? %>
-                <%= render :partial => 'single', :locals => {:stats_modifier => one_free_skill, :radio_group => "origin_stat_choices[#{choice.id}]"} %>
+                <%= render :partial => 'single', :locals => {:stats_modifier => StatsModifier.default, :radio_group => "origin_stat_choices[#{choice.id}]"} %>
             <% elsif _choice.size == 1 %>
                 <%= render :partial => 'single', :locals => {:stats_modifier => choice.stats_modifiers.select{|sm| sm.group_name==_choice.first}.first, :radio_group => "origin_stat_choices[#{choice.id}]"} %>
             <% elsif _choice.size > 1  %>
@@ -47,7 +47,7 @@
 <br/><br/>
 <%= button_link_to "Wróć", first_step_character_wizard_path(:char_id => @character.id) %>
 <%= button_link_to "Dalej", "javascript:void(0)", :class => "fltr", :onclick => "submit_form_and_proceed()" %>
-    or choice.stats_modifiers.map(&:group_name)
+
 
 <script type="text/javascript">
     function submit_form_and_proceed() {

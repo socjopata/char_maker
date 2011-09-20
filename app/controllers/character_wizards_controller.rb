@@ -43,39 +43,42 @@ class CharacterWizardsController < ApplicationController
       @character.statistics.push_origin_stats_modifiers(params[:origin_stat_choices])
       @character.save(false)
       if @character.valid_for_step_three?
-        #TODO code this method
         @character.statistics.grant_free_skill_assignments_if_applicable
         redirect_to third_step_character_wizard_path(:char_id => @character.id)
       else
         redirect_to second_step_character_wizard_path(:char_id => @character.id), :alert => "Zdaję się, że nie dokonałeś jeszcze wszystkich wyborów wymaganych przez kreator postaci"
       end
     end
-   end
+  end
 
-    def third_step
-      if request.get?
-        @character = Character.find(params[:char_id])
-        roll_set = @character.statistics.initial_dice_roll_set
-        @lead_parameter = roll_set.max
-        @stats = roll_set.tap { |a| a.delete_at(roll_set.rindex(roll_set.max)) }
-        #do a show
-      elsif request.post?
-        @character = Character.find(params[:char_id])
-        if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth?
-          redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
-        else
-          redirect_to third_step_character_wizard_path(:char_id => @character.id), :alert => "Napewno dobrze uzupełniłeś statystyki?"
-        end
+  def third_step
+    if request.get?
+      @character = Character.find(params[:char_id])
+      roll_set = @character.statistics.initial_dice_roll_set
+      @lead_parameter = roll_set.max
+      @stats = roll_set.tap { |a| a.delete_at(roll_set.rindex(roll_set.max)) }
+      #do a show
+    elsif request.post?
+      @character = Character.find(params[:char_id])
+      if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth?
+        redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
+      else
+        redirect_to third_step_character_wizard_path(:char_id => @character.id), :alert => "Napewno dobrze uzupełniłeś statystyki?"
       end
     end
-
-    def fourth_step
-      throw "TODO"
-    end
-
-    def update_countries_select
-      countries = Profession.find(params[:id]).countries unless params[:id].blank?
-      render :partial => "countries", :locals => {:countries => countries}
-    end
-
   end
+
+  def fourth_step
+    if request.get?
+      @character = Character.find(params[:char_id])
+    elsif request.post?
+      @character = Character.find(params[:char_id])
+    end
+  end
+
+  def update_countries_select
+    countries = Profession.find(params[:id]).countries unless params[:id].blank?
+    render :partial => "countries", :locals => {:countries => countries}
+  end
+
+end

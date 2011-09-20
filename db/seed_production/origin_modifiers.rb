@@ -407,5 +407,8 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Historia i Heraldyka", :default_for_origin => false)
 
 
+#System default
+s_choice = StatsChoice.create(:applies_to => "free_skill", :resource_id => 0)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Jedna wolna umiejętność", :default_for_social_class => false)
 
 
