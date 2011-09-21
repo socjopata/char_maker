@@ -4,11 +4,7 @@ development:
   username: socjopata
   password: secret
   pool: 5
-  mongo:
-    database: hp
-    capsize: 104857600
-    host: localhost
-    port: 27017
+
 
 test:
   adapter: postgresql
@@ -16,11 +12,7 @@ test:
   username: socjopata
   password: secret
   pool: 5
-  mongo:
-    database: hp
-    capsize: 104857600
-    host: localhost
-    port: 27017
+
 
 production:
   adapter: postgresql
@@ -28,8 +20,4 @@ production:
   username: socjopata
   password: secret
   pool: 5
-  mongo:
-    database: hp
-    capsize: 104857600
-    host: localhost
-    port: 27017
+

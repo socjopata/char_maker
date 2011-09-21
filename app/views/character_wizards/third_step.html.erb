@@ -46,7 +46,7 @@
           <div id="endurance" class="drop <%= "lead" if @character.lead_parameter=="WT"%>"><%= @lead_parameter if @character.lead_parameter=="WT" %></div>
         </td>
         <td>
-          <div id="inteligence" class="drop <%= "lead" if @character.lead_parameter=="INT"%>"><%= @lead_parameter if @character.lead_parameter=="INT" %></div>
+          <div id="intelligence" class="drop <%= "lead" if @character.lead_parameter=="INT"%>"><%= @lead_parameter if @character.lead_parameter=="INT" %></div>
         </td>
         <td>
           <div id="faith" class="drop <%= "lead" if @character.lead_parameter=="WI"%>"><%= @lead_parameter if @character.lead_parameter=="WI" %></div>
@@ -66,7 +66,7 @@
     <%= f.hidden_field :strength %>
     <%= f.hidden_field :dexterity %>
     <%= f.hidden_field :endurance %>
-    <%= f.hidden_field :inteligence %>
+    <%= f.hidden_field :intelligence %>
     <%= f.hidden_field :faith %>
     <%= f.hidden_field :polish %>
 <% end %>
@@ -85,7 +85,7 @@
         $("#statistics_strength").val($("#strength").text());
         $("#statistics_dexterity").val($("#dexterity").text());
         $("#statistics_endurance").val($("#endurance").text());
-        $("#statistics_inteligence").val($("#inteligence").text());
+        $("#statistics_intelligence").val($("#intelligence").text());
         $("#statistics_faith").val($("#faith").text());
         $("#statistics_polish").val($("#polish").text());
         $("#stats_form").submit();

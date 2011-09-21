@@ -7,7 +7,7 @@ class CreateStatistics < ActiveRecord::Migration
       t.integer :strength #Siła „S”
       t.integer :dexterity #Zręczność „ZR”
       t.integer :endurance #Wytrzymałość „WT”
-      t.integer :inteligence #Inteligencja „INT”
+      t.integer :intelligence #Inteligencja „INT”
       t.integer :faith  #Wiara „WI”
       t.integer :polish #Ogłada „O”
       t.timestamps

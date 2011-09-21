@@ -6,7 +6,7 @@ class Statistics < ActiveRecord::Base
   belongs_to :character
   has_and_belongs_to_many :stats_modifiers
 
-  validates_presence_of :strength, :dexterity, :endurance, :inteligence, :faith, :polish
+  validates_presence_of :strength, :dexterity, :endurance, :intelligence, :faith, :polish
 
   attr_accessor :double_skill_free_assignment
 
@@ -21,25 +21,25 @@ class Statistics < ActiveRecord::Base
        "O" => "Ogłada"
       }
 
-  BONUS_OR_PENALTY_RANGES =  RangedHash.new(
-    1..3 => -3,
-    4..6 => -2,
-    7..9 => -1,
-    10..12 => 0,
-    13..15 => 1,
-    16..18 => 2,
-    19..21 => 3,
-    22..24 => 4,
-    25..27 => 5,
-    28..30 => 6,
-    31..33 => 7,
-    34..36 => 8,
-    37..39 => 9,
-    40..42 => 10,
-    43..45 => 11,
-    46..48 => 12,
-    49..51 => 13
-      )
+  BONUS_OR_PENALTY_RANGES = RangedHash.new(
+      1..3 => -3,
+      4..6 => -2,
+      7..9 => -1,
+      10..12 => 0,
+      13..15 => 1,
+      16..18 => 2,
+      19..21 => 3,
+      22..24 => 4,
+      25..27 => 5,
+      28..30 => 6,
+      31..33 => 7,
+      34..36 => 8,
+      37..39 => 9,
+      40..42 => 10,
+      43..45 => 11,
+      46..48 => 12,
+      49..51 => 13
+  )
 
   # User has to choose a dice roll for ogłada or can exchange it with other as long as it is higher than default.
 
@@ -86,13 +86,41 @@ class Statistics < ActiveRecord::Base
     modifiers.flatten.each do |modifier|
       self.stats_modifiers << modifier unless self.stats_modifiers.exists?(:id => modifier.id)
     end
-    modifiers.flatten.select{|modifier| modifier.modifies=="skills"}.collect(&:group_name) #return skills on exit
+    modifiers.flatten.select { |modifier| modifier.modifies=="skills" }.collect(&:group_name) #return skills on exit
   end
 
   def grant_free_skill_assignments_if_applicable
-     skills_ary = stats_modifiers.select{|sm| sm.modifies=="skills"}
-     free_skill_ary = skills_ary.reject{|sm| sm.group_name!="Jedna wolna umiejętność" }
-     self.double_skill_free_assignment = free_skill_ary.size + ((skills_ary-free_skill_ary).size - (skills_ary - free_skill_ary).uniq.size)
+    skills_ary = stats_modifiers.select { |sm| sm.modifies=="skills" }
+    free_skill_ary = skills_ary.reject { |sm| sm.group_name!="Jedna wolna umiejętność" }
+    self.double_skill_free_assignment = free_skill_ary.size + ((skills_ary-free_skill_ary).size - (skills_ary - free_skill_ary).uniq.size)
+  end
+
+  def calculate_main_stats
+    [calculate_s, calculate_zr, calculate_wt, calculate_int, calculate_wi, calculate_o]
+  end
+
+  def calculate_s
+    strength + stats_modifiers.select { |sm| sm.modifies=="S" }.collect(&:value).sum
+  end
+
+  def calculate_int
+    intelligence + stats_modifiers.select { |sm| sm.modifies=="INT" }.collect(&:value).sum
+  end
+
+  def calculate_zr
+    dexterity + stats_modifiers.select { |sm| sm.modifies=="ZR" }.collect(&:value).sum
+  end
+
+  def calculate_wi
+    faith + stats_modifiers.select { |sm| sm.modifies=="WI" }.collect(&:value).sum
+  end
+
+  def calculate_wt
+    endurance + stats_modifiers.select { |sm| sm.modifies=="WT" }.collect(&:value).sum
+  end
+
+  def calculate_o
+    polish + stats_modifiers.select { |sm| sm.modifies=="O" }.collect(&:value).sum
   end
 
 end

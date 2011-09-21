@@ -55,8 +55,8 @@ class CharacterWizardsController < ApplicationController
     if request.get?
       @character = Character.find(params[:char_id])
       roll_set = @character.statistics.initial_dice_roll_set
-      @lead_parameter = roll_set.max
-      @stats = roll_set.tap { |a| a.delete_at(roll_set.rindex(roll_set.max)) }
+      @lead_parameter = roll_set[0..4].max
+      @stats = roll_set.tap { |a| a.delete_at(roll_set[0..4].rindex(roll_set[0..4].max)) }
       #do a show
     elsif request.post?
       @character = Character.find(params[:char_id])
@@ -71,6 +71,7 @@ class CharacterWizardsController < ApplicationController
   def fourth_step
     if request.get?
       @character = Character.find(params[:char_id])
+      @strength, @dexterity, @endurance, @intelligence, @faith, @polish =  @character.statistics.calculate_main_stats
     elsif request.post?
       @character = Character.find(params[:char_id])
     end
