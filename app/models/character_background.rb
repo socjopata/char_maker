@@ -78,7 +78,7 @@ class CharacterBackground < ActiveRecord::Base
     sc = social_classes.first
     cooper = Purse::BASE[sc.name]
     Purse::MULTIPLIER[sc.name].times do
-      cooper += ((1 + rand(Purse::DICE_TYPE)) * (sc.name=="Chłop Ubogi" or sc.name=="Wyrzutek" ? 10 : 100))
+      cooper += ((1 + rand(Purse::DICE_TYPE)) * ((sc.name=="Chłop Ubogi" or sc.name=="Wyrzutek") ? 10 : 100))
     end
     character.create_purse(:cooper => cooper)
   end
