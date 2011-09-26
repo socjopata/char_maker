@@ -263,6 +263,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Żeglarstwo i Nawigacja oraz Handel", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Żeglarstwo i Nawigacja oraz Pływanie i Nurkowanie", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Handel oraz Pływanie i Nurkowanie", :default_for_origin => false)
+#TODO translate i/oraz for separate skills. Check dependencies for valdiations...
 
 #Noble of Pelmir special case condition
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "is_noble?" )
