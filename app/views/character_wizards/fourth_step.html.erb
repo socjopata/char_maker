@@ -388,7 +388,10 @@
       <TR VALIGN=TOP>
         <% skills.each do |skill| %>
             <TD WIDTH=39% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-              <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B><%= skill.name %></B></I></FONT></P>
+              <P ALIGN=CENTER class="skill_qtip"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B><%= skill.name %></B></I></FONT></P>
+              <p class="skill_explanation_qtip" style="display:none;">
+                  <%= nice_and_shiny_description(skill)   %>
+                </p>
             </TD>
             <TD WIDTH=7% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
               <P ALIGN=CENTER><%= check_box_tag skill.id %><BR>
@@ -398,4 +401,36 @@
       </TR>
   <% end %>
 </TABLE>
+
+
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+
+    $('.skill_qtip').each(function() {
+        $(this).qtip(
+        {
+            content: $(this).next().html(),
+            style: {
+                name: "cm_qtip"
+            },
+            position: {
+                adjust: {
+                x: -50
+                },
+                corner: {
+                    target: "rightMiddle",
+                    tooltip: "leftMiddle"
+                }
+            },
+            show: {
+                delay: 0
+            },
+            hide: {
+                delay: 50,
+                fixed: true
+            }
+        });
+    });
+ });
+</script>
 

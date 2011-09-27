@@ -1,8 +1,8 @@
 ## -*- encoding : utf-8 -*-
 #
 
-skill = Skill.create(:profession_type => "default", :name => "Akrobatyka", :way_it_works => "Wszystkie testy sprawdzające Zręczność kończą się niepowodzeniem tylko w przypadku wyrzucenia trzydziestki. W wyjątkowo trudnych lub stresujących przypadkach Mg może wykonać test obłożony odpowiednią karą, jednakże minus ten będzie dwukrotnie mniejszy niż dla istoty nie posiadającej tej umiejętności. Zręczność postaci podnoszona jest o 1pkt. Obrona Daleka jak i Zmiana Zasięgu wzrasta o +3pkt. :active => false, :description =>   )
-", :active => false )
+skill = Skill.create(:profession_type => "default", :name => "Akrobatyka", :way_it_works => "Wszystkie testy sprawdzające Zręczność kończą się niepowodzeniem tylko w przypadku wyrzucenia trzydziestki. W wyjątkowo trudnych lub stresujących przypadkach Mg może wykonać test obłożony odpowiednią karą, jednakże minus ten będzie dwukrotnie mniejszy niż dla istoty nie posiadającej tej umiejętności. Zręczność postaci podnoszona jest o 1pkt. Obrona Daleka jak i Zmiana Zasięgu wzrasta o +3pkt." )
+
 
 s_choice = skill.stats_choices.create
 
