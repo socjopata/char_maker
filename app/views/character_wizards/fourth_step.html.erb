@@ -370,6 +370,32 @@
     </TD>
   </TR>
 
-
-
 </TABLE>
+<div class="itermediate_div fltl"></div>
+
+<TABLE WIDTH=30% CELLPADDING=4 CELLSPACING=0>
+  <COL WIDTH=100*>
+  <COL WIDTH=18*>
+  <COL WIDTH=121*>
+  <COL WIDTH=17*>
+  <TR>
+    <TD COLSPAN=4 WIDTH=100% VALIGN=TOP BGCOLOR="#000000" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+      <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt; color: white"><I><B>Umiejętności
+        Ogólne</B></I></FONT></P>
+    </TD>
+  </TR>
+  <% @basic_skills.in_groups_of(2, false).each do |skills| %>
+      <TR VALIGN=TOP>
+        <% skills.each do |skill| %>
+            <TD WIDTH=39% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+              <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B><%= skill.name %></B></I></FONT></P>
+            </TD>
+            <TD WIDTH=7% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+              <P ALIGN=CENTER><%= check_box_tag skill.id %><BR>
+              </P>
+            </TD>
+        <% end %>
+      </TR>
+  <% end %>
+</TABLE>
+

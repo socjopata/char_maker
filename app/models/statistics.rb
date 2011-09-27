@@ -8,7 +8,8 @@ class Statistics < ActiveRecord::Base
 
   validates_presence_of :strength, :dexterity, :endurance, :intelligence, :faith, :polish
 
-  attr_accessor :skill_free_assignment_base
+  attr_accessor :skill_free_assignment_base, :default_skills_ids
+
 
   DICE_TYPE = 20 #k20
 
@@ -93,12 +94,16 @@ class Statistics < ActiveRecord::Base
   def convert_stat_choices_to_skills
 
     skill_names_array = stats_modifiers.select{ |sm| sm.modifies=="skills" }.collect{|sm| sm.group_name.split("oraz").collect{|name| name.strip}}.flatten #TODO tap it.
-    free_skill_counter = skill_names_array.reject { |name| name=="Jedna wolna umiejętność" }.size
+    free_skill_counter = skill_names_array.select { |name| name=="Jedna wolna umiejętność" }.size
     skill_names_array =  skill_names_array.delete("Jedna wolna umiejętność") if skill_names_array.include?("Jedna wolna umiejętność")
     free_skill_counter = free_skill_counter + (skill_names_array.size - skill_names_array.uniq.size)
 
     self.skill_free_assignment_base =  free_skill_counter + character.profession.skill_points
 
+    skills = Skill.find_all_by_name(skill_names_array.uniq)
+    character.skills << skills
+
+    self.default_skills_ids = skills.map(&:id)
 
   end
 

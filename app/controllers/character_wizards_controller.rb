@@ -76,6 +76,8 @@ class CharacterWizardsController < ApplicationController
     if request.get?
       @character = Character.find(params[:char_id])
       @strength, @dexterity, @endurance, @intelligence, @faith, @polish =  @character.statistics.calculate_main_stats
+      @basic_skills = Skill.basic
+
     elsif request.post?
       @character = Character.find(params[:char_id])
     end
