@@ -61,8 +61,6 @@ class StatsModifier < ActiveRecord::Base
     StatsChoice.default.stats_modifiers.first
   end
 
-#TODO implement this requirement:
-#"Jeśli gracz podczas tworzenia postaci miałby automatycznie dostać dwa takie same skille, np jeden z kraju pochodzenia, a drugi z profesji, to zamień dubel na 1WU".
 
 end
 

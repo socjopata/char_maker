@@ -23,9 +23,7 @@ s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "S", :value => 2, :group_name => "mordercza praca", :default_for_social_class => false)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 2, :group_name => "mordercza praca", :default_for_social_class => false)
 # S and WT or skills
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Jedna wolna umiejętność", :default_for_social_class => false) #MG choice
-#TODO fix case below. Check dependencies like... validations for steps :\
-#jeżeli właściciel postawił na jego edukację, otrzymuje za darmo Czytanie i Pisanie oraz jedną umiejętność wybraną przez MG: Handel, Etykieta/Taniec/Gra na Instrumencie, Leczenie ran i Chorób lub inną stosowną dla danej postaci,
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Czytanie i Pisanie oraz Jedna wolna umiejętność", :default_for_social_class => false) #MG choice
 
 s_class = SocialClass.find_by_name("Chłop Ubogi")
 s_choice = s_class.stats_choices.create

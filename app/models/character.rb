@@ -9,6 +9,9 @@ class Character < ActiveRecord::Base
   has_one :purse
   has_one :auxiliary_parameter_set
 
+  has_and_belongs_to_many :skills
+
+
   mount_uploader :avatar, AvatarUploader
   scope :belongs_to_user, lambda { |user| {:conditions => {:user_id => user.id}} }
 

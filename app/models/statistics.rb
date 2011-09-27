@@ -8,7 +8,7 @@ class Statistics < ActiveRecord::Base
 
   validates_presence_of :strength, :dexterity, :endurance, :intelligence, :faith, :polish
 
-  attr_accessor :double_skill_free_assignment
+  attr_accessor :skill_free_assignment_base
 
   DICE_TYPE = 20 #k20
 
@@ -89,10 +89,17 @@ class Statistics < ActiveRecord::Base
     modifiers.flatten.select { |modifier| modifier.modifies=="skills" }.collect(&:group_name) #return skills on exit
   end
 
-  def grant_free_skill_assignments_if_applicable
-    skills_ary = stats_modifiers.select { |sm| sm.modifies=="skills" }
-    free_skill_ary = skills_ary.reject { |sm| sm.group_name!="Jedna wolna umiejętność" }
-    self.double_skill_free_assignment = free_skill_ary.size + ((skills_ary-free_skill_ary).size - (skills_ary - free_skill_ary).uniq.size)
+
+  def convert_stat_choices_to_skills
+
+    skill_names_array = stats_modifiers.select{ |sm| sm.modifies=="skills" }.collect{|sm| sm.group_name.split("oraz").collect{|name| name.strip}}.flatten #TODO tap it.
+    free_skill_counter = skill_names_array.reject { |name| name=="Jedna wolna umiejętność" }.size
+    skill_names_array =  skill_names_array.delete("Jedna wolna umiejętność") if skill_names_array.include?("Jedna wolna umiejętność")
+    free_skill_counter = free_skill_counter + (skill_names_array.size - skill_names_array.uniq.size)
+
+    self.skill_free_assignment_base =  free_skill_counter + character.profession.skill_points
+
+
   end
 
   def calculate_main_stats

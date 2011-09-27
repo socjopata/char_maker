@@ -12,7 +12,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 4, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 3, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 4, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Alantar", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Atak i Obrona", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt", :default_for_origin => true)
 
@@ -24,7 +24,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 4, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 3, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 4, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Alantar", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Atak i Obrona", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt", :default_for_origin => true)
 
@@ -36,7 +36,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 4, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 3, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 4, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Alantar", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Podstawy Medytacji", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt", :default_for_origin => true)
 
@@ -55,7 +55,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 3, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 5, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 3, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Archipelag Południowy", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "magic resistance", :value => 3, :group_name => "Odporność na Magię", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "rogue", :condition => nil )
@@ -66,7 +66,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 3, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 5, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 3, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Archipelag Południowy", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "magic resistance", :value => 3, :group_name => "Odporność na Magię", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "scholar", :condition => nil )
@@ -77,7 +77,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 3, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 5, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 3, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Archipelag Południowy", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "magic resistance", :value => 3, :group_name => "Odporność na Magię", :default_for_origin => true)
 
 #Archipelag Południowy origin special case
@@ -100,7 +100,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 3, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 5, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 6, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 1, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Góry Księżycowe, Niczyje lub Smocze", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Nieustraszony", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Odporność", :default_for_origin => true)
 
@@ -112,7 +112,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 3, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 5, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 6, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 1, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Góry Księżycowe, Niczyje lub Smocze", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Nieustraszony", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Odporność", :default_for_origin => true)
 
@@ -124,7 +124,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 3, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 5, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 6, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 1, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Góry Księżycowe, Niczyje lub Smocze", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Nieustraszony", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Odporność", :default_for_origin => true)
 
@@ -187,7 +187,7 @@ s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "d
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Odporność na Modlitwy", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Nieustraszony", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Fanatyzm", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Nimer", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "rogue", :condition => nil )
 
@@ -200,7 +200,7 @@ s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "d
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Odporność na Modlitwy", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Nieustraszony", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Fanatyzm", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Nimer", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "scholar", :condition => nil )
 
@@ -213,7 +213,7 @@ s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "d
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Odporność na Modlitwy", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Nieustraszony", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Fanatyzm", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Nimer", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 
 #Noble of Nimer special case condition
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "is_noble?" )
@@ -231,7 +231,7 @@ s_choice.stats_modifiers.create(:modifies => "WI", :value => 3, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 5, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Fanatyzm", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Pelmir", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "rogue", :condition => nil )
 
@@ -242,7 +242,7 @@ s_choice.stats_modifiers.create(:modifies => "WI", :value => 3, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 5, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Fanatyzm", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Pelmir", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "scholar", :condition => nil )
 
@@ -253,7 +253,7 @@ s_choice.stats_modifiers.create(:modifies => "WI", :value => 3, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 5, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Fanatyzm", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Pelmir", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 
 #Pelmir origin special case
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "true" )
@@ -263,7 +263,6 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Żeglarstwo i Nawigacja oraz Handel", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Żeglarstwo i Nawigacja oraz Pływanie i Nurkowanie", :default_for_origin => false)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Handel oraz Pływanie i Nurkowanie", :default_for_origin => false)
-#TODO translate i/oraz for separate skills. Check dependencies for valdiations...
 
 #Noble of Pelmir special case condition
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "is_noble?" )
@@ -281,7 +280,7 @@ s_choice.stats_modifiers.create(:modifies => "WI", :value => 3, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 5, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 1, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Jeździectwo", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Wielkie Stepy", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "rogue", :condition => nil )
 
@@ -292,7 +291,7 @@ s_choice.stats_modifiers.create(:modifies => "WI", :value => 3, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 5, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 1, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Jeździectwo", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Wielkie Stepy", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "scholar", :condition => nil )
 
@@ -303,7 +302,7 @@ s_choice.stats_modifiers.create(:modifies => "WI", :value => 3, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 5, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 1, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Jeździectwo", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Wielkie Stepy", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 
 #Wielkie Stepy origin special case
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "true" )
@@ -326,7 +325,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 6, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 4, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 3, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Ziemie Sirtol", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 4, :group_name => "Spostrzegawczość", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "rogue", :condition => nil )
@@ -337,7 +336,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 6, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 4, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 3, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Ziemie Sirtol", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 4, :group_name => "Spostrzegawczość", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "scholar", :condition => nil )
@@ -348,7 +347,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 6, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 4, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 3, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Ziemie Sirtol", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 4, :group_name => "Spostrzegawczość", :default_for_origin => true)
 
 #Sirtol origin special case
@@ -371,7 +370,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 4, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 2, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 4, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Złote Królestwa i Morza Wschodnie", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Żeglarstwo i Nawigacja", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "rogue", :condition => nil )
@@ -382,7 +381,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 4, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 2, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 4, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Złote Królestwa i Morza Wschodnie", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Żeglarstwo i Nawigacja", :default_for_origin => true)
 
 
@@ -394,7 +393,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 4, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 2, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 4, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu: Złote Królestwa i Morza Wschodnie", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Żeglarstwo i Nawigacja", :default_for_origin => true)
 
 #Złote Królestwa origin special case

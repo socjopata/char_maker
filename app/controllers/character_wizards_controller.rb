@@ -34,7 +34,7 @@ class CharacterWizardsController < ApplicationController
     if request.get?
       @character = Character.find(params[:char_id])
       @character.statistics.stats_modifiers.clear #flush stats modifiers from character statistics in case user gets back here from third step
-      @character.statistics.double_skill_free_assignment = nil
+
       @profession_skillset = @character.statistics.push_profession_modifiers
     elsif request.post?
       @character = Character.find(params[:char_id])
@@ -43,7 +43,6 @@ class CharacterWizardsController < ApplicationController
       @character.statistics.push_origin_stats_modifiers(params[:origin_stat_choices])
       @character.save(false)
       if @character.valid_for_step_three?
-        @character.statistics.grant_free_skill_assignments_if_applicable
         redirect_to third_step_character_wizard_path(:char_id => @character.id)
       else
         redirect_to second_step_character_wizard_path(:char_id => @character.id), :alert => "Zdaję się, że nie dokonałeś jeszcze wszystkich wyborów wymaganych przez kreator postaci"
@@ -54,6 +53,10 @@ class CharacterWizardsController < ApplicationController
   def third_step
     if request.get?
       @character = Character.find(params[:char_id])
+
+      @character.skills.clear
+      @character.statistics.skill_free_assignment_base = nil
+
       roll_set = @character.statistics.initial_dice_roll_set
       @lead_parameter = roll_set[0..4].max
       @stats = roll_set.tap { |a| a.delete_at(roll_set[0..4].rindex(roll_set[0..4].max)) }
@@ -61,6 +64,7 @@ class CharacterWizardsController < ApplicationController
     elsif request.post?
       @character = Character.find(params[:char_id])
       if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth?
+        @character.statistics.convert_stat_choices_to_skills
         redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
       else
         redirect_to third_step_character_wizard_path(:char_id => @character.id), :alert => "Napewno dobrze uzupełniłeś statystyki?"
