@@ -6,7 +6,7 @@ CharMaker::Application.routes.draw do
     end
   end
 
-  match 'character_wizards/update_countries_select/:id', :controller=> 'character_wizards', :action => 'update_countries_select'
+  match 'character_wizards/update_countries_select/', :controller=> 'character_wizards', :action => 'update_countries_select'
 
   resource 'character_wizard' do
     member do

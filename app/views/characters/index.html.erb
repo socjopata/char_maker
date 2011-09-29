@@ -11,7 +11,6 @@
   <tr>
     <td><%= image_tag(character.avatar_url(:thumb)) if character.avatar? %> <%= character.name %></td>
     <td><%= link_to 'Pokaż', character %></td>
-    <td><%= link_to 'Edytuj', edit_character_path(character) %></td>
     <td><%= link_to 'Usuń', character_path(character), :confirm => 'Napewno?', :method => :delete %></td>
     <td><%= link_to image_tag("printer.png"), print_character_path(character) %></td>
   </tr>

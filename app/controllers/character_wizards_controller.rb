@@ -75,7 +75,7 @@ class CharacterWizardsController < ApplicationController
   def fourth_step
     if request.get?
       @character = Character.find(params[:char_id])
-      @strength, @dexterity, @endurance, @intelligence, @faith, @polish =  @character.statistics.calculate_main_stats
+      @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
       @basic_skills = Skill.basic
 
     elsif request.post?
@@ -84,7 +84,10 @@ class CharacterWizardsController < ApplicationController
   end
 
   def update_countries_select
-    countries = Profession.find(params[:id]).countries unless params[:id].blank?
+    character = Character.find(params[:char_id])
+    profession = Profession.find(params[:id])
+    countries = profession.countries
+    countries = [Country.find_by_name("Złote Królestwa")] if countries.present? && profession.name=="Rycerz" && character.gender=="Kobieta" #Overwrite for the special case of a women being a knight...
     render :partial => "countries", :locals => {:countries => countries}
   end
 

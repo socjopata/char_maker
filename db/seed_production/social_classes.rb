@@ -18,6 +18,8 @@
   SocialClass.create(:name => s_class) unless SocialClass.exists?(:name => s_class)
 end
 
+#TODO refresh stats, they've changed when compared to the book.
+
 s_class = SocialClass.find_by_name("Niewolnik")
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "S", :value => 2, :group_name => "mordercza praca", :default_for_social_class => false)
@@ -83,7 +85,7 @@ s_choice.stats_modifiers.create(:modifies => "other", :value => 0, :group_name =
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Czytanie i Pisanie", :default_for_social_class => true)
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fencing", :value => 3, :group_name => "+3pkt do wszystkich rzutów na Fechtunek (czyli biegłości w wybranej grupie broni)", :default_for_social_class => true)
+s_choice.stats_modifiers.create(:modifies => "fencing", :value => 3, :group_name => "Fechtunek postaci zwiększony będzie o +3pkt", :default_for_social_class => true)
 
 s_class = SocialClass.find_by_name("Wielmoża")
 s_choice = s_class.stats_choices.create
@@ -95,7 +97,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Dworskość", :default_for_social_class => true)
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fencing", :value => 3, :group_name => "+3pkt do wszystkich rzutów na Biegłość", :default_for_social_class => true)
+s_choice.stats_modifiers.create(:modifies => "fencing", :value => 3, :group_name => "Fechtunek postaci zwiększony będzie o + 3pkt", :default_for_social_class => true)
 
 s_class = SocialClass.find_by_name("Niewolnik barbarzyński")
 s_choice = s_class.stats_choices.create
@@ -130,7 +132,7 @@ s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "d
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne", :default_for_social_class => true)
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fencing", :value => 1, :group_name => "wszystkie Biegłości jakie postać zdobędzie zwiększone zostają o +1pkt", :default_for_social_class => true)
+s_choice.stats_modifiers.create(:modifies => "fencing", :value => 1, :group_name => "Fechtunek postaci zwiększony będzie o +1pkt", :default_for_social_class => true)
 
 s_class = SocialClass.find_by_name("Członek rady plemienia")
 s_choice = s_class.stats_choices.create
@@ -152,7 +154,7 @@ s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne", :default_for_social_class => true)
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fencing", :value => 2, :group_name => "wszystkie Biegłości jakie postać zdobędzie zwiększone zostają o +2pkt", :default_for_social_class => true)
+s_choice.stats_modifiers.create(:modifies => "fencing", :value => 2, :group_name => "Fechtunek postaci zwiększony będzie o +2pkt", :default_for_social_class => true)
 
 
 #Siła „S”

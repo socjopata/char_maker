@@ -20,7 +20,7 @@ module CharacterWizardHelper
   def display_choice_part(choice_part)
 
     if ["S", "ZR", "WT", "INT", "WI", "O"].include?(choice_part.modifies)
-      "#{Statistics::NAMES[choice_part.modifies]} zostanie zmodyfikowana o #{choice_part.value}"
+      "#{Statistics::NAMES[choice_part.modifies]} zostanie zmodyfikowana o #{bonus_orientation(choice_part.value)}#{choice_part.value}"
     elsif choice_part.modifies=="skills"
       "Postać otrzyma: #{choice_part.group_name}"
     elsif choice_part.modifies=="other"
@@ -30,7 +30,7 @@ module CharacterWizardHelper
     elsif choice_part.modifies=="magic resistance"
       "Postać otrzyma: #{choice_part.value} pkt odporności na magię"
     elsif choice_part.modifies=="auxiliary"
-      "Paramter #{choice_part.group_name} zostanie zmodyfikowany o #{choice_part.value}"
+      "Paramter #{choice_part.group_name} zostanie zmodyfikowany o #{bonus_orientation(choice_part.value)}#{choice_part.value}"
     else
       "nie zdefiniowano #TODO"
     end
@@ -68,6 +68,10 @@ module CharacterWizardHelper
 
   def bonus_orientation(value)
     value >= 0 ? "+" : "-"
+  end
+
+  def positive_bonus_orientation(value)
+    "+" if value >= 0
   end
 
   def nice_and_shiny_description(skill)

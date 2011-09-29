@@ -21,7 +21,7 @@
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-      <P ALIGN=CENTER><I><B><%= "#{bonus_orientation(@strength)}#{Statistics::BONUS_OR_PENALTY_RANGES[@strength]}" %></B></I><BR>
+      <P ALIGN=CENTER><I><B><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@strength])}#{Statistics::BONUS_OR_PENALTY_RANGES[@strength]}" %></B></I><BR>
       </P>
     </TD>
   </TR>
@@ -34,7 +34,7 @@
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><I><B><%= "#{bonus_orientation(@dexterity)}#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %></B></I><BR>
+      <P ALIGN=CENTER><I><B><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@dexterity])}#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %></B></I><BR>
       </P>
     </TD>
   </TR>
@@ -47,7 +47,7 @@
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
-      <P ALIGN=CENTER><I><B><%= "#{bonus_orientation(@endurance)}#{Statistics::BONUS_OR_PENALTY_RANGES[@endurance]}" %></B></I><BR>
+      <P ALIGN=CENTER><I><B><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@endurance])}#{Statistics::BONUS_OR_PENALTY_RANGES[@endurance]}" %></B></I><BR>
       </P>
 
   </TR>
@@ -60,7 +60,7 @@
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=12% STYLE="; border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><I><B><%= "#{bonus_orientation(@intelligence)}#{Statistics::BONUS_OR_PENALTY_RANGES[@intelligence]}" %></B></I><BR>
+      <P ALIGN=CENTER><I><B><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@intelligence])}#{Statistics::BONUS_OR_PENALTY_RANGES[@intelligence]}" %></B></I><BR>
       </P>
     </TD>
   </TR>
@@ -73,7 +73,7 @@
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=12% STYLE="; border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><I><B><%= "#{bonus_orientation(@faith)}#{Statistics::BONUS_OR_PENALTY_RANGES[@faith]}" %></B></I><BR>
+      <P ALIGN=CENTER><I><B><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@faith])}#{Statistics::BONUS_OR_PENALTY_RANGES[@faith]}" %></B></I><BR>
       </P>
     </TD>
   </TR>
@@ -86,7 +86,7 @@
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=12% STYLE="; border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><I><B><%= "#{bonus_orientation(@polish)}#{Statistics::BONUS_OR_PENALTY_RANGES[@polish]}" %></B></I><BR>
+      <P ALIGN=CENTER><I><B><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@polish])}#{Statistics::BONUS_OR_PENALTY_RANGES[@polish]}" %></B></I><BR>
       </P>
     </TD>
   </TR>

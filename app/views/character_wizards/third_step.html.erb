@@ -1,7 +1,7 @@
 <strong>Parametry: </strong>
 <br/><br/>
 <p style="font-size: 16px">Twój najwyższy rzut został przyporządkowany do parametru wiodącego.</p>
-<p style="font-size: 16px">Ponadto, rzut który przyporządkowujesz Ogładzie <strong>nie może być nizszy</strong> niż nominalny, czyli: <%= @stats.last %></p>
+<p style="font-size: 16px">Ponadto rzut, który przyporządkowujesz Ogładzie <strong>nie może być nizszy</strong> niż nominalny, czyli: <%= @stats.last %></p>
 <div id="display_container" class="stats_area">
   <div class="dragArea">
     <br/>
@@ -17,7 +17,7 @@
       <tbody>
       <tr>
         <% @stats.each_with_index do |roll, index| %>
-            <%= content_tag(:td, roll, :id => index, :class => "drag") %>
+            <%= content_tag(:td, roll, :id => index, :class => "drag #{'position_left_60' if index==4}") %>
         <% end %>
       </tr>
       </tbody>
@@ -72,6 +72,7 @@
 <% end %>
 
 <%= button_link_to "Wróć", second_step_character_wizard_path(:char_id => @character.id) %>
+<%= button_link_to "Utwórz nową postać", character_path(@character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
 <%= button_link_to "Dalej", "javascript:void(0)", :onclick => "attach_choices_and_proceed()" %>
 
 <script type="text/javascript">

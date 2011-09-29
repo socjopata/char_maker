@@ -18,6 +18,7 @@
 
 <div class="clear">
 <%= button_link_to "Wróć", new_character_path(:char_id => @character.id), :class => "fltl" %>
+<%= button_link_to "Utwórz nową postać", character_path(@character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
 <%= button_link_to "Dalej", "javascript:void(0)", :class => "fltr", :onclick => "submit_form_and_proceed()" %>
 </div>
 
@@ -27,9 +28,10 @@
         // when the #country field changes
         $("#professions").change(function() {
             // make a POST call and replace the content
+            var char_id = "<%= @character.id  %>";
             var country = $('select#professions :selected').val();
             if (country == "") country = "0";
-            jQuery.get('/character_wizards/update_countries_select/' + country, function(data) {
+            jQuery.get('/character_wizards/update_countries_select',  {'id': country, 'char_id': char_id}, function(data) {
                 $("#addressCountries").html(data);
             })
             return false;

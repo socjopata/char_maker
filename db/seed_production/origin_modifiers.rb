@@ -97,7 +97,7 @@ s_choice = country.stats_choices.create(:applies_to => "soldier", :condition => 
 s_choice.stats_modifiers.create(:modifies => "S", :value => 6, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "ZR", :value => 3, :group_name => "domyślne", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "WI", :value => 5, :group_name => "domyślne", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "WI", :value => 3, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 6, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 1, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)

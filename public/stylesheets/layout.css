@@ -8,6 +8,11 @@
     float: left;
 }
 
+.position_left_60 {
+  left: 60px;
+}
+
+
 .stats_area {
   background: url(/images/papyrus4.gif) no-repeat center;
   width: 400px;

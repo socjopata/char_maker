@@ -59,7 +59,7 @@ class CharacterBackground < ActiveRecord::Base
         dice_roll = 1 + rand(SocialClass::DICE_TYPE)
         self.social_classes << SocialClass.find_by_name(SocialClass::DICE_RESULT___CIVILIZED[dice_roll])
       else
-        self.social_classes << SocialClass.find_by_name(SocialClass.find_by_name("Mieszczanin"))
+        self.social_classes << SocialClass.find_by_name("Mieszczanin")
       end
     end
   end
@@ -69,7 +69,7 @@ class CharacterBackground < ActiveRecord::Base
       dice_roll = 1 + rand(SocialClass::DICE_TYPE)
       self.social_classes << SocialClass.find_by_name(SocialClass::DICE_RESULT___BARBARIAN[dice_roll])
     else
-      self.social_classes << SocialClass.find_by_name(SocialClass.find_by_name("Wojownik"))
+      self.social_classes << SocialClass.find_by_name("Wojownik")
     end
   end
 
