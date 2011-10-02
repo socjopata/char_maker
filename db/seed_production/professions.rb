@@ -179,7 +179,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Kradzież Kieszonkowa i Otwieranie Zamków")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Szulerka")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Szczęście Kastora")
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt")
+#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt")
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Inicjatywa")
 
 

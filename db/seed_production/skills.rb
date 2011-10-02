@@ -183,7 +183,7 @@ skill = Skill.create(:profession_type => "default", :name => "Szulerka", :way_it
 
 s_choice = skill.stats_choices.create
 
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Spryt")  #TODO unify names
+#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Spryt")  #TODO unify names
 #Wymagania: Zręczność i Inteligencja 15+, Ogłada 14+
 
 
@@ -193,7 +193,7 @@ skill = Skill.create(:profession_type => "default", :name => "Śledzenie i Skrad
 s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Spostrzegawczość")  #TODO unify names
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Spryt")  #TODO unify names
+#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Spryt")  #TODO unify names
 
 
 skill = Skill.create(:profession_type => "default", :name => "Torturowanie", :way_it_works => "Aby sprawdzić jak skuteczne są „zabiegi” należy wykonać test Bólu ofiary z karą równą premii ze Zręczności kata. Sukces oznacza, że przesłuchiwana osoba może zachować milczenie i nie została złamana. Kolejna próba (czyli kolejne testy) może być wykonana dopiero następnego dnia ale każdy kolejny dzień tortur zwiększa karę o kolejne 2pkt. W zależności od tortur i ich nasileniach MG powinien o jakiś czas wykonać test Wytrzymałości ofiary. Niepowodzenie oznacza jej śmierć. Ponadto w przypadku stosowania ciężkich metod tj: obdzieranie ze skóry, łamanie kołem, itp. należy sprawdzić Zręczność kata standardowym testem. Niepowodzenie oznacza test na połowę Wytrzymałości ofiary lub jej natychmiastową śmierć. Odporność na Strach i Ból postaci (oprawcy) podnoszona jest o +2pkt.",
@@ -252,7 +252,7 @@ skill = Skill.create(:profession_type => "default", :name => "Wykształcenie Aka
 s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => "domyślne")
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Spryt")  #TODO unify names
+#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Spryt")  #TODO unify names
 
 
 

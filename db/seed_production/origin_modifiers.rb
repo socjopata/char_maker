@@ -14,7 +14,7 @@ s_choice.stats_modifiers.create(:modifies => "WT", :value => 4, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Atak i Obrona", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt", :default_for_origin => true)
+#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "rogue", :condition => nil )
 
@@ -26,7 +26,7 @@ s_choice.stats_modifiers.create(:modifies => "WT", :value => 4, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Atak i Obrona", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt", :default_for_origin => true)
+#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "scholar", :condition => nil )
 
@@ -38,7 +38,7 @@ s_choice.stats_modifiers.create(:modifies => "WT", :value => 4, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Podstawy Medytacji", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt", :default_for_origin => true)
+#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt", :default_for_origin => true)
 
 # Noble of Alantar special case condition
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "is_noble?" )

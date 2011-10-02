@@ -15,12 +15,6 @@ class AuxiliaryParameterSet < ActiveRecord::Base
    "scholar" => 14
   }
 
-   CUNNING = {
-   "rogue" => 14,
-   "soldier" => 10,
-   "scholar" => 18
-  }
-
    PAIN_RESISTANCE = {
    "rogue" => 10,
    "soldier" => 14,
@@ -48,7 +42,7 @@ class AuxiliaryParameterSet < ActiveRecord::Base
 
       #t.integer :initiative  #inicjatywa
       #t.integer :perception #spostrzegawczość
-      #t.integer :cunning #spryt
+
       #t.integer :pain_resistance #odp. na ból
       #t.integer :fear_resistance #odp na strach
       #t.integer :running #bieg

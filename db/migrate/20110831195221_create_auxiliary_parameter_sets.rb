@@ -5,7 +5,6 @@ class CreateAuxiliaryParameterSets < ActiveRecord::Migration
       t.integer :character_id
       t.integer :initiative  #inicjatywa
       t.integer :perception #spostrzegawczość
-      t.integer :cunning #spryt
       t.integer :pain_resistance #odp. na ból
       t.integer :fear_resistance #odp na strach
       t.integer :running #bieg
