@@ -23,7 +23,7 @@ class CharactersController < ApplicationController
   end
 
   def new
-    params[:char_id].present? ? @character = Character.find(params[:char_id]) : @character = current_user.characters.build
+    params[:char_id].present? ? @character = current_user.characters.find(params[:char_id]) : @character = current_user.characters.build
     respond_to do |format|
       format.html # new.html.erb
     end
