@@ -1,7 +1,8 @@
 class Skill < ActiveRecord::Base
   has_many :stats_choices, :as => :resource, :dependent => :destroy
   has_many :skill_requirements, :dependent => :destroy
-  has_and_belongs_to_many :characters
+  has_many :character_skills
+  has_many :characters, :through => :character_skills
 
 
   scope :basic, where(:profession_type => "default")
@@ -13,13 +14,3 @@ class Skill < ActiveRecord::Base
 
 end
 
-
-    #has_and_belongs_to_many :characters
-
-     #
-     #post = ...
-     #category = ...
-     #
-     #if category
-     #   post.categories.delete(category)
-     #end

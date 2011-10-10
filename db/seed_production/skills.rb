@@ -9,14 +9,17 @@ s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
 s_choice.stats_modifiers.create(:modifies => "fighting", :value => 3, :group_name => "Obrona Daleka")
 s_choice.stats_modifiers.create(:modifies => "fighting", :value => 3, :group_name => "Zmiana Zasięgu")
-#Wymagania: Podstawy Akrobatyki, Zręczność 25+
 
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Podstawy Akrobatyki" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "25" )
 
+#skill
+#statistics
+#socialclass
 
 skill = Skill.create(:profession_type => "default", :name => "Czytanie i Pisanie", :way_it_works => "umiejętność czytania i pisania w wybranym języku (najczęściej będzie to język ojczysty postaci), w niektórych przypadkach MG może nie zgodzić się na wyuczenie danego języka z powodu braku odpowiedniego nauczyciela, np.: postać chce poznać język z odległych archipelagów czy zakazany dialekt demonów.
 ",:active => false )
-#Wymagania: Inteligencja 14+
-
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "14" )
 
 
 skill = Skill.create(:profession_type => "default", :name => "Dworskość", :description => "jest to zbiór umiejętności potrzebnych każdej kulturalnej osobie, zwłaszcza o pochodzeniu szlacheckim, która w elitarnym towarzystwie nie chce wyjść na totalnego ignoranta i chama. Umożliwia nie tylko odpowiednie zachowanie w towarzystwie, przy stole, na balach i innych spotkaniach ale również pozwala kulturalnie zabawić damę.",
@@ -25,8 +28,8 @@ skill = Skill.create(:profession_type => "default", :name => "Dworskość", :des
 s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne")
-#Wymagania: Ogłada i Inteligencja 14+
-
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "O", :value => "14" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "14" )
 
 
 skill = Skill.create(:profession_type => "default", :name => "Dykcja i Przemawianie", :way_it_works => "Podczas rozmowy, handlowania, wygłaszania mów, itp. działaniach postać zwiększa swą szansę w teście Ogłady o premię z Inteligencji. Ponadto Ogłada bohatera zwiększana jest o +2pkt.",
@@ -35,8 +38,7 @@ skill = Skill.create(:profession_type => "default", :name => "Dykcja i Przemawia
 s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne")
-#Wymagania: Ogłada 15+
-
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "O", :value => "15" )
 
 skill = Skill.create(:profession_type => "default", :name => "Handel", :way_it_works => "Po udanym rzucie na Ogładę bohater może zmodyfikować cenę o +/-10%. Jeżeli chce jeszcze bardziej zaniżyć lub zawyżyć wartość przedmiotu bądź usługi, za każde następne 5% ceny postać otrzymuje karę -2pkt do rzutu. Bohater posiadający przynajmniej dwadzieścia punktów Ogłady może wykonać dwa rzuty i wybrać korzystniejszy wynik. Inteligencja postaci podnoszona jest o +1pkt.",
 :active => false, :description => "wiele lat spędzonych na straganach, targach bądź w sklepie przyniosło niemałe umiejętności, postać zna podstawowe prawidła handlu, jego aktualne prawa i obostrzenia. Ponadto potrafi skutecznie negocjować ceny zarówno je obniżać jak i windować.")
@@ -44,8 +46,7 @@ skill = Skill.create(:profession_type => "default", :name => "Handel", :way_it_w
 s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne")
-#Wymagania: Inteligencja 17+
-
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "17" )
 
 skill = Skill.create(:profession_type => "default", :name => "Heraldyka i Historia", :way_it_works => "Udany test na Inteligencje pozwala określić historie kryjącą się za danym herbem lub rodem szlacheckim, przypomnieć minione wydarzenia i losy zapisane w starożytnych księgach. Ponadto postać zwiększa swoją Inteligencję o +1pkt.",
 :active => false, :description => "jest to znajomość rodów szlacheckich, hierarchii w danym państwie, księstwie (linii królewskiej, ważnych osobistości) bądź ziemiach. Postać zgłębiła ogólną historię świata, działań wojennych, poznała najznamienitszych dowódców oraz zapoznała się z podstawową wiedzą dotyczącą podłoża wojen religijnych i innych zbrojnych konfliktów.")
@@ -71,8 +72,10 @@ skill = Skill.create(:profession_type => "default", :name => "Mistrzowska Oburę
 s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
-#Wymagania: Oburęczność, Siła 15+, Zręczność 25+, Poziom Doświadczenia 3+
-
+skill.skill_requirements.create(:check_applies_to => "experience", :value => "3" )
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Oburęczność" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "25" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S", :value => "15" )
 
 skill = Skill.create(:profession_type => "default", :name => "Nauczyciel Fechtunku Wielu Broni", :way_it_works => "bohater zyskuje Jedną Biegłość w Broniach, dzięki czemu będzie mógł nauczyć się walczyć dodatkową grupą broni.",
 :active => false)
@@ -101,12 +104,16 @@ s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Strach")  #TODO unify the name
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Ból")  #TODO unify the name
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Punkty Życia")  #TODO unify the name
-#Wymagania: Wiara 17+, Wytrzymałość 25+
+
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WI", :value => "17" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WT", :value => "25" )
 
 skill = Skill.create(:profession_type => "default", :name => "Oburęczność", :way_it_works => "postać udoskonaliła technikę walki dwoma orężami, dzięki czemu zyskuje jeden atak z dodatkowej broni z karą do Trafienia -5pkt. Wyliczając swą Obronę korzysta z obu parametrów broni.",
 :active => false)
 #TODO remember to do something when the total defence is being count
-#Wymagania: Siła 13+, Zręczność 20+
+
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S", :value => "13" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "20" )
 
 skill = Skill.create(:profession_type => "default", :name => "Odporność", :way_it_works => "postać może dwukrotnie więcej przebiec, przepłynąć, przejść marszem, itp. Dodatkowo dwukrotnie wolniej męczy się w walce a jej Odporność na Ból jak i „Punkty Życia” podnoszone są o +3pkt.",
 :active => false)
@@ -114,7 +121,9 @@ skill = Skill.create(:profession_type => "default", :name => "Odporność", :way
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Ból")  #TODO unify the name
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Punkty Życia")  #TODO unify the name
-#Wymagania: Wytrzymałość 22+
+
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WT", :value => "22" )
+
 
 
 skill = Skill.create(:profession_type => "default", :name => "Pływanie i Nurkowanie", :way_it_works => "postać nauczyła się pływać i nurkować. Jakiekolwiek testy sprawdzające utrzymanie się jej na powierzchni wody, itp. wykonywane są tylko w wyjątkowo trudnych warunkach takich jak: sztorm, duże obciążenie (zbroja) lub poważne rany, testem na Siłę postaci. Postać zyskuje +1pkt do Wytrzymałości.",
@@ -132,7 +141,8 @@ s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
 s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Obrona Daleka")
 s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Zmiana Zasięgu")
-#Wymagania: Zręczność 17+
+
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "17" )
 
 
 skill = Skill.create(:profession_type => "default", :name => "Posłuch i Zastraszanie", :way_it_works => "Obie zdolności sprawdzane są rzutem na Ogładę, a modyfikator testu ustalany jest każdorazowo przez MG (przy Zastraszeniu gracz może zwiększyć swoją szansę o premię z Siły ale tylko jeżeli parametr przekroczył 25pkt). Bohater zyskuje +2pkt do Ogłady.",
@@ -150,8 +160,8 @@ s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
 s_choice.stats_modifiers.create(:modifies => "", :value => 2, :group_name => "Inicjatywa")
-#Wymagania: Zręczność 15+
 
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "15" )
 
 skill = Skill.create(:profession_type => "default", :name => "Rzemiosło rozwijające siłę", :way_it_works => "postać wyuczyła się wybranego fachu lub rzemiosła. Po kilku latach praktyki, zebrała nieco oszczędności (5k20+100zł), a jej Siła lub Inteligencja podnoszone są o +1pkt. Gracz wraz z MG wybiera rodzaj zawodu jakim para się postać.",
 :active => false)
@@ -183,9 +193,9 @@ skill = Skill.create(:profession_type => "default", :name => "Szulerka", :way_it
 
 s_choice = skill.stats_choices.create
 
-#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Spryt")  #TODO unify names
-#Wymagania: Zręczność i Inteligencja 15+, Ogłada 14+
-
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "15" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "15" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "O", :value => "14" )
 
 skill = Skill.create(:profession_type => "default", :name => "Śledzenie i Skradanie się", :way_it_works => "umiejętność pozwala śledzić ofiary tak aby pozostać niezauważonym. Sprawdzane jest to rzutem na Spostrzegawczość ofiary, zmniejszonym o premię z Inteligencji i Zręczności śledzącego. Rzut sprawdzający wykonujemy tylko w określonych przypadkach tj.: długi okres śledzenia, brak miejsca do ukrycia się, ofiara spodziewa się „ogona”, itp. Druga część umiejętności czyli Skradanie; umożliwia postaci bezszelestne poruszanie się. Sprawdzane jest to rzutem na jej Zręczność aktualną zmniejszoną o Spostrzegawczość ofiary oraz inne modyfikatory ustalone przez MG w zależności od sytuacji. Spostrzegawczość i Spryt postaci podnoszone są o +1pkt.",
 :active => false, :description => "postać zna zasady większości gier hazardowych.")
@@ -193,7 +203,6 @@ skill = Skill.create(:profession_type => "default", :name => "Śledzenie i Skrad
 s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Spostrzegawczość")  #TODO unify names
-#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Spryt")  #TODO unify names
 
 
 skill = Skill.create(:profession_type => "default", :name => "Torturowanie", :way_it_works => "Aby sprawdzić jak skuteczne są „zabiegi” należy wykonać test Bólu ofiary z karą równą premii ze Zręczności kata. Sukces oznacza, że przesłuchiwana osoba może zachować milczenie i nie została złamana. Kolejna próba (czyli kolejne testy) może być wykonana dopiero następnego dnia ale każdy kolejny dzień tortur zwiększa karę o kolejne 2pkt. W zależności od tortur i ich nasileniach MG powinien o jakiś czas wykonać test Wytrzymałości ofiary. Niepowodzenie oznacza jej śmierć. Ponadto w przypadku stosowania ciężkich metod tj: obdzieranie ze skóry, łamanie kołem, itp. należy sprawdzić Zręczność kata standardowym testem. Niepowodzenie oznacza test na połowę Wytrzymałości ofiary lub jej natychmiastową śmierć. Odporność na Strach i Ból postaci (oprawcy) podnoszona jest o +2pkt.",
@@ -228,7 +237,8 @@ s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Ból")  #TODO unify names
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
-#Wymagania: Wytrzymałość lub Wiara 21+
+#TODO implement OR
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WT or WI", :value => "21" )
 
 #TODO check skill name in the whole system
 skill = Skill.create(:profession_type => "default", :name => "Wino, Śpiew i Kobiety", :way_it_works => "wszystkie kontakty z płcią przeciwną otrzymują premię w wysokości +5pkt do Ogłady. Przy czym test wykonywany jest tylko i wyłącznie w trudnych, niezręcznych bądź niebezpiecznych sytuacjach (standardowo postać potrafi dopasować się do ogółu i jest raczej lubiana). Ponadto Ogłada postaci zwiększana jest o +2pkt.",
@@ -236,7 +246,9 @@ skill = Skill.create(:profession_type => "default", :name => "Wino, Śpiew i Kob
 s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne")
-#Wymagania: Ogłada 17+, Inteligencja 17+
+
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "O", :value => "17" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "17" )
 
 
 skill = Skill.create(:profession_type => "default", :name => "Woltyżerka", :way_it_works => "każda z powyższych akcji sprawdzana jest rzutem na Zręczność postaci ale tylko wtedy kiedy wykonywane będzie to w wyjątkowo stresującej sytuacji tj: walka, ucieczka, itp. W normalnych warunkach nie ma potrzeby wykonywania żadnego testu. Zręczność postaci zwiększana jest o +1pkt.",
@@ -244,7 +256,10 @@ skill = Skill.create(:profession_type => "default", :name => "Woltyżerka", :way
 s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
-#Wymagania: Jeździectwo, Podstawy Akrobatyki, Zręczność 19+
+
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Jeździectwo" )
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Podstawy Akrobatyki" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "19" )
 
 #TODO limitation
 skill = Skill.create(:profession_type => "default", :name => "Wykształcenie Akademickie", :way_it_works => "postać zdobyła ogólne wykształcenie, dzięki któremu zna podstawy wszystkich dziedzin nauki. Ponadto zwiększa swój Spryt o +2pkt a wszystkie testy (nie magiczne) związane z wiedzą ułatwione są o 5pkt. Inteligencja postaci wzrasta o +1pkt.",
@@ -261,8 +276,9 @@ skill = Skill.create(:profession_type => "default", :name => "Wyrób Trucizn", :
 s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => "domyślne")
-#Wymagania: Zielarstwo, Inteligencja 21+
 
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Zielarstwo" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "21" )
 
 skill = Skill.create(:profession_type => "default", :name => "Zabijaka", :way_it_works => "wiele lat spędzonych na ulicy, w portach i knajpach, nie tylko zahartowało postać ale również udoskonaliło jej techniki walki. Bohater otrzymuje +2pkt do „Fechtunku” w Bijatyce oraz podnosi swą Siłę jak i Odporność na Ból o +2pkt.",
 :active => false )

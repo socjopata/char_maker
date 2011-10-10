@@ -1,10 +1,11 @@
 # -*- encoding : utf-8 -*-
 class CharacterWizardsController < ApplicationController
 
+  before_filter :user_signed_in?
 
   #TODO refactor fatty controllers, make them thin... thinner at least  :(
   #TODO allow to user to change his mind while navigating in a wizard...
-
+  #TODO scope character search for current user !!!
   def first_step
     if request.get?
       @character = Character.find(params[:char_id])

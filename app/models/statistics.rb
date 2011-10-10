@@ -100,8 +100,11 @@ class Statistics < ActiveRecord::Base
 
     self.skill_free_assignment_base =  free_skill_counter + character.profession.skill_points
 
+
     skills = Skill.find_all_by_name(skill_names_array.uniq)
-    character.skills << skills
+    skills.each do |skill|
+     skill.character_skills.create(:character_id => character.id)
+    end
 
     self.default_skills_ids = skills.map(&:id)
 

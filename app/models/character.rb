@@ -9,7 +9,8 @@ class Character < ActiveRecord::Base
   has_one :purse
   has_one :auxiliary_parameter_set
 
-  has_and_belongs_to_many :skills
+  has_many :character_skills
+  has_many :skills, :through => :character_skills
 
 
   mount_uploader :avatar, AvatarUploader
