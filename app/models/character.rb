@@ -13,6 +13,7 @@ class Character < ActiveRecord::Base
   has_many :skills, :through => :character_skills
 
 
+
   mount_uploader :avatar, AvatarUploader
   scope :belongs_to_user, lambda { |user| {:conditions => {:user_id => user.id}} }
 

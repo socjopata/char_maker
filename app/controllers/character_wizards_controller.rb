@@ -56,7 +56,7 @@ class CharacterWizardsController < ApplicationController
       @character = current_user.characters.find(params[:char_id])
 
       @character.skills.clear
-      @character.statistics.skill_free_assignment_base = nil
+
 
       roll_set = @character.statistics.initial_dice_roll_set
       @lead_parameter = roll_set[0..4].max
@@ -65,7 +65,9 @@ class CharacterWizardsController < ApplicationController
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
       if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth?
-        @character.statistics.convert_stat_choices_to_skills
+        skill_free_assignment_base, default_skills_ids =  @character.statistics.convert_stat_choices_to_skills
+        session[:skill_free_assignment_base] = skill_free_assignment_base
+        session[:default_skills_ids] = default_skills_ids
         redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
       else
         redirect_to third_step_character_wizard_path(:char_id => @character.id), :alert => "Napewno dobrze uzupełniłeś statystyki?"

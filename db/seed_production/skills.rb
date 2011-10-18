@@ -238,7 +238,7 @@ s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Ból")  #TODO unify names
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
 #TODO implement OR
-skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WT or WI", :value => "21" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "OR: WT,WI", :value => "21" )
 
 #TODO check skill name in the whole system
 skill = Skill.create(:profession_type => "default", :name => "Wino, Śpiew i Kobiety", :way_it_works => "wszystkie kontakty z płcią przeciwną otrzymują premię w wysokości +5pkt do Ogłady. Przy czym test wykonywany jest tylko i wyłącznie w trudnych, niezręcznych bądź niebezpiecznych sytuacjach (standardowo postać potrafi dopasować się do ogółu i jest raczej lubiana). Ponadto Ogłada postaci zwiększana jest o +2pkt.",

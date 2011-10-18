@@ -356,7 +356,7 @@
                 </p>
             </TD>
             <TD WIDTH=7% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-              <P ALIGN=CENTER><%= check_box_tag skill.id %><BR>
+              <P ALIGN=CENTER><%= check_box_tag skill.id, 1,  @character.skills.include?(skill), :disabled => session[:default_skills_ids].include?(skill.id) %><BR>
               </P>
             </TD>
         <% end %>

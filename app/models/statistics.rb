@@ -8,7 +8,7 @@ class Statistics < ActiveRecord::Base
 
   validates_presence_of :strength, :dexterity, :endurance, :intelligence, :faith, :polish
 
-  attr_accessor :skill_free_assignment_base, :default_skills_ids
+
 
 
   DICE_TYPE = 20 #k20
@@ -98,7 +98,7 @@ class Statistics < ActiveRecord::Base
     skill_names_array.delete("Jedna wolna umiejętność") if skill_names_array.include?("Jedna wolna umiejętność")
     free_skill_counter = free_skill_counter + (skill_names_array.size - skill_names_array.uniq.size)  #if there are doubles...
 
-    self.skill_free_assignment_base =  free_skill_counter + character.profession.skill_points
+    skill_free_assignment_base =  free_skill_counter + character.profession.skill_points
 
 
     skills = Skill.find_all_by_name(skill_names_array.uniq)
@@ -106,8 +106,9 @@ class Statistics < ActiveRecord::Base
      skill.character_skills.create(:character_id => character.id)
     end
 
-    self.default_skills_ids = skills.map(&:id)
+    default_skills_ids = skills.map(&:id)
 
+    [skill_free_assignment_base, default_skills_ids]
   end
 
   def calculate_main_stats

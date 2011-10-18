@@ -23,6 +23,8 @@ class CharactersController < ApplicationController
   end
 
   def new
+    session[:skill_free_assignment_base] = nil
+    session[:default_skills_ids] = nil
     params[:char_id].present? ? @character = current_user.characters.find(params[:char_id]) : @character = current_user.characters.build
     respond_to do |format|
       format.html # new.html.erb
