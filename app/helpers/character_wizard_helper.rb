@@ -74,6 +74,7 @@ module CharacterWizardHelper
     "+" if value >= 0
   end
 
+   #TODO add humanized requirements !
   def nice_and_shiny_description(skill)
     [skill.description && skill.description.humanize, skill.way_it_works && skill.way_it_works.humanize, skill.limitations && skill.limitations.humanize].join("<br /> <br />").html_safe
   end

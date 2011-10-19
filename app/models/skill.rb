@@ -12,5 +12,13 @@ class Skill < ActiveRecord::Base
     name
   end
 
+  def self.filter_nonselectable(skills, character, strength, dexterity, endurance, intelligence, faith, polish)
+    output = []
+    skills.each do |skill|
+      output << skill if skill.skill_requirements.any? { |skill_req| skill_req.skill_fails_to_meet_requirements(character, strength, dexterity, endurance, intelligence, faith, polish) }
+    end
+    output
+  end
+
 end
 

@@ -350,13 +350,13 @@
       <TR VALIGN=TOP>
         <% skills.each do |skill| %>
             <TD WIDTH=39% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-              <P ALIGN=CENTER class="skill_qtip"><FONT SIZE=1 STYLE="font-size: 8pt"><I><B><%= skill.name %></B></I></FONT></P>
-              <p class="skill_explanation_qtip" style="display:none;">
+              <P ALIGN=CENTER class="skill_qtip"><FONT SIZE=1 STYLE="font-size: 9pt"><I><B><%= skill.name %></B></I></FONT></P>
+              <p class="skill_explanation_qtip " style="display:none;">
                   <%= nice_and_shiny_description(skill)   %>
                 </p>
             </TD>
             <TD WIDTH=7% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-              <P ALIGN=CENTER><%= check_box_tag skill.id, 1,  @character.skills.include?(skill), :disabled => session[:default_skills_ids].include?(skill.id) %><BR>
+              <P ALIGN=CENTER><%= check_box_tag skill.id, 1,  @character.skills.include?(skill), :disabled => ( session[:default_skills_ids].include?(skill.id) || @cannot_select_skills.include?(skill) ) %><BR>
               </P>
             </TD>
         <% end %>
@@ -373,11 +373,12 @@
         {
             content: $(this).next().html(),
             style: {
-                name: "cm_qtip"
+                 'font-size': 16,
+                  classes: 'ui-tooltip-blue ui-tooltip-shadow'
             },
             position: {
                 adjust: {
-                x: -50
+                x: -200
                 },
                 corner: {
                     target: "rightMiddle",

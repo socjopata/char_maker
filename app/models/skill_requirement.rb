@@ -1,6 +1,26 @@
 class SkillRequirement < ActiveRecord::Base
   belongs_to :skill
 
-  #a copy of stats choice I guess    or...
-  #... or put it in stats choice condition ??
+  def skill_fails_to_meet_requirements(character, strength, dexterity, endurance, intelligence, faith, polish)
+    skills = [strength, dexterity, endurance, intelligence, faith, polish]
+    case self.check_applies_to
+      when "skill"
+        !character.skills.map(&:name).include?(self.name)
+      when "statistics"
+        (self.name.match /OR:\s/).present? ? (name.gsub("OR: ", "").split(",").none? { |string| self.value.to_i >= skills[SkillRequirement::INDEX[string]] }) : (self.value.to_i >= skills[SkillRequirement::INDEX[self.name]])
+      when "experience"
+        true #currently all characters are 1 lvl, so..
+    end
+  end
+
+
+  INDEX = {"S" => 0,
+           "ZR" => 1,
+           "WT" => 2,
+           "INT" => 3,
+           "WI" => 4,
+           "O" => 5
+
+  }
+
 end
