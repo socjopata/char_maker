@@ -237,7 +237,7 @@ s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Ból")  #TODO unify names
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
-#TODO implement OR
+
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "OR: WT,WI", :value => "21" )
 
 #TODO check skill name in the whole system
@@ -261,10 +261,12 @@ skill.skill_requirements.create(:check_applies_to => "skill", :name => "Jeździe
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Podstawy Akrobatyki" )
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "19" )
 
-#TODO limitation
+
 skill = Skill.create(:profession_type => "default", :name => "Wykształcenie Akademickie", :way_it_works => "postać zdobyła ogólne wykształcenie, dzięki któremu zna podstawy wszystkich dziedzin nauki. Ponadto zwiększa swój Spryt o +2pkt a wszystkie testy (nie magiczne) związane z wiedzą ułatwione są o 5pkt. Inteligencja postaci wzrasta o +1pkt.",
 :active => false, :limitations => "zakazane dla chłopstwa oraz większości barbarzyńców" )
 s_choice = skill.stats_choices.create
+skill.skill_requirements.create(:check_applies_to => "social_class", :name => "non_peasant")
+skill.skill_requirements.create(:check_applies_to => "social_class", :name => "non_barbarian")
 
 s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => "domyślne")
 #s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Spryt")  #TODO unify names

@@ -31,6 +31,17 @@ class SocialClass < ActiveRecord::Base
     ['Szlachcic Zaściankowy', 'Szlachcic', 'Wielmoża', 'Członek rady plemienia', 'Potomek Wodza'].include?(name)
   end
 
+  def non_peasant
+    ['Mieszczanin Ubogi', 'Mieszczanin', 'Mieszczanin Bogaty', 'Wojownik', 'Znany wojownik', 'Szlachcic Zaściankowy', 'Szlachcic', 'Wielmoża', 'Członek rady plemienia', 'Potomek Wodza'].include?(name)
+  end
+
+  #TODO what about barbarian slave? in this implementation, he can have academic knowledge...
+  def non_barbarian
+     ['Niewolnik', 'Chłop Ubogi', 'Chłop Bogaty',
+     'Mieszczanin Ubogi',  'Mieszczanin',   'Mieszczanin Bogaty',
+     'Szlachcic Zaściankowy',    'Szlachcic',     'Wielmoża'].include?(name)
+  end
+
   #Magic.
   def true
     true

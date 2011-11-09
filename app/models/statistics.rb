@@ -9,8 +9,6 @@ class Statistics < ActiveRecord::Base
   validates_presence_of :strength, :dexterity, :endurance, :intelligence, :faith, :polish
 
 
-
-
   DICE_TYPE = 20 #k20
 
   NAMES =

@@ -17,7 +17,9 @@ class CharacterSkill < ActiveRecord::Base
   end
 
   def suck_modifiers_back
-    #TODO
+    skill.stats_choices.collect(&:stats_modifiers).flatten.each do |modifier|
+      character.statistics.stats_modifiers.delete(modifier) if character.statistics.stats_modifiers.exists?(:id => modifier.id)
+    end
   end
 
 end
