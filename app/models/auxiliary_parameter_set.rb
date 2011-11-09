@@ -39,6 +39,12 @@ class AuxiliaryParameterSet < ActiveRecord::Base
    "scholar" => 12
   }
 
+   MAGIC_RESISTANCE = {
+   "rogue" => 0,
+   "soldier" => 0,
+   "scholar" => 3
+  }
+
 
       #t.integer :initiative  #inicjatywa
       #t.integer :perception #spostrzegawczość

@@ -1,4 +1,31 @@
+.number {
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    font-style: italic;
+}
 
+.normal {
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.white_normal {
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: white;
+    font-style: italic;
+}
+
+.black_td {
+
+}
+
+.white_td {
+
+}
 
 .fltr {
     float: right;
@@ -9,13 +36,12 @@
 }
 
 .position_left_60 {
-  left: 60px;
+    left: 60px;
 }
 
-
 .stats_area {
-  background: url(/images/papyrus4.gif) no-repeat center;
-  width: 400px;
+    background: url(/images/papyrus4.gif) no-repeat center;
+    width: 400px;
 
 }
 
@@ -162,6 +188,4 @@ a.button:active span {
     padding: 6px 0 4px 18px; /* push text down 1px */
 }
 
-
-
-}
+    }
