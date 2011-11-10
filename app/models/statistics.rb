@@ -91,17 +91,17 @@ class Statistics < ActiveRecord::Base
 
   def convert_stat_choices_to_skills
 
-    skill_names_array = stats_modifiers.select{ |sm| sm.modifies=="skills" }.collect{|sm| sm.group_name.split("oraz").collect{|name| name.strip}}.flatten #TODO tap it.
+    skill_names_array = stats_modifiers.select { |sm| sm.modifies=="skills" }.collect { |sm| sm.group_name.split("oraz").collect { |name| name.strip } }.flatten #TODO tap it.
     free_skill_counter = skill_names_array.select { |name| name=="Jedna wolna umiejętność" }.size
     skill_names_array.delete("Jedna wolna umiejętność") if skill_names_array.include?("Jedna wolna umiejętność")
-    free_skill_counter = free_skill_counter + (skill_names_array.size - skill_names_array.uniq.size)  #if there are doubles...
+    free_skill_counter = free_skill_counter + (skill_names_array.size - skill_names_array.uniq.size) #if there are doubles...
 
-    skill_free_assignment_base =  free_skill_counter + character.profession.skill_points
+    skill_free_assignment_base = free_skill_counter + character.profession.skill_points
 
 
     skills = Skill.find_all_by_name(skill_names_array.uniq)
     skills.each do |skill|
-     skill.character_skills.create(:character_id => character.id)
+      skill.character_skills.create(:character_id => character.id)
     end
 
     default_skills_ids = skills.map(&:id)
@@ -114,28 +114,71 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_s
-    strength + stats_modifiers.select { |sm| sm.modifies=="S" }.collect(&:value).sum
+    strength + calculate_main_skill_bonus_for("S")
   end
 
   def calculate_int
-    intelligence + stats_modifiers.select { |sm| sm.modifies=="INT" }.collect(&:value).sum
+    intelligence + calculate_main_skill_bonus_for("INT")
   end
 
   def calculate_zr
-    dexterity + stats_modifiers.select { |sm| sm.modifies=="ZR" }.collect(&:value).sum
+    dexterity + calculate_main_skill_bonus_for("ZR")
   end
 
   def calculate_wi
-    faith + stats_modifiers.select { |sm| sm.modifies=="WI" }.collect(&:value).sum
+    faith + calculate_main_skill_bonus_for("WI")
   end
 
   def calculate_wt
-    endurance + stats_modifiers.select { |sm| sm.modifies=="WT" }.collect(&:value).sum
+    endurance + calculate_main_skill_bonus_for("WT")
   end
 
   def calculate_o
-    polish + stats_modifiers.select { |sm| sm.modifies=="O" }.collect(&:value).sum
+    polish + calculate_main_skill_bonus_for("O")
   end
+
+  def calculate_main_skill_bonus_for(name)
+     stats_modifiers.select { |sm| sm.modifies==name}.collect(&:value).sum
+  end
+
+  def calculate_initiative
+    AuxiliaryParameterSet::INITIATIVE[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr] + calculate_auxiliary_bonus("Inicjatywa")
+  end
+
+  def calculate_perception
+    AuxiliaryParameterSet::PERCEPTION[character.profession.general_type] + character.current_level + calculate_auxiliary_bonus("Spostrzegawczość")
+  end
+
+  def calculate_pain_resistance
+    AuxiliaryParameterSet::PAIN_RESISTANCE[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_wt] + calculate_auxiliary_bonus("Odporność na Ból")
+  end
+
+  def calculate_fear_resistance
+    AuxiliaryParameterSet::FEAR_RESISTANCE[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_wi] + calculate_auxiliary_bonus("Odporność na Strach")
+  end
+
+  def calculate_magic_resistance
+    #TODO get back here later
+    AuxiliaryParameterSet::MAGIC_RESISTANCE[character.profession.general_type]
+  end
+
+  def calculate_life_points
+    AuxiliaryParameterSet::HIT_POINTS[character.profession.general_type] + character.statistics.endurance + calculate_auxiliary_bonus("Punkty Życia")
+  end
+
+  def calculate_running
+    #TODO actual dexterity fix needed.
+    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr] + 0 #TODO get back here later, there will be some bonuses
+  end
+
+  def calculate_sprinting
+    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr] + 0 + 10 #TODO get back here later, there will be some bonuses
+  end
+
+  def calculate_auxiliary_bonus(name)
+    stats_modifiers.select { |sm| sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
+  end
+
 
 end
 

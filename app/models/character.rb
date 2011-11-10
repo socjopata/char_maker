@@ -46,6 +46,10 @@ class Character < ActiveRecord::Base
     statistics.polish >= statistics.initial_dice_roll_set.last.to_i
   end
 
+  def current_level
+    1  #currently all created chars are starters.
+  end
+
 end
 
 

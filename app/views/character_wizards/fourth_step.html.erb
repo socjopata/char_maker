@@ -115,7 +115,7 @@
     </TD>
   <TR VALIGN=TOP>
     <TD WIDTH=14% COLSPAN=2 class="alantar_td">
-      <P class="number"><BR>
+      <P class="number"><%= @character.statistics.calculate_initiative %><BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
@@ -126,7 +126,7 @@
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=9% class="alantar_td">
-      <P class="number"><BR>
+      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Inicjatywa") %><BR>
       </P>
     </TD>
     <TD WIDTH=9% class="alantar_td">
@@ -153,18 +153,18 @@
     </TD>
   <TR VALIGN=TOP>
     <TD WIDTH=14% COLSPAN=2 class="alantar_td">
-      <P class="number"><BR>
+      <P class="number"><%= @character.statistics.calculate_perception %><BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
       <P class="number"><%= AuxiliaryParameterSet::PERCEPTION[@character.profession.general_type] %></P>
     </TD>
     <TD WIDTH=10% class="alantar_td">
-      <P class="number"><BR>
+      <P class="number">+<%= @character.current_level %><BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=9% class="alantar_td">
-      <P class="number"><BR>
+      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Spostrzegawczość") %><BR>
       </P>
     </TD>
     <TD WIDTH=9% class="alantar_td">
@@ -192,7 +192,7 @@
     </TD>
   <TR VALIGN=TOP>
     <TD WIDTH=14% COLSPAN=2 class="alantar_td">
-      <P class="number"><BR>
+      <P class="number"><%= @character.statistics.calculate_pain_resistance %><BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
@@ -203,7 +203,7 @@
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=9% class="alantar_td">
-      <P class="number"><BR>
+      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Ból") %><BR>
       </P>
     </TD>
     <TD WIDTH=9% class="alantar_td">
@@ -230,7 +230,7 @@
     </TD>
   <TR VALIGN=TOP>
     <TD WIDTH=14% COLSPAN=2 class="alantar_td">
-      <P class="number"><BR>
+      <P class="number"><%= @character.statistics.calculate_fear_resistance %><BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
@@ -241,7 +241,7 @@
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=9% class="alantar_td">
-      <P class="number"><BR>
+      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Strach") %><BR>
       </P>
     </TD>
     <TD WIDTH=9% class="alantar_td">
@@ -268,18 +268,18 @@
     </TD>
   <TR VALIGN=TOP>
     <TD WIDTH=14%  COLSPAN=2 class="alantar_td">
-      <P class="number"><BR>
+      <P class="number"><%= @character.statistics.calculate_magic_resistance %><BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
       <P class="number"><%= AuxiliaryParameterSet::MAGIC_RESISTANCE[@character.profession.general_type] %></P>
     </TD>
     <TD WIDTH=10% class="alantar_td">
-      <P class="number"><BR>
+      <P class="number">---<BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=9% class="alantar_td">
-      <P class="number"><BR>
+      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Magię") %><BR>
       </P>
     </TD>
     <TD WIDTH=9% class="alantar_td">
@@ -309,20 +309,23 @@
     </TD>
   <TR VALIGN=TOP>
     <TD WIDTH=7% class="alantar_td">
+      <P class="number"><%= @character.statistics.calculate_sprinting %></P>
     </TD>
      <TD WIDTH=7% class="alantar_td">
+       <P class="number"><%= @character.statistics.calculate_running %></P>
     </TD>
     <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
       <P class="number"><%= AuxiliaryParameterSet::RUNNING[@character.profession.general_type] %></P>
     </TD>
     <TD WIDTH=10% class="alantar_td">
       <P class="number">
-        <!--#TODO zr aktualna-->
+        <!--#TODO will it ever "break"?-->
+        <%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@dexterity])}#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %>
         <BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=9% class="alantar_td">
-      <P class="number"><BR>
+      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Bieg") %><BR>
       </P>
     </TD>
     <TD WIDTH=9% class="alantar_td">
@@ -349,18 +352,18 @@
     </TD>
   <TR VALIGN=TOP>
     <TD WIDTH=14% COLSPAN=2 class="alantar_td">
-      <P class="number"><BR>
+      <P class="number"><%= @character.statistics.calculate_life_points %><BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
       <P class="number"><%= AuxiliaryParameterSet::HIT_POINTS[@character.profession.general_type] %></P>
     </TD>
     <TD WIDTH=10% class="alantar_td">
-      <P class="number"><BR>
+      <P class="number">+<%= @character.statistics.endurance %><BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=9% class="alantar_td">
-      <P class="number"><BR>
+      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Punkty Życia") %><BR>
       </P>
     </TD>
     <TD WIDTH=9% class="alantar_td">
