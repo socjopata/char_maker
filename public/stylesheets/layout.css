@@ -1,3 +1,39 @@
+.fs_10 {
+    font-size: 10px !important;
+}
+
+.fs_11 {
+    font-size: 11px !important;
+}
+
+.fs_12 {
+    font-size: 12px !important;
+}
+
+.fs_13 {
+    font-size: 13px !important;
+}
+
+.fs_14 {
+    font-size: 14px !important;
+}
+
+.fs_15 {
+    font-size: 14px !important;
+}
+
+.fs_16 {
+    font-size: 16px !important;
+}
+
+.fat {
+    font-weight: bold !important;
+}
+
+.italic {
+    font-style: italic !important;
+}
+
 .number {
     font-weight: bold;
     font-size: 14px;
@@ -19,12 +55,28 @@
     font-style: italic;
 }
 
-.black_td {
-
+.black {
+    background-color: #000000;
 }
 
-.white_td {
+.grey {
+    background-color: #b3b3b3;
+}
 
+.light_grey {
+    background-color: #c0c0c0;
+}
+
+.beige {
+    background-color: #e6e6e6;
+}
+
+.alantar_td {
+    border: 1.00pt solid #000000;
+    padding-top: 0.04in;
+    padding-bottom: 0.04in;
+    padding-left: 0.04in;
+    padding-right: 0.04in;
 }
 
 .fltr {

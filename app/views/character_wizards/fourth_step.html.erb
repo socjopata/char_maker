@@ -1,92 +1,90 @@
-<!--#TODO extract styles to classes and move out definitions from view-->
-
 <TABLE WIDTH=30% CELLPADDING=4 CELLSPACING=0 class="fltl">
   <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% BGCOLOR="#000000" STYLE="border: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><FONT SIZE=2 color="white"><I><B>Parametry Główne</B></I></FONT></P>
+    <TD COLSPAN=2 WIDTH=18% class="black alantar_td">
+      <P class="fs_14 white_normal">Parametry Główne</P>
     </TD>
-    <TD COLSPAN=3 WIDTH=20% BGCOLOR="#000000" STYLE="border: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><FONT SIZE=2 color="white"><I><B>Wartość Cechy</B></I></FONT></P>
+    <TD COLSPAN=3 WIDTH=20% class="black alantar_td">
+      <P class="fs_14 white_normal">Wartość Cechy</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=12% BGCOLOR="#000000" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><FONT SIZE=2 color="white"><I><B>Premia/Kara</B></I></FONT></P>
-    </TD>
-  </TR>
-  <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% BGCOLOR="#b3b3b3" STYLE="border: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><FONT SIZE=2><I><B>SIŁA</B></I></FONT></P>
-    </TD>
-    <TD COLSPAN=3 WIDTH=20% STYLE="border: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER STYLE="font-style: normal"><I><B><%= @strength %></B></I><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-      <P ALIGN=CENTER><I><B><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@strength])}#{Statistics::BONUS_OR_PENALTY_RANGES[@strength]}" %></B></I><BR>
-      </P>
+    <TD COLSPAN=2 WIDTH=12% class="black alantar_td">
+      <P class="fs_14 white_normal">Premia/Kara</P>
     </TD>
   </TR>
   <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% BGCOLOR="#b3b3b3" STYLE="border: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><FONT SIZE=2><I><B>ZRĘCZNOŚĆ</B></I></FONT></P>
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
+      <P class="fs_14 normal">SIŁA</P>
     </TD>
-    <TD COLSPAN=3 WIDTH=20% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER STYLE="font-style: normal"><I><B><%= @dexterity %></B></I><BR>
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td">
+      <P class="fs_14 normal"><%= @strength %><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><I><B><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@dexterity])}#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %></B></I><BR>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td">
+      <P class="fs_14 normal"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@strength])}#{Statistics::BONUS_OR_PENALTY_RANGES[@strength]}" %><BR>
       </P>
     </TD>
   </TR>
   <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% BGCOLOR="#b3b3b3" STYLE="border: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><FONT SIZE=2><I><B>WYTRZYMAŁOŚĆ</B></I></FONT></P>
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
+      <P class="fs_14 normal">ZRĘCZNOŚĆ</P>
     </TD>
-    <TD COLSPAN=3 WIDTH=20% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER STYLE="font-style: normal"><I><B><%= @endurance %></B></I><BR>
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td">
+      <P class="fs_14 normal"><%= @dexterity %><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
-      <P ALIGN=CENTER><I><B><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@endurance])}#{Statistics::BONUS_OR_PENALTY_RANGES[@endurance]}" %></B></I><BR>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td">
+      <P class="fs_14 normal"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@dexterity])}#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %><BR>
+      </P>
+    </TD>
+  </TR>
+  <TR VALIGN=TOP>
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
+      <P class="fs_14 normal">WYTRZYMAŁOŚĆ</P>
+    </TD>
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td">
+      <P class="fs_14 normal"><%= @endurance %><BR>
+      </P>
+    </TD>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td">
+      <P class="fs_14 normal"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@endurance])}#{Statistics::BONUS_OR_PENALTY_RANGES[@endurance]}" %><BR>
       </P>
 
   </TR>
   <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% BGCOLOR="#b3b3b3" STYLE="border: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><FONT SIZE=2><I><B>INTELIGENCJA</B></I></FONT></P>
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
+      <P class="fs_14 normal">INTELIGENCJA</P>
     </TD>
-    <TD COLSPAN=3 WIDTH=20% STYLE="border: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER STYLE="font-style: normal"><I><B><%= @intelligence %></B></I><BR>
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td">
+      <P class="fs_14 normal"><%= @intelligence %><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=12% STYLE="; border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><I><B><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@intelligence])}#{Statistics::BONUS_OR_PENALTY_RANGES[@intelligence]}" %></B></I><BR>
-      </P>
-    </TD>
-  </TR>
-  <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% BGCOLOR="#b3b3b3" STYLE="border: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><FONT SIZE=2><I><B>WIARA</B></I></FONT></P>
-    </TD>
-    <TD COLSPAN=3 WIDTH=20% STYLE="border: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER STYLE="font-style: normal"><I><B><%= @faith  %></B></I><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=12% STYLE="; border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><I><B><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@faith])}#{Statistics::BONUS_OR_PENALTY_RANGES[@faith]}" %></B></I><BR>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td">
+      <P class="fs_14 normal"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@intelligence])}#{Statistics::BONUS_OR_PENALTY_RANGES[@intelligence]}" %><BR>
       </P>
     </TD>
   </TR>
   <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% BGCOLOR="#b3b3b3" STYLE="border: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><FONT SIZE=2><I><B>OGŁADA</B></I></FONT></P>
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
+      <P class="fs_14 normal">WIARA</P>
     </TD>
-    <TD COLSPAN=3 WIDTH=20% STYLE="border: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER STYLE="font-style: normal"><I><B><%= @polish %></B></I><BR>
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td">
+      <P class="fs_14 normal"><%= @faith  %><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=12% STYLE="; border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><I><B><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@polish])}#{Statistics::BONUS_OR_PENALTY_RANGES[@polish]}" %></B></I><BR>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td">
+      <P class="fs_14 normal"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@faith])}#{Statistics::BONUS_OR_PENALTY_RANGES[@faith]}" %><BR>
+      </P>
+    </TD>
+  </TR>
+  <TR VALIGN=TOP>
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
+      <P class="fs_14 normal">OGŁADA</P>
+    </TD>
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td">
+      <P class="fs_14 normal"><%= @polish %><BR>
+      </P>
+    </TD>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td">
+      <P class="fs_14 normal"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@polish])}#{Statistics::BONUS_OR_PENALTY_RANGES[@polish]}" %><BR>
       </P>
     </TD>
   </TR>
@@ -100,273 +98,273 @@
 
 <TABLE WIDTH=30% CELLPADDING=4 CELLSPACING=0 class="fltl">
   <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 BGCOLOR="#000000" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
       <P class="white_normal">Inicjatywa</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
       <P class="normal">Podstawa</P>
     </TD>
-    <TD WIDTH=10% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
+    <TD WIDTH=10% class="light_grey alantar_td">
       <P class="normal">Premia ze ZR</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
       <P class="normal">Umiejętności</P>
     </TD>
-    <TD WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
+    <TD WIDTH=9% class="light_grey alantar_td">
       <P class="normal">Specjalne</P>
     </TD>
   <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=14% COLSPAN=2 class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
       <P class="number"><%= AuxiliaryParameterSet::INITIATIVE[@character.profession.general_type] %></P>
     </TD>
-    <TD WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD WIDTH=10% class="alantar_td">
       <P class="number"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@dexterity])}#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD COLSPAN=2 WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD WIDTH=9% STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
   </TR>
 
   <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 BGCOLOR="#000000" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
       <P class="white_normal">Spostrzegawczość</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
       <P class="normal">Podstawa</P>
     </TD>
-    <TD WIDTH=10% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
+    <TD WIDTH=10% class="light_grey alantar_td">
       <P class="normal">+1pkt/poziom</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
       <P class="normal">Umiejętności</P>
     </TD>
-    <TD WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
+    <TD WIDTH=9% class="light_grey alantar_td">
       <P class="normal">Specjalne</P>
     </TD>
   <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=14% COLSPAN=2 class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
       <P class="number"><%= AuxiliaryParameterSet::PERCEPTION[@character.profession.general_type] %></P>
     </TD>
-    <TD WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=10% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD COLSPAN=2 WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD WIDTH=9% STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
   </TR>
 
 
   <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 BGCOLOR="#000000" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
       <P class="white_normal">Odp. na Ból</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 class="light_grey alantar_td">
       <P class="normal">Podstawa</P>
     </TD>
-    <TD WIDTH=10% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
+    <TD WIDTH=10% class="light_grey alantar_td">
       <P class="normal">Premia ze WT</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD COLSPAN=2 class="light_grey alantar_td">
       <P class="normal">Umiejętności</P>
     </TD>
-    <TD WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
+    <TD WIDTH=9% class="light_grey alantar_td">
       <P class="normal">Specjalne</P>
     </TD>
   <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=14% COLSPAN=2 class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
       <P class="number"><%= AuxiliaryParameterSet::PAIN_RESISTANCE[@character.profession.general_type] %></P>
     </TD>
-    <TD WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD WIDTH=10% class="alantar_td">
       <P class="number"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@endurance])}#{Statistics::BONUS_OR_PENALTY_RANGES[@endurance]}" %><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD COLSPAN=2 WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD WIDTH=9% STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
   </TR>
 
   <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 BGCOLOR="#000000" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
       <P class="white_normal">Odp. na Strach</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
       <P class="normal">Podstawa</P>
     </TD>
-    <TD WIDTH=10% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
+    <TD WIDTH=10% class="light_grey alantar_td">
       <P class="normal">Premia ze WI</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
       <P class="normal">Umiejętności</P>
     </TD>
-    <TD WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
+    <TD WIDTH=9% class="light_grey alantar_td">
       <P class="normal">Specjalne</P>
     </TD>
   <TR VALIGN=TOP>
-    <TD WIDTH=14%  COLSPAN=2 STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=14% COLSPAN=2 class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
       <P class="number"><%= AuxiliaryParameterSet::FEAR_RESISTANCE[@character.profession.general_type] %></P>
     </TD>
-    <TD WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD WIDTH=10% class="alantar_td">
       <P class="number"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@faith])}#{Statistics::BONUS_OR_PENALTY_RANGES[@faith]}" %><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD COLSPAN=2 WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD WIDTH=9% STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
   </TR>
 
   <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 BGCOLOR="#000000" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
       <P class="white_normal">Odp. na Magię</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
       <P class="normal">Podstawa</P>
     </TD>
-    <TD WIDTH=10% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
+    <TD WIDTH=10% class="light_grey alantar_td">
       <P class="normal">Tymczasowe</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
       <P class="normal">Umiejętności</P>
     </TD>
-    <TD WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
+    <TD WIDTH=9% class="light_grey alantar_td">
       <P class="normal">Specjalne</P>
     </TD>
   <TR VALIGN=TOP>
-    <TD WIDTH=14%  COLSPAN=2 STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=14%  COLSPAN=2 class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
       <P class="number"><%= AuxiliaryParameterSet::MAGIC_RESISTANCE[@character.profession.general_type] %></P>
     </TD>
-    <TD WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=10% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD COLSPAN=2 WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD WIDTH=9% STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
   </TR>
 
   <TR VALIGN=TOP>
-    <TD WIDTH=7% BGCOLOR="#000000" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD WIDTH=7% class="black alantar_td">
       <P class="white_normal">Sprint</P>
     </TD>
-    <TD WIDTH=7% BGCOLOR="#000000" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD WIDTH=7% class="black alantar_td">
       <P class="white_normal">Bieg</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
       <P class="normal">Podstawa</P>
     </TD>
-    <TD WIDTH=10% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
+    <TD WIDTH=10% class="light_grey alantar_td">
       <P class="normal">Premia ze ZR akt</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
       <P class="normal">Umiejętności</P>
     </TD>
-    <TD WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
+    <TD WIDTH=9% class="light_grey alantar_td">
       <P class="normal">Specjalne</P>
     </TD>
   <TR VALIGN=TOP>
-    <TD WIDTH=7% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD WIDTH=7% class="alantar_td">
     </TD>
-     <TD WIDTH=7% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+     <TD WIDTH=7% class="alantar_td">
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
       <P class="number"><%= AuxiliaryParameterSet::RUNNING[@character.profession.general_type] %></P>
     </TD>
-    <TD WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER>
+    <TD WIDTH=10% class="alantar_td">
+      <P class="number">
         <!--#TODO zr aktualna-->
         <BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD COLSPAN=2 WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD WIDTH=9% STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
   </TR>
 
 <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 BGCOLOR="#000000" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt; color: white"><I><B>Punkty Życia</B></I></FONT></P>
+    <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
+      <P class="white_normal">Punkty Życia</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
       <P class="normal">Podstawa</P>
     </TD>
-    <TD WIDTH=10% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
+    <TD WIDTH=10% class="light_grey alantar_td">
       <P class="normal">Wytrzymałość</P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+    <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
       <P class="normal">Umiejętności</P>
     </TD>
-    <TD WIDTH=9% BGCOLOR="#c0c0c0" STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
+    <TD WIDTH=9% class="light_grey alantar_td">
       <P class="normal">Aktualne PŻ</P>
     </TD>
   <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=14% COLSPAN=2 class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border: 1.00pt solid #000000; padding: 0.04in 0in">
+    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
       <P class="number"><%= AuxiliaryParameterSet::HIT_POINTS[@character.profession.general_type] %></P>
     </TD>
-    <TD WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=10% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD COLSPAN=2 WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
-    <TD WIDTH=9% STYLE="border: 1.00pt solid #000000;  padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
-      <P ALIGN=CENTER><BR>
+    <TD WIDTH=9% class="alantar_td">
+      <P class="number"><BR>
       </P>
     </TD>
   </TR>
@@ -380,21 +378,21 @@
   <COL WIDTH=121*>
   <COL WIDTH=17*>
   <TR>
-    <TD COLSPAN=4 WIDTH=100% VALIGN=TOP BGCOLOR="#000000" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-      <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt; color: white"><I><B>Umiejętności
-        Ogólne</B></I></FONT></P>
+    <TD COLSPAN=4 WIDTH=100% VALIGN=TOP class="black alantar_td">
+      <P class="white_normal">Umiejętności
+        Ogólne</P>
     </TD>
   </TR>
   <% @basic_skills.in_groups_of(2, false).each do |skills| %>
       <TR VALIGN=TOP>
         <% skills.each do |skill| %>
-            <TD WIDTH=39% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-              <P ALIGN=CENTER class="skill_qtip"><FONT SIZE=1 STYLE="font-size: 9pt"><I><B><%= skill.name %></B></I></FONT></P>
+            <TD WIDTH=39% class="alantar_td">
+              <P ALIGN=CENTER class="fs_12 italic normal skill_qtip"><%= skill.name %></P>
               <p class="skill_explanation_qtip " style="display:none;">
                   <%= nice_and_shiny_description(skill)   %>
                 </p>
             </TD>
-            <TD WIDTH=7% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
+            <TD WIDTH=7% class="alantar_td">
               <P ALIGN=CENTER><%= check_box_tag skill.id, 1,  @character.skills.include?(skill), :disabled => ( session[:default_skills_ids].include?(skill.id) || @cannot_select_skills.include?(skill) ) %><BR>
               </P>
             </TD>
