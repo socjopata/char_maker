@@ -163,7 +163,7 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_life_points
-    AuxiliaryParameterSet::HIT_POINTS[character.profession.general_type] + character.statistics.endurance + calculate_auxiliary_bonus("Punkty Życia")
+    AuxiliaryParameterSet::HIT_POINTS[character.profession.general_type] + character.statistics.calculate_wt + calculate_auxiliary_bonus("Punkty Życia")
   end
 
   def calculate_running
