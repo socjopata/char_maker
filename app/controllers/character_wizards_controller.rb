@@ -81,7 +81,7 @@ class CharacterWizardsController < ApplicationController
       @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
       @basic_skills = Skill.basic
       @cannot_select_skills = Skill.filter_nonselectable(@basic_skills, @character, @strength, @dexterity, @endurance, @intelligence, @faith, @polish)
-
+      @free_skill_amount = session[:skill_free_assignment_base] +  Statistics::BONUS_OR_PENALTY_RANGES[@intelligence] - session[:skills_used].to_i
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
     end
