@@ -179,6 +179,6 @@ class Statistics < ActiveRecord::Base
     stats_modifiers.select { |sm| sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
   end
 
-
+  #TODO "specjalne" for displaying...
 end
 

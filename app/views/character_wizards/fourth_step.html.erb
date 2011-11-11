@@ -396,7 +396,7 @@
                 </p>
             </TD>
             <TD WIDTH=7% class="alantar_td">
-              <P ALIGN=CENTER><%= check_box_tag skill.id, 1,  @character.skills.include?(skill), :disabled => ( session[:default_skills_ids].include?(skill.id) || @cannot_select_skills.include?(skill) ) %><BR>
+              <P ALIGN=CENTER><%= check_box_tag skill.id, 1,  @character.skills.include?(skill), :disabled => ( session[:default_skills_ids].include?(skill.id) || @cannot_select_skills.include?(skill) ), :onchange => "toggle_this_skill(this);" %><BR>
               </P>
             </TD>
         <% end %>
@@ -404,8 +404,33 @@
   <% end %>
 </TABLE>
 
-
 <script type="text/javascript">
+    $('#spinner')
+        .hide()  // hide it initially
+        .ajaxStart(function() {
+            $(this).show();
+        })
+        .ajaxStop(function() {
+            $(this).hide();
+        })
+    ;
+
+//  an alternative
+//  http://plugins.jquery.com/project/loading
+
+    function toggle_this_skill(val) {
+         var skill_id = $(val).attr('id');
+         var field_value = val.checked;
+         var character_id = "<%= @character.id -%>";
+         var url =  '<%= character_wizards_toggle_skill_path -%>';
+         var data = {'skill_id' : skill_id, 'value' : field_value, 'character_id':character_id };
+         $.ajax({
+          url: url,
+          data: data,
+          dataType: 'script'
+         });
+  }
+
   jQuery(document).ready(function() {
 
     $('.skill_qtip').each(function() {
@@ -434,6 +459,9 @@
             }
         });
     });
+
+
  });
+
 </script>
 

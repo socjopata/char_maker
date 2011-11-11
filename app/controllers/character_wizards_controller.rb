@@ -95,4 +95,10 @@ class CharacterWizardsController < ApplicationController
     render :partial => "countries", :locals => {:countries => countries}
   end
 
+  def toggle_skill
+    character = current_user.characters.find(params[:character_id])
+    skill = Skill.find(params[:skill_id])
+# {"skill_id"=>"11", "value"=>"false", "character_id"=>"4",
+  end
+
 end
