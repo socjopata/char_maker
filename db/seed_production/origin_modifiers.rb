@@ -56,7 +56,7 @@ s_choice.stats_modifiers.create(:modifies => "WI", :value => 5, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 3, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "magic resistance", :value => 3, :group_name => "Odporność na Magię", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Magię", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "rogue", :condition => nil )
 
@@ -67,7 +67,7 @@ s_choice.stats_modifiers.create(:modifies => "WI", :value => 5, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 3, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "magic resistance", :value => 3, :group_name => "Odporność na Magię", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Magię", :default_for_origin => true)
 
 s_choice = country.stats_choices.create(:applies_to => "scholar", :condition => nil )
 
@@ -78,7 +78,7 @@ s_choice.stats_modifiers.create(:modifies => "WI", :value => 5, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 3, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne", :default_for_origin => true)
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Znajomość Regionu Pochodzenia", :default_for_origin => true)
-s_choice.stats_modifiers.create(:modifies => "magic resistance", :value => 3, :group_name => "Odporność na Magię", :default_for_origin => true)
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Magię", :default_for_origin => true)
 
 #Archipelag Południowy origin special case
 s_choice = country.stats_choices.create(:applies_to => "special", :condition => "true" )

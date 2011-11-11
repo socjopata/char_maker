@@ -175,10 +175,20 @@ class Statistics < ActiveRecord::Base
     AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr] + 0 + 10 #TODO get back here later, there will be some bonuses
   end
 
-  def calculate_auxiliary_bonus(name)
-    stats_modifiers.select { |sm| sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
+  def calculate_auxiliary_bonus(name, total="yep, I want total")
+    case total
+      when "yep, I want total"
+      stats_modifiers.select { |sm| sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
+      when "only_from_skills"
+      stats_modifiers.select { |sm| sm.grand_daddy.is_a?(Skill) && sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
+      when "only_special"
+      stats_modifiers.select { |sm| !sm.grand_daddy.is_a?(Skill) && sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
+    end
+
   end
 
   #TODO "specjalne" for displaying...
+
+
 end
 

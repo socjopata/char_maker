@@ -61,6 +61,9 @@ class StatsModifier < ActiveRecord::Base
     StatsChoice.default.stats_modifiers.first
   end
 
+  def grand_daddy
+     stats_choice.resource
+  end
 
 end
 
