@@ -2,6 +2,15 @@
 class AuxiliaryParameterSet < ActiveRecord::Base
   belongs_to :character
 
+  ENGLISH_NAMES = {
+      "Odporność na Ból" => "pain_resistance",
+      "Odporność na Strach" => "fear_resistance",
+      "Punkty Życia" => "life_points",
+      "Odporność na Magię" => "magic_resistance",
+      "Bieg" => "running",
+      "Spostrzegawczość" => "perception",
+      "Inicjatywa" => "initiative"
+  }
 
   INITIATIVE = {
    "rogue" => 15,

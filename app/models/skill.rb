@@ -20,5 +20,21 @@ class Skill < ActiveRecord::Base
     output
   end
 
+  def self.change(character, skill, action)
+    action ? skill.add_skill_for(character.id) : skill.substract_skill_from(character.id)
+    commander = Commander.new(character.reload, skill)
+    throw commander
+    commander.do!
+  end
+
+  def add_skill_for(character_id)
+    character_skills.create(:character_id => character_id) unless CharacterSkill.exists?(:character_id => character_id, :skill_id => id)
+  end
+
+  def substract_skill_from(character_id)
+    skill = character_skills.find_by_character_id_and_skill_id(character_id, id)
+    skill.present? && skill.destroy
+  end
+
 end
 

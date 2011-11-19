@@ -27,7 +27,7 @@ module CharacterWizardHelper
       "Postać otrzyma: #{choice_part.group_name}"
     elsif choice_part.modifies=="fencing"
       "Postać otrzyma: biegłości w broni."
-    elsif choice_part.modifies=="magic resistance"
+    elsif choice_part.modifies=="magic resistance"  #TODO fix it, I think I've moved this under auxiliary'
       "Postać otrzyma: #{choice_part.value} pkt odporności na magię"
     elsif choice_part.modifies=="auxiliary"
       "Paramter #{choice_part.group_name} zostanie zmodyfikowany o #{bonus_orientation(choice_part.value)}#{choice_part.value}"

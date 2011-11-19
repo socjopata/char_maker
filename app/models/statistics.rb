@@ -20,6 +20,15 @@ class Statistics < ActiveRecord::Base
        "O" => "Ogłada"
       }
 
+  ENGLISH_NAMES =
+      {"S" => "strength",
+       "ZR" => "dexterity",
+       "WT" => "endurance",
+       "INT" => "intelligence",
+       "WI" => "faith",
+       "O" => "polish"
+      }
+
   BONUS_OR_PENALTY_RANGES = RangedHash.new(
       1..3 => -3,
       4..6 => -2,

@@ -65,6 +65,8 @@ class StatsModifier < ActiveRecord::Base
      stats_choice.resource
   end
 
+
+
 end
 
 
