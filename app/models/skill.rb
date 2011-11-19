@@ -23,7 +23,6 @@ class Skill < ActiveRecord::Base
   def self.change(character, skill, action)
     action ? skill.add_skill_for(character.id) : skill.substract_skill_from(character.id)
     commander = Commander.new(character.reload, skill)
-    throw commander
     commander.do!
   end
 

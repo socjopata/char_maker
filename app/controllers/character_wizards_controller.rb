@@ -98,7 +98,8 @@ class CharacterWizardsController < ApplicationController
   def toggle_skill
     character = current_user.characters.find(params[:character_id])
     skill = Skill.find(params[:skill_id])
-    Skill.change(character, skill, params[:value]=="true")
+    @commands = Skill.change(character, skill, params[:value]=="true")
+    #TODO calculate skills left to pick and setup session
   end
 
 end
