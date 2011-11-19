@@ -191,7 +191,7 @@
       <P class="normal">Specjalne</P>
     </TD>
   <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_pain_resistance">
+    <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_pain_resistance">
       <P class="number"><%= @character.statistics.calculate_pain_resistance %><BR>
       </P>
     </TD>
@@ -229,7 +229,7 @@
       <P class="normal">Specjalne</P>
     </TD>
   <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_fear_resistance">
+    <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_fear_resistance">
       <P class="number"><%= @character.statistics.calculate_fear_resistance %><BR>
       </P>
     </TD>
@@ -267,7 +267,7 @@
       <P class="normal">Specjalne</P>
     </TD>
   <TR VALIGN=TOP>
-    <TD WIDTH=14%  COLSPAN=2 class="alantar_td" id="auxiliary_table_magic_resistance">
+    <TD WIDTH=14%  COLSPAN=2 class="alantar_td" id="auxiliary_table_total_magic_resistance">
       <P class="number"><%= @character.statistics.calculate_magic_resistance %><BR>
       </P>
     </TD>
@@ -351,7 +351,7 @@
       <P class="normal">Aktualne PŻ</P>
     </TD>
   <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_life_points">
+    <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_life_points">
       <P class="number"><%= @character.statistics.calculate_life_points %><BR>
       </P>
     </TD>
@@ -387,7 +387,7 @@
     </TD>
   </TR>
   <TR>
-    <TD COLSPAN=4 WIDTH=100% VALIGN=TOP class="grey alantar_td">
+    <TD COLSPAN=4 WIDTH=100% VALIGN=TOP class="grey alantar_td" id="free_skill_amount">
       <P class="fs_14 white_normal" id="skill_counter" >Pozostało wolnych umiejętności: <%= @free_skill_amount %></P>
     </TD>
   </TR>

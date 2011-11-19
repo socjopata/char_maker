@@ -4,7 +4,7 @@ class CharacterWizardsController < ApplicationController
   before_filter :user_signed_in?
 
   #TODO refactor fatty controllers, make them thin... thinner at least  :(
-  #TODO allow to user to change his mind while navigating in a wizard...
+
 
   def first_step
     if request.get?
@@ -96,10 +96,15 @@ class CharacterWizardsController < ApplicationController
   end
 
   def toggle_skill
+    #TODO check for free skill avaiability, serve colorbox when empty
+
     character = current_user.characters.find(params[:character_id])
     skill = Skill.find(params[:skill_id])
     @commands = Skill.change(character, skill, params[:value]=="true")
-    #TODO calculate skills left to pick and setup session
+    params[:value]=="true" ? (session[:skills_used] = session[:skills_used].to_i + 1) :(session[:skills_used] = session[:skills_used].to_i - 1)
+    @free_skill_amount = session[:skill_free_assignment_base] +  Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_int].to_i - session[:skills_used].to_i
+
+
     #TODO an idea: make separate commander for dynamically generated tables of skills that would compare two arrays of disabled skills (after and before) and would issue a command for the difference
   end
 

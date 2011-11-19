@@ -58,7 +58,6 @@ class Commander
     result.flatten
   end
 
-
   #TODO and skills table...
   #TODO filter instructions for actual change ?
 end
