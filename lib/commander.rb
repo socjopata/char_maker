@@ -13,7 +13,6 @@ class Commander
     instructions.uniq.flatten
   end
 
-  #TODO finish coding this
   def interpret(modifier)
     result = []
     if ["S", "ZR", "WT", "INT", "WI", "O"].include?(modifier.modifies)
@@ -61,7 +60,5 @@ class Commander
 
 
   #TODO and skills table...
-
+  #TODO filter instructions for actual change ?
 end
-
-#TODO instructions can double - scenario: skill modifies dexterity and initiative. There will be two instruction to modify total field.
