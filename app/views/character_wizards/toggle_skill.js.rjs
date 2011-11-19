@@ -1,4 +1,5 @@
 @commands.each do |command|
-page << %Q{jQuery("##{command.key} p").text(#{command.value});}
+page << "jQuery('##{command.key} p').text('#{command.value}');"
+params[:value]=="true" ? (page << "jQuery('##{command.key}').effect('highlight', {color: 'green'}, 1500);") : (page << "jQuery('##{command.key}').effect('highlight', {color: 'red'}, 1500);")
 end
-#TODO pluses
+
