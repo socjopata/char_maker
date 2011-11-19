@@ -10,15 +10,18 @@ class Commander
     @skill.stats_choices.collect(&:stats_modifiers).flatten.each do |modifier|
       instructions << interpret(modifier)
     end
-    instructions.flatten
+    instructions.uniq.flatten
   end
 
   #TODO finish coding this
   def interpret(modifier)
     result = []
-
     if ["S", "ZR", "WT", "INT", "WI", "O"].include?(modifier.modifies)
-      result << [Hash["main_table_value_#{Statistics::ENGLISH_NAMES[modifier.modifies]}", @character.statistics.send("calculate_#{modifier.modifies.downcase}".intern)], Hash["main_table_bonus_#{Statistics::ENGLISH_NAMES[modifier.modifies]}", @character.statistics.calculate_main_skill_bonus_for(modifier.modifies)]]
+      base_skill_value = @character.statistics.send("calculate_#{modifier.modifies.downcase}".intern)
+      result << [
+          Hash["main_table_value_#{Statistics::ENGLISH_NAMES[modifier.modifies]}", base_skill_value],
+          Hash["main_table_bonus_#{Statistics::ENGLISH_NAMES[modifier.modifies]}", Statistics::BONUS_OR_PENALTY_RANGES[base_skill_value]]
+      ]
       case modifier.modifies
         when "S"
           #nothing actually
@@ -26,17 +29,17 @@ class Commander
           #initiative and running and sprinting
           result << [
               Hash["auxiliary_table_total_initiative", @character.statistics.calculate_initiative],
-              Hash["auxiliary_table_main_p_bonus_for_initiative", Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_zr]],
+              Hash["auxiliary_table_main_p_bonus_for_initiative", Statistics::BONUS_OR_PENALTY_RANGES[base_skill_value]],
               Hash["auxiliary_table_total_running", @character.statistics.calculate_running],
-              Hash["auxiliary_table_main_p_bonus_for_running", Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_zr]],
+              Hash["auxiliary_table_main_p_bonus_for_running", Statistics::BONUS_OR_PENALTY_RANGES[base_skill_value]],
               Hash["auxiliary_table_total_sprinting", @character.statistics.calculate_sprinting]
           ]
         when "WT"
           result << [
               Hash["auxiliary_table_total_pain_resistance", @character.statistics.calculate_pain_resistance],
-              Hash["auxiliary_table_main_p_bonus_for_pain_resistance", Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wt]],
+              Hash["auxiliary_table_main_p_bonus_for_pain_resistance", Statistics::BONUS_OR_PENALTY_RANGES[base_skill_value]],
               Hash["auxiliary_table_total_life_points", @character.statistics.calculate_life_points],
-              Hash["auxiliary_table_main_p_bonus_for_life_points", @character.statistics.calculate_wt]
+              Hash["auxiliary_table_main_p_bonus_for_life_points", base_skill_value]
           ]
         when "INT"
           #nothing actually
@@ -45,7 +48,7 @@ class Commander
         when "WI"
           result << [
               Hash["auxiliary_table_total_fear_resistance", @character.statistics.calculate_fear_resistance],
-              Hash["auxiliary_table_main_p_bonus_for_fear_resistance", Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wi]]
+              Hash["auxiliary_table_main_p_bonus_for_fear_resistance", Statistics::BONUS_OR_PENALTY_RANGES[base_skill_value]]
           ]
       end
     elsif modifier.modifies=="auxiliary"

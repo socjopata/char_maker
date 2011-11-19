@@ -30,23 +30,23 @@ class Statistics < ActiveRecord::Base
       }
 
   BONUS_OR_PENALTY_RANGES = RangedHash.new(
-      1..3 => -3,
-      4..6 => -2,
-      7..9 => -1,
-      10..12 => 0,
-      13..15 => 1,
-      16..18 => 2,
-      19..21 => 3,
-      22..24 => 4,
-      25..27 => 5,
-      28..30 => 6,
-      31..33 => 7,
-      34..36 => 8,
-      37..39 => 9,
-      40..42 => 10,
-      43..45 => 11,
-      46..48 => 12,
-      49..51 => 13
+      1..3 => "-3",
+      4..6 => "-2",
+      7..9 => "-1",
+      10..12 => "+0",
+      13..15 => "+1",
+      16..18 => "+2",
+      19..21 => "+3",
+      22..24 => "+4",
+      25..27 => "+5",
+      28..30 => "+6",
+      31..33 => "+7",
+      34..36 => "+8",
+      37..39 => "+9",
+      40..42 => "+10",
+      43..45 => "+11",
+      46..48 => "+12",
+      49..51 => "+13"
   )
 
   # User has to choose a dice roll for ogłada or can exchange it with other as long as it is higher than default.
@@ -151,7 +151,7 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_initiative
-    AuxiliaryParameterSet::INITIATIVE[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr] + calculate_auxiliary_bonus("Inicjatywa")
+    AuxiliaryParameterSet::INITIATIVE[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i + calculate_auxiliary_bonus("Inicjatywa")
   end
 
   def calculate_perception
@@ -159,11 +159,11 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_pain_resistance
-    AuxiliaryParameterSet::PAIN_RESISTANCE[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_wt] + calculate_auxiliary_bonus("Odporność na Ból")
+    AuxiliaryParameterSet::PAIN_RESISTANCE[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_wt].to_i + calculate_auxiliary_bonus("Odporność na Ból")
   end
 
   def calculate_fear_resistance
-    AuxiliaryParameterSet::FEAR_RESISTANCE[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_wi] + calculate_auxiliary_bonus("Odporność na Strach")
+    AuxiliaryParameterSet::FEAR_RESISTANCE[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_wi].to_i + calculate_auxiliary_bonus("Odporność na Strach")
   end
 
   def calculate_magic_resistance
@@ -178,11 +178,11 @@ class Statistics < ActiveRecord::Base
   def calculate_running
     #TODO actual dexterity fix needed.
     #TODO check Commander for this method usage
-    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr] + 0 #TODO get back here later, there will be some bonuses
+    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i + 0 #TODO get back here later, there will be some bonuses
   end
 
   def calculate_sprinting
-    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr] + 0 + 10 #TODO get back here later, there will be some bonuses
+    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i + 0 + 10 #TODO get back here later, there will be some bonuses
   end
 
   def calculate_auxiliary_bonus(name, total="yep, I want total")

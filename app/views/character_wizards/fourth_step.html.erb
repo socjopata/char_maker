@@ -14,12 +14,12 @@
     <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
       <P class="fs_14 normal">SIŁA</P>
     </TD>
-    <TD COLSPAN=3 WIDTH=20% class="alantar_td">
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_strength">
       <P class="fs_14 normal"><%= @strength %><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=12% class="alantar_td">
-      <P class="fs_14 normal"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@strength])}#{Statistics::BONUS_OR_PENALTY_RANGES[@strength]}" %><BR>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_strength">
+      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@strength]}" %><BR>
       </P>
     </TD>
   </TR>
@@ -27,12 +27,12 @@
     <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
       <P class="fs_14 normal">ZRĘCZNOŚĆ</P>
     </TD>
-    <TD COLSPAN=3 WIDTH=20% class="alantar_td">
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_dexterity">
       <P class="fs_14 normal"><%= @dexterity %><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=12% class="alantar_td">
-      <P class="fs_14 normal"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@dexterity])}#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %><BR>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_dexterity">
+      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %><BR>
       </P>
     </TD>
   </TR>
@@ -40,12 +40,12 @@
     <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
       <P class="fs_14 normal">WYTRZYMAŁOŚĆ</P>
     </TD>
-    <TD COLSPAN=3 WIDTH=20% class="alantar_td">
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_endurance">
       <P class="fs_14 normal"><%= @endurance %><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=12% class="alantar_td">
-      <P class="fs_14 normal"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@endurance])}#{Statistics::BONUS_OR_PENALTY_RANGES[@endurance]}" %><BR>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_endurance">
+      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@endurance]}" %><BR>
       </P>
 
   </TR>
@@ -53,12 +53,12 @@
     <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
       <P class="fs_14 normal">INTELIGENCJA</P>
     </TD>
-    <TD COLSPAN=3 WIDTH=20% class="alantar_td">
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_intelligence">
       <P class="fs_14 normal"><%= @intelligence %><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=12% class="alantar_td">
-      <P class="fs_14 normal"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@intelligence])}#{Statistics::BONUS_OR_PENALTY_RANGES[@intelligence]}" %><BR>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_intelligence">
+      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@intelligence]}" %><BR>
       </P>
     </TD>
   </TR>
@@ -66,25 +66,25 @@
     <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
       <P class="fs_14 normal">WIARA</P>
     </TD>
-    <TD COLSPAN=3 WIDTH=20% class="alantar_td">
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_faith">
       <P class="fs_14 normal"><%= @faith  %><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=12% class="alantar_td">
-      <P class="fs_14 normal"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@faith])}#{Statistics::BONUS_OR_PENALTY_RANGES[@faith]}" %><BR>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_faith">
+      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@faith]}" %><BR>
       </P>
     </TD>
   </TR>
   <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td" >
       <P class="fs_14 normal">OGŁADA</P>
     </TD>
-    <TD COLSPAN=3 WIDTH=20% class="alantar_td">
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_polish">
       <P class="fs_14 normal"><%= @polish %><BR>
       </P>
     </TD>
-    <TD COLSPAN=2 WIDTH=12% class="alantar_td">
-      <P class="fs_14 normal"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@polish])}#{Statistics::BONUS_OR_PENALTY_RANGES[@polish]}" %><BR>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_polish">
+      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@polish]}" %><BR>
       </P>
     </TD>
   </TR>
@@ -122,7 +122,7 @@
       <P class="number"><%= AuxiliaryParameterSet::INITIATIVE[@character.profession.general_type] %></P>
     </TD>
     <TD WIDTH=10% class="alantar_td">
-      <P class="number"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@dexterity])}#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %><BR>
+      <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %><BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=9% class="alantar_td">
@@ -199,7 +199,7 @@
       <P class="number"><%= AuxiliaryParameterSet::PAIN_RESISTANCE[@character.profession.general_type] %></P>
     </TD>
     <TD WIDTH=10% class="alantar_td">
-      <P class="number"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@endurance])}#{Statistics::BONUS_OR_PENALTY_RANGES[@endurance]}" %><BR>
+      <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@endurance]}" %><BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=9% class="alantar_td">
@@ -237,7 +237,7 @@
       <P class="number"><%= AuxiliaryParameterSet::FEAR_RESISTANCE[@character.profession.general_type] %></P>
     </TD>
     <TD WIDTH=10% class="alantar_td">
-      <P class="number"><%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@faith])}#{Statistics::BONUS_OR_PENALTY_RANGES[@faith]}" %><BR>
+      <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@faith]}" %><BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=9% class="alantar_td">
@@ -320,7 +320,7 @@
     <TD WIDTH=10% class="alantar_td">
       <P class="number">
         <!--#TODO will it ever "break"?-->
-        <%= "#{positive_bonus_orientation(Statistics::BONUS_OR_PENALTY_RANGES[@dexterity])}#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %>
+        <%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %>
         <BR>
       </P>
     </TD>

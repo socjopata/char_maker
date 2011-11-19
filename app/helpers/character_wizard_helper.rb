@@ -67,11 +67,7 @@ module CharacterWizardHelper
   end
 
   def bonus_orientation(value)
-    value >= 0 ? "+" : "-"
-  end
-
-  def positive_bonus_orientation(value)
-    "+" if value >= 0
+    value >= 0 ? "+" : "-"     #TODO Artur said, that there won't be such case when we nerf char while adding something. So... refactor and simplify?'
   end
 
    #TODO add humanized requirements !

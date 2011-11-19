@@ -1,0 +1,4 @@
+@commands.each do |command|
+page << %Q{jQuery("##{command.key} p").text(#{command.value});}
+end
+#TODO pluses
