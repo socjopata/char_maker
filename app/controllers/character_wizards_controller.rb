@@ -96,14 +96,17 @@ class CharacterWizardsController < ApplicationController
   end
 
   def toggle_skill
-    #TODO check for free skill avaiability, serve colorbox when empty
-
-    character = current_user.characters.find(params[:character_id])
-    skill = Skill.find(params[:skill_id])
-    @commands = Skill.change(character, skill, params[:value]=="true")
-    params[:value]=="true" ? (session[:skills_used] = session[:skills_used].to_i + 1) :(session[:skills_used] = session[:skills_used].to_i - 1)
-    @free_skill_amount = session[:skill_free_assignment_base] +  Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_int].to_i - session[:skills_used].to_i
-
+    params[:value]=="true" ? (next_number = session[:skills_used].to_i + 1) :(next_number = session[:skills_used].to_i - 1)
+    if next_number < 1
+      @not_enough_free_skill_points = true
+      render :layout => "colorbox"
+    else
+      session[:skills_used] = next_number
+      character = current_user.characters.find(params[:character_id])
+      skill = Skill.find(params[:skill_id])
+      @commands = Skill.change(character, skill, params[:value]=="true")
+      @free_skill_amount = session[:skill_free_assignment_base] +  Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_int].to_i - session[:skills_used].to_i
+    end
 
     #TODO an idea: make separate commander for dynamically generated tables of skills that would compare two arrays of disabled skills (after and before) and would issue a command for the difference
   end
