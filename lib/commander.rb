@@ -17,7 +17,15 @@ class Commander
   end
 
   def translate(before, after)
-     []
+    skill_instructions = []
+    new_skills_available_to_pick = before - after
+    skills_to_disable =   after - before
+    if new_skills_available_to_pick.present?
+     skill_instructions << new_skills_available_to_pick.collect {|skill|  Hash[skill["id"], "enable"]}
+    elsif skills_to_disable.present?
+     skill_instructions << skills_to_disable.collect {|skill|  Hash[skill["id"], "disable"]}
+    end
+   skill_instructions.flatten
   end
 
   #for modifiers

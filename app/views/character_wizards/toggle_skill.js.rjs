@@ -7,10 +7,12 @@ else
   end
 
   @skill_commands.each do |_command|
-
+    _command.value=="enable" ? (page << "jQuery('input##{_command.key}').removeAttr('disabled');") : (page << "jQuery('input##{_command.key}').attr('disabled', 'true');")
+    _command.value=="enable" ? (page << "jQuery('input##{_command.key}').parent().effect('highlight', {color: 'green'}, 1500);") : (page << "jQuery('input##{_command.key}').parent().effect('highlight', {color: 'green'}, 1500);")
   end
-
   page << "jQuery('#skill_counter').text('Pozostało wolnych umiejętności: #{@free_skill_amount}');"
   params[:value]=="true" ? (page << "jQuery('#skill_counter').effect('highlight', {color: 'red'}, 1500);") : (page << "jQuery('#skill_counter').effect('highlight', {color: 'green'}, 1500);")
 end
+
+
 
