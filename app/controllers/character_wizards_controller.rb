@@ -54,10 +54,7 @@ class CharacterWizardsController < ApplicationController
   def third_step
     if request.get?
       @character = current_user.characters.find(params[:char_id])
-
       @character.skills.clear
-
-
       roll_set = @character.statistics.initial_dice_roll_set
       @lead_parameter = roll_set[0..4].max
       @stats = roll_set.tap { |a| a.delete_at(roll_set[0..4].rindex(roll_set[0..4].max)) }
@@ -78,7 +75,7 @@ class CharacterWizardsController < ApplicationController
   def fourth_step
     if request.get?
       @character = current_user.characters.find(params[:char_id])
-      @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
+      @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats #TODO group in hash or array.
       @basic_skills = Skill.basic
       @cannot_select_skills = Skill.filter_nonselectable(@basic_skills, @character, @strength, @dexterity, @endurance, @intelligence, @faith, @polish)
       @free_skill_amount = session[:skill_free_assignment_base] +  Statistics::BONUS_OR_PENALTY_RANGES[@intelligence].to_i - session[:skills_used].to_i

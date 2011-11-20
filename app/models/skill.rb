@@ -21,8 +21,9 @@ class Skill < ActiveRecord::Base
   end
 
   def self.change(character, skill, action)
+    non_selectable_skills_before_change = Skill.filter_nonselectable(Skill.basic, character, character.statistics.calculate_s, character.statistics.calculate_zr, character.statistics.calculate_wt, character.statistics.calculate_int, character.statistics.calculate_wi, character.statistics.calculate_o)  #TODO instead Skill.basic, use all skills for a char.
     action ? skill.add_skill_for(character.id) : skill.substract_skill_from(character.id)
-    commander = Commander.new(character.reload, skill)
+    commander = Commander.new(character.reload, skill, non_selectable_skills_before_change)
     commander.do!
   end
 

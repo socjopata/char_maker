@@ -1,8 +1,9 @@
 class Commander
 
-  def initialize(character, skill)
+  def initialize(character, skill, skills=[])
     @skill = skill
     @character = character
+    @nonselectables = skills
   end
 
   def do!
@@ -10,9 +11,11 @@ class Commander
     @skill.stats_choices.collect(&:stats_modifiers).flatten.each do |modifier|
       instructions << interpret(modifier)
     end
+    #TODO interpret nonselectables here    skill_instructions = []
     instructions.uniq.flatten
   end
 
+  #for modifiers
   def interpret(modifier)
     result = []
     if ["S", "ZR", "WT", "INT", "WI", "O"].include?(modifier.modifies)

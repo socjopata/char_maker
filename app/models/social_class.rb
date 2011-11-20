@@ -19,7 +19,7 @@ class SocialClass < ActiveRecord::Base
   )
 
     DICE_RESULT___BARBARIAN = RangedHash.new(
-    1..2 => 'Niewolnik',
+    1..2 => 'Niewolnik barbarzyński',
     3..6 => 'Wyrzutek',
     7..18 => 'Wojownik',
     19..24 => 'Znany wojownik',
@@ -35,9 +35,8 @@ class SocialClass < ActiveRecord::Base
     ['Mieszczanin Ubogi', 'Mieszczanin', 'Mieszczanin Bogaty', 'Wojownik', 'Znany wojownik', 'Szlachcic Zaściankowy', 'Szlachcic', 'Wielmoża', 'Członek rady plemienia', 'Potomek Wodza'].include?(name)
   end
 
-  #TODO what about barbarian slave? in this implementation, he can have academic knowledge...
   def non_barbarian
-     ['Niewolnik', 'Chłop Ubogi', 'Chłop Bogaty',
+     ['Niewolnik barbarzyński', 'Chłop Ubogi', 'Chłop Bogaty',
      'Mieszczanin Ubogi',  'Mieszczanin',   'Mieszczanin Bogaty',
      'Szlachcic Zaściankowy',    'Szlachcic',     'Wielmoża'].include?(name)
   end

@@ -8,7 +8,6 @@ class CharacterSkill < ActiveRecord::Base
   after_create :push_modifiers
   after_destroy :suck_modifiers_back
 
-  #TODO ensure that during translations we are not pushing modifiers if they are already there
 
   def push_modifiers
     skill.stats_choices.collect(&:stats_modifiers).flatten.each do |modifier|
