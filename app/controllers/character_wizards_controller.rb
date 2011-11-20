@@ -101,7 +101,7 @@ class CharacterWizardsController < ApplicationController
       session[:skills_used] = next_number
       character = current_user.characters.find(params[:character_id])
       skill = Skill.find(params[:skill_id])
-      @commands = Skill.change(character, skill, params[:value]=="true")
+      @commands, @skill_commands = Skill.change(character, skill, params[:value]=="true")
       @free_skill_amount = session[:skill_free_assignment_base] +  Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_int].to_i - session[:skills_used].to_i
     end
 

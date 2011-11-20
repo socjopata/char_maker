@@ -11,8 +11,13 @@ class Commander
     @skill.stats_choices.collect(&:stats_modifiers).flatten.each do |modifier|
       instructions << interpret(modifier)
     end
-    #TODO interpret nonselectables here    skill_instructions = []
-    instructions.uniq.flatten
+    skill_instructions = []
+    skill_instructions = translate(@nonselectables, Skill.filter_nonselectable(Skill.basic, @character, @character.statistics.calculate_s, @character.statistics.calculate_zr, @character.statistics.calculate_wt, @character.statistics.calculate_int, @character.statistics.calculate_wi, @character.statistics.calculate_o)) if @nonselectables.present?
+    [instructions.uniq.flatten, skill_instructions]
+  end
+
+  def translate(before, after)
+     []
   end
 
   #for modifiers

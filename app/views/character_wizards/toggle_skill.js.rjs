@@ -6,6 +6,10 @@ else
     params[:value]=="true" ? (page << "jQuery('##{command.key}').effect('highlight', {color: 'green'}, 1500);") : (page << "jQuery('##{command.key}').effect('highlight', {color: 'red'}, 1500);")
   end
 
+  @skill_commands.each do |_command|
+
+  end
+
   page << "jQuery('#skill_counter').text('Pozostało wolnych umiejętności: #{@free_skill_amount}');"
   params[:value]=="true" ? (page << "jQuery('#skill_counter').effect('highlight', {color: 'red'}, 1500);") : (page << "jQuery('#skill_counter').effect('highlight', {color: 'green'}, 1500);")
 end
