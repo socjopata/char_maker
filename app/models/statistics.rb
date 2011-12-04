@@ -49,6 +49,28 @@ class Statistics < ActiveRecord::Base
       49..51 => "+13"
   )
 
+  #TODO hmm...
+
+  BONUS_OR_PENALTY_RANGES_FOR_DISPLAY = {
+      "1-3" => "-3",
+      "4-6" => "-2",
+      "7-9" => "-1",
+      "10-12" => "+0",
+      "13-15" => "+1",
+      "16-18" => "+2",
+      "19-21" => "+3",
+      "22-24" => "+4",
+      "25-27" => "+5",
+      "28-30" => "+6",
+      "31-33" => "+7",
+      "34-36" => "+8",
+      "37-39" => "+9",
+      "40-42" => "+10",
+      "43-45" => "+11",
+      "46-48" => "+12",
+      "49-51" => "+13"
+  }
+
   # User has to choose a dice roll for ogłada or can exchange it with other as long as it is higher than default.
 
   def draw_stats
@@ -147,7 +169,7 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_main_skill_bonus_for(name)
-     stats_modifiers.select { |sm| sm.modifies==name}.collect(&:value).sum
+    stats_modifiers.select { |sm| sm.modifies==name }.collect(&:value).sum
   end
 
   def calculate_initiative
@@ -188,11 +210,11 @@ class Statistics < ActiveRecord::Base
   def calculate_auxiliary_bonus(name, total="yep, I want total")
     case total
       when "yep, I want total"
-      stats_modifiers.select { |sm| sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
+        stats_modifiers.select { |sm| sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
       when "only_from_skills"
-      stats_modifiers.select { |sm| sm.grand_daddy.is_a?(Skill) && sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
+        stats_modifiers.select { |sm| sm.grand_daddy.is_a?(Skill) && sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
       when "only_special"
-      stats_modifiers.select { |sm| !sm.grand_daddy.is_a?(Skill) && sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
+        stats_modifiers.select { |sm| !sm.grand_daddy.is_a?(Skill) && sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
     end
 
   end

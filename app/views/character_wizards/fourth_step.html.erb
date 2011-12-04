@@ -67,7 +67,7 @@
       <P class="fs_14 normal">WIARA</P>
     </TD>
     <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_faith">
-      <P class="fs_14 normal"><%= @faith  %><BR>
+      <P class="fs_14 normal"><%= @faith %><BR>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_faith">
@@ -76,7 +76,7 @@
     </TD>
   </TR>
   <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td" >
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
       <P class="fs_14 normal">OGŁADA</P>
     </TD>
     <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_polish">
@@ -90,287 +90,319 @@
   </TR>
   <TR VALIGN=TOP>
   </TR>
+    <TR VALIGN=TOP>
+  <%= link_to "Pokaż tabelę progów", "javascript:void(0)", :class => "show_bonus_ranges" %>
+    </TR>
 </TABLE>
 
+
+<div id="bonuses" style="display:none;" >
+  <TABLE WIDTH=14% CELLPADDING=4 CELLSPACING=0>
+    <TR>
+      <TD  WIDTH=50% VALIGN=TOP class="black alantar_td">
+        <P class="white_normal">Parametr</P>
+      </TD>
+      <TD  WIDTH=50% VALIGN=TOP class="black alantar_td">
+        <P class="white_normal">Premia/Kara</P>
+      </TD>
+    </TR>
+    <% Statistics::BONUS_OR_PENALTY_RANGES_FOR_DISPLAY.each_pair do |key, value| %>
+        <TR VALIGN=TOP>
+              <TD WIDTH=50% class="alantar_td">
+                <P ALIGN=CENTER class="fs_12 italic normal"><%= key %></P>
+              </TD>
+              <TD WIDTH=50% class="alantar_td">
+                <P ALIGN=CENTER class="fs_12 italic normal">
+                  <%= value %>
+                </P>
+              </TD>
+          <% end %>
+        </TR>
+  </TABLE>
+</div>
 
 <div class="itermediate_div fltl"></div>
 
 
 <TABLE WIDTH=30% CELLPADDING=4 CELLSPACING=0 class="fltl">
-  <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
-      <P class="white_normal">Inicjatywa</P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
-      <P class="normal">Podstawa</P>
-    </TD>
-    <TD WIDTH=10% class="light_grey alantar_td">
-      <P class="normal">Premia ze ZR</P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
-      <P class="normal">Umiejętności</P>
-    </TD>
-    <TD WIDTH=9% class="light_grey alantar_td">
-      <P class="normal">Specjalne</P>
-    </TD>
-  <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_initiative">
-      <P class="number"><%= @character.statistics.calculate_initiative %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-      <P class="number"><%= AuxiliaryParameterSet::INITIATIVE[@character.profession.general_type] %></P>
-    </TD>
-    <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_initiative">
-      <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_initiative">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_from_skills") %><BR>
-      </P>
-    </TD>
-    <TD WIDTH=9% class="alantar_td">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_special") %><BR>
-      </P>
-    </TD>
-  </TR>
-
-  <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
-      <P class="white_normal">Spostrzegawczość</P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
-      <P class="normal">Podstawa</P>
-    </TD>
-    <TD WIDTH=10% class="light_grey alantar_td">
-      <P class="normal">+1pkt/poziom</P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
-      <P class="normal">Umiejętności</P>
-    </TD>
-    <TD WIDTH=9% class="light_grey alantar_td">
-      <P class="normal">Specjalne</P>
-    </TD>
-  <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_perception">
-      <P class="number"><%= @character.statistics.calculate_perception %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-      <P class="number"><%= AuxiliaryParameterSet::PERCEPTION[@character.profession.general_type] %></P>
-    </TD>
-    <TD WIDTH=10% class="alantar_td">
-      <P class="number">+<%= @character.current_level %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_perception">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_from_skills") %><BR>
-      </P>
-    </TD>
-    <TD WIDTH=9% class="alantar_td">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_special") %><BR>
-      </P>
-    </TD>
-  </TR>
-
-
-  <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
-      <P class="white_normal">Odp. na Ból</P>
-    </TD>
-    <TD COLSPAN=2 class="light_grey alantar_td">
-      <P class="normal">Podstawa</P>
-    </TD>
-    <TD WIDTH=10% class="light_grey alantar_td">
-      <P class="normal">Premia ze WT</P>
-    </TD>
-    <TD COLSPAN=2 class="light_grey alantar_td">
-      <P class="normal">Umiejętności</P>
-    </TD>
-    <TD WIDTH=9% class="light_grey alantar_td">
-      <P class="normal">Specjalne</P>
-    </TD>
-  <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_pain_resistance">
-      <P class="number"><%= @character.statistics.calculate_pain_resistance %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-      <P class="number"><%= AuxiliaryParameterSet::PAIN_RESISTANCE[@character.profession.general_type] %></P>
-    </TD>
-    <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_pain_resistance">
-      <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@endurance]}" %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_pain_resistance">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_from_skills") %><BR>
-      </P>
-    </TD>
-    <TD WIDTH=9% class="alantar_td">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_special") %><BR>
-      </P>
-    </TD>
-  </TR>
-
-  <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
-      <P class="white_normal">Odp. na Strach</P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
-      <P class="normal">Podstawa</P>
-    </TD>
-    <TD WIDTH=10% class="light_grey alantar_td">
-      <P class="normal">Premia ze WI</P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
-      <P class="normal">Umiejętności</P>
-    </TD>
-    <TD WIDTH=9% class="light_grey alantar_td">
-      <P class="normal">Specjalne</P>
-    </TD>
-  <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_fear_resistance">
-      <P class="number"><%= @character.statistics.calculate_fear_resistance %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-      <P class="number"><%= AuxiliaryParameterSet::FEAR_RESISTANCE[@character.profession.general_type] %></P>
-    </TD>
-    <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_fear_resistance">
-      <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@faith]}" %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_fear_resistance">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_from_skills") %><BR>
-      </P>
-    </TD>
-    <TD WIDTH=9% class="alantar_td">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_special") %><BR>
-      </P>
-    </TD>
-  </TR>
-
-  <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
-      <P class="white_normal">Odp. na Magię</P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
-      <P class="normal">Podstawa</P>
-    </TD>
-    <TD WIDTH=10% class="light_grey alantar_td">
-      <P class="normal">Tymczasowe</P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
-      <P class="normal">Umiejętności</P>
-    </TD>
-    <TD WIDTH=9% class="light_grey alantar_td">
-      <P class="normal">Specjalne</P>
-    </TD>
-  <TR VALIGN=TOP>
-    <TD WIDTH=14%  COLSPAN=2 class="alantar_td" id="auxiliary_table_total_magic_resistance">
-      <P class="number"><%= @character.statistics.calculate_magic_resistance %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-      <P class="number"><%= AuxiliaryParameterSet::MAGIC_RESISTANCE[@character.profession.general_type] %></P>
-    </TD>
-    <TD WIDTH=10% class="alantar_td">
-      <P class="number">---<BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_magic_resistance">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_from_skills") %><BR>
-      </P>
-    </TD>
-    <TD WIDTH=9% class="alantar_td">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_special") %><BR>
-      </P>
-    </TD>
-  </TR>
-
-  <TR VALIGN=TOP>
-    <TD WIDTH=7% class="black alantar_td">
-      <P class="white_normal">Sprint</P>
-    </TD>
-    <TD WIDTH=7% class="black alantar_td">
-      <P class="white_normal">Bieg</P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
-      <P class="normal">Podstawa</P>
-    </TD>
-    <TD WIDTH=10% class="light_grey alantar_td">
-      <P class="normal">Premia ze ZR akt</P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
-      <P class="normal">Umiejętności</P>
-    </TD>
-    <TD WIDTH=9% class="light_grey alantar_td">
-      <P class="normal">Specjalne</P>
-    </TD>
-  <TR VALIGN=TOP>
-    <TD WIDTH=7% class="alantar_td" id="auxiliary_table_total_sprinting">
-      <P class="number"><%= @character.statistics.calculate_sprinting %></P>
-    </TD>
-     <TD WIDTH=7% class="alantar_td" id="auxiliary_table_total_running">
-       <P class="number"><%= @character.statistics.calculate_running %></P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-      <P class="number"><%= AuxiliaryParameterSet::RUNNING[@character.profession.general_type] %></P>
-    </TD>
-    <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_running">
-      <P class="number">
-        <!--#TODO will it ever "break"?-->
-        <%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %>
-        <BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_running">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Bieg", "only_from_skills") %><BR>
-      </P>
-    </TD>
-    <TD WIDTH=9% class="alantar_td">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Bieg", "only_special") %><BR>
-      </P>
-    </TD>
-  </TR>
+<TR VALIGN=TOP>
+  <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
+    <P class="white_normal">Inicjatywa</P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
+    <P class="normal">Podstawa</P>
+  </TD>
+  <TD WIDTH=10% class="light_grey alantar_td">
+    <P class="normal">Premia ze ZR</P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
+    <P class="normal">Umiejętności</P>
+  </TD>
+  <TD WIDTH=9% class="light_grey alantar_td">
+    <P class="normal">Specjalne</P>
+  </TD>
+<TR VALIGN=TOP>
+  <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_initiative">
+    <P class="number"><%= @character.statistics.calculate_initiative %><BR>
+    </P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
+    <P class="number"><%= AuxiliaryParameterSet::INITIATIVE[@character.profession.general_type] %></P>
+  </TD>
+  <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_initiative">
+    <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %><BR>
+    </P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_initiative">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_from_skills") %><BR>
+    </P>
+  </TD>
+  <TD WIDTH=9% class="alantar_td">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_special") %><BR>
+    </P>
+  </TD>
+</TR>
 
 <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
-      <P class="white_normal">Punkty Życia</P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
-      <P class="normal">Podstawa</P>
-    </TD>
-    <TD WIDTH=10% class="light_grey alantar_td">
-      <P class="normal">Wytrzymałość</P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
-      <P class="normal">Umiejętności</P>
-    </TD>
-    <TD WIDTH=9% class="light_grey alantar_td">
-      <P class="normal">Aktualne PŻ</P>
-    </TD>
-  <TR VALIGN=TOP>
-    <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_life_points">
-      <P class="number"><%= @character.statistics.calculate_life_points %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-      <P class="number"><%= AuxiliaryParameterSet::HIT_POINTS[@character.profession.general_type] %></P>
-    </TD>
-    <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_life_points">
-      <P class="number">+<%= @character.statistics.calculate_wt %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_life_points">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_from_skills") %><BR>
-      </P>
-    </TD>
-    <TD WIDTH=9% class="alantar_td">
-      <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_special") %><BR>
-      </P>
-    </TD>
-  </TR>
+  <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
+    <P class="white_normal">Spostrzegawczość</P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
+    <P class="normal">Podstawa</P>
+  </TD>
+  <TD WIDTH=10% class="light_grey alantar_td">
+    <P class="normal">+1pkt/poziom</P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
+    <P class="normal">Umiejętności</P>
+  </TD>
+  <TD WIDTH=9% class="light_grey alantar_td">
+    <P class="normal">Specjalne</P>
+  </TD>
+<TR VALIGN=TOP>
+  <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_perception">
+    <P class="number"><%= @character.statistics.calculate_perception %><BR>
+    </P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
+    <P class="number"><%= AuxiliaryParameterSet::PERCEPTION[@character.profession.general_type] %></P>
+  </TD>
+  <TD WIDTH=10% class="alantar_td">
+    <P class="number">+<%= @character.current_level %><BR>
+    </P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_perception">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_from_skills") %>
+      <BR>
+    </P>
+  </TD>
+  <TD WIDTH=9% class="alantar_td">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_special") %><BR>
+    </P>
+  </TD>
+</TR>
+
+
+<TR VALIGN=TOP>
+  <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
+    <P class="white_normal">Odp. na Ból</P>
+  </TD>
+  <TD COLSPAN=2 class="light_grey alantar_td">
+    <P class="normal">Podstawa</P>
+  </TD>
+  <TD WIDTH=10% class="light_grey alantar_td">
+    <P class="normal">Premia ze WT</P>
+  </TD>
+  <TD COLSPAN=2 class="light_grey alantar_td">
+    <P class="normal">Umiejętności</P>
+  </TD>
+  <TD WIDTH=9% class="light_grey alantar_td">
+    <P class="normal">Specjalne</P>
+  </TD>
+<TR VALIGN=TOP>
+  <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_pain_resistance">
+    <P class="number"><%= @character.statistics.calculate_pain_resistance %><BR>
+    </P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
+    <P class="number"><%= AuxiliaryParameterSet::PAIN_RESISTANCE[@character.profession.general_type] %></P>
+  </TD>
+  <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_pain_resistance">
+    <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@endurance]}" %><BR>
+    </P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_pain_resistance">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_from_skills") %>
+      <BR>
+    </P>
+  </TD>
+  <TD WIDTH=9% class="alantar_td">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_special") %><BR>
+    </P>
+  </TD>
+</TR>
+
+<TR VALIGN=TOP>
+  <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
+    <P class="white_normal">Odp. na Strach</P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
+    <P class="normal">Podstawa</P>
+  </TD>
+  <TD WIDTH=10% class="light_grey alantar_td">
+    <P class="normal">Premia ze WI</P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
+    <P class="normal">Umiejętności</P>
+  </TD>
+  <TD WIDTH=9% class="light_grey alantar_td">
+    <P class="normal">Specjalne</P>
+  </TD>
+<TR VALIGN=TOP>
+  <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_fear_resistance">
+    <P class="number"><%= @character.statistics.calculate_fear_resistance %><BR>
+    </P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
+    <P class="number"><%= AuxiliaryParameterSet::FEAR_RESISTANCE[@character.profession.general_type] %></P>
+  </TD>
+  <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_fear_resistance">
+    <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@faith]}" %><BR>
+    </P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_fear_resistance">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_from_skills") %>
+      <BR>
+    </P>
+  </TD>
+  <TD WIDTH=9% class="alantar_td">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_special") %><BR>
+    </P>
+  </TD>
+</TR>
+
+<TR VALIGN=TOP>
+  <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
+    <P class="white_normal">Odp. na Magię</P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
+    <P class="normal">Podstawa</P>
+  </TD>
+  <TD WIDTH=10% class="light_grey alantar_td">
+    <P class="normal">Tymczasowe</P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
+    <P class="normal">Umiejętności</P>
+  </TD>
+  <TD WIDTH=9% class="light_grey alantar_td">
+    <P class="normal">Specjalne</P>
+  </TD>
+<TR VALIGN=TOP>
+  <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_magic_resistance">
+    <P class="number"><%= @character.statistics.calculate_magic_resistance %><BR>
+    </P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
+    <P class="number"><%= AuxiliaryParameterSet::MAGIC_RESISTANCE[@character.profession.general_type] %></P>
+  </TD>
+  <TD WIDTH=10% class="alantar_td">
+    <P class="number">---<BR>
+    </P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_magic_resistance">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_from_skills") %>
+      <BR>
+    </P>
+  </TD>
+  <TD WIDTH=9% class="alantar_td">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_special") %><BR>
+    </P>
+  </TD>
+</TR>
+
+<TR VALIGN=TOP>
+  <TD WIDTH=7% class="black alantar_td">
+    <P class="white_normal">Sprint</P>
+  </TD>
+  <TD WIDTH=7% class="black alantar_td">
+    <P class="white_normal">Bieg</P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
+    <P class="normal">Podstawa</P>
+  </TD>
+  <TD WIDTH=10% class="light_grey alantar_td">
+    <P class="normal">Premia ze ZR akt</P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
+    <P class="normal">Umiejętności</P>
+  </TD>
+  <TD WIDTH=9% class="light_grey alantar_td">
+    <P class="normal">Specjalne</P>
+  </TD>
+<TR VALIGN=TOP>
+  <TD WIDTH=7% class="alantar_td" id="auxiliary_table_total_sprinting">
+    <P class="number"><%= @character.statistics.calculate_sprinting %></P>
+  </TD>
+  <TD WIDTH=7% class="alantar_td" id="auxiliary_table_total_running">
+    <P class="number"><%= @character.statistics.calculate_running %></P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
+    <P class="number"><%= AuxiliaryParameterSet::RUNNING[@character.profession.general_type] %></P>
+  </TD>
+  <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_running">
+    <P class="number">
+      <!--#TODO will it ever "break"?-->
+      <%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %>
+      <BR>
+    </P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_running">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Bieg", "only_from_skills") %><BR>
+    </P>
+  </TD>
+  <TD WIDTH=9% class="alantar_td">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Bieg", "only_special") %><BR>
+    </P>
+  </TD>
+</TR>
+
+<TR VALIGN=TOP>
+  <TD WIDTH=14% COLSPAN=2 class="black alantar_td">
+    <P class="white_normal">Punkty Życia</P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=8% class="light_grey alantar_td">
+    <P class="normal">Podstawa</P>
+  </TD>
+  <TD WIDTH=10% class="light_grey alantar_td">
+    <P class="normal">Wytrzymałość</P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=9% class="light_grey alantar_td">
+    <P class="normal">Umiejętności</P>
+  </TD>
+  <TD WIDTH=9% class="light_grey alantar_td">
+    <P class="normal">Aktualne PŻ</P>
+  </TD>
+<TR VALIGN=TOP>
+  <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_life_points">
+    <P class="number"><%= @character.statistics.calculate_life_points %><BR>
+    </P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
+    <P class="number"><%= AuxiliaryParameterSet::HIT_POINTS[@character.profession.general_type] %></P>
+  </TD>
+  <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_life_points">
+    <P class="number">+<%= @character.statistics.calculate_wt %><BR>
+    </P>
+  </TD>
+  <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_life_points">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_from_skills") %><BR>
+    </P>
+  </TD>
+  <TD WIDTH=9% class="alantar_td">
+    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_special") %><BR>
+    </P>
+  </TD>
+</TR>
 
 </TABLE>
 <div class="itermediate_div fltl"></div>
@@ -388,7 +420,7 @@
   </TR>
   <TR>
     <TD COLSPAN=4 WIDTH=100% VALIGN=TOP class="grey alantar_td" id="free_skill_amount">
-      <P class="fs_14 white_normal" id="skill_counter" >Pozostało wolnych umiejętności: <%= @free_skill_amount %></P>
+      <P class="fs_14 white_normal" id="skill_counter">Pozostało wolnych umiejętności: <%= @free_skill_amount %></P>
     </TD>
   </TR>
   <% @basic_skills.in_groups_of(2, false).each do |skills| %>
@@ -396,77 +428,108 @@
         <% skills.each do |skill| %>
             <TD WIDTH=39% class="alantar_td">
               <P ALIGN=CENTER class="fs_12 italic normal skill_qtip"><%= skill.name %></P>
-              <p class="skill_explanation_qtip " style="display:none;">
-                  <%= nice_and_shiny_description(skill)   %>
-                </p>
+
+              <p class="skill_explanation_qtip" style="display:none;">
+                <%= nice_and_shiny_description(skill) %>
+              </p>
             </TD>
             <TD WIDTH=7% class="alantar_td">
-              <P ALIGN=CENTER><%= check_box_tag skill.id, 1,  @character.skills.include?(skill), :disabled => ( session[:default_skills_ids].include?(skill.id) || @cannot_select_skills.include?(skill) ), :onchange => "toggle_this_skill(this);" %><BR>
+              <P ALIGN=CENTER><%= check_box_tag skill.id, 1, @character.skills.include?(skill), :disabled => (session[:default_skills_ids].include?(skill.id) || @cannot_select_skills.include?(skill)), :onchange => "toggle_this_skill(this);" %>
+                <BR>
               </P>
             </TD>
         <% end %>
       </TR>
   <% end %>
 </TABLE>
+<br />
+
+<%= button_link_to "Wróć", third_step_character_wizard_path(:char_id => @character.id) %>
+<%= button_link_to "Utwórz nową postać", character_path(@character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
 
 <script type="text/javascript">
     $('#spinner')
-        .hide()  // hide it initially
-        .ajaxStart(function() {
-            $(this).show();
-        })
-        .ajaxStop(function() {
-            $(this).hide();
-        })
-    ;
+            .hide()// hide it initially
+            .ajaxStart(function() {
+                $(this).show();
+            })
+            .ajaxStop(function() {
+                $(this).hide();
+            })
+            ;
 
-//  an alternative
-//  http://plugins.jquery.com/project/loading
+    //  an alternative
+    //  http://plugins.jquery.com/project/loading
 
     function toggle_this_skill(val) {
-         var skill_id = $(val).attr('id');
-         var field_value = val.checked;
-         var character_id = "<%= @character.id -%>";
-         var url =  '<%= character_wizards_toggle_skill_path -%>';
-         var data = {'skill_id' : skill_id, 'value' : field_value, 'character_id':character_id };
-         $.ajax({
-          url: url,
-          data: data,
-          dataType: 'script'
-         });
-  }
-
-  jQuery(document).ready(function() {
-
-    $('.skill_qtip').each(function() {
-        $(this).qtip(
-        {
-            content: $(this).next().html(),
-            style: {
-                 'font-size': 16,
-                  classes: 'ui-tooltip-blue ui-tooltip-shadow'
-            },
-            position: {
-                adjust: {
-                x: -200
-                },
-                corner: {
-                    target: "rightMiddle",
-                    tooltip: "leftMiddle"
-                }
-            },
-            show: {
-                delay: 0
-            },
-            hide: {
-                delay: 50,
-                fixed: true
-            }
+        var skill_id = $(val).attr('id');
+        var field_value = val.checked;
+        var character_id = "<%= @character.id -%>";
+        var url = '<%= character_wizards_toggle_skill_path -%>';
+        var data = {'skill_id' : skill_id, 'value' : field_value, 'character_id':character_id };
+        $.ajax({
+            url: url,
+            data: data,
+            dataType: 'script'
         });
+    }
+
+    jQuery(document).ready(function() {
+
+        $('.skill_qtip').each(function() {
+            $(this).qtip(
+                    {
+                        content: $(this).next().html(),
+                        style: {
+                            'font-size': 16,
+                            classes: 'ui-tooltip-blue ui-tooltip-shadow'
+                        },
+                        position: {
+                            adjust: {
+                                x: -200
+                            },
+                            corner: {
+                                target: "rightMiddle",
+                                tooltip: "leftMiddle"
+                            }
+                        },
+                        show: {
+                            delay: 0
+                        },
+                        hide: {
+                            delay: 50,
+                            fixed: true
+                        }
+                    });
+        });
+
+            $('.show_bonus_ranges').qtip(
+                    {
+                        content: $("#bonuses"),
+                        style: {
+                            'font-size': 16,
+                            classes: 'ui-tooltip-blue ui-tooltip-shadow'
+                        },
+                        position: {
+                            adjust: {
+                                x: -200
+                            },
+                            corner: {
+                                target: "rightMiddle",
+                                tooltip: "leftMiddle"
+                            }
+                        },
+                        show: {
+                            delay: 0
+                        },
+                        hide: {
+                            delay: 50,
+                            fixed: true
+                        }
+                    });
+
+
     });
-
-
- });
 
 </script>
 

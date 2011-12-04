@@ -19,6 +19,8 @@ CharMaker::Application.routes.draw do
       post :third_step
       get :fourth_step
       post :fourth_step
+      get :pick_a_fightstyle_step
+      post :pick_a_fightstyle_step
     end
   end
 

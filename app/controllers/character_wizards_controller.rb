@@ -54,7 +54,15 @@ class CharacterWizardsController < ApplicationController
   def third_step
     if request.get?
       @character = current_user.characters.find(params[:char_id])
-      @character.skills.clear
+
+      #do a rollback here
+      #TODO possibly redundant
+      session[:skill_free_assignment_base] = nil
+      session[:default_skills_ids] = nil
+      session[:skills_used] = nil
+      #yes, I feel sad.
+      @character.skills.each {|skill| skill.substract_skill_from(@character.id)}
+
       roll_set = @character.statistics.initial_dice_roll_set
       @lead_parameter = roll_set[0..4].max
       @stats = roll_set.tap { |a| a.delete_at(roll_set[0..4].rindex(roll_set[0..4].max)) }
@@ -65,10 +73,21 @@ class CharacterWizardsController < ApplicationController
         skill_free_assignment_base, default_skills_ids =  @character.statistics.convert_stat_choices_to_skills
         session[:skill_free_assignment_base] = skill_free_assignment_base
         session[:default_skills_ids] = default_skills_ids
-        redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
+        redirect_to pick_a_fightstyle_step_character_wizard_path(:char_id => @character.id)
       else
         redirect_to third_step_character_wizard_path(:char_id => @character.id), :alert => "Napewno dobrze uzupełniłeś statystyki?"
       end
+    end
+  end
+
+  def pick_a_fightstyle_step
+    if request.get?
+      @character = current_user.characters.find(params[:char_id])
+      @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
+    elsif request.post?
+      throw "TODO"
+      @character = current_user.characters.find(params[:char_id])
+
     end
   end
 
