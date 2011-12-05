@@ -6,6 +6,7 @@ class CharacterBackground < ActiveRecord::Base
   has_one :origin
   has_one :country, :through => :origin
 
+
   def draw_a_trait
     if self.new_record?
       dice_roll = 1 + rand(Trait::DICE_TYPE)

@@ -1,8 +1,22 @@
 <%= button_link_to "Wróć", third_step_character_wizard_path(:char_id => @character.id) %>
 <%= button_link_to "Utwórz nową postać", character_path(@character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
 <%= button_link_to "Dalej", "javascript:void(0)", :onclick => "proceed()" %>
+<br/><br/>
+<p>Wybierz styl, którym będzie walczyła Twoja postać. Pamiętaj, aby wybrać styl brutalny, parametr Siła musi być wyższy
+  lub równy parametrowi Zręczność. I na odwrót, w przypadku stylu finezyjnego.
+</p><br/>
+<%= form_tag :url => fourth_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
+    <%= hidden_field_tag :char_id, @character.id %>
+    <% FightStyle.all.each do |style| %>
+        <label><%= style.name %></label><%= radio_button_tag "fight_style_id", style.id, @character.fight_style_id %>
+    <% end %>
+<% end %>
 
-
+<br/>
+<br/>
+<p>Poniżej, tabela Twoich aktualnych parametrów wynikające z pochodzenia, klasy społecznej i posiadanych bazowych
+  umiejętności oraz tabela progów bonusowych.</p>
+<br/>
 <TABLE WIDTH=30% CELLPADDING=4 CELLSPACING=0 class="fltl">
   <TR VALIGN=TOP>
     <TD COLSPAN=2 WIDTH=18% class="black alantar_td">
@@ -124,13 +138,16 @@
   </TABLE>
 </div>
 
-<!--#TODO create form here-->
 
 
 <script type="text/javascript">
+
     function proceed() {
-//       if radiobutton is selected
-        $("#fight_style_form").submit();
-//                else alert
+        var radio_buttons = $("input[name='fight_style_id']");
+        if (radio_buttons.filter(':checked').length == 0) {
+            alert("Musisz wybrać styl walki, zanim będziesz mógł przejść dalej.")
+        } else {
+            $("form").submit();
+        }
     }
 </script>

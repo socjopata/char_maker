@@ -3,7 +3,9 @@ class CharacterWizardsController < ApplicationController
 
   before_filter :user_signed_in?
 
-  #TODO refactor fatty controllers, make them thin... thinner at least  :(
+  #TODO Disclaimer: I know that things here, with all the logic in this place, suck a big time.
+  #Idea: Refactor using some kind of state machine, or classes,
+  #that after initialization perform various actions on Alantar models, depending on :get or :post
 
 
   def first_step
@@ -60,8 +62,8 @@ class CharacterWizardsController < ApplicationController
       session[:skill_free_assignment_base] = nil
       session[:default_skills_ids] = nil
       session[:skills_used] = nil
-      #yes, I feel sad.
-      @character.skills.each {|skill| skill.substract_skill_from(@character.id)}
+
+      @character.skills.each { |skill| skill.substract_skill_from(@character.id) }
 
       roll_set = @character.statistics.initial_dice_roll_set
       @lead_parameter = roll_set[0..4].max
@@ -70,7 +72,7 @@ class CharacterWizardsController < ApplicationController
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
       if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth?
-        skill_free_assignment_base, default_skills_ids =  @character.statistics.convert_stat_choices_to_skills
+        skill_free_assignment_base, default_skills_ids = @character.statistics.convert_stat_choices_to_skills
         session[:skill_free_assignment_base] = skill_free_assignment_base
         session[:default_skills_ids] = default_skills_ids
         redirect_to pick_a_fightstyle_step_character_wizard_path(:char_id => @character.id)
@@ -85,9 +87,13 @@ class CharacterWizardsController < ApplicationController
       @character = current_user.characters.find(params[:char_id])
       @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
     elsif request.post?
-      throw "TODO"
       @character = current_user.characters.find(params[:char_id])
-
+      if @character.update_attribute(:fight_style_id, params[:fight_style_id])
+        redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
+      else
+         flash.alert = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
+        redirect_to pick_a_fightstyle_step_character_wizard_path(:char_id => @character.id)
+      end
     end
   end
 
@@ -97,7 +103,7 @@ class CharacterWizardsController < ApplicationController
       @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats #TODO group in hash or array.
       @basic_skills = Skill.basic
       @cannot_select_skills = Skill.filter_nonselectable(@basic_skills, @character, @strength, @dexterity, @endurance, @intelligence, @faith, @polish)
-      @free_skill_amount = session[:skill_free_assignment_base] +  Statistics::BONUS_OR_PENALTY_RANGES[@intelligence].to_i - session[:skills_used].to_i
+      @free_skill_amount = session[:skill_free_assignment_base] + Statistics::BONUS_OR_PENALTY_RANGES[@intelligence].to_i - session[:skills_used].to_i
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
     end
@@ -113,9 +119,9 @@ class CharacterWizardsController < ApplicationController
 
   def toggle_skill
     character = current_user.characters.find(params[:character_id])
-    params[:value]=="true" ? (next_number = session[:skills_used].to_i + 1) :(next_number = session[:skills_used].to_i - 1)
+    params[:value]=="true" ? (next_number = session[:skills_used].to_i + 1) : (next_number = session[:skills_used].to_i - 1)
     session[:skills_used] = next_number
-    @free_skill_amount = session[:skill_free_assignment_base] +  Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_int].to_i - session[:skills_used].to_i
+    @free_skill_amount = session[:skill_free_assignment_base] + Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_int].to_i - session[:skills_used].to_i
 
     if @free_skill_amount < 0
       session[:skills_used] = session[:skills_used].to_i - 1 #reverting the change
@@ -124,9 +130,9 @@ class CharacterWizardsController < ApplicationController
     else
       skill = Skill.find(params[:skill_id])
       @commands, @skill_commands = Skill.change(character, skill, params[:value]=="true")
-      end
+    end
 
-     #TODO what about clever "skills" picking? Manipulating it so you choose soemthing to enable other skill and then uncheck the enabler...
+    #TODO what about clever "skills" picking? Manipulating choices so you choose something to enable other skill and then uncheck the enabler...
   end
 
 end

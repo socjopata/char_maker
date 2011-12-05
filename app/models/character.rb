@@ -11,14 +11,28 @@ class Character < ActiveRecord::Base
 
   has_many :character_skills
   has_many :skills, :through => :character_skills
-
+  belongs_to :fight_style
 
 
   mount_uploader :avatar, AvatarUploader
   scope :belongs_to_user, lambda { |user| {:conditions => {:user_id => user.id}} }
 
   validates_presence_of :name, :gender, :user_id
+  before_save :check_fight_style_choice
 
+  def check_fight_style_choice
+    if fight_style_id_changed? && style_invalid?
+      errors.add(:styl_walki, "jest niepoprawny")
+      return false
+    end
+    true
+  end
+
+  def style_invalid?
+    return true if fight_style.name=="Brutalny" && (statistics.calculate_s < statistics.calculate_zr)
+    return true if fight_style.name=="Finezyjny" && (statistics.calculate_s > statistics.calculate_zr)
+    false
+  end
 
   def pick_a_profession(prof_id)
     self.create_character_profession(:profession_id => prof_id)
