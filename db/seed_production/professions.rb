@@ -8,7 +8,7 @@
 
 
 # ,:skill_points => 0, :attack => 0 ,:defense => 0 , :shooting => 0, :starting_weapon_proficiency => 0, :preferred_weapon_proficiency => nil , :available_armors => "Lekkie"
-_profession = Profession.create(:name => "Alchemik", :general_type => "scholar", :skill_points => 1 ,:attack => 2 ,:defense => 10 , :shooting => 10, :starting_weapon_proficiency => 1, :preferred_weapon_proficiency => nil , :available_armors => "Lekkie")
+_profession = Profession.create(:name => "Alchemik", :general_type => "scholar", :skill_points => 1 ,:attack => 2 ,:defense => 17 , :shooting => 10, :starting_weapon_proficiency => 1, :preferred_weapon_proficiency => nil , :available_armors => "Lekkie")
 _profession.countries << [Country.find_all_by_name(["Alantar", "Archipelag Południowy", "Nimer", "Księstwa Wysp Północy", "Ziemie Sirtol", "Złote Królestwa"])]
 
 s_choice = _profession.stats_choices.create(:applies_to => nil, :condition => nil )
@@ -25,11 +25,8 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Wykształcenie Akademickie")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Zielarstwo")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Talenty Alchemiczne")
-#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt")
-
-
-
-_profession = Profession.create(:name => "Berzerker", :general_type => "soldier", :skill_points => 3, :attack => 8 ,:defense => 19 , :shooting => 10, :starting_weapon_proficiency => 3, :preferred_weapon_proficiency => nil , :available_armors => "Lekkie, Typowe")
+#TODO prolly I'll want to check base parameter for shooting for example and decide if I should allow tick a crossbow or something'
+_profession = Profession.create(:name => "Berzerker", :general_type => "soldier", :skill_points => 3, :attack => 8 ,:defense => 19 , :shooting => 0, :starting_weapon_proficiency => 3, :preferred_weapon_proficiency => "non-ranged" , :available_armors => "Lekkie, Typowe")
 _profession.countries << [Country.find_all_by_name(["Wielkie Stepy", "Góry Księżycowe i Niczyje"])]
 
 s_choice = _profession.stats_choices.create(:applies_to => nil, :condition => nil )
@@ -60,9 +57,6 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Moc Krwi")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Podstawy Medytacji")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Rzucanie Czarów")
-#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt")
-
-
 
 
 _profession = Profession.create(:name => "Dziecię Sirtol", :general_type => "soldier", :skill_points => 2, :attack => 6 ,:defense => 19 , :shooting => 12, :starting_weapon_proficiency => 2, :preferred_weapon_proficiency => nil , :available_armors => "Lekkie, Typowe, Ciężkie")
@@ -83,8 +77,6 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Dziecię Ciemności")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Wyssanie Życia")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Służalczy Ton")
-#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt")
-
 
 _profession = Profession.create(:name => "Dyplomata", :general_type => "scholar", :skill_points => 0, :attack => 5 ,:defense => 18 , :shooting => 13, :starting_weapon_proficiency => 2, :preferred_weapon_proficiency => nil , :available_armors => "Lekkie")
 _profession.countries << [Country.find_all_by_name(["Alantar", "Archipelag Południowy", "Nimer", "Pelmir", "Wielkie Stepy", "Księstwa Wysp Północy", "Ziemie Sirtol", "Złote Królestwa"])]
@@ -179,8 +171,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Kradzież Kieszonkowa i Otwieranie Zamków")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Szulerka")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Szczęście Kastora")
-#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt")
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Inicjatywa")
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Inicjatywa")
 
 
 _profession = Profession.create(:name => "Mag", :general_type => "scholar", :skill_points => 1, :attack => 2 ,:defense => 17 , :shooting => 10, :starting_weapon_proficiency => 1, :preferred_weapon_proficiency => nil , :available_armors => "Lekkie")
@@ -219,7 +210,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Niewrażliwość na Magię")
 
 
-_profession = Profession.create(:name => "Rycerz", :general_type => "soldier"  ,:skill_points => 1, :attack => 9 ,:defense => 22 , :shooting => 11, :starting_weapon_proficiency => 3, :preferred_weapon_proficiency => nil , :available_armors => "Lekkie, Typowe, Ciężkie")
+_profession = Profession.create(:name => "Rycerz", :general_type => "soldier"  ,:skill_points => 1, :attack => 9 ,:defense => 22 , :shooting => 11, :starting_weapon_proficiency => 3, :preferred_weapon_proficiency => "non-ranged" , :available_armors => "Lekkie, Typowe, Ciężkie")
 _profession.countries << [Country.find_all_by_name(["Alantar", "Nimer", "Pelmir", "Złote Królestwa"])]
 
 s_choice = _profession.stats_choices.create(:applies_to => nil, :condition => nil )
@@ -236,10 +227,8 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Odporność")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Twardziel")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Duma Rycerska")
-#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spryt")
 
-
-_profession = Profession.create(:name => "Rycerz Zakonny", :general_type => "soldier" ,:skill_points => 2, :attack => 6 ,:defense => 21 , :shooting => 11, :starting_weapon_proficiency => 2, :preferred_weapon_proficiency => nil , :available_armors => "Lekkie, Typowe, Ciężkie")
+_profession = Profession.create(:name => "Rycerz Zakonny", :general_type => "soldier" ,:skill_points => 2, :attack => 6 ,:defense => 21 , :shooting => 11, :starting_weapon_proficiency => 2, :preferred_weapon_proficiency => "non-ranged" , :available_armors => "Lekkie, Typowe, Ciężkie")
 _profession.countries << Country.find_all_by_name(["Alantar", "Nimer", "Pelmir"])
 
 s_choice = _profession.stats_choices.create(:applies_to => nil, :condition => nil )
