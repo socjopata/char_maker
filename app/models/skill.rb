@@ -8,6 +8,10 @@ class Skill < ActiveRecord::Base
   scope :basic, where(:profession_type => "default")
 
 
+  #IDEA how about the concept of favorite weapon? Some skills give bonuses to certain weapons and armors.
+  #Each skill would give an option to set up something on a screen after skill choice step but before arment step. Favorites would clear if going backwards
+
+
   def to_s
     name
   end
