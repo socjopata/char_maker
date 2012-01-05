@@ -158,21 +158,143 @@ s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Bieg")
 
 
+## FINESSE
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Celny Cios",
+                     :limitations => "tylko dla finezyjnego stylu walki",
+                     :way_it_works => "kosztem zwiększenia Tempa broni o +5pkt, trafiony atak obniża parametr ochronny zbroi o jeden za każdy punkt, o który przewyższył Obronę przeciwnika (np.: przy przekroczeniu Obrony o 4pkt, pancerz redukowany jest o 4pkt). Umiejętność nie może być wykorzystana w walce dystansowej.
+Umiejętności Pasywna." )
+
+
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "20" )
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Finezyjny Atak",
+                     :limitations => "tylko przy użyciu selektywnego ciosu",
+                     :way_it_works => "przeciwnik, który został trafiony i zraniony w Głowę (w wyniku tego Ataku) musi wykonać udany test Bólu z karą -10pkt. Niepowodzenie oznacza utratę następnego ataku oraz karę -5pkt do Trafienia i Obrony na czas tego starcia (ew. do czasu kiedy wyleczy lub chociażby opatrzy rany). Efekt ten może się kumulować. Kara za celowanie w Głowę zmniejszana jest dodatkowo o 2pkt.
+Umiejętność Pasywna" )
+
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Precyzyjny Cios" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "25" )
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Finta",
+                     :limitations => "zdolność może być wykorzystana tylko podczas walki z pieszym przeciwnikiem o ludzkich gabarytach.",
+                     :way_it_works => "wybrany atak, w walce wręcz, nie trafia bohatera. Umiejętność musi zostać zadeklarowana przed sprawdzeniem Trafienia przeciwnika.
+Umiejętność Pasywna" )
+
+
+#TODO implement the check
+skill.skill_requirements.create(:check_applies_to => "fighting", :name => "Fechtunek w Obronie", :value => "25" )
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Kontratak",
+                     :limitations => "tylko przy użyciu broni Typowej",
+                     :way_it_works => "po udanym wykorzystaniu umiejętności „Parada” w następnym, jednym ataku wyprowadzonym w postać przeciwko, której wykorzystano paradę bohater otrzymuje +5pkt do Trafienia.
+Umiejętność Pasywna." )
+
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Parada" )
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Mistrzowski Kontratak",
+                     :limitations => "tylko przy użyciu broni Typowej",
+                     :way_it_works => "po udanym wykorzystaniu umiejętności „Parada”, postać otrzymuje jeden natychmiastowy atak, który może być wyprowadzony w postać przeciwko, której wykorzystano paradę.
+Umiejętność Pasywna" )
+
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Refleks" )
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Kontratak" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "30" )
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Najszybszy Wygrywa",
+                     :limitations => "zdolność może zostać wykonana tylko w pierwszej rundzie walki i tylko jeżeli bohater okazał się szybszy od swego przeciwnika (osiągnął wyższy wynik podczas rzutu na Inicjatywę).",
+                     :way_it_works => "postać otrzymuje jeden, dodatkowy, natychmiastowy atak, którego Trafienie i zadawane Obrażenia zwiększane są o +5pkt.
+Inicjatywa i Spostrzegawczość bohatera podnoszone są o +1pkt.
+Umiejętność Pasywna." )
+
+#TODO code it !
+skill.skill_requirements.create(:check_applies_to => "auxiliary", :name => "Inicjatywa", :value => "25" )
+
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Inicjatywa")
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Spostrzegawczość")
+
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Nieczysta Zagrywka",
+                     :limitations => "zdolność może zostać wykonana tylko w pierwszej rundzie walki i tylko jeżeli bohater okazał się szybszy od swego przeciwnika (osiągnął wyższy wynik podczas rzutu na Inicjatywę).",
+                     :way_it_works => "przeciwnik wykonuje test Spostrzegawczości z karą -5pkt. Niepowodzenie oznacza zmniejszenie jego Obrony o podwójną premię z Inteligencji postaci, która wykorzystała Nieczystą Zagrywkę. Kara ta utrzymuje się do końca następnej rundy. Sukces ofiary oznacza karę -3pkt do Trafienia na okres tej rundy. Jeżeli postać posiada umiejętność: Finezyjny Atak, Blef i/lub Oburęczność przeciwnik otrzymuje dodatkową karę do testu w wysokości -3pkt, -6pkt jeżeli posiada obie lub -9pkt jeżeli poznała je wszystkie.
+Przeciwnik, który zdał test Spostrzegawczości, nie może zostać drugi raz zaatakowany za pomocą tej umiejętności (poznał sztuczkę i wie jak się przed nią obronić)." )
+
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Zmyłka" )
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Parada",
+                     :limitations => "tylko przy użyciu broni Typowej lub lekkiej.",
+                     :way_it_works => "w zamian za poświęcenie wszystkich ataków, w odpowiedzi na pierwszy cios przeciwnika, postać może wykonać przeciwstawny test Trafienia z wrogiem. Jeżeli bohater odniósł w nim sukces atak jest automatycznie nietrafiony, a jego przeciwnik traci wszystkie pozostałe w tej rundzie ataki. Parady nie można wykonać bronią improwizowaną. Ponadto każda inna broń lekka użyta do Parady otrzymuje następujące kary do testu: w przypadku walki z przeciwnikiem posiadającym broń typową -5pkt, a w przypadku broni ciężkiej, dwuręcznej lub drzewcowej -10pkt. Kiedy parada wykonywana jest bronią typową przeciwko broni ciężkiej, dwuręcznej lub drzewcowej postać otrzymuje karę -5pkt. " )
+
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Zmyłka" )
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Precyzyjny Cios",
+                     :limitations => "tylko przy użyciu selektywnego ciosu",
+                     :way_it_works => "kara za celowanie w głowę lub inną kończynę zmniejszana jest o 1pkt/poziom postaci.
+Umiejętność Pasywna." )
+
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Celny cios" )
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Responsa",
+                     :way_it_works => "raz na rundę po tym jak przeciwnik nie trafił w walce wręcz, bohater otrzymuje jeden dodatkowy, natychmiastowy atak, wyprowadzany zaraz po ciosie wroga z karą -5pkt do Trafienia.
+Umiejętność Pasywna." )
+
+
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Natarcie i Powstrzymanie" )
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Refleks" )
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Finezyjny Atak" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "30" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S", :value => "19" )
+skill.skill_requirements.create(:check_applies_to => "experience", :value => "5" )
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Riposta",
+                     :limitations => "tylko dla broni Typowej",
+                     :way_it_works => "raz na rundę po tym jak przeciwnik nie trafił w walce wręcz, bohater otrzymuje jeden dodatkowy, natychmiastowy atak, wyprowadzany zaraz po ciosie wroga z karą -5pkt do Trafienia.
+Umiejętność Pasywna." )
+
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Inicjatywa")
+
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Błyskawiczny Atak" )
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Zmyłka" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "25" )
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Technika Defensywna",
+                     :way_it_works => "bohater podnosi w wybranej grupie broni swój Fechtunek w Obronie (FwO) o +2pkt.
+Umiejętność Pasywna." )
+
+#TODO check it
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Fechtunek w Obronie")
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Technika Ofensywna",
+                     :way_it_works => "postać zwiększa w wybranej grupie broni swój Fechtunek w Ataku (FwA) o +2pkt.
+Umiejętność Pasywna." )
+
+
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Fechtunek w Ataku")
+
+skill = Skill.create(:profession_type => "finesse",
+                     :name => "Zmyłka",
+                     :way_it_works => "przeciwnik wykonuje test Spostrzegawczości, nieudany zmniejsza jego Obronę o dwukrotną wartość premii z Inteligencji postaci. Jeżeli ofiara obroni się przed tą umiejętnością wszystkie ataki, które postać wykona w tej rundzie otrzymują karę -3pkt do Trafienia. Jeżeli postać posiada umiejętność: Finezyjny Atak, Blef i/lub Oburęczność przeciwnik otrzymuje karę do testu w wysokości -3pkt, -6pkt jeżeli posiada obie lub  -9pkt jeżeli poznała je wszystkie.
+    " )
+
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "18" )
 
 
 
-
-
-#s_choice = skill.stats_choices.create
-#
-#s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
-#s_choice.stats_modifiers.create(:modifies => "fighting", :value => 3, :group_name => "Obrona Daleka")
-#s_choice.stats_modifiers.create(:modifies => "fighting", :value => 3, :group_name => "Zmiana Zasięgu")
-#
-#skill.skill_requirements.create(:check_applies_to => "skill", :name => "Podstawy Akrobatyki" )
-#skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "25" )
-#
-##skill
-##statistics
-##socialclass
 
