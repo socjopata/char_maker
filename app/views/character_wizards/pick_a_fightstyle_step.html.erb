@@ -8,13 +8,13 @@
 <%= form_tag :url => fourth_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
     <%= hidden_field_tag :char_id, @character.id %>
     <% FightStyle.all.each do |style| %>
-        <label><%= style.name %></label><%= radio_button_tag "fight_style_id", style.id, @character.fight_style_id %>
+        <label><%= style.name %></label><%= radio_button_tag "fight_style_id", style.id, @character.fight_style_id, :disabled => (@character.profession.general_type=="rogue" && style.name=="Finezyjny") ? true : false  %>
     <% end %>
 <% end %>
 
 <br/>
 <br/>
-<p>Poniżej, tabela Twoich aktualnych parametrów wynikające z pochodzenia, klasy społecznej i posiadanych bazowych
+<p>Poniżej, tabela Twoich aktualnych parametrów wynikająca z pochodzenia, klasy społecznej i posiadanych bazowych
   umiejętności oraz tabela progów bonusowych.</p>
 <br/>
 <TABLE WIDTH=30% CELLPADDING=4 CELLSPACING=0 class="fltl">

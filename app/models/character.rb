@@ -18,7 +18,13 @@ class Character < ActiveRecord::Base
   scope :belongs_to_user, lambda { |user| {:conditions => {:user_id => user.id}} }
 
   validates_presence_of :name, :gender, :user_id
+
   before_save :check_fight_style_choice
+
+  def make_rogue_a_finesse_fighter
+    self.fight_style_id = FightStyle.find_by_name("Finezyjny").id if self.profession.present? && self.profession.general_type=="rogue"
+    save(false)
+  end
 
   def check_fight_style_choice
     if fight_style_id_changed? && style_invalid?
@@ -61,7 +67,7 @@ class Character < ActiveRecord::Base
   end
 
   def current_level
-    1  #currently all created chars are starters.
+    1 #currently all created chars are starters.
   end
 
 end

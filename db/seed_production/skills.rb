@@ -269,18 +269,7 @@ skill.skill_requirements.create(:check_applies_to => "social_class", :name => "n
 skill.skill_requirements.create(:check_applies_to => "social_class", :name => "non_barbarian")
 
 s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => "domyślne")
-#s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Spryt")  #TODO unify names
 
-
-
-skill = Skill.create(:profession_type => "default", :name => "Wyrób Trucizn", :way_it_works => "patrz rozdział Alchemia. Bohater może wytwarzać tylko takie trucizny, których poznał dokładną recepturę. Postać rozpoczyna grę posiadając pięć wybranych przepisów. Ponadto bohater staje się wyczulony na trucizny, dzięki czemu ma większą szansę wykryć je w jedzeniu czy piciu (test łatwiejszy o +5pkt). Inteligencja truciciela wzrasta o +1pkt.",
-:active => false )
-s_choice = skill.stats_choices.create
-
-s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => "domyślne")
-
-skill.skill_requirements.create(:check_applies_to => "skill", :name => "Zielarstwo" )
-skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "21" )
 
 skill = Skill.create(:profession_type => "default", :name => "Zabijaka", :way_it_works => "wiele lat spędzonych na ulicy, w portach i knajpach, nie tylko zahartowało postać ale również udoskonaliło jej techniki walki. Bohater otrzymuje +2pkt do „Fechtunku” w Bijatyce oraz podnosi swą Siłę jak i Odporność na Ból o +2pkt.",
 :active => false )

@@ -85,10 +85,11 @@ class CharacterWizardsController < ApplicationController
   def pick_a_fightstyle_step
     if request.get?
       @character = current_user.characters.find(params[:char_id])
+      @character.make_rogue_a_finesse_fighter
       @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
-      if @character.update_attribute(:fight_style_id, params[:fight_style_id])
+      if @character.fight_style.present? or @character.update_attribute(:fight_style_id, params[:fight_style_id])
         redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
       else
          flash.alert = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"

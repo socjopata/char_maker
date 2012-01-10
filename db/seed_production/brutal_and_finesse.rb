@@ -1,7 +1,4 @@
-
 # -*- encoding : utf-8 -*-
-
-
 
 skill = Skill.create(:profession_type => "brutal",
                      :name => "Ciężkozbrojny",
@@ -52,7 +49,7 @@ skill.skill_requirements.create(:check_applies_to => "skill", :name => "Natarcie
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S", :value => "23" )
 
 skill = Skill.create(:profession_type => "brutal",
-                     :name => "Silny Cios",
+                     :name => "Potężny Cios",
                      :way_it_works => "za każdym razem kiedy przeciwnik zwiększa swoją Obronę kosztem Trafienia lub rezygnacji z ataków, bohater otrzymuje +5pkt do Trafienia. Premia ta utrzymuje się dopóki wróg walczy defensywnie.
 Umiejętność Pasywna" )
 
@@ -104,7 +101,6 @@ s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_na
 
 skill = Skill.create(:profession_type => "brutal",
                      :name => "Twardy Skurwysyn",
-
                      :way_it_works => "postać zwiększa PŻ o +5pkt, ponadto za każdym razem kiedy przeciwnik będzie próbował ją Powalić podnosi swoją szansę w teście o +5pkt.
 Umiejętność Pasywna" )
 
@@ -116,7 +112,6 @@ s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_na
 
 skill = Skill.create(:profession_type => "brutal",
                      :name => "Weteran",
-
                      :way_it_works => "Odporność na Strach i Ból Postaci wzrasta o +5pkt. Ponadto pierwszy trafiony w nią cios zadaje jej zawsze minimalne możliwe Obrażenia (rzut przyjmuje wartość 1pkt).
 Umiejętność Pasywna" )
 
