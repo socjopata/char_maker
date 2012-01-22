@@ -20,14 +20,14 @@ class AuxiliaryParameterSet < ActiveRecord::Base
 
    PERCEPTION = {
    "rogue" => 18,
-   "soldier" => 12,
-   "scholar" => 14
+   "soldier" => 10,
+   "scholar" => 15
   }
 
    PAIN_RESISTANCE = {
    "rogue" => 10,
-   "soldier" => 14,
-   "scholar" => 8
+   "soldier" => 12,
+   "scholar" => 10
   }
 
    FEAR_RESISTANCE = {
