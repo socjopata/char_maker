@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 ##################STRZELECKIE##########################3
 
 skill = Skill.create(:profession_type => "shooter",
