@@ -376,3 +376,167 @@ skill = Skill.create(:profession_type => "Rycerz",
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne")
 s_choice.stats_modifiers.create(:modifies => "money", :value => 50000, :group_name => "domyślne")    #TODO implement it !
+
+#Rycerz Zakonny
+
+skill = Skill.create(:profession_type => "Rycerz Zakonny",
+                     :name => "Modlitwa",
+                     :way_it_works => "podnosząca morale pieśń modlitewna, najczęściej śpiewana jest przed lub podczas walki. Postać musi wykonać udany rzut na Ogładę aby jej sojusznicy (nie działa na samego Rycerza Zakonnego) otrzymali premię +1pkt do Trafienia i Obrony oraz +5pkt do Odporności na Strach. Wszystkie postacie wierzące w to samo bóstwo co inkantujący podwajają tą premię. Efekt utrzymuje się przez 5rund/poziom śpiewającego począwszy od pierwszej rundy starcia/inkantacji. Śpiewając, postać nadal może skutecznie walczyć wykorzystując swe umiejętności bitewne, dlatego też zdolność ta traktowana jest po części jako;
+Umiejętność Pasywna
+Wiara bohatera podnoszona jest o +2pkt.")
+
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "WI", :value => 2, :group_name => "domyślne")
+
+skill = Skill.create(:profession_type => "Rycerz Zakonny",
+                     :name => "Nieskazitelny",
+                     :way_it_works => "raz na dzień postać może powstrzymać wszystkie wrogie martwiaki bądź demony i sprawić, iż nie będą wstanie go zaatakować. Niestety umiejętność ta zapewnia skuteczną ochronę jedynie przeciw najsłabszym istotom. Czyli tym, które nie posiadają Inteligencji (dotyczy części martwiaków i demonów) lub o Wierze/Instynkcie poniżej 20pkt. Raz aktywowany efekt utrzymuje się przez k10minut +minutę/poziom Rycerza. Istoty potężniejsze mogą zaatakować postać jeżeli wygrają z nią przeciwstawny test Wiary/Instynktu, który wykonują na początku każdej rundy. Dodatkowo wszystkie czary i zdolności, które wywołują Strach nie działają na Rycerza Zakonnego.
+Wiara postaci zostaje zwiększona o +1pkt.
+Umiejętność Pasywna")
+
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "WI", :value => 1, :group_name => "domyślne")
+
+skill = Skill.create(:profession_type => "Rycerz Zakonny",
+                     :name => "Siła Wiary",
+                     :way_it_works => "dotknięta przez Rycerza Zakonnego ranna postać zostaje uleczona, jej rany się zasklepiają, krwawienie ustaje, a zmęczenie pryska niczym zły sen. Wybrana istota odzyskuje 1PŻ/poziom świętego plus wartość premii z jego Wiary. Zdolność może być użyta raz na dzień i nie działa na samego Rycerza. Efekt leczenia następuje na końcu danej rundy czyli właściwie natychmiast.
+Wiara postaci zostaje zwiększona o +1pkt.")
+
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "WI", :value => 1, :group_name => "domyślne")
+
+skill = Skill.create(:profession_type => "Rycerz Zakonny",
+                     :name => "Błogosławieństwo Boże",
+                     :way_it_works => "Rycerz Zakonny może wybrać jedną Modlitwę spośród tych, którymi dysponują Kapłani jego Wyznania. Dzięki czemu będzie mógł przyzwać jej moc raz na dzień, a sam nie musi posiadać ani wydawać żadnych Punktów Magii. Aktywacja zajmuje standardową ilość punktów Tempa, a splecenie Modlitwy zawsze się udaje. Zakonnik potrafi sformułować ją tylko z 1poziomu przy czym w danej rundzie musi wybrać czy walczy czy czaruje. Należy założyć, że Przełamanie Rycerza Zakonnego równe jest jego premii z Wiary. Umiejętność ta może zostać wybrana wielokrotnie każdorazowo dając nową Modlitwę. Jeżeli Modlitwa posiada jakieś dodatkowe koszty wyrażone w PM, postać nie może jej skutecznie używać – decyzja MG..")
+
+skill.skill_requirements.create(:check_applies_to => "experience", :value => "8" )
+
+#Strzelec
+
+skill = Skill.create(:profession_type => "Strzelec",
+                     :name => "Im bliżej tym lepiej",
+                     :way_it_works => "wszystkie strzały/bełty wystrzelone na Bliski zasięg zadają ofierze dodatkowe 3pkt Obrażeń.
+Umiejętność Pasywna.")
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "25" )
+
+
+skill = Skill.create(:profession_type => "Strzelec",
+                     :name => "Odległość nie ma Znaczenia",
+                     :way_it_works => "kara wynikająca ze strzelania na zasięg inny niż Bliski zmniejszana jest o premię ze Zręczności Strzelca. Dodatkowo Daleki zasięg broni strzeleckiej używanej przez postać zwiększony jest o 25metrów a jej Trafienie wzrasta o +2pkt.
+Umiejętność Pasywna.")
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "25" )
+
+#TODO Implement it !
+
+skill = Skill.create(:profession_type => "Strzelec",
+                     :name => "Wyśmienity Naciąg",
+                     :way_it_works => "kara wynikająca ze strzelania na zasięg inny niż Bliski zmniejszana jest o premię ze Zręczności Strzelca. Dodatkowo Daleki zasięg broni strzeleckiej używanej przez postać zwiększony jest o 25metrów a jej Trafienie wzrasta o +2pkt.
+Umiejętność Pasywna.")
+skill.skill_requirements.create(:check_applies_to => "experience", :value => "5" )
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
+#TODO Implement it ! along with other dmg perks
+
+skill = Skill.create(:profession_type => "Strzelec",
+                     :name => "Mistrz Kuszników",
+                     :way_it_works => "Tempo ładowania kuszy zmniejszone jest o 1rundę. Jeżeli ilość rund potrzebnych do załadowania broni spadnie do zera, postać może strzelić i napiąć kuszę w tej samej rundzie. W przypadku oddania strzału na początku rundy, Strzelec może naładować broń ale zajmie mu to całą rundę. W chwili kiedy nie ma przygotowanej do strzału kuszy napięcie zajmuje całą rundę i z jej końcem oddaje strzał (identycznie jak w przypadku czarów całorundowych).
+Umiejętność Pasywna.")
+
+skill.skill_requirements.create(:check_applies_to => "experience", :value => "3" )
+#TODO Implement it ! along with other dmg perks
+
+
+###SZAMAN
+
+skill = Skill.create(:profession_type => "Szaman",
+                     :name => "Siła Przodków",
+                     :way_it_works => "Zasada działania: wszystkie zaklęcia oparte na duchach natury lub przywołujące duchy mają obniżony koszt Mocy i Poziom Trudności o 2pkt oraz zmniejszone Tempo o 1pkt.
+Umiejętność Pasywna.")
+
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WI", :value => "29" )
+
+
+skill = Skill.create(:profession_type => "Szaman",
+    :description => "w chwili narodzin dusza Szamana łączy się ze zwierzęciem, które jest mu najbardziej przychylne. Wraz z biegiem czasu bohater przejmuje coraz więcej jego cech nie tylko tych fizycznych ale również psychicznych. Dzieje się tak, aż do chwili kiedy łączy się on ze swoim patronem w jedną istotę. Scalenie następuje wcześniej lub później ale zawsze oznacza wkroczenie na ścieżkę dorosłych. ",
+                     :name => "Totem: Wytrzymałość Niedźwiedzia",
+                     :way_it_works => "na początku nauki lub w chwili kiedy postać wybiera tę zdolność, wyznaczone przez nią zwierzę staje się jego Totemem. Od tego momentu będzie go symbolizowało i zawsze mu towarzyszyło. Oto Totemy i profity z nich wynikające:
+- Wytrzymałość Niedźwiedzia; +8pkt do „Odporności na Ból”
+- Wilcze Spojrzenie; +8pkt do „Spostrzegawczości”
+- Serce Lwa; +8pkt do „Odporności na Strach”
+Wiara Szaman podnoszona jest o +1pkt.
+Umiejętność Pasywna.")
+
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "WI", :value => 1, :group_name => "domyślne")
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 8, :group_name => "Odporność na Ból")
+
+skill = Skill.create(:profession_type => "Szaman",
+    :description => "w chwili narodzin dusza Szamana łączy się ze zwierzęciem, które jest mu najbardziej przychylne. Wraz z biegiem czasu bohater przejmuje coraz więcej jego cech nie tylko tych fizycznych ale również psychicznych. Dzieje się tak, aż do chwili kiedy łączy się on ze swoim patronem w jedną istotę. Scalenie następuje wcześniej lub później ale zawsze oznacza wkroczenie na ścieżkę dorosłych. ",
+                     :name => "Totem: Wilcze Spojrzenie",
+                     :way_it_works => "na początku nauki lub w chwili kiedy postać wybiera tę zdolność, wyznaczone przez nią zwierzę staje się jego Totemem. Od tego momentu będzie go symbolizowało i zawsze mu towarzyszyło. Oto Totemy i profity z nich wynikające:
+- Wytrzymałość Niedźwiedzia; +8pkt do „Odporności na Ból”
+- Wilcze Spojrzenie; +8pkt do „Spostrzegawczości”
+- Serce Lwa; +8pkt do „Odporności na Strach”
+Wiara Szaman podnoszona jest o +1pkt.
+Umiejętność Pasywna.")
+
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "WI", :value => 1, :group_name => "domyślne")
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 8, :group_name => "Spostrzegawczość")
+
+skill = Skill.create(:profession_type => "Szaman",
+    :description => "w chwili narodzin dusza Szamana łączy się ze zwierzęciem, które jest mu najbardziej przychylne. Wraz z biegiem czasu bohater przejmuje coraz więcej jego cech nie tylko tych fizycznych ale również psychicznych. Dzieje się tak, aż do chwili kiedy łączy się on ze swoim patronem w jedną istotę. Scalenie następuje wcześniej lub później ale zawsze oznacza wkroczenie na ścieżkę dorosłych. ",
+                     :name => "Totem: Serce Lwa",
+                     :way_it_works => "na początku nauki lub w chwili kiedy postać wybiera tę zdolność, wyznaczone przez nią zwierzę staje się jego Totemem. Od tego momentu będzie go symbolizowało i zawsze mu towarzyszyło. Oto Totemy i profity z nich wynikające:
+- Wytrzymałość Niedźwiedzia; +8pkt do „Odporności na Ból”
+- Wilcze Spojrzenie; +8pkt do „Spostrzegawczości”
+- Serce Lwa; +8pkt do „Odporności na Strach”
+Wiara Szaman podnoszona jest o +1pkt.
+Umiejętność Pasywna.")
+
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "WI", :value => 1, :group_name => "domyślne")
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 8, :group_name => "Odporność na Strach")
+
+##Zabójca
+
+
+skill = Skill.create(:profession_type => "Zabójca",
+                     :name => "Nożownik",
+                     :way_it_works => "Fechtunek w Nożach, Sztyletach i Łamaczach Mieczy podnoszony jest o +1pkt a Obrażenia jakie postać nimi zadaje wzrastają o +1pkt/3poziomy Zabójcy (4poz. +2pkt, 7poz. +3pkt, itd.) Umiejętność wpływa również na Trafienie i Obrażenia zadane podczas rzutu nożami.
+Umiejętność Pasywna.")
+
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "25" )
+#TODO Implement it !
+
+ skill = Skill.create(:profession_type => "Zabójca",
+                     :name => "Haniebny Cios",
+                     :way_it_works => "zdolność może być wykorzystana raz na walkę z danym przeciwnikiem. Po pierwszym zranieniu wroga w walce wręcz, dany przeciwnik automatycznie nie trafia Zabójcy kolejnym ciosem (rzut na Trafienie nie jest wykonywany).
+Spostrzegawczość postaci podnoszona jest o +2pkt.
+Umiejętność Pasywna.")
+
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "25" )
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Precyzyjny Cios" )
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Spostrzegawczość")
+
+ skill = Skill.create(:profession_type => "Zabójca",
+                     :name => "Mistrz Oręża",
+                     :way_it_works => "Fechtunek w wybranej Grupie Broni podnoszony jest o +1pkt, ponadto bohater zwiększa zadawane w walce wręcz Obrażenia o +3pkt.
+Umiejętność Pasywna")
+
+#TODO Implement it !    Fechtunek w wybranej Grupie Broni
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "33" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S", :value => "20" )
+skill.skill_requirements.create(:check_applies_to => "experience", :value => "3" )
+
+ skill = Skill.create(:profession_type => "Zabójca",
+                     :name => "Skrytobójca",
+                     :way_it_works => "postać potrafi doskonale ukrywać posiadaną broń, wie jak ją przemycić tak aby nikt jej nie wykrył (decyzja MG). Stosowny test na Spostrzegawczość wykonywany jest z karą od -5pkt do -20pkt. Ponadto za każdym razem kiedy bohater deklaruje atak z zaskoczenia lub wyprowadza cios, którego przeciwnik się nie spodziewa, zyskuje jeden, natychmiastowy atak. Cios rozpatrywany jest przed rundą, a jego Obrażenia zwiększane są o +1pkt/poziom.
+Korzystając z umiejętności Krycie się i Cichy Chód osoby które mają być zaskoczone/zwiedzione przez Zabójcę otrzymują dodatkową karę do Spostrzegawczości w wysokości -5pkt.
+Inicjatywa postaci wzrasta o +1pkt.
+Umiejętność Pasywna.")
+
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Inicjatywa")
+
