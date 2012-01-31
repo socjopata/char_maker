@@ -413,17 +413,17 @@
   <COL WIDTH=121*>
   <COL WIDTH=17*>
   <TR>
-    <TD COLSPAN=4 WIDTH=100% VALIGN=TOP class="black alantar_td">
+    <TD COLSPAN=8 WIDTH=100% VALIGN=TOP class="black alantar_td">
       <P class="white_normal">Umiejętności
         Ogólne</P>
     </TD>
   </TR>
   <TR>
-    <TD COLSPAN=4 WIDTH=100% VALIGN=TOP class="grey alantar_td" id="free_skill_amount">
+    <TD COLSPAN=8 WIDTH=100% VALIGN=TOP class="grey alantar_td" id="free_skill_amount">
       <P class="fs_14 white_normal" id="skill_counter">Pozostało wolnych umiejętności: <%= @free_skill_amount %></P>
     </TD>
   </TR>
-  <% @basic_skills.in_groups_of(2, false).each do |skills| %>
+  <% @basic_skills.in_groups_of(4, false).each do |skills| %>
       <TR VALIGN=TOP>
         <% skills.each do |skill| %>
             <TD WIDTH=39% class="alantar_td">
@@ -443,6 +443,13 @@
   <% end %>
 </TABLE>
 <br />
+
+<%= render :partial => "caste_skills" %>
+
+<%= render :partial => "profession_skills" %>
+
+
+
 
 <%= button_link_to "Wróć", pick_a_fightstyle_step_character_wizard_path(:char_id => @character.id) %>
 <%= button_link_to "Utwórz nową postać", character_path(@character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>

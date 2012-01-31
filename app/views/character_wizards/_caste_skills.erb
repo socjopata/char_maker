@@ -1,0 +1,35 @@
+<TABLE WIDTH=30% CELLPADDING=4 CELLSPACING=0>
+  <COL WIDTH=100*>
+  <COL WIDTH=18*>
+  <COL WIDTH=121*>
+  <COL WIDTH=17*>
+  <TR>
+    <TD COLSPAN=24 WIDTH=100% VALIGN=TOP class="black alantar_td">
+      <P class="white_normal">Umiejętności
+        Kastowe</P>
+    </TD>
+  </TR>
+  <TR>
+    <TD COLSPAN=24 WIDTH=100% VALIGN=TOP class="grey alantar_td">
+    </TD>
+  </TR>
+  <% @caste_skills.in_groups_of(12, false).each do |skills| %>
+      <TR VALIGN=TOP>
+        <% skills.each do |skill| %>
+            <TD WIDTH=39% class="alantar_td">
+              <P ALIGN=CENTER class="fs_12 italic normal skill_qtip"><%= skill.name %></P>
+
+              <p class="skill_explanation_qtip" style="display:none;">
+                <%= nice_and_shiny_description(skill) %>
+              </p>
+            </TD>
+            <TD WIDTH=7% class="alantar_td">
+              <P ALIGN=CENTER><%= check_box_tag skill.id, 1, @character.skills.include?(skill), :disabled => (session[:default_skills_ids].include?(skill.id) || @cannot_select_skills.include?(skill)), :onchange => "toggle_this_skill(this);" %>
+                <BR>
+              </P>
+            </TD>
+        <% end %>
+      </TR>
+  <% end %>
+</TABLE>
+<br />
