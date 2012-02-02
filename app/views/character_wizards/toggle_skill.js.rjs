@@ -1,4 +1,5 @@
 if @not_enough_free_skill_points.present?
+  page << "jQuery('input##{params[:skill_id]}').removeAttr('checked');"
   page << "$.colorbox({html: '#{escape_javascript(render(:partial => 'not_enough_points'))}'});"
 else
   @commands.each do |command|

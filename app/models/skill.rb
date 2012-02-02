@@ -6,11 +6,28 @@ class Skill < ActiveRecord::Base
 
 
   scope :basic, where(:profession_type => "default")
-
+  scope :fetch_for_type, lambda { |type| {:conditions => {:profession_type => type}} }
 
   #IDEA how about the concept of favorite weapon? Some skills give bonuses to certain weapons and armors.
   #Each skill would give an option to set up something on a screen after skill choice step but before arment step. Favorites would clear if going backwards
+  #fetch_caste_skills_for(character)
+  #fetch_profession_skills_for(character)
 
+  def self.fetch_caste_skills_for(character)
+    case character.profession.general_type
+      when "scholar" then
+        Skill.fetch_for_type("scholar")
+      when "rogue" then
+        Skill.fetch_for_type("rogue") + Skill.fetch_for_type("finesse")
+      when "soldier" then
+        Skill.fetch_for_type("soldier") + Skill.fetch_for_type(character.fight_style.name=="Finezyjny" ? "finesse" : "brutal")
+    end
+
+  end
+
+  def self.fetch_profession_skills_for(character)
+    Skill.fetch_for_type(character.profession.name)
+  end
 
   def to_s
     name
@@ -19,13 +36,13 @@ class Skill < ActiveRecord::Base
   def self.filter_nonselectable(skills, character, strength, dexterity, endurance, intelligence, faith, polish)
     output = []
     skills.each do |skill|
-      output << skill if skill.skill_requirements.any? { |skill_req| skill_req.skill_fails_to_meet_requirements(character, strength, dexterity, endurance, intelligence, faith, polish)}
+      output << skill if skill.skill_requirements.any? { |skill_req| skill_req.skill_fails_to_meet_requirements(character, strength, dexterity, endurance, intelligence, faith, polish) }
     end
     output
   end
 
   def self.change(character, skill, action)
-    non_selectable_skills_before_change = Skill.filter_nonselectable(Skill.basic, character, character.statistics.calculate_s, character.statistics.calculate_zr, character.statistics.calculate_wt, character.statistics.calculate_int, character.statistics.calculate_wi, character.statistics.calculate_o)  #TODO instead Skill.basic, use all skills for a char.
+    non_selectable_skills_before_change = Skill.filter_nonselectable(Skill.basic, character, character.statistics.calculate_s, character.statistics.calculate_zr, character.statistics.calculate_wt, character.statistics.calculate_int, character.statistics.calculate_wi, character.statistics.calculate_o) #TODO instead Skill.basic, use all skills for a char.
     action ? skill.add_skill_for(character.id) : skill.substract_skill_from(character.id)
     commander = Commander.new(character.reload, skill, non_selectable_skills_before_change)
     commander.do!
