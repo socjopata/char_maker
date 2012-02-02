@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
       flash[:notice] = "Wiadomość wysłana! Dzięki za kontakt."
       redirect_to root_url
     else
-      flash[:alert] = "Coś poszło nie tak jak powinno. Napewno przepisałeś poprawnie kod z obrazka?"
+      flash[:alert] = "Coś poszło nie tak jak powinno. Napewno przepisałeś poprawnie kod z obrazka?" unless current_user
       render :action => 'new'
     end
   end
