@@ -9,7 +9,11 @@
 <br/>
 <br/>
 <% if current_user %>
-<p style="font-size: 12pt"><%= link_to "Kliknij tutaj", new_character_path %> jeśli chcesz utworzyć nową postać!  </p>
-    <p style="font-size: 12pt">Lub <%= link_to "kliknij tutaj", characters_path %> jeśli chcesz przeglądnąć dotychczas utworzone postacie. </p>
+    <p style="font-size: 12pt"><%= link_to "Kliknij tutaj", new_character_path %> jeśli chcesz utworzyć nową
+      postać! </p>
+    <p style="font-size: 12pt">Lub <%= link_to "kliknij tutaj", characters_path %> jeśli chcesz przeglądnąć dotychczas
+      utworzone postacie. </p><br/>
+
 <% end %>
-<% radek = "fajny gość" %>
+ <p style="font-size: 12pt">Masz pytania? sugestie? <%= link_to "Napisz do mnie!", new_message_path %>   </p>
+

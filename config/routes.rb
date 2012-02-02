@@ -24,6 +24,8 @@ CharMaker::Application.routes.draw do
     end
   end
 
+  resources :messages, :only => [:new, :create]
+
   get "home/index"
   root :to => "home#index"
   devise_for :users
