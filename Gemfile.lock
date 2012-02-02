@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/galetahub/simple-captcha.git
+  revision: 580b73f9c7c32fd1ca30e5095ac48ff23fe389a4
+  specs:
+    galetahub-simple_captcha (0.1.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -99,6 +105,7 @@ DEPENDENCIES
   carrierwave
   devise
   exception_logger
+  galetahub-simple_captcha!
   jquery-rails (>= 1.0.12)
   magic_encoding
   pg (= 0.9.0)
