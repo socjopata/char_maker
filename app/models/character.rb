@@ -66,6 +66,15 @@ class Character < ActiveRecord::Base
     statistics.polish >= statistics.initial_dice_roll_set.last.to_i
   end
 
+  #traits check
+  def valid_stats_assignment
+    if Trait::CHOICE_BREAKERS.include?(character_background.traits.map(&:name).try(:first)) && character_background.traits.first.statistics_it_affects != lead_parameter
+      #    statistics.initial_dice_roll_set.tap { |a| a.delete_at(roll_set[0..4].rindex(roll_set[0..4].max)) }
+      #TODO finish this method
+    end
+    true
+  end
+
   def current_level
     1 #currently all created chars are starters.
   end

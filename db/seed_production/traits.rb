@@ -14,7 +14,7 @@
  ['Karzeł', 'postać otrzymuje -2pkt do Zręczności, Siły i Ogłady a ponadto parametry te nigdy nie będą mogły przekroczyć 20pkt. (wyjątek stanowi premia z magii). Wzrost postaci równy jest 150cm minus 2k10pkt. Klątwa ta najrzadziej występuje wśród barbarzyńców z Gór. Jednakże dzieci rodzące się tam, obarczone tym przekleństwem najczęściej traktowane są niczym trędowaci, dlatego ich los jest zazwyczaj przypieczętowany. Muszą opuścić wioskę/klan i od tej pory radzić sobie same – oczywiście można powiedzieć, że jest to równoznaczne z wyrokiem śmierci, chociaż nielicznym udaje się dotrzeć do cywilizacji bądź napotkać kupców zmierzających górskimi szlakami, którzy mogą takie biedactwo uratować. Wśród barbarzyńców krąży legenda o karle, który został poczęty przez Magniego podczas kazirodczego aktu z własną matką Kalastrą; boginią szaleństwa. Dziecko urodziło się nie tylko z ułomnym ciałem ale co gorsza odziedziczyło opętany umysł swej matki, ogarnięte nienawiścią, zgorzkniałe, odrzucone przez oboje rodziców pełza po świecie mszcząc się na niewinnych i słabych.', 0],
  ['Klątwa wieku', 'codziennie rano o świcie MG wykonuje rzut k10 jeżeli wypadnie 1-2 nieszczęśnik zamienia się w zniedołężniałego starca. Parametry Główne: Siła, Zręczność, Wytrzymałość jak i PŻ zmniejszane są do połowy (zaokrąglając w górę). Moc klątwy utrzymuje się, aż do następnego Świtu, kiedy to bohater odzyskuje normalny wiek.', 0],
  ['Niewola krwi', 'raz na k10 dni postać musi wypić świeżą, ludzką krew (kubek 0,2litra). MG sekretnie wykonuje rzut po czym w dniu żądzy krwi informuje gracza o narastającym pragnieniu. Za każdy dzień, w którym postać nie wypije krwi otrzymuje -2pkt do parametrów głównych. Dzieje się tak, aż do chwili kiedy współczynniki zredukowane zostaną do 5pkt co oznacza stan maligny i odruchy wręcz zwierzęce.', 0],
- ['Pomiot/Robactwo', 'postać prześladowana jest przez wszelkiego rodzaju insekty; pchły, wszy, kleszcze, komary, pająki, itp. stworzenia. Nie sposób jest się ich pozbyć po prostu w ciągu nocy nowe zastępy znowu odnajdą nieszczęśnika. „Ogłada” postaci spada do połowy (za wyjątkiem przemówień gdzie czasami można zastosować jej podstawową wartość, np.: nie jest widoczna, itp.).', 0],
+ ['Robactwo', 'postać prześladowana jest przez wszelkiego rodzaju insekty; pchły, wszy, kleszcze, komary, pająki, itp. stworzenia. Nie sposób jest się ich pozbyć po prostu w ciągu nocy nowe zastępy znowu odnajdą nieszczęśnika. „Ogłada” postaci spada do połowy (za wyjątkiem przemówień gdzie czasami można zastosować jej podstawową wartość, np.: nie jest widoczna, itp.).', 0],
  ['Zgnilizna', 'na postaci ciąży straszna klątwa, jej ciało ulega ciągłemu gniciu i rozpadowi. Jednakże w przeciwieństwie do trądu nigdy nie spowoduje to jej śmierci (ani utraty części ciała). Postać zmniejsza swoją Ogładę o -10pkt natomiast PŻ o -5pkt. Towarzyszy jej ciągły smród, napady bólu, ropienie, itp. Oprócz tego rany postaci nie chcą się goić, dlatego na leczenie musi poświęcić dwukrotnie więcej czasu i pieniędzy.', 0],
  ['Albinos', 'postać dotknięta jest bielactwem (brakiem barwnika), przez większość ludzi postrzegana jest jako odmieniec. Jej Ogłada zmniejszona jest o -5pkt. Wyjątek stanowi Nimer gdzie Albinos uważany jest za wybrańca bożego tego, na którego padł wzrok Durgila i jego nieopisana mądrość (włosy białe/siwe są oznaką mądrości). Dlatego w tym kraju prezencja Albinosa zamiast ulec redukcji jest podnoszona o 5pkt; (Ogłada postaci powinna zostać zapisana jako podstawowa wartość oraz ta zwiększona, której używamy na czas rozmowy/kontaktu z Nimeryjczykami). Niektórzy, zacofani i głupi ludzie (zazwyczaj chłopi) mogą bać się Albinosa, dlatego MG może dodać +5pkt do Ogłady podczas testów zastraszania.', 0],
  ['Głupek', 'postać straciła rozum, jest naiwna, prosta, tępa… Jej Inteligencja zmniejszana jest o -10pkt i nigdy nie może przekroczyć 15pkt. Chociaż na pierwszy rzut oka granie taką postacią wydaje się bezsensowne należy pamiętać, iż zabawa w RPG polega głównie na odgrywaniu roli – tych łatwiejszych i tych trudniejszych. Przecież każdy z nas potrafi zagrać potężnego, nieustraszonego wojownika, a czy każdy podoła wyzwaniu zagrania głupka? Posiadając tą klątwę należy pamiętać, że ludzi głupich jest tak samo wielu jak tych mądrych warto się zastanowić nad taka postacią albowiem może ona być łatwowierna, może być fanatykiem religijnym, itd., możliwości jest naprawdę sporo wystarczy tylko trochę się zastanowić.', 0],
@@ -149,4 +149,26 @@ linking_node.stats_modifiers.create(:modifies => "WI", :value => 5, :group_name 
 linking_node.stats_modifiers.create(:modifies => "casting", :value => 2, :group_name => "Przełamanie")
 linking_node.stats_modifiers.create(:modifies => "casting", :value => 3, :group_name => "Dodatkowe zaklęcia")      #TODO implemnt it
 
-#Other Amnezja, Albinos - leave as it is?,  Piękniś, Medrzec, Silacz, Akrobata, Wybraniec Boży, Fechmistrz
+
+trait = Trait.find_by_name("Mędrzec")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "INT", :value => 10, :group_name => "domyślne")
+
+trait = Trait.find_by_name("Siłacz")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "S", :value => 10, :group_name => "domyślne")
+
+trait = Trait.find_by_name("Akrobata")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "ZR", :value => 10, :group_name => "domyślne")
+
+trait = Trait.find_by_name("Wybraniec Boży")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "WI", :value => 10, :group_name => "domyślne")
+
+
+#TODO Other Amnezja, Albinos - leave as it is?,  Piękniś, Mędrzec, Siłacz, Akrobata, Wybraniec Boży, Fechmistrz

@@ -1,6 +1,7 @@
 <strong>Parametry: </strong>
 <br/><br/>
 <p style="font-size: 16px">Twój najwyższy rzut został przyporządkowany do parametru wiodącego.</p>
+<%= display_trait_warning_if_applicable(@character) %>
 <p style="font-size: 16px">Ponadto rzut, który przyporządkowujesz Ogładzie <strong>nie może być nizszy</strong> niż nominalny, czyli: <%= @stats.last %></p>
 <div id="display_container" class="stats_area">
   <div class="dragArea">

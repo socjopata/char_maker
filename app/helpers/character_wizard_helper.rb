@@ -1,6 +1,12 @@
 # -*- encoding : utf-8 -*-
 module CharacterWizardHelper
 
+  def display_trait_warning_if_applicable(char)
+     if Trait::CHOICE_BREAKERS.include?(char.character_background.traits.map(&:name).try(:first)) && char.character_background.traits.first.statistics_it_affects != char.lead_parameter
+      "<p style='font-size: 16px; font-weight: bold'>Z racji posiadania daru: \"#{char.character_background.traits.first.try(:name)}\" musisz kolejny najwyższy rzut przyporządkować do parametru: #{Statistics::NAMES[char.character_background.traits.first.statistics_it_affects]}.</p>".html_safe
+     end
+  end
+
   def display_curse_or_blessing(char)
     if char.character_background.traits.blank?
       "<strong>Klątwy i Dary: </strong> brak."

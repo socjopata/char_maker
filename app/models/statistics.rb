@@ -71,8 +71,6 @@ class Statistics < ActiveRecord::Base
       "49-51" => "+13"
   }
 
-  # User has to choose a dice roll for ogłada or can exchange it with other as long as it is higher than default.
-
   def draw_stats
     initial_stats = []
     loop do

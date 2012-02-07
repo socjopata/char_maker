@@ -68,10 +68,11 @@ class CharacterWizardsController < ApplicationController
       roll_set = @character.statistics.initial_dice_roll_set
       @lead_parameter = roll_set[0..4].max
       @stats = roll_set.tap { |a| a.delete_at(roll_set[0..4].rindex(roll_set[0..4].max)) }
+
       #do a show
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
-      if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth?
+      if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth? && @character.valid_stats_assignment
         skill_free_assignment_base, default_skills_ids = @character.statistics.convert_stat_choices_to_skills
         session[:skill_free_assignment_base] = skill_free_assignment_base
         session[:default_skills_ids] = default_skills_ids
