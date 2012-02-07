@@ -39,3 +39,114 @@
 ].each do |trait|
   Trait.create(:name => trait[0], :description => trait[1], :effect_type => trait[2]) unless Trait.exists?(:name => trait[0])
 end
+
+
+trait = Trait.find_by_name("Wyjątkowy Grubas")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "ZR", :value => -2, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "O", :value => -4, :group_name => "domyślne")
+
+trait = Trait.find_by_name("Słabeusz")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "S", :value => -5, :group_name => "domyślne")
+
+trait = Trait.find_by_name("Chromy (kulawy)")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "ZR", :value => -5, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "auxiliary", :value => -5, :group_name => "Bieg")
+
+trait = Trait.find_by_name("Garbaty")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "ZR", :value => -5, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "O", :value => -5, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "auxiliary", :value => -5, :group_name => "Bieg")
+
+trait = Trait.find_by_name("Tchórz")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "WI", :value => -5, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "auxiliary", :value => -10, :group_name => "Odporność na Strach")
+
+trait = Trait.find_by_name("Niezdara")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "ZR", :value => -5, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "casting", :value => -5, :group_name => "Rzucanie czarów")  #TODO unified name?
+
+trait = Trait.find_by_name("Karzeł")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "ZR", :value => -2, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "S", :value => -2, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "O", :value => -2, :group_name => "domyślne")
+
+trait = Trait.find_by_name("Robactwo")     #TODO ask Artur... decrease or not ?
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "O", :value => -10, :group_name => "domyślne")
+
+trait = Trait.find_by_name("Zgnilizna")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "O", :value => -10, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "auxiliary", :value => -5, :group_name => "Punkty Życia")
+
+trait = Trait.find_by_name("Głupek")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "INT", :value => -10, :group_name => "domyślne")
+
+###
+### BLESSINGS
+###
+
+trait = Trait.find_by_name("Dar Niebios")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "ZR", :value => 2, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "S", :value => 2, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "WI", :value => 2, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "WT", :value => 2, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "INT", :value => 2, :group_name => "domyślne")
+
+trait = Trait.find_by_name("Naturalna Odporność")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "WT", :value => 5, :group_name => "domyślne")
+
+trait = Trait.find_by_name("Wyostrzone Zmysły")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "auxiliary", :value => 15, :group_name => "Spostrzegawczość")
+
+trait = Trait.find_by_name("Nieugięty")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "WT", :value => 10, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Ból")
+linking_node.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Strach")
+
+trait = Trait.find_by_name("Strzelec Wyborowy")
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "fighting", :value => 5, :group_name => "Umiejętności Strzeleckie")
+
+trait = Trait.find_by_name("Olbrzym")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "WT", :value => 5, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "S", :value => 5, :group_name => "domyślne")
+
+trait = Trait.find_by_name("Arcymag")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "INT", :value => 5, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "WI", :value => 5, :group_name => "domyślne")
+linking_node.stats_modifiers.create(:modifies => "casting", :value => 2, :group_name => "Przełamanie")
+linking_node.stats_modifiers.create(:modifies => "casting", :value => 3, :group_name => "Dodatkowe zaklęcia")      #TODO implemnt it
+
+#Other Amnezja, Albinos - leave as it is?,  Piękniś, Medrzec, Silacz, Akrobata, Wybraniec Boży, Fechmistrz
