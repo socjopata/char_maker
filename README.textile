@@ -1,7 +1,3 @@
-Early development stage of an application that generates characters for custom RPG system called Alantar.
-
-
-
 h2. Alantar
 
 What you see here is a repository of an application that generates characters for custom RPG system called Alantar.
