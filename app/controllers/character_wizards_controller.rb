@@ -72,13 +72,15 @@ class CharacterWizardsController < ApplicationController
       #do a show
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
-      if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth? && @character.valid_stats_assignment
+      if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth? && @character.valid_stats_assignment?
         skill_free_assignment_base, default_skills_ids = @character.statistics.convert_stat_choices_to_skills
         session[:skill_free_assignment_base] = skill_free_assignment_base
         session[:default_skills_ids] = default_skills_ids
         redirect_to pick_a_fightstyle_step_character_wizard_path(:char_id => @character.id)
       else
-        redirect_to third_step_character_wizard_path(:char_id => @character.id), :alert => "Napewno dobrze uzupełniłeś statystyki?"
+        flash.alert = "Napewno dobrze uzupełniłeś statystyki?"
+        flash.alert << " Zwróć szczególna uwagę na swój dar: \"#{@character.character_background.traits.first.try(:name)}\" i sposób w jaki musisz przyporządkować drugi najwyższy wylosowany paramter." unless  @character.valid_stats_assignment?
+        redirect_to third_step_character_wizard_path(:char_id => @character.id)
       end
     end
   end
@@ -93,7 +95,7 @@ class CharacterWizardsController < ApplicationController
       if @character.fight_style.present? or @character.update_attribute(:fight_style_id, params[:fight_style_id])
         redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
       else
-         flash.alert = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
+        flash.alert = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
         redirect_to pick_a_fightstyle_step_character_wizard_path(:char_id => @character.id)
       end
     end
