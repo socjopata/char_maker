@@ -9,7 +9,7 @@ bc. @alantar
 
 
 What you see here is a repository of an application that generates characters for custom RPG system called Alantar.
-It's goal is: when a new player takes a new RPG book to his hand everything seems to be overwhelming at first glance.
+It's goal is: when a player takes a new RPG book to his hand, everything seems to be overwhelming at first glance.
 He might be excited to try it, but the process of creating a character for play might be difficult at first and not everyone wants to use example characters prepared by author of the book.
 
 And here comes the online characters generator :)
