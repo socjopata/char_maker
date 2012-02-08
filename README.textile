@@ -1,11 +1,11 @@
 bc. @alantar
-
    _____  .__                 __
   /  _  \ |  | _____    _____/  |______ _______
  /  /_\  \|  | \__  \  /    \   __\__  \\_  __ \
 /    |    \  |__/ __ \|   |  \  |  / __ \|  | \/
 \____|__  /____(____  /___|  /__| (____  /__|
         \/          \/     \/          \/
+
 
 
 What you see here is a repository of an application that generates characters for custom RPG system called Alantar.
