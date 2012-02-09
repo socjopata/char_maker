@@ -16,15 +16,15 @@ class CharacterWizardsController < ApplicationController
         @character_background.draw_a_trait if @character.hardcore_trait_picking
         @character_background.save
       end
+      @professions = Profession.all
+      @countries ||= Profession.find_by_name("Alchemik").countries
+    elsif request.post?
+      @character = current_user.characters.find(params[:char_id])
       if @character.statistics.blank?
         @stats = @character.build_statistics
         @stats.draw_stats
         @stats.save(false)
       end
-      @professions = Profession.all
-      @countries ||= Profession.find_by_name("Alchemik").countries
-    elsif request.post?
-      @character = current_user.characters.find(params[:char_id])
       @character.character_background.set_origin(params[:countries]) if @character.character_background.origin.blank?
       @character.pick_a_profession(params[:professions]) if @character.character_profession.blank?
       @character.character_background.set_social_class if @character.character_background.social_classes.blank?
@@ -109,7 +109,7 @@ class CharacterWizardsController < ApplicationController
       @caste_skills = Skill.fetch_caste_skills_for(@character)
       @profession_skills = Skill.fetch_profession_skills_for(@character)
       @cannot_select_skills = Skill.filter_nonselectable((@basic_skills + @caste_skills + @profession_skills), @character, @strength, @dexterity, @endurance, @intelligence, @faith, @polish)
-      @free_skill_amount = session[:skill_free_assignment_base] + Statistics::BONUS_OR_PENALTY_RANGES[@intelligence].to_i - session[:skills_used].to_i
+      @free_skill_amount = Skill.calculate_free_skill_amount(@character, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@intelligence].to_i, session[:skills_used].to_i)
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
     end
@@ -127,7 +127,7 @@ class CharacterWizardsController < ApplicationController
     character = current_user.characters.find(params[:character_id])
     params[:value]=="true" ? (next_number = session[:skills_used].to_i + 1) : (next_number = session[:skills_used].to_i - 1)
     session[:skills_used] = next_number
-    @free_skill_amount = session[:skill_free_assignment_base] + Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_int].to_i - session[:skills_used].to_i
+    @free_skill_amount = Skill.calculate_free_skill_amount(character, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_int].to_i, session[:skills_used].to_i)
 
     if @free_skill_amount < 0
       session[:skills_used] = session[:skills_used].to_i - 1 #reverting the change

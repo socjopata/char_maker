@@ -100,6 +100,12 @@ trait = Trait.find_by_name("Głupek")
 linking_node = trait.stats_choices.create
 linking_node.stats_modifiers.create(:modifies => "INT", :value => -10, :group_name => "domyślne")
 
+trait = Trait.find_by_name("Albinos")
+
+linking_node = trait.stats_choices.create
+linking_node.stats_modifiers.create(:modifies => "O", :value => -5, :group_name => "domyślne")
+
+
 ###
 ### BLESSINGS
 ###
@@ -171,4 +177,4 @@ linking_node = trait.stats_choices.create
 linking_node.stats_modifiers.create(:modifies => "WI", :value => 10, :group_name => "domyślne")
 
 
-#TODO Other Amnezja, Albinos - leave as it is?,  Piękniś, Mędrzec, Siłacz, Akrobata, Wybraniec Boży, Fechmistrz
+#TODO   Fechmistrz

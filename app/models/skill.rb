@@ -48,6 +48,12 @@ class Skill < ActiveRecord::Base
     commander.do!
   end
 
+  def self.calculate_free_skill_amount(character, base, intelligence_bonus, used)
+   result = base + intelligence_bonus + used - (character.character_background.traits.first.try(:name)=="Amnezja" ? 2 : 0)
+   result > 0 ? result : 0
+  end
+
+
   def add_skill_for(character_id)
     character_skills.create(:character_id => character_id) unless CharacterSkill.exists?(:character_id => character_id, :skill_id => id)
   end

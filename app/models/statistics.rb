@@ -77,11 +77,11 @@ class Statistics < ActiveRecord::Base
       7.times do
         initial_stats << 1 + rand(Statistics::DICE_TYPE)
       end
-      initial_stats = Statistics.normalize_dice_rolls(initial_stats, self.character.character_background.traits.present? && self.character.character_background.traits.first.name=="Błogosławiony")
+      initial_stats = Statistics.normalize_dice_rolls(initial_stats, character.character_background.traits.first.try(:name) =="Błogosławiony")
       break if initial_stats.sum > 55
       initial_stats = []
     end
-    initial_stats << 1 + rand(Statistics::DICE_TYPE) #extra dice roll for polish ("Ogłada"))
+    initial_stats << (character.character_background.traits.first.try(:name)=="Piękniś" ? 25 : (1 + rand(Statistics::DICE_TYPE)) ) #extra dice roll for polish ("Ogłada"))
     self.initial_dice_roll_set = initial_stats
   end
 
@@ -143,31 +143,47 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_s
-    strength + calculate_main_skill_bonus_for("S")
+    strength + calculate_main_skill_bonus_for("S")  + trait_modifier_for_main_skill_named("S")
   end
 
   def calculate_int
-    intelligence + calculate_main_skill_bonus_for("INT")
+    intelligence + calculate_main_skill_bonus_for("INT")  + trait_modifier_for_main_skill_named("INT")
   end
 
   def calculate_zr
-    dexterity + calculate_main_skill_bonus_for("ZR")
+    dexterity + calculate_main_skill_bonus_for("ZR") + trait_modifier_for_main_skill_named("ZR")
   end
 
   def calculate_wi
-    faith + calculate_main_skill_bonus_for("WI")
+    faith + calculate_main_skill_bonus_for("WI") + trait_modifier_for_main_skill_named("WI")
   end
 
   def calculate_wt
-    endurance + calculate_main_skill_bonus_for("WT")
+    endurance + calculate_main_skill_bonus_for("WT") + trait_modifier_for_main_skill_named("WT")
   end
 
   def calculate_o
-    polish + calculate_main_skill_bonus_for("O")
+    polish + calculate_main_skill_bonus_for("O") + trait_modifier_for_main_skill_named("O")
   end
 
   def calculate_main_skill_bonus_for(name)
     stats_modifiers.select { |sm| sm.modifies==name }.collect(&:value).sum
+  end
+
+  def trait_modifier_for_main_skill_named(name)
+    if character.character_background.traits.present? && character.character_background.traits.first.stats_choices.present?
+       character.character_background.traits.first.stats_choices.first.stats_modifiers.select { |sm| sm.modifies==name }.map(&:value)[0].to_i  #this looks like it, because *you* (I am pointing to myself) are to lazy to push modifiers from traits, like you're doing it with everything else.'
+    else
+      0
+    end
+  end
+
+  def trait_modifier_for_auxiliary_parameter_named(name)
+    if character.character_background.traits.present? && character.character_background.traits.first.stats_choices.present?
+       character.character_background.traits.first.stats_choices.first.stats_modifiers.select { |sm| sm.group_name==name }.map(&:value)[0].to_i
+    else
+      0
+    end
   end
 
   def calculate_initiative
@@ -198,7 +214,7 @@ class Statistics < ActiveRecord::Base
   def calculate_running
     #TODO actual dexterity fix needed.
     #TODO check Commander for this method usage
-    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i + 0 #TODO get back here later, there will be some bonuses
+    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i + 0 #TODO get back here later, there will be some bonuses. also remeber about traits
   end
 
   def calculate_sprinting
@@ -208,11 +224,11 @@ class Statistics < ActiveRecord::Base
   def calculate_auxiliary_bonus(name, total="yep, I want total")
     case total
       when "yep, I want total"
-        stats_modifiers.select { |sm| sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
+        stats_modifiers.select { |sm| sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum + trait_modifier_for_auxiliary_parameter_named(name)
       when "only_from_skills"
         stats_modifiers.select { |sm| sm.grand_daddy.is_a?(Skill) && sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
       when "only_special"
-        stats_modifiers.select { |sm| !sm.grand_daddy.is_a?(Skill) && sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
+        stats_modifiers.select { |sm| !sm.grand_daddy.is_a?(Skill) && sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum + trait_modifier_for_auxiliary_parameter_named(name)
     end
 
   end
