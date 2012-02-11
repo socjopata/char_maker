@@ -6,16 +6,22 @@
   <TR>
     <TD COLSPAN=8 WIDTH=100% VALIGN=TOP class="black alantar_td">
       <P class="white_normal">Umiejętności
-        Właściwe Danej Profesji</P>
+        Ogólne</P>
     </TD>
   </TR>
   <TR>
-    <TD COLSPAN=8 WIDTH=100% VALIGN=TOP class="grey alantar_td">
+    <TD COLSPAN=8 WIDTH=100% VALIGN=TOP class="grey alantar_td" id="free_skill_amount">
+      <P class="fs_14 white_normal" id="skill_counter">Pozostało wolnych umiejętności: <%= @free_skill_amount %></P>
     </TD>
   </TR>
-  <% @profession_skills.in_groups_of(4, false).each do |skills| %>
+  <% @basic_skills.in_groups_of(4, false).each do |skills| %>
       <TR VALIGN=TOP>
         <% skills.each do |skill| %>
+            <TD WIDTH=7% class="alantar_td">
+              <P ALIGN=CENTER><%= check_box_tag skill.id, 1, @character.skills.include?(skill), :disabled => (session[:default_skills_ids].include?(skill.id) || @cannot_select_skills.include?(skill)), :onchange => "toggle_this_skill(this);" %>
+                <BR>
+              </P>
+            </TD>
             <TD WIDTH=39% class="alantar_td">
               <P ALIGN=CENTER class="fs_12 italic normal skill_qtip"><%= skill.name %></P>
 
@@ -23,13 +29,8 @@
                 <%= nice_and_shiny_description(skill) %>
               </p>
             </TD>
-            <TD WIDTH=7% class="alantar_td">
-              <P ALIGN=CENTER><%= check_box_tag skill.id, 1, @character.skills.include?(skill), :disabled => (session[:default_skills_ids].include?(skill.id) || @cannot_select_skills.include?(skill)), :onchange => "toggle_this_skill(this);" %>
-                <BR>
-              </P>
-            </TD>
+
         <% end %>
       </TR>
   <% end %>
 </TABLE>
-<br />

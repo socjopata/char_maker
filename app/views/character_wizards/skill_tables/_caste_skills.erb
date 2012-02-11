@@ -16,6 +16,11 @@
   <% @caste_skills.in_groups_of(12, false).each do |skills| %>
       <TR VALIGN=TOP>
         <% skills.each do |skill| %>
+            <TD WIDTH=7% class="alantar_td">
+              <P ALIGN=CENTER><%= check_box_tag skill.id, 1, @character.skills.include?(skill), :disabled => (session[:default_skills_ids].include?(skill.id) || @cannot_select_skills.include?(skill)), :onchange => "toggle_this_skill(this);" %>
+                <BR>
+              </P>
+            </TD>
             <TD WIDTH=39% class="alantar_td">
               <P ALIGN=CENTER class="fs_12 italic normal skill_qtip"><%= skill.name %></P>
 
@@ -23,11 +28,7 @@
                 <%= nice_and_shiny_description(skill) %>
               </p>
             </TD>
-            <TD WIDTH=7% class="alantar_td">
-              <P ALIGN=CENTER><%= check_box_tag skill.id, 1, @character.skills.include?(skill), :disabled => (session[:default_skills_ids].include?(skill.id) || @cannot_select_skills.include?(skill)), :onchange => "toggle_this_skill(this);" %>
-                <BR>
-              </P>
-            </TD>
+
         <% end %>
       </TR>
   <% end %>
