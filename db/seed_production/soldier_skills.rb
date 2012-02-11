@@ -56,7 +56,9 @@ skill = Skill.create(:profession_type => "soldier",
 
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Tarczownik" )
 #TODO Ponadto bohater może wybrać jeden rodzaj tarczy, w której doskonali swe umiejętności dzięki czemu jej Obrona wzrasta na stałe o +1pkt.
-#TODO favorite arment   ^^
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana tarcza, Obrona+1")  #TODO This "DSL" can be improved
+
+
 
 skill = Skill.create(:profession_type => "soldier",
                      :name => "Szał Bitewny",
@@ -95,14 +97,14 @@ skill = Skill.create(:profession_type => "soldier",
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "fighting", :value => 3, :group_name => "Obrona Tarczy")
 s_choice.stats_modifiers.create(:modifies => "fighting", :value => -1, :group_name => "Trafienie")
-
+#TODO is it constant? or just an active skill?
 
 skill = Skill.create(:profession_type => "soldier",
                      :name => "Ulubiona Broń",
                      :way_it_works => "wybrana przez postać broń (np.: espadon, kukri, nadziak, itd.) ma zwiększone parametry Ataku i Obrony o +1pkt, a jej Tempo obniżone jest o -1pkt (do minimum 1pkt). Umiejętność dotyczy jednej, konkretnej broni, a nie całej grupy.
 Umiejętność Pasywna" )
 
-#TODO favorite arment
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana broń, Atak+1, Obrona+1, Tempo-1")  #This "DSL" can be improved
 
 skill = Skill.create(:profession_type => "soldier",
                      :name => "Walka na Dystans",

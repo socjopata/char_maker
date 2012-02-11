@@ -98,8 +98,8 @@ Bohater zwiększa parametr Bieg i Spostrzegawczość o +1pkt.
 Umiejętność Pasywna.")
 
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Spostrzegawczość")  #TODO unify the name
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Bieg")  #TODO unify the name
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Spostrzegawczość")
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Bieg")
 
 skill = Skill.create(:profession_type => "rogue",
                      :name => "Natarcie i Powstrzymanie",
@@ -144,7 +144,7 @@ skill.skill_requirements.create(:check_applies_to => "statistics", :name => "O",
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne")
 s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => "domyślne")
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Spostrzegawczość")  #TODO unify the name
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Spostrzegawczość")
 
 skill = Skill.create(:profession_type => "rogue",
                      :name => "Ucieczka i Wyzwalanie się z Więzów",
@@ -169,7 +169,8 @@ skill = Skill.create(:profession_type => "rogue",
                      :way_it_works => "wybrana przez postać broń (np.: espadon, kukri, nadziak, itd.) ma zwiększone parametry Ataku i Obrony o +1pkt, a jej Tempo obniżone jest o -1pkt (do minimum 1pkt). Umiejętność dotyczy jednej, konkretnej broni, a nie całej grupy.
 Umiejętność Pasywna" )
 
-#TODO favorite arment
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana broń, Atak+1, Obrona+1, Tempo-1")  #This "DSL" can be improved
+
 
 skill = Skill.create(:profession_type => "rogue",
                      :name => "Walka w Trudnych Warunkach",

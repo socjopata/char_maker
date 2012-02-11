@@ -15,7 +15,7 @@ Umiejętność Pasywna" )
 
 #TODO check it
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Fechtunek w Grupie Broni")
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek w Grupie Broni")
 
 
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Natarcie i Powstrzymanie" )
@@ -435,7 +435,7 @@ Umiejętność Pasywna.")
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "5" )
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
-#TODO Implement it ! along with other dmg perks
+#TODO Implement it ! along with other dmg perks  - group name "Melee Damage"
 
 skill = Skill.create(:profession_type => "Strzelec",
                      :name => "Mistrz Kuszników",
@@ -443,7 +443,7 @@ skill = Skill.create(:profession_type => "Strzelec",
 Umiejętność Pasywna.")
 
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "3" )
-#TODO Implement it ! along with other dmg perks
+#TODO Implement it ! along with other dmg perks group name "Melee Damage"
 
 
 ###SZAMAN
@@ -525,10 +525,13 @@ s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_na
                      :way_it_works => "Fechtunek w wybranej Grupie Broni podnoszony jest o +1pkt, ponadto bohater zwiększa zadawane w walce wręcz Obrażenia o +3pkt.
 Umiejętność Pasywna")
 
-#TODO Implement it !    Fechtunek w wybranej Grupie Broni
+#TODO Implement it ! the dmg bonus  group name "Melee Damage"
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "33" )
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S", :value => "20" )
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "3" )
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek w Grupie Broni")
+
 
  skill = Skill.create(:profession_type => "Zabójca",
                      :name => "Skrytobójca",

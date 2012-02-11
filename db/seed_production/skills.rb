@@ -85,13 +85,12 @@ skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S",
 skill = Skill.create(:profession_type => "default", :name => "Nauczyciel Fechtunku Wielu Broni", :way_it_works => "bohater zyskuje Jedną Biegłość w Broniach, dzięki czemu będzie mógł nauczyć się walczyć dodatkową grupą broni.",
 :active => false)
 s_choice = skill.stats_choices.create
-
-#TODO modifiers here
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Biegłość w Grupie Broni")  #TODO remember to apply this later
 
 skill = Skill.create(:profession_type => "default", :name => "Nauczyciel Fechtunku Jednej Broni", :way_it_works => "bohater zyskuje w wybranej Grupie Broni +1pkt Fechtunku (dzięki czemu zwiększa zarówno FwA jak i FwO). Dotyczy to każdej broni zarówno tej do walki wręcz jak i strzeleckiej.",
 :active => false)
 s_choice = skill.stats_choices.create
-#TODO modifiers here
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek w Grupie Broni")
 
 
 skill = Skill.create(:profession_type => "default", :name => "Nieustraszony", :way_it_works => "postać zwiększa swoją Wiarę o +1pkt oraz Odporność na Strach o +5pkt. Jeżeli efekt magiczny skierowany w bohatera wywołuje Strach lub Przerażenie premia ta przyznawana jest również w przeciwstawnym teście Przełamania. Zdolność może być wybrana wielokrotnie, analogicznie podnosząc parametr główny jak i samą odporność.",
@@ -230,19 +229,15 @@ s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_na
 skill = Skill.create(:profession_type => "default", :name => "Twardziel", :way_it_works => "bohater otrzymuje +5pkt do Odporności na Ból, premia ta przyznawana jest również przy testach Ogłuszenia, torturowaniu, utracie przytomności, itp. przypadkach. Ponadto postać może z niej skorzystać również podczas przeciwstawnych testów wywołanych magią jeżeli efekt dotyczy bólu, utraty przytomności, itd. Bohater podnosi swą Wytrzymałość o +1pkt.",
 :active => false)
 s_choice = skill.stats_choices.create
-
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Ból")
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
-
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "OR: WT,WI", :value => "21" )
 
-#TODO check skill name in the whole system
+
 skill = Skill.create(:profession_type => "default", :name => "Wino, Śpiew i Kobiety", :way_it_works => "wszystkie kontakty z płcią przeciwną otrzymują premię w wysokości +5pkt do Ogłady. Przy czym test wykonywany jest tylko i wyłącznie w trudnych, niezręcznych bądź niebezpiecznych sytuacjach (standardowo postać potrafi dopasować się do ogółu i jest raczej lubiana). Ponadto Ogłada postaci zwiększana jest o +2pkt.",
 :active => false, :description => "wieloletnie podboje płci przeciwnej oraz niezliczone zabawy uczyniły z postaci prawdziwego „Casanovę”. Bohater nie tylko umiejętnie potrafi rozkochać w sobie wybrana osobę ale również doskonale prowadzi zabawy za pomocą śpiewu, rozmowy bądź tańca. Innymi słowy z chwilą kiedy bohater zdobędzie tą zdolność należy uznać go za „duszę towarzystwa”. Doskonałe efekty zapewnia połączenie tej umiejętności z „Dykcją/Przemawianiem”.")
 s_choice = skill.stats_choices.create
-
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne")
-
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "O", :value => "17" )
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "17" )
 
