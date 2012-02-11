@@ -92,8 +92,8 @@ skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S",
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WT", :value => "31" )
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Niezłomność" )
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Strach")  #TODO unify the name
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Ból")  #TODO unify the name
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Strach")
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Ból")
 
 skill = Skill.create(:profession_type => "Berzerker",
                      :name => "Tatuaż Magniego",
@@ -286,7 +286,7 @@ Umiejętność Pasywna.")
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "22" )
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "O", :value => 3, :group_name => "domyślne")
-s_choice.stats_modifiers.create(:modifies => "casting", :value => 2, :group_name => "Rzucanie czarów")  #TODO unified name?
+s_choice.stats_modifiers.create(:modifies => "casting", :value => 2, :group_name => "Rzucanie czarów")
 
 skill = Skill.create(:profession_type => "Kapłan",
                      :name => "Wiara mą Tarczą",

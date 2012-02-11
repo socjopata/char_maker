@@ -12,7 +12,7 @@ s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "domyślne")
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
 #TODO wszystkie ograniczenia wynikające z noszenia średnich i ciężkich Zbroi oraz Pancerzy oraz używania tarcz zmniejszane są o 5pkt,
-
+#TODO  check Armor penatly
 
 skill = Skill.create(:profession_type => "brutal",
                      :name => "Cios Śmierci",
@@ -108,7 +108,7 @@ skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S",
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WT", :value => "20" )
 
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Punkty Życia")  #TODO unify the name
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Punkty Życia")
 
 skill = Skill.create(:profession_type => "brutal",
                      :name => "Weteran",
@@ -117,8 +117,8 @@ Umiejętność Pasywna" )
 
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "3" )
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Strach")  #TODO unify the name
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Ból")  #TODO unify the name
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Strach")
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Ból")
 
 skill = Skill.create(:profession_type => "brutal",
                      :name => "Zaawansowane Powalenie",
@@ -208,7 +208,6 @@ skill = Skill.create(:profession_type => "finesse",
 Inicjatywa i Spostrzegawczość bohatera podnoszone są o +1pkt.
 Umiejętność Pasywna." )
 
-#TODO code it !
 skill.skill_requirements.create(:check_applies_to => "auxiliary", :name => "Inicjatywa", :value => "25" )
 
 s_choice = skill.stats_choices.create

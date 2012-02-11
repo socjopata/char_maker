@@ -18,7 +18,6 @@
   SocialClass.create(:name => s_class) unless SocialClass.exists?(:name => s_class)
 end
 
-#TODO refresh stats, they've changed when compared to the book.
 
 s_class = SocialClass.find_by_name("Niewolnik")
 s_choice = s_class.stats_choices.create

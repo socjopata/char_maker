@@ -75,7 +75,7 @@ trait = Trait.find_by_name("Niezdara")
 
 linking_node = trait.stats_choices.create
 linking_node.stats_modifiers.create(:modifies => "ZR", :value => -5, :group_name => "domyślne")
-linking_node.stats_modifiers.create(:modifies => "casting", :value => -5, :group_name => "Rzucanie czarów")  #TODO unified name?
+linking_node.stats_modifiers.create(:modifies => "casting", :value => -5, :group_name => "Rzucanie czarów")
 
 trait = Trait.find_by_name("Karzeł")
 
@@ -84,7 +84,7 @@ linking_node.stats_modifiers.create(:modifies => "ZR", :value => -2, :group_name
 linking_node.stats_modifiers.create(:modifies => "S", :value => -2, :group_name => "domyślne")
 linking_node.stats_modifiers.create(:modifies => "O", :value => -2, :group_name => "domyślne")
 
-trait = Trait.find_by_name("Robactwo")     #TODO ask Artur... decrease or not ?
+trait = Trait.find_by_name("Robactwo")
 
 linking_node = trait.stats_choices.create
 linking_node.stats_modifiers.create(:modifies => "O", :value => -10, :group_name => "domyślne")

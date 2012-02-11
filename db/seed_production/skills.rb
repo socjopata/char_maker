@@ -1,7 +1,7 @@
 ## -*- encoding : utf-8 -*-
 #
 
-#TODO what the hell is :active ?
+#TODO what the hell is :active ?   Aktywny / Pasywny ? IF yes... then this is of no use here.
 
 skill = Skill.create(:profession_type => "default",
                      :name => "Akrobatyka",
@@ -99,16 +99,16 @@ skill = Skill.create(:profession_type => "default", :name => "Nieustraszony", :w
 
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 1, :group_name => "domyślne")
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Strach")  #TODO unify the name
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Strach")
 
 
 skill = Skill.create(:profession_type => "default", :name => "Niezłomność", :way_it_works => "kiedy Punkty Życia postaci spadną poniżej Jednego, bohater nadludzkim wysiłkiem woli może dalej walczyć, ruszać się, i podejmować inne normalne akcje. Dzieje się tak aż do momentu jego śmierci (która następuje kiedy PŻ spadną na -10pkt) lub do chwili gdy zdolność przestanie działać. Umiejętność utrzymuje się przez 3rundy/poziom postaci. Ponadto bohater zwiększa swoją Odporność na Strach i Ból oraz Punkty Życia o +3pkt.",
 :active => false)
 
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Strach")  #TODO unify the name
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Ból")  #TODO unify the name
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Punkty Życia")  #TODO unify the name
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Strach")
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Ból")
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Punkty Życia")
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WI", :value => "17" )
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WT", :value => "25" )
@@ -124,8 +124,8 @@ skill = Skill.create(:profession_type => "default", :name => "Odporność", :way
 :active => false)
 
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Ból")  #TODO unify the name
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Punkty Życia")  #TODO unify the name
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Ból")
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Punkty Życia")
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WT", :value => "22" )
 
@@ -188,7 +188,7 @@ s_choice.stats_modifiers.create(:modifies => "money", :value => 0, :group_name =
 skill = Skill.create(:profession_type => "default", :name => "Sokoli Wzrok", :way_it_works => "Spostrzegawczość postaci zwiększana jest o +5pkt, ponadto może wykonać dwa rzuty sprawdzając ten parametr i wybrać korzystniejszy wynik.",
 :active => false)
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Spostrzegawczość") #TODO unify names
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Spostrzegawczość")
 
 
 skill = Skill.create(:profession_type => "default", :name => "Szulerka", :way_it_works => "podczas dowolnej gry bohater może pomagać swemu szczęściu, dzięki czemu przysługują mu dwa rzuty sprawdzające wynik rozgrywki (wybiera korzystniejszy wynik). Aby sprawdzić jak poszła gra/oszustwo należy wykonać test Sprytu. Ponadto otrzymuje +5pkt przy wykrywaniu oszustwa posiadając umiejętność Spostrzegawczość oraz +5pkt przy oszukiwaniu jeżeli ma zdolność Refleks. Spryt postaci podnoszony jest o +2pkt.",
@@ -207,7 +207,7 @@ skill = Skill.create(:profession_type => "default", :name => "Śledzenie i Skrad
 
 s_choice = skill.stats_choices.create
 
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Spostrzegawczość")  #TODO unify names
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Spostrzegawczość")
 
 
 skill = Skill.create(:profession_type => "default", :name => "Torturowanie", :way_it_works => "Aby sprawdzić jak skuteczne są „zabiegi” należy wykonać test Bólu ofiary z karą równą premii ze Zręczności kata. Sukces oznacza, że przesłuchiwana osoba może zachować milczenie i nie została złamana. Kolejna próba (czyli kolejne testy) może być wykonana dopiero następnego dnia ale każdy kolejny dzień tortur zwiększa karę o kolejne 2pkt. W zależności od tortur i ich nasileniach MG powinien o jakiś czas wykonać test Wytrzymałości ofiary. Niepowodzenie oznacza jej śmierć. Ponadto w przypadku stosowania ciężkich metod tj: obdzieranie ze skóry, łamanie kołem, itp. należy sprawdzić Zręczność kata standardowym testem. Niepowodzenie oznacza test na połowę Wytrzymałości ofiary lub jej natychmiastową śmierć. Odporność na Strach i Ból postaci (oprawcy) podnoszona jest o +2pkt.",
@@ -215,8 +215,8 @@ skill = Skill.create(:profession_type => "default", :name => "Torturowanie", :wa
 
 s_choice = skill.stats_choices.create
 
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Strach")  #TODO unify names
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Ból")  #TODO unify names
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Strach")
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Ból")
 
 
 skill = Skill.create(:profession_type => "default", :name => "Tropienie, Polowanie i Kamuflaż", :way_it_works => "W wyjątkowo trudnych bądź groźnych sytuacjach MG musi wykonać test Zręczności postaci, od którego zależy czy bohaterowi udało się np.: podkraść, czy wytropił jakąś rzadką zwierzynę, itp. Natomiast aby zauważyć postać posiadającą kamuflaż należy wykonać udany test Spostrzegawczości zmniejszonej o 5-20pkt decyzja MG. Spostrzegawczość postaci podnoszona jest o +3pkt.",
@@ -224,14 +224,14 @@ skill = Skill.create(:profession_type => "default", :name => "Tropienie, Polowan
 
 s_choice = skill.stats_choices.create
 
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spostrzegawczość")  #TODO unify names
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Spostrzegawczość")
 
 
 skill = Skill.create(:profession_type => "default", :name => "Twardziel", :way_it_works => "bohater otrzymuje +5pkt do Odporności na Ból, premia ta przyznawana jest również przy testach Ogłuszenia, torturowaniu, utracie przytomności, itp. przypadkach. Ponadto postać może z niej skorzystać również podczas przeciwstawnych testów wywołanych magią jeżeli efekt dotyczy bólu, utraty przytomności, itd. Bohater podnosi swą Wytrzymałość o +1pkt.",
 :active => false)
 s_choice = skill.stats_choices.create
 
-s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Ból")  #TODO unify names
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 5, :group_name => "Odporność na Ból")
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "OR: WT,WI", :value => "21" )

@@ -15,6 +15,8 @@ class SkillRequirement < ActiveRecord::Base
        #example skill.skill_requirements.create(:check_applies_to => "social_class", :name => "non_barbarian")
       when "caster_class"
         !Profession::CASTER_CLASSES.include?(character.profession.name)
+      when "auxiliary"
+        #TODO ! name can be "Inicjatywa and value: 25"
     end
   end
 

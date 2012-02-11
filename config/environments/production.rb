@@ -7,7 +7,7 @@ CharMaker::Application.configure do
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   # Specifies the header that your server uses for sending files
@@ -50,8 +50,11 @@ CharMaker::Application.configure do
 
   config.after_initialize do
     LoggedExceptionsController.class_eval do
-      #TODO check for admin rights... when admin use feature will be implemented...
-      before_filter :user_signed_in?
+      before_filter :authorized?
+      protected
+      def authorized?
+        redirect_to "/" unless (current_user.present? && current_user.admin)
+      end
     end
   end
 

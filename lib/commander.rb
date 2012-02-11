@@ -12,7 +12,8 @@ class Commander
       instructions << interpret(modifier)
     end
     skill_instructions = []
-    skill_instructions = translate(@nonselectables, Skill.filter_nonselectable(Skill.basic, @character, @character.statistics.calculate_s, @character.statistics.calculate_zr, @character.statistics.calculate_wt, @character.statistics.calculate_int, @character.statistics.calculate_wi, @character.statistics.calculate_o)) if @nonselectables.present?
+    skillset =  Skill.basic + Skill.fetch_caste_skills_for(@character) + Skill.fetch_profession_skills_for(@character)
+    skill_instructions = translate(@nonselectables, Skill.filter_nonselectable(skillset.flatten, @character, @character.statistics.calculate_s, @character.statistics.calculate_zr, @character.statistics.calculate_wt, @character.statistics.calculate_int, @character.statistics.calculate_wi, @character.statistics.calculate_o)) if @nonselectables.present?
     [instructions.uniq.flatten, skill_instructions]
   end
 
