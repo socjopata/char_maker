@@ -212,6 +212,7 @@ class Statistics < ActiveRecord::Base
 
   def calculate_running
     #TODO actual dexterity fix needed.
+    #TODO check Commander for this method usage
     AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i + calculate_auxiliary_bonus("Bieg")
   end
 

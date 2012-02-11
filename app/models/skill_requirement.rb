@@ -12,11 +12,10 @@ class SkillRequirement < ActiveRecord::Base
         true #currently all characters are 1 lvl, so..
       when "social_class"
         !character.social_class.send(self.name.intern)
-       #example skill.skill_requirements.create(:check_applies_to => "social_class", :name => "non_barbarian")
       when "caster_class"
         !Profession::CASTER_CLASSES.include?(character.profession.name)
       when "auxiliary"
-        #TODO ! name can be "Inicjatywa and value: 25"
+        self.value.to_i > character.statistics.send("calculate_#{AuxiliaryParameterSet::ENGLISH_NAMES[group_name]}".intern)
     end
   end
 
