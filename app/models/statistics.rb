@@ -203,8 +203,7 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_magic_resistance
-    #TODO get back here later
-    AuxiliaryParameterSet::MAGIC_RESISTANCE[character.profession.general_type]
+    AuxiliaryParameterSet::MAGIC_RESISTANCE[character.profession.general_type]  + calculate_auxiliary_bonus("Odporność na Magię")
   end
 
   def calculate_life_points
@@ -213,12 +212,11 @@ class Statistics < ActiveRecord::Base
 
   def calculate_running
     #TODO actual dexterity fix needed.
-    #TODO check Commander for this method usage
-    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i + 0 #TODO get back here later, there will be some bonuses. also remeber about traits
+    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i + calculate_auxiliary_bonus("Bieg")
   end
 
   def calculate_sprinting
-    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i + 0 + 10 #TODO get back here later, there will be some bonuses
+    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i + 10 + calculate_auxiliary_bonus("Bieg")
   end
 
   def calculate_auxiliary_bonus(name, total="yep, I want total")

@@ -49,7 +49,7 @@ class Skill < ActiveRecord::Base
   end
 
   def self.calculate_free_skill_amount(character, base, intelligence_bonus, used)
-   result = base + intelligence_bonus + used - (character.character_background.traits.first.try(:name)=="Amnezja" ? 2 : 0)
+   result = base + intelligence_bonus - used - (character.character_background.traits.first.try(:name)=="Amnezja" ? 2 : 0)
    result > 0 ? result : 0
   end
 

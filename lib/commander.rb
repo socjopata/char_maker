@@ -57,7 +57,7 @@ class Commander
               Hash["auxiliary_table_main_p_bonus_for_life_points", base_skill_value]
           ]
         when "INT"
-          #nothing actually
+          #nothing actually. #TODO on a second thougth, number of free skills.
         when "O"
           #nothing actually
         when "WI"
@@ -73,7 +73,6 @@ class Commander
     end
     result.flatten
   end
-
 
   #TODO filter instructions for actual change ?
 end

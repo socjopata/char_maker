@@ -13,6 +13,8 @@ class SkillRequirement < ActiveRecord::Base
       when "social_class"
         !character.social_class.send(self.name.intern)
        #example skill.skill_requirements.create(:check_applies_to => "social_class", :name => "non_barbarian")
+      when "caster_class"
+        !Profession::CASTER_CLASSES.include?(character.profession.name)
     end
   end
 

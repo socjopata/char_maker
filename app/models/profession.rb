@@ -11,6 +11,7 @@ class Profession < ActiveRecord::Base
 
   DEFAULT_NOBLE = ["Fircyk (żołnierz)", "Fircyk (łotr)", "Rycerz", "Rycerz Zakonny"]
 
+  CASTER_CLASSES = ["Mag", "Kapłan", "Szaman", "Czarnoksiężnik", "Alchemik"]
 
   #after pushing all check for doubles
   #while rendering add extra check for choice.

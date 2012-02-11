@@ -26,7 +26,7 @@ skill = Skill.create(:profession_type => "scholar",
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "21" )
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Runy Proste" )
-skill.skill_requirements.create(:check_applies_to => "other", :name => "Posiadanie Mocy" ) #TODO implement it
+skill.skill_requirements.create(:check_applies_to => "caster_class", :name => "Posiadanie Mocy" ) #TODO implement it
 
 skill = Skill.create(:profession_type => "scholar",
                      :name => "Astrologia",
@@ -62,7 +62,7 @@ W tym samym czasie można posiadać tylko jednego Chowańca.
 Na Chowańca można wybrać: ssaka, gada, płaza lub ptaka (nie dotyczy mitycznych bestii).")
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "23" )
-skill.skill_requirements.create(:check_applies_to => "other", :name => "Posiadanie Mocy" ) #TODO implement it
+skill.skill_requirements.create(:check_applies_to => "caster_class", :name => "Posiadanie Mocy" ) #TODO implement it
 
 skill = Skill.create(:profession_type => "scholar",
                      :name => "Dogłębne Studia",
@@ -70,7 +70,7 @@ skill = Skill.create(:profession_type => "scholar",
 Uwaga: umiejętność ta może być wybrana wielokrotnie, każdorazowo dając nowy czar.")
 
 
-skill.skill_requirements.create(:check_applies_to => "other", :name => "Posiadanie Mocy" ) #TODO implement it
+skill.skill_requirements.create(:check_applies_to => "caster_class", :name => "Posiadanie Mocy" ) #TODO implement it
 
 skill = Skill.create(:profession_type => "scholar",
                      :name => "Gromadzenie Mocy",
@@ -78,7 +78,7 @@ skill = Skill.create(:profession_type => "scholar",
 Rzucanie czarów/modlitw postaci wzrasta o +1pkt.")
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "22" )
-skill.skill_requirements.create(:check_applies_to => "other", :name => "Posiadanie Mocy" ) #TODO implement it
+skill.skill_requirements.create(:check_applies_to => "caster_class", :name => "Posiadanie Mocy" ) #TODO implement it
 
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "casting", :value => 1, :group_name => "Rzucanie czarów")
@@ -172,7 +172,7 @@ skill = Skill.create(:profession_type => "scholar",
 Umiejętność Pasywna.")
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WT", :value => "16" )
-skill.skill_requirements.create(:check_applies_to => "skill", :name => "Posiadanie Mocy" )
+skill.skill_requirements.create(:check_applies_to => "caster_class", :name => "Posiadanie Mocy" )
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Magię")
 
@@ -201,7 +201,7 @@ skill = Skill.create(:profession_type => "scholar",
 
 
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Nieomylność" )
-skill.skill_requirements.create(:check_applies_to => "other", :name => "Posiadanie Mocy" )
+skill.skill_requirements.create(:check_applies_to => "caster_class", :name => "Posiadanie Mocy" )
 
 skill = Skill.create(:profession_type => "scholar",
                      :name => "Potęga Magii",
@@ -261,7 +261,7 @@ skill = Skill.create(:profession_type => "scholar",
 ")
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "20" )
-skill.skill_requirements.create(:check_applies_to => "other", :name => "Posiadanie Mocy" ) #TODO implement it
+skill.skill_requirements.create(:check_applies_to => "caster_class", :name => "Posiadanie Mocy" ) #TODO implement it
 
 skill = Skill.create(:profession_type => "scholar",
                      :name => "Runy Złożone",
@@ -299,7 +299,7 @@ skill = Skill.create(:profession_type => "scholar",
                      :way_it_works => "postać do perfekcji opanowała rzucanie czarów, dzięki czemu nie potrzebuje wspomagać mocy inkantacji magicznymi znakami tworzonymi przez palce i dłonie. Rzucanie Czarów/Modlitw wzrasta o +1pkt, a ręce czarodzieja nie muszą tworzyć magicznych znaków (może coś w nich trzymać, mieć je związane, itp).
 Umiejętność Pasywna.")
 
-skill.skill_requirements.create(:check_applies_to => "other", :name => "Posiadanie Mocy" ) #TODO implement it
+skill.skill_requirements.create(:check_applies_to => "caster_class", :name => "Posiadanie Mocy" ) #TODO implement it
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "OR: INT,WI", :value => "30" )
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "25" )
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WI", :value => "25" )
