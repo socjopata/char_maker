@@ -257,7 +257,6 @@ skill.skill_requirements.create(:check_applies_to => "skill", :name => "Jeździe
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Podstawy Akrobatyki" )
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "19" )
 
-#TODO I was able to pick this up as a warrior from gory niczyje i ksiezycowe :\
 skill = Skill.create(:profession_type => "default", :name => "Wykształcenie Akademickie", :way_it_works => "postać zdobyła ogólne wykształcenie, dzięki któremu zna podstawy wszystkich dziedzin nauki. Ponadto zwiększa swój Spryt o +2pkt a wszystkie testy (nie magiczne) związane z wiedzą ułatwione są o 5pkt. Inteligencja postaci wzrasta o +1pkt.",
 :active => false, :limitations => "zakazane dla chłopstwa oraz większości barbarzyńców" )
 s_choice = skill.stats_choices.create

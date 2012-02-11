@@ -17,7 +17,7 @@ class CharacterWizardsController < ApplicationController
         @character_background.save
       end
       @professions = Profession.all
-      @countries ||= Profession.find_by_name("Alchemik").countries
+      @countries ||= Profession.find_by_name(@professions.first.name).countries
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
       if @character.statistics.blank?
