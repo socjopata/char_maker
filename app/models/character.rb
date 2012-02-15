@@ -21,6 +21,10 @@ class Character < ActiveRecord::Base
 
   before_save :check_fight_style_choice
 
+  def any_unfinished_matters_present?
+    statistics.stats_modifiers.detect{|sm| (sm.group_name.match("Fechtunek w Grupie Broni") || sm.group_name.match("Wybrana broń") || sm.group_name.match("Wybrana tarcza") ) }.present?
+  end
+
   def make_rogue_a_finesse_fighter
     self.fight_style_id = FightStyle.find_by_name("Finezyjny").id if self.profession.present? && self.profession.general_type=="rogue"
     save(false)
