@@ -161,4 +161,6 @@ class CharacterWizardsController < ApplicationController
     #TODO what about clever "skills" picking? Manipulating choices so you choose something to enable other skill and then uncheck the enabler...
   end
 
+
+
 end

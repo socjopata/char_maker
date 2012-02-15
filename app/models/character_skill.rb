@@ -3,6 +3,8 @@ class CharacterSkill < ActiveRecord::Base
   belongs_to :character
   belongs_to :skill
 
+  has_one :skill_bonus_preference
+
   set_table_name "character_skills"
 
   after_create :push_modifiers
