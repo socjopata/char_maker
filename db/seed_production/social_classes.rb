@@ -86,7 +86,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Dworskość", :default_for_social_class => true)
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fencing", :value => 1, :group_name => "Fechtunek postaci zwiększony będzie o 1pkt", :default_for_social_class => true)
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek postaci zwiększony będzie o 1pkt", :default_for_social_class => true)
 
 s_class = SocialClass.find_by_name("Wielmoża")
 s_choice = s_class.stats_choices.create
@@ -135,9 +135,7 @@ s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "d
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne", :default_for_social_class => true)
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fencing", :value => 1, :group_name => "Fechtunek postaci zwiększony będzie o 1pkt", :default_for_social_class => true)
-
-#TODO convert to 'fighting' notation ?
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek postaci zwiększony będzie o 1pkt", :default_for_social_class => true)
 
 s_class = SocialClass.find_by_name("Członek rady plemienia")
 s_choice = s_class.stats_choices.create
@@ -159,7 +157,7 @@ s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "
 s_choice = s_class.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne", :default_for_social_class => true)
 s_choice = s_class.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fencing", :value => 1, :group_name => "Fechtunek postaci zwiększony będzie o 1pkt", :default_for_social_class => true)
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek postaci zwiększony będzie o 1pkt", :default_for_social_class => true)
 
 
 #Siła „S”

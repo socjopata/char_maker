@@ -31,7 +31,7 @@ module CharacterWizardHelper
       "Postać otrzyma: #{choice_part.group_name}"
     elsif choice_part.modifies=="other"
       "Postać otrzyma: #{choice_part.group_name}"
-    elsif choice_part.modifies=="fencing"
+    elsif choice_part.modifies=="fighting"
       "Postać otrzyma: biegłości w broni."
     elsif choice_part.modifies=="auxiliary"
       "Parametr #{choice_part.group_name} zostanie zmodyfikowany o #{bonus_orientation(choice_part.value)}#{choice_part.value}"
