@@ -911,3 +911,424 @@ RangedWeapon.create(
   :special_rules => "Zmniejsza wartość pancerza o 10pkt. Premia do trafienia na bliskim zasięgu: +3",
   :price => 4000
   )
+
+
+####### Armors
+
+
+Armor.create(
+    :group_name => "Pancerze Miękkie",
+    :name => "Ubranie, Szaty, itp.",
+    :armor_type => "Lekki",
+    :dexterity_nerf => 0,
+    :dexterity_cap => 0,
+    :protection_from_cutting => 3,
+    :protection_from_piercing => 2,
+    :protection_from_crushing => 3,
+    :special_rules => "",
+    :price => 0
+)
+
+Armor.create(
+    :group_name => "Pancerze Miękkie",
+    :name => "Przeszywanica",
+    :armor_type => "Lekki",
+    :dexterity_nerf => 0,
+    :dexterity_cap => 0,
+    :protection_from_cutting => 8,
+    :protection_from_piercing => 6,
+    :protection_from_crushing => 8,
+    :special_rules => "",
+    :price => 500
+)
+
+Armor.create(
+    :group_name => "Pancerze Miękkie",
+    :name => "Skóra Niedźwiedzia",
+    :armor_type => "Typowy",
+    :dexterity_nerf => 2,
+    :dexterity_cap => 30,
+    :protection_from_cutting => 10,
+    :protection_from_piercing => 6,
+    :protection_from_crushing => 12,
+    :special_rules => "",
+    :price => 800
+)
+
+Armor.create(
+    :group_name => "Pancerze Miękkie",
+    :name => "Pancerz Skórzany",
+    :armor_type => "Lekki",
+    :dexterity_nerf => 0,
+    :dexterity_cap => 40,
+    :protection_from_cutting => 11,
+    :protection_from_piercing => 8,
+    :protection_from_crushing => 10,
+    :special_rules => "",
+    :price => 1400
+)
+
+Armor.create(
+    :group_name => "Pancerze Kolcze",
+    :name => "Koszulka Kolcza",
+    :armor_type => "Lekki",
+    :dexterity_nerf => 2,
+    :dexterity_cap => 34,
+    :protection_from_cutting => 14,
+    :protection_from_piercing => 10,
+    :protection_from_crushing => 8,
+    :special_rules => "",
+    :price => 3000
+)
+
+Armor.create(
+    :group_name => "Pancerze Kolcze",
+    :name => "Kolczuga",
+    :armor_type => "Lekki",
+    :dexterity_nerf => 3,
+    :dexterity_cap => 30,
+    :protection_from_cutting => 15,
+    :protection_from_piercing => 11,
+    :protection_from_crushing => 10,
+    :special_rules => "",
+    :price => 4000
+)
+
+Armor.create(
+    :group_name => "Pancerze Kolcze",
+    :name => "Kaftan Kolczy",
+    :armor_type => "Typowy",
+    :dexterity_nerf => 5,
+    :dexterity_cap => 26,
+    :protection_from_cutting => 16,
+    :protection_from_piercing => 12,
+    :protection_from_crushing => 11,
+    :special_rules => "",
+    :price => 5000
+)
+
+Armor.create(
+    :group_name => "Pancerze Kolcze",
+    :name => "Pancerz Kolczy",
+    :armor_type => "Typowy",
+    :dexterity_nerf => 6,
+    :dexterity_cap => 23,
+    :protection_from_cutting => 17,
+    :protection_from_piercing => 13,
+    :protection_from_crushing => 12,
+    :special_rules => "",
+    :price => 6000
+)
+
+Armor.create(
+    :group_name => "Pancerze Kolcze",
+    :name => "Ciężki Kaftan Kolczy",
+    :armor_type => "Ciężki",
+    :dexterity_nerf => 6,
+    :dexterity_cap => 20,
+    :protection_from_cutting => 18,
+    :protection_from_piercing => 13,
+    :protection_from_crushing => 13,
+    :special_rules => "",
+    :price => 7000
+)
+
+Armor.create(
+    :group_name => "Pancerze Kolcze",
+    :name => "Ciężki Pancerz Kolczy",
+    :armor_type => "Ciężki",
+    :dexterity_nerf => 7,
+    :dexterity_cap => 16,
+    :protection_from_cutting => 20,
+    :protection_from_piercing => 14,
+    :protection_from_crushing => 14,
+    :special_rules => "",
+    :price => 8000
+)
+
+Armor.create(
+    :group_name => "Pancerze Zbrojnikowe",
+    :name => "Lekki Pancerz Zbrojnikowy",
+    :armor_type => "Lekki",
+    :dexterity_nerf => 2,
+    :dexterity_cap => 23,
+    :protection_from_cutting => 11,
+    :protection_from_piercing => 7,
+    :protection_from_crushing => 12,
+    :special_rules => "",
+    :price => 1800
+)
+
+Armor.create(
+    :group_name => "Pancerze Zbrojnikowe",
+    :name => "Typowy Pancerz Zbrojnikowy",
+    :armor_type => "Typowy",
+    :dexterity_nerf => 5,
+    :dexterity_cap => 19,
+    :protection_from_cutting => 13,
+    :protection_from_piercing => 10,
+    :protection_from_crushing => 14,
+    :special_rules => "",
+    :price => 2500
+)
+
+Armor.create(
+    :group_name => "Pancerze Zbrojnikowe",
+    :name => "Miarowy Pancerz Zbrojnikowy",
+    :armor_type => "Typowy",
+    :dexterity_nerf => 7,
+    :dexterity_cap => 15,
+    :protection_from_cutting => 15,
+    :protection_from_piercing => 11,
+    :protection_from_crushing => 16,
+    :special_rules => "",
+    :price => 3200
+)
+
+Armor.create(
+    :group_name => "Pancerze Zbrojnikowe",
+    :name => "Miarowy Pancerz Zbrojnikowy",
+    :armor_type => "Typowy",
+    :dexterity_nerf => 7,
+    :dexterity_cap => 15,
+    :protection_from_cutting => 15,
+    :protection_from_piercing => 11,
+    :protection_from_crushing => 16,
+    :special_rules => "",
+    :price => 3200
+)
+
+Armor.create(
+    :group_name => "Pancerze Lamelkowe",
+    :name => "Lekki Pancerz Lamelkowy",
+    :armor_type => "Lekki",
+    :dexterity_nerf => 3,
+    :dexterity_cap => 22,
+    :protection_from_cutting => 12,
+    :protection_from_piercing => 12,
+    :protection_from_crushing => 12,
+    :special_rules => "",
+    :price => 2800
+)
+
+Armor.create(
+    :group_name => "Pancerze Lamelkowe",
+    :name => "Typowy Pancerz Lamelkowy",
+    :armor_type => "Typowy",
+    :dexterity_nerf => 5,
+    :dexterity_cap => 15,
+    :protection_from_cutting => 15,
+    :protection_from_piercing => 13,
+    :protection_from_crushing => 14,
+    :special_rules => "",
+    :price => 4500
+)
+
+Armor.create(
+    :group_name => "Pancerze Lamelkowe",
+    :name => "Miarowy Pancerz Lamelkowy",
+    :armor_type => "Typowy",
+    :dexterity_nerf => 7,
+    :dexterity_cap => 14,
+    :protection_from_cutting => 16,
+    :protection_from_piercing => 14,
+    :protection_from_crushing => 15,
+    :special_rules => "",
+    :price => 6000
+)
+
+Armor.create(
+    :group_name => "Kirysy Folgowe Kryte",
+    :name => "Typowy Kirys Folgowy Kryte",
+    :armor_type => "Typowy",
+    :dexterity_nerf => 6,
+    :dexterity_cap => 15,
+    :protection_from_cutting => 21,
+    :protection_from_piercing => 15,
+    :protection_from_crushing => 16,
+    :special_rules => "",
+    :price => 15000
+)
+
+Armor.create(
+    :group_name => "Kirysy Folgowe Kryte",
+    :name => "Ciężki Kirys Folgowy Kryte",
+    :armor_type => "Ciężki",
+    :dexterity_nerf => 7,
+    :dexterity_cap => 13,
+    :protection_from_cutting => 22,
+    :protection_from_piercing => 16,
+    :protection_from_crushing => 17,
+    :special_rules => "",
+    :price => 20000
+)
+
+Armor.create(
+    :group_name => "Kirysy Płytowe",
+    :name => "Miarowy Kirys Płytowy",
+    :armor_type => "Ciężki",
+    :dexterity_nerf => 7,
+    :dexterity_cap => 12,
+    :protection_from_cutting => 23,
+    :protection_from_piercing => 17,
+    :protection_from_crushing => 18,
+    :special_rules => "",
+    :price => 40000
+)
+
+Armor.create(
+    :group_name => "Kirysy Płytowe",
+    :name => "Ciężki Kirys Płytowy",
+    :armor_type => "Ciężki",
+    :dexterity_nerf => 8,
+    :dexterity_cap => 11,
+    :protection_from_cutting => 24,
+    :protection_from_piercing => 18,
+    :protection_from_crushing => 19,
+    :special_rules => "",
+    :price => 50000
+)
+
+Armor.create(
+    :group_name => "Zbroje Karacenowe",
+    :name => "Miarowa Zbroja Karacenowa",
+    :armor_type => "Ciężki",
+    :dexterity_nerf => 8,
+    :dexterity_cap => 12,
+    :protection_from_cutting => 26,
+    :protection_from_piercing => 22,
+    :protection_from_crushing => 21,
+    :special_rules => "przeciwnicy nie mogą obniżyć jej Parametrów korzystając ze zdolność typu Celny Cios, Mierzony Strzał, itp. zasada ta nie dotyczy kusz, grotów Liściastych i kopii (bronie te nadal modyfikują parametry Zbroi). Ponadto w tej zbroi nie można wykonywać umiejętności bazujących na finezyjnym stylu walki.",
+    :price => 220000
+)
+
+Armor.create(
+    :group_name => "Zbroje Karacenowe",
+    :name => "Ciężka Zbroja Karacenowa",
+    :armor_type => "Ciężki",
+    :dexterity_nerf => 10,
+    :dexterity_cap => 11,
+    :protection_from_cutting => 27,
+    :protection_from_piercing => 23,
+    :protection_from_crushing => 22,
+    :special_rules => "przeciwnicy nie mogą obniżyć jej Parametrów korzystając ze zdolność typu Celny Cios, Mierzony Strzał, itp. zasada ta nie dotyczy kusz, grotów Liściastych i kopii (bronie te nadal modyfikują parametry Zbroi). Ponadto w tej zbroi nie można wykonywać umiejętności bazujących na finezyjnym stylu walki.",
+    :price => 250000
+)
+
+Armor.create(
+    :group_name => "Zbroje Płytowe",
+    :name => "Typowa Zbroja Płytowa",
+    :armor_type => "Ciężki",
+    :dexterity_nerf => 11,
+    :dexterity_cap => 7,
+    :protection_from_cutting => 25,
+    :protection_from_piercing => 20,
+    :protection_from_crushing => 20,
+    :special_rules => "przeciwnicy nie mogą obniżyć jej Parametrów korzystając ze zdolność typu Celny Cios, Mierzony Strzał, itp. zasada ta nie dotyczy kusz, grotów Liściastych i kopii (bronie te nadal modyfikują parametry Zbroi). Ponadto w tej zbroi nie można wykonywać umiejętności bazujących na finezyjnym stylu walki.",
+    :price => 120000
+)
+
+Armor.create(
+    :group_name => "Zbroje Płytowe",
+    :name => "Miarowa Zbroja Płytowa",
+    :armor_type => "Ciężki",
+    :dexterity_nerf => 10,
+    :dexterity_cap => 10,
+    :protection_from_cutting => 26,
+    :protection_from_piercing => 20,
+    :protection_from_crushing => 21,
+    :special_rules => "przeciwnicy nie mogą obniżyć jej Parametrów korzystając ze zdolność typu Celny Cios, Mierzony Strzał, itp. zasada ta nie dotyczy kusz, grotów Liściastych i kopii (bronie te nadal modyfikują parametry Zbroi). Ponadto w tej zbroi nie można wykonywać umiejętności bazujących na finezyjnym stylu walki.",
+    :price => 160000
+)
+
+Armor.create(
+    :group_name => "Zbroje Płytowe",
+    :name => "„Strzelcza” Zbroja Płytowa",
+    :armor_type => "Ciężki",
+    :dexterity_nerf => 9,
+    :dexterity_cap => 11,
+    :protection_from_cutting => 28,
+    :protection_from_piercing => 23,
+    :protection_from_crushing => 23,
+    :special_rules => "przeciwnicy nie mogą obniżyć jej Parametrów korzystając ze zdolność typu Celny Cios, Mierzony Strzał, itp. zasada ta nie dotyczy kusz, grotów Liściastych i kopii (bronie te nadal modyfikują parametry Zbroi). Ponadto w tej zbroi nie można wykonywać umiejętności bazujących na finezyjnym stylu walki.",
+    :price => 350000
+)
+
+Armor.create(
+    :group_name => "Zbroje Płytowe",
+    :name => "Pełna, „Kopijnicza” Zbroja Płytowa",
+    :armor_type => "Ciężki",
+    :dexterity_nerf => 11,
+    :dexterity_cap => 10,
+    :protection_from_cutting => 31,
+    :protection_from_piercing => 25,
+    :protection_from_crushing => 24,
+    :special_rules => "przeciwnicy nie mogą obniżyć jej Parametrów korzystając ze zdolność typu Celny Cios, Mierzony Strzał, itp. zasada ta nie dotyczy kusz, grotów Liściastych i kopii (bronie te nadal modyfikują parametry Zbroi). Ponadto w tej zbroi nie można wykonywać umiejętności bazujących na finezyjnym stylu walki.",
+    :price => 400000
+)
+
+Armor.create(
+    :group_name => "Pancerze i Zbroje Egzotyczne",
+    :name => "Pancerz Reptilioński",
+    :armor_type => "Lekki",
+    :dexterity_nerf => 5,
+    :dexterity_cap => 35,
+    :protection_from_cutting => 18,
+    :protection_from_piercing => 18,
+    :protection_from_crushing => 11,
+    :special_rules => "+3pkt do Obrony Dystansowej",
+    :price => 140000
+)
+
+Armor.create(
+    :group_name => "Pancerze i Zbroje Egzotyczne",
+    :name => "Pancerz z Bazyliszka",
+    :armor_type => "Typowy",
+    :dexterity_nerf => 6,
+    :dexterity_cap => 28,
+    :protection_from_cutting => 22,
+    :protection_from_piercing => 23,
+    :protection_from_crushing => 15,
+    :special_rules => "Odporności na Magię +4pkt",
+    :price => 200000
+)
+
+Armor.create(
+    :group_name => "Pancerze i Zbroje Egzotyczne",
+    :name => "Pancerz Wężowy",
+    :armor_type => "Typowy",
+    :dexterity_nerf => 8,
+    :dexterity_cap => 15,
+    :protection_from_cutting => 14,
+    :protection_from_piercing => 23,
+    :protection_from_crushing => 23,
+    :special_rules => "+2pkt do Obrony w Walce",
+    :price => 250000
+)
+
+Armor.create(
+    :group_name => "Pancerze i Zbroje Egzotyczne",
+    :name => "Pancerz Smoczy",
+    :armor_type => "Typowy",
+    :dexterity_nerf => 4,
+    :dexterity_cap => 25,
+    :protection_from_cutting => 23,
+    :protection_from_piercing => 19,
+    :protection_from_crushing => 19,
+    :special_rules => "+4pkt do Obrony Dystansowej, Odporności na Magię +3pkt.",
+    :price => 450000
+)
+
+Armor.create(
+    :group_name => "Pancerze i Zbroje Egzotyczne",
+    :name => "Pełna Zbroja Smocza",
+    :armor_type => "Ciężki",
+    :dexterity_nerf => 8,
+    :dexterity_cap => 19,
+    :protection_from_cutting => 29,
+    :protection_from_piercing => 24,
+    :protection_from_crushing => 29,
+    :special_rules => "+5pkt do Obrony Dystansowej, Odporności na Magię +3pkt",
+    :price => 600000
+)
+
