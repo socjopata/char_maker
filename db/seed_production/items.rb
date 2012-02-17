@@ -65,7 +65,7 @@ Weapon.create(
 
 Weapon.create(
   :group_name => "Sieczna Miecze",
-  :name => "Miecz dwuręczny zwany „Claymore”",
+  :name => "Miecz Dwuręczny zwany „Claymore”",
   :weapon_type => "C",
   :range => "D",
   :speed => 9,
@@ -80,7 +80,7 @@ Weapon.create(
 
 Weapon.create(
   :group_name => "Sieczna Miecze",
-  :name => "Miecz dwuręczny zwany „Espadon”",
+  :name => "Miecz Dwuręczny zwany „Espadon”",
   :weapon_type => "C",
   :range => "D",
   :speed => 10,
@@ -216,7 +216,7 @@ Weapon.create(
 Weapon.create(
   :group_name => "Obuchowa Klasyczna",
   :name => "Laska",
-  :weapon_type => "DW",
+  :weapon_type => "Dw",
   :range => "D",
   :speed => 5,
   :cutting_dmg => 0,
@@ -425,7 +425,7 @@ Weapon.create(
 
 Weapon.create(
   :group_name => "Drzewcowa Klasyczna",
-  :name => "Kosa bojowa",
+  :name => "Halabarda",
   :weapon_type => "C",
   :range => "D",
   :speed => 9,
@@ -434,7 +434,7 @@ Weapon.create(
   :crushing_dmg => 0,
   :attack_bonus => 4,
   :defense_bonus => 4,
-  :special_rules => "Rozłupanie tarczy, 1",
+  :special_rules => "Rozłupanie tarczy, Walcząc halabardą, partyzaną, gizarmą lub spisą na zasięgu długim przeciw broni o mniejszym zasięgu bohater otrzymuje +5pkt Obrony (nie dotyczy walki przeciw kawalerii). ",
   :price => 1000
   )
 
@@ -449,7 +449,7 @@ Weapon.create(
   :crushing_dmg => 0,
   :attack_bonus => 3,
   :defense_bonus => 6,
-  :special_rules => "1",
+  :special_rules => "Walcząc halabardą, partyzaną, gizarmą lub spisą na zasięgu długim przeciw broni o mniejszym zasięgu bohater otrzymuje +5pkt Obrony (nie dotyczy walki przeciw kawalerii).",
   :price => 1300
   )
 
@@ -464,7 +464,7 @@ Weapon.create(
   :crushing_dmg => 0,
   :attack_bonus => 2,
   :defense_bonus => 6,
-  :special_rules => "1,2",
+  :special_rules => "Walcząc halabardą, partyzaną, gizarmą lub spisą na zasięgu długim przeciw broni o mniejszym zasięgu bohater otrzymuje +5pkt Obrony (nie dotyczy walki przeciw kawalerii). Walcząc z szarżującym wrogiem (kawalerii jak i piechocie) postać otrzymuje +5pkt do Trafienia i zadawanych Obrażeń.",
   :price => 1600
   )
 
@@ -479,7 +479,7 @@ Weapon.create(
   :crushing_dmg => 0,
   :attack_bonus => 1,
   :defense_bonus => 7,
-  :special_rules => "1,2",
+  :special_rules => "Walcząc halabardą, partyzaną, gizarmą lub spisą na zasięgu długim przeciw broni o mniejszym zasięgu bohater otrzymuje +5pkt Obrony (nie dotyczy walki przeciw kawalerii). Walcząc z szarżującym wrogiem (kawalerii jak i piechocie) postać otrzymuje +5pkt do Trafienia i zadawanych Obrażeń.",
   :price => 1200
   )
 
@@ -494,7 +494,7 @@ Weapon.create(
   :crushing_dmg => 0,
   :attack_bonus => 2,
   :defense_bonus => 6,
-  :special_rules => "3",
+  :special_rules => "Zamiast normalnego ataku postać wykonuje rzut na Trafienie – udany oznacza test Utrzymania się w siodle z karą -10pkt ściągnięcie z wierzchowca. Ponadto: +5pkt do Trafienia i Obrażeń walcząc z szarżującym wrogiem.",
   :price => 800
   )
 
@@ -516,7 +516,7 @@ Weapon.create(
 Weapon.create(
   :group_name => "Drzewcowa Miotana",
   :name => "Włócznia Ciężka",
-  :weapon_type => "DW",
+  :weapon_type => "Dw",
   :range => "D/R-25",
   :speed => 8,
   :cutting_dmg => 0,
@@ -741,7 +741,7 @@ Weapon.create(
 Weapon.create(
   :group_name => "Narodowa",
   :name => "Dmuchawka",
-  :weapon_type => "DW",
+  :weapon_type => "Dw",
   :range => "10/15/-",          #TODO this is an exception
   :speed => 4,
   :cutting_dmg => 0,
@@ -756,7 +756,7 @@ Weapon.create(
 Weapon.create(
   :group_name => "Narodowa",
   :name => "Pazur Sirtol",
-  :weapon_type => "DW",
+  :weapon_type => "Dw",
   :range => "D",
   :speed => 7,
   :cutting_dmg => 13,
@@ -766,4 +766,148 @@ Weapon.create(
   :defense_bonus => 6,
   :special_rules => "Krytyk 29-30, Walcząc na zasięgu długim przeciw broni o mniejszym zasięgu postać otrzymuje +5pkt Obrony (nie dotyczy walki przeciw kawalerii).  Dodatkowo broń ta może być stosowana w połączeniu z wszystkimi umiejętnościami stylu finezyjnego na normalnych zasadach np.: Parada.",
   :price => 2500
+  )
+
+
+############################### RANGED WEAPON
+
+
+RangedWeapon.create(
+  :group_name => "Miotana Proce",
+  :name => "Proca",
+  :weapon_type => "L",
+  :range => "20",
+  :speed => 4,
+  :dmg => 6,
+  :dmg_type => "o",
+  :accuracy_bonus => 1,
+  :reload_time => 0,
+  :special_rules => "używając procy postać nie zwiększa zadawanych nią Obrażeń o premię z Siły (wyjątek od zasady broni miotanych).",
+  :price => 100
+  )
+
+RangedWeapon.create(
+  :group_name => "Strzelecka Łuki Proste",
+  :name => "Łuk lekki",
+  :weapon_type => "Dw",
+  :range => "20/50/75",
+  :speed => 3,
+  :dmg => 7,
+  :dmg_type => "k",
+  :accuracy_bonus => 3,
+  :reload_time => 0,
+  :special_rules => "",
+  :price => 500
+  )
+
+RangedWeapon.create(
+  :group_name => "Strzelecka Łuki Proste",
+  :name => "Łuk typowy",
+  :weapon_type => "Dw",
+  :range => "20/50/100",
+  :speed => 5,
+  :dmg => 9,
+  :dmg_type => "k",
+  :accuracy_bonus => 2,
+  :reload_time => 0,
+  :special_rules => "",
+  :price => 800
+  )
+
+RangedWeapon.create(
+  :group_name => "Strzelecka Łuki Proste",
+  :name => "Łuk długi/ciężki",
+  :weapon_type => "Dw",
+  :range => "20/50/150",
+  :speed => 8,
+  :dmg => 12,
+  :dmg_type => "k",
+  :accuracy_bonus => 1,
+  :reload_time => 0,
+  :special_rules => "Zmniejsza Parametr Ochronny Kolczug o 2pkt",
+  :price => 1200
+  )
+
+RangedWeapon.create(
+  :group_name => "Strzelecka Łuki Refleksyjne",
+  :name => "Łuk lekki",
+  :weapon_type => "Dw",
+  :range => "20/50/90",
+  :speed => 4,
+  :dmg => 8,
+  :dmg_type => "k",
+  :accuracy_bonus => 2,
+  :reload_time => 0,
+  :special_rules => "",
+  :price => 1400
+  )
+
+RangedWeapon.create(
+  :group_name => "Strzelecka Łuki Refleksyjne",
+  :name => "Łuk typowy",
+  :weapon_type => "Dw",
+  :range => "20/50/120",
+  :speed => 6,
+  :dmg => 11,
+  :dmg_type => "k",
+  :accuracy_bonus => 1,
+  :reload_time => 0,
+  :special_rules => "",
+  :price => 1800
+  )
+
+RangedWeapon.create(
+  :group_name => "Strzelecka Łuki Refleksyjne",
+  :name => "Łuk typowy",
+  :weapon_type => "Dw",
+  :range => "20/50/180",
+  :speed => 6,
+  :dmg => 13,
+  :dmg_type => "k",
+  :accuracy_bonus => 0,
+  :reload_time => 0,
+  :special_rules => "Zmniejsza wartość pancerzy lekkich i typowych o 2pkt",
+  :price => 2500
+  )
+
+RangedWeapon.create(
+  :group_name => "Strzelecka Kusze",
+  :name => "Kusza lekka",
+  :weapon_type => "Dw",
+  :range => "25/70/150",
+  :speed => 3,
+  :dmg => 9,
+  :dmg_type => "k",
+  :accuracy_bonus => 0,
+  :reload_time => 1,
+  :special_rules => "Zmniejsza wartość pancerza o 4pkt. Premia do trafienia na bliskim zasięgu: +3",
+  :price => 2500
+  )
+
+RangedWeapon.create(
+  :group_name => "Strzelecka Kusze",
+  :name => "Kusza typowa",
+  :weapon_type => "Dw",
+  :range => "25/70/200",
+  :speed => 3,
+  :dmg => 11,
+  :dmg_type => "k",
+  :accuracy_bonus => 0,
+  :reload_time => 2,
+  :special_rules => "Zmniejsza wartość pancerza o 6pkt. Premia do trafienia na bliskim zasięgu: +3",
+  :price => 3000
+  )
+
+RangedWeapon.create(
+  :group_name => "Strzelecka Kusze",
+  :name => "Kusza ciężka z korbą",
+  :weapon_type => "Dw",
+  :range => "25/70/250",
+  :speed => 3,
+  :dmg => 17,
+  :dmg_type => "k",
+  :accuracy_bonus => 0,
+  :reload_time => 4,
+  :special_rules => "Zmniejsza wartość pancerza o 10pkt. Premia do trafienia na bliskim zasięgu: +3",
+  :price => 4000
   )

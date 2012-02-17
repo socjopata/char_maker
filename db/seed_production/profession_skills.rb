@@ -39,6 +39,11 @@ skill = Skill.create(:profession_type => "Żołnierz",
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "OR: S,ZR", :value => "30" )
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "8" )
 
+skill = Skill.create(:profession_type => "Żołnierz",
+                     :name => "Weteran Wojenny",
+                     :way_it_works => "raz na dzień za każdy punkt premii z Inteligencji, postać może zwiększyć na okres jednej rundy swoje Trafienie, Obronę i zadawane Obrażenia o wartość premii ze swej Siły lub Zręczności (decyzja gracza)." )
+
+
 #####Alchemik
 skill = Skill.create(:profession_type => "Alchemik",
                      :name => "Alchemia",
@@ -71,6 +76,13 @@ Umiejętność Pasywna." )
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Tworzenie Mikstur" )
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => "domyślne")
+
+
+skill = Skill.create(:profession_type => "Alchemik",
+                     :name => "Talenty Alchemiczne",
+                     :way_it_works => "zamiana żelaza w złoto, bądź stworzenie kamienia filozoficznego… tak trzeba posiadać liczne talenty i tajemną wiedzę aby próbować szczęścia z takimi eksperymentami. Alchemik jest specyficznym czarodziejem, jako jedyny opanował wyjątkową sztukę łączenia specyfików z czarami dzięki czemu potrafi wywoływać efekty zwane Talentami Alchemicznymi (szczegóły w rozdziale Magia: Talenty Alchemika)." )
+
+
 
 ##### Berzerker
 
@@ -116,6 +128,10 @@ s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "S", :value => 2, :group_name => "domyślne")
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 2, :group_name => "domyślne")
 
+skill = Skill.create(:profession_type => "Berzerker",
+                     :name => "Berzerk",
+                     :way_it_works => "po otrzymaniu poważnej rany (która sprowadziła PŻ poniżej połowy górnej wartości lub po jednorazowej utracie przynajmniej 10PŻ) Berzerker wpada w szał, który trwa przez 5rund +2rundy/poziom. Na czas trwania furii zwiększa swoje Trafienie i zadawane Obrażenia o premię z Siły, a wszystkie testy Strachu i Bólu zdaje automatycznie. Ponadto w szale nie krwawi ani nie odczuwa zmęczenia. Zdolność może być aktywowana również w kilku innych przypadkach – walka z odwiecznym wrogiem, szał po śmierci najbliższego towarzysza, itp. Decyzja MG." )
+
 #CZARNOKSIEZNIK
 
 skill = Skill.create(:profession_type => "Czarnoksiężnik",
@@ -160,9 +176,98 @@ s_choice.stats_modifiers.create(:modifies => "WI", :value => 2, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Odporność na Ból")
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Odporność na Strach")
 
+skill = Skill.create(:profession_type => "Czarnoksiężnik",
+                     :name => "Rzucanie Czarów",
+                     :way_it_works => "postać jako jedna z nielicznych posiadła tajemne moce i umiejętności dzięki, którym potrafi rzucać zakazane Czary Czarnoksięskie (szczegóły w rozdziale Magia: Czary Czarnoksięskie)." )
+
+#####Dziecię Sirtol
+
+skill = Skill.create(:profession_type => "Dziecię Sirtol",
+                     :name => "Czarne Ostrze",
+                     :way_it_works => "aby skorzystać z tej umiejętność postać musi zbroczyć swój oręż własną krwią. Zdolność można aktywować dowolną ilość razy na dzień dopóki postać będzie mogła ustać na nogach, a efekt utrzymuje się przez k10rund +2rundy/poziom. Tak nasączona broń posiada dodatkowe cechy tylko w rękach właściciela.
+                     I Stopień: zbroczona broń nabiera niezwykłej, choć ulotnej mocy. Każdy trafiony cios zadaje o 2pkt Obrażeń więcej a sam oręż tymczasowo traktowany jest jako magiczny.
+                     II Stopień: każdy cios zadany tak nasączoną bronią ma zwiększone Obrażenia o 1pkt+1pkt/poziom Dziecka Sirtol. Wszystkie rany powstałe w wyniku Czarnego Ostrza można wyleczyć jedynie za pomocą magii, lub po upływie k30dni (wcześniej rany cały czas krwawią, jątrzą się, a jeżeli stan taki utrzyma się przez ponad 10dni ofiara musi wykonać test na połowę swej Wytrzymałości lub umiera). Oręż chwilowo traktowany jest jako magiczny.
+                     III Stopień: jw. dodatkowo żywe istoty zranione tą bronią muszą wykonać test Bólu zmniejszony o 1pkt/poziom postaci. Niepowodzenie nakłada na nie karę do Trafienia, Obrony oraz innych czynności jakich się podejmą w wysokości -5pkt. Efekt ten może się kumulować (pierwszy -5, drugi -10, itd), a utrzymuje się przez 1rundę/poziom Dziecka Sirtol.")
+
+skill = Skill.create(:profession_type => "Dziecię Sirtol",
+                     :name => "Przerażenie",
+                     :way_it_works => "na mgnienie oka postać ukazuje swym wrogom prawdziwą naturę, obliczę tak przerażające, iż nawet najbardziej odważni mogą rzucić się do panicznej ucieczki. Ofiary muszą wykonać udany test Strachu zmniejszonego o premię z Inteligencji Dziecka Sirtol lub jego moc poparta przerażającym wyglądem zmusza je do natychmiastowej ucieczki, która trwa przez k10rund. Postacie będące pod wpływem paniki, które nie mogą uciec (np.: znajdują się w zamkniętym pokoju, itp.) starają się unikać postaci jak ognia ale doprowadzone do ostateczności muszą wykonać jeszcze jeden test Strachu, sukces wyzwala je spod jego mocy a niepowodzenie oznacza natychmiastową utratę przytomności. Oczywiście kiedy rzucają się do ucieczki porzucają cały dobytek, broń, tarczę lub inne przedmioty, które mogłyby im przeszkadzać w ewakuacji. Umiejętność działa tylko i wyłącznie na istoty żywe.
+                     I Stopień: zdolność może być użyta raz na 24godziny i działa na wybraną przez rycerza istotę, którą musi widzieć i być przez nią widziany.
+                     II Stopień: umiejętność może być aktywowana raz na 6godzin a ofiara nie musi widzieć swego oprawcy wystarczy, że on ją widzi i zsyła na jej umysł przerażające wizje swego oblicza.
+                     III Stopień: jw. a Przerażenie działa na tylu nieszczęśników ile wynosi premia z jego Inteligencji i może być aktywowane raz na 3godziny")
+
+skill = Skill.create(:profession_type => "Dziecię Sirtol",
+                     :name => "Dziecię Ciemności",
+                     :way_it_works => "oczy postaci zasnuwa ciemna półprzeźroczysta powieka a z ich kącików sączy się delikatna strużka ciemnej, wyjątkowo rzadkiej krwi.
+                     I Stopień: bohater widzi w ciemnościach prawie tak dobrze jak w świetle dziennym a moc tej zdolności utrzymuje się przez 10minut/poziom doświadczenia. Ostre światło niszczy ten efekt (natychmiast zakańcza działanie tej umiejętności), a postać do końca tej rundy otrzymuje karę -5pkt do Trafienia i Obrony.
+                     II Stopień: umiejętność działa przez godzinę/poziom postaci a światło słoneczne lub inne intensywne źródła nie kończą tego efektu. Ponadto w powyższym stanie dziecię zwiększa swoją Spostrzegawczość o +5pkt.
+                     III Stopień: ponad działanie opisane na drugim Stopniu, postać za pomocą tej umiejętności widzi również demony, które opanowały ludzkie ciała lub przybrały wygląd człowieka. Dodatkowo rozpoznaje magię (tzn. ją widzi), widzi aury, magiczne przedmioty, runy, itp.")
+
+skill = Skill.create(:profession_type => "Dziecię Sirtol",
+                     :name => "Wyssanie Życia",
+                     :way_it_works => "postać musi pochwycić swą ofiarę (wystarczy ją dotykać), z której powoli lecz nieubłaganie zaczyna wysysać życie. Nieszczęśnik zdaje sobie z tego sprawę odczuwając narastający ból i paraliżujący chłód. Ziąb, który wysysa życie ofiary, sączący się przez dłonie Dziecka i nie może być zatrzymany przez żadną zbroję czy też ubranie a jedynym sposobem jest wyrwanie się z jego objęć. Jeżeli ofiara nie jest nieprzytomna lub związana może co rundę wykonać przeciwstawny test Siły lub Zręczności kontra Siła Dziecka (użycie przedmiotów decyzja MG) aby wyrwać się z uścisku. Każdorazowe aktywowanie tej umiejętności powoduje utratę 1pkt PŻ, która odzwierciedlona jest poprzez drobne pęknięcia na jej dłoniach. Wyssanie Życia odbiera ofierze jej PŻ właściwie na zawsze, dlatego też odzyskać można je tylko i wyłącznie za pomocą magii.
+                     I Stopień: zdolność przywraca utracone PŻ w proporcji 4PŻ ofiary za jeden uleczony PŻ Dziecka Sirtol. Czerpać można aż do śmierci nieszczęśnika (na bieżąco sprawdzając czy nie umarł) zabierając 4PŻ na rundę.
+                     II Stopień: w ciągu jednej rundy postać może wyssać 9PŻ, dzięki czemu odzyskuje 1PŻ za każde 3PŻ, które wyssała.
+                     III Stopień: jw. a za każdym razem kiedy postać dotknie ofiarę, musi ona wykonać udany test Bólu lub pada Nieprzytomna na k10rund.")
+
+skill = Skill.create(:profession_type => "Dziecię Sirtol",
+                     :name => "Służalczy Ton",
+                     :way_it_works => "postać po odpowiedniej przemowie, gestach lub czynach, sprawdzane jest to rzutem przeciwstawnym na Inteligencję, zapobiega atakowi ze strony demona, niestety w niektórych sytuacjach może się to okazać niemożliwe (decyzja MG). Dodatkowo może próbować przekonać Nienazwanego do wykonania określonych czynności lub akcji, które będą z korzyścią dla nich obu (lub samego demona). Umiejętność ta polega głównie na użyciu swych nadprzyrodzonych mocy, które oddziałują na wybrane istoty.
+                     I Stopień: zdolność ta chroni tylko postać a jej towarzysze nadal narażeni są na działania Nienazwanego.
+                     II Stopień: moc postaci wzrasta dzięki czemu potrafi tak zbałamucić demona (oczywiście nadal na powyższych zasadach), iż ten nie zaatakuje jej ani jej towarzyszy. Dodatkowo podczas przeciwstawnego testu Inteligencji postać może dodać premię ze swej Ogłady.
+                     III Stopień: umiejętność może zostać skierowana również przeciw ludziom lub raczej w trakcie rozmowy z nimi. Po wygraniu przeciwstawnego testu na Inteligencję (z wybranym rozmówcą) może zmienić jego nastawienie wobec siebie lub danej sprawy, o której rozmawiali. Sztuczka ta wpływa na nastawienie zmieniając je w dowolny sposób. Na korzystniejsze lub wręcz przeciwnie często służyć będzie aby wywołać negatywne emocji u słuchacza. Niestety efekt ten jest chwilowy i utrzymuje przez: k30minut +5minut/poziom. Warto również nadmienić o tym, że postać nie jest wstanie zmieniać nastawienia osób o bardzo silnych przekonaniach. Dotyczy to nie tylko fanatyków religijnych, oddanych służących, wiernych rycerzy ale spraw, które dla wybranej postaci mogą być wielce kontrowersyjne lub całkowicie amoralne, w takich sytuacjach i wielu innych tu nie opisanych decyzję zawsze podejmuje MG (czy można taką osobę do czegoś przekonać czy też jest to nie możliwe).")
+
+
+
+#####DYPLOMATA
+
+skill = Skill.create(:profession_type => "Dyplomata",
+                     :name => "Przyboczny",
+                     :way_it_works => "gracz wybiera jedną z trzech profesji: zabójca, łotr lub żołnierz a MG tworzy Npc'a, który staje się jego towarzyszem/ochroniarzem. Razem służą (na zasadzie partnerstwa) wybranemu państwu lub jakiejś potężnej organizacji. Postać ta nie awansuje, a za jej rozwój odpowiedzialna jest ta umiejętność. Przyboczny sterowany jest przez MG i w ekstremalnych sytuacjach może nawet zabić/zdradzić dyplomatę kiedy on postąpi niezgodnie z interesami państwa/organizacji.
+                     I Stopień: Przyboczny posiada unikalną zdolność „Poświęcenie”: jeżeli jest w bliskim kontakcie z Dyplomatą lub w porę spostrzeże zagrożenie może przyjąć wybrany atak skierowany w Dyplomatę na siebie. W tym momencie cios lub strzał sprawdzany jest względem jego Obrony. Jest to Umiejętność Pasywna i zazwyczaj nie zajmuje punktów Tempa (ewentualnie czas potrzebny na przebiegnięcie dystansu) i może być wykorzystana tylko raz na sesję w wybranym przez Dyplomatę momencie. Jeżeli Przyboczny zginie kolejny zostaje przydzielony dopiero po wykupieniu następnego poziomu tej umiejętności. Za każdym razem kiedy Dyplomata zostanie wyzwany na pojedynek lub zmuszony do walki na sądzie bożym może wystawić swego Przybocznego. Pochodzenie Npc'a jest zawsze takie samo jak Dyplomaty.
+                     II Stopień: jw. umiejętność „Poświęcenie” może być aktywowana dwa razy na sesję a Przyboczny posiada 3poziom doświadczenia. Ponadto może ukończyć wybraną przez Dyplomatę szkołę fechtunku na poziomie ucznia.
+                     III Stopień: jw. natomiast poziom Przybocznego równy jest poziomowi postaci (oczywiście należy go odpowiednio rozwijać, szkolenia, umiejętności, ekwipunek, itp.). Ponadto za każdym razem kiedy wykorzysta umiejętność „Poświęcenie” zmniejsza ilość otrzymanych ran o 5pkt. Jeżeli ochroniarz zginie Państwo lub Organizacja będą starać się przydzielić kolejnego Przybocznego, chyba, że zachowanie lub uczynki Dyplomaty były niezgodne z interesem państwa/organizacji. Decyzja o tym zawsze podejmowana jest przez MG.")
+
+skill = Skill.create(:profession_type => "Dyplomata",
+                     :name => "Inspiracja",
+                     :way_it_works => "zajmuje 1pkt Tempa, wszyscy sojusznicy słyszący Dyplomatę zostają zainspirowani do walki wiedząc, iż walczą za słuszną sprawę (lub za dobrze opłacone zadanie). Zasięg głosu, decyzja MG. Zdolność może być aktywowana tylko raz na daną walkę, a jej efekty nigdy się nie kumulują (nawet jeżeli jest dwóch lub więcej Dyplomatów w tym samym miejscu). Każdy stopień umiejętności może być wykorzystywany osobno. Dzięki czemu w trakcie jednej walki posiadając drugi stopień tej zdolności, bohater może dać premię zarówno z pierwszego poziomu jak i z drugiego, przy czym premię nie sumują się.
+                     Umiejętność Pasywna
+                     I Stopień: +1pkt do Trafienia i Obrony oraz zwiększają swoją Odporność na Strach o +5pkt, efekt utrzymuje się do końca starcia/walki.
+                     II Stopień: raz na starcie/walkę wszyscy sojusznicy otrzymują tyle do Trafienia, Obrony i zadawanych Obrażeń ile wynosi premia z Ogłady Dyplomaty. Efekt ten utrzymuje się przez jedną rundę.
+                     III Stopień: raz na starcie/walkę wybrany sojusznik Dyplomaty może wykonać jeden darmowy atak, którego Trafienie i Obrażenia zwiększane są o premię z Ogłady Dyplomaty. Zdolność może być aktywowana w dowolnym momencie walki i traktowana jest przez wybrańca jako Umiejętność Pasywna.")
+
+skill = Skill.create(:profession_type => "Dyplomata",
+                     :name => "Złote Usta",
+                     :way_it_works => "niepowodzenie lub wyjątkowy pech podczas testu może spowodować, że postać popadnie w tarapaty (decyzja MG).
+                     I Stopień: w zależności od sytuacji, postać może ułatwić wykonanie jednej z następujących akcji wybranemu sojusznikowi (dyplomata tylko odwraca uwagę); dodanie trucizny, okradzenie ofiary, umożliwienie ucieczki, itp. działania, poprzez obniżenie Spostrzegawczości ofiary. Aby się to udało należy wygrać przeciwstawny test Inteligencji (między Dyplomatą a ofiarą), w którym Dyplomata zwiększa szansę o premię ze swej Ogłady. Umiejętnie zbałamucona ofiara staje się łatwiejszym celem otrzymując -10pkt do testu Spostrzegawczości.
+                     II Stopień: wybrana postać o niższym statusie społecznym, która przegrała w przeciwstawnym teście Ogłady musi wykonać polecenie Dyplomaty. Zdolność nie działa podczas walki i może być użyta tylko względem ludzi. Ponadto rozkaz nie może zagrażać życiu ofiary ani być sprzeczny z jej moralnością, wiarą bądź innym ważnym czynnikiem (decyzja MG). Niepowodzenie podczas testu oznacza, iż Dyplomata nie będzie mógł próbować wykorzystać „Złotych Ust” na ofierze w przeciągu najbliższej doby. Ponadto osoba, która obroniła się w teście otrzymuje kumulatywną premię +5pkt do wszystkich innych testów tej zdolności inicjowanych przez Dyplomatę (oczywiście nie zawsze będzie to możliwe, decyzja MG).
+                     III Stopień: jw. przy czym działa na każdą klasę społeczną. Modyfikatory przyznawane podczas przekonywania innych osób to: -10pkt podczas rozmowy z innym dyplomatą, -5pkt ze Szlachcicem, -10pkt z wielmożą i -15pkt z księciem, lordem protektorem lub samym królem.")
+
+skill = Skill.create(:profession_type => "Dyplomata",
+                     :name => "Rozproszenie",
+                     :way_it_works => "zdolność działa tylko i wyłącznie na ludzkich przeciwników, może być aktywowana raz na każde starcie/walkę i tylko podczas potyczki z samym Dyplomatą. Osoby ogarnięte szałem lub fanatyzmem stają się całkowicie odporne na „Rozproszenie”.
+                     Umiejętność Pasywna
+                     I Stopień: wybrany przeciwnik otrzymuje karę do Trafienia i zadawanych Obrażeń w walce z Dyplomatą równą premii z jego Ogłady. Zdolność utrzymuje się przez jedną rundę.
+                     II Stopień: wybrany przeciwnik otrzymuje karę do Trafienia, Obrony i Obrażeń, równą premii z jego Ogłady, która utrzymuje się przez dwie rundy.
+                     III Stopień: wybrany przeciwnik otrzymuje karę do Trafienia, Obrony i Obrażeń przez ilość rund równą premii z Ogłady Dyplomaty.")
+
+skill = Skill.create(:profession_type => "Dyplomata",
+                     :name => "Charyzmatyczny Mówca",
+                     :way_it_works => "podczas dyskusji Dyplomata może próbować zmienić nastawienie rozmówcy wobec siebie lub sprawy, którą reprezentuje. Efekt ten rzadko będzie działał na innych graczy (decyzja MG).
+                     Umiejętność Pasywna
+                     I Stopień: raz na sesję Dyplomata może przerzucić dowolny test związany z Ogładą jeżeli pierwszy wynik nie był satysfakcjonujący (zdolność ta nie może być użyta aby wspomóc innego Wpływu Dyplomaty).
+                     II Stopień: raz na dzień Dyplomata może wyciągnąć potrzebną informację od wybranej osoby. Pozyskanie wiadomości odbywa się na zasadzie zwyczajnej rozmowy, zastraszenia lub przeprowadzając przesłuchanie. Zdolności tej nie można użyć więcej niż raz względem tej samej osoby jeżeli poruszany jest wciąż ten sam temat. Całość testu sprawdzana jest na zasadzie przeciwstawnego rzutu na Ogładę, który należy odpowiednio zmodyfikować. MG ustala poziom trudności, szef gildii nie podzieli się z nim tak po prostu informacjami, dlatego kara powinna być wysoka np.: -10pkt. Ponadto Dyplomata nigdy nie będzie w stanie za pomocą niniejszej umiejętności zmusić kogoś do podjęcia tragicznych bądź niezwykle niebezpiecznych decyzji. MG decyduje ile czasu zajmuje wykorzystanie tej umiejętności i jakie są jej skutki.
+                     III Stopień: raz na sesję Dyplomata może użyć swych wpływów, glejtu, immunitetu lub powiązań aby uniknąć wyjątkowo niebezpiecznej sytuacji np.: aresztowania, przesłuchania lub zaatakowania. Decyzja należy do MG i okoliczności towarzyszących temu wydarzeniu. Ciężko będzie przekonać atakujących barbarzyńców aby go nie zabili, itp. Aby skutecznie użyć tej zdolności musi wykonać udany test Ogłady obłożony karą przyznaną przez MG w zależności od problemu/sytuacji w wysokości od -5pkt do -25pkt.")
+
+
 #####FIRCYK
 #Fircyk (żołnierz)
 #Fircyk (łotr)
+
+skill = Skill.create(:profession_type => "Fircyk (żołnierz)",
+                     :name => "Idealny Cios",
+                     :way_it_works => "raz na starcie/walkę, przed wykonaniem rzutu na Trafienie postać może zwiększyć ten parametr o +2pkt (premia dotyczy tylko tego jednaego ataku), jeżeli cios sięgnął celu zawsze traktowany jest jako „Trafienie Krytyczne”. Zdolność nie może być wykorzystana podczas strzelania.")
+
 
 skill = Skill.create(:profession_type => "Fircyk (żołnierz)",
                      :name => "„Bliźniak”",
@@ -206,6 +311,11 @@ s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "d
 
 
 ##
+skill = Skill.create(:profession_type => "Fircyk (łotr)",
+                     :name => "Idealny Cios",
+                     :way_it_works => "raz na starcie/walkę, przed wykonaniem rzutu na Trafienie postać może zwiększyć ten parametr o +2pkt (premia dotyczy tylko tego jednaego ataku), jeżeli cios sięgnął celu zawsze traktowany jest jako „Trafienie Krytyczne”. Zdolność nie może być wykorzystana podczas strzelania.")
+
+
 
 skill = Skill.create(:profession_type => "Fircyk (łotr)",
                      :name => "„Bliźniak”",
@@ -250,6 +360,10 @@ s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "d
 ####MAG
 
 skill = Skill.create(:profession_type => "Mag",
+                     :name => "Rzucanie czarów",
+                     :way_it_works => "postać jako jedna z nielicznych na świecie posiadła tajemne moce i umiejętności dzięki, którym potrafi rzucać Czary Maga (szczegóły w dziale Magia).")
+
+skill = Skill.create(:profession_type => "Mag",
                      :name => "Mistrz Aur",
                      :way_it_works => "postać potrafi doskonale zsynchronizować działanie magicznych aur dzięki czemu w tym samym czasie może posiadać na sobie dwa takie zaklęcia (dwie wybrane aury).." )
 
@@ -266,6 +380,12 @@ s_choice.stats_modifiers.create(:modifies => "power level", :value => 0, :group_
 
 
 ### Kapłan
+
+skill = Skill.create(:profession_type => "Kapłan",
+                     :name => "Słowo Boże",
+                     :way_it_works => "człowiek wiary, przedstawiciel Boga na Ziemi, obdarzony przez niego niezwykłą mocą, potrafi przemawiać Słowem Bożym. Za jego pomocą może zmieniać świat i ludzi. Postać otrzymała od samego Boga lub jego Apostoła Modlitwy, które należy odszukać w rozdziale Magia.")
+
+
 
 skill = Skill.create(:profession_type => "Kapłan",
                      :name => "Egzorcysta",
@@ -300,6 +420,12 @@ s_choice.stats_modifiers.create(:modifies => "WI", :value => 1, :group_name => "
 
 
 ###Łotr
+
+skill = Skill.create(:profession_type => "Łotr",
+                     :name => "Szczęście Kastora",
+                     :way_it_works => "postać udoskonaliła swoje techniki dzięki czemu korzystanie z następujących umiejętności: „Kradzież kieszonkowa”, „Otwieranie zamków”, „Wykrywanie i Niszczenie pułapek”, „Szulerka”, „Szarlataneria”, „Ucieczka i Wyzwalanie się z Więzów” ułatwione jest o +2pkt/poziom Łotra. Oznacza to, że każdy test sprawdzający jedną z powyższych zdolności jest jej łatwiej wykonać, np.: postać próbuje okraść beztroskiego kupca, jej Zręczność wynosi 26pkt, a kara przyznana przez MG równa jest 5pkt (poziom przeciętny), następnie bohater otrzymuje premię +2pkt za poziom. W takim przypadku udaje mu się okraść ofiarę na rzucie 23pkt lub niżej.
+                     Ponadto jeżeli jakiś efekt ma w losowy sposób wybrać na cel Łotra, MG rzuca ponownie. Dotyczy to wszystkich negatywnych zdarzeń losowych tj: pułapki, zasadzki, strzały, itp., w których ślepy los wybiera swój cel. Oczywiście jeżeli przy drugim rzucie ponownie wypadnie na Łotra nic na to nie można już poradzić.")
+
 
 skill = Skill.create(:profession_type => "Łotr",
                      :name => "Bystrzak",
@@ -341,7 +467,48 @@ s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_na
 s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Obrona Bliska")
 s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Obrona Daleka")
 
+
+### ODRZUCONY
+
+skill = Skill.create(:profession_type => "Odrzucony",
+                     :name => "Wchłonięcie/Odbicie",
+                     :way_it_works => "zdolność może zostać użyta przeciw dowolnemu zaklęciu, które zostało skierowane na postać, przed rzutem obronnym (dotyczy też czarów obszarowych, które skierowane są lub dosięgną Odrzuconego). Aby sprawdzić czy udało się wchłonąć lub zniszczyć czar, postać wykonuje rzut k30 zwiększony o premię ze swojej Inteligencji. Wynik musi być wyższy niż poziom trudności czaru uzyskany przez wrogiego maga, który dodatkowo zwiększony jest o wartość jego „Przełamania”. Przed sprawdzeniem wyniku, gracz musi zdecydować się czy próbuje wchłonąć energię czaru czy go odbija. W pierwszym przypadku otrzymuje +5pkt do testu, albowiem łatwiej jest mu wchłonąć moc aniżeli ją odbić a udany wynik oznacza całkowite zniszczenie czaru i wszystkich jego efektów. Druga umiejętność odbija czar w dowolny, wybrany przez Odrzuconego cel – nawet w samego czarodzieja.
+                     II Stopień: jw. a Odrzucony otrzymuje dodatkowe +5pkt do testów Wchłonięcia/Odbicia.
+                     III Stopień: Odrzucony może wykonać dwa rzuty związane z konfrontacją mocy i wybiera korzystniejszy wynik, ponadto otrzymuje premię do wyniku równą +10pkt.
+                     Umiejętność Pasywna.")
+
+skill = Skill.create(:profession_type => "Odrzucony",
+                     :name => "Ostrze Antymagii",
+                     :way_it_works => "raz na dzień postać może „nasączyć” broń, którą włada (oręż przeznaczony do walki wręcz) dzięki czemu przebija nią wszystkie magiczne aury (ich wartość wynosi wtedy zero), zapory i bariery magiczne, po prostu je rozcina, dzięki czemu trwale je niszczy. Ostrze Antymagii aktywne jest przez 10rund a wszystkie istoty, które zranić można tylko za pomocą magii lub magicznej broni, stają się całkowicie podatne na ataki tak nasączonego oręża. Akcja ta zajmuje 1pkt Tempa i traktowana jest na zasadach Umiejętności Pasywnej.
+                     II Stopień: jw. a broń otrzymuje dodatkową moc: za każdym razem kiedy Odrzucony za jej pomocą zabije lub zniszczy istotę posiadającą punkty Mocy broń przejmuje część jej esencji i na stałe zwiększa zadawane Obrażenia o +1pkt. Efekt ten jest trwały tak więc nie trzeba go aktywować, po prostu oręż jest „ostrzejszy” i zadaje coraz więcej ran (maksymalnie można zwiększyć ilość zadawanych Obrażeń o wartość premii z Inteligencji Odrzuconego). Ponadto standardowa moc „Ostrza Antymagii” utrzymuje się do końca starcia/walki Odrzuconego.
+                     III Stopień: jw. ponadto jeżeli Odrzucony zadał tak nasączoną bronią chociaż jedną ranę istocie posiadającej punkty Mocy zmusza ją do wykonania testu Inteligencji zmniejszonego o 2pkt za każdy posiadany poziom Doświadczenia. Niepowodzenie przeciwnika oznacza utratę wszystkich posiadanych przez niego punktów Mocy (nie działa na jego Amulety, itp. przedmioty).
+                     Uwaga: tak przygotowana broń nadal w normalny sposób musi przebić zbroje i pancerze, chociaż pozbawia ich swoich nadzwyczajnych zdolności bądź podwyższonej odporności na ciosy.")
+
+skill = Skill.create(:profession_type => "Odrzucony",
+                     :name => "Niszczenie Magii",
+                     :way_it_works => "raz na 24godziny postać może zniszczyć dotknięty gołą dłonią magiczny przedmiot. Proces ten ma tak niszczycielską i destrukcyjną moc, że przedmiot zazwyczaj rozpada się w pył lub w ciągu mgnienia oka niszczeje. Umiejętność obarczona jest pewną dozą ryzyka i tak Odrzucony musi wykonać rzut odpowiednią liczbą kości. W przypadku zwyczajnego przedmiotu 3k10, przy potężniejszym 4k10, przy artefakcie 5k10, a przy niezwykłych reliktach nawet 6-10k10. Za każdą wylosowaną 1-nkę otrzymuje k20 ran przed, którymi nie chroni żadna zbroja. Umiejętność zajmuje całą Rundę.
+                     II Stopień: umiejętność zyskała nowe możliwości dzięki czemu może być w analogiczny sposób wykorzystana do niszczenia magicznych mikstur (trucizny, eliksiry, itp.) działających na dotkniętą przez Odrzuconego postać. Warto jednak pamiętać o tym, że nie jest on w stanie rozpoznać działania ani przeznaczenia czy chociażby samej obecności specyfiku w wybranym organizmie. Po prostu może zadeklarować, że chce zniszczyć wszystkie toksyny i inne magiczne płyny znajdujące się w ofierze. Umiejętność może zostać wykorzystana raz na 12godzin i zajmuje całą rundę.
+                     III Stopień: Odrzucony może wyssać magię z istoty (odbiera wszystkie pkt mocy), która znajduje się od niego nie dalej niż 10metrów. Akcja zajmuje całą rundę (efekt osiąga na końcu rundy co oznacza że mag dysponuje swoimi PKT Mocy do jej zakończenia). Umiejętność może być użyta raz na 24godzin, a ofierze nie przysługuje żaden rzut obronny.")
+
+skill = Skill.create(:profession_type => "Odrzucony",
+                     :name => "Oczyszczenie",
+                     :way_it_works => "raz na 24godziny postać może wyzwolić umysł dowolnej postaci (ręką dotyka jej głowy) z czarów wpływających na jej postrzeganie świata, opętanie, itp. efektów. Zastosowanie Oczyszczenia na sobie sprawia, że wzrok Odrzuconego przebije każdą iluzję. Umiejętność trwa przez 3k10rund i ujawnia większość sztuczek magicznych oddziałujących na umysł. Zdolność nie odkrywa prawdziwej natury demonów bądź nieumarłych i nie działa na postacie, które zmieniły wygląd za pomocą charakteryzacji lub np.: przemiany. Umiejętność zajmuje całą Rundę.
+                     II Stopień: Odrzucony może oczyścić wybrane miejsce lub przedmiot z wpisanej Runy (postać widzi wszystkie Runy jako świecące znaki). Musi ją dokładnie widzieć i nie może być od niej oddalony o więcej niż metr/poziom. Umiejętność zajmuje całą Rundę.
+                     III Stopień: zdolność może być wykorzystana raz na 12godzin zgodnie z zasadami opisanymi na I Stopniu. Za jej pomocą Odrzucony rozpoznaje istoty ukryte w ludzkich ciałach tj.: martwiaki i demony, wyczuwa ich wpływ i inne działania (czy kontrolują ich ciała, itp.), ujawnia istoty eteryczne i niematerialne. Moc Umiejętności utrzymuje się przez godzinę/poziom i może być aktywowana raz na 12godzin, jej aktywowanie zajmuje całą Rundę.")
+
+skill = Skill.create(:profession_type => "Odrzucony",
+                     :name => "Niewrażliwość na Magię",
+                     :way_it_works => "wszystkie efekty czarów, zaklęć i modlitw (oczywiście jeżeli jest to możliwe) odnoszą tylko połowiczny sukces względem Odrzuconego. Oznacza to, że w przypadku kiedy ma otrzymać jakieś Obrażenia dostaje tylko połowę wylosowanej wartości. Oczywiście nadal przysługuje mu rzut obronny przed danym efektem magicznym, który jeżeli będzie udany dodatkowo połowi obrażenia (co oznacza, że otrzyma tylko 1/4Ran). Ponadto bohater zyskuje Odporność na Magię +10pkt. Wyżej wymienione zasady traktowane są jako Umiejętność Pasywna jednak działają zawsze czy tego chce czy nie.
+                     II Stopień: jw. przy czym Odporność na Magię podnoszona jest o koleje +10pkt (razem o +20pkt).
+                     III Stopień: jw. a sam Odrzucony zmuszony do wykonania jakiegokolwiek testu wywołanego przez magię zawsze automatycznie go zdaje.")
+
+
+
 ###RYCERZ
+
+skill = Skill.create(:profession_type => "Rycerz",
+                     :name => "Duma Rycerska",
+                     :way_it_works => "raz na walkę z danym przeciwnikiem Rycerz może po nietrafionym ciosie przerzucić test Trafienia zwiększając swoją szansę o 3pkt.")
 
 skill = Skill.create(:profession_type => "Rycerz",
                      :name => "Doskonałość Szermiercza",
@@ -377,7 +544,19 @@ s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "domyślne")
 s_choice.stats_modifiers.create(:modifies => "money", :value => 50000, :group_name => "domyślne")    #TODO implement it !
 
-#Rycerz Zakonny
+######Rycerz Zakonny
+
+
+skill = Skill.create(:profession_type => "Rycerz Zakonny",
+                     :name => "Potęga Patrona",
+                     :way_it_works => "raz na dzień Rycerz Zakonny może użyć każdej z poniższych zdolności na zasadach Umiejętności Pasywnej:
+
+                     Oręż Boga; każdy cios, który trafił Demona lub Martwiaka zadaje mu dodatkowe 10pkt Ran, a tak natchniona broń (trzymana przez postać) przeciw ww. istotom traktowana jest jako magiczna. Aktywowanie Umiejętności zajmuje 1pkt Tempa. Efekt utrzymuje się do końca starcia/walki.
+
+                     Boża Aura; Rycerz Zakonny może wytworzyć wokół siebie ochronną barierę, która powstrzymuje jeden efekt magiczny wywołany przez Wrogów Wiary dotyczy to także umiejętności martwiaków i demonów, ale tylko wtedy kiedy celem jest Rycerz. Stworzenie aury zajmuje 1pkt Tempa i utrzymuje się przez k10+1godzinę/poziom postaci lub do pierwszej aktywacji.
+
+                     Słowo Prawdy; używając tej zdolności Rycerz próbuje na pytanej osobie wymóc szczerą odpowiedź. Sprawdzamy to przeciwstawnym testem jego Wiary przeciw Inteligencji lub Wierze ofiary w zależności od tego, który z tych parametrów jest wyższy. Jeżeli test się powiódł ofiara musi odpowiedzieć zgodnie z prawdą (postać, która nie chce wyjawić prawdy może powstrzymać się od mówienia jednakże z chwilą kiedy zechce rozmawiać z rycerzem musi odpowiedzieć zgodnie z faktami) w przeciwnym wypadku odpowiada co chce. Uzyskanie automatycznego sukcesu w teście zmusza przesłuchiwanego do dokładnej i szczerej odpowiedzi.")
+
 
 skill = Skill.create(:profession_type => "Rycerz Zakonny",
                      :name => "Modlitwa",
@@ -414,6 +593,10 @@ skill.skill_requirements.create(:check_applies_to => "experience", :value => "8"
 #Strzelec
 
 skill = Skill.create(:profession_type => "Strzelec",
+                     :name => "Zimna Krew",
+                     :way_it_works => "raz na sesję za każdy poziom doświadczenia postaci, Strzelec może przerzucić dowolny nietrafiony strzał (dotyczy broni strzeleckiej czyli kusz, łuków lub procy).")
+
+skill = Skill.create(:profession_type => "Strzelec",
                      :name => "Im bliżej tym lepiej",
                      :way_it_works => "wszystkie strzały/bełty wystrzelone na Bliski zasięg zadają ofierze dodatkowe 3pkt Obrażeń.
 Umiejętność Pasywna.")
@@ -447,6 +630,11 @@ skill.skill_requirements.create(:check_applies_to => "experience", :value => "3"
 
 
 ###SZAMAN
+
+skill = Skill.create(:profession_type => "Szaman",
+                     :name => "Zaklęcia Szamańskie",
+                     :way_it_works => "człowiek związany z naturą i światem duchów, potrafi rozmawiać z przodkami, przywoływać ich duchy a nawet zmuszać je do posłuszeństwa. Dysponuje wrodzonym talentem, który na pierwszy rzut oka przypomina umiejętności Maga, jednakże jego zaklęcia, rytuały, tańce i śpiewy są odmienne i tylko on może je okiełznać. Postać potrafi rzucać zaklęcia Szamana (patrz rozdział Magia)..")
+
 
 skill = Skill.create(:profession_type => "Szaman",
                      :name => "Siła Przodków",
@@ -500,6 +688,11 @@ s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 8, :group_na
 
 ##Zabójca
 
+
+
+skill = Skill.create(:profession_type => "Zabójca",
+                     :name => "Morderczy Cios",
+                     :way_it_works => "raz na rundę kiedy postać zadaje Obrażenia rzuca dwoma kośćmi i wybiera korzystniejszy wynik. Nie może być wykorzystany w połączeniu z bronią dystansową.")
 
 skill = Skill.create(:profession_type => "Zabójca",
                      :name => "Nożownik",

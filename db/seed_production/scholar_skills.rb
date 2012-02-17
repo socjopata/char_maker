@@ -318,18 +318,15 @@ skill = Skill.create(:profession_type => "scholar",
                      :way_it_works => "zasięg wszystkich czarów dystansowych zostaje zwiększony o 15metrów. Umiejętność nie działa na magię, która wymaga Dotknięcia celu. Ponadto zaklęcia obszarowe mają powiększony promień/średnicę o 3metry.
 Umiejętność Pasywna.")
 
-#skill = Skill.create(:profession_type => "scholar",
-#                     :name => "Tworzenie Mikstur",
-#                     :way_it_works => "postać posiadła kompletną wiedzę o wszystkich Zaawansowanych przepisach znajdujących się w rozdziale Alchemia. Potrafi je stworzyć, zna ich składniki i wie gdzie można je zakupić/znaleźć.
-#Ponadto zwiększa swoją Zręczność o +1pkt.")
-#
-#s_choice = skill.stats_choices.create
-#s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
-#skill.skill_requirements.create(:check_applies_to => "caster_class", :name => "Posiadanie Mocy" )
-#skill.skill_requirements.create(:check_applies_to => "skill", :name => "Zielarstwo" )
+skill = Skill.create(:profession_type => "scholar",
+                     :name => "Tworzenie Mikstur",
+                     :way_it_works => "postać posiadła kompletną wiedzę o wszystkich Zaawansowanych przepisach znajdujących się w rozdziale Alchemia. Potrafi je stworzyć, zna ich składniki i wie gdzie można je zakupić/znaleźć. Bohater zyskuje 100sztuk złota, które może wydać na eliksiry, mikstury i zioła od razu podczas tworzenia postaci.
+                     Ponadto zwiększa swoją Zręczność o +1pkt.")
 
-#TODO this is unfinished
-#TODO enable this skill after you get feedback from Arthur
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
+skill.skill_requirements.create(:check_applies_to => "caster_class", :name => "Posiadanie Mocy" )
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Zielarstwo" )
 
 skill = Skill.create(:profession_type => "scholar",
                      :name => "Zakazana Wiedza",

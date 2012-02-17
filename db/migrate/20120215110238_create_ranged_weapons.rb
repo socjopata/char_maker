@@ -11,7 +11,7 @@ class CreateRangedWeapons < ActiveRecord::Migration
       t.integer :accuracy_bonus
       t.text :special_rules
       t.integer :price
-      t.integer :realod_time
+      t.integer :reload_time
       t.timestamps
     end
   end
