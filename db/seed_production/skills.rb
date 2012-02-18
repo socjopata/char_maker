@@ -173,7 +173,7 @@ skill = Skill.create(:profession_type => "default", :name => "Rzemiosło rozwija
 s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "domyślne")
-s_choice.stats_modifiers.create(:modifies => "money", :value => 0, :group_name => "5k20+100")
+s_choice.stats_modifiers.create(:modifies => "money", :value => 0, :group_name => "5k20g+10000")
 
 skill = Skill.create(:profession_type => "default", :name => "Rzemiosło rozwijające intelekt", :way_it_works => "postać wyuczyła się wybranego fachu lub rzemiosła. Po kilku latach praktyki, zebrała nieco oszczędności (5k20+100zł), a jej Siła lub Inteligencja podnoszone są o +1pkt. Gracz wraz z MG wybiera rodzaj zawodu jakim para się postać.",
 :active => false)
@@ -181,7 +181,7 @@ skill = Skill.create(:profession_type => "default", :name => "Rzemiosło rozwija
 s_choice = skill.stats_choices.create
 
 s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => "domyślne")
-s_choice.stats_modifiers.create(:modifies => "money", :value => 0, :group_name => "5k20+100")
+s_choice.stats_modifiers.create(:modifies => "money", :value => 0, :group_name => "5k20g+10000")
 
 
 skill = Skill.create(:profession_type => "default", :name => "Sokoli Wzrok", :way_it_works => "Spostrzegawczość postaci zwiększana jest o +5pkt, ponadto może wykonać dwa rzuty sprawdzając ten parametr i wybrać korzystniejszy wynik.",

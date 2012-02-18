@@ -75,13 +75,12 @@ class CharacterBackground < ActiveRecord::Base
   end
 
   def fill_the_purse_with_gold
-
     sc = social_classes.first
     starting = Purse::BASE[sc.name]
     Purse::MULTIPLIER[sc.name].times do
       starting += ((1 + rand(Purse::DICE_TYPE)) * ((sc.name=="Chłop Ubogi" or sc.name=="Wyrzutek") ? 10 : 100))
     end
-    character.create_purse(:starting => starting)
+    character.create_purse(:starting => starting, :base => 5000)
   end
 
 end
