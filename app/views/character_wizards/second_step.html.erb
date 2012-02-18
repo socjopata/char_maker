@@ -5,7 +5,7 @@
 <strong>Profesja:</strong> <%= @character.character_profession %><br/>
 <strong>Pochodzenie:</strong> <%= @character.character_background.origin %><br/>
 <strong>Klasa Społeczna:</strong> <%= @character.character_background.social_classes.first.name %><br/>
-<strong>Sakiewka:</strong> <%= humanize_purse_content(@character.purse.cooper) %><br/>
+<strong>Sakiewka:</strong> <%= humanize_purse_content(@character.purse.starting) %><br/>
 <br/><br/>
 
 <%= form_tag :url => second_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
