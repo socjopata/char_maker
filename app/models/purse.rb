@@ -42,31 +42,38 @@ class Purse < ActiveRecord::Base
   }
 
 
-  #TODO OMG. Test it and refactor
   def update_current
-    money_bonuses = character.statistics.stats_modifiers
-    money_bonuses_requiring_dice_rolls = money_bonuses.select { |sm| sm.group_name!="domyslne" }
+    money_bonuses = character.statistics.stats_modifiers.select { |sm| sm.modifies=="money" }
+    money_bonuses_requiring_dice_rolls = money_bonuses.select { |sm| sm.group_name!="domyślne" }
+    variable_part = parse_variable_part(money_bonuses_requiring_dice_rolls)
+    update_attribute(:current, (starting + money_bonuses.collect(&:value).sum + variable_part))
+  end
+
+  def parse_variable_part(money_bonuses_requiring_dice_rolls)
     money_bits = []
-    if money_bonuses_requiring_dice_rolls.present?
-      money_bonuses_requiring_dice_rolls.map(&:group_name).each do |dsl_code|
-        dice_instruction = dsl_code.match /(\d\w\d+)/
-        base, static = dsl_code.gsub(dice_instruction, "").split("+")
-        money_bits << static.to_i
-        number_of_rolls, dice_type = dice_instruction.split("k").tap { |element| element.to_i }
-        number_of_rolls.times do
-          multiplier = case base
-                         when "g" then
-                           100
-                         when "s" then
-                           10
-                         when "c" then
-                           1
-                       end
-          money_bits << ((1 + rand(dice_type)) * multiplier)
-        end
+    money_bonuses_requiring_dice_rolls.map(&:group_name).each do |dsl_code|
+      dice_instruction = dsl_code.match(/(\d\w\d+)/)[0]
+      base, static = dsl_code.gsub(dice_instruction, "").split("+")
+      money_bits << static.to_i
+      number_of_rolls, dice_type = dice_instruction.split("k").map(&:to_i)
+      multiplier = extract_multiplier(base)
+      number_of_rolls.times do
+        money_bits << ((1 + rand(dice_type)) * multiplier)
       end
     end
-    update_attribute(:current, (starting + money_bonuses.collect(&:value).sum + money_bits.flatten))
+    money_bits.flatten.sum
   end
+
+  def extract_multiplier(base)
+    case base
+      when "g" then
+        100
+      when "s" then
+        10
+      when "c" then
+        1
+    end
+  end
+
 
 end

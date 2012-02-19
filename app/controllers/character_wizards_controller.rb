@@ -112,6 +112,7 @@ class CharacterWizardsController < ApplicationController
       @free_skill_amount = Skill.calculate_free_skill_amount(@character, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@intelligence].to_i, session[:skills_used].to_i)
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
+      @character.purse.update_current if @character.purse.current.blank?
       if @character.any_unfinished_matters_present?
         redirect_to optional_step_character_wizard_path(:char_id => @character)
       else

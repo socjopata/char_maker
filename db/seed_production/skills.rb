@@ -166,7 +166,7 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Inicjatywa")
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "15" )
-
+           #TODO fix it, disallow picking both
 skill = Skill.create(:profession_type => "default", :name => "Rzemiosło rozwijające siłę", :way_it_works => "postać wyuczyła się wybranego fachu lub rzemiosła. Po kilku latach praktyki, zebrała nieco oszczędności (5k20+100zł), a jej Siła lub Inteligencja podnoszone są o +1pkt. Gracz wraz z MG wybiera rodzaj zawodu jakim para się postać.",
 :active => false)
 
