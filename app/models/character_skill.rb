@@ -24,5 +24,5 @@ class CharacterSkill < ActiveRecord::Base
   end
 
 
-  #TODO REMEMBER TO TRANSLATE MISC MODIFIERS LIKE "MONEY" OF "FIGHTING" BEFORE PROCEEDING TO STEP 5
+
 end

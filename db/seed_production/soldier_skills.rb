@@ -55,7 +55,6 @@ skill = Skill.create(:profession_type => "soldier",
 " )
 
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Tarczownik" )
-#TODO Ponadto bohater może wybrać jeden rodzaj tarczy, w której doskonali swe umiejętności dzięki czemu jej Obrona wzrasta na stałe o +1pkt.
 s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana tarcza, Obrona+1")  #TODO This "DSL" can be improved
 
 
@@ -92,12 +91,6 @@ skill = Skill.create(:profession_type => "soldier",
                      :way_it_works => "Obrona tarczy zwiększana jest o +3pkt kosztem zmniejszenia Trafienia o -1pkt. Korzystając z Tarczownika Obrona Dystansowa postaci podnoszona jest o dodatkowe +3pkt (łącznie o +6pkt).
 " )
 
-#TODO make sure, you're using the same names across the system'
-
-s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 3, :group_name => "Obrona Tarczy")
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => -1, :group_name => "Trafienie")
-#TODO is it constant? or just an active skill?
 
 skill = Skill.create(:profession_type => "soldier",
                      :name => "Ulubiona Broń",
@@ -148,9 +141,6 @@ skill = Skill.create(:profession_type => "soldier",
 
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "3")
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Tarczownik" )
-s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 6, :group_name => "Obrona Tarczy")
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => -2, :group_name => "Trafienie")
 
 
 

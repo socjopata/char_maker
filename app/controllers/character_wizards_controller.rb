@@ -58,7 +58,6 @@ class CharacterWizardsController < ApplicationController
       @character = current_user.characters.find(params[:char_id])
 
       #do a rollback here
-      #TODO possibly redundant
       session[:skill_free_assignment_base] = nil
       session[:default_skills_ids] = nil
       session[:skills_used] = nil
