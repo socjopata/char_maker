@@ -265,8 +265,9 @@ skill = Skill.create(:profession_type => "default", :name => "Zabijaka", :way_it
 :active => false )
 s_choice = skill.stats_choices.create
 
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Bijatyka")      #TODO check it.
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Bijatyka")
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Odporność na Ból")
+s_choice.stats_modifiers.create(:modifies => "S", :value => 2, :group_name => "domyślne")
 
 skill = Skill.create(:profession_type => "default", :name => "Zielarstwo", :way_it_works => "postać posiada rozległą wiedzę dotyczącą roślin, dzięki czemu wie gdzie i co występuje, jak należy to zbierać, suszyć, preparować, itd. Umiejętność ta daje również możliwość wykonywania lub przyrządzania Prostych mikstur, leków bądź eliksirów. Poprawne wykonanie preparatu określone jest zawsze w jego przepisie. Postać zyskuje +1pkt Inteligencji.",
 :active => false )
