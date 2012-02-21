@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 class SkillRequirement < ActiveRecord::Base
   belongs_to :skill
 
@@ -16,6 +18,23 @@ class SkillRequirement < ActiveRecord::Base
         !Profession::CASTER_CLASSES.include?(character.profession.name)
       when "auxiliary"
         self.value.to_i > character.statistics.send("calculate_#{AuxiliaryParameterSet::ENGLISH_NAMES[name]}".intern)
+    end
+  end
+
+  def make_human_readable
+    case self.check_applies_to
+      when "skill"
+        "* Umiejętność #{(name)}"
+      when "statistics"
+        (name.match /OR:\s/).present? ? "TODO" : "* Parametr #{Statistics::NAMES[name]} musi mieć wartość conajmniej #{value.to_i}"
+      when "experience"
+        "* Poziom doświadczenia: #{value}"
+      when "social_class"
+        "* Postać musi mieć odpowiednie pochodzenie" #TODO can be improved
+      when "caster_class"
+        "* Postać musi być Posiadaczem Mocy"
+      when "auxiliary"
+        "* Paramter #{name} musi wynosić conajmniej #{value.to_i}"
     end
   end
 

@@ -58,7 +58,7 @@ class Commander
               Hash["auxiliary_table_main_p_bonus_for_life_points", base_skill_value]
           ]
         when "INT"
-          #nothing actually. #TODO on a second thougth, number of free skills.
+          #nothing actually. # on a second thougth, number of free skills. But the flow is okay nevertheless imho.
         when "O"
           #nothing actually
         when "WI"
