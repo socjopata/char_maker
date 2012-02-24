@@ -5,7 +5,6 @@ class CreateShields < ActiveRecord::Migration
       t.string :name
       t.integer :defense_bonus
       t.text :special_rules
-      t.integer :dmg_resistance
       t.integer :price
       t.integer :dexterity_nerf
       t.integer :dexterity_cap

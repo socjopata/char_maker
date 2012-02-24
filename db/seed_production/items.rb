@@ -735,7 +735,7 @@ Weapon.create(
   :attack_bonus => 2,
   :defense_bonus => 2,
   :special_rules => "",
-  :price => nil      #TODO
+  :price => 100
   )
 
 Weapon.create(
@@ -1331,4 +1331,138 @@ Armor.create(
     :special_rules => "+5pkt do Obrony Dystansowej, Odporności na Magię +3pkt",
     :price => 600000
 )
+
+Shield.create(
+    :group_name => "Tarcze Piechoty",
+    :name => "Puklerz",
+    :defense_bonus => 3,
+    :dexterity_nerf => 0,
+    :dexterity_cap => 33,
+    :special_rules => "",
+    :price => 700
+)
+
+Shield.create(
+    :group_name => "Tarcze Piechoty",
+    :name => "Okrągła z żelaznym umbrem",
+    :defense_bonus => 5,
+    :dexterity_nerf => 3,
+    :dexterity_cap => 29,
+    :special_rules => "+2pkt do Obrony Dystansowej",
+    :price => 500
+)
+
+Shield.create(
+    :group_name => "Tarcze Piechoty",
+    :name => "Migdałowa",
+    :defense_bonus => 6,
+    :dexterity_nerf => 4,
+    :dexterity_cap => 23,
+    :special_rules => "+3pkt do Obrony Dystansowej",
+    :price => 700
+)
+
+Shield.create(
+    :group_name => "Tarcze Piechoty",
+    :name => "Trójkątna",
+    :defense_bonus => 7,
+    :dexterity_nerf => 6,
+    :dexterity_cap => 17,
+    :special_rules => "+4pkt do Obrony Dystansowej",
+    :price => 800
+)
+
+Shield.create(
+    :group_name => "Tarcze Piechoty",
+    :name => "Pawęż Typowa",
+    :defense_bonus => 8,
+    :dexterity_nerf => 8,
+    :dexterity_cap => 13,
+    :special_rules => "+5pkt do Obrony Dystansowej",
+    :price => 900
+)
+
+Shield.create(
+    :group_name => "Tarcze Piechoty",
+    :name => "Ciężka Pawęż",
+    :defense_bonus => 0,  #TODO special case
+    :dexterity_nerf => 10,
+    :dexterity_cap => 5,
+    :special_rules => "Ciężka pawęż z kolcami i otworem strzelniczym używana jest głównie podczas oblężeń i ukierunkowanemu, spodziewanemu ostrzałowi na polu bitwy. Ponieważ, niektóre okazy mogą ważyć nawet ponad 20kg transportuje się je na wozach. Walka przy ich użyciu, poza sztywnym szykiem, jest właściwie nie możliwa. Postać schowana za taką zasłoną jest doskonale chroniona przed ostrzałem z broni dystansowych, a przeciwnik może ją Trafić tylko i wyłącznie uzyskując Trafienie Krytyczne. Podczas walki wręcz szyk wykorzystujący pawęże najlepiej rozbić za pomocą szarży kawaleryjskiej, potężnej magii lub ciężkich machin bitewnych.",
+    :price => 1000
+)
+
+Shield.create(
+    :group_name => "Tarcze Piechoty",
+    :name => "Łuskowa, Migdałowa Reptiliońska",
+    :defense_bonus => 9,
+    :dexterity_nerf => 6,
+    :dexterity_cap => 22,
+    :special_rules => "+6pkt do Obrony Dystansowej.",
+    :price => 25000
+)
+
+Shield.create(
+    :group_name => "Tarcze Piechoty",
+    :name => "Łuskowa, Okrągła Smocza",
+    :defense_bonus => 7,
+    :dexterity_nerf => 4,
+    :dexterity_cap => 26,
+    :special_rules => "+5pkt do Obrony Dystansowej, +3pkt do Odporność na Magię. Wyjątkowo rzadka tarcza, dostępna tylko w Alantarze dla zasłużonych sług Cesarza oraz najbogatszych obywateli państwa.",
+    :price => 50000
+)
+
+Shield.create(
+    :group_name => "Tarcze Jazdy",
+    :name => "Okrągła",
+    :defense_bonus => 5,
+    :dexterity_nerf => 4,
+    :dexterity_cap => 25,
+    :special_rules => "+3pkt do Obrony Dystansowej.",
+    :price => 600
+)
+
+Shield.create(
+    :group_name => "Tarcze Jazdy",
+    :name => "Trójkątna, zaokrąglona",
+    :defense_bonus => 6,
+    :dexterity_nerf => 7,
+    :dexterity_cap => 20,
+    :special_rules => "+4pkt do Obrony Dystansowej",
+    :price => 900
+)
+
+Shield.create(
+    :group_name => "Tarcze Jazdy",
+    :name => "„Rnedio clipeo”",
+    :defense_bonus => 4,
+    :dexterity_nerf => 3,
+    :dexterity_cap => 19,
+    :special_rules => "Używając w połączeniu z Kopią +2pkt do Trafienia, +3pkt do Obrony Dystansowej.",
+    :price => 1000
+)
+
+Shield.create(
+    :group_name => "Tarcze Jazdy",
+    :name => "Pawężki",
+    :defense_bonus => 6,
+    :dexterity_nerf => 5,
+    :dexterity_cap => 18,
+    :special_rules => "+5pkt do Obrony Dystansowej",
+    :price => 800
+)
+
+Shield.create(
+    :group_name => "Tarcze Jazdy",
+    :name => "Łuskowa smocza, migdałowa",
+    :defense_bonus => 7,
+    :dexterity_nerf => 4,
+    :dexterity_cap => 22,
+    :special_rules => "+4pkt do Obrony Dystansowej, Wyjątkowo rzadka tarcza, dostępna tylko w Alantarze dla zasłużonych sług Cesarza oraz najbogatszych obywateli państwa.",
+    :price => 45000
+)
+
+
+
+
 

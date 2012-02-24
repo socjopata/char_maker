@@ -1,8 +1,6 @@
 ## -*- encoding : utf-8 -*-
 #
 
-#TODO what the hell is :active ?   Aktywny / Pasywny ? IF yes... then this is of no use here.
-
 skill = Skill.create(:profession_type => "default",
                      :name => "Akrobatyka",
                       :limitations => "aby korzystać z tej zdolności postać nie może mieć mniej niż 20pkt aktualnej Zręczności",

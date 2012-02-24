@@ -3,7 +3,6 @@ class CreateSkills < ActiveRecord::Migration
     create_table :skills do |t|
       t.string :profession_type
       t.string :name
-      t.boolean :active
       t.text :way_it_works
       t.text :description
       t.text :limitations
