@@ -8,6 +8,7 @@ CharMaker::Application.routes.draw do
 
   match 'character_wizards/update_countries_select/', :controller=> 'character_wizards', :action => 'update_countries_select'
   match 'character_wizards/toggle_skill/', :controller=> 'character_wizards', :action => 'toggle_skill'
+  match 'character_wizards/toggle_weapon_proficiency/', :controller=> 'character_wizards', :action => 'toggle_weapon_proficiency'
 
   resource 'character_wizard' do
     member do
@@ -21,8 +22,8 @@ CharMaker::Application.routes.draw do
       post :fourth_step
       get :pick_a_fightstyle_step
       post :pick_a_fightstyle_step
-      get :optional_step
-      post :optional_step
+      get :after_skills_step
+      post :after_skills_step
       get :armament_step
       post :armament_step
     end

@@ -112,17 +112,18 @@ class CharacterWizardsController < ApplicationController
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
       @character.purse.update_current if @character.purse.current.blank?
-      if @character.any_unfinished_matters_present?
-        redirect_to optional_step_character_wizard_path(:char_id => @character)
-      else
-        redirect_to armament_step_character_wizard_path(:char_id => @character)
-      end
+      #if @character.any_unfinished_matters_present?
+      #  redirect_to optional_step_character_wizard_path(:char_id => @character)
+      #else
+        redirect_to after_skills_step_character_wizard_path(:char_id => @character)
+      #end
     end
   end
 
-  def optional_step
+  def after_skills_step
     if request.get?
       @character = current_user.characters.find(params[:char_id])
+      @weapon_groups = Weapon.all.map(&:group_name).uniq
     elsif request.post?
     end
   end
@@ -159,6 +160,10 @@ class CharacterWizardsController < ApplicationController
     end
 
     #TODO what about clever "skills" picking? Manipulating choices so you choose something to enable other skill and then uncheck the enabler...
+  end
+
+  def toggle_weapon_proficiency
+    throw params
   end
 
 
