@@ -1,27 +1,19 @@
-Określ proszę, w jakich broniach będziesz biegły. Liczba wolnych biegłości: #TODO <br /><br />
+Określ proszę, w jakich broniach będziesz biegły. Liczba wolnych biegłości: #TODO <br/><br/>
 
 <% @weapon_groups.each do |weapon_group| %>
-   <%= check_box_tag "weapon_proficiency", weapon_group, @character.character_weapon_proficiencies.detect{|wp| wp.name==weapon_group},   :onclick => "append_to_form_and_submit($(\"input[name='weapon_proficiency']\").filter(\"input[value='#{weapon_group}']\"))"  %> <label><%= weapon_group %></label>
+    <%= check_box_tag "weapon_proficiency", weapon_group, @character.character_weapon_proficiencies.detect { |wp| wp.name==weapon_group }, :onclick => "append_to_form_and_submit($(\"input[name='weapon_proficiency']\").filter(\"input[value='#{weapon_group}']\"))" %>
+    <label><%= weapon_group %></label>
 <% end %>
 
 
-<% form_tag :url => character_wizards_toggle_weapon_proficiency_path, :method => :post do %>
-<% end %>
-    <!--#TODO finish and fix this bullshit-->
 <script type="text/javascript">
     function append_to_form_and_submit(checkbox) {
-        console.log(checkbox.val()) ;
-        alert(checkbox.attr("checked"));
-
+        var url = '<%= character_wizards_toggle_weapon_proficiency_path -%>';
+        var data = {'name' : checkbox.val(), 'value' :  checkbox.is(':checked'), 'char_id' : '<%= @character.id -%>' };
+        $.ajax({
+            url: url,
+            data: data,
+            dataType: 'script'
+        });
     }
-
-//
-//    compare_selected_quote_lines = function() {
-//        $('.qline_check_box:input:checkbox').each(function() {
-//            if ($(this).attr('checked') == true) {
-//                $('#compare_quote_lines_form').append("<input id='qline_ids' name='qline_ids[]' type='hidden' value=" + $(this).attr('value') + " name='qline_ids'/>");
-//            }
-//        });
-//        $('#compare_quote_lines_form').submit()
-//    }
 </script>

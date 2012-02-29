@@ -61,7 +61,7 @@ class CharacterWizardsController < ApplicationController
       session[:skill_free_assignment_base] = nil
       session[:default_skills_ids] = nil
       session[:skills_used] = nil
-
+      session[:weapon_proficiency] = nil
       @character.skills.each { |skill| skill.substract_skill_from(@character.id) }
 
       roll_set = @character.statistics.initial_dice_roll_set
@@ -164,6 +164,8 @@ class CharacterWizardsController < ApplicationController
 
   def toggle_weapon_proficiency
     throw params
+    # session[:weapon_proficiency] = nil
+    #TODO before after_step, extra weapon proficiencies should be applied
   end
 
 
