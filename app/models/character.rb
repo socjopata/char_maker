@@ -22,7 +22,7 @@ class Character < ActiveRecord::Base
   before_save :check_fight_style_choice
 
   def any_unfinished_matters_present?
-    statistics.stats_modifiers.detect{|sm| (sm.group_name.match("Fechtunek w Grupie Broni") || sm.group_name.match("Wybrana broń") || sm.group_name.match("Wybrana tarcza") ) }.present?
+    statistics.stats_modifiers.detect { |sm| (sm.group_name.match("Fechtunek w Grupie Broni") || sm.group_name.match("Wybrana broń") || sm.group_name.match("Wybrana tarcza")) }.present?
   end
 
   def make_rogue_a_finesse_fighter
@@ -73,15 +73,35 @@ class Character < ActiveRecord::Base
   #traits check
   def valid_stats_assignment?
     if Trait::CHOICE_BREAKERS.include?(character_background.traits.map(&:name).try(:first)) && character_background.traits.first.statistics_it_affects != lead_parameter
-        roll_set_without_lead_parameter =  statistics.initial_dice_roll_set.tap { |a| a.delete_at(statistics.initial_dice_roll_set[0..4].rindex(statistics.initial_dice_roll_set[0..4].max)) }
-        second_highest  = roll_set_without_lead_parameter.max
-        return ( statistics.send(Statistics::ENGLISH_NAMES[character_background.traits.first.statistics_it_affects].intern) ==  second_highest )
+      roll_set_without_lead_parameter = statistics.initial_dice_roll_set.tap { |a| a.delete_at(statistics.initial_dice_roll_set[0..4].rindex(statistics.initial_dice_roll_set[0..4].max)) }
+      second_highest = roll_set_without_lead_parameter.max
+      return (statistics.send(Statistics::ENGLISH_NAMES[character_background.traits.first.statistics_it_affects].intern) == second_highest)
     end
     true
   end
 
   def current_level
     1 #currently all created chars are starters.
+  end
+
+  def toggle_weapon_class_preference(name, value, points_left)
+    errors = []
+    counter = points_left
+    proficiency = character_weapon_proficiencies.find_by_name(name)
+
+    if proficiency.blank? && value=="true" && points_left > 0
+      #create proficiency  and decrease a counter
+      character_weapon_proficiencies.create(:name => name)
+      counter -= 1
+    elsif  proficiency.present? && value=="false"
+      #delete proficiency and increase a counter
+      proficiency.destroy
+      counter += 1
+    elsif proficiency.blank? && value=="true" && points_left == 0
+      #add errors
+      errors << "Nie masz wystarczającej liczby punktów do rozdysponowania"
+    end
+    [counter, errors]
   end
 
 end

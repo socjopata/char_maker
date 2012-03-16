@@ -81,7 +81,7 @@ class Statistics < ActiveRecord::Base
       break if initial_stats.sum > 55
       initial_stats = []
     end
-    initial_stats << (character.character_background.traits.first.try(:name)=="Piękniś" ? 25 : (1 + rand(Statistics::DICE_TYPE)) ) #extra dice roll for polish ("Ogłada"))
+    initial_stats << (character.character_background.traits.first.try(:name)=="Piękniś" ? 25 : (1 + rand(Statistics::DICE_TYPE))) #extra dice roll for polish ("Ogłada"))
     self.initial_dice_roll_set = initial_stats
   end
 
@@ -143,11 +143,11 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_s
-    strength + calculate_main_skill_bonus_for("S")  + trait_modifier_for_main_skill_named("S")
+    strength + calculate_main_skill_bonus_for("S") + trait_modifier_for_main_skill_named("S")
   end
 
   def calculate_int
-    intelligence + calculate_main_skill_bonus_for("INT")  + trait_modifier_for_main_skill_named("INT")
+    intelligence + calculate_main_skill_bonus_for("INT") + trait_modifier_for_main_skill_named("INT")
   end
 
   def calculate_zr
@@ -172,7 +172,7 @@ class Statistics < ActiveRecord::Base
 
   def trait_modifier_for_main_skill_named(name)
     if character.character_background.traits.present? && character.character_background.traits.first.stats_choices.present?
-       character.character_background.traits.first.stats_choices.first.stats_modifiers.select { |sm| sm.modifies==name }.map(&:value)[0].to_i  #this looks like it, because *you* (I am pointing to myself) are to lazy to push modifiers from traits, like you're doing it with everything else.'
+      character.character_background.traits.first.stats_choices.first.stats_modifiers.select { |sm| sm.modifies==name }.map(&:value)[0].to_i #this looks like it, because *you* (I am pointing to myself) are to lazy to push modifiers from traits, like you're doing it with everything else.'
     else
       0
     end
@@ -180,7 +180,7 @@ class Statistics < ActiveRecord::Base
 
   def trait_modifier_for_auxiliary_parameter_named(name)
     if character.character_background.traits.present? && character.character_background.traits.first.stats_choices.present?
-       character.character_background.traits.first.stats_choices.first.stats_modifiers.select { |sm| sm.group_name==name }.map(&:value)[0].to_i
+      character.character_background.traits.first.stats_choices.first.stats_modifiers.select { |sm| sm.group_name==name }.map(&:value)[0].to_i
     else
       0
     end
@@ -203,7 +203,7 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_magic_resistance
-    AuxiliaryParameterSet::MAGIC_RESISTANCE[character.profession.general_type]  + calculate_auxiliary_bonus("Odporność na Magię")
+    AuxiliaryParameterSet::MAGIC_RESISTANCE[character.profession.general_type] + calculate_auxiliary_bonus("Odporność na Magię")
   end
 
   def calculate_life_points
@@ -229,7 +229,12 @@ class Statistics < ActiveRecord::Base
       when "only_special"
         stats_modifiers.select { |sm| !sm.grand_daddy.is_a?(Skill) && sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum + trait_modifier_for_auxiliary_parameter_named(name)
     end
-
   end
+
+  def calculate_weapon_class_proficiencies_points
+    character.profession.starting_weapon_proficiency + stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Biegłość w Grupie Broni" }.collect(&:value).sum
+  end
+
+
 end
 

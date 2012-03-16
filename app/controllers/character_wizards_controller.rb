@@ -61,7 +61,7 @@ class CharacterWizardsController < ApplicationController
       session[:skill_free_assignment_base] = nil
       session[:default_skills_ids] = nil
       session[:skills_used] = nil
-      session[:weapon_proficiency] = nil
+      session[:weapon_class_preference_left] = nil
       @character.skills.each { |skill| skill.substract_skill_from(@character.id) }
 
       roll_set = @character.statistics.initial_dice_roll_set
@@ -112,6 +112,7 @@ class CharacterWizardsController < ApplicationController
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
       @character.purse.update_current if @character.purse.current.blank?
+      session[:weapon_class_preference_left] = @character.statistics.calculate_weapon_class_proficiencies_points
       #if @character.any_unfinished_matters_present?
       #  redirect_to optional_step_character_wizard_path(:char_id => @character)
       #else
@@ -159,13 +160,17 @@ class CharacterWizardsController < ApplicationController
       @commands, @skill_commands = Skill.change(character, skill, params[:value]=="true")
     end
 
-    #TODO what about clever "skills" picking? Manipulating choices so you choose something to enable other skill and then uncheck the enabler...
+    #TODO what about clever "skills" picking? Manipulating choices so you choose something to enable other skill and then uncheck the enabler... ADD VALIDATION
+    #TODO edge case of 15 -> 16 inteligence and a count of free skills not updating
   end
 
   def toggle_weapon_proficiency
-    throw params
-    # session[:weapon_proficiency] = nil
-    #TODO before after_step, extra weapon proficiencies should be applied
+
+    @character = current_user.characters.find(params[:char_id])
+    session[:weapon_class_preference_left], @errors = @character.toggle_weapon_class_preference(params[:name], params[:value], session[:weapon_class_preference_left])
+
+
+    #TODO ensure validation after going forward, so the number of allowed proficiences to be picked == the number picked. Or less.
   end
 
 
