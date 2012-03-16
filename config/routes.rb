@@ -9,6 +9,7 @@ CharMaker::Application.routes.draw do
   match 'character_wizards/update_countries_select/', :controller=> 'character_wizards', :action => 'update_countries_select'
   match 'character_wizards/toggle_skill/', :controller=> 'character_wizards', :action => 'toggle_skill'
   match 'character_wizards/toggle_weapon_proficiency/', :controller=> 'character_wizards', :action => 'toggle_weapon_proficiency'
+  match 'character_wizards/set_skill_preference/', :controller=> 'character_wizards', :action => 'set_skill_preference'
 
   resource 'character_wizard' do
     member do

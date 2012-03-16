@@ -6,7 +6,7 @@ class CharacterWizardsController < ApplicationController
   #TODO Disclaimer: I know that things here, with all the logic in this place, suck a big time.
   #Idea: Refactor using some kind of state machine, or classes,
   #that after initialization perform various actions on Alantar models, depending on :get or :post
-
+  #also make some before_filter
 
   def first_step
     if request.get?
@@ -126,6 +126,7 @@ class CharacterWizardsController < ApplicationController
       @character = current_user.characters.find(params[:char_id])
       @weapon_groups = Weapon.all.map(&:group_name).uniq
     elsif request.post?
+      #TODO ensure validation after going forward, so the number of allowed proficiences to be picked == the number picked. Or less.
     end
   end
 
@@ -165,12 +166,13 @@ class CharacterWizardsController < ApplicationController
   end
 
   def toggle_weapon_proficiency
-
     @character = current_user.characters.find(params[:char_id])
     session[:weapon_class_preference_left], @errors = @character.toggle_weapon_class_preference(params[:name], params[:value], session[:weapon_class_preference_left])
+  end
 
-
-    #TODO ensure validation after going forward, so the number of allowed proficiences to be picked == the number picked. Or less.
+  def set_skill_preference
+    @stats_modifier = StatsModifier.find(params[:id])
+    @stats_modifier.as_character_skill(current_user.characters.find(params[:char_id])).create_skill_bonus_preference(:choice => params[:choice])
   end
 
 

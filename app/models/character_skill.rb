@@ -3,7 +3,7 @@ class CharacterSkill < ActiveRecord::Base
   belongs_to :character
   belongs_to :skill
 
-  has_one :skill_bonus_preference
+  has_one :skill_bonus_preference, :dependent => :destroy
 
   set_table_name "character_skills"
 

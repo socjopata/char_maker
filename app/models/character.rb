@@ -22,7 +22,11 @@ class Character < ActiveRecord::Base
   before_save :check_fight_style_choice
 
   def any_unfinished_matters_present?
-    statistics.stats_modifiers.detect { |sm| (sm.group_name.match("Fechtunek w Grupie Broni") || sm.group_name.match("Wybrana broń") || sm.group_name.match("Wybrana tarcza")) }.present?
+    skill_choices_to_be_precised.present?
+  end
+
+  def skill_choices_to_be_precised
+    statistics.stats_modifiers.select { |sm| (sm.group_name.match("Fechtunek w Grupie Broni") || sm.group_name.match("Wybrana broń") || sm.group_name.match("Wybrana tarcza")) }
   end
 
   def make_rogue_a_finesse_fighter
@@ -104,6 +108,9 @@ class Character < ActiveRecord::Base
     [counter, errors]
   end
 
+  def set_skill_preference
+
+  end
 end
 
 

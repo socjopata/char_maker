@@ -65,6 +65,9 @@ class StatsModifier < ActiveRecord::Base
      stats_choice.resource
   end
 
+  def as_character_skill(character)
+    CharacterSkill.find_by_skill_id_and_character_id(grand_daddy.id, character.id)
+  end
 
 
 end

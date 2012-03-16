@@ -84,6 +84,10 @@ module CharacterWizardHelper
    (description_base + "<br /> <br /><strong>Wymagania: </strong><br /> <br />" + requirements).html_safe
   end
 
+  def present_choice_subject(sm)
+    #TODO
+  end
+
 end
 
 
