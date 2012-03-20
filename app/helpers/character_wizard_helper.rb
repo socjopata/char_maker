@@ -85,7 +85,16 @@ module CharacterWizardHelper
   end
 
   def present_choice_subject(sm)
-    #TODO
+    case sm.group_name
+      when  "Fechtunek w Grupie Broni"
+      weapon_group_choice_for(sm)
+      else
+      throw "TODO"
+    end
+  end
+
+  def weapon_group_choice_for(sm)
+    ("<label>#{sm.grand_daddy.name} </label>" + select_tag("choice", options_for_select(@weapon_groups))).html_safe
   end
 
 end

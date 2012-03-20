@@ -172,7 +172,8 @@ class CharacterWizardsController < ApplicationController
 
   def set_skill_preference
     @stats_modifier = StatsModifier.find(params[:id])
-    @stats_modifier.as_character_skill(current_user.characters.find(params[:char_id])).create_skill_bonus_preference(:choice => params[:choice])
+    @character = current_user.characters.find(params[:char_id])
+    @stats_modifier.as_character_skill(@character).create_skill_bonus_preference(:choice => params[:choice])
   end
 
 

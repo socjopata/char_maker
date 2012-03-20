@@ -11,12 +11,14 @@
     <br/><br/>
     <p class="fs_16">Ponadto musisz doprecyzować swoje wybory jeśli chodzi o drzewo umiejętności.</p>
     <%  @character.skill_choices_to_be_precised.each do |choice_subject| %>
-        <%= form_tag(:remote=> true) do %>
+       <div id="choice_no_<%= choice_subject.id %>">
+        <%= form_tag(character_wizards_set_skill_preference_path, :remote=> true) do %>
          <%= present_choice_subject(choice_subject) %>
          <%= hidden_field_tag :id, choice_subject.id %>
          <%= hidden_field_tag :char_id, @character.id %>
          <%= submit_tag "Zaakceptuj wybór" %>
         <% end %>
+       </div>
     <% end %>
 <% end %>
 

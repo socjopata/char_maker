@@ -151,6 +151,9 @@
     float: left;
 }
 
+.choice_notice {
+}
+
 .flash-notice {
     background: url(/images/success.png) no-repeat 10px center #b5e060;
     border: 1px solid #9acb3c;
