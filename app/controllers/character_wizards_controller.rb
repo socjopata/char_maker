@@ -113,11 +113,7 @@ class CharacterWizardsController < ApplicationController
       @character = current_user.characters.find(params[:char_id])
       @character.purse.update_current if @character.purse.current.blank?
       session[:weapon_class_preference_left] = @character.statistics.calculate_weapon_class_proficiencies_points
-      #if @character.any_unfinished_matters_present?
-      #  redirect_to optional_step_character_wizard_path(:char_id => @character)
-      #else
-        redirect_to after_skills_step_character_wizard_path(:char_id => @character)
-      #end
+      redirect_to after_skills_step_character_wizard_path(:char_id => @character)
     end
   end
 
@@ -126,11 +122,17 @@ class CharacterWizardsController < ApplicationController
       @character = current_user.characters.find(params[:char_id])
       @weapon_groups = Weapon.all.map(&:group_name).uniq
     elsif request.post?
-      #TODO ensure validation after going forward, so the number of allowed proficiences to be picked == the number picked. Or less.
+      @character = current_user.characters.find(params[:char_id])
+      if @character.any_unfinished_matters_present?
+        flash.alert = "Musisz sprecyzować bonusy wynikające z umiejętności"
+        redirect_to after_skills_step_character_wizard_path(:char_id => @character)
+      else
+        redirect_to armament_step_character_wizard_path(:char_id => @character)
+      end
     end
   end
 
-   def armament_step
+  def armament_step
     if request.get?
       @character = current_user.characters.find(params[:char_id])
     elsif request.post?
@@ -175,7 +177,6 @@ class CharacterWizardsController < ApplicationController
     @character = current_user.characters.find(params[:char_id])
     @stats_modifier.as_character_skill(@character).create_skill_bonus_preference(:choice => params[:choice])
   end
-
 
 
 end
