@@ -2,9 +2,9 @@
 module CharacterWizardHelper
 
   def display_trait_warning_if_applicable(char)
-     if Trait::CHOICE_BREAKERS.include?(char.character_background.traits.map(&:name).try(:first)) && char.character_background.traits.first.statistics_it_affects != char.lead_parameter
+    if Trait::CHOICE_BREAKERS.include?(char.character_background.traits.map(&:name).try(:first)) && char.character_background.traits.first.statistics_it_affects != char.lead_parameter
       "<p style='font-size: 16px; font-weight: bold'>Z racji posiadania daru: \"#{char.character_background.traits.first.try(:name)}\" musisz kolejny najwyższy rzut przyporządkować do parametru: #{Statistics::NAMES[char.character_background.traits.first.statistics_it_affects]}.</p>".html_safe
-     end
+    end
   end
 
   def display_curse_or_blessing(char)
@@ -79,23 +79,36 @@ module CharacterWizardHelper
   end
 
   def nice_and_shiny_description(skill)
-   description_base =  [skill.description && skill.description.humanize, skill.way_it_works && skill.way_it_works.humanize, skill.limitations && skill.limitations.humanize].join("<br /> <br />")
-   requirements = skill.skill_requirements.map(&:make_human_readable).join("<br />")
-   (description_base + "<br /> <br /><strong>Wymagania: </strong><br /> <br />" + requirements).html_safe
+    description_base = [skill.description && skill.description.humanize, skill.way_it_works && skill.way_it_works.humanize, skill.limitations && skill.limitations.humanize].join("<br /> <br />")
+    requirements = skill.skill_requirements.map(&:make_human_readable).join("<br />")
+    (description_base + "<br /> <br /><strong>Wymagania: </strong><br /> <br />" + requirements).html_safe
   end
 
   def present_choice_subject(sm)
     case sm.group_name
-      when  "Fechtunek w Grupie Broni"
-      weapon_group_choice_for(sm)
+      when "Fechtunek w Grupie Broni"
+        weapon_group_choice_for(sm)
+      when /Wybrana broń/
+        weapon_choice_for(sm)
+      when /Wybrana tarcza/
+        shield_choice_for(sm)
       else
-      throw "TODO"
+        throw "You forgot to implement it dumbass!"
     end
   end
 
   def weapon_group_choice_for(sm)
     ("<label>#{sm.grand_daddy.name} </label>" + select_tag("choice", options_for_select(@weapon_groups))).html_safe
   end
+
+  def weapon_choice_for(sm)
+    #TODO
+  end
+
+  def shield_choice_for(sm)
+    #TODO
+  end
+
 
 end
 
