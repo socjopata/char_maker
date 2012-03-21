@@ -135,6 +135,7 @@ class CharacterWizardsController < ApplicationController
   def armament_step
     if request.get?
       @character = current_user.characters.find(params[:char_id])
+      @weapons = Weapon.all
     elsif request.post?
     end
   end
@@ -178,5 +179,8 @@ class CharacterWizardsController < ApplicationController
     @stats_modifier.as_character_skill(@character).create_skill_bonus_preference(:choice => params[:choice])
   end
 
+  def update_weapons_select
+
+  end
 
 end

@@ -649,7 +649,7 @@ Weapon.create(
   )
 
 Weapon.create(
-  :group_name => "Narodowa",
+  :group_name => "Narodowa - Kukri",
   :name => "Kukri",
   :weapon_type => "L",
   :range => "B",
@@ -664,7 +664,7 @@ Weapon.create(
   )
 
 Weapon.create(
-  :group_name => "Narodowa",
+  :group_name => "Narodowa - Łamacz mieczy",
   :name => "Łamacz mieczy",
   :weapon_type => "L",
   :range => "B",
@@ -679,7 +679,7 @@ Weapon.create(
   )
 
 Weapon.create(
-  :group_name => "Narodowa",
+  :group_name => "Narodowa - Kindżał",
   :name => "Kindżał",
   :weapon_type => "L",
   :range => "B",
@@ -694,7 +694,7 @@ Weapon.create(
   )
 
 Weapon.create(
-  :group_name => "Narodowa",
+  :group_name => "Narodowa - Jatagan",
   :name => "Jatagan",
   :weapon_type => "L",
   :range => "Ś",
@@ -709,7 +709,7 @@ Weapon.create(
   )
 
 Weapon.create(
-  :group_name => "Narodowa",
+  :group_name => "Narodowa - Dagha",
   :name => "Dagha",
   :weapon_type => "L",
   :range => "B",
@@ -724,7 +724,7 @@ Weapon.create(
   )
 
 Weapon.create(
-  :group_name => "Narodowa",
+  :group_name => "Narodowa - Maczeta",
   :name => "Maczeta",
   :weapon_type => "L",
   :range => "B",
@@ -739,7 +739,7 @@ Weapon.create(
   )
 
 Weapon.create(
-  :group_name => "Narodowa",
+  :group_name => "Narodowa - Dmuchawka",
   :name => "Dmuchawka",
   :weapon_type => "Dw",
   :range => "10/15/-",          #TODO this is an exception
@@ -754,7 +754,7 @@ Weapon.create(
   )
 
 Weapon.create(
-  :group_name => "Narodowa",
+  :group_name => "Narodowa - Pazur Sirtol",
   :name => "Pazur Sirtol",
   :weapon_type => "Dw",
   :range => "D",

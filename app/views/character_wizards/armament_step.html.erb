@@ -1,3 +1,14 @@
-Here be dragons soon.
+<p>Posiadasz: <%= humanize_purse_content(@character.purse.current) %>. Dodatkowo, tworząc postać, otrzymujesz swoisty
+  rabat na zakup wyposażenia.
+  Kwota zakupów nie może przekroczyć zawartości Twojej sakiewki powiększonej o bonus <strong>50g</strong> na Twoje
+  wyposażenie.</p>
 
-<%=  humanize_purse_content(@character.purse.current) %>
+<p>Posiadasz biegłości w:</p>
+<ul>
+  <% @character.character_weapon_proficiencies.each do |c_w_p| %>
+      <li><%= c_w_p.name %></li>
+  <% end %>
+</ul>
+
+
+<p>Wybierz bronie:</p>
