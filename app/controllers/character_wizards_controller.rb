@@ -135,7 +135,8 @@ class CharacterWizardsController < ApplicationController
   def armament_step
     if request.get?
       @character = current_user.characters.find(params[:char_id])
-      @weapons = Weapon.all
+      @weapon_groups = Weapon.all.map(&:group_name).uniq
+      @weapons ||= Weapon.find_all_by_group_name(@weapon_groups[0])
     elsif request.post?
     end
   end
@@ -180,7 +181,17 @@ class CharacterWizardsController < ApplicationController
   end
 
   def update_weapons_select
+    weapons = Weapon.find_all_by_group_name(params[:weapon_group])
+    render :partial => "weapons", :locals => {:weapons => weapons}
+  end
 
+  def add_item_to_inventory
+    #TODO
+   # "weapon_group"=>"Drzewcowa Klasyczna", "weapon"=>"28", "char_id"=>"1",
+  end
+
+  def remove_item_from_inventory
+    #TODO
   end
 
 end
