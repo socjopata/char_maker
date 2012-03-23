@@ -1,0 +1,36 @@
+<p>Wybierz bronie:</p>
+
+<%= form_tag(character_wizards_add_item_to_inventory_path, :remote => true) do %>
+    <label>Wybierz grupę broni: </label><%= select_tag 'weapon_group', options_for_select(@weapon_groups) %><br/>
+
+    <div id="weapons">
+      <%= render :partial => "character_wizards/armament_stuff/weapons", :locals => {:weapons => @weapons} %>
+    </div>
+    <%= hidden_field_tag :char_id, @character.id %>
+    <%= hidden_field_tag :item_type, "Weapon" %>
+    <%= submit_tag "Kup!" %>
+<% end %>
+
+<div id="weapons_owned">
+  <p>Posiadane bronie:</p>
+  <table>
+    <thead>
+    <th>Nazwa</th>
+    <th>Ulepszenie tempa</th>
+    <th>Ulepszenie obrażeń</th>
+    <th>Ulepszenie ataku</th>
+    <th>Ulepszenie obrony</th>
+    </thead>
+    <tbody>
+    <% @character.character_weapons.each do |item| %>
+        <tr>
+          <td><%= item.weapon.name -%></td>
+          <td><%= item.speed.present? -%></td>
+          <td><%= item.damage.present? -%></td>
+          <td><%= item.attack_bonus.present? -%></td>
+          <td><%= item.defense_bonus.present? -%></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

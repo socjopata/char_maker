@@ -14,6 +14,16 @@ class Character < ActiveRecord::Base
   belongs_to :fight_style
   has_many :character_weapon_proficiencies
 
+  has_many :character_weapons, :dependent => :destroy
+  has_many :weapons, :through => :character_weapons
+  has_many :character_armors, :dependent => :destroy
+  has_many :armors, :through => :character_armors
+  has_many :character_shields, :dependent => :destroy
+  has_many :shields, :through => :character_shields
+  has_many :character_ranged_weapons, :dependent => :destroy
+  has_many :ranged_weapons, :through => :character_ranged_weapons
+  #I really considered has-many-through-and-polymorphic-associations here
+
   mount_uploader :avatar, AvatarUploader
   scope :belongs_to_user, lambda { |user| {:conditions => {:user_id => user.id}} }
 

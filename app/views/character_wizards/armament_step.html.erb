@@ -10,20 +10,7 @@
   <% end %>
 </ul>
 
-
-<p>Wybierz bronie:</p>
-
-<%= form_tag(character_wizards_add_item_to_inventory_path, :remote => true) do %>
-    <label>Wybierz grupę broni: </label><%= select_tag 'weapon_group', options_for_select(@weapon_groups) %><br/>
-
-    <div id="weapons">
-      <%= render :partial => 'weapons', :locals => {:weapons => @weapons} %>
-    </div>
-    <%= hidden_field_tag :char_id, @character.id %>
-    <%= submit_tag "Kup!" %>
-<% end %>
-
-
+<%= render :partial => "character_wizards/armament_stuff/picking_weapons_stuff" %>
 
 <script type="text/javascript">
     jQuery(function($) {

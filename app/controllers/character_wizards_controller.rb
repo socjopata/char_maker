@@ -182,16 +182,15 @@ class CharacterWizardsController < ApplicationController
 
   def update_weapons_select
     weapons = Weapon.find_all_by_group_name(params[:weapon_group])
-    render :partial => "weapons", :locals => {:weapons => weapons}
+    render :partial => "character_wizards/armament_stuff/weapons", :locals => {:weapons => weapons}
   end
 
   def add_item_to_inventory
-    #TODO
-   # "weapon_group"=>"Drzewcowa Klasyczna", "weapon"=>"28", "char_id"=>"1",
+    Shopkeeper.new(current_user.characters.find(params[:char_id]), params[:weapon], params[:item_type], "add")
   end
 
   def remove_item_from_inventory
-    #TODO
+    Shopkeeper.new(current_user.characters.find(params[:char_id]), params[:weapon], params[:item_type], "remove")
   end
 
 end
