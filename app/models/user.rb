@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
 
   has_many :characters, :dependent => :destroy
 
+  attr_protected :admin
+
 end
