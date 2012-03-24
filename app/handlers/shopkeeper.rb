@@ -26,15 +26,24 @@ class Shopkeeper
   end
 
   def deduct_money
-    purse - weapon_armor_or_shield.price #we just add it without upgrades
+    @purse -= weapon_armor_or_shield.price #we just add it without upgrades
   end
 
   def refund_money(inventory_item)
-    purse + evaluate_worth(inventory_item) #case, where we are deleting whole item
+    @purse += evaluate_worth(inventory_item) #case, where we are deleting whole item
   end
 
   def evaluate_worth(inventory_item)
-    weapon_armor_or_shield.price # + all upgrades
+    case inventory_item.resource.class.name
+      when "Weapon"
+        weapon_armor_or_shield.price * Weapon::MULTIPLIER[[inventory_item.damage, inventory_item.speed, inventory_item.attack_bonus, inventory_item.defense_bonus].map(&:to_i).sum]
+      when "RangedWeapon"
+        #TODO
+      when "Shield"
+        #TODO
+      when "Armor"
+        #TODO
+    end
   end
 
 end

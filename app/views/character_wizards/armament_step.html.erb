@@ -1,8 +1,10 @@
-<p>Posiadasz: <%= humanize_purse_content(@character.purse.current) %>. Dodatkowo, tworząc postać, otrzymujesz swoisty
+<p>Tworząc postać, otrzymujesz swoisty
   rabat na zakup wyposażenia.
-  Kwota zakupów nie może przekroczyć zawartości Twojej sakiewki powiększonej o bonus <strong>50g</strong> na Twoje
+  Kwota zakupów nie może przekroczyć zawartości Twojej sakiewki(<%= humanize_purse_content(@character.purse.current) %>) powiększonej o bonus <strong>50g</strong> na Twoje
   wyposażenie.</p>
 
+<div><%= image_tag "sakiewka.gif", :width => "130" %><p class="fs_16" id="purse"><%= humanize_purse_content(session[:coins_left]) %></p></div>
+<br/>
 <p>Posiadasz biegłości w:</p>
 <ul>
   <% @character.character_weapon_proficiencies.each do |c_w_p| %>
