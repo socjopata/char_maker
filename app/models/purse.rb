@@ -47,6 +47,7 @@ class Purse < ActiveRecord::Base
     money_bonuses_requiring_dice_rolls = money_bonuses.select { |sm| sm.group_name!="domyślne" }
     variable_part = parse_variable_part(money_bonuses_requiring_dice_rolls)
     update_attribute(:current, (starting + money_bonuses.collect(&:value).sum + variable_part))
+    current + base
   end
 
   def parse_variable_part(money_bonuses_requiring_dice_rolls)

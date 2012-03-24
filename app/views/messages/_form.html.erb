@@ -8,7 +8,7 @@
     <% end %>
     <p>
       <%= f.label "Twój email" %><br/>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, :value => current_user.try(:email) %>
     </p>
     <p>
       <%= f.label "Twoje imię" %><br/>

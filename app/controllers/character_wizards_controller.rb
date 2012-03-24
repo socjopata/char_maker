@@ -62,7 +62,9 @@ class CharacterWizardsController < ApplicationController
       session[:default_skills_ids] = nil
       session[:skills_used] = nil
       session[:weapon_class_preference_left] = nil
-      @character.skills.each { |skill| skill.substract_skill_from(@character.id) }
+      session[:coins_left] = nil
+
+     @character.skills.each { |skill| skill.substract_skill_from(@character.id) }
 
       roll_set = @character.statistics.initial_dice_roll_set
       @lead_parameter = roll_set[0..4].max
@@ -111,7 +113,7 @@ class CharacterWizardsController < ApplicationController
       @free_skill_amount = Skill.calculate_free_skill_amount(@character, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@intelligence].to_i, session[:skills_used].to_i)
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
-      @character.purse.update_current if @character.purse.current.blank?
+      session[:coins_left] = @character.purse.update_current if @character.purse.current.blank?
       session[:weapon_class_preference_left] = @character.statistics.calculate_weapon_class_proficiencies_points
       redirect_to after_skills_step_character_wizard_path(:char_id => @character)
     end
@@ -186,11 +188,13 @@ class CharacterWizardsController < ApplicationController
   end
 
   def add_item_to_inventory
-    Shopkeeper.new(current_user.characters.find(params[:char_id]), params[:weapon], params[:item_type], "add")
+    @shopkeeper = Shopkeeper.new(current_user.characters.find(params[:char_id]), params[:weapon], params[:item_type], "add",  session[:coins_left])
+    session[:coins_left] = @shopkeeper.purse
   end
 
   def remove_item_from_inventory
-    Shopkeeper.new(current_user.characters.find(params[:char_id]), params[:weapon], params[:item_type], "remove")
+    @shopkeeper = Shopkeeper.new(current_user.characters.find(params[:char_id]), params[:weapon], params[:item_type], "remove",  session[:coins_left], params[:delete_id])
+    session[:coins_left] = @shopkeeper.purse
   end
 
 end
