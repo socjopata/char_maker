@@ -33,6 +33,8 @@ class Shopkeeper
     @purse += evaluate_worth(inventory_item) #case, where we are deleting whole item
   end
 
+  #TODO this is broken! read about sword and 465g from manual
+  #maybe do it recursive
   def evaluate_worth(inventory_item)
     case inventory_item.resource.class.name
       when "Weapon"

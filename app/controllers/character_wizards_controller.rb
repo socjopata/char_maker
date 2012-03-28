@@ -197,4 +197,16 @@ class CharacterWizardsController < ApplicationController
     session[:coins_left] = @shopkeeper.purse
   end
 
+  def improve_item
+     @blacksmith = Blacksmith.new(current_user.characters.find(params[:char_id]), params[:weapon], params[:item_type], "improve", session[:coins_left], params[:improvement_id], params[:improvement_type])
+     session[:coins_left] = @blacksmith.purse
+  end
+
+  def revert_improvement
+    @blacksmith = Blacksmith.new(current_user.characters.find(params[:char_id]), params[:weapon], params[:item_type], "revert", session[:coins_left], params[:improvement_id], params[:improvement_type])
+    session[:coins_left] = @blacksmith.purse
+  end
+
 end
+
+

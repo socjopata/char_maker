@@ -14,7 +14,8 @@ CharMaker::Application.routes.draw do
   match 'character_wizards/set_skill_preference/', :controller=> 'character_wizards', :action => 'set_skill_preference'
   match 'character_wizards/add_item_to_inventory/', :controller=> 'character_wizards', :action => 'add_item_to_inventory'
   match 'character_wizards/remove_item_from_inventory/', :controller=> 'character_wizards', :action => 'remove_item_from_inventory'
-
+  match 'character_wizards/improve_item/', :controller=> 'character_wizards', :action => 'improve_item'
+  match 'character_wizards/revert_improvement/', :controller=> 'character_wizards', :action => 'revert_improvement'
 
   resource 'character_wizard' do
     member do
