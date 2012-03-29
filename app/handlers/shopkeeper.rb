@@ -30,15 +30,14 @@ class Shopkeeper
   end
 
   def refund_money(inventory_item)
-    @purse += evaluate_worth(inventory_item) #case, where we are deleting whole item
+    @purse += evaluate_worth(inventory_item, get_current_upgrades_number(inventory_item)) #case, where we are deleting whole item
   end
 
-  #TODO this is broken! read about sword and 465g from manual
-  #maybe do it recursive
-  def evaluate_worth(inventory_item)
+  def evaluate_worth(inventory_item, number)
+    return weapon_armor_or_shield.price if number.zero?
     case inventory_item.resource.class.name
       when "Weapon"
-        weapon_armor_or_shield.price * Weapon::MULTIPLIER[[inventory_item.damage, inventory_item.speed, inventory_item.attack_bonus, inventory_item.defense_bonus].map(&:to_i).sum]
+        weapon_armor_or_shield.price * Weapon::MULTIPLIER[number] + evaluate_worth(inventory_item, (number-1))
       when "RangedWeapon"
         #TODO
       when "Shield"
@@ -46,6 +45,10 @@ class Shopkeeper
       when "Armor"
         #TODO
     end
+  end
+
+  def get_current_upgrades_number(inventory_item)
+    [inventory_item.damage, inventory_item.speed, inventory_item.attack_bonus, inventory_item.defense_bonus].map(&:to_i).sum
   end
 
 end

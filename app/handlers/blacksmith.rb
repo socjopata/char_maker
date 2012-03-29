@@ -38,8 +38,6 @@ class Blacksmith
     @purse += evaluate_improvements_worth(inventory_item)
   end
 
-  #TODO broken, debug it
-
   def evaluate_improvements_worth(inventory_item)
     case inventory_item.resource.class.name
       when "Weapon"

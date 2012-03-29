@@ -1,0 +1,34 @@
+<h2>Przywdziej zbroję:</h2>
+
+<%= form_tag(character_wizards_add_item_to_inventory_path, :remote => true) do %>
+    <label>Wybierz grupę broni: </label><%= select_tag 'armor_group', options_for_select(@armor_groups) %><br/>
+
+    <div id="armors">
+      <%= render :partial => "character_wizards/armament_stuff/armors", :locals => {:armors => @armors} %>
+    </div>
+    <%= hidden_field_tag :char_id, @character.id %>
+    <%= hidden_field_tag :item_type, "Armor" %>
+    <%= submit_tag "Kup!" %>
+<% end %>
+
+<div id="armors_owned">
+  <p>Posiadane zbroje:</p>
+  <table id="character_armors" WIDTH=60%>
+    <thead>
+    <th>Nazwa</th>
+    <th>Ulepszenie tempa</th>
+    <th>Ulepszenie obrażeń</th>
+    <th>Ulepszenie ataku</th>
+    <th>Ulepszenie obrony</th>
+    <th>Usuń z inwentarza</th>
+    </thead>
+    <tbody>
+    <% @character.character_armors.each do |item| %>
+        <tr id=<%= item.id %>>
+          <td class="alantar_td"><p class="normal"><%= item.armor.name -%></p></td>
+          <td class="alantar_td"><p class="normal"><%= link_to image_tag('delete.png'), character_wizards_remove_item_from_inventory_path(:char_id => @character.id, :item_type => "Armor", :inventory_item => item.resource.id, :delete_id => item.id ), :remote => true %></p></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

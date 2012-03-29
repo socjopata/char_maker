@@ -7,6 +7,7 @@ CharMaker::Application.routes.draw do
   end
 
   #the list of non RESTful sins starts here...
+  match 'character_wizards/update_armors_select/', :controller=> 'character_wizards', :action => 'update_armors_select'
   match 'character_wizards/update_weapons_select/', :controller=> 'character_wizards', :action => 'update_weapons_select'
   match 'character_wizards/update_countries_select/', :controller=> 'character_wizards', :action => 'update_countries_select'
   match 'character_wizards/toggle_skill/', :controller=> 'character_wizards', :action => 'toggle_skill'

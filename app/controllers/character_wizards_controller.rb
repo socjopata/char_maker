@@ -139,6 +139,8 @@ class CharacterWizardsController < ApplicationController
       @character = current_user.characters.find(params[:char_id])
       @weapon_groups = Weapon.all.map(&:group_name).uniq
       @weapons ||= Weapon.find_all_by_group_name(@weapon_groups[0])
+      @armor_groups = Armor.all.map(&:group_name).uniq
+      @armors ||= Armor.find_all_by_group_name(@armor_groups[0])
     elsif request.post?
     end
   end
@@ -187,23 +189,28 @@ class CharacterWizardsController < ApplicationController
     render :partial => "character_wizards/armament_stuff/weapons", :locals => {:weapons => weapons}
   end
 
+  def update_armors_select
+    armors = Armor.find_all_by_group_name(params[:armor_group])
+    render :partial => "character_wizards/armament_stuff/armors", :locals => {:armors => armors}
+  end
+
   def add_item_to_inventory
-    @shopkeeper = Shopkeeper.new(current_user.characters.find(params[:char_id]), params[:weapon], params[:item_type], "add",  session[:coins_left])
+    @shopkeeper = Shopkeeper.new(current_user.characters.find(params[:char_id]), params[:inventory_item], params[:item_type], "add",  session[:coins_left])
     session[:coins_left] = @shopkeeper.purse
   end
 
   def remove_item_from_inventory
-    @shopkeeper = Shopkeeper.new(current_user.characters.find(params[:char_id]), params[:weapon], params[:item_type], "remove",  session[:coins_left], params[:delete_id])
+    @shopkeeper = Shopkeeper.new(current_user.characters.find(params[:char_id]), params[:inventory_item], params[:item_type], "remove",  session[:coins_left], params[:delete_id])
     session[:coins_left] = @shopkeeper.purse
   end
 
   def improve_item
-     @blacksmith = Blacksmith.new(current_user.characters.find(params[:char_id]), params[:weapon], params[:item_type], "improve", session[:coins_left], params[:improvement_id], params[:improvement_type])
+     @blacksmith = Blacksmith.new(current_user.characters.find(params[:char_id]), params[:inventory_item], params[:item_type], "improve", session[:coins_left], params[:improvement_id], params[:improvement_type])
      session[:coins_left] = @blacksmith.purse
   end
 
   def revert_improvement
-    @blacksmith = Blacksmith.new(current_user.characters.find(params[:char_id]), params[:weapon], params[:item_type], "revert", session[:coins_left], params[:improvement_id], params[:improvement_type])
+    @blacksmith = Blacksmith.new(current_user.characters.find(params[:char_id]), params[:inventory_item], params[:item_type], "revert", session[:coins_left], params[:improvement_id], params[:improvement_type])
     session[:coins_left] = @blacksmith.purse
   end
 

@@ -109,12 +109,23 @@ module CharacterWizardHelper
     ("<label>#{sm.grand_daddy.name} </label>" + select_tag("choice", options_for_select(Shield.all.map(&:name)))).html_safe
   end
 
+  def item_upgrade_link(character, weapon, connecting_object, improvement_type)
+    case connecting_object.resource.class.name
+      when "Weapon"
+        weapon_upgrade_link(character, weapon, connecting_object, improvement_type)
+      when "RangedWeapon"
+      when "Armor"
+      when "Shield"
+    end
+
+  end
+
   def weapon_upgrade_link(character, weapon, connecting_object, improvement_type)
     if connecting_object.send(improvement_type.intern).present?
       link_to("Usuń ulepszenie",
               character_wizards_revert_improvement_path(:char_id => character.id,
                                                         :item_type => "Weapon",
-                                                        :weapon => weapon.id,
+                                                        :inventory_item => weapon.id,
                                                         :improvement_id => connecting_object.id,
                                                         :improvement_type => improvement_type),
               :remote => true).html_safe
@@ -122,12 +133,13 @@ module CharacterWizardHelper
       link_to("Ulepsz",
               character_wizards_improve_item_path(:char_id => character.id,
                                                   :item_type => "Weapon",
-                                                  :weapon => weapon.id,
+                                                  :inventory_item => weapon.id,
                                                   :improvement_id => connecting_object.id,
                                                   :improvement_type => improvement_type),
               :remote => true).html_safe
     end
   end
+
 
 end
 

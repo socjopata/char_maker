@@ -13,6 +13,7 @@
 </ul>
 
 <%= render :partial => "character_wizards/armament_stuff/picking_weapons_stuff" %>
+<%= render :partial => "character_wizards/armament_stuff/picking_armors_stuff" %>
 
 <script type="text/javascript">
     jQuery(function($) {
@@ -22,6 +23,16 @@
             if (weapon_group == "") weapon_group = "0";
             jQuery.get('/character_wizards/update_weapons_select',  {'weapon_group': weapon_group, 'char_id': char_id}, function(data) {
                 $("#weapons").html(data);
+            })
+            return false;
+        });
+
+        $("#armor_group").change(function() {
+            var char_id = "<%= @character.id  %>";
+            var armor_group = $('select#armor_group :selected').val();
+            if (armor_group == "") armor_group = "0";
+            jQuery.get('/character_wizards/update_armors_select',  {'armor_group': armor_group, 'char_id': char_id}, function(data) {
+                $("#armors").html(data);
             })
             return false;
         });

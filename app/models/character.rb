@@ -22,7 +22,8 @@ class Character < ActiveRecord::Base
   has_many :shields, :through => :character_shields
   has_many :character_ranged_weapons, :dependent => :destroy
   has_many :ranged_weapons, :through => :character_ranged_weapons
-  #I really considered has-many-through-and-polymorphic-associations here
+  #^^ I really considered has-many-through-and-polymorphic-associations here before I started
+  # Now i feel the pain.
 
   mount_uploader :avatar, AvatarUploader
   scope :belongs_to_user, lambda { |user| {:conditions => {:user_id => user.id}} }
