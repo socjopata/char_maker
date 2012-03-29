@@ -5,7 +5,7 @@ class CharactersController < ApplicationController
   before_filter :fetch_character, :except => [:index, :create, :new]
 
   def index
-    @characters = current_user.characters.order("name")
+    @characters = current_user.characters.where(:finished => true).order("name")
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -13,13 +13,10 @@ class CharactersController < ApplicationController
 
 
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-    end
+    render :layout => 'print'
   end
 
   def edit
-
   end
 
   def new
@@ -58,10 +55,6 @@ class CharactersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(characters_url) }
     end
-  end
-
-  def print
-    render :action => :print, :layout => false
   end
 
   private

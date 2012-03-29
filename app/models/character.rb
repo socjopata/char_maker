@@ -120,8 +120,15 @@ class Character < ActiveRecord::Base
   end
 
   def set_skill_preference
-
+      #TODO ...and what was i thinking here?
   end
+
+  def is_of_scholar_class_type?
+    Profession::CASTER_CLASSES.include?(profession.name)
+  end
+
+
+
 end
 
 

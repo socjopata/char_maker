@@ -1,10 +1,6 @@
 # -*- encoding : utf-8 -*-
 CharMaker::Application.routes.draw do
-  resources :characters do
-    member do
-      get :print
-    end
-  end
+  resources :characters
 
   #the list of non RESTful sins starts here...
   match 'character_wizards/update_armors_select/', :controller=> 'character_wizards', :action => 'update_armors_select'
@@ -34,6 +30,8 @@ CharMaker::Application.routes.draw do
       post :after_skills_step
       get :armament_step
       post :armament_step
+      get :picking_spells_step
+      post :picking_spells_step
     end
   end
 

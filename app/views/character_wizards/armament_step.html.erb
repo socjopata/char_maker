@@ -15,6 +15,11 @@
 <%= render :partial => "character_wizards/armament_stuff/picking_weapons_stuff" %>
 <%= render :partial => "character_wizards/armament_stuff/picking_armors_stuff" %>
 
+<%= button_link_to "Wróć", after_skills_step_character_wizard_path(:char_id => @character.id) %>
+<%= button_link_to "Utwórz nową postać", character_path(@character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
+<%= button_link_to "Dalej", armament_step_character_wizard_path(:char_id => @character.id), :method => :post %>
+
+
 <script type="text/javascript">
     jQuery(function($) {
         $("#weapon_group").change(function() {

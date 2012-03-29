@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CharMaker</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "jquery.qtip.min.js" %>
+  <%= javascript_include_tag "jquery.colorbox-min.js" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div class=templateholder>
+  <div class=Layout8_header>
+    <div id="user_nav" class="fltr">
+    </div>
+  </div>
+  <div class=Layout8_1>
+    <div id="page">
+    </div><%= yield %></div>
+  <div class=Layout8_2></div>
+  <div class=Layout8_3></div>
+  <div class=Layout8_4></div>
+  <div class=Layout8_5></div>
+</div>
+
+<!--<%#= render :partial => "javascripts" %>-->
+
+</body>
+</html>
+
+
+

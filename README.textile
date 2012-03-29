@@ -21,6 +21,7 @@ h2. Environment
 * bundler
 * gems are described in Gemfile and also some are packed by bundler into the project.
 * PostgreSQL <8.4> or <9.1>
+* wkhtmltopdf
 
 h3. Developer Setup
 

@@ -6,6 +6,7 @@ class CreateCharacters < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :gender
+      t.boolean :finished #temporary solution i think, before introducing state_machine
       t.timestamps
     end
   end

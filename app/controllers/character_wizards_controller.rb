@@ -57,7 +57,7 @@ class CharacterWizardsController < ApplicationController
     if request.get?
       @character = current_user.characters.find(params[:char_id])
 
-      #do a rollback here
+      #do a rollback here   #or in characters' new?
       session[:skill_free_assignment_base] = nil
       session[:default_skills_ids] = nil
       session[:skills_used] = nil
@@ -142,8 +142,25 @@ class CharacterWizardsController < ApplicationController
       @armor_groups = Armor.all.map(&:group_name).uniq
       @armors ||= Armor.find_all_by_group_name(@armor_groups[0])
     elsif request.post?
+      @character = current_user.characters.find(params[:char_id])
+      if @character.is_of_scholar_class_type?
+        redirect_to picking_spells_step_character_wizard_path(:char_id => @character)
+      else
+        @character.update_attribute(:finished,  true)
+        redirect_to characters_path
+        #make it finished and redirect to index  or show
+      end
     end
   end
+
+  def picking_spells_step
+    if request.get?
+
+    elsif request.post?
+
+    end
+  end
+
 
   def update_countries_select
     country_selector = CountrySelector.new(current_user, params[:char_id], params[:id])
