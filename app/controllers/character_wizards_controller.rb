@@ -145,32 +145,14 @@ class CharacterWizardsController < ApplicationController
     end
   end
 
-
   def update_countries_select
-    character = current_user.characters.find(params[:char_id])
-    profession = Profession.find(params[:id])
-    countries = profession.countries
-    countries = [Country.find_by_name("Złote Królestwa")] if countries.present? && profession.name=="Rycerz" && character.gender=="Kobieta" #Overwrite for the special case of a women being a knight...
-    render :partial => "countries", :locals => {:countries => countries}
+    country_selector = CountrySelector.new(current_user, params[:char_id], params[:id])
+    render :partial => "countries", :locals => {:countries => country_selector.countries}
   end
 
   def toggle_skill
-    character = current_user.characters.find(params[:character_id])
-    params[:value]=="true" ? (next_number = session[:skills_used].to_i + 1) : (next_number = session[:skills_used].to_i - 1)
-    session[:skills_used] = next_number
-    @free_skill_amount = Skill.calculate_free_skill_amount(character, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_int].to_i, session[:skills_used].to_i)
-
-    if @free_skill_amount < 0
-      session[:skills_used] = session[:skills_used].to_i - 1 #reverting the change
-      @not_enough_free_skill_points = true
-      render :layout => "colorbox"
-    else
-      skill = Skill.find(params[:skill_id])
-      @commands, @skill_commands = Skill.change(character, skill, params[:value]=="true")
-    end
-
-    #TODO what about clever "skills" picking? Manipulating choices so you choose something to enable other skill and then uncheck the enabler... ADD VALIDATION
-    #TODO edge case of 15 -> 16 inteligence and a count of free skills not updating
+     @commands, @skill_commands, @not_enough_free_skill_points, @free_skill_amount, session[:skills_used] =  SkillToggler.new(current_user, params[:character_id], session[:skills_used], params[:skill_id], params[:value]=="true", session[:skill_free_assignment_base] ).process!
+     render :layout => "colorbox"   if @not_enough_free_skill_points.present?
   end
 
   def toggle_weapon_proficiency
