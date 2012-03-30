@@ -33,7 +33,7 @@ class Character < ActiveRecord::Base
   before_save :check_fight_style_choice
 
   def any_unfinished_matters_present?
-    skill_choices_to_be_precised.any? {|sm| sm.as_character_skill(self).skill_bonus_preference.blank?}
+    skill_choices_to_be_precised.any? { |sm| sm.as_character_skill(self).skill_bonus_preference.blank? }
   end
 
   def skill_choices_to_be_precised
@@ -119,21 +119,15 @@ class Character < ActiveRecord::Base
     [counter, errors]
   end
 
-  def set_skill_preference
-      #TODO ...and what was i thinking here?
-  end
-
   def is_of_scholar_class_type?
     Profession::CASTER_CLASSES.include?(profession.name)
   end
 
   def set_shield_as_main(inventory_item_id)
-
     character_shields.each do |_shield|
       _shield["id"]==inventory_item_id ? _shield.update_attribute(:favorite, true) : _shield.update_attribute(:favorite, false)
     end
   end
-
 
 
 end
