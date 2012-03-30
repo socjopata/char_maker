@@ -13,10 +13,10 @@ class Blacksmith
   end
 
   def improve
-      _item = find!
-      _item[improvement_type] = true
-      _item.save!
-      deduct_money(_item)  and return _item
+    _item = find!
+    _item[improvement_type] = true
+    _item.save!
+    deduct_money(_item) and return _item
   end
 
   def degrade
@@ -41,13 +41,13 @@ class Blacksmith
   def evaluate_improvements_worth(inventory_item)
     case inventory_item.resource.class.name
       when "Weapon"
-        weapon_armor_or_shield.price * (Weapon::MULTIPLIER[[inventory_item.damage, inventory_item.speed, inventory_item.attack_bonus, inventory_item.defense_bonus].map(&:to_i).sum+ (caller[0][/`.*'/][1..-2]=="refund_money" ? 1 : 0)]  )  #   #conditional +1 to ensure we are refunding proper amount
+        weapon_armor_or_shield.price * (Weapon::MULTIPLIER[[inventory_item.damage, inventory_item.speed, inventory_item.attack_bonus, inventory_item.defense_bonus].map(&:to_i).sum+ (caller[0][/`.*'/][1..-2]=="refund_money" ? 1 : 0)]) #   #conditional +1 to ensure we are refunding proper amount
       when "RangedWeapon"
         #TODO
       when "Shield"
-        #TODO
+        weapon_armor_or_shield.price * (Shield::MULTIPLIER[[inventory_item.defense_bonus, inventory_item.dexterity_nerf, inventory_item.dexterity_cap].map(&:to_i).sum+ (caller[0][/`.*'/][1..-2]=="refund_money" ? 1 : 0)]) #   #conditional +1 to ensure we are refunding proper amount
       when "Armor"
-       (weapon_armor_or_shield.is_rare_or_exotic? ? 2 : 1) * (Armor::EXTRA_COST[[inventory_item.defense_bonus, inventory_item.dexterity_nerf, inventory_item.dexterity_cap].map(&:to_i).sum + (caller[0][/`.*'/][1..-2]=="refund_money" ? 1 : 0)]  )
+        (weapon_armor_or_shield.is_rare_or_exotic? ? 2 : 1) * (Armor::EXTRA_COST[[inventory_item.defense_bonus, inventory_item.dexterity_nerf, inventory_item.dexterity_cap].map(&:to_i).sum + (caller[0][/`.*'/][1..-2]=="refund_money" ? 1 : 0)])
     end
   end
 

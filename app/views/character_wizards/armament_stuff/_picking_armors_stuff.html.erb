@@ -1,7 +1,7 @@
 <h2>Przywdziej zbroję:</h2>
 
 <%= form_tag(character_wizards_add_item_to_inventory_path, :remote => true) do %>
-    <label>Wybierz grupę broni: </label><%= select_tag 'armor_group', options_for_select(@armor_groups) %><br/>
+    <label>Wybierz grupę zbroi: </label><%= select_tag 'armor_group', options_for_select(@armor_groups) %><br/>
 
     <div id="armors">
       <%= render :partial => "character_wizards/armament_stuff/armors", :locals => {:armors => @armors} %>

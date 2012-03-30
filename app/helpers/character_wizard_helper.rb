@@ -129,6 +129,16 @@ module CharacterWizardHelper
     end
   end
 
+  def set_shield_as_main(character, connecting_object)
+    if connecting_object.favorite?
+      "Tarcza główna"
+    else
+      link_to("Ustaw jako główną",
+              character_wizards_set_shield_as_main_path(:char_id => character.id,
+                                                  :inventory_item => connecting_object.id),
+              :remote => true).html_safe
+    end
+  end
 
 end
 

@@ -14,6 +14,7 @@
 
 <%= render :partial => "character_wizards/armament_stuff/picking_weapons_stuff" %>
 <%= render :partial => "character_wizards/armament_stuff/picking_armors_stuff" %>
+<%= render :partial => "character_wizards/armament_stuff/picking_shields_stuff" %>
 
 <%= button_link_to "Wróć", after_skills_step_character_wizard_path(:char_id => @character.id) %>
 <%= button_link_to "Utwórz nową postać", character_path(@character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
@@ -42,6 +43,15 @@
             return false;
         });
 
+        $("#shield_group").change(function() {
+            var char_id = "<%= @character.id  %>";
+            var shield_group = $('select#shield_group :selected').val();
+            if (shield_group == "") shield_group = "0";
+            jQuery.get('/character_wizards/update_shields_select',  {'shield_group': shield_group, 'char_id': char_id}, function(data) {
+                $("#shields").html(data);
+            })
+            return false;
+        });
     })
 
 

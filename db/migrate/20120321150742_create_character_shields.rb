@@ -6,6 +6,7 @@ class CreateCharacterShields < ActiveRecord::Migration
       t.boolean :dexterity_nerf
       t.boolean :dexterity_cap
       t.boolean :defense_bonus
+      t.boolean :favorite
       t.timestamps
     end
   end

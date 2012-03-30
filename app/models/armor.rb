@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Armor < ActiveRecord::Base
+
   include NameWithPrice
 
   has_many :armament_requirements, :as => :resource, :dependent => :destroy
@@ -15,9 +16,9 @@ class Armor < ActiveRecord::Base
 
   EXTRA_COST = {
       0 => 0,
-      1 => 100,
-      2 => 200,
-      3 => 300
+      1 => 10000,
+      2 => 20000,
+      3 => 30000
   }
 
 end

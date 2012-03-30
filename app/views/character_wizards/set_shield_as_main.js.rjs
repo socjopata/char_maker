@@ -1,0 +1,12 @@
+
+@character.character_shields.all.each do |shield|
+  page <<  "$(\"#set_shield_#{shield.id}\").replaceWith('<p class=\"normal set_shield\" id=\"set_shield_#{shield.id}\">#{set_shield_as_main(@character, shield)}</p>')"
+end
+
+
+
+
+
+#page << "$.each($('.set_shield'), function(index, value) {
+#  alert(index + ': ' + value);
+#});"

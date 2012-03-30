@@ -10,19 +10,19 @@
           </ul>
         </div>
     <% end %>
-    <h3>Avatar</h3>
-    <p>
-      <label>Mój Avatar</label>
-      <%= image_tag(@character.avatar_url(:regular)) if @character.avatar? %>
-      <%= f.file_field :avatar %>
-      <%= f.hidden_field :avatar_cache %>
-    </p>
+    <!--<h3>Avatar</h3>-->
+    <!--<p>-->
+      <!--<label>Mój Avatar</label>-->
+      <!--<#%= image_tag(@character.avatar_url(:regular)) if @character.avatar? %>-->
+      <!--<#%= f.file_field :avatar %>-->
+      <!--<#%= f.hidden_field :avatar_cache %>-->
+    <!--</p>-->
 
     <h3>Informacje ogólne</h3><p>
   <%= f.label "Imię" %>
   <%= f.text_field :name %><br/>
-  <%= f.label "Opis" %>
-  <%= f.text_area :description, :cols => 60, :rows => 3 %><br/>
+  <!--<#%= f.label "Opis" %>-->
+  <!--<#%= f.text_area :description, :cols => 60, :rows => 3 %><br/>-->
   <%= f.label "Płeć" %>
   <%= f.select :gender, options_for_select(["Mężczyzna", 'Kobieta'], @character.gender) %><br/>
   <%= f.label "Gram hardcorowo - wylosuj dla mnie pochodzenie." %>

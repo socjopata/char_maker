@@ -141,6 +141,8 @@ class CharacterWizardsController < ApplicationController
       @weapons ||= Weapon.find_all_by_group_name(@weapon_groups[0])
       @armor_groups = Armor.all.map(&:group_name).uniq
       @armors ||= Armor.find_all_by_group_name(@armor_groups[0])
+      @shield_groups = Shield.all.map(&:group_name).uniq
+      @shields ||= Shield.find_all_by_group_name(@shield_groups[0])
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
       if @character.is_of_scholar_class_type?
@@ -161,6 +163,11 @@ class CharacterWizardsController < ApplicationController
     end
   end
 
+
+  def set_shield_as_main
+    @character = current_user.characters.find(params[:char_id])
+    @character.set_shield_as_main(params[:inventory_item].to_i)
+  end
 
   def update_countries_select
     country_selector = CountrySelector.new(current_user, params[:char_id], params[:id])
@@ -191,6 +198,11 @@ class CharacterWizardsController < ApplicationController
   def update_armors_select
     armors = Armor.find_all_by_group_name(params[:armor_group])
     render :partial => "character_wizards/armament_stuff/armors", :locals => {:armors => armors}
+  end
+
+  def update_shields_select
+    shields = Shield.find_all_by_group_name(params[:shield_group])
+    render :partial => "character_wizards/armament_stuff/shields", :locals => {:shields => shields}
   end
 
   def add_item_to_inventory
