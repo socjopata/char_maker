@@ -5,7 +5,7 @@ class CreateCharacterArmors < ActiveRecord::Migration
       t.integer :armor_id
       t.boolean :dexterity_nerf
       t.boolean :dexterity_cap
-      #TODO
+      t.boolean :defense_bonus
       t.timestamps
     end
   end

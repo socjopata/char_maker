@@ -5,7 +5,7 @@ class SkillToggler
 
   def initialize(current_user, char_id, skills_used, skill_id, value, skill_free_assignment_base)
     @character = current_user.characters.find(char_id)
-    @skills_used = skills_used
+    @skills_used = skills_used.to_i
     @red_flag = nil
     @value = value
     @skill_free_assignment_base = skill_free_assignment_base

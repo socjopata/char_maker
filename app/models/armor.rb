@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Armor < ActiveRecord::Base
   include NameWithPrice
 
@@ -6,6 +7,17 @@ class Armor < ActiveRecord::Base
   has_many :character_armors, :dependent => :destroy
   has_many :characters, :through => :character_armors
 
+  RARE_OR_EXOTIC = [  "Pancerze i Zbroje Egzotyczne", "Zbroje Płytowe"]
 
+  def is_rare_or_exotic?
+    RARE_OR_EXOTIC.include?(group_name)
+  end
+
+  EXTRA_COST = {
+      0 => 0,
+      1 => 100,
+      2 => 200,
+      3 => 300
+  }
 
 end

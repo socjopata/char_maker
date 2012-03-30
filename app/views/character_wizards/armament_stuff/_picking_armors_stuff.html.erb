@@ -16,19 +16,22 @@
   <table id="character_armors" WIDTH=60%>
     <thead>
     <th>Nazwa</th>
-    <th>Ulepszenie tempa</th>
-    <th>Ulepszenie obrażeń</th>
-    <th>Ulepszenie ataku</th>
-    <th>Ulepszenie obrony</th>
+    <th>Zmniejszenie ograniczenia Zręczności o 2pkt</th>
+    <th>Zwiększenie limitu Zręczności  o 3pkt</th>
+    <th>Zwiększenie wszystkich Parametrów Ochronnych Zbroi lub Pancerza o +1pkt</th>
     <th>Usuń z inwentarza</th>
     </thead>
     <tbody>
     <% @character.character_armors.each do |item| %>
         <tr id=<%= item.id %>>
           <td class="alantar_td"><p class="normal"><%= item.armor.name -%></p></td>
+          <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_dexterity_nerf" %>><%= item_upgrade_link(@character, item.resource, item, "dexterity_nerf") -%></p></td>
+          <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_dexterity_cap" %>><%= item_upgrade_link(@character, item.resource, item, "dexterity_cap") -%></p></td>
+          <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_defense_bonus" %>><%= item_upgrade_link(@character, item.resource, item, "defense_bonus") -%></p></td>
           <td class="alantar_td"><p class="normal"><%= link_to image_tag('delete.png'), character_wizards_remove_item_from_inventory_path(:char_id => @character.id, :item_type => "Armor", :inventory_item => item.resource.id, :delete_id => item.id ), :remote => true %></p></td>
         </tr>
     <% end %>
     </tbody>
   </table>
 </div>
+

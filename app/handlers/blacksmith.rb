@@ -47,7 +47,7 @@ class Blacksmith
       when "Shield"
         #TODO
       when "Armor"
-        #TODO
+       (weapon_armor_or_shield.is_rare_or_exotic? ? 2 : 1) * (Armor::EXTRA_COST[[inventory_item.defense_bonus, inventory_item.dexterity_nerf, inventory_item.dexterity_cap].map(&:to_i).sum + (caller[0][/`.*'/][1..-2]=="refund_money" ? 1 : 0)]  )
     end
   end
 

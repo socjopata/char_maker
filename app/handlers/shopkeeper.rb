@@ -43,12 +43,22 @@ class Shopkeeper
       when "Shield"
         #TODO
       when "Armor"
-        #TODO
+        weapon_armor_or_shield.price +  Armor::EXTRA_COST[number] + (weapon_armor_or_shield.is_rare_or_exotic? ? 2 : 1) * evaluate_worth(inventory_item, (number-1))
     end
   end
 
   def get_current_upgrades_number(inventory_item)
-    [inventory_item.damage, inventory_item.speed, inventory_item.attack_bonus, inventory_item.defense_bonus].map(&:to_i).sum
+    case inventory_item.resource.class.name
+      when "Weapon"
+        [inventory_item.damage, inventory_item.speed, inventory_item.attack_bonus, inventory_item.defense_bonus].map(&:to_i).sum
+      when "RangedWeapon"
+        #TODO
+      when "Shield"
+        #TODO
+      when "Armor"
+       [inventory_item.defense_bonus, inventory_item.dexterity_nerf, inventory_item.dexterity_cap].map(&:to_i).sum
+    end
+
   end
 
 end
