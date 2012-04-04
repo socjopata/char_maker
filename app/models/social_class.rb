@@ -27,6 +27,10 @@ class SocialClass < ActiveRecord::Base
     29..30 => 'Potomek Wodza'
   )
 
+  def is_elite?
+    ['Wielmoża','Potomek Wodza'].include?(name)
+  end
+
   def is_noble?
     ['Szlachcic Zaściankowy', 'Szlachcic', 'Wielmoża', 'Członek rady plemienia', 'Potomek Wodza'].include?(name)
   end

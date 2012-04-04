@@ -1,6 +1,7 @@
 class Weapon < ActiveRecord::Base
 
   include NameWithPrice
+  include CharacterCanUse  #TODO
 
   has_many :armament_requirements, :as => :resource, :dependent => :destroy
 
@@ -15,4 +16,9 @@ class Weapon < ActiveRecord::Base
       4 => 16
   }
 
+
 end
+
+
+
+

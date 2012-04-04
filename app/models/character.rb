@@ -129,6 +129,17 @@ class Character < ActiveRecord::Base
     end
   end
 
+  def calculate_stats_and_store_them_as_a_hash
+    {
+        "strength" => statistics.calculate_s,
+        "dexterity" => statistics.calculate_zr,
+        "endurance" => statistics.calculate_wt,
+        "intelligence" => statistics.calculate_int,
+        "faith" => statistics.calculate_wi,
+        "polish" => statistics.calculate_o
+
+    }
+  end
 
 end
 
