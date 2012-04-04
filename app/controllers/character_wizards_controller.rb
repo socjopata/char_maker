@@ -145,8 +145,8 @@ class CharacterWizardsController < ApplicationController
       @shields ||= Shield.find_all_by_group_name(@shield_groups[0])
 
     #  usage
-      statistics_hash = @character.calculate_stats_and_store_them_as_a_hash
-      @weapons.map {|weapon| weapon.character_can_use?(@character, statistics_hash)}
+    #  statistics_hash = @character.calculate_stats_and_store_them_as_a_hash
+    # @weapons.map {|weapon| weapon.character_can_use?(@character, statistics_hash)}
 
     elsif request.post?
       @character = current_user.characters.find(params[:char_id])
