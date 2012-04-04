@@ -4,7 +4,7 @@ class ArmamentRequirement < ActiveRecord::Base
   def is_met_by?(character, statistics_hash)
     case self.check_applies_to
       when "statistics"
-        value.to_i > statistics_hash[intern]
+        value.to_i > statistics_hash[name]
       when "fightstyle"
         character.fight_style.name==name
       when "modified_stat"

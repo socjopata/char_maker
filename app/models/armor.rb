@@ -2,6 +2,7 @@
 class Armor < ActiveRecord::Base
 
   include NameWithPrice
+  include CharacterCanUse
 
   has_many :armament_requirements, :as => :resource, :dependent => :destroy
 

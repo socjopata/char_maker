@@ -836,7 +836,7 @@ item = RangedWeapon.create(
   :special_rules => "używając procy postać nie zwiększa zadawanych nią Obrażeń o premię z Siły (wyjątek od zasady broni miotanych).",
   :price => 100
   )
-item.armament_requirements.create(:check_applies_to => "modified_stat", :name => "actual_dexterity", :value => "15" ) TODO
+item.armament_requirements.create(:check_applies_to => "modified_stat", :name => "actual_dexterity", :value => "15" ) #TODO
 
 item = RangedWeapon.create(
   :group_name => "Strzelecka Łuki Proste",
