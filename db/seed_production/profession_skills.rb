@@ -275,7 +275,7 @@ skill = Skill.create(:profession_type => "Fircyk (żołnierz)",
 Umiejętność Pasywna." )
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "28" )
-skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S", :value => "20" )
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S", :value => "15" )
 
 skill = Skill.create(:profession_type => "Fircyk (żołnierz)",
                      :name => "Tancerz",
