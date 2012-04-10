@@ -2,6 +2,14 @@
 
 ##################STRZELECKIE##########################3
 
+
+skill = Skill.create(:profession_type => "shooter",
+                     :name => "Głęboka Rana",
+                     :limitations => "tylko dla broni Strzeleckich.",
+                     :way_it_works => "raz na rundę kiedy postać trafi bronią dystansową, rzut na Obrażenia wykonywany jest za pomocą 2k20 i gracz wybiera korzystniejszy wynik. Umiejętność Pasywna" )
+
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "25" )
+
 skill = Skill.create(:profession_type => "shooter",
                      :name => "Doskonały Strzał",
           :limitations => "tylko dla broni Strzeleckich.",

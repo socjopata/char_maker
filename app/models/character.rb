@@ -37,7 +37,7 @@ class Character < ActiveRecord::Base
   end
 
   def skill_choices_to_be_precised
-    statistics.stats_modifiers.select { |sm| (sm.group_name.match("Fechtunek w Grupie Broni") || sm.group_name.match("Wybrana broń") || sm.group_name.match("Wybrana tarcza")) }
+    statistics.stats_modifiers.select { |sm| (sm.group_name.match("Fechtunek w Grupie Broni") || sm.group_name.match("Wybrana broń") || sm.group_name.match("Wybrana tarcza") || sm.group_name("Wybrana grupa broni") )  }
   end
 
   def make_rogue_a_finesse_fighter

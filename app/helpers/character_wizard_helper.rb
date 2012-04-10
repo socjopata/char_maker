@@ -92,6 +92,9 @@ module CharacterWizardHelper
         weapon_choice_for(sm)
       when /Wybrana tarcza/
         shield_choice_for(sm)
+      when /Wybrana grupa broni/
+        #s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana grupa broni('Kłuta Puginały i Sztylety','Sieczno / Kłująca Noże','Łamacz mieczy'), Atak+1 and Obrona+1")
+        #TODO
       else
         throw "You forgot to implement it dumbass!"
     end

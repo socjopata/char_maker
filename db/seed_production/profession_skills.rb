@@ -47,9 +47,10 @@ skill = Skill.create(:profession_type => "Żołnierz",
 #####Alchemik
 skill = Skill.create(:profession_type => "Alchemik",
                      :name => "Alchemia",
-                     :way_it_works => "postać do perfekcji opanowała tworzenie mikstur i eliksirów dzięki czemu za każdym razem kiedy musi wykonać test sprawdzający poprawność ich wykonania może rzucić dwa razy wybierając korzystniejszy wynik. Ponadto poziom trudności wszystkich znanych receptur, mikstur czy eliksirów obniżony jest o 2pkt.
+                     :way_it_works => "koszt Mocy potrzebny podczas wytworzenia Zaawansowanej mikstury zmniejszany jest o połowę. Wszystkie zaawansowane eliksiry przygotowane przez Alchemika mają dwukrotnie dłuższy czas działania.
+Postać posiadającą Alchemię niezwykle trudno jest oszukać przy sprzedaży i zakupie ziół/mikstur.
 Zręczność i Inteligencja bohatera podnoszone są o +1pkt.
-Umiejętność Pasywna" )
+Umiejętność Pasywna." )
 
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "26" )
@@ -69,13 +70,21 @@ s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => 
 
 skill = Skill.create(:profession_type => "Alchemik",
                      :name => "Wiedza o Lotosach",
-                     :way_it_works => "postać zdobyła tajemną wiedzę o legendarnych roślinach zwanych Lotosami. Wie gdzie ich szukać i potrafi je odpowiednio spreparować. Szczegóły w rozdziale: Alchemia.
+                     :way_it_works => "postać zdobyła tajemną wiedzę o legendarnych roślinach zwanych Lotosami. Wie gdzie ich szukać i potrafi je odpowiednio spreparować. Szczegóły w rozdziale: Alchemia. Bohater otrzymuje jedną sztukę wybranego przez siebie Lotosu.
 Inteligencja postaci wzrasta o +1pkt.
 Umiejętność Pasywna." )
 
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Tworzenie Mikstur" )
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => "domyślne")
+
+skill = Skill.create(:profession_type => "Alchemik",
+                     :name => "Lata Praktyki",
+                     :way_it_works => "lata spędzone na wytwarzaniu i testowaniu najgroźniejszych specyfików uodporniły postać na wszelkie niepożądane efekty. Przy wykonywaniu dowolnego testu wywołanego miksturą, narkotykiem, trucizną czy lotosem Alchemik otrzymuje premię w wysokości 10pkt +1pkt/poziom. Dotyczy to również testów związanych z alkoholem." )
+
+skill.skill_requirements.create(:check_applies_to => "experience", :value => "2")
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
 
 
 skill = Skill.create(:profession_type => "Alchemik",
@@ -266,7 +275,7 @@ skill = Skill.create(:profession_type => "Dyplomata",
 
 skill = Skill.create(:profession_type => "Fircyk (żołnierz)",
                      :name => "Idealny Cios",
-                     :way_it_works => "raz na starcie/walkę, przed wykonaniem rzutu na Trafienie postać może zwiększyć ten parametr o +2pkt (premia dotyczy tylko tego jednaego ataku), jeżeli cios sięgnął celu zawsze traktowany jest jako „Trafienie Krytyczne”. Zdolność nie może być wykorzystana podczas strzelania.")
+                     :way_it_works => "raz na starcie/walkę, pierwszy Trafiony atak w tej rundzie traktowany jest jako „Trafienie Krytyczne”. Zdolność nie może być wykorzystana podczas strzelania.")
 
 
 skill = Skill.create(:profession_type => "Fircyk (żołnierz)",
@@ -313,7 +322,7 @@ s_choice.stats_modifiers.create(:modifies => "O", :value => 2, :group_name => "d
 ##
 skill = Skill.create(:profession_type => "Fircyk (łotr)",
                      :name => "Idealny Cios",
-                     :way_it_works => "raz na starcie/walkę, przed wykonaniem rzutu na Trafienie postać może zwiększyć ten parametr o +2pkt (premia dotyczy tylko tego jednaego ataku), jeżeli cios sięgnął celu zawsze traktowany jest jako „Trafienie Krytyczne”. Zdolność nie może być wykorzystana podczas strzelania.")
+                     :way_it_works => "raz na starcie/walkę, pierwszy Trafiony atak w tej rundzie traktowany jest jako „Trafienie Krytyczne”. Zdolność nie może być wykorzystana podczas strzelania.")
 
 
 
@@ -618,7 +627,7 @@ Umiejętność Pasywna.")
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "5" )
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
-#TODO Implement it ! along with other dmg perks  - group name "Melee Damage"
+#TODO Implement it ! along with other dmg perks  - modifies "melee_damage" and applicables in group name
 
 skill = Skill.create(:profession_type => "Strzelec",
                      :name => "Mistrz Kuszników",
@@ -626,7 +635,7 @@ skill = Skill.create(:profession_type => "Strzelec",
 Umiejętność Pasywna.")
 
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "3" )
-#TODO Implement it ! along with other dmg perks group name "Melee Damage"
+#TODO Implement it ! along with other dmg perks  - modifies "melee_damage" and applicables in group name
 
 
 ###SZAMAN
@@ -688,21 +697,15 @@ s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 8, :group_na
 
 ##Zabójca
 
-
-
-skill = Skill.create(:profession_type => "Zabójca",
-                     :name => "Morderczy Cios",
-                     :way_it_works => "raz na rundę kiedy postać zadaje Obrażenia rzuca dwoma kośćmi i wybiera korzystniejszy wynik. Nie może być wykorzystany w połączeniu z bronią dystansową.")
-
 skill = Skill.create(:profession_type => "Zabójca",
                      :name => "Nożownik",
-                     :way_it_works => "Fechtunek w Nożach, Sztyletach i Łamaczach Mieczy podnoszony jest o +1pkt a Obrażenia jakie postać nimi zadaje wzrastają o +1pkt/3poziomy Zabójcy (4poz. +2pkt, 7poz. +3pkt, itd.) Umiejętność wpływa również na Trafienie i Obrażenia zadane podczas rzutu nożami.
-Umiejętność Pasywna.")
+                     :way_it_works => "Atak i Obrona jednej z następujących broni (całej grupy): Noże, Sztylety lub Łamacz Mieczy podnoszone są o +1pkt. Pierwsza rana zadana przeciwnikowi w walce wręcz wymusza na nim test Bólu.")
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "25" )
-#TODO Implement it !
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana grupa broni('Kłuta Puginały i Sztylety','Sieczno / Kłująca Noże','Łamacz mieczy'), Atak+1 and Obrona+1")
 
- skill = Skill.create(:profession_type => "Zabójca",
+skill = Skill.create(:profession_type => "Zabójca",
                      :name => "Haniebny Cios",
                      :way_it_works => "zdolność może być wykorzystana raz na walkę z danym przeciwnikiem. Po pierwszym zranieniu wroga w walce wręcz, dany przeciwnik automatycznie nie trafia Zabójcy kolejnym ciosem (rzut na Trafienie nie jest wykonywany).
 Spostrzegawczość postaci podnoszona jest o +2pkt.
@@ -715,15 +718,16 @@ s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_na
 
  skill = Skill.create(:profession_type => "Zabójca",
                      :name => "Mistrz Oręża",
-                     :way_it_works => "Fechtunek w wybranej Grupie Broni podnoszony jest o +1pkt, ponadto bohater zwiększa zadawane w walce wręcz Obrażenia o +3pkt.
-Umiejętność Pasywna")
+                     :way_it_works => "Fechtunek w wybranej Grupie Broni podnoszony jest o +1pkt. Ponadto bohater zwiększa zadawane w walce wręcz Obrażenia o +3pkt (nie dotyczy strzelania i Bijatyki).
+Umiejętność Pasywna.")
 
-#TODO Implement it ! the dmg bonus  group name "Melee Damage"
+#TODO Implement it ! along with other dmg perks  - modifies "melee_damage" and applicables in group name
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "33" )
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S", :value => "20" )
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "3" )
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek w Grupie Broni")
+s_choice.stats_modifiers.create(:modifies => "melee_damage", :value => 3, :group_name => "Except shooting and boxing")
 
 
  skill = Skill.create(:profession_type => "Zabójca",

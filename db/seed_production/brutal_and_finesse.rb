@@ -74,7 +74,7 @@ Umiejętność Pasywna" )
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S", :value => "20" )
 
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 3, :group_name => "Melee Damage")
+s_choice.stats_modifiers.create(:modifies => "melee_damage", :value => 3, :group_name => "All")
 
 skill = Skill.create(:profession_type => "brutal",
                      :name => "Starcie",
