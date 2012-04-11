@@ -63,6 +63,7 @@ item = Weapon.create(
   :special_rules => "Trafienie Krytyczne na 29-30",
   :price => 3400
   )
+
 item.armament_requirements.create(:check_applies_to => "statistics", :name => "strength", :value => "20" )
 
 item = Weapon.create(
@@ -79,6 +80,7 @@ item = Weapon.create(
   :special_rules => "Idealne Cięcie/Pchnięcie",
   :price => 3500
   )
+
 item.armament_requirements.create(:check_applies_to => "statistics", :name => "strength", :value => "22" )
 
 item = Weapon.create(
@@ -916,7 +918,7 @@ item.armament_requirements.create(:check_applies_to => "statistics", :name => "s
 
 item = RangedWeapon.create(
   :group_name => "Strzelecka Łuki Refleksyjne",
-  :name => "Łuk typowy",
+  :name => "Łuk ciężki",
   :weapon_type => "Dw",
   :range => "20/50/180",
   :speed => 6,

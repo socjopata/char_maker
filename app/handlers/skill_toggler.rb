@@ -4,8 +4,8 @@ class SkillToggler
   attr_reader :character, :value, :skill_free_assignment_base
   attr_accessor :skills_used, :red_flag
 
-  def initialize(current_user, char_id, skills_used, skill_id, value, skill_free_assignment_base)
-    @character = current_user.characters.find(char_id)
+  def initialize(character, skills_used, skill_id, value, skill_free_assignment_base)
+    @character = character
     @skills_used = skills_used.to_i
     @red_flag = nil
     @value = value

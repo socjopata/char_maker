@@ -5,11 +5,11 @@ class ArmamentRequirement < ActiveRecord::Base
   def is_met_by?(character, statistics_hash)
     case self.check_applies_to
       when "statistics"
-        value.to_i > statistics_hash[name]
+        value.to_i <= statistics_hash[name]
       when "fightstyle"
         character.fight_style.name==name
       when "modified_stat"
-        #TODO zrecznosc aktualna case
+        true #TODO zrecznosc aktualna case
       when "social_class"
         character.social_class.send(self.name.intern) #usage ...(:check_applies_to => "social_class", :name => "is_elite?")
       when "origin"
