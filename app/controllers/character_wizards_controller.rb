@@ -143,6 +143,8 @@ class CharacterWizardsController < ApplicationController
       @armors ||= Armor.find_all_by_group_name(@armor_groups[0])
       @shield_groups = Shield.all.map(&:group_name).uniq
       @shields ||= Shield.find_all_by_group_name(@shield_groups[0])
+      @ranged_weapons_groups = RangedWeapon.all.map(&:group_name).uniq
+      @ranged_weapons ||= RangedWeapon.find_all_by_group_name(@ranged_weapons_groups[0])
 
     #  usage
     #  statistics_hash = @character.calculate_stats_and_store_them_as_a_hash

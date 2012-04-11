@@ -52,6 +52,17 @@
             })
             return false;
         });
+
+        $("#ranged_weapon_group").change(function() {
+            var char_id = "<%= @character.id  %>";
+            var ranged_weapon_group = $('select#ranged_weapon_group :selected').val();
+            if (ranged_weapon_group == "") ranged_weapon_group = "0";
+            jQuery.get('/character_wizards/update_ranged_weapons_select',  {'ranged_weapon_group': ranged_weapon_group, 'char_id': char_id}, function(data) {
+                $("#ranged_weapons").html(data);
+            })
+            return false;
+        });
+
     })
 
 

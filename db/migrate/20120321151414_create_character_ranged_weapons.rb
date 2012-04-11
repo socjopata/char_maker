@@ -6,8 +6,7 @@ class CreateCharacterRangedWeapons < ActiveRecord::Migration
       t.boolean :speed
       t.boolean :damage
       t.boolean :attack_bonus #accuracy
-      t.boolean :medium_range
-      t.boolean :long_range
+      t.boolean :range
       t.timestamps
     end
   end
