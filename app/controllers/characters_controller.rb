@@ -33,7 +33,7 @@ class CharactersController < ApplicationController
     @character = current_user.characters.build(params[:character])
     respond_to do |format|
       if @character.save
-        format.html { redirect_to(first_step_character_wizard_path(:char_id => @character.id), :notice => 'Pierwszy krok za nami...') }
+        format.html { redirect_to(first_step_character_wizard_path(:char_id => @character.id)) }
       else
         format.html { render :action => "new" }
       end
@@ -43,7 +43,7 @@ class CharactersController < ApplicationController
   def update
     respond_to do |format|
       if @character.update_attributes(params[:character])
-        format.html { redirect_to(first_step_character_wizard_path(:char_id => @character.id), :notice => 'Pierwszy krok za nami...') }
+        format.html { redirect_to(first_step_character_wizard_path(:char_id => @character.id)) }
       else
         format.html { render :action => "edit" }
       end

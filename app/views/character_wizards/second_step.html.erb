@@ -45,7 +45,7 @@
 
 
 <br/><br/>
-<%= button_link_to "Wróć", first_step_character_wizard_path(:char_id => @character.id) %>
+<!--for various purposes there is no back button-->
 <%= button_link_to "Utwórz nową postać", character_path(@character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
 <%= button_link_to "Dalej", "javascript:void(0)", :class => "fltr", :onclick => "submit_form_and_proceed()" %>
 
