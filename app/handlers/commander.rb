@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Commander
 
   def initialize(character, skill, skills=[])

@@ -1,7 +1,7 @@
 <h2>Wybierz broń dystansową:</h2>
 
 <%= form_tag(character_wizards_add_item_to_inventory_path, :remote => true) do %>
-    <label>Wybierz grupę broni: </label><%= select_tag 'ranged_weapon_group', options_for_select(@ranged_weapons_groups) %><br/>
+    <label>Wybierz grupę broni: </label><%= select_tag 'ranged_weapon_group', options_for_select(@ranged_weapon_groups) %><br/>
 
     <div id="ranged_weapons">
       <%= render :partial => "character_wizards/armament_stuff/ranged_weapons", :locals => {:ranged_weapons => @ranged_weapons} %>
@@ -29,7 +29,7 @@
           <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_speed" %>><%= item_upgrade_link(@character, item.resource, item, "speed") -%></p></td>
           <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_damage" %>><%=  item_upgrade_link(@character, item.resource, item, "damage") -%></p></td>
           <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_attack_bonus" %>><%=  item_upgrade_link(@character, item.resource, item, "attack_bonus") -%></p></td>
-          <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_range" %>><%=  item_upgrade_link(@character, item.resource, item, "range") -%></p></td>
+          <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_range" %>><%=  ranged_weapon_speed_upgrade_link(@character, item.resource, item, "range") -%></p></td>
           <td class="alantar_td"><p class="normal"><%= link_to image_tag('delete.png'), character_wizards_remove_item_from_inventory_path(:char_id => @character.id, :item_type => "RangedWeapon", :inventory_item => item.resource.id, :delete_id => item.id ), :remote => true %></p></td>
         </tr>
     <% end %>

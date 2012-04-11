@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Weapon < ActiveRecord::Base
 
   include NameWithPrice

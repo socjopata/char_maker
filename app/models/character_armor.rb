@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CharacterArmor < ActiveRecord::Base
   belongs_to :character
   belongs_to :armor

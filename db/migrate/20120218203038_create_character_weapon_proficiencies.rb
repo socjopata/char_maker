@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateCharacterWeaponProficiencies < ActiveRecord::Migration
   def self.up
     create_table :character_weapon_proficiencies do |t|

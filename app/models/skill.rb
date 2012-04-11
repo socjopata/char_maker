@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Skill < ActiveRecord::Base
   has_many :stats_choices, :as => :resource, :dependent => :destroy
   has_many :skill_requirements, :dependent => :destroy

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class FightStyle < ActiveRecord::Base
 
   has_many :characters

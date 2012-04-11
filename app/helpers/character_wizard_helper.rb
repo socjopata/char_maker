@@ -132,13 +132,21 @@ module CharacterWizardHelper
     end
   end
 
+  def ranged_weapon_speed_upgrade_link(character, item, connecting_object, improvement_type)
+    if item.is_a_bow?
+      item_upgrade_link(character, item, connecting_object, improvement_type)
+    else
+      "Nie można ulepszyć."
+    end
+  end
+
   def set_shield_as_main(character, connecting_object)
     if connecting_object.favorite?
       "Tarcza główna"
     else
       link_to("Ustaw jako główną",
               character_wizards_set_shield_as_main_path(:char_id => character.id,
-                                                  :inventory_item => connecting_object.id),
+                                                        :inventory_item => connecting_object.id),
               :remote => true).html_safe
     end
   end

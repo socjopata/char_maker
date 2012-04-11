@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module NameWithPrice
 
   def name_with_price

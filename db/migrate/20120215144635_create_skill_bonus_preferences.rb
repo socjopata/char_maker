@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateSkillBonusPreferences < ActiveRecord::Migration
   def self.up
     create_table :skill_bonus_preferences do |t|

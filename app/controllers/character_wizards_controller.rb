@@ -136,6 +136,7 @@ class CharacterWizardsController < ApplicationController
 
   def armament_step
     if request.get?
+      #TODO it should take into account current selection !!!!!!!!! try to refresh with a group selected other than default
       @character = current_user.characters.find(params[:char_id])
       @weapon_groups = Weapon.all.map(&:group_name).uniq
       @weapons ||= Weapon.find_all_by_group_name(@weapon_groups[0])
@@ -143,8 +144,8 @@ class CharacterWizardsController < ApplicationController
       @armors ||= Armor.find_all_by_group_name(@armor_groups[0])
       @shield_groups = Shield.all.map(&:group_name).uniq
       @shields ||= Shield.find_all_by_group_name(@shield_groups[0])
-      @ranged_weapons_groups = RangedWeapon.all.map(&:group_name).uniq
-      @ranged_weapons ||= RangedWeapon.find_all_by_group_name(@ranged_weapons_groups[0])
+      @ranged_weapon_groups = RangedWeapon.all.map(&:group_name).uniq
+      @ranged_weapons ||= RangedWeapon.find_all_by_group_name(@ranged_weapon_groups[0])
 
     #  usage
     #  statistics_hash = @character.calculate_stats_and_store_them_as_a_hash
@@ -200,6 +201,11 @@ class CharacterWizardsController < ApplicationController
   def update_weapons_select
     weapons = Weapon.find_all_by_group_name(params[:weapon_group])
     render :partial => "character_wizards/armament_stuff/weapons", :locals => {:weapons => weapons}
+  end
+
+  def update_ranged_weapons_select
+    ranged_weapons = RangedWeapon.find_all_by_group_name(params[:ranged_weapon_group])
+    render :partial => "character_wizards/armament_stuff/ranged_weapons", :locals => {:ranged_weapons => ranged_weapons}
   end
 
   def update_armors_select

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module CharacterCanUse
   #   @weapon_instance.character_can_use?(character, character.calculate_stats_and_store_them_as_a_hash)
   #   or preferably pass it calculated already

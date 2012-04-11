@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Blacksmith
 
   attr_reader :character, :weapon_armor_or_shield, :improvement_subject_id, :improvement_type
@@ -43,7 +44,7 @@ class Blacksmith
       when "Weapon"
         weapon_armor_or_shield.price * (Weapon::MULTIPLIER[[inventory_item.damage, inventory_item.speed, inventory_item.attack_bonus, inventory_item.defense_bonus].map(&:to_i).sum+ (caller[0][/`.*'/][1..-2]=="refund_money" ? 1 : 0)]) #   #conditional +1 to ensure we are refunding proper amount
       when "RangedWeapon"
-        #TODO
+        weapon_armor_or_shield.price * (RangedWeapon::MULTIPLIER[[inventory_item.damage, inventory_item.speed, inventory_item.attack_bonus, inventory_item.range].map(&:to_i).sum+ (caller[0][/`.*'/][1..-2]=="refund_money" ? 1 : 0)]) #   #conditional +1 to ensure we are refunding proper amount
       when "Shield"
         weapon_armor_or_shield.price * (Shield::MULTIPLIER[[inventory_item.defense_bonus, inventory_item.dexterity_nerf, inventory_item.dexterity_cap].map(&:to_i).sum+ (caller[0][/`.*'/][1..-2]=="refund_money" ? 1 : 0)]) #   #conditional +1 to ensure we are refunding proper amount
       when "Armor"

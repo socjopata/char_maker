@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Shopkeeper
 
   attr_reader :character, :weapon_armor_or_shield, :item_to_be_deleted_id
@@ -52,7 +53,7 @@ class Shopkeeper
       when "Weapon"
         [inventory_item.damage, inventory_item.speed, inventory_item.attack_bonus, inventory_item.defense_bonus].map(&:to_i).sum
       when "RangedWeapon"
-        #TODO
+        [inventory_item.damage, inventory_item.speed, inventory_item.attack_bonus, inventory_item.range].map(&:to_i).sum
       when "Shield"
         [inventory_item.defense_bonus, inventory_item.dexterity_nerf, inventory_item.dexterity_cap].map(&:to_i).sum
       when "Armor"

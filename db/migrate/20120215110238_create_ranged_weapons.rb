@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateRangedWeapons < ActiveRecord::Migration
   def self.up
     create_table :ranged_weapons do |t|

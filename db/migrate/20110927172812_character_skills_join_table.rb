@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CharacterSkillsJoinTable < ActiveRecord::Migration
   def self.up
      create_table :character_skills, :id => true do |t|

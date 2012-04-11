@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Shield < ActiveRecord::Base
   include NameWithPrice
   include CharacterCanUse

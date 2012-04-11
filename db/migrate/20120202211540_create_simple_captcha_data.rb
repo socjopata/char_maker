@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateSimpleCaptchaData < ActiveRecord::Migration
   def self.up
     create_table :simple_captcha_data do |t|

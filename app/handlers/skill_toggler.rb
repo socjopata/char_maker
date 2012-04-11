@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class SkillToggler
 
   attr_reader :character, :value, :skill_free_assignment_base
