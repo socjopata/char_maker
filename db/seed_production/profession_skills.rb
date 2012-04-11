@@ -150,7 +150,7 @@ Zasada działania: Korzystając z „Martwych Oczu” postać widzi w ciemności
 ." )
 
 skill = Skill.create(:profession_type => "Czarnoksiężnik",
-                     :name => "Martwe Oczy",
+                     :name => "Pakty",
                      :way_it_works => "czary przyzywające/tworzące Martwiaki i Demony mają zmniejszony Poziom Trudności o -3pkt. Jakiekolwiek testy konfrontujące Moc Nekromanty z mocą przyzwanej istoty otrzymują premię w wysokości +3pkt. Ponadto za każdym razem kiedy Czarnoksiężnik, za pomocą znanego sobie czaru, przywołuje martwiaki może zawezwać jednego więcej.
 Inteligencja postaci podnoszona jest o +1pkt, a jej Odporność na Strach o +3pkt.
 Umiejętność Pasywna." )
@@ -385,7 +385,22 @@ skill.skill_requirements.create(:check_applies_to => "experience", :value => "8"
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "35" )
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "power level", :value => 0, :group_name => "2k10") #TODO ...     if 0 then parse group name
+s_choice.stats_modifiers.create(:modifies => "power level", :value => 0, :group_name => "3k10") #TODO ...     if 0 then parse group name
+
+skill = Skill.create(:profession_type => "Mag",
+                     :name => "Grimuar",
+                     :way_it_works => "postać zdobyła starożytną księgę, w której może odnaleźć niezwykłą wiedzę. Za każdym razem kiedy zdobywa nowy poziom wykonuje rzut k10, jeżeli uzyska rezultat w przedziale 1-3 otrzymuje jeden, dodatkowy, wybrany przez siebie czar (z dostępnej dla swojej profesji listy). Ponadto za każdym razem kiedy wykonuje test wiedzy związanej z magią, religią, mitycznymi stworami, itp. otrzymuje premię +5pkt.
+Umiejętność Pasywna." )
+
+skill = Skill.create(:profession_type => "Mag",
+                     :name => "Doskonała Rytmika",
+                     :way_it_works => "Inicjatywa postaci zwiększana jest o +2pkt. Ponadto za każdym razem kiedy bohater ma otrzymać karę do testu Splecenia Magii (podwyższony poziom trudności) wartość ta zmniejszona jest o 5pkt, np.: mag rzuca czar, w trakcie splatania otrzymał cios i stracił 10PŻ. Oznacza to podwyższenie poziomu trudności zaklęcia o 10pkt, dzięki tej umiejętności kara zmniejszana jest do 5pkt.
+Umiejętność Pasywna" )
+
+skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "23" )
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Blitz" )
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_name => "Inicjatywa")
 
 
 ### Kapłan
@@ -427,6 +442,10 @@ skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WI"
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "WI", :value => 1, :group_name => "domyślne")
 
+skill = Skill.create(:profession_type => "Kapłan",
+                     :name => "Wiedza Niebios",
+                     :way_it_works => "raz na sesję Kapłan może zaczerpnąć boskiej mocy i rzucić znaną sobie Modlitwę z Poziomu wyżej, np.: Kapłan na Poziomie 3 może rzucić Modlitwę tak jakby był na Poziomie 5.
+Umiejętność Pasywna.")
 
 ###Łotr
 
@@ -614,15 +633,18 @@ skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR"
 
 skill = Skill.create(:profession_type => "Strzelec",
                      :name => "Odległość nie ma Znaczenia",
-                     :way_it_works => "kara wynikająca ze strzelania na zasięg inny niż Bliski zmniejszana jest o premię ze Zręczności Strzelca. Dodatkowo Daleki zasięg broni strzeleckiej używanej przez postać zwiększony jest o 25metrów a jej Trafienie wzrasta o +2pkt.
+                     :way_it_works => "kara wynikająca ze strzelania na zasięg inny niż Bliski zmniejszana jest o premię ze Zręczności Strzelca. Daleki zasięg broni strzeleckiej używanej przez postać zwiększony jest o 25metrów, a jej Umiejętności Strzeleckie wzrastają o +2pkt.
 Umiejętność Pasywna.")
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "25" )
 
-#TODO Implement it !
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Umiejętności Strzeleckie")
+
 
 skill = Skill.create(:profession_type => "Strzelec",
                      :name => "Wyśmienity Naciąg",
-                     :way_it_works => "kara wynikająca ze strzelania na zasięg inny niż Bliski zmniejszana jest o premię ze Zręczności Strzelca. Dodatkowo Daleki zasięg broni strzeleckiej używanej przez postać zwiększony jest o 25metrów a jej Trafienie wzrasta o +2pkt.
+                     :way_it_works => "zadawane przez postać Obrażenia z dowolnej broni dystansowej podnoszone są o +2pkt.
+Zręczność bohatera wzrasta o +1pkt.
 Umiejętność Pasywna.")
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "5" )
 s_choice = skill.stats_choices.create
@@ -632,13 +654,26 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "
 skill = Skill.create(:profession_type => "Strzelec",
                      :name => "Mistrz Kuszników",
                      :way_it_works => "Tempo ładowania kuszy zmniejszone jest o 1rundę. Jeżeli ilość rund potrzebnych do załadowania broni spadnie do zera, postać może strzelić i napiąć kuszę w tej samej rundzie. W przypadku oddania strzału na początku rundy, Strzelec może naładować broń ale zajmie mu to całą rundę. W chwili kiedy nie ma przygotowanej do strzału kuszy napięcie zajmuje całą rundę i z jej końcem oddaje strzał (identycznie jak w przypadku czarów całorundowych).
-Umiejętność Pasywna.")
+Obrażenia zadawane dowolną kuszą zwiększane są o +1pkt.
+Umiejętność Pasywna")
 
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "3" )
 #TODO Implement it ! along with other dmg perks  - modifies "melee_damage" and applicables in group name
+#TODO only for crossbows
+#TODO reduce loadtime of a crossbows
 
 
 ###SZAMAN
+skill = Skill.create(:profession_type => "Szaman",
+                     :name => "Mistrz Żywiołów",
+                     :way_it_works => "szaman wybiera przewodni żywioł. Od teraz wszystkie wrogie efekty magiczne oparte na tym aspekcie mają zmniejszoną moc i efekty do połowy (np.: ilość otrzymanych ran, itp.). Ponadto zaklęcia opierające się na tym żywiole, które rzuca Szaman mają zwiększone obszar/promień i/lub zasięg o połowę. Przełamanie takich czarów podnoszone jest o +2pkt.
+Umiejętność Pasywna.")
+
+
+skill = Skill.create(:profession_type => "Szaman",
+                     :name => "Przymierze z Duchami",
+                     :way_it_works => "raz na dzień postać może rzucić zaklęcie związane z Duchami nie wydając na niego żadnych PM.")
+
 
 skill = Skill.create(:profession_type => "Szaman",
                      :name => "Zaklęcia Szamańskie",
