@@ -12,10 +12,10 @@
     <% end %>
     <!--<h3>Avatar</h3>-->
     <!--<p>-->
-      <!--<label>Mój Avatar</label>-->
-      <!--<#%= image_tag(@character.avatar_url(:regular)) if @character.avatar? %>-->
-      <!--<#%= f.file_field :avatar %>-->
-      <!--<#%= f.hidden_field :avatar_cache %>-->
+    <!--<label>Mój Avatar</label>-->
+    <!--<#%= image_tag(@character.avatar_url(:regular)) if @character.avatar? %>-->
+    <!--<#%= f.file_field :avatar %>-->
+    <!--<#%= f.hidden_field :avatar_cache %>-->
     <!--</p>-->
 
     <h3>Informacje ogólne</h3><p>
@@ -28,10 +28,16 @@
   <%= f.label "Gram hardcorowo - wylosuj dla mnie pochodzenie." %>
   <%= f.check_box :hardcore_social_class_picking %><br/>
   <%= f.label "Gram hardcorowo - niech komputer rzuci za mnie na klątwę lub dar." %>
-  <%= f.check_box :hardcore_trait_picking %><br/>
-  <br/>
+  <%= f.check_box :hardcore_trait_picking %><br/><br/>
+    <h3>Wybierz bóstwo</h3>
+    <%= f.fields_for :character_background_attributes do |cb| %>
+        <%= cb.select :deity_id, @deities.collect { |p| [p.name, p.id] } %><br/>
+        <p>Uwaga: Ateizm ogranicza wybór klasy postaci. Na przykład nie można zostać kapłanem-ateistą.</p>
+    <% end %>
 
-</p>
+    <br/>
+
+    </p>
 
     <div id="stats">
     </div>
@@ -45,9 +51,9 @@
 <%= button_link_to "Wróć do indeksu", characters_path %>
 <script type="text/javascript">
 
-  function submit_form() {
-      $("form").submit();
-  }
+    function submit_form() {
+        $("form").submit();
+    }
     //      Math.RandomInteger = function(n, m) {
     //        if (! m) {m = 1;} // default range starts at 1
     //        var max = n > m ? n : m; // doesn't matter which value is min or max

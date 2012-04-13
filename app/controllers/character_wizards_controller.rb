@@ -11,12 +11,8 @@ class CharacterWizardsController < ApplicationController
 
   def first_step
     if request.get?
-      if @character.character_background.blank?
-        @character_background = @character.build_character_background
-        @character_background.draw_a_trait if @character.hardcore_trait_picking
-        @character_background.save
-      end
-      @professions = Profession.all
+      @character.character_background.draw_a_trait if @character.hardcore_trait_picking && @character.character_background.origin.blank?
+      @professions = ProfessionSelector.new(@character).results
       @countries ||= Profession.find_by_name(@professions.first.name).countries
     elsif request.post?
       if @character.statistics.blank?
@@ -28,6 +24,7 @@ class CharacterWizardsController < ApplicationController
       @character.pick_a_profession(params[:professions]) if @character.character_profession.blank?
       @character.character_background.set_social_class if @character.character_background.social_classes.blank?
       @character.character_background.fill_the_purse_with_gold unless @character.purse.present?
+      @character.character_background.update_attribute(:deity_id, params[:deity_id])
       redirect_to second_step_character_wizard_path(:char_id => @character.id)
     end
   end

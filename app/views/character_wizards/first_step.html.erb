@@ -12,9 +12,11 @@
       <%= render :partial => 'countries', :locals => {:countries => @countries} %>
     </div>
  <%= hidden_field_tag :char_id, @character.id %>
+
 <% end %>
 
 <br/><br/><br/><br/>
+
 
 <div class="clear">
 <%= button_link_to "Wróć", new_character_path(:char_id => @character.id), :class => "fltl" %>

@@ -32,6 +32,8 @@ class Character < ActiveRecord::Base
 
   before_save :check_fight_style_choice
 
+  accepts_nested_attributes_for :character_background
+
   def any_unfinished_matters_present?
     skill_choices_to_be_precised.any? { |sm| sm.as_character_skill(self).skill_bonus_preference.blank? }
   end

@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class CharacterBackground < ActiveRecord::Base
   belongs_to :character
+  belongs_to :deity
   has_and_belongs_to_many :traits
   has_and_belongs_to_many :social_classes
   has_one :origin

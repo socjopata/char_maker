@@ -40,7 +40,7 @@ class Shopkeeper
       when "Weapon"
         weapon_armor_or_shield.price * Weapon::MULTIPLIER[number] + evaluate_worth(inventory_item, (number-1))
       when "RangedWeapon"
-        #TODO
+        weapon_armor_or_shield.price * RangedWeapon::MULTIPLIER[number] + evaluate_worth(inventory_item, (number-1))
       when "Shield"
         weapon_armor_or_shield.price * Shield::MULTIPLIER[number] + evaluate_worth(inventory_item, (number-1))
       when "Armor"

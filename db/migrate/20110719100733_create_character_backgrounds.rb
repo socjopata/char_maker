@@ -3,6 +3,7 @@ class CreateCharacterBackgrounds < ActiveRecord::Migration
   def self.up
     create_table :character_backgrounds do |t|
       t.integer :character_id
+      t.integer :deity_id
       t.timestamps
     end
   end
