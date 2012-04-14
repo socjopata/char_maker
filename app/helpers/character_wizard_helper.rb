@@ -93,8 +93,7 @@ module CharacterWizardHelper
       when /Wybrana tarcza/
         shield_choice_for(sm)
       when /Wybrana grupa broni/
-        #s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana grupa broni('Kłuta Puginały i Sztylety','Sieczno / Kłująca Noże','Łamacz mieczy'), Atak+1 and Obrona+1")
-        #TODO
+        partial_bonus_for_weapon_group(sm)
       else
         throw "You forgot to implement it dumbass!"
     end
@@ -110,6 +109,10 @@ module CharacterWizardHelper
 
   def shield_choice_for(sm)
     ("<label>#{sm.grand_daddy.name} </label>" + select_tag("choice", options_for_select(Shield.all.map(&:name)))).html_safe
+  end
+
+  def partial_bonus_for_weapon_group(sm)
+    ("<label>#{sm.grand_daddy.name} </label>" + select_tag("choice", options_for_select(OptionsForPartialBonus.new(sm).results))).html_safe
   end
 
   def item_upgrade_link(character, item, connecting_object, improvement_type)
