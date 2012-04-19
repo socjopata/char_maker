@@ -5,6 +5,7 @@ class CreateStatsModifiers < ActiveRecord::Migration
       t.integer :stats_choice_id
       t.string :modifies
       t.integer :value
+      t.string :evaluated_instruction  #finally
       t.string :group_name
       t.boolean :default_for_social_class#, :default => false
       t.boolean :default_for_origin

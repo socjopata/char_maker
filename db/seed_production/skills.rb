@@ -1,6 +1,4 @@
 # -*- encoding : utf-8 -*-
-## -*- encoding : utf-8 -*-
-#
 
 skill = Skill.create(:profession_type => "default",
                      :name => "Akrobatyka",
@@ -48,7 +46,7 @@ skill = Skill.create(:profession_type => "default", :name => "Handel", :way_it_w
 Umiejętność Pasywna.")
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => "domyślne")
-s_choice.stats_modifiers.create(:modifies => "money", :value => 10000, :group_name => "domyślne")    #TODO implement it !
+s_choice.stats_modifiers.create(:modifies => "money", :value => 10000, :group_name => "domyślne")
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "17" )
 
 
@@ -81,7 +79,7 @@ skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S",
 
 skill = Skill.create(:profession_type => "default", :name => "Nauczyciel Fechtunku Wielu Broni", :way_it_works => "bohater zyskuje Jedną Biegłość w Broniach, dzięki czemu będzie mógł nauczyć się walczyć dodatkową grupą broni.")
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Biegłość w Grupie Broni")  #TODO remember to apply this later
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Biegłość w Grupie Broni")
 
 skill = Skill.create(:profession_type => "default", :name => "Nauczyciel Fechtunku Jednej Broni", :way_it_works => "bohater zyskuje w wybranej Grupie Broni +1pkt Fechtunku (dzięki czemu zwiększa zarówno FwA jak i FwO). Dotyczy to każdej broni zarówno tej do walki wręcz jak i strzeleckiej.")
 s_choice = skill.stats_choices.create
@@ -155,7 +153,6 @@ s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 1, :group_name => "Inicjatywa")
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "15" )
-           #TODO fix it, disallow picking both
 skill = Skill.create(:profession_type => "default", :name => "Rzemiosło rozwijające siłę", :way_it_works => "postać wyuczyła się wybranego fachu lub rzemiosła. Po kilku latach praktyki, zebrała nieco oszczędności (5k20+100zł), a jej Siła lub Inteligencja podnoszone są o +1pkt. Gracz wraz z MG wybiera rodzaj zawodu jakim para się postać.")
 
 s_choice = skill.stats_choices.create

@@ -59,8 +59,14 @@ class Shopkeeper
       when "Armor"
         [inventory_item.defense_bonus, inventory_item.dexterity_nerf, inventory_item.dexterity_cap].map(&:to_i).sum
     end
-
   end
+
+  def self.says_ok?(character, spendings)
+    character.errors.add(:base, "Nie możesz wydać więcej niz posiadasz") if 0 > spendings
+    character.errors.add(:base, "Jeśli wybrałeś wiecej niz jedną tarczę, wybierz jedną jako aktywną") if character.character_shields.size > 1 &&  character.character_shields.map(&:favorite).compact.blank?
+    character.errors.blank?
+  end
+
 
 end
 

@@ -25,6 +25,9 @@ class Character < ActiveRecord::Base
   #^^ I really considered has-many-through-and-polymorphic-associations here before I started
   # Now i feel the pain.
 
+  has_many :character_spells
+  has_many :spells, :through => :character_spells
+
   mount_uploader :avatar, AvatarUploader
   scope :belongs_to_user, lambda { |user| {:conditions => {:user_id => user.id}} }
 
@@ -85,6 +88,10 @@ class Character < ActiveRecord::Base
 
   def valid_for_step_fourth?
     statistics.polish >= statistics.initial_dice_roll_set.last.to_i
+  end
+
+  def has_valid_shopping_list?(spendings)
+    Shopkeeper.says_ok?(self, spendings)
   end
 
   #traits check

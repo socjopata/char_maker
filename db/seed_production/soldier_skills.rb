@@ -57,7 +57,7 @@ skill = Skill.create(:profession_type => "soldier",
 
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Tarczownik" )
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana tarcza, Obrona+1")  #TODO This "DSL" can be improved
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana tarcza, Obrona+1")
 
 
 

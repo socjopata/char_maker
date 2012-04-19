@@ -10,6 +10,7 @@
 
 <%= form_tag :url => second_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
     <%= hidden_field_tag :char_id, @character.id %>
+
     <h3>Wybierz parametr wiodący dla swojej postaci:</h3>
     <br/>
     <%= select_tag "main_skill", options_from_collection_for_select(fetch_possible_lead_parameters_choices(@character.character_profession), :name, :display_name) %>
@@ -22,6 +23,7 @@
             <%= render :partial => 'choices', :locals => {:stats => choice.stats_modifiers.to_set.classify { |stat| stat.group_name.humanize }, :radio_group => "social_stat_choices[#{choice.id}]"} %>
         <% end %>
     <% end %>
+
     <h3>Wybierz profity wynikające z kraju pochodzenia i profesji Twojej postaci:</h3>   <br/>
     <label><strong>Domyślne:</strong></label>
     <% default = @character.default_origin_modifiers_set %>

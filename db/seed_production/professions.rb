@@ -25,7 +25,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Wykształcenie Akademickie")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Zielarstwo")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Talenty Alchemiczne")
-#TODO prolly I'll want to check base parameter for shooting for example and decide if I should allow tick a crossbow or something'
+
 _profession = Profession.create(:name => "Berzerker", :general_type => "soldier", :skill_points => 3, :attack => 8 ,:defense => 19 , :shooting => 0, :starting_weapon_proficiency => 3, :preferred_weapon_proficiency => "non-ranged" , :available_armors => "Lekkie, Typowe")
 _profession.countries << [Country.find_all_by_name(["Wielkie Stepy", "Góry Księżycowe i Niczyje"])]
 

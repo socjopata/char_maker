@@ -72,6 +72,10 @@ class Commander
       result << [Hash["auxiliary_table_total_#{AuxiliaryParameterSet::ENGLISH_NAMES[modifier.group_name]}", @character.statistics.send("calculate_#{AuxiliaryParameterSet::ENGLISH_NAMES[modifier.group_name]}".intern)],
                  Hash["auxiliary_table_skill_bonus_for_#{AuxiliaryParameterSet::ENGLISH_NAMES[modifier.group_name]}", @character.statistics.calculate_auxiliary_bonus(modifier.group_name, "only_from_skills")]
       ]
+    elsif modifier.modifies=="variable_auxiliary"   #for special stuff like "Hardy"
+      result << [Hash["auxiliary_table_total_#{AuxiliaryParameterSet::ENGLISH_NAMES[modifier.group_name]}", @character.statistics.send("calculate_#{AuxiliaryParameterSet::ENGLISH_NAMES[modifier.group_name]}".intern)],
+                 Hash["auxiliary_table_skill_bonus_for_#{AuxiliaryParameterSet::ENGLISH_NAMES[modifier.group_name]}", @character.statistics.calculate_auxiliary_bonus(modifier.group_name, "only_from_skills")]
+      ]
     end
     result.flatten
   end

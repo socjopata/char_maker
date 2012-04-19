@@ -120,7 +120,7 @@ class Statistics < ActiveRecord::Base
 
   def convert_stat_choices_to_skills
 
-    skill_names_array = stats_modifiers.select { |sm| sm.modifies=="skills" }.collect { |sm| sm.group_name.split("oraz").collect { |name| name.strip } }.flatten #TODO tap it.
+    skill_names_array = stats_modifiers.select { |sm| sm.modifies=="skills" }.collect { |sm| sm.group_name.split("oraz").collect { |name| name.strip } }.flatten
     free_skill_counter = skill_names_array.select { |name| name=="Jedna wolna umiejętność" }.size
     skill_names_array.delete("Jedna wolna umiejętność") if skill_names_array.include?("Jedna wolna umiejętność")
     free_skill_counter = free_skill_counter + (skill_names_array.size - skill_names_array.uniq.size) #if there are doubles...
@@ -223,13 +223,19 @@ class Statistics < ActiveRecord::Base
   def calculate_auxiliary_bonus(name, total="yep, I want total")
     case total
       when "yep, I want total"
-        stats_modifiers.select { |sm| sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum + trait_modifier_for_auxiliary_parameter_named(name)
+        stats_modifiers.select { |sm| sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum + trait_modifier_for_auxiliary_parameter_named(name) +  calculate_variable_auxiliary_bonus(name)
       when "only_from_skills"
-        stats_modifiers.select { |sm| sm.grand_daddy.is_a?(Skill) && sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum
+        stats_modifiers.select { |sm| sm.grand_daddy.is_a?(Skill) && sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum + calculate_variable_auxiliary_bonus(name)
       when "only_special"
         stats_modifiers.select { |sm| !sm.grand_daddy.is_a?(Skill) && sm.modifies=="auxiliary" && sm.group_name==name }.collect(&:value).sum + trait_modifier_for_auxiliary_parameter_named(name)
     end
   end
+
+  def calculate_variable_auxiliary_bonus(name)
+   values = stats_modifiers.select { |sm| sm.modifies=="variable_auxiliary" && sm.group_name==name }.map {|sm| eval(sm.evaluated_instruction).to_i}
+   values.present? ? values.sum : 0
+  end
+
 
   def calculate_weapon_class_proficiencies_points
     character.profession.starting_weapon_proficiency + stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Biegłość w Grupie Broni" }.collect(&:value).sum

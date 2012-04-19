@@ -126,12 +126,16 @@ class CharacterWizardsController < ApplicationController
       @shields, @shield_groups = ArmamentMaster.new(@character, "Shield", @statistics_hash, {:group_name => nil}).prepare_items_collection
       @ranged_weapons, @ranged_weapon_groups = ArmamentMaster.new(@character, "RangedWeapon", @statistics_hash, {:group_name => nil}).prepare_items_collection
     elsif request.post?
-      if @character.is_of_scholar_class_type?
-        redirect_to picking_spells_step_character_wizard_path(:char_id => @character)
+      if @character.has_valid_shopping_list?(session[:coins_left])
+        if @character.is_of_scholar_class_type?
+          redirect_to picking_spells_step_character_wizard_path(:char_id => @character)
+        else
+          @character.update_attribute(:finished, true)
+          redirect_to characters_path
+          #make it finished and redirect to index or show
+        end
       else
-        @character.update_attribute(:finished, true)
-        redirect_to characters_path
-        #make it finished and redirect to index or show
+        redirect_to :back, :alert => @character.errors.full_messages.to_sentence(:two_words_connector => ". ")
       end
     end
   end
