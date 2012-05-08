@@ -17,7 +17,7 @@ class CharactersController < ApplicationController
     @extra_skills = Skill.fetch_profession_skills_for(@character).select{|skill| all_skills.include? skill }
     @skill_names = all_skills.map(&:name)
 
-    @weapons = @character.weapons
+    @weapons = @character.character_weapons
     render :layout => 'office'
   end
 

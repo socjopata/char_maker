@@ -564,16 +564,16 @@
     <td style="text-align:left;width:0.7688in; " class="Tabela1_J1"><p class="P18">Trafienie</p></td>
   </tr>
   <tr>
-    <td style="text-align:left;width:1.1819in; " class="Tabela1_A6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.5681in; " class="Tabela1_B4"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.5215in; " class="Tabela1_D6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.5215in; " class="Tabela1_D6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:1.1125in; " class="Tabela1_F6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:1.1125in; " class="Tabela1_F6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.6111in; " class="Tabela1_G6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.7708in; " class="Tabela1_H6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.6944in; " class="Tabela1_I6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.7688in; " class="Tabela1_J6"><p class="P16"> </p></td>
+    <td style="text-align:left;width:1.1819in; " class="Tabela1_A6"><p class="P16"> <%= @weapons[0].weapon.name if @weapons[0].present? %> </p></td>
+    <td style="text-align:left;width:0.5681in; " class="Tabela1_B4"><p class="P16"> <%= @weapons[0].weapon.weapon_type if @weapons[0].present? %> </p></td>
+    <td style="text-align:left;width:0.5215in; " class="Tabela1_D6"><p class="P16"> <%= @weapons[0].calculate_range if @weapons[0].present? %></p></td>
+    <td style="text-align:left;width:0.5215in; " class="Tabela1_D6"><p class="P16"> <%= @weapons[0].calculate_speed if @weapons[0].present? %></p></td>
+    <td style="text-align:left;width:1.1125in; " class="Tabela1_F6"><p class="P16"> <%= @weapons[0].calculate_damage if @weapons[0].present? %></p></td>
+    <td style="text-align:left;width:1.1125in; " class="Tabela1_F6"><p class="P16"> <%= @weapons[0].weapon.special_rules if @weapons[0].present? %></p></td>
+    <td style="text-align:left;width:0.6111in; " class="Tabela1_G6"><p class="P16"> <%= @weapons[0].weapon.attack_bonus if @weapons[0].present? %></p></td>
+    <td style="text-align:left;width:0.7708in; " class="Tabela1_H6"><p class="P16"> <%= @weapons[0].weapon.defense_bonus if @weapons[0].present? %></p></td>
+    <td style="text-align:left;width:0.6944in; " class="Tabela1_I6"><p class="P16"> TODO</p></td>
+    <td style="text-align:left;width:0.7688in; " class="Tabela1_J6"><p class="P16"> <%= @weapons[0].hit_parameter if @weapons[0].present? %></p></td>
   </tr>
   <tr>
     <td style="text-align:left;width:1.1819in; " class="Tabela1_A3"><p class="P16"> </p></td>

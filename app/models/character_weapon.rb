@@ -6,4 +6,22 @@ class CharacterWeapon < ActiveRecord::Base
   def resource
     weapon
   end
+
+  def calculate_range
+
+  end
+
+  def calculate_speed
+
+  end
+
+  def calculate_damage
+
+   end
+
+  def hit_parameter
+
+  end
+
+
 end
