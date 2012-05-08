@@ -4,11 +4,11 @@ module CharactersHelper
   def render_character_sheet(character)
     case character.profession.general_type
       when "scholar" then
-        render :partial => 'characters/character_sheets/scholar' #, :locals => locals
+        render :partial => 'characters/scholar' #, :locals => locals
       when "rogue" then
-        render :partial => 'characters/character_sheets/rogue' #, :locals => locals
+        render :partial => 'characters/rogue' #, :locals => locals
       when "soldier" then
-        render :partial => 'characters/character_sheets/soldier' #, :locals => locals
+        render :partial => 'characters/soldier' #, :locals => locals
     end
   end
 

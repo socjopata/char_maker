@@ -62,7 +62,7 @@ deity = Deity.find_by_name!("Kastor")
   Spell.create(:name => spell_name, :profession_id => profession.id, :index => i+1, :deity_id => deity.id)
 end
 
-deity = Deity.find_by_name!("Bóg Smoczy")
+deity = Deity.find_by_name!("Smoczy Bóg")
 
 ["Potęga Przedwiecznego",
  "Relikwia Smoczego Boga",
