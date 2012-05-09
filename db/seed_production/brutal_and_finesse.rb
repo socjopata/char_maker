@@ -271,7 +271,7 @@ Umiejętność Pasywna." )
 
 #TODO check it
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Fechtunek w Obronie")
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Wybrana grupa broni(), Obrona+2")
 
 skill = Skill.create(:profession_type => "finesse",
                      :name => "Technika Ofensywna",
@@ -280,7 +280,7 @@ Umiejętność Pasywna." )
 
 
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Fechtunek w Ataku")
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Wybrana grupa broni(), Atak+2" )
 
 skill = Skill.create(:profession_type => "finesse",
                      :name => "Zmyłka",

@@ -241,6 +241,10 @@ class Statistics < ActiveRecord::Base
     character.profession.starting_weapon_proficiency + stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Biegłość w Grupie Broni" }.collect(&:value).sum
   end
 
+  def calculate_dexterity_and_strength_bonus
+   statistics_sum =  Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_s].to_i + Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_zr].to_i
+   (statistics_sum.to_f / 2).ceil
+  end
 
 end
 

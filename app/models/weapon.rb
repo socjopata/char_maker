@@ -17,17 +17,6 @@ class Weapon < ActiveRecord::Base
       4 => 16
   }
 
-  def total_speed
-
-  end
-
-  def total_damage
-
-  end
-
-  def total_attack
-
-  end
 
 
 end
