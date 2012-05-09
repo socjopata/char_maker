@@ -306,7 +306,7 @@
     <td style="text-align:left;width:1.6382in; " class="Tabela4_K18"><p class="P17">Mistrz Walki na Dystans</p></td>
     <td style="text-align:left;width:0.2403in; " class="Tabela4_L21"><p class="P17"><%= "X" if @skill_names.include?("Mistrz Walki na Dystans") %></p></td>
     <td style="text-align:left;width:1.65in; " class="Tabela4_M18">
-      <p class="P17">Ulubiona Broń:           #TODO                  </p></td>
+      <p class="P17">Ulubiona Broń: <%= @all_skills.detect{|skill| skill.name=="Ulubiona Broń"}.character_skills.first.skill_bonus_preference.choice  if @skill_names.include?("Ulubiona Broń") %>        </p></td>
     <td style="text-align:left;width:0.2389in; " class="Tabela4_N18"><p class="P13"><%= "X" if @skill_names.include?("Ulubiona Broń") %></p></td>
   </tr>
   <tr>
@@ -492,7 +492,7 @@
     <td colspan="3" style="text-align:left;width:0.5569in; " class="Tabela4_A36"><p class="P17">Odporność</p></td>
     <td colspan="2" style="text-align:left;width:0.2188in; " class="Tabela4_D36"><p class="P17"><%= "X" if @skill_names.include?("Odporność") %></p></td>
     <td colspan="3" style="text-align:left;width:0.7535in; " class="Tabela4_F35">
-      <p class="P17">Znajomość Regionu:                   TODO         </p></td>
+      <p class="P17">Znajomość Regionu: <%= @character.character_background.origin %> </p></td>
     <td style="text-align:left;width:0.2563in; " class="Tabela4_I35"><p class="P13">X</p></td>
     <td style="text-align:left;width:0.2194in; " class="Tabela4_J35"><p class="P10"> </p></td>
     <td colspan="2" style="text-align:left;width:1.6382in; " class="Tabela4_K34"><p class="P13"><%= @extra_skills[2] %></p></td>
@@ -572,7 +572,7 @@
     <td style="text-align:left;width:1.1125in; " class="Tabela1_F6"><p class="P16"> <%= @weapons[0].weapon.special_rules if @weapons[0].present? %></p></td>
     <td style="text-align:left;width:0.6111in; " class="Tabela1_G6"><p class="P16"> <%= @weapons[0].calculate_attack_bonus if @weapons[0].present? %></p></td>
     <td style="text-align:left;width:0.7708in; " class="Tabela1_H6"><p class="P16"> <%= @weapons[0].attack_fencing_parameter if @weapons[0].present? %></p></td>
-    <td style="text-align:left;width:0.6944in; " class="Tabela1_I6"><p class="P16"> <%= @character.statistics.calculate_dexterity_and_strength_bonus %> </p></td>
+    <td style="text-align:left;width:0.6944in; " class="Tabela1_I6"><p class="P16"> <%= @character.statistics.calculate_dexterity_and_strength_bonus if @weapons[0].present? %></p></td>
     <td style="text-align:left;width:0.7688in; " class="Tabela1_J6"><p class="P16"> <%= @weapons[0].hit_parameter if @weapons[0].present? %></p></td>
   </tr>
   <tr>
@@ -584,7 +584,7 @@
     <td style="text-align:left;width:1.1125in; " class="Tabela1_A3"><p class="P16"> <%= @weapons[1].weapon.special_rules if @weapons[1].present? %></p></td>
     <td style="text-align:left;width:0.6111in; " class="Tabela1_A3"><p class="P16"> <%= @weapons[1].calculate_attack_bonus if @weapons[1].present? %></p></td>
     <td style="text-align:left;width:0.7708in; " class="Tabela1_A3"><p class="P16"> <%= @weapons[1].attack_fencing_parameter if @weapons[1].present? %></p></td>
-    <td style="text-align:left;width:0.6944in; " class="Tabela1_A3"><p class="P16"> <%= @character.statistics.calculate_dexterity_and_strength_bonus %></p></td>
+    <td style="text-align:left;width:0.6944in; " class="Tabela1_A3"><p class="P16"> <%= @character.statistics.calculate_dexterity_and_strength_bonus if @weapons[1].present? %></p></td>
     <td style="text-align:left;width:0.7688in; " class="Tabela1_J3"><p class="P16"> <%= @weapons[1].hit_parameter if @weapons[1].present? %></p></td>
   </tr>
   <tr>
@@ -596,7 +596,7 @@
     <td style="text-align:left;width:1.1125in; " class="Tabela1_F6"><p class="P16"> <%= @weapons[2].weapon.special_rules if @weapons[2].present? %></p></td>
     <td style="text-align:left;width:0.6111in; " class="Tabela1_G6"><p class="P16"> <%= @weapons[2].calculate_attack_bonus if @weapons[2].present? %></p></td>
     <td style="text-align:left;width:0.7708in; " class="Tabela1_H6"><p class="P16"> <%= @weapons[2].attack_fencing_parameter if @weapons[2].present? %></p></td>
-    <td style="text-align:left;width:0.6944in; " class="Tabela1_I6"><p class="P16"> <%= @character.statistics.calculate_dexterity_and_strength_bonus %></p></td>
+    <td style="text-align:left;width:0.6944in; " class="Tabela1_I6"><p class="P16"> <%= @character.statistics.calculate_dexterity_and_strength_bonus if @weapons[2].present? %></p></td>
     <td style="text-align:left;width:0.7688in; " class="Tabela1_J6"><p class="P16"> <%= @weapons[2].hit_parameter if @weapons[2].present? %></p></td>
   </tr>
   <tr>
@@ -659,17 +659,17 @@
     <td style="text-align:left;width:1.0243in; " class="Tabela3_H2"><p class="P18">Obrona</p></td>
   </tr>
   <tr>
-    <td style="text-align:left;width:1.241in; " class="Tabela3_A3"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> </p></td>
-    <td style="text-align:left;width:1.0243in; " class="Tabela3_H3"><p class="P16"> </p></td>
+    <td style="text-align:left;width:1.241in; " class="Tabela3_A3"><p class="P16">  <%= @weapons[0].weapon.name if @weapons[0].present? %></p></td>
+    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> todo</p></td>
+    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @weapons[0].calculate_defense_bonus if @weapons[0].present? %></p></td>
+    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @shields.detect {|shield| shield.favorite?}.shield.defense_bonus if @shields.present? %></p></td>
+    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> todo</p></td>
+    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wi] if @weapons[0].present? %></p></td>
+    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @weapons[0].special_defense_bonus_for_total_defense_listing if @weapons[0].present? %></p></td>
+    <td style="text-align:left;width:1.0243in; " class="Tabela3_H3"><p class="P16"> todo</p></td>
   </tr>
   <tr>
-    <td style="text-align:left;width:1.241in; " class="Tabela3_A4"><p class="P16"> </p></td>
+    <td style="text-align:left;width:1.241in; " class="Tabela3_A4"><p class="P16">  <%= @weapons[1].weapon.name if @weapons[1].present? %></p></td>
     <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> </p></td>
     <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> </p></td>
     <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> </p></td>

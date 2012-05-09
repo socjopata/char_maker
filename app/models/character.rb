@@ -42,7 +42,7 @@ class Character < ActiveRecord::Base
   end
 
   def skill_choices_to_be_precised
-    statistics.stats_modifiers.select { |sm| (sm.group_name.match("Fechtunek w Grupie Broni") || sm.group_name.match("Wybrana broń") || sm.group_name.match("Wybrana tarcza") || sm.group_name.match("Wybrana grupa broni") )  }
+    statistics.stats_modifiers.select { |sm| (sm.group_name.match("Fechtunek w Grupie Broni") || sm.group_name.match("Wybrana broń") || sm.group_name.match("Wybrana tarcza") || sm.group_name.match("Wybrana grupa broni")) }
   end
 
   def make_rogue_a_finesse_fighter
@@ -135,6 +135,12 @@ class Character < ActiveRecord::Base
   def set_shield_as_main(inventory_item_id)
     character_shields.each do |_shield|
       _shield["id"]==inventory_item_id ? _shield.update_attribute(:favorite, true) : _shield.update_attribute(:favorite, false)
+    end
+  end
+
+  def set_armor_as_main(inventory_item_id)
+    character_armors.each do |_armor|
+      _armor["id"]==inventory_item_id ? _armor.update_attribute(:favorite, true) : _armor.update_attribute(:favorite, false)
     end
   end
 

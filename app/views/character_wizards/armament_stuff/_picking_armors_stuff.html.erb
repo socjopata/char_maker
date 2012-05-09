@@ -16,6 +16,7 @@
   <table id="character_armors" WIDTH=60%>
     <thead>
     <th>Nazwa</th>
+    <th>Oznacz zbroję jako aktualnie używaną</th>
     <th>Zmniejszenie ograniczenia Zręczności o 2pkt</th>
     <th>Zwiększenie limitu Zręczności  o 3pkt</th>
     <th>Zwiększenie wszystkich Parametrów Ochronnych Zbroi lub Pancerza o +1pkt</th>
@@ -25,6 +26,7 @@
     <% @character.character_armors.each do |item| %>
         <tr id=<%= item.id %>>
           <td class="alantar_td"><p class="normal"><%= item.armor.name -%></p></td>
+          <td class="alantar_td"><p class="normal set_armor" id=<%= "set_armor_#{item.id}" %>><%= set_armor_as_main(@character, item)  %></p></td>
           <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_dexterity_nerf" %>><%= item_upgrade_link(@character, item.resource, item, "dexterity_nerf") -%></p></td>
           <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_dexterity_cap" %>><%= item_upgrade_link(@character, item.resource, item, "dexterity_cap") -%></p></td>
           <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_defense_bonus" %>><%= item_upgrade_link(@character, item.resource, item, "defense_bonus") -%></p></td>

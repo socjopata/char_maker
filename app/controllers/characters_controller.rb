@@ -13,11 +13,12 @@ class CharactersController < ApplicationController
 
 
   def show
-    all_skills = @character.skills
-    @extra_skills = Skill.fetch_profession_skills_for(@character).select{|skill| all_skills.include? skill }
-    @skill_names = all_skills.map(&:name)
+    @all_skills = @character.skills
+    @extra_skills = Skill.fetch_profession_skills_for(@character).select{|skill| @all_skills.include? skill }
+    @skill_names = @all_skills.map(&:name)
 
     @weapons = @character.character_weapons
+    @shields = @character.character_shields
     render :layout => 'office'
   end
 

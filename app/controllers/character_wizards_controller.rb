@@ -153,6 +153,11 @@ class CharacterWizardsController < ApplicationController
     @character.set_shield_as_main(params[:inventory_item].to_i)
   end
 
+  def set_armor_as_main
+      @character.set_armor_as_main(params[:inventory_item].to_i)
+  end
+
+
   def update_countries_select
     country_selector = CountrySelector.new(@character, params[:id])
     render :partial => "countries", :locals => {:countries => country_selector.countries}

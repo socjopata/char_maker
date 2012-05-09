@@ -41,16 +41,20 @@ class CharacterWeapon < ActiveRecord::Base
     weapon_upgrade_modifier = attack_bonus.to_i
     weapon.attack_bonus.to_i + weapon_upgrade_modifier
   end
-
+   #this is for particular weapon.
   def calculate_defense_bonus
     weapon_upgrade_modifier = defense_bonus.to_i
     weapon.defense_bonus.to_i + weapon_upgrade_modifier
   end
 
+  def special_defense_bonus_for_total_defense_listing
+    character.statistics.stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Obrona Bliska" }.collect(&:value).sum
+  end
+
   #TODO extract to module
   def extract_bonus_from_stats_modifier_dsl_definition(type, stats_modifiers)
     if stats_modifiers.present?
-      stats_modifiers.select { |sm| sm.group_name[type] }.map { |sm| sm.group_name.match(/(?<=#{type})(.*?)(?=,)/)[0].to_i }.sum
+      stats_modifiers.select { |sm| sm.group_name[type] }.map { |sm| sm.group_name.match(/(?<=#{type})(.*?)(?=,)/)[0].to_i }.sum + stats_modifiers.select { |sm| sm.group_name["Fechtunek w Grupie Broni"]}.map(&:value).sum
     end
   end
 
@@ -64,6 +68,7 @@ class CharacterWeapon < ActiveRecord::Base
     favourite_weapon_bonus + favourite_weapon_group_bonus + overall_fencing_bonus + profession_base_parameter
   end
 
+   #and this is for weapon group.
   def defense_fencing_parameter
 
   end

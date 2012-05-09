@@ -154,6 +154,17 @@ module CharacterWizardHelper
     end
   end
 
+  def set_armor_as_main(character, connecting_object)
+     if connecting_object.favorite?
+       "Zbroja główna"
+     else
+       link_to("Oznacz jako aktualnie używaną",
+               character_wizards_set_armor_as_main_path(:char_id => character.id,
+                                                         :inventory_item => connecting_object.id),
+               :remote => true).html_safe
+     end
+   end
+
 end
 
 
