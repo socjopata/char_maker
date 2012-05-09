@@ -660,10 +660,10 @@
   </tr>
   <tr>
     <td style="text-align:left;width:1.241in; " class="Tabela3_A3"><p class="P16">  <%= @weapons[0].weapon.name if @weapons[0].present? %></p></td>
-    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> todo</p></td>
+    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @weapons[0].defense_fencing_parameter if @weapons[0].present? %></p></td>
     <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @weapons[0].calculate_defense_bonus if @weapons[0].present? %></p></td>
-    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @shields.detect {|shield| shield.favorite?}.shield.defense_bonus if @shields.present? %></p></td>
-    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> todo</p></td>
+    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @shield.total_defense_bonus if @shield.present? %></p></td>
+    <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_current_zr] %></p></td>
     <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wi] if @weapons[0].present? %></p></td>
     <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @weapons[0].special_defense_bonus_for_total_defense_listing if @weapons[0].present? %></p></td>
     <td style="text-align:left;width:1.0243in; " class="Tabela3_H3"><p class="P16"> todo</p></td>
@@ -752,28 +752,28 @@
     <td style="text-align:left;width:1.2924in; " class="Tabela6_F2"><p class="P16">Zasady Specjalne</p></td>
   </tr>
   <tr>
-    <td style="text-align:left;width:1.3021in; " class="Tabela6_A5"><p class="P16"> </p></td>
-    <td style="text-align:left;width:1.3118in; " class="Tabela6_D5"><p class="P16"> </p></td>
-    <td style="text-align:left;width:1.3125in; " class="Tabela6_E5"><p class="P16">/</p></td>
-    <td style="text-align:left;width:1.3118in; " class="Tabela6_D5"><p class="P16"> </p></td>
+    <td style="text-align:left;width:1.3021in; " class="Tabela6_A5"><p class="P16"> <%= @primary_armor.armor.name if @primary_armor.present?  %> </p></td>
+    <td style="text-align:left;width:1.3118in; " class="Tabela6_D5"><p class="P16"> <%= @primary_armor.protection_levels if @primary_armor.present?  %> </p></td>
+    <td style="text-align:left;width:1.3125in; " class="Tabela6_E5"><p class="P16"> <%= @primary_armor.calculate_dexterity_nerf if @primary_armor.present? %>/<%= @primary_armor.calculate_dexterity_cap if @primary_armor.present? %></p></td>
+    <td style="text-align:left;width:1.3118in; " class="Tabela6_D5"><p class="P16"> <%= @primary_armor.required_strength if @primary_armor.present?  %> </p></td>
     <td style="text-align:left;width:1.3125in; " class="Tabela6_E5"><p class="P16">- -</p></td>
-    <td style="text-align:left;width:1.2924in; " class="Tabela6_F5"><p class="P16"> </p></td>
+    <td style="text-align:left;width:1.2924in; " class="Tabela6_F5"><p class="P16"> <%= @primary_armor.armor.special_rules if @primary_armor.present?  %> </p></td>
   </tr>
   <tr>
-    <td style="text-align:left;width:1.3021in; " class="Tabela6_A4"><p class="P16"> </p></td>
-    <td style="text-align:left;width:1.3118in; " class="Tabela6_A4"><p class="P16"> </p></td>
-    <td style="text-align:left;width:1.3125in; " class="Tabela6_A4"><p class="P16">/</p></td>
-    <td style="text-align:left;width:1.3118in; " class="Tabela6_A4"><p class="P16"> </p></td>
+    <td style="text-align:left;width:1.3021in; " class="Tabela6_A4"><p class="P16"> <%= @secondary_armor.armor.name if @secondary_armor.present?  %> </p></td>
+    <td style="text-align:left;width:1.3118in; " class="Tabela6_A4"><p class="P16"> <%= @secondary_armor.protection_levels if @secondary_armor.present?  %></p></td>
+    <td style="text-align:left;width:1.3125in; " class="Tabela6_A4"><p class="P16"> <%= @secondary_armor.calculate_dexterity_nerf if @secondary_armor.present? %>/<%= @secondary_armor.calculate_dexterity_cap if @secondary_armor.present? %></p></td>
+    <td style="text-align:left;width:1.3118in; " class="Tabela6_A4"><p class="P16"> <%= @secondary_armor.required_strength if @secondary_armor.present?  %> </p></td>
     <td style="text-align:left;width:1.3125in; " class="Tabela6_A4"><p class="P16">- -</p></td>
-    <td style="text-align:left;width:1.2924in; " class="Tabela6_F4"><p class="P16"> </p></td>
+    <td style="text-align:left;width:1.2924in; " class="Tabela6_F4"><p class="P16"> <%= @secondary_armor.armor.special_rules if @secondary_armor.present?  %></p></td>
   </tr>
   <tr>
-    <td style="text-align:left;width:1.3021in; " class="Tabela6_A5"><p class="P16">TARCZA</p></td>
+    <td style="text-align:left;width:1.3021in; " class="Tabela6_A5"><p class="P16"> <%= @shield.shield.name if @shield.present?  %></p></td>
     <td style="text-align:left;width:1.3118in; " class="Tabela6_D5"><p class="P16">- -</p></td>
-    <td style="text-align:left;width:1.3125in; " class="Tabela6_E5"><p class="P16">/</p></td>
-    <td style="text-align:left;width:1.3118in; " class="Tabela6_D5"><p class="P16"> </p></td>
+    <td style="text-align:left;width:1.3125in; " class="Tabela6_E5"><p class="P16"> <%= @shield.calculate_dexterity_nerf if @shield.present? %>/<%= @shield.calculate_dexterity_cap if @shield.present? %></p></td>
+    <td style="text-align:left;width:1.3118in; " class="Tabela6_D5"><p class="P16"> <%= @shield.required_strength if @shield.present?  %></p></td>
     <td style="text-align:left;width:1.3125in; " class="Tabela6_E5"><p class="P16"> </p></td>
-    <td style="text-align:left;width:1.2924in; " class="Tabela6_F5"><p class="P16"> </p></td>
+    <td style="text-align:left;width:1.2924in; " class="Tabela6_F5"><p class="P16"> <%= @shield.shield.special_rules if @shield.present?  %> </p></td>
   </tr>
 </table>
 <p class="P1"> </p>

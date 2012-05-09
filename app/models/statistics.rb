@@ -154,6 +154,20 @@ class Statistics < ActiveRecord::Base
     dexterity + calculate_main_skill_bonus_for("ZR") + trait_modifier_for_main_skill_named("ZR")
   end
 
+  def calculate_current_zr
+    armor = character.character_armors.detect{|armor| armor.favorite?}
+    shield = character.character_shields.detect{|shield| shield.favorite?}
+
+    combined_dexterity_cap = [armor.try(:calculate_dexterity_cap), shield.try(:calculate_dexterity_cap)].compact.min.to_i
+    combined_dexterity_nerf = armor.try(:calculate_dexterity_nerf).to_i + shield.try(:calculate_dexterity_nerf).to_i
+
+    (calculate_zr - combined_dexterity_nerf) < combined_dexterity_cap ? (calculate_zr - combined_dexterity_nerf) : combined_dexterity_cap
+  end
+
+  def the_above_fifteen_zr_bonus
+    calculate_current_zr - 15 < 0 ? 0 : calculate_current_zr - 15
+  end
+
   def calculate_wi
     faith + calculate_main_skill_bonus_for("WI") + trait_modifier_for_main_skill_named("WI")
   end
@@ -245,6 +259,8 @@ class Statistics < ActiveRecord::Base
    statistics_sum =  Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_s].to_i + Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_zr].to_i
    (statistics_sum.to_f / 2).ceil
   end
+
+
 
 end
 

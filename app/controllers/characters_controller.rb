@@ -18,7 +18,10 @@ class CharactersController < ApplicationController
     @skill_names = @all_skills.map(&:name)
 
     @weapons = @character.character_weapons
-    @shields = @character.character_shields
+    @shield = @character.character_shields.detect {|shield| shield.favorite?}
+    @primary_armor = @character.character_armors.where(:favorite => true).first
+    @secondary_armor =  @character.character_armors.where(:favorite => false).first
+
     render :layout => 'office'
   end
 

@@ -11,8 +11,9 @@ skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S",
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "domyślne")
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
-#TODO wszystkie ograniczenia wynikające z noszenia średnich i ciężkich Zbroi oraz Pancerzy oraz używania tarcz zmniejszane są o 5pkt,
-#TODO  check Armor penatly
+s_choice.stats_modifiers.create(:modifies => "armament,armors", :value => 5, :group_name => "dexterity_nerf", :evaluated_instruction => "true")
+s_choice.stats_modifiers.create(:modifies => "armament,armors", :value => 5, :group_name => "dexterity_cap" , :evaluated_instruction => "true")
+
 
 skill = Skill.create(:profession_type => "brutal",
                      :name => "Cios Śmierci",
@@ -271,7 +272,7 @@ Umiejętność Pasywna." )
 
 #TODO check it
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Wybrana grupa broni(), Obrona+2")
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Wybrana grupa broni(), Obrona+2,")
 
 skill = Skill.create(:profession_type => "finesse",
                      :name => "Technika Ofensywna",
@@ -280,7 +281,7 @@ Umiejętność Pasywna." )
 
 
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Wybrana grupa broni(), Atak+2" )
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Wybrana grupa broni(), Atak+2," )
 
 skill = Skill.create(:profession_type => "finesse",
                      :name => "Zmyłka",
