@@ -1201,7 +1201,7 @@ item.armament_requirements.create(:check_applies_to => "statistics", :name => "s
 
 item = Armor.create(
     :group_name => "Kirysy Folgowe Kryte",
-    :name => "Typowy Kirys Folgowy Kryte",
+    :name => "Typowy Kirys Folgowy Kryty",
     :armor_type => "Typowy",
     :dexterity_nerf => 6,
     :dexterity_cap => 15,
@@ -1215,7 +1215,7 @@ item.armament_requirements.create(:check_applies_to => "statistics", :name => "s
 
 item = Armor.create(
     :group_name => "Kirysy Folgowe Kryte",
-    :name => "Ciężki Kirys Folgowy Kryte",
+    :name => "Ciężki Kirys Folgowy Kryty",
     :armor_type => "Ciężki",
     :dexterity_nerf => 7,
     :dexterity_cap => 13,

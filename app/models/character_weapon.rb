@@ -7,10 +7,6 @@ class CharacterWeapon < ActiveRecord::Base
     weapon
   end
 
-  def calculate_range
-
-  end
-
   #TODO modify it to search for tempo -1 dsl thing s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana broń, Atak+1, Obrona+1, Tempo-1")  #This "DSL" can be improved
   #start from checking all Tempo-1
   def calculate_speed
@@ -34,16 +30,16 @@ class CharacterWeapon < ActiveRecord::Base
   end
 
   def hit_parameter
-    calculate_attack_bonus + attack_fencing_parameter + character.statistics.calculate_dexterity_and_strength_bonus
+    calculate_attack_bonus_for_particular_weapon + attack_fencing_parameter + character.statistics.calculate_dexterity_and_strength_bonus
   end
 
-  #this is for particular weapon.
-  def calculate_attack_bonus
+
+  def calculate_attack_bonus_for_particular_weapon
     weapon_upgrade_modifier = attack_bonus.to_i
     weapon.attack_bonus.to_i + weapon_upgrade_modifier
   end
-   #this is for particular weapon.
-  def calculate_defense_bonus
+
+  def calculate_defense_bonus_for_particular_weapon
     weapon_upgrade_modifier = defense_bonus.to_i
     weapon.defense_bonus.to_i + weapon_upgrade_modifier
   end
@@ -55,7 +51,7 @@ class CharacterWeapon < ActiveRecord::Base
   #TODO extract to module
   def extract_bonus_from_stats_modifier_dsl_definition(type, stats_modifiers)
     if stats_modifiers.present?
-      stats_modifiers.select { |sm| sm.group_name[type] }.map { |sm| sm.group_name.match(/(?<=#{type})(.*?)(?=,)/)[0].to_i }.sum + stats_modifiers.select { |sm| sm.group_name["Fechtunek w Grupie Broni"]}.map(&:value).sum
+      stats_modifiers.select { |sm| sm.group_name[type] }.map { |sm| sm.group_name.match(/(?<=#{type})(.*?)(?=,)/)[0].to_i }.sum + stats_modifiers.select { |sm| sm.group_name["Fechtunek w Grupie Broni"] }.map(&:value).sum
     end
   end
 
@@ -69,7 +65,7 @@ class CharacterWeapon < ActiveRecord::Base
     favorite_weapon_bonus.to_i + favorite_weapon_group_bonus.to_i + overall_fencing_bonus.to_i + profession_base_parameter.to_i
   end
 
-   #and this is for weapon group.
+  #and this is for weapon group.
   def defense_fencing_parameter
     favorite_weapon_bonus = extract_bonus_from_stats_modifier_dsl_definition("Obrona", character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten)
     favorite_weapon_group_bonus = extract_bonus_from_stats_modifier_dsl_definition("Obrona", character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.group_name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten)
@@ -79,5 +75,34 @@ class CharacterWeapon < ActiveRecord::Base
     favorite_weapon_bonus.to_i + favorite_weapon_group_bonus.to_i + overall_fencing_bonus.to_i + profession_base_parameter.to_i
   end
 
+  def dual_wield
+    character.weapons.select { |weapon| weapon.name!="Nóż do rzucania" or weapon.weapon_type!="Dw" }[0..1]
+  end
+
+  def dual_wield_names
+    dual_wield.map(&:name).join(" i ")
+  end
+
+  def calculate_defense_bonus_for_dual_wield
+    #TODO
+    #weapon_upgrade_modifier = defense_bonus.to_i
+    #weapon.defense_bonus.to_i + weapon_upgrade_modifier
+  end
+
+  def total_defense(dual_wield, shield=nil)
+    if dual_wield
+
+    elsif character.wield_style.name=="Styl walki jedną bronią (jednoręczną/dwuręczną)"
+
+    elsif character.wield_style.name=="Styl walki bronią i tarczą"
+
+     result = defense_fencing_parameter +
+          calculate_defense_bonus_for_particular_weapon +
+          Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_current_zr].to_i +
+          Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_wi].to_i +
+          special_defense_bonus_for_total_defense_listing
+     shield.present? ? result = result + shield.total_defense_bonus(true) : result
+    end
+  end
 
 end
