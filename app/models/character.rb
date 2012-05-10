@@ -116,7 +116,7 @@ class Character < ActiveRecord::Base
 
     if proficiency.blank? && value=="true" && points_left > 0
       #create proficiency  and decrease a counter
-      character_weapon_proficiencies.create(:name => name)
+      character_weapon_proficiencies.create!(:name => name)
       counter -= 1
     elsif  proficiency.present? && value=="false"
       #delete proficiency and increase a counter

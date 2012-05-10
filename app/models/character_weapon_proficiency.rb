@@ -3,5 +3,5 @@ class CharacterWeaponProficiency < ActiveRecord::Base
   set_table_name "character_weapon_proficiencies"
 
   belongs_to :character
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :scope => :character_id
 end

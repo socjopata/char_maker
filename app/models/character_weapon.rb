@@ -89,10 +89,16 @@ class CharacterWeapon < ActiveRecord::Base
     #weapon.defense_bonus.to_i + weapon_upgrade_modifier
   end
 
+   #TODO refactor
   def total_defense(dual_wield, shield=nil)
     if dual_wield
 
     elsif character.wield_style.name=="Styl walki jedną bronią (jednoręczną/dwuręczną)"
+      result = defense_fencing_parameter +
+                calculate_defense_bonus_for_particular_weapon +
+                Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_current_zr].to_i +
+                Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_wi].to_i +
+                special_defense_bonus_for_total_defense_listing
 
     elsif character.wield_style.name=="Styl walki bronią i tarczą"
 
