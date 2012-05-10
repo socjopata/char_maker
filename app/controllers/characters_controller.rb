@@ -48,6 +48,8 @@ class CharactersController < ApplicationController
       if @character.save
         format.html { redirect_to(first_step_character_wizard_path(:char_id => @character.id)) }
       else
+        @character_background = @character.character_background
+        @deities = Deity.all
         format.html { render :action => "new" }
       end
     end

@@ -41,6 +41,9 @@ class Purse < ActiveRecord::Base
       'Potomek Wodza' => 0
   }
 
+  def close_the_bill(amount_after_shopping)
+
+  end
 
   def update_current
     money_bonuses = character.statistics.stats_modifiers.select { |sm| sm.modifies=="money" }

@@ -7,6 +7,7 @@ class CreateCharacters < ActiveRecord::Migration
       t.text :description
       t.string :gender
       t.boolean :finished #temporary solution i think, before introducing state_machine
+      t.integer :free_skill_points_left
       t.timestamps
     end
   end

@@ -32,7 +32,8 @@
     <h3>Wybierz bóstwo</h3>
     <%= f.fields_for :character_background_attributes do |cb| %>
         <%= cb.select :deity_id, @deities.collect { |p| [p.name, p.id] } %><br/>
-        <p>Uwaga: Ateizm ogranicza wybór klasy postaci. Na przykład nie można zostać kapłanem-ateistą.</p>
+        <p>Uwaga: Ateizm ogranicza wybór klasy postaci. Na przykład nie można zostać kapłanem-ateistą.
+          Zwróć też szczególną uwage na wybór bóstwa jeśli planujesz stworzenie psotaci Kapłana lub Szamana.</p>
     <% end %>
 
     <br/>

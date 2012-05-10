@@ -24,7 +24,6 @@ class CharacterWizardsController < ApplicationController
       @character.pick_a_profession(params[:professions]) if @character.character_profession.blank?
       @character.character_background.set_social_class if @character.character_background.social_classes.blank?
       @character.character_background.fill_the_purse_with_gold unless @character.purse.present?
-      @character.character_background.update_attribute(:deity_id, params[:deity_id])
       redirect_to second_step_character_wizard_path(:char_id => @character.id)
     end
   end
@@ -130,9 +129,10 @@ class CharacterWizardsController < ApplicationController
         if @character.is_of_scholar_class_type?
           redirect_to picking_spells_step_character_wizard_path(:char_id => @character)
         else
-          @character.update_attribute(:finished, true)
+          @character.update_attributes(:finished => true,
+                                       :free_skill_points_left => Skill.calculate_free_skill_amount(@character, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_int].to_i, session[:skills_used].to_i))
+          @character.purse.close_the_bill(session[:coins_left])  #TODO
           redirect_to characters_path
-          #TODO save number of coins, free skills left...
           #make it finished and redirect to index or show
         end
       else
