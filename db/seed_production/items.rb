@@ -672,7 +672,7 @@ item.armament_requirements.create(:check_applies_to => "fightstyle", :name => "F
 
 item = Weapon.create(
   :group_name => "Kopie",
-  :name => "Lekka",
+  :name => "Lekka Kopia",
   :weapon_type => "T",
   :range => "-",
   :speed => 0,
@@ -687,7 +687,7 @@ item = Weapon.create(
 
 item = Weapon.create(
   :group_name => "Kopie",
-  :name => "Lekka",
+  :name => "Ciężka Kopia",
   :weapon_type => "T",
   :range => "-",
   :speed => 0,

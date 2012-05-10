@@ -138,6 +138,34 @@ class Statistics < ActiveRecord::Base
     [skill_free_assignment_base, default_skills_ids]
   end
 
+  def calculate_current_zr
+    armor = character.character_armors.detect{|armor| armor.favorite?}
+    character.wield_style.name=="Styl walki bronią i tarczą" ? shield = character.character_shields.detect{|shield| shield.favorite?} : shield = nil
+
+    combined_dexterity_cap = [armor.try(:calculate_dexterity_cap), shield.try(:calculate_dexterity_cap)].compact.min.to_i
+    combined_dexterity_cap = 666 if combined_dexterity_cap.zero?
+
+    combined_dexterity_nerf = armor.try(:calculate_dexterity_nerf).to_i + shield.try(:calculate_dexterity_nerf).to_i
+    (combined_dexterity_nerf + calculate_zr) > combined_dexterity_cap ?  combined_dexterity_cap :  (combined_dexterity_nerf + calculate_zr)
+  end
+
+  def the_above_fifteen_zr_bonus
+    calculate_current_zr - 15 < 0 ? 0 : calculate_current_zr - 15
+  end
+
+  def special_ranged_defense_parameter
+    character.current_level
+  end
+
+  def ranged_defense_bonus_from_skills
+    stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Obrona Daleka" }.collect(&:value).sum
+  end
+
+  def total_ranged_defense(shield)
+    result =  20 + the_above_fifteen_zr_bonus + ranged_defense_bonus_from_skills + special_ranged_defense_parameter
+    shield.present? ? result + shield.total_defense_bonus(true) : result
+  end
+
   def calculate_main_stats
     [calculate_s, calculate_zr, calculate_wt, calculate_int, calculate_wi, calculate_o]
   end
@@ -154,19 +182,6 @@ class Statistics < ActiveRecord::Base
     dexterity + calculate_main_skill_bonus_for("ZR") + trait_modifier_for_main_skill_named("ZR")
   end
 
-  def calculate_current_zr
-    armor = character.character_armors.detect{|armor| armor.favorite?}
-    shield = character.character_shields.detect{|shield| shield.favorite?}
-
-    combined_dexterity_cap = [armor.try(:calculate_dexterity_cap), shield.try(:calculate_dexterity_cap)].compact.min.to_i
-    combined_dexterity_nerf = armor.try(:calculate_dexterity_nerf).to_i + shield.try(:calculate_dexterity_nerf).to_i
-
-    (calculate_zr - combined_dexterity_nerf) < combined_dexterity_cap ? (calculate_zr - combined_dexterity_nerf) : combined_dexterity_cap
-  end
-
-  def the_above_fifteen_zr_bonus
-    calculate_current_zr - 15 < 0 ? 0 : calculate_current_zr - 15
-  end
 
   def calculate_wi
     faith + calculate_main_skill_bonus_for("WI") + trait_modifier_for_main_skill_named("WI")

@@ -615,7 +615,7 @@
     <td style="text-align:left;width:0.7688in; " class="Tabela1_J5"><p class="P21">Trafienie</p></td>
   </tr>
   <tr>
-    <td style="text-align:left;width:1.1819in; " class="Tabela1_A6"><p class="P16"> </p></td>
+    <td style="text-align:left;width:1.1819in; " class="Tabela1_A6"><p class="P16"> <%= @ranged_weapon.ranged_weapon.name if @ranged_weapon.present? %></p></td>
     <td colspan="2" style="text-align:left;width:0.5681in; " class="Tabela1_B6"><p class="P16">/           /</p></td>
     <td style="text-align:left;width:0.5215in; " class="Tabela1_D6"><p class="P16"> </p></td>
     <td style="text-align:left;width:1.1125in; " class="Tabela1_F6"><p class="P16"> </p></td>
@@ -684,7 +684,7 @@
          <td style="text-align:left;width:1.241in; " class="Tabela3_A3"><p class="P16">  <%= @weapons[0].weapon.name if @weapons[0].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @weapons[0].defense_fencing_parameter if @weapons[0].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @weapons[0].calculate_defense_bonus_for_particular_weapon if @weapons[0].present? %></p></td>
-         <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @shield.total_defense_bonus(true) if @shield.present?  && @weapons[0].present? %></p></td>
+         <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= (@shield.present? && @weapons[0].present?) ? @shield.total_defense_bonus(true) : "-" %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_current_zr] if @weapons[0].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wi] if @weapons[0].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @weapons[0].special_defense_bonus_for_total_defense_listing if @weapons[0].present? %></p></td>
@@ -694,7 +694,7 @@
          <td style="text-align:left;width:1.241in; " class="Tabela3_A4"><p class="P16">  <%= @weapons[1].weapon.name if @weapons[1].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= @weapons[1].defense_fencing_parameter if @weapons[1].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= @weapons[1].calculate_defense_bonus_for_particular_weapon if @weapons[1].present? %></p></td>
-         <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= @shield.total_defense_bonus(true) if @shield.present? && @weapons[1].present? %></p></td>
+         <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= (@shield.present? && @weapons[1].present?) ? @shield.total_defense_bonus(true) : "-" %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_current_zr] if @weapons[1].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wi] if @weapons[1].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= @weapons[1].special_defense_bonus_for_total_defense_listing if @weapons[1].present? %></p></td>
@@ -729,11 +729,11 @@
   </tr>
   <tr>
     <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16">20</p></td>
-    <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16"> </p></td>
-    <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16"> </p></td>
-    <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16"> </p></td>
-    <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.9924in; " class="Tabela5_F3"><p class="P16"> </p></td>
+    <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16"> <%= @character.statistics.the_above_fifteen_zr_bonus %></p></td>
+    <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16"> <%= @shield.present? ? @shield.total_defense_bonus(true) : "-" %></p></td>
+    <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16"> <%= @character.statistics.ranged_defense_bonus_from_skills %></p></td>
+    <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16"> <%= @character.statistics.special_ranged_defense_parameter %></p></td>
+    <td style="text-align:left;width:0.9924in; " class="Tabela5_F3"><p class="P16"> <%= @character.statistics.total_ranged_defense(@shield) %></p></td>
   </tr>
   <tr>
     <td style="text-align:left;width:1.3701in; " class="Tabela5_A4"><p class="P16"> </p></td>

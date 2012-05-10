@@ -104,7 +104,7 @@ module CharacterWizardHelper
   end
 
   def weapon_choice_for(sm)
-    ("<label>#{sm.grand_daddy.name} </label>" + select_tag("choice", options_for_select(Weapon.all.map(&:name)))).html_safe
+    ("<label>#{sm.grand_daddy.name} </label>" + select_tag("choice", options_for_select( Weapon.all.map(&:name))+RangedWeapon.all.map(&:name) )).html_safe
   end
 
   def shield_choice_for(sm)

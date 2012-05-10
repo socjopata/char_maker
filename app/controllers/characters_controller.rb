@@ -22,6 +22,8 @@ class CharactersController < ApplicationController
     @primary_armor = @character.character_armors.where(:favorite => true).first
     @secondary_armor =  @character.character_armors.where(:favorite => false).first
 
+    @ranged_weapon = @character.character_ranged_weapons.first
+
     render :layout => 'office'
   end
 

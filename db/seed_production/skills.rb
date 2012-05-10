@@ -3,7 +3,7 @@
 skill = Skill.create(:profession_type => "default",
                      :name => "Akrobatyka",
                       :limitations => "aby korzystać z tej zdolności postać nie może mieć mniej niż 20pkt aktualnej Zręczności",
-                     :way_it_works => "szystkie testy Zręczności jakie wykona postać mają zmniejszony poziom trudności dzięki czemu adekwatna kara redukowana jest o -10pkt, np.: bohater pędzi po dachach budynków i decyduje się na odległy skok do jednego z okien kamienicy. MG wykonuje test z modyfikatorem -15pkt, dzięki Akrobatyce kara ta zmniejszana jest tylko do -5pkt.
+                     :way_it_works => "Wszystkie testy Zręczności jakie wykona postać mają zmniejszony poziom trudności dzięki czemu adekwatna kara redukowana jest o -10pkt, np.: bohater pędzi po dachach budynków i decyduje się na odległy skok do jednego z okien kamienicy. MG wykonuje test z modyfikatorem -15pkt, dzięki Akrobatyce kara ta zmniejszana jest tylko do -5pkt.
 Zręczność postaci podnoszona jest o +1pkt, a Obrona Daleka jak i Zmiana Zasięgu wzrastają o +3pkt.
 Umiejętność Pasywna
 Dodatkowo, podczas walki bohater może zrezygnować z jednego ataku dzięki czemu zwiększa swoją Obronę o +5pkt (akcja ta nie jest Umiejętnością Pasywną).")
