@@ -407,7 +407,7 @@ item.armament_requirements.create(:check_applies_to => "fightstyle", :name => "B
 
 item = Weapon.create(
   :group_name => "Obuchowa Topory",
-  :name => "Księżycowy",
+  :name => "Topór Księżycowy",
   :weapon_type => "C",
   :range => "D",
   :speed => 8,

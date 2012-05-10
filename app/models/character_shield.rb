@@ -20,7 +20,7 @@ class CharacterShield < ActiveRecord::Base
   end
 
   def required_strength
-    required_strength = shield.armament_requirements.detect { |req| req.name=="strength" }.value
+    required_strength = shield.armament_requirements.detect { |req| req.name=="strength" }.try(:value)
     required_strength.present? ? required_strength : "-"
   end
 

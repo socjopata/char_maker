@@ -12,6 +12,7 @@ class Character < ActiveRecord::Base
   has_many :character_skills
   has_many :skills, :through => :character_skills
   belongs_to :fight_style
+  belongs_to :wield_style
   has_many :character_weapon_proficiencies
 
   has_many :character_weapons, :dependent => :destroy

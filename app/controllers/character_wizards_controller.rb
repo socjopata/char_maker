@@ -82,7 +82,7 @@ class CharacterWizardsController < ApplicationController
       @character.make_rogue_a_finesse_fighter
       @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
     elsif request.post?
-      if @character.fight_style.present? or @character.update_attribute(:fight_style_id, params[:fight_style_id])
+      if @character.fight_style.present? or @character.update_attributes(:fight_style_id => params[:fight_style_id], :wield_style_id => params[:wield_style_id] )
         redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
       else
         flash.alert = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
@@ -132,6 +132,7 @@ class CharacterWizardsController < ApplicationController
         else
           @character.update_attribute(:finished, true)
           redirect_to characters_path
+          #TODO save number of coins, free skills left...
           #make it finished and redirect to index or show
         end
       else

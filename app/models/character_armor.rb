@@ -30,7 +30,7 @@ class CharacterArmor < ActiveRecord::Base
   end
 
   def required_strength
-    required_strength = armor.armament_requirements.detect { |req| req.name=="strength" }.value
+    required_strength = armor.armament_requirements.detect { |req| req.name=="strength" }.try(:value)
     required_strength.present? ? required_strength : "-"
   end
 

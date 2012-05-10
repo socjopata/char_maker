@@ -8,7 +8,14 @@
 <%= form_tag :url => fourth_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
     <%= hidden_field_tag :char_id, @character.id %>
     <% FightStyle.all.each do |style| %>
-        <label><%= style.name %></label><%= radio_button_tag "fight_style_id", style.id, @character.fight_style_id, :disabled => (@character.profession.general_type=="rogue" && style.name=="Finezyjny") ? true : false  %>
+        <label><%= style.name %></label><%= radio_button_tag "fight_style_id", style.id, @character.fight_style_id, :disabled => (@character.profession.general_type=="rogue" && style.name=="Finezyjny") ? true : false %>
+    <% end %>
+    <br/><br/>
+    <p>Wybierz preferowaną taktykę walki. Wybór posłuży do poprawnego wypełnienia Twojej karty postaci.
+    </p><br/>
+
+    <% WieldStyle.all.each do |style| %>
+        <label><%= style.name %></label><%= radio_button_tag "wield_style_id", style.id, @character.wield_style_id %>
     <% end %>
 <% end %>
 
@@ -28,6 +35,7 @@
     <TD COLSPAN=2 WIDTH=12% class="black alantar_td">
       <P class="fs_14 white_normal">Premia/Kara</P>
     </TD>
+    a
   </TR>
   <TR VALIGN=TOP>
     <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
@@ -143,8 +151,9 @@
 <script type="text/javascript">
 
     function proceed() {
-        var radio_buttons = $("input[name='fight_style_id']");
-        if (radio_buttons.filter(':checked').length == 0) {
+        var fightsyles = $("input[name='fight_style_id']");
+        var wieldstyles = $("input[name='wield_style_id']");
+        if ((fightsyles.filter(':checked').length == 0) || (wieldstyles.filter(':checked').length == 0)) {
             alert("Musisz wybrać styl walki, zanim będziesz mógł przejść dalej.")
         } else {
             $("form").submit();
