@@ -45,12 +45,18 @@ module CharacterWizardHelper
   end
 
   def humanize_purse_content(cooper)
+    gold, silver, cooper = purse_content(cooper)
+    "#{gold} złota, #{silver} srebra i #{cooper} miedzi"
+  end
+
+  def purse_content(cooper)
     values = sprintf('%0.2f', (cooper.to_f / 100)).split '.'
     gold = values[0]
     silver = values[1][0]
     cooper = values[1][1]
-    "#{gold} złota, #{silver} srebra i #{cooper} miedzi"
+    [gold, silver, cooper]
   end
+
 
   def display_default_for_profession_and_origin(stats_choice)
     stats_choice.stats_modifiers.collect do |choice_part|
@@ -104,7 +110,7 @@ module CharacterWizardHelper
   end
 
   def weapon_choice_for(sm)
-    ("<label>#{sm.grand_daddy.name} </label>" + select_tag("choice", options_for_select( Weapon.all.map(&:name))+RangedWeapon.all.map(&:name) )).html_safe
+    ("<label>#{sm.grand_daddy.name} </label>" + select_tag("choice", options_for_select(Weapon.all.map(&:name))+RangedWeapon.all.map(&:name))).html_safe
   end
 
   def shield_choice_for(sm)
@@ -155,15 +161,15 @@ module CharacterWizardHelper
   end
 
   def set_armor_as_main(character, connecting_object)
-     if connecting_object.favorite?
-       "Zbroja główna"
-     else
-       link_to("Oznacz jako aktualnie używaną",
-               character_wizards_set_armor_as_main_path(:char_id => character.id,
-                                                         :inventory_item => connecting_object.id),
-               :remote => true).html_safe
-     end
-   end
+    if connecting_object.favorite?
+      "Zbroja główna"
+    else
+      link_to("Oznacz jako aktualnie używaną",
+              character_wizards_set_armor_as_main_path(:char_id => character.id,
+                                                       :inventory_item => connecting_object.id),
+              :remote => true).html_safe
+    end
+  end
 
 end
 

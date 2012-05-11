@@ -903,8 +903,8 @@
   </tr>
   <tr>
     <td style="text-align:left;width:0.8007in; " class="Tabela7_A8"><p class="P16">Bijatyka</p></td>
-    <td style="text-align:left;width:0.6417in; " class="Tabela7_A7"><p class="P16"> </p></td>
-    <td colspan="2" style="text-align:left;width:0.1597in; " class="Tabela7_A7"><p class="P16"> </p></td>
+    <td style="text-align:left;width:0.6417in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.raw_fencing_when_attacking %> </p></td>
+    <td colspan="2" style="text-align:left;width:0.1597in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.calculate_dexterity_and_strength_bonus %> </p></td>
     <td colspan="2" style="text-align:left;width:0.3299in; " class="Tabela7_A7"><p class="P16"> </p></td>
     <td colspan="2" style="text-align:left;width:0.4604in; " class="Tabela7_A7"><p class="P16"> </p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela7_I8"><p class="P16"> </p></td>
@@ -931,9 +931,9 @@
   </tr>
   <tr>
     <td style="text-align:left;width:0.8007in; " class="Tabela7_A8"><p class="P16">Bijatyka</p></td>
-    <td style="text-align:left;width:0.6417in; " class="Tabela7_A7"><p class="P16"> </p></td>
-    <td colspan="2" style="text-align:left;width:0.1597in; " class="Tabela7_A7"><p class="P16"> </p></td>
-    <td colspan="2" style="text-align:left;width:0.3299in; " class="Tabela7_A7"><p class="P16"> </p></td>
+    <td style="text-align:left;width:0.6417in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.raw_fencing_when_defending %> </p></td>
+    <td colspan="2" style="text-align:left;width:0.1597in; " class="Tabela7_A7"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_current_zr] %></p></td>
+    <td colspan="2" style="text-align:left;width:0.3299in; " class="Tabela7_A7"><p class="P16"> <%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wi]}" %></p></td>
     <td colspan="2" style="text-align:left;width:0.4604in; " class="Tabela7_A7"><p class="P16"> </p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela7_I8"><p class="P16"> </p></td>
     <td style="text-align:left;width:0.2104in; " class="Tabela7_J24"><p class="P16"> </p></td>
@@ -1066,9 +1066,9 @@
   </tr>
   <tr>
     <td colspan="2" style="text-align:left;width:0.6417in; " class="Tabela7_B24"><p class="P6"> </p></td>
-    <td colspan="2" style="text-align:left;width:0.5014in; " class="Tabela7_F24"><p class="P6"> </p></td>
-    <td colspan="2" style="text-align:left;width:0.3708in; " class="Tabela7_F24"><p class="P6"> </p></td>
-    <td colspan="2" style="text-align:left;width:0.2417in; " class="Tabela7_H24"><p class="P6"> </p></td>
+    <td colspan="2" style="text-align:left;width:0.5014in; " class="Tabela7_F24"><p class="P6"> <%= @purse[0] %></p></td>
+    <td colspan="2" style="text-align:left;width:0.3708in; " class="Tabela7_F24"><p class="P6"> <%= @purse[1] %></p></td>
+    <td colspan="2" style="text-align:left;width:0.2417in; " class="Tabela7_H24"><p class="P6"> <%= @purse[2] %></p></td>
     <td style="text-align:left;width:0.2104in; " class="Tabela7_J24"><p class="P16"> </p></td>
     <td style="text-align:left;width:0.8097in; " class="Tabela7_K24"><p class="P5">+13</p></td>
     <td style="text-align:left;width:0.8097in; " class="Tabela7_L24"><p class="P5">1-28</p></td>

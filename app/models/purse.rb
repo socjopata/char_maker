@@ -42,7 +42,7 @@ class Purse < ActiveRecord::Base
   }
 
   def close_the_bill(amount_after_shopping)
-
+    amount_after_shopping < current ? update_attribute(:base, amount_after_shopping) : update_attribute(:base, current)
   end
 
   def update_current

@@ -24,6 +24,8 @@ class CharactersController < ApplicationController
 
     @ranged_weapon = @character.character_ranged_weapons.first
 
+    @purse =  view_context.purse_content(@character.purse.base)
+
     render :layout => 'office'
   end
 
