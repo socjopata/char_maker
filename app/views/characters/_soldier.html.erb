@@ -616,14 +616,14 @@
   </tr>
   <tr>
     <td style="text-align:left;width:1.1819in; " class="Tabela1_A6"><p class="P16"> <%= @ranged_weapon.ranged_weapon.name if @ranged_weapon.present? %></p></td>
-    <td colspan="2" style="text-align:left;width:0.5681in; " class="Tabela1_B6"><p class="P16">/           /</p></td>
-    <td style="text-align:left;width:0.5215in; " class="Tabela1_D6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:1.1125in; " class="Tabela1_F6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:1.1125in; " class="Tabela1_F6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.6111in; " class="Tabela1_G6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.7708in; " class="Tabela1_H6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.6944in; " class="Tabela1_I6"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.7688in; " class="Tabela1_J6"><p class="P16"> </p></td>
+    <td colspan="2" style="text-align:left;width:0.5681in; " class="Tabela1_B6"><p class="P16"> <%= @ranged_weapon.shooting_ranges if @ranged_weapon.present? %> </p></td>
+    <td style="text-align:left;width:0.5215in; " class="Tabela1_D6"><p class="P16"> <%= @ranged_weapon.calculate_speed if @ranged_weapon.present? %> </p></td>
+    <td style="text-align:left;width:1.1125in; " class="Tabela1_F6"><p class="P16"> <%= @ranged_weapon.calculate_damage if @ranged_weapon.present?  %></p></td>
+    <td style="text-align:left;width:1.1125in; " class="Tabela1_F6"><p class="P16"> <%= @ranged_weapon.bonus_from_special_rules if @ranged_weapon.present?  %> </p></td>
+    <td style="text-align:left;width:0.6111in; " class="Tabela1_G6"><p class="P16"> <%= @ranged_weapon.weapon_accuracy if @ranged_weapon.present?  %></p></td>
+    <td style="text-align:left;width:0.7708in; " class="Tabela1_H6"><p class="P16"> <%= @ranged_weapon.character_shooting_skill if @ranged_weapon.present?  %> </p></td>
+    <td style="text-align:left;width:0.6944in; " class="Tabela1_I6"><p class="P16"> <%= parameter_with_bonus_orientation(@character.statistics.calculate_dexterity_bonus)  if @ranged_weapon.present?  %> </p></td>
+    <td style="text-align:left;width:0.7688in; " class="Tabela1_J6"><p class="P16"> <%= @ranged_weapon.total_hit_chance_parameter if @ranged_weapon.present?  %> </p></td>
   </tr>
 </table>
 <p class="P1"> </p>
@@ -844,11 +844,11 @@
     <td style="text-align:left;width:0.8215in; " class="Tabela7_O2"><p class="P3">-3</p></td>
   </tr>
   <tr>
-    <td style="text-align:left;width:0.8007in; " class="Tabela7_N2"><p class="P16"> </p></td>
-    <td colspan="2" style="text-align:left;width:0.6417in; " class="Tabela7_N2"><p class="P16"> </p></td>
-    <td colspan="2" style="text-align:left;width:0.5014in; " class="Tabela7_N2"><p class="P16"> </p></td>
-    <td colspan="2" style="text-align:left;width:0.3708in; " class="Tabela7_N2"><p class="P16"> </p></td>
-    <td colspan="2" style="text-align:left;width:0.2417in; " class="Tabela7_N2"><p class="P16"> </p></td>
+    <td style="text-align:left;width:0.8007in; " class="Tabela7_N2"><p class="P16"> <%= @character.statistics.range_change_base %> </p></td>
+    <td colspan="2" style="text-align:left;width:0.6417in; " class="Tabela7_N2"><p class="P16"> <%= parameter_with_bonus_orientation(@character.statistics.calculate_strength_bonus) %></p></td>
+    <td colspan="2" style="text-align:left;width:0.5014in; " class="Tabela7_N2"><p class="P16"> <%= parameter_with_bonus_orientation(@character.statistics.calculate_dexterity_bonus) %></p></td>
+    <td colspan="2" style="text-align:left;width:0.3708in; " class="Tabela7_N2"><p class="P16"> <%= parameter_with_bonus_orientation(@character.statistics.calculate_range_change_bonus_from_skills) %></p></td>
+    <td colspan="2" style="text-align:left;width:0.2417in; " class="Tabela7_N2"><p class="P16"> <%=  @character.statistics.total_range_change %></p></td>
     <td style="text-align:left;width:0.8514in; " class="Tabela7_A2"><p class="P3">4-6</p></td>
     <td style="text-align:left;width:0.8215in; " class="Tabela7_O3"><p class="P3">-2</p></td>
   </tr>
@@ -905,9 +905,9 @@
     <td style="text-align:left;width:0.8007in; " class="Tabela7_A8"><p class="P16">Bijatyka</p></td>
     <td style="text-align:left;width:0.6417in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.raw_fencing_when_attacking %> </p></td>
     <td colspan="2" style="text-align:left;width:0.1597in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.calculate_dexterity_and_strength_bonus %> </p></td>
-    <td colspan="2" style="text-align:left;width:0.3299in; " class="Tabela7_A7"><p class="P16"> </p></td>
-    <td colspan="2" style="text-align:left;width:0.4604in; " class="Tabela7_A7"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.6778in; " class="Tabela7_I8"><p class="P16"> </p></td>
+    <td colspan="2" style="text-align:left;width:0.3299in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.calculate_brawl_bonus_from_special_rules %></p></td>
+    <td colspan="2" style="text-align:left;width:0.4604in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.calculate_brawl_bonus_from_skills("attack") %></p></td>
+    <td style="text-align:left;width:0.6778in; " class="Tabela7_I8"><p class="P16"> <%= @character.statistics.calculate_total_brawling("attack") %> </p></td>
     <td style="text-align:left;width:0.2104in; " class="Tabela7_J24"><p class="P16"> </p></td>
     <td style="text-align:left;width:0.8097in; " class="Tabela7_K24"><p class="P5">-3</p></td>
     <td style="text-align:left;width:0.8097in; " class="Tabela7_K24"><p class="P5">1-12</p></td>
@@ -934,8 +934,8 @@
     <td style="text-align:left;width:0.6417in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.raw_fencing_when_defending %> </p></td>
     <td colspan="2" style="text-align:left;width:0.1597in; " class="Tabela7_A7"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_current_zr] %></p></td>
     <td colspan="2" style="text-align:left;width:0.3299in; " class="Tabela7_A7"><p class="P16"> <%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wi]}" %></p></td>
-    <td colspan="2" style="text-align:left;width:0.4604in; " class="Tabela7_A7"><p class="P16"> </p></td>
-    <td style="text-align:left;width:0.6778in; " class="Tabela7_I8"><p class="P16"> </p></td>
+    <td colspan="2" style="text-align:left;width:0.4604in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.calculate_brawl_bonus_from_skills("defense") %></p></td>
+    <td style="text-align:left;width:0.6778in; " class="Tabela7_I8"><p class="P16"> <%= @character.statistics.calculate_total_brawling("defense") %></p></td>
     <td style="text-align:left;width:0.2104in; " class="Tabela7_J24"><p class="P16"> </p></td>
     <td style="text-align:left;width:0.8097in; " class="Tabela7_K24"><p class="P5">-1</p></td>
     <td style="text-align:left;width:0.8097in; " class="Tabela7_K24"><p class="P5">1-14</p></td>

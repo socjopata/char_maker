@@ -288,11 +288,52 @@ class Statistics < ActiveRecord::Base
     character.profession.starting_weapon_proficiency + stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Biegłość w Grupie Broni" }.collect(&:value).sum
   end
 
+  def calculate_dexterity_bonus
+    Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i
+  end
+
+  def calculate_strength_bonus
+    Statistics::BONUS_OR_PENALTY_RANGES[calculate_s].to_i
+  end
+
   def calculate_dexterity_and_strength_bonus
-    statistics_sum = Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_s].to_i + Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_zr].to_i
+    statistics_sum = calculate_strength_bonus + calculate_dexterity_bonus
     (statistics_sum.to_f / 2).ceil
+  end
+
+  def calculate_brawl_bonus_from_special_rules
+    0 #TODO
+  end
+
+  def calculate_brawl_bonus_from_skills(attack_or_defense)
+    if attack_or_defense=="attack"
+      0 #TODO
+    else
+      0 #TODO
+    end
+  end
+
+  def calculate_total_brawling(attack_or_defense)
+    if attack_or_defense=="attack"
+      raw_fencing_when_attacking + calculate_dexterity_and_strength_bonus + calculate_brawl_bonus_from_special_rules + calculate_brawl_bonus_from_skills("attack")
+    else
+      raw_fencing_when_defending + Statistics::BONUS_OR_PENALTY_RANGES[calculate_current_zr].to_i + Statistics::BONUS_OR_PENALTY_RANGES[calculate_wi].to_i + calculate_brawl_bonus_from_skills("defense")
+    end
+  end
+
+  def range_change_base
+    (raw_fencing_when_attacking + raw_fencing_when_defending) / 2
+  end
+
+  def calculate_range_change_bonus_from_skills
+    0 #TODO
+  end
+
+  def total_range_change
+    range_change_base + calculate_strength_bonus + calculate_dexterity_bonus + calculate_range_change_bonus_from_skills
   end
 
 
 end
+
 
