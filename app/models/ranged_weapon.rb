@@ -9,6 +9,8 @@ class RangedWeapon < ActiveRecord::Base
   has_many :characters, :through => :character_ranged_weapons
 
   BOWS = ["Strzelecka Łuki Proste", "Strzelecka Łuki Refleksyjne"]
+  SLINGS = ["Miotana Proce"]
+
   MULTIPLIER = {
       0 => 1,
       1 => 2,
@@ -19,6 +21,10 @@ class RangedWeapon < ActiveRecord::Base
 
   def is_a_bow?
     BOWS.include?(group_name)
+  end
+
+  def is_a_sling?
+    SLINGS.include?(group_name)
   end
 
 end

@@ -62,7 +62,7 @@ class CharacterWeapon < ActiveRecord::Base
     end
   end
 
-  #and this is for weapon group.
+  #this is for weapon group.
   def attack_fencing_parameter
     favorite_weapon_bonus = extract_bonus_from_stats_modifier_dsl_definition("Atak", character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten)
     favorite_weapon_group_bonus = extract_bonus_from_stats_modifier_dsl_definition("Atak", character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.group_name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten)
@@ -70,7 +70,7 @@ class CharacterWeapon < ActiveRecord::Base
     favorite_weapon_bonus.to_i + favorite_weapon_group_bonus.to_i + character.statistics.raw_fencing_when_attacking
   end
 
-  #and this is for weapon group.
+  # this is for weapon group.
   def defense_fencing_parameter
     favorite_weapon_bonus = extract_bonus_from_stats_modifier_dsl_definition("Obrona", character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten)
     favorite_weapon_group_bonus = extract_bonus_from_stats_modifier_dsl_definition("Obrona", character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.group_name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten)

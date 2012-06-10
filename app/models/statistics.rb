@@ -172,6 +172,12 @@ class Statistics < ActiveRecord::Base
     overall_fencing_bonus.to_i + profession_base_parameter.to_i
   end
 
+  def raw_shooting
+    overall_shooting_bonus = stats_modifiers.select { |sm| sm.modifies=="fighting" && (sm.group_name["Umiejętności Strzeleckie"]) }.collect(&:value).sum
+    profession_base_parameter = character.profession.shooting
+    overall_shooting_bonus.to_i + profession_base_parameter.to_i
+  end
+
   def special_ranged_defense_parameter
     character.current_level
   end

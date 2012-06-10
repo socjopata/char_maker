@@ -650,7 +650,8 @@ Umiejętność Pasywna.")
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "5" )
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
-#TODO Implement it ! along with other dmg perks  - modifies "melee_damage" and applicables in group name
+s_choice.stats_modifiers.create(:modifies => "melee_damage", :value => 1, :group_name => "Ranged")
+
 
 skill = Skill.create(:profession_type => "Strzelec",
                      :name => "Mistrz Kuszników",
@@ -659,8 +660,9 @@ Obrażenia zadawane dowolną kuszą zwiększane są o +1pkt.
 Umiejętność Pasywna")
 
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "3" )
-#TODO Implement it ! along with other dmg perks  - modifies "melee_damage" and applicables in group name
-#TODO only for crossbows
+s_choice = skill.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "melee_damage", :value => 1, :group_name => "Crossbows")
+s_choice.stats_modifiers.create(:modifies => "weapon_modifier", :value => 1, :group_name => "Reload time")
 #TODO reduce loadtime of a crossbows
 
 
