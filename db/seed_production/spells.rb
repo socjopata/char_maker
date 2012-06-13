@@ -137,7 +137,7 @@ deity = Deity.find_by_name!("Syrion")
   Spell.create(:name => spell_name, :profession_id => profession.id, :index => i+1, :deity_id => deity.id)
 end
 
-deity = Deity.find_by_name!("Alai")
+deity = Deity.find_by_name!("Alaj")
 
 ["Relikwia Alaja",
  "Poświęcenie",
