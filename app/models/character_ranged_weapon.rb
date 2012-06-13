@@ -45,7 +45,7 @@ class CharacterRangedWeapon < ActiveRecord::Base
   end
 
   def bonus_from_special_rules
-    0 #TODO ask Artur when such thing occurs
+    0
   end
 
   def weapon_accuracy
@@ -57,6 +57,6 @@ class CharacterRangedWeapon < ActiveRecord::Base
   end
 
   def total_hit_chance_parameter
-    #parameter_with_bonus_orientation(@character.statistics.calculate_dexterity_bonus)
+    bonus_from_special_rules + weapon_accuracy + character_shooting_skill + character.statistics.calculate_dexterity_bonus
   end
 end

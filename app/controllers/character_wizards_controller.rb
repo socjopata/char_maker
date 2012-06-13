@@ -131,7 +131,7 @@ class CharacterWizardsController < ApplicationController
         else
           @character.update_attributes(:finished => true,
                                        :free_skill_points_left => Skill.calculate_free_skill_amount(@character, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_int].to_i, session[:skills_used].to_i))
-          @character.purse.close_the_bill(session[:coins_left])  #TODO
+          @character.purse.close_the_bill(session[:coins_left])
           redirect_to characters_path
           #make it finished and redirect to index or show
         end

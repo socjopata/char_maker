@@ -66,7 +66,6 @@ skill = Skill.create(:profession_type => "default", :name => "Leczenie Ran i Cho
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => "domyślne")
 
-#TODO, will I implement buying stuff, like healing herbs??
 
 skill = Skill.create(:profession_type => "default", :name => "Mistrzowska Oburęczność", :way_it_works => "walcząc oburącz postać nie otrzymuje kary -5pkt do Trafienia wykonując dodatkowy atak drugą bronią. Zręczność bohatera podnoszona jest o +1pkt.")
 s_choice = skill.stats_choices.create
@@ -104,7 +103,7 @@ skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WI"
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "WT", :value => "25" )
 
 skill = Skill.create(:profession_type => "default", :name => "Oburęczność", :way_it_works => "postać udoskonaliła technikę walki dwoma orężami, dzięki czemu zyskuje jeden atak z dodatkowej broni z karą do Trafienia -5pkt. Wyliczając swą Obronę korzysta z obu parametrów broni.")
-#TODO remember to do something when the total defence is being count
+
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S", :value => "13" )
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "20" )

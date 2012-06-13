@@ -79,8 +79,8 @@ class CharacterWeapon < ActiveRecord::Base
   end
 
   def two_weapons
-   rejected = character.character_weapons.select { |character_weapon| NOT_FEASIBLE_FOR_DUAL_WIELD.include?(character_weapon.weapon.name) or character_weapon.weapon.weapon_type=="Dw" }
-   character.character_weapons - rejected
+    rejected = character.character_weapons.select { |character_weapon| NOT_FEASIBLE_FOR_DUAL_WIELD.include?(character_weapon.weapon.name) or character_weapon.weapon.weapon_type=="Dw" }
+    character.character_weapons - rejected
   end
 
   def dual_wield_names
@@ -88,32 +88,32 @@ class CharacterWeapon < ActiveRecord::Base
   end
 
   def calculate_defense_bonus_for_dual_wield
-    two_weapons.map(&:calculate_defense_bonus_for_particular_weapon).sum
+    character.skills.map(&:name).include?("Oburęczność") ? two_weapons.map(&:calculate_defense_bonus_for_particular_weapon).sum : two_weapons.map(&:calculate_defense_bonus_for_particular_weapon).first
   end
 
-   #TODO refactor
+  #TODO refactor
   def total_defense(dual_wield, shield=nil)
     if dual_wield
       result = defense_fencing_parameter +
-                      Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_current_zr].to_i +
-                      Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_wi].to_i +
-                      special_defense_bonus_for_total_defense_listing +
-                      calculate_defense_bonus_for_dual_wield
+          Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_current_zr].to_i +
+          Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_wi].to_i +
+          special_defense_bonus_for_total_defense_listing +
+          calculate_defense_bonus_for_dual_wield
 
     elsif character.wield_style.name=="Styl walki jedną bronią (jednoręczną/dwuręczną)"
       result = defense_fencing_parameter +
-                calculate_defense_bonus_for_particular_weapon +
-                Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_current_zr].to_i +
-                Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_wi].to_i +
-                special_defense_bonus_for_total_defense_listing
-
-    elsif character.wield_style.name=="Styl walki bronią i tarczą"
-     result = defense_fencing_parameter +
           calculate_defense_bonus_for_particular_weapon +
           Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_current_zr].to_i +
           Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_wi].to_i +
           special_defense_bonus_for_total_defense_listing
-     shield.present? ? result = result + shield.total_defense_bonus(true) : result
+
+    elsif character.wield_style.name=="Styl walki bronią i tarczą"
+      result = defense_fencing_parameter +
+          calculate_defense_bonus_for_particular_weapon +
+          Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_current_zr].to_i +
+          Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_wi].to_i +
+          special_defense_bonus_for_total_defense_listing
+      shield.present? ? result = result + shield.total_defense_bonus(true) : result
 
     end
   end

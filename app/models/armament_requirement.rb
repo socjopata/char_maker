@@ -9,7 +9,7 @@ class ArmamentRequirement < ActiveRecord::Base
       when "fightstyle"
         character.fight_style.name==name
       when "modified_stat"
-        true #TODO zrecznosc aktualna case
+        value.to_i <= character.statistics.send(self.name.intern)
       when "social_class"
         character.social_class.send(self.name.intern) #usage ...(:check_applies_to => "social_class", :name => "is_elite?")
       when "origin"
@@ -24,7 +24,7 @@ end
 #usage
 #item.armament_requirements.create(:check_applies_to => "fightstyle", :name => "Finezyjny" )
 #item.armament_requirements.create(:check_applies_to => "statistics", :name => "dexterity", :value => "25" )
-#item.armament_requirements.create(:check_applies_to => "modified_stat", :name => "actual_dexterity", :value => "25" ) TODO
+#item.armament_requirements.create(:check_applies_to => "modified_stat", :name => "actual_dexterity", :value => "25" )
 #item.armament_requirements.create(:check_applies_to => "social_class", :name => "is_elite?")
 #item.armament_requirements.create(:check_applies_to => "origin", :name => "Alantar")
 

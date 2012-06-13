@@ -177,4 +177,4 @@ linking_node = trait.stats_choices.create
 linking_node.stats_modifiers.create(:modifies => "WI", :value => 10, :group_name => "domyślne")
 
 
-#TODO   Fechmistrz  ...how about making it a rule not to apply FwA and FwO to ranged weapons unless stated otherwise?   ...Umiejętności Strzeleckie !
+#TODO   Fechtmistrz

@@ -13,7 +13,7 @@ skill = Skill.create(:profession_type => "Żołnierz",
                      :way_it_works => "umiejętność może zostać użyta dopiero po dwóch rundach walki, w których Żołnierz korzystał z ofensywnych umiejętności „Atak” lub „Natarcie”. Dzięki czemu otrzymuje on jeden dodatkowy atak ze standardowym Tempem aktualnie używanej broni. Trafienie tego ciosu rośnie o +3pkt lub o +6pkt jeżeli cały czas używana była umiejętność „Natarcie”. Zdolność może być użyta raz na trzy rundy (dwie rundy Ataku lub Natarcia – w trzeciej darmowy cios, itd). Fechtunek postaci w wybranej grupie broni podnoszone jest o +1pkt.
 Umiejętność Pasywna" )
 
-#TODO check it
+
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek w Grupie Broni")
 
@@ -27,7 +27,7 @@ Umiejętność Pasywna" )
 
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Atak i Obrona" )
 
-#TODO check it
+
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Fechtunek w Obronie")
 
@@ -663,7 +663,7 @@ skill.skill_requirements.create(:check_applies_to => "experience", :value => "3"
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "melee_damage", :value => 1, :group_name => "Crossbows")
 s_choice.stats_modifiers.create(:modifies => "weapon_modifier", :value => 1, :group_name => "Reload time")
-#TODO reduce loadtime of a crossbows
+#TODO reduce loadtime of a crossbows. ... but there is no place on a sheet to display that
 
 
 ###SZAMAN
@@ -759,7 +759,7 @@ s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 2, :group_na
                      :way_it_works => "Fechtunek w wybranej Grupie Broni podnoszony jest o +1pkt. Ponadto bohater zwiększa zadawane w walce wręcz Obrażenia o +3pkt (nie dotyczy strzelania i Bijatyki).
 Umiejętność Pasywna.")
 
-#TODO Implement it ! along with other dmg perks  - modifies "melee_damage" and applicables in group name
+
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "33" )
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S", :value => "20" )
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "3" )

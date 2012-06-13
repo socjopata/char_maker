@@ -157,6 +157,10 @@ class Character < ActiveRecord::Base
     }
   end
 
+  def items
+    [weapons + armors + shields + ranged_weapons].flatten.map(&:name).join(", ")
+  end
+
 end
 
 

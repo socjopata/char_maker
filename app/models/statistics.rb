@@ -167,9 +167,10 @@ class Statistics < ActiveRecord::Base
   end
 
   def raw_fencing(stance)
-    overall_fencing_bonus = stats_modifiers.select { |sm| sm.modifies=="fighting" && (sm.group_name["Fechtunek postaci zwiększony będzie o"]) }.collect(&:value).sum
+    overall_fencing_bonus = stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name["Fechtunek postaci zwiększony będzie o"] }.collect(&:value).sum
     profession_base_parameter = character.profession[stance]
-    overall_fencing_bonus.to_i + profession_base_parameter.to_i
+    skill_bonus =  stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Fechtunek w #{stance=='defense' ? 'Obronie' : 'Ataku'}" }.collect(&:value).sum
+    overall_fencing_bonus.to_i + profession_base_parameter.to_i + skill_bonus.to_i
   end
 
   def raw_shooting
@@ -264,13 +265,11 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_running
-    #TODO actual dexterity fix needed.
-    #TODO check Commander for this method usage
-    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i + calculate_auxiliary_bonus("Bieg")
+    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_current_zr].to_i + calculate_auxiliary_bonus("Bieg")
   end
 
   def calculate_sprinting
-    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i + 10 + calculate_auxiliary_bonus("Bieg")
+    AuxiliaryParameterSet::RUNNING[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_current_zr].to_i + 10 + calculate_auxiliary_bonus("Bieg")
   end
 
   def calculate_auxiliary_bonus(name, total="yep, I want total")
@@ -308,22 +307,18 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_brawl_bonus_from_special_rules
-    0 #TODO
+    0 #TODO like what?
   end
 
-  def calculate_brawl_bonus_from_skills(attack_or_defense)
-    if attack_or_defense=="attack"
-      0 #TODO
-    else
-      0 #TODO
-    end
+  def calculate_brawl_bonus_from_skills
+    stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Bijatyka" }.collect(&:value).sum
   end
 
   def calculate_total_brawling(attack_or_defense)
     if attack_or_defense=="attack"
-      raw_fencing_when_attacking + calculate_dexterity_and_strength_bonus + calculate_brawl_bonus_from_special_rules + calculate_brawl_bonus_from_skills("attack")
+      raw_fencing_when_attacking + calculate_dexterity_and_strength_bonus + calculate_brawl_bonus_from_special_rules + calculate_brawl_bonus_from_skills
     else
-      raw_fencing_when_defending + Statistics::BONUS_OR_PENALTY_RANGES[calculate_current_zr].to_i + Statistics::BONUS_OR_PENALTY_RANGES[calculate_wi].to_i + calculate_brawl_bonus_from_skills("defense")
+      raw_fencing_when_defending + Statistics::BONUS_OR_PENALTY_RANGES[calculate_current_zr].to_i + Statistics::BONUS_OR_PENALTY_RANGES[calculate_wi].to_i + calculate_brawl_bonus_from_skills
     end
   end
 
@@ -332,7 +327,7 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_range_change_bonus_from_skills
-    0 #TODO
+    stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Zmiana Zasięgu" }.collect(&:value).sum
   end
 
   def total_range_change

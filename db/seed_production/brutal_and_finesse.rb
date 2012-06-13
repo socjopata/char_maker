@@ -181,8 +181,7 @@ skill = Skill.create(:profession_type => "finesse",
 Umiejętność Pasywna" )
 
 
-#TODO implement the check
-skill.skill_requirements.create(:check_applies_to => "fighting", :name => "Fechtunek w Obronie", :value => "25" )
+skill.skill_requirements.create(:check_applies_to => "fighting", :name => "raw_fencing_when_defending", :value => "25" )
 
 skill = Skill.create(:profession_type => "finesse",
                      :name => "Kontratak",

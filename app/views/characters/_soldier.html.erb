@@ -525,7 +525,7 @@
     <td colspan="2" style="text-align:left;width:0.2188in; " class="Tabela4_D36"><p class="P13"><%= "X" if @skill_names.include?("Posłuch i Zastraszenie") %></p></td>
     <td colspan="3" style="text-align:left;width:0.7535in; " class="Tabela4_A10"><p class="P177">UMIEJĘTNOŚCI WOLNE</p>
     </td>
-    <td style="text-align:left;width:0.2563in; " class="Tabela4_E8"><p class="P13">TODO </p></td>
+    <td style="text-align:left;width:0.2563in; " class="Tabela4_E8"><p class="P13"><%= @character.free_skill_points_left %></p></td>
     <td style="text-align:left;width:0.2194in; " class="Tabela4_J36"><p class="P10"></p></td>
     <td colspan="2" style="text-align:left;width:1.6382in; " class="Tabela4_E8"><p class="P13"><%= @extra_skills[8] %></p></td>
     <td colspan="2" style="text-align:left;width:1.65in; " class="Tabela4_H17"><p class="P13"><%= @extra_skills[9] %></p></td>
@@ -955,7 +955,7 @@
   <tr>
     <td colspan="9" style="text-align:left;width:0.8007in; " class="Tabela7_A12">
       <p class="P22">Ekwipunek, Majątek i Pieniądze</p></td>
-    <td style="text-align:left;width:0.2104in; " class="Tabela7_J7"><p class="P16"> </p></td>
+    <td style="text-align:left;width:0.2104in; " class="Tabela7_J7"><p class="P16"></p></td>
     <td style="text-align:left;width:0.8097in; " class="Tabela7_N2"><p class="P5">+1</p></td>
     <td style="text-align:left;width:0.8097in; " class="Tabela7_K24"><p class="P5">1-16</p></td>
     <td style="text-align:left;width:0.1889in; " class="Tabela7_M18"><p class="P16"> </p></td>
@@ -963,7 +963,7 @@
     <td style="text-align:left;width:0.8215in; " class="Tabela7_O18"><p class="P3">+7</p></td>
   </tr>
   <tr>
-    <td colspan="9" rowspan="2" style="text-align:left;width:0.8007in; " class="Tabela7_A22"><p class="P16"> </p></td>
+    <td colspan="9" rowspan="2" style="text-align:left;width:0.8007in; " class="Tabela7_A22"><p class="P16"><%= @character.items %> </p></td>
     <td style="text-align:left;width:0.2104in; " class="Tabela7_J24"><p class="P16"> </p></td>
     <td style="text-align:left;width:0.8097in; " class="Tabela7_A2"><p class="P5">+2</p></td>
     <td style="text-align:left;width:0.8097in; " class="Tabela7_A2"><p class="P5">1-17</p></td>
