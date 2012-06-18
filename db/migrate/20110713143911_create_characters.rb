@@ -8,6 +8,7 @@ class CreateCharacters < ActiveRecord::Migration
       t.string :gender
       t.boolean :finished #temporary solution i think, before introducing state_machine
       t.integer :free_skill_points_left
+      t.boolean :easy_deity_picking, :default => true
       t.timestamps
     end
   end

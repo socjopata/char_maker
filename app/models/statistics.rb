@@ -1,5 +1,8 @@
 # -*- encoding : utf-8 -*-
 class Statistics < ActiveRecord::Base
+
+  #TODO extract methods to modules, like Brawling module, MainStats module, etc.
+
   set_table_name "statistics"
 
   serialize :initial_dice_roll_set
