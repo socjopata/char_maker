@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 class DeitySelector
 
   ATHEISM_FORBIDDEN_PROFESSIONS = ["Kapłan", "Rycerz Zakonny", "Szaman"]

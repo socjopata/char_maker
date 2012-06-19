@@ -50,7 +50,7 @@
 
     jQuery(function ($) {
 
-        $("#countries").change(function () {
+        $("#countries").live('change', function() {
 
             var char_id = "<%= @character.id  %>";
             var country = $('select#countries :selected').val();
