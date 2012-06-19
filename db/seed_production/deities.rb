@@ -30,6 +30,8 @@ deity = Deity.create(:name => "Samotnik")
 deity = Deity.create(:name => "Xargos")
 deity.countries << [Country.find_all_by_name(["Archipelag Południowy"])]
 
+#TODO Szamanizm
+
 
 
 

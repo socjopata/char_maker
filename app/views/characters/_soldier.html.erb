@@ -906,7 +906,7 @@
     <td style="text-align:left;width:0.6417in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.raw_fencing_when_attacking %> </p></td>
     <td colspan="2" style="text-align:left;width:0.1597in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.calculate_dexterity_and_strength_bonus %> </p></td>
     <td colspan="2" style="text-align:left;width:0.3299in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.calculate_brawl_bonus_from_special_rules %></p></td>
-    <td colspan="2" style="text-align:left;width:0.4604in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.calculate_brawl_bonus_from_skills("attack") %></p></td>
+    <td colspan="2" style="text-align:left;width:0.4604in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.calculate_brawl_bonus_from_skills %></p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela7_I8"><p class="P16"> <%= @character.statistics.calculate_total_brawling("attack") %> </p></td>
     <td style="text-align:left;width:0.2104in; " class="Tabela7_J24"><p class="P16"> </p></td>
     <td style="text-align:left;width:0.8097in; " class="Tabela7_K24"><p class="P5">-3</p></td>
@@ -934,7 +934,7 @@
     <td style="text-align:left;width:0.6417in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.raw_fencing_when_defending %> </p></td>
     <td colspan="2" style="text-align:left;width:0.1597in; " class="Tabela7_A7"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_current_zr] %></p></td>
     <td colspan="2" style="text-align:left;width:0.3299in; " class="Tabela7_A7"><p class="P16"> <%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wi]}" %></p></td>
-    <td colspan="2" style="text-align:left;width:0.4604in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.calculate_brawl_bonus_from_skills("defense") %></p></td>
+    <td colspan="2" style="text-align:left;width:0.4604in; " class="Tabela7_A7"><p class="P16"> <%= @character.statistics.calculate_brawl_bonus_from_skills %></p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela7_I8"><p class="P16"> <%= @character.statistics.calculate_total_brawling("defense") %></p></td>
     <td style="text-align:left;width:0.2104in; " class="Tabela7_J24"><p class="P16"> </p></td>
     <td style="text-align:left;width:0.8097in; " class="Tabela7_K24"><p class="P5">-1</p></td>
