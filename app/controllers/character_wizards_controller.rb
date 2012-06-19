@@ -14,6 +14,7 @@ class CharacterWizardsController < ApplicationController
       @character.character_background.draw_a_trait if @character.hardcore_trait_picking && @character.character_background.origin.blank?
       @professions = ProfessionSelector.new(@character).results
       @countries ||= Profession.find_by_name(@professions.first.name).countries
+      @deities = []
     elsif request.post?
       if @character.statistics.blank?
         @stats = @character.build_statistics
@@ -155,13 +156,17 @@ class CharacterWizardsController < ApplicationController
   end
 
   def set_armor_as_main
-      @character.set_armor_as_main(params[:inventory_item].to_i)
+     @character.set_armor_as_main(params[:inventory_item].to_i)
   end
-
 
   def update_countries_select
     country_selector = CountrySelector.new(@character, params[:id])
     render :partial => "countries", :locals => {:countries => country_selector.countries}
+  end
+
+  def update_deities_select
+    deity_selector = DeitySelector.new(@character, params[:id], params[:profession_id])
+    render :partial => "deities", :locals => {:deities => deity_selector.deities}
   end
 
   def toggle_skill

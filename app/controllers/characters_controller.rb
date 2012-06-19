@@ -37,8 +37,8 @@ class CharactersController < ApplicationController
     session[:default_skills_ids] = nil
     session[:skills_used] = nil
     params[:char_id].present? ? @character = current_user.characters.find(params[:char_id]) : @character = current_user.characters.build
-    @character_background = @character.create_character_background
-    @deities = Deity.all
+
+
     respond_to do |format|
       format.html # new.html.erb
     end
@@ -48,10 +48,9 @@ class CharactersController < ApplicationController
     @character = current_user.characters.build(params[:character])
     respond_to do |format|
       if @character.save
+        @character.create_character_background
         format.html { redirect_to(first_step_character_wizard_path(:char_id => @character.id)) }
       else
-        @character_background = @character.character_background
-        @deities = Deity.all
         format.html { render :action => "new" }
       end
     end

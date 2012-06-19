@@ -18,29 +18,22 @@
     <!--<#%= f.hidden_field :avatar_cache %>-->
     <!--</p>-->
 
-    <h3>Informacje ogólne</h3><p>
-  <%= f.label "Imię" %>
-  <%= f.text_field :name %><br/>
-  <!--<#%= f.label "Opis" %>-->
-  <!--<#%= f.text_area :description, :cols => 60, :rows => 3 %><br/>-->
-  <%= f.label "Płeć" %>
-  <%= f.select :gender, options_for_select(["Mężczyzna", 'Kobieta'], @character.gender) %><br/><br/>
-  <%= f.label "Gram hardcorowo - wylosuj dla mnie pochodzenie." %>
-  <%= f.check_box :hardcore_social_class_picking %><br/><br/>
-  <%= f.label "Gram hardcorowo - niech komputer rzuci za mnie na klątwę lub dar." %>
-  <%= f.check_box :hardcore_trait_picking %><br/><br/>
-  <%= f.label "Kreator pomoże mi w wyborze bóstwa" %>
-  <%= f.check_box :easy_deity_picking, :default => true %><br/><br/>
+    <h3>Informacje ogólne</h3>
+    <%= f.label "Imię" %>
+    <%= f.text_field :name %><br/>
+    <%= f.label "Płeć" %>
+    <%= f.select :gender, options_for_select(["Mężczyzna", 'Kobieta'], @character.gender) %><br/><br/>
+    <%= f.label "Gram hardcorowo - wylosuj dla mnie pochodzenie." %>
+    <%= f.check_box :hardcore_social_class_picking %><br/><br/>
+    <%= f.label "Gram hardcorowo - niech komputer rzuci za mnie na klątwę lub dar." %>
+    <%= f.check_box :hardcore_trait_picking %><br/><br/>
+    <%= f.label "Kreator pomoże mi w wyborze bóstwa" %>
+    <%= f.check_box :easy_deity_picking, :default => true %><br/><br/>
 
-    <h3>Wybierz bóstwo</h3>
-    <%= f.fields_for :character_background_attributes do |cb| %>
-        <%= cb.select :deity_id, @deities.collect { |p| [p.name, p.id] } %><br/>
-        <p>Uwaga: wybór bóstwa jest jednym z najważniejszych wyborów podejmowanych przez gracza w systemie Alantar. Polecamy zaznaczyć opcję "Kreator pomoże mi w wyborze bóstwa" oraz przeczytać odpowiedni dział podręcznika.</p>
-    <% end %>
+    <h4>Uwaga: wybór bóstwa jest jednym z najważniejszych wyborów podejmowanych przez gracza w systemie Alantar. Polecamy
+      zostawic zaznaczoną opcję "Kreator pomoże mi w wyborze bóstwa" oraz przeczytać odpowiedni dział podręcznika.</h4>
 
     <br/>
-
-    </p>
 
     <div id="stats">
     </div>
@@ -57,19 +50,4 @@
     function submit_form() {
         $("form").submit();
     }
-    //      Math.RandomInteger = function(n, m) {
-    //        if (! m) {m = 1;} // default range starts at 1
-    //        var max = n > m ? n : m; // doesn't matter which value is min or max
-    //        var min = n === max ? m : n; // min is value that is not max
-    //        var d = max - min + 1; // distribution range
-    //        return Math.floor(Math.random() * d + min);
-    //    };
-    //
-    //    randomize_stats = function() {
-    //        var fields = $('#stats input')
-    //        fields.each(function(i) {
-    //            $(fields[i]).val(Math.RandomInteger(3, 18));
-    //        });
-    //
-    //    }
 </script>

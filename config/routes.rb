@@ -9,6 +9,7 @@ CharMaker::Application.routes.draw do
   match 'character_wizards/update_armors_select/', :controller=> 'character_wizards', :action => 'update_armors_select'
   match 'character_wizards/update_weapons_select/', :controller=> 'character_wizards', :action => 'update_weapons_select'
   match 'character_wizards/update_shields_select/', :controller=> 'character_wizards', :action => 'update_shields_select'
+  match 'character_wizards/update_deities_select/', :controller=> 'character_wizards', :action => 'update_deities_select'
   match 'character_wizards/update_countries_select/', :controller=> 'character_wizards', :action => 'update_countries_select'
   match 'character_wizards/toggle_skill/', :controller=> 'character_wizards', :action => 'toggle_skill'
   match 'character_wizards/toggle_weapon_proficiency/', :controller=> 'character_wizards', :action => 'toggle_weapon_proficiency'

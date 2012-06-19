@@ -4,14 +4,21 @@
 <br/><br/>
 <strong>Profesja i pochodzenie: </strong>
 <br/><br/>
-<%= form_tag  :url => first_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
+<%= form_tag :url => first_step_character_wizard_path(:char_id => @character.id), :method => :post do %>
 
-<label>Wybierz profesję: </label><%= select_tag 'professions', options_from_collection_for_select(@professions, "id", "name") %><br/>
+    <label>Wybierz
+      profesję: </label><%= select_tag 'professions', options_from_collection_for_select(@professions, "id", "name") %><br/>
 
     <div id="addressCountries">
       <%= render :partial => 'countries', :locals => {:countries => @countries} %>
     </div>
- <%= hidden_field_tag :char_id, @character.id %>
+
+    <div id="addressDeities">
+      <%= render :partial => 'deities', :locals => {:deities => @deities} %>
+    </div>
+
+
+    <%= hidden_field_tag :char_id, @character.id %>
 
 <% end %>
 
@@ -19,27 +26,45 @@
 
 
 <div class="clear">
-<%= button_link_to "Wróć", new_character_path(:char_id => @character.id), :class => "fltl" %>
-<%= button_link_to "Utwórz nową postać", character_path(@character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
-<%= button_link_to "Dalej", "javascript:void(0)", :class => "fltr", :onclick => "submit_form_and_proceed()" %>
+  <%= button_link_to "Wróć", new_character_path(:char_id => @character.id), :class => "fltl" %>
+  <%= button_link_to "Utwórz nową postać", character_path(@character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
+  <%= button_link_to "Dalej", "javascript:void(0)", :class => "fltr", :onclick => "submit_form_and_proceed()" %>
 </div>
 
 
 <script type="text/javascript">
-    jQuery(function($) {
+    jQuery(function ($) {
         // when the #country field changes
-        $("#professions").change(function() {
+        $("#professions").change(function () {
             // make a POST call and replace the content
             var char_id = "<%= @character.id  %>";
-            var country = $('select#professions :selected').val();
-            if (country == "") country = "0";
-            jQuery.get('/character_wizards/update_countries_select',  {'id': country, 'char_id': char_id}, function(data) {
+            var profession = $('select#professions :selected').val();
+            if (profession == "") profession = "0";
+            jQuery.get('/character_wizards/update_countries_select', {'id':profession, 'char_id':char_id}, function (data) {
                 $("#addressCountries").html(data);
-            })
+            });
             return false;
         });
 
-    })
+    });
+
+    jQuery(function ($) {
+
+        $("#countries").change(function () {
+
+            var char_id = "<%= @character.id  %>";
+            var country = $('select#countries :selected').val();
+            var profession = $('select#professions :selected').val();
+            if (country == "") country = "0";
+            jQuery.get('/character_wizards/update_deities_select', {'id':country, 'char_id':char_id, 'profession_id':profession }, function (data) {
+                $("#addressDeities").html(data);
+            });
+            return false;
+        });
+
+    });
+
+
     function submit_form_and_proceed() {
         $("form").submit();
     }
