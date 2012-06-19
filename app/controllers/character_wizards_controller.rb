@@ -13,8 +13,9 @@ class CharacterWizardsController < ApplicationController
     if request.get?
       @character.character_background.draw_a_trait if @character.hardcore_trait_picking && @character.character_background.origin.blank?
       @professions = ProfessionSelector.new(@character).results
-      @countries ||= Profession.find_by_name(@professions.first.name).countries
-      @deities = []
+      @profession = @professions.first
+      @countries ||= Profession.find_by_name(@profession.name).countries
+      @deities ||= DeitySelector.new(@character, @countries.first.id, @profession.id).deities
     elsif request.post?
       if @character.statistics.blank?
         @stats = @character.build_statistics
@@ -156,11 +157,12 @@ class CharacterWizardsController < ApplicationController
   end
 
   def set_armor_as_main
-     @character.set_armor_as_main(params[:inventory_item].to_i)
+    @character.set_armor_as_main(params[:inventory_item].to_i)
   end
 
   def update_countries_select
-    country_selector = CountrySelector.new(@character, params[:id])
+    @profession = Profession.find(params[:id])
+    country_selector = CountrySelector.new(@character, @profession)
     render :partial => "countries", :locals => {:countries => country_selector.countries}
   end
 

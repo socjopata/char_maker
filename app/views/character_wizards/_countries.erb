@@ -1,1 +1,11 @@
-<label>Wybierz pochodzenie: </label><%= select_tag 'countries', options_from_collection_for_select(countries, "id", "name") %>
+<label>Wybierz
+  pochodzenie: </label><%= select_tag 'countries', options_from_collection_for_select(countries, "id", "name") %>
+
+
+<script type="text/javascript">
+    $("#addressDeities").html('<%= escape_javascript(render(:partial => "deities", :locals => {:deities => DeitySelector.new(@character, countries.first.id, @profession.id).deities}).html_safe) -%>');
+</script>
+
+
+
+
