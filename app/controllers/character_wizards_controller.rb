@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class CharacterWizardsController < ApplicationController
 
-  before_filter :user_signed_in?, :get_current_character
+  before_filter :user_signed_in?, :get_current_character, :disallow_editing_finished_character
   before_filter :prepare_statistics_hash, :only => [:armament_step, :update_weapons_select, :update_ranged_weapons_select, :update_armors_select, :update_shields_select]
 
   #TODO Disclaimer: I know that things here, with all the logic in this place, suck a big time.
@@ -234,6 +234,10 @@ class CharacterWizardsController < ApplicationController
 
   def prepare_statistics_hash
     @statistics_hash = @character.calculate_stats_and_store_them_as_a_hash
+  end
+
+  def disallow_editing_finished_character
+    redirect_to characters_path(:alert => "Nie można edytować ukończonych postaci") if @character.finished?
   end
 
 end

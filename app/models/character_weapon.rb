@@ -16,6 +16,7 @@ class CharacterWeapon < ActiveRecord::Base
 
   #TODO modify it to search for tempo -1 dsl thing s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana broń, Atak+1, Obrona+1, Tempo-1")  #This "DSL" can be improved
   #start from checking all Tempo-1
+  #SkillBonusPreference.preferences_for_character(3)
   def calculate_speed
     total_speed = weapon.speed.to_i
     favorite_weapon_modifier = (character.skills.map(&:name).include?("Ulubiona Broń") && character.skills.detect { |s| s.name=="Ulubiona Broń" }.character_skills.first.skill_bonus_preference.choice==weapon.group_name)
