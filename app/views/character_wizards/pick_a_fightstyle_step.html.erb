@@ -131,7 +131,7 @@
         <P class="white_normal">Premia/Kara</P>
       </TD>
     </TR>
-    <% Statistics::BONUS_OR_PENALTY_RANGES_FOR_DISPLAY.each_pair do |key, value| %>
+    <% Statistics::BONUS_OR_PENALTY_RANGES.to_hash.each_pair do |key, value| %>
         <TR VALIGN=TOP>
           <TD WIDTH=50% class="alantar_td">
             <P ALIGN=CENTER class="fs_12 italic normal"><%= key %></P>

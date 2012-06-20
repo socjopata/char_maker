@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateWieldStyles < ActiveRecord::Migration
   def self.up
     create_table :wield_styles do |t|

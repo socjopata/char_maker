@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateCharacterspells < ActiveRecord::Migration
   def self.up
     create_table :character_spells do |t|

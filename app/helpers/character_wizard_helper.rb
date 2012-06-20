@@ -3,7 +3,7 @@ module CharacterWizardHelper
 
   def display_trait_warning_if_applicable(char)
     if Trait::CHOICE_BREAKERS.include?(char.character_background.traits.map(&:name).try(:first)) && char.character_background.traits.first.statistics_it_affects != char.lead_parameter
-      "<p style='font-size: 16px; font-weight: bold'>Z racji posiadania daru: \"#{char.character_background.traits.first.try(:name)}\" musisz kolejny najwyższy rzut przyporządkować do parametru: #{Statistics::NAMES[char.character_background.traits.first.statistics_it_affects]}.</p>".html_safe
+      "<p style='font-size: 16px; font-weight: bold'>Z racji posiadania daru: \"#{char.character_background.traits.first.try(:name)}\" musisz kolejny najwyższy rzut przyporządkować do parametru: #{Statistics::POLISH_NAMES[char.character_background.traits.first.statistics_it_affects]}.</p>".html_safe
     end
   end
 
@@ -26,7 +26,7 @@ module CharacterWizardHelper
   def display_choice_part(choice_part)
 
     if ["S", "ZR", "WT", "INT", "WI", "O"].include?(choice_part.modifies)
-      "#{Statistics::NAMES[choice_part.modifies]} zostanie zmodyfikowana o #{bonus_orientation(choice_part.value)}#{choice_part.value}"
+      "#{Statistics::POLISH_NAMES[choice_part.modifies]} zostanie zmodyfikowana o #{bonus_orientation(choice_part.value)}#{choice_part.value}"
     elsif choice_part.modifies=="skills"
       "Postać otrzyma: #{choice_part.group_name}"
     elsif choice_part.modifies=="other"

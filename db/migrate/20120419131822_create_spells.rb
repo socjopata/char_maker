@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateSpells < ActiveRecord::Migration
   def self.up
     create_table :spells do |t|

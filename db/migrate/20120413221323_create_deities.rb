@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateDeities < ActiveRecord::Migration
   def self.up
     create_table :deities do |t|

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ArmamentMaster
 
   attr_reader :character, :model_class, :group_name, :statistics_hash
