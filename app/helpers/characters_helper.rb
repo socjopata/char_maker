@@ -22,6 +22,12 @@ module CharactersHelper
         "Żołnierska"
     end
   end
+
+  def weapon_proficiency_bonus(weapon)
+    if weapon.present? && weapon.weapon_proficiency_bonus==-5
+      "red"
+    end
+  end
 end
 
 

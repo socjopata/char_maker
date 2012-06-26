@@ -5,7 +5,7 @@ class DeitySelector
   ATHEISM_FORBIDDEN_PROFESSIONS = ["Kapłan", "Rycerz Zakonny", "Szaman"]
   CLERIC_DEITIES = ["Sirtol", "Kastor", "Bóg Smoczy", "Kalastra", "Syrion", "Alaj", "Calisto", "Durgil",]
   WARRIOR_CLERIC_DEITIES = []
-  SHAMAN_DEITIES = ["Magni", "Szamanizm"]
+  SHAMAN_DEITIES = ["Magni", "Kal-Kalar", "Galos i Malos"]
 
   attr_accessor :deities
 
@@ -18,8 +18,9 @@ class DeitySelector
 
   def prepare_deities_list(character, country, profession)
     if ATHEISM_FORBIDDEN_PROFESSIONS.include?(profession.name)
-      #TODO
-      cleric_deities(easy_deity_picking, country) if profession.name=="Kapłan"
+      cleric_deities(character.easy_deity_picking, country) if profession.name=="Kapłan"
+      warrior_cleric_deities(character.easy_deity_picking, country) if profession.name=="Rycerz Zakonny"
+      shaman_deities(character.easy_deity_picking, country) if profession.name=="Szaman"
     elsif character.easy_deity_picking
       country.deities
     elsif !character.easy_deity_picking
@@ -36,11 +37,11 @@ class DeitySelector
   end
 
   def warrior_cleric_deities(easy_deity_picking, country)
-    #if easy_deity_picking
-    #  country.deities & WARRIOR_CLERIC_DEITIES
-    #else
-    #  WARRIOR_CLERIC_DEITIES
-    #end
+    if easy_deity_picking
+      country.deities & WARRIOR_CLERIC_DEITIES
+    else
+      WARRIOR_CLERIC_DEITIES
+    end
   end
 
   def shaman_deities(easy_deity_picking, country)

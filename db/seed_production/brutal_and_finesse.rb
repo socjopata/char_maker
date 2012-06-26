@@ -13,6 +13,8 @@ s_choice.stats_modifiers.create(:modifies => "S", :value => 1, :group_name => "d
 s_choice.stats_modifiers.create(:modifies => "WT", :value => 1, :group_name => "domyślne")
 s_choice.stats_modifiers.create(:modifies => "armament,armors", :value => 5, :group_name => "dexterity_nerf", :evaluated_instruction => "true")
 s_choice.stats_modifiers.create(:modifies => "armament,armors", :value => 5, :group_name => "dexterity_cap" , :evaluated_instruction => "true")
+s_choice.stats_modifiers.create!(:modifies => "armament,shields", :value => 5, :group_name => "dexterity_cap", :evaluated_instruction => "true")
+s_choice.stats_modifiers.create!(:modifies => "armament,shields", :value => 5, :group_name => "dexterity_nerf", :evaluated_instruction => "true")
 
 
 skill = Skill.create(:profession_type => "brutal",

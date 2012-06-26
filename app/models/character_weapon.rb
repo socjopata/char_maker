@@ -36,10 +36,8 @@ class CharacterWeapon < ActiveRecord::Base
     total_crushing_dmg = weapon.crushing_dmg.zero? ? nil : "#{weapon.crushing_dmg + strength_bonus + skill_bonuses + weapon_upgrade_modifier }o"
     [total_cutting_dmg, total_pierce_dmg, total_crushing_dmg].compact.join("/")
   end
-     #TODO test weapon_proficiency_bonus
+
   def hit_parameter
-   ## throw resource    group_name: "Sieczna Miecze"
-   #   throw weapon_proficiency_bonus
     calculate_attack_bonus_for_particular_weapon + attack_fencing_parameter + character.statistics.calculate_dexterity_and_strength_bonus + weapon_proficiency_bonus
   end
 
@@ -93,7 +91,7 @@ class CharacterWeapon < ActiveRecord::Base
   def calculate_defense_bonus_for_dual_wield
     character.skills.map(&:name).include?("Oburęczność") ? two_weapons.map(&:calculate_defense_bonus_for_particular_weapon).sum : two_weapons.map(&:calculate_defense_bonus_for_particular_weapon).first
   end
-    #TODO test it. really.
+
   def weapon_proficiency_bonus
       character.character_weapon_proficiencies.map(&:name).include?(resource.group_name) ? 0 : -5
   end
