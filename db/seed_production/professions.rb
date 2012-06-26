@@ -266,7 +266,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 
 
 _profession = Profession.create(:name => "Szaman", :general_type => "scholar",:skill_points => 1, :attack => 4 ,:defense => 18 , :shooting => 10, :starting_weapon_proficiency => 1, :preferred_weapon_proficiency => nil , :available_armors => "Lekkie")
-_profession.countries << Country.find_all_by_name(["Alantar", "Archipelag Południowy", "Góry Księżycowe i Niczyje", "Wielkie Stepy", "Księstwa Wysp Północy", "Ziemie Sirtol", "Złote Królestwa"])
+_profession.countries << Country.find_all_by_name(["Alantar", "Góry Księżycowe i Niczyje", "Wielkie Stepy", "Księstwa Wysp Północy", "Ziemie Sirtol", "Złote Królestwa"])
 
 s_choice = _profession.stats_choices.create(:applies_to => nil, :condition => nil )
 

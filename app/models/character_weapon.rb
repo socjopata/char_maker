@@ -38,6 +38,8 @@ class CharacterWeapon < ActiveRecord::Base
   end
      #TODO test weapon_proficiency_bonus
   def hit_parameter
+   ## throw resource    group_name: "Sieczna Miecze"
+   #   throw weapon_proficiency_bonus
     calculate_attack_bonus_for_particular_weapon + attack_fencing_parameter + character.statistics.calculate_dexterity_and_strength_bonus + weapon_proficiency_bonus
   end
 
