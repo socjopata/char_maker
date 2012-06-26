@@ -7,6 +7,7 @@ class CharacterShield < ActiveRecord::Base
     shield
   end
 
+  #TODO bug
   def calculate_dexterity_nerf
     dexterity_nerf.present? ? shield_upgrade_modifier = 2 : shield_upgrade_modifier = 0
     skills_modifier = character.statistics.stats_modifiers.select { |sm| sm.modifies=="armament,shields" && sm.group_name=="dexterity_nerf" && eval(sm.evaluated_instruction) }.collect(&:value).sum

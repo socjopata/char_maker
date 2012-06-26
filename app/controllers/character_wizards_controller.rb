@@ -23,7 +23,7 @@ class CharacterWizardsController < ApplicationController
         @stats.save(false)
       end
       @character.character_background.set_origin(params[:countries]) if @character.character_background.origin.blank?
-      @character.character_background.update_attribute(:deity_id, params[:countries])
+      @character.character_background.update_attribute(:deity_id, params[:deities])
       @character.pick_a_profession(params[:professions]) if @character.character_profession.blank?
       @character.character_background.set_social_class if @character.character_background.social_classes.blank?
       @character.character_background.fill_the_purse_with_gold unless @character.purse.present?

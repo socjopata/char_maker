@@ -72,8 +72,8 @@ s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "ZR", :value => 2, :group_name => "domyślne")
 s_choice.stats_modifiers.create(:modifies => "armament,armors", :value => 5, :group_name => "dexterity_nerf", :evaluated_instruction => "armor.armor_type=='Lekki'")
 s_choice.stats_modifiers.create(:modifies => "armament,armors", :value => 5, :group_name => "dexterity_cap", :evaluated_instruction => "armor.armor_type=='Typowy'")
-s_choice.stats_modifiers.create(:modifies => "armament,shields", :value => 5, :group_name => "dexterity_cap", :evaluated_instruction => "true")
-s_choice.stats_modifiers.create(:modifies => "armament,shields", :value => 5, :group_name => "dexterity_nerf", :evaluated_instruction => "true")
+s_choice.stats_modifiers.create!(:modifies => "armament,shields", :value => 5, :group_name => "dexterity_cap", :evaluated_instruction => "true")
+s_choice.stats_modifiers.create!(:modifies => "armament,shields", :value => 5, :group_name => "dexterity_nerf", :evaluated_instruction => "true")
 
 
 skill = Skill.create(:profession_type => "rogue",

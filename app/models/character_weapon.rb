@@ -36,9 +36,9 @@ class CharacterWeapon < ActiveRecord::Base
     total_crushing_dmg = weapon.crushing_dmg.zero? ? nil : "#{weapon.crushing_dmg + strength_bonus + skill_bonuses + weapon_upgrade_modifier }o"
     [total_cutting_dmg, total_pierce_dmg, total_crushing_dmg].compact.join("/")
   end
-
+     #TODO test weapon_proficiency_bonus
   def hit_parameter
-    calculate_attack_bonus_for_particular_weapon + attack_fencing_parameter + character.statistics.calculate_dexterity_and_strength_bonus
+    calculate_attack_bonus_for_particular_weapon + attack_fencing_parameter + character.statistics.calculate_dexterity_and_strength_bonus + weapon_proficiency_bonus
   end
 
 
@@ -91,6 +91,10 @@ class CharacterWeapon < ActiveRecord::Base
   def calculate_defense_bonus_for_dual_wield
     character.skills.map(&:name).include?("Oburęczność") ? two_weapons.map(&:calculate_defense_bonus_for_particular_weapon).sum : two_weapons.map(&:calculate_defense_bonus_for_particular_weapon).first
   end
+    #TODO test it. really.
+  def weapon_proficiency_bonus
+      character.character_weapon_proficiencies.map(&:name).include?(resource.group_name) ? 0 : -5
+  end
 
   #TODO refactor
   def total_defense(dual_wield, shield=nil)
@@ -99,21 +103,21 @@ class CharacterWeapon < ActiveRecord::Base
           Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_current_zr].to_i +
           Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_wi].to_i +
           special_defense_bonus_for_total_defense_listing +
-          calculate_defense_bonus_for_dual_wield
+          calculate_defense_bonus_for_dual_wield + weapon_proficiency_bonus
 
     elsif character.wield_style.name=="Styl walki jedną bronią (jednoręczną/dwuręczną)"
       result = defense_fencing_parameter +
           calculate_defense_bonus_for_particular_weapon +
           Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_current_zr].to_i +
           Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_wi].to_i +
-          special_defense_bonus_for_total_defense_listing
+          special_defense_bonus_for_total_defense_listing + weapon_proficiency_bonus
 
     elsif character.wield_style.name=="Styl walki bronią i tarczą"
       result = defense_fencing_parameter +
           calculate_defense_bonus_for_particular_weapon +
           Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_current_zr].to_i +
           Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_wi].to_i +
-          special_defense_bonus_for_total_defense_listing
+          special_defense_bonus_for_total_defense_listing + weapon_proficiency_bonus
       shield.present? ? result = result + shield.total_defense_bonus(true) : result
 
     end
