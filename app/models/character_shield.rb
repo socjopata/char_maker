@@ -28,7 +28,7 @@ class CharacterShield < ActiveRecord::Base
   def total_defense_bonus(melee=true)
     if character.wield_style.name=="Styl walki bronią i tarczą"
       upgrade_modifier = defense_bonus.to_i
-      item_special_feature_bonus = 0 #TODO
+      item_special_feature_bonus = 0 #TODO this is for pawez + 5 case, for example
 
       shield.defense_bonus + upgrade_modifier + item_special_feature_bonus
     else
