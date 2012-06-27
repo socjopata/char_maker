@@ -14,6 +14,13 @@ class CharacterWeapon < ActiveRecord::Base
     resource.name
   end
 
+
+  #=> [#<SkillBonusPreference id: 1, character_skill_id: 6, choice: "Sieczna Miecze", created_at: "2012-06-27 16:16:00", updated_at: "2012-06-27 16:16:00">, #<SkillBonusPreference id: 2, character_skill_id: 5, choice: "Miecz Krótki", created_at: "2012-06-27 16:16:02", updated_at: "2012-06-27 16:16:02">]
+  #   statistics.stats_modifiers.select { |sm| (sm.group_name.match("Fechtunek w Grupie Broni") || sm.group_name.match("Wybrana broń") || sm.group_name.match("Wybrana tarcza") || sm.group_name.match("Wybrana grupa broni")) }
+  # reuse extract_bonus_from_stats_modifier_dsl_definition(type, stats_modifiers)
+  # looking for group name and weapon name
+  #finally refactor attack_fencing_parameter, where this two step (name and group name) lookup occurs
+
   #TODO modify it to search for tempo -1 dsl thing s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana broń, Atak+1, Obrona+1, Tempo-1")  #This "DSL" can be improved
   #start from checking all Tempo-1
   #SkillBonusPreference.preferences_for_character(3)

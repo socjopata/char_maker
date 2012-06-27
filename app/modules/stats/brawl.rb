@@ -3,7 +3,7 @@ module Stats
   module Brawl
 
     def calculate_brawl_bonus_from_special_rules
-      0 #TODO like what?
+      0
     end
 
     def calculate_brawl_bonus_from_skills
