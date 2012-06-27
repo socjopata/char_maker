@@ -18,15 +18,14 @@ class CharacterRangedWeapon < ActiveRecord::Base
 
   end
 
-  #TODO modify it to search for tempo -1 dsl thing s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana broń, Atak+1, Obrona+1, Tempo-1")  #This "DSL" can be improved
-  #start from checking all Tempo-1
   def calculate_speed
     total_speed = resource.speed.to_i
-    favorite_weapon_modifier = (character.skills.map(&:name).include?("Ulubiona Broń") && character.skills.detect { |s| s.name=="Ulubiona Broń" }.character_skills.first.skill_bonus_preference.choice==resource.group_name)
-    fencing_teacher_modifier = (character.skills.map(&:name).include?("Nauczyciel Fechtunku Jednej Broni") && character.skills.detect { |s| s.name=="Nauczyciel Fechtunku Jednej Broni" }.character_skills.first.skill_bonus_preference.choice==resource.group_name)
+    favorite_weapon_bonus = extract_bonus_from_stats_modifier_dsl_definition("Tempo", collection_of_stats_modifiers("weapon_name"))
+    favorite_weapon_group_bonus = extract_bonus_from_stats_modifier_dsl_definition("Tempo", collection_of_stats_modifiers("weapon_group_name"))
+
     weapon_upgrade_modifier = speed
     skill_modifiers = character.statistics.stats_modifiers.select { |sm| sm.modifies=="weapon_modifier" && (sm.group_name=="Bow speed") }.collect(&:value).sum
-    total_speed -= favorite_weapon_modifier.to_i + fencing_teacher_modifier.to_i + weapon_upgrade_modifier.to_i + skill_modifiers.to_i
+    total_speed -= - favorite_weapon_bonus.to_i - favorite_weapon_group_bonus.to_i + weapon_upgrade_modifier.to_i + skill_modifiers.to_i #the orientation is tricky ;)
     total_speed < 1 ? 1 : total_speed
   end
 

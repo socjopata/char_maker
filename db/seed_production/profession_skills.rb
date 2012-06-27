@@ -15,8 +15,8 @@ Umiejętność Pasywna" )
 
 
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek w Grupie Broni")
-
+#s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek w Grupie Broni")
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana grupa broni(), Atak+1, Obrona+1," )
 
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Natarcie i Powstrzymanie" )
 
@@ -741,7 +741,7 @@ skill = Skill.create(:profession_type => "Zabójca",
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR", :value => "25" )
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana grupa broni(Kłuta Puginały i Sztylety,Sieczno / Kłująca Noże,Łamacz mieczy), Atak+1 and Obrona+1")
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana grupa broni(Kłuta Puginały i Sztylety,Sieczno / Kłująca Noże,Łamacz mieczy), Atak+1 and Obrona+1,")
 
 skill = Skill.create(:profession_type => "Zabójca",
                      :name => "Haniebny Cios",
@@ -764,7 +764,8 @@ skill.skill_requirements.create(:check_applies_to => "statistics", :name => "ZR"
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "S", :value => "20" )
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "3" )
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek w Grupie Broni")
+#s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek w Grupie Broni")
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana grupa broni(), Atak+1, Obrona+1," )
 s_choice.stats_modifiers.create(:modifies => "melee_damage", :value => 3, :group_name => "Except shooting and boxing")
 
 

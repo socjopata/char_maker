@@ -175,7 +175,7 @@ skill = Skill.create(:profession_type => "rogue",
 Umiejętność Pasywna" )
 
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana broń, Atak+1, Obrona+1, Tempo-1")  #This "DSL" can be improved
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana broń, Atak+1, Obrona+1, Tempo-1,")  #This "DSL" can be improved
 
 
 skill = Skill.create(:profession_type => "rogue",

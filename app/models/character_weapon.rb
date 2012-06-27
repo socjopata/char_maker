@@ -5,7 +5,6 @@ class CharacterWeapon < ActiveRecord::Base
 
   NOT_FEASIBLE_FOR_DUAL_WIELD = ["Nóż do rzucania", "Lekka Kopia", "Cieżka Kopia", "Lekka"]
 
-
   def resource
     weapon
   end
@@ -14,22 +13,15 @@ class CharacterWeapon < ActiveRecord::Base
     resource.name
   end
 
-
-  #=> [#<SkillBonusPreference id: 1, character_skill_id: 6, choice: "Sieczna Miecze", created_at: "2012-06-27 16:16:00", updated_at: "2012-06-27 16:16:00">, #<SkillBonusPreference id: 2, character_skill_id: 5, choice: "Miecz Krótki", created_at: "2012-06-27 16:16:02", updated_at: "2012-06-27 16:16:02">]
-  #   statistics.stats_modifiers.select { |sm| (sm.group_name.match("Fechtunek w Grupie Broni") || sm.group_name.match("Wybrana broń") || sm.group_name.match("Wybrana tarcza") || sm.group_name.match("Wybrana grupa broni")) }
-  # reuse extract_bonus_from_stats_modifier_dsl_definition(type, stats_modifiers)
-  # looking for group name and weapon name
-  #finally refactor attack_fencing_parameter, where this two step (name and group name) lookup occurs
-
-  #TODO modify it to search for tempo -1 dsl thing s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana broń, Atak+1, Obrona+1, Tempo-1")  #This "DSL" can be improved
-  #start from checking all Tempo-1
-  #SkillBonusPreference.preferences_for_character(3)
   def calculate_speed
     total_speed = weapon.speed.to_i
-    favorite_weapon_modifier = (character.skills.map(&:name).include?("Ulubiona Broń") && character.skills.detect { |s| s.name=="Ulubiona Broń" }.character_skills.first.skill_bonus_preference.choice==weapon.group_name)
-    fencing_teacher_modifier = (character.skills.map(&:name).include?("Nauczyciel Fechtunku Jednej Broni") && character.skills.detect { |s| s.name=="Nauczyciel Fechtunku Jednej Broni" }.character_skills.first.skill_bonus_preference.choice==weapon.group_name)
+
+    favorite_weapon_bonus = extract_bonus_from_stats_modifier_dsl_definition("Tempo", collection_of_stats_modifiers("weapon_name"))
+    favorite_weapon_group_bonus = extract_bonus_from_stats_modifier_dsl_definition("Tempo", collection_of_stats_modifiers("weapon_group_name"))
+
     weapon_upgrade_modifier = speed
-    total_speed -= favorite_weapon_modifier.to_i + fencing_teacher_modifier.to_i + weapon_upgrade_modifier.to_i
+
+    total_speed +=  favorite_weapon_bonus.to_i + favorite_weapon_group_bonus.to_i - weapon_upgrade_modifier.to_i    #the orientation is tricky ;)
     total_speed < 1 ? 1 : total_speed
   end
 
@@ -48,7 +40,6 @@ class CharacterWeapon < ActiveRecord::Base
     calculate_attack_bonus_for_particular_weapon + attack_fencing_parameter + character.statistics.calculate_dexterity_and_strength_bonus + weapon_proficiency_bonus
   end
 
-
   def calculate_attack_bonus_for_particular_weapon
     weapon_upgrade_modifier = attack_bonus.to_i
     weapon.attack_bonus.to_i + weapon_upgrade_modifier
@@ -63,25 +54,37 @@ class CharacterWeapon < ActiveRecord::Base
     character.statistics.stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Obrona Bliska" }.collect(&:value).sum
   end
 
-  #TODO extract to module
   def extract_bonus_from_stats_modifier_dsl_definition(type, stats_modifiers)
     if stats_modifiers.present?
-      stats_modifiers.select { |sm| sm.group_name[type] }.map { |sm| sm.group_name.match(/(?<=#{type})(.*?)(?=,)/)[0].to_i }.sum + stats_modifiers.select { |sm| sm.group_name["Fechtunek w Grupie Broni"] }.map(&:value).sum
+      sum_of_skill_preference_modifiers_for_weapon_or_weapon_group_specialisation(type, stats_modifiers)
+    end
+  end
+
+  def sum_of_skill_preference_modifiers_for_weapon_or_weapon_group_specialisation(characteristic_affected, collection_of_stats_modifiers)
+    collection_of_stats_modifiers.select { |sm| sm.group_name[characteristic_affected] }.map { |sm| sm.group_name.match(/(?<=#{characteristic_affected})(.*?)(?=,)/)[0].to_i }.sum
+  end
+
+     #TODO maybe try to use a scope, like   #SkillBonusPreference.preferences_for_character(3)
+  def collection_of_stats_modifiers(entity)
+    if entity=="weapon_name"
+      character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten
+    elsif entity=="weapon_group_name"
+      character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.group_name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten
     end
   end
 
   #this is for weapon group.
   def attack_fencing_parameter
-    favorite_weapon_bonus = extract_bonus_from_stats_modifier_dsl_definition("Atak", character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten)
-    favorite_weapon_group_bonus = extract_bonus_from_stats_modifier_dsl_definition("Atak", character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.group_name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten)
+    favorite_weapon_bonus = extract_bonus_from_stats_modifier_dsl_definition("Atak", collection_of_stats_modifiers("weapon_name"))
+    favorite_weapon_group_bonus = extract_bonus_from_stats_modifier_dsl_definition("Atak", collection_of_stats_modifiers("weapon_group_name"))
 
     favorite_weapon_bonus.to_i + favorite_weapon_group_bonus.to_i + character.statistics.raw_fencing_when_attacking
   end
 
   # this is for weapon group.
   def defense_fencing_parameter
-    favorite_weapon_bonus = extract_bonus_from_stats_modifier_dsl_definition("Obrona", character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten)
-    favorite_weapon_group_bonus = extract_bonus_from_stats_modifier_dsl_definition("Obrona", character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.group_name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten)
+    favorite_weapon_bonus = extract_bonus_from_stats_modifier_dsl_definition("Obrona", collection_of_stats_modifiers("weapon_name"))
+    favorite_weapon_group_bonus = extract_bonus_from_stats_modifier_dsl_definition("Obrona", collection_of_stats_modifiers("weapon_group_name"))
 
     favorite_weapon_bonus.to_i + favorite_weapon_group_bonus.to_i + character.statistics.raw_fencing_when_defending
   end

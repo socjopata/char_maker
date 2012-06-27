@@ -82,7 +82,8 @@ s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_nam
 
 skill = Skill.create(:profession_type => "default", :name => "Nauczyciel Fechtunku Jednej Broni", :way_it_works => "bohater zyskuje w wybranej Grupie Broni +1pkt Fechtunku (dzięki czemu zwiększa zarówno FwA jak i FwO). Dotyczy to każdej broni zarówno tej do walki wręcz jak i strzeleckiej.")
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek w Grupie Broni")
+#s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Fechtunek w Grupie Broni")
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana grupa broni(), Atak+1, Obrona+1," )
 
 
 skill = Skill.create(:profession_type => "default", :name => "Nieustraszony", :way_it_works => "postać zwiększa swoją Wiarę o +1pkt oraz Odporność na Strach o +5pkt. Jeżeli efekt magiczny skierowany w bohatera wywołuje Strach lub Przerażenie premia ta przyznawana jest również w przeciwstawnym teście Przełamania. Zdolność może być wybrana wielokrotnie, analogicznie podnosząc parametr główny jak i samą odporność.")

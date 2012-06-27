@@ -57,7 +57,7 @@ skill = Skill.create(:profession_type => "soldier",
 
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Tarczownik" )
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana tarcza, Obrona+1")
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana tarcza, Obrona+1,")
 
 
 
@@ -100,7 +100,7 @@ skill = Skill.create(:profession_type => "soldier",
 Umiejętność Pasywna" )
 
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana broń, Atak+1, Obrona+1, Tempo-1")  #This "DSL" can be improved
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 1, :group_name => "Wybrana broń, Atak+1, Obrona+1, Tempo-1,")  #This "DSL" can be improved
 
 skill = Skill.create(:profession_type => "soldier",
                      :name => "Walka na Dystans",
