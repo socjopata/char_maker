@@ -146,7 +146,7 @@ class CharacterWizardsController < ApplicationController
 
   def picking_spells_step
     if request.get?
-
+      @scribe = Scribe.new(@character)
     elsif request.post?
 
     end
