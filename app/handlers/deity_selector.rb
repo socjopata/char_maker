@@ -4,8 +4,8 @@ class DeitySelector
 
   ATHEISM_FORBIDDEN_PROFESSIONS = ["Kapłan", "Rycerz Zakonny", "Szaman"]
   CLERIC_DEITIES = ["Sirtol", "Kastor", "Bóg Smoczy", "Kalastra", "Syrion", "Alaj", "Calisto", "Durgil",]
-  WARRIOR_CLERIC_DEITIES = []
-  SHAMAN_DEITIES = ["Magni", "Kal-Kalar", "Galos i Malos"]
+  WARRIOR_CLERIC_DEITIES = ["Alaj", "Durgil", "Fortuna", "Kastor", "Bóg Smoczy", "Sirtol", "Syrion"]
+  SHAMAN_DEITIES = ["Magni", "Kal-Kalar", "Galos i Malos", "Calisto"]
 
   attr_accessor :deities
 
@@ -40,7 +40,7 @@ class DeitySelector
     if easy_deity_picking
       country.deities & WARRIOR_CLERIC_DEITIES
     else
-      WARRIOR_CLERIC_DEITIES
+      [Deity.find_all_by_name(WARRIOR_CLERIC_DEITIES)]
     end
   end
 

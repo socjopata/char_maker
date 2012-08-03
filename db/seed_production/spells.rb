@@ -214,6 +214,8 @@ end
 
 
 #Magni
+deity = Deity.find_by_name!("Magni")
+profession = Profession.find_by_name("Szaman")
 
 ["Duchy Ognia",
  "Duchy Ziemi",
@@ -234,9 +236,12 @@ end
  "Rytuał Odporności",
  "Kontrola Zwierząt",
  "Przyzwanie Ducha",
- "Duchy Przodków"]
+ "Duchy Przodków"].each_with_index do |spell_name, i|
+  Spell.create(:name => spell_name, :profession_id => profession.id, :index => i+1, :deity_id => deity.id)
+end
 
-#Stepy
+#Stepy - Kal Kalar
+deity = Deity.find_by_name!("Kal-Kalar")
 
 ["Duchy Piasku i Pyłu",
  "Duchy Ziemi",
@@ -257,9 +262,12 @@ end
  "Rytuał Odporności",
  "Kontrola Zwierząt",
  "Przyzwanie Ducha",
- "Duchy Przodków"]
+ "Duchy Przodków"].each_with_index do |spell_name, i|
+  Spell.create(:name => spell_name, :profession_id => profession.id, :index => i+1, :deity_id => deity.id)
+end
 
 #Północ
+deity = Deity.find_by_name!("Galos i Malos")
 
 ["Duchy Wody",
  "Duchy Nieba",
@@ -280,9 +288,12 @@ end
  "Rytuał Odporności",
  "Kontrola Zwierząt",
  "Przyzwanie Ducha",
- "Duchy Przodków"]
+ "Duchy Przodków"].each_with_index do |spell_name, i|
+  Spell.create(:name => spell_name, :profession_id => profession.id, :index => i+1, :deity_id => deity.id)
+end
 
 #Archipelag Południowy
+deity = Deity.find_by_name!("Calisto")
 
 ["Oblicza Xargosa",
  "Słońce/upał",
@@ -303,4 +314,6 @@ end
  "Rytuał Odporności",
  "Kontrola Zwierząt",
  "Przyzwanie Ducha",
- "Duchy Przodków"]
+ "Duchy Przodków"].each_with_index do |spell_name, i|
+  Spell.create(:name => spell_name, :profession_id => profession.id, :index => i+1, :deity_id => deity.id)
+end

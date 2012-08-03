@@ -8,7 +8,7 @@ deity.countries << [Country.find_all_by_name(["Alantar", "Archipelag Południowy
 deity = Deity.create(:name => "Smoczy Bóg")
 deity.countries << [Country.find_all_by_name(["Alantar", "Nimer", "Pelmir", "Wielkie Stepy", "Księstwa Wysp Północy", "Ziemie Sirtol"])]
 deity = Deity.create(:name => "Syrion")
-#TODO fix Syrion
+deity.countries << [Country.find_all_by_name(["Alantar", "Nimer", "Pelmir"])]
 deity = Deity.create(:name => "Durgil")
 deity.countries << [Country.find_all_by_name(["Nimer", "Pelmir"])]
 deity = Deity.create(:name => "Alaj")
@@ -30,7 +30,7 @@ deity = Deity.create(:name => "Samotnik")
 deity = Deity.create(:name => "Xargos")
 deity.countries << [Country.find_all_by_name(["Archipelag Południowy"])]
 
-#TODO Szamanizm
+
 
 
 
