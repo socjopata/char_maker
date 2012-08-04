@@ -3,8 +3,8 @@
 class DeitySelector
 
   ATHEISM_FORBIDDEN_PROFESSIONS = ["Kapłan", "Rycerz Zakonny", "Szaman"]
-  CLERIC_DEITIES = ["Sirtol", "Kastor", "Bóg Smoczy", "Kalastra", "Syrion", "Alaj", "Calisto", "Durgil",]
-  WARRIOR_CLERIC_DEITIES = ["Alaj", "Durgil", "Fortuna", "Kastor", "Bóg Smoczy", "Sirtol", "Syrion"]
+  CLERIC_DEITIES = ["Sirtol", "Kastor", "Smoczy Bóg", "Kalastra", "Syrion", "Alaj", "Calisto", "Durgil",]
+  WARRIOR_CLERIC_DEITIES = ["Alaj", "Durgil", "Fortuna", "Kastor", "Smoczy Bóg", "Sirtol", "Syrion"]
   SHAMAN_DEITIES = ["Magni", "Kal-Kalar", "Galos i Malos", "Calisto"]
 
   attr_accessor :deities
@@ -18,9 +18,9 @@ class DeitySelector
 
   def prepare_deities_list(character, country, profession)
     if ATHEISM_FORBIDDEN_PROFESSIONS.include?(profession.name)
-      cleric_deities(character.easy_deity_picking, country) if profession.name=="Kapłan"
-      warrior_cleric_deities(character.easy_deity_picking, country) if profession.name=="Rycerz Zakonny"
-      shaman_deities(character.easy_deity_picking, country) if profession.name=="Szaman"
+      return cleric_deities(character.easy_deity_picking, country) if profession.name=="Kapłan"
+      return warrior_cleric_deities(character.easy_deity_picking, country) if profession.name=="Rycerz Zakonny"
+      return shaman_deities(character.easy_deity_picking, country) if profession.name=="Szaman"
     elsif character.easy_deity_picking
       country.deities
     elsif !character.easy_deity_picking
@@ -30,7 +30,7 @@ class DeitySelector
 
   def cleric_deities(easy_deity_picking, country)
     if easy_deity_picking
-      country.deities & [Deity.find_all_by_name(CLERIC_DEITIES)]
+      country.deities & Deity.find_all_by_name(CLERIC_DEITIES)
     else
       [Deity.find_all_by_name(CLERIC_DEITIES)]
     end
@@ -38,7 +38,7 @@ class DeitySelector
 
   def warrior_cleric_deities(easy_deity_picking, country)
     if easy_deity_picking
-      country.deities & WARRIOR_CLERIC_DEITIES
+      country.deities & Deity.find_all_by_name(WARRIOR_CLERIC_DEITIES)
     else
       [Deity.find_all_by_name(WARRIOR_CLERIC_DEITIES)]
     end
@@ -46,7 +46,7 @@ class DeitySelector
 
   def shaman_deities(easy_deity_picking, country)
     if easy_deity_picking
-      country.deities & [Deity.find_all_by_name(SHAMAN_DEITIES)]
+      country.deities & Deity.find_all_by_name(SHAMAN_DEITIES)
     else
       [Deity.find_all_by_name(SHAMAN_DEITIES)]
     end

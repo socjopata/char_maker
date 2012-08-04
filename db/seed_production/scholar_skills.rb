@@ -314,12 +314,6 @@ Umiejętność Pasywna.")
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "OR: INT,WI", :value => "31" )
 
 skill = Skill.create(:profession_type => "scholar",
-                     :name => "Starożytny Splot",
-                    :limitations => "nie można korzystać ze zdolności „Rzucanie Czarów bez Gestów”",
-                     :way_it_works => "zasięg wszystkich czarów dystansowych zostaje zwiększony o 15metrów. Umiejętność nie działa na magię, która wymaga Dotknięcia celu. Ponadto zaklęcia obszarowe mają powiększony promień/średnicę o 3metry.
-Umiejętność Pasywna.")
-
-skill = Skill.create(:profession_type => "scholar",
                      :name => "Tworzenie Mikstur",
                      :way_it_works => "postać posiadła kompletną wiedzę o wszystkich Zaawansowanych przepisach znajdujących się w rozdziale Alchemia. Potrafi je stworzyć, zna ich składniki i wie gdzie można je zakupić/znaleźć. Bohater zyskuje 100sztuk złota, które może wydać na eliksiry, mikstury i zioła od razu podczas tworzenia postaci.
                      Ponadto zwiększa swoją Zręczność o +1pkt.")
