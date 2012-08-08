@@ -1,1 +1,9 @@
-Here be dragons.
+<ul>
+  <% @scribe.class_spells.each do |spell| %>
+      <li><label><%= spell.name %></label><%= check_box_tag spell.id, 1, @scribe.character_spellbook.spells.include?(spell), :disabled => @scribe.character_spellbook.randomly_drawn_spells.include?(spell.id), :onchange => "toggle_this_spell(this);" %>
+      </li>
+  <% end %>
+</ul>
+
+
+<!--(session[:default_skills_ids].include?(skill.id) || @cannot_select_skills.include?(skill))-->

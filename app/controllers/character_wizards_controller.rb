@@ -152,6 +152,9 @@ class CharacterWizardsController < ApplicationController
     end
   end
 
+  def toggle_spell
+
+  end
 
   def set_shield_as_main
     @character.set_shield_as_main(params[:inventory_item].to_i)
