@@ -20,4 +20,8 @@ class Spellbook < ActiveRecord::Base
       update_attribute(:randomly_drawn_spells, spell_indexes.select{ |si| (si < 21)} )
   end
 
+  def picked_by_player
+     spellbook_spells.joins(:spell).where("spells.index not in (?)", self.randomly_drawn_spells).size
+  end
+
 end

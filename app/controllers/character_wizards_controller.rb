@@ -132,6 +132,7 @@ class CharacterWizardsController < ApplicationController
         if @character.is_of_scholar_class_type?
           redirect_to picking_spells_step_character_wizard_path(:char_id => @character)
         else
+          #TODO refactor to a method
           @character.update_attributes(:finished => true,
                                        :free_skill_points_left => Skill.calculate_free_skill_amount(@character, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_int].to_i, session[:skills_used].to_i))
           @character.purse.close_the_bill(session[:coins_left])
@@ -148,12 +149,17 @@ class CharacterWizardsController < ApplicationController
     if request.get?
       @scribe = Scribe.new(@character)
     elsif request.post?
-
+      #TODO refactor to a method
+      @character.update_attributes(:finished => true,
+                                   :free_skill_points_left => Skill.calculate_free_skill_amount(@character, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_int].to_i, session[:skills_used].to_i))
+      redirect_to characters_path
     end
   end
 
   def toggle_spell
-
+    @scribe = Scribe.new(@character)
+    @scribe.learn_spell(params[:spell_id], params[:value])
+    render :layout => "colorbox" if @scribe.not_enough_free_spell_points
   end
 
   def set_shield_as_main
