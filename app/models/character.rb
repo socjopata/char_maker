@@ -47,8 +47,7 @@ class Character < ActiveRecord::Base
   end
 
   def make_rogue_a_finesse_fighter
-    self.fight_style_id = FightStyle.find_by_name("Finezyjny").id if self.profession.present? && self.profession.general_type=="rogue"
-    save(false)
+    self.update_attribute(:fight_style_id, FightStyle.find_by_name("Finezyjny").id) if self.profession.present? && self.profession.general_type=="rogue"
   end
 
   def check_fight_style_choice
