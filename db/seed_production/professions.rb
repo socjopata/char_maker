@@ -21,7 +21,7 @@ s_choice.stats_modifiers.create(:modifies => "WT", :value => 0, :group_name => "
 s_choice.stats_modifiers.create(:modifies => "O", :value => 3, :group_name => "domyślne")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Czytanie i Pisanie")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Pozyskanie Komponentu")
-s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Ważenie Mikstur")
+s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Tworzenie Mikstur")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Wykształcenie Akademickie")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Zielarstwo")
 s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name => "Talenty Alchemiczne")
