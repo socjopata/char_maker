@@ -84,7 +84,7 @@ class CharacterWizardsController < ApplicationController
       @character.make_rogue_a_finesse_fighter
       @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
     elsif request.post?
-      if (@character.fight_style.present? and  @character.update_attributes(:wield_style_id => params[:wield_style_id] )) ||  @character.update_attributes(:fight_style_id => params[:fight_style_id], :wield_style_id => params[:wield_style_id] )
+      if (@character.fight_style.present? and @character.update_attributes(:wield_style_id => params[:wield_style_id])) || @character.update_attributes(:fight_style_id => params[:fight_style_id], :wield_style_id => params[:wield_style_id])
         redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
       else
         flash.alert = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
@@ -132,10 +132,7 @@ class CharacterWizardsController < ApplicationController
         if @character.is_of_scholar_class_type?
           redirect_to picking_spells_step_character_wizard_path(:char_id => @character)
         else
-          #TODO refactor to a method
-          @character.update_attributes(:finished => true,
-                                       :free_skill_points_left => Skill.calculate_free_skill_amount(@character, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_int].to_i, session[:skills_used].to_i))
-          @character.purse.close_the_bill(session[:coins_left])
+          @character.finish!(session[:skill_free_assignment_base], session[:coins_left])
           redirect_to characters_path
           #make it finished and redirect to index or show
         end
@@ -149,9 +146,7 @@ class CharacterWizardsController < ApplicationController
     if request.get?
       @scribe = Scribe.new(@character)
     elsif request.post?
-      #TODO refactor to a method
-      @character.update_attributes(:finished => true,
-                                   :free_skill_points_left => Skill.calculate_free_skill_amount(@character, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_int].to_i, session[:skills_used].to_i))
+      @character.finish!(session[:skill_free_assignment_base], session[:coins_left])
       redirect_to characters_path
     end
   end

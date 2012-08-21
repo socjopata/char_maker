@@ -6,6 +6,7 @@ class Statistics < ActiveRecord::Base
   include Stats::Fencing
   include Stats::Brawl
   include Stats::RangeChange
+  include Stats::Scholar
 
   set_table_name "statistics"
 

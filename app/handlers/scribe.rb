@@ -34,6 +34,10 @@ class Scribe
     @spells_left > 0
   end
 
+  def complete_spellbook
+    @character_spellbook.update_attributes(:mana_points => @character_spellbook.character.statisctics.calculate_mana_points)
+  end
+
 end
 
 

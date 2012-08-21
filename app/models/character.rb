@@ -132,6 +132,10 @@ class Character < ActiveRecord::Base
     Profession::CASTER_CLASSES.include?(profession.name)
   end
 
+  def is_a_cleric?
+    Profession::CLERIC_CLASSES.include?(profession.name)
+  end
+
   def set_shield_as_main(inventory_item_id)
     character_shields.each do |_shield|
       _shield["id"]==inventory_item_id ? _shield.update_attribute(:favorite, true) : _shield.update_attribute(:favorite, false)
@@ -158,6 +162,20 @@ class Character < ActiveRecord::Base
 
   def items
     [weapons + armors + shields + ranged_weapons].flatten.map(&:name).join(", ")
+  end
+
+  def finish!(skill_free_assignment_base, purse)
+    update_attributes(:finished => true,
+                      :free_skill_points_left => Skill.calculate_free_skill_amount(@character, skill_free_assignment_base, Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_int].to_i, session[:skills_used].to_i))
+    purse.close_the_bill(purse)
+
+    complete_the_creation_of_spellbook if character.is_of_scholar_class_type?
+
+  end
+
+  def complete_the_creation_of_spellbook
+      scribe = Scribe.new(self)
+      scribe.complete_spellbook
   end
 
 end
