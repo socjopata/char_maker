@@ -153,7 +153,7 @@ linking_node = trait.stats_choices.create
 linking_node.stats_modifiers.create(:modifies => "INT", :value => 5, :group_name => "domyślne")
 linking_node.stats_modifiers.create(:modifies => "WI", :value => 5, :group_name => "domyślne")
 linking_node.stats_modifiers.create(:modifies => "casting", :value => 2, :group_name => "Przełamanie")
-linking_node.stats_modifiers.create(:modifies => "casting", :value => 3, :group_name => "Dodatkowe zaklęcia")      #TODO implemnt it
+linking_node.stats_modifiers.create(:modifies => "casting", :value => 3, :group_name => "Dodatkowe zaklęcia")
 
 
 trait = Trait.find_by_name("Mędrzec")

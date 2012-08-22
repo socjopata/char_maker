@@ -10,7 +10,7 @@ class Scribe
 
 
   def calculate_spells_left
-    5 - @character_spellbook.randomly_drawn_spells.size - @character_spellbook.picked_by_player #TODO + bonuses from skills
+    5 - @character_spellbook.randomly_drawn_spells.size - @character_spellbook.picked_by_player + calculate_amount_of_extra_spells
   end
 
   def learn_spell(id, choice)
