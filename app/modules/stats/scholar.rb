@@ -1,25 +1,31 @@
 # -*- encoding : utf-8 -*-
+
 module Stats
   module Scholar
 
     def calculate_mana_points
       if character.is_a_cleric?
-        # polowa inteligencji + wiara + current_level * 1 + dorzut + bonusy z umiejetnosci (?)                                                                                                                                                                                                                                  Za każdym razem kiedy Inteligencja lub Wiara postaci zostanie w jakiś sposób na stałe zwiększona (lub zmniejszona); poprzez zdobycie nowego poziomu doświadczenia, pozyskanie magicznego przedmiotu, itp. Postać musi ponownie wyliczyć swą Moc.
+        calculate_wi + (calculate_int.to_f/2).ceil + (current_level * 1) + current_level.d(10) + mana_bonuses_from_skills
       else
-        # inteligencja + polowa wiary + current_level * 1 + dorzut + bonusy z umiejetnosci (?)
+        calculate_int + (calculate_wi.to_f/2).ceil + (current_level * 1) + current_level.d(10) + mana_bonuses_from_skills
       end
     end
 
+    def mana_bonuses_from_skills
+      bonuses = stats_modifiers.select { |sm| sm.modifies=="power level" }
+      evaluated_bonuses = bonuses.select { |sm| sm.value==0 }.map { |sm| sm.split("k").first.to_i.d(sm.split("k").last.to_i) }.collect(&:value).sum
+      evaluated_bonuses + bonuses.collect(&:value).sum
+    end
 
     #----------------------
 
     def calculate_casting
-      main_paramter_bonus + character_level_bonus + casting_bonus_from_skills + special_casting_bonus
+      main_parameter_bonus.to_i + character_level_bonus + bonus_from_skills("Rzucanie czarów") + special_casting_bonus
     end
 
-    def main_paramter_bonus
+    def main_parameter_bonus
       if character.is_a_cleric?
-        Statistics::BONUS_OR_PENALTY_RANGES[calculate_wi]  #TODO remember about to_i
+        Statistics::BONUS_OR_PENALTY_RANGES[calculate_wi]
       else
         Statistics::BONUS_OR_PENALTY_RANGES[calculate_int]
       end
@@ -28,27 +34,27 @@ module Stats
     def character_level_bonus
       (character.level.to_f / 2).floor
     end
-    #TODO possibly refactor with break
-    def casting_bonus_from_skills
 
+    def bonus_from_skills(name)
+      stats_modifiers.select { |sm| sm.modifies=="casting" && sm.group_name==name }.collect(&:value).sum
     end
 
     def special_casting_bonus
-
+      0
     end
 
     #----------------------
 
     def calculate_break
-      main_paramter_bonus  + character_level_bonus + break_bonus_from_skills + special_break_bonus
-    end
-
-    def break_bonus_from_skills
-
+      main_parameter_bonus.to_i + character_level_bonus + bonus_from_skills("Przełamanie") + special_break_bonus
     end
 
     def special_break_bonus
+      0
+    end
 
+    def calculate_amount_of_extra_spells
+      stats_modifiers.select { |sm| sm.modifies=="casting" && sm.group_name=="Dodatkowe zaklęcia" }.collect(&:value).sum
     end
 
   end

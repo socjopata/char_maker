@@ -385,7 +385,7 @@ skill.skill_requirements.create(:check_applies_to => "experience", :value => "8"
 
 skill.skill_requirements.create(:check_applies_to => "statistics", :name => "INT", :value => "35" )
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "power level", :value => 0, :group_name => "3k10") #TODO ...     if 0 then parse group name
+s_choice.stats_modifiers.create(:modifies => "power level", :value => 0, :group_name => "3k10")
 
 skill = Skill.create(:profession_type => "Mag",
                      :name => "Grimuar",

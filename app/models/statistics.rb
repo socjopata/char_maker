@@ -60,13 +60,13 @@ class Statistics < ActiveRecord::Base
     initial_stats = []
     loop do
       7.times do
-        initial_stats << 1 + rand(Statistics::DICE_TYPE)
+        initial_stats << 1.d(Statistics::DICE_TYPE)
       end
       initial_stats = Statistics.normalize_dice_rolls(initial_stats, character.character_background.traits.first.try(:name) =="Błogosławiony")
       break if initial_stats.sum > 55
       initial_stats = []
     end
-    initial_stats << (character.character_background.traits.first.try(:name)=="Piękniś" ? 25 : (1 + rand(Statistics::DICE_TYPE))) #extra dice roll for polish ("Ogłada"))
+    initial_stats << (character.character_background.traits.first.try(:name)=="Piękniś" ? 25 : (1.d(Statistics::DICE_TYPE))) #extra dice roll for polish ("Ogłada"))
     self.initial_dice_roll_set = initial_stats
   end
 

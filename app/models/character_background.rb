@@ -10,12 +10,12 @@ class CharacterBackground < ActiveRecord::Base
 
   def draw_a_trait
     if self.new_record?
-      dice_roll = 1 + rand(Trait::DICE_TYPE)
+      dice_roll =  1.d(Trait::DICE_TYPE)
       case dice_roll
         when Trait::CURSE_RANGE then
-          attach_a_curse(1 + rand(Trait::DICE_TYPE))
+          attach_a_curse(1.d(Trait::DICE_TYPE))
         when Trait::BLESSING_RANGE then
-          attach_a_blessing(1 + rand(Trait::DICE_TYPE))
+          attach_a_blessing(1.d(Trait::DICE_TYPE))
         else
           nil
       end
@@ -33,12 +33,12 @@ class CharacterBackground < ActiveRecord::Base
 
   def draw_a_social_class
     if self.new_record?
-      dice_roll = 1 + rand(Trait::DICE_TYPE)
+      dice_roll = 1.d(Trait::DICE_TYPE)
       case dice_roll
         when Trait::CURSE_RANGE then
-          attach_a_curse(1 + rand(Trait::DICE_TYPE))
+          attach_a_curse(1.d(Trait::DICE_TYPE))
         when Trait::BLESSING_RANGE then
-          attach_a_blessing(1 + rand(Trait::DICE_TYPE))
+          attach_a_blessing(1.d(Trait::DICE_TYPE))
         else
           nil
       end
@@ -58,7 +58,7 @@ class CharacterBackground < ActiveRecord::Base
       self.social_classes << SocialClass.find_by_name("Szlachcic Zaściankowy")
     else
       if self.character.hardcore_social_class_picking?
-        dice_roll = 1 + rand(SocialClass::DICE_TYPE)
+        dice_roll = 1.d(SocialClass::DICE_TYPE)
         self.social_classes << SocialClass.find_by_name(SocialClass::DICE_RESULT___CIVILIZED[dice_roll])
       else
         self.social_classes << SocialClass.find_by_name("Mieszczanin")
@@ -68,7 +68,7 @@ class CharacterBackground < ActiveRecord::Base
 
   def attach_barbarian_origin
     if self.character.hardcore_social_class_picking?
-      dice_roll = 1 + rand(SocialClass::DICE_TYPE)
+      dice_roll = 1.d(SocialClass::DICE_TYPE)
       self.social_classes << SocialClass.find_by_name(SocialClass::DICE_RESULT___BARBARIAN[dice_roll])
     else
       self.social_classes << SocialClass.find_by_name("Wojownik")
@@ -79,7 +79,7 @@ class CharacterBackground < ActiveRecord::Base
     sc = social_classes.first
     starting = Purse::BASE[sc.name]
     Purse::MULTIPLIER[sc.name].times do
-      starting += ((1 + rand(Purse::DICE_TYPE)) * ((sc.name=="Chłop Ubogi" or sc.name=="Wyrzutek") ? 10 : 100))
+      starting += ((1.d(Purse::DICE_TYPE)) * ((sc.name=="Chłop Ubogi" or sc.name=="Wyrzutek") ? 10 : 100))
     end
     character.create_purse(:starting => starting, :base => 5000)
   end

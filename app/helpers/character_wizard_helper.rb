@@ -77,7 +77,7 @@ module CharacterWizardHelper
   end
 
   def bonus_orientation(value)
-    value >= 0 ? "+" : "-"
+    value >= 0 ? "+" : ""
   end
 
   def parameter_with_bonus_orientation(value)

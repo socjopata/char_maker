@@ -62,7 +62,7 @@ class Purse < ActiveRecord::Base
       number_of_rolls, dice_type = dice_instruction.split("k").map(&:to_i)
       multiplier = extract_multiplier(base)
       number_of_rolls.times do
-        money_bits << ((1 + rand(dice_type)) * multiplier)
+        money_bits << ((1.d(dice_type)) * multiplier)
       end
     end
     money_bits.flatten.sum

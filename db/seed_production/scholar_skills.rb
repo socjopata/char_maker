@@ -135,7 +135,7 @@ skill = Skill.create(:profession_type => "scholar",
 Umiejętność Pasywna.")
 skill.skill_requirements.create(:check_applies_to => "skill", :name => "Moc Krwi" )
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "casting", :value => 2, :group_name => "Rzucanie czarów")   #TODO implement it
+s_choice.stats_modifiers.create(:modifies => "casting", :value => 2, :group_name => "Rzucanie czarów")
 
 skill = Skill.create(:profession_type => "scholar",
                      :name => "Mistrz Magii",
@@ -233,7 +233,7 @@ skill.skill_requirements.create(:check_applies_to => "skill", :name => "Moc Krwi
 
 s_choice = skill.stats_choices.create
 s_choice.stats_modifiers.create(:modifies => "casting", :value => 1, :group_name => "Przełamanie")
-s_choice.stats_modifiers.create(:modifies => "power level", :value => 0, :group_name => "2k10") #TODO ...     if 0 then parse group name
+s_choice.stats_modifiers.create(:modifies => "power level", :value => 0, :group_name => "2k10")
 
 
 skill = Skill.create(:profession_type => "scholar",
@@ -290,7 +290,7 @@ skill.skill_requirements.create(:check_applies_to => "skill", :name => "Runy Dos
 skill.skill_requirements.create(:check_applies_to => "experience", :value => "7")
 
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "power level", :value => 5) #TODO ...
+s_choice.stats_modifiers.create(:modifies => "power level", :value => 5)
 s_choice.stats_modifiers.create(:modifies => "INT", :value => 1, :group_name => "domyślne")
 s_choice.stats_modifiers.create(:modifies => "ZR", :value => 1, :group_name => "domyślne")
 
