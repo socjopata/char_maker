@@ -10,7 +10,7 @@ class Scribe
 
 
   def calculate_spells_left
-    5 - @character_spellbook.randomly_drawn_spells.size - @character_spellbook.picked_by_player + calculate_amount_of_extra_spells
+    5 - @character_spellbook.randomly_drawn_spells.size - @character_spellbook.picked_by_player + @character_spellbook.character.statistics.calculate_amount_of_extra_spells
   end
 
   def learn_spell(id, choice)
@@ -35,7 +35,7 @@ class Scribe
   end
 
   def complete_spellbook
-    @character_spellbook.update_attributes(:mana_points => @character_spellbook.character.statisctics.calculate_mana_points)
+    @character_spellbook.update_attributes(:mana_points => @character_spellbook.character.statistics.calculate_mana_points)
   end
 
 end

@@ -132,7 +132,7 @@ class CharacterWizardsController < ApplicationController
         if @character.is_of_scholar_class_type?
           redirect_to picking_spells_step_character_wizard_path(:char_id => @character)
         else
-          @character.finish!(session[:skill_free_assignment_base], session[:coins_left])
+          @character.finish!(session[:skill_free_assignment_base], session[:coins_left], session[:skills_used].to_i)
           redirect_to characters_path
           #make it finished and redirect to index or show
         end
@@ -146,7 +146,7 @@ class CharacterWizardsController < ApplicationController
     if request.get?
       @scribe = Scribe.new(@character)
     elsif request.post?
-      @character.finish!(session[:skill_free_assignment_base], session[:coins_left])
+      @character.finish!(session[:skill_free_assignment_base], session[:coins_left], session[:skills_used].to_i)
       redirect_to characters_path
     end
   end

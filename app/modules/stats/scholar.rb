@@ -5,9 +5,9 @@ module Stats
 
     def calculate_mana_points
       if character.is_a_cleric?
-        calculate_wi + (calculate_int.to_f/2).ceil + (current_level * 1) + current_level.d(10) + mana_bonuses_from_skills
+        calculate_wi + (calculate_int.to_f/2).ceil + (character.current_level * 1) + character.current_level.d(10) + mana_bonuses_from_skills
       else
-        calculate_int + (calculate_wi.to_f/2).ceil + (current_level * 1) + current_level.d(10) + mana_bonuses_from_skills
+        calculate_int + (calculate_wi.to_f/2).ceil + (character.current_level * 1) + character.current_level.d(10) + mana_bonuses_from_skills
       end
     end
 

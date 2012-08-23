@@ -25,7 +25,7 @@ class CharactersController < ApplicationController
     @ranged_weapon = @character.character_ranged_weapons.first
 
     @purse =  view_context.purse_content(@character.purse.base)
-
+    @scribe = Scribe.new(@character) if @character.is_of_scholar_class_type?
     render :layout => 'office'
   end
 

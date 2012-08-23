@@ -164,12 +164,12 @@ class Character < ActiveRecord::Base
     [weapons + armors + shields + ranged_weapons].flatten.map(&:name).join(", ")
   end
 
-  def finish!(skill_free_assignment_base, purse)
+  def finish!(skill_free_assignment_base, _purse, skills_used)
     update_attributes(:finished => true,
-                      :free_skill_points_left => Skill.calculate_free_skill_amount(@character, skill_free_assignment_base, Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_int].to_i, session[:skills_used].to_i))
-    purse.close_the_bill(purse)
+                      :free_skill_points_left => Skill.calculate_free_skill_amount(self, skill_free_assignment_base, Statistics::BONUS_OR_PENALTY_RANGES[statistics.calculate_int].to_i, skills_used))
+    purse.close_the_bill(_purse)
 
-    complete_the_creation_of_spellbook if character.is_of_scholar_class_type?
+    complete_the_creation_of_spellbook if self.is_of_scholar_class_type?
 
   end
 
