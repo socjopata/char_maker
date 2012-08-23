@@ -32,7 +32,7 @@ module Stats
     end
 
     def character_level_bonus
-      (character.level.to_f / 2).floor
+      (character.current_level.to_f / 2).floor
     end
 
     def bonus_from_skills(name)

@@ -1279,23 +1279,23 @@
     </P>
   </TD>
   <TD WIDTH=10% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><BR>
+    <P ALIGN=CENTER><%= @character.statistics.main_parameter_bonus %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><BR>
+    <P ALIGN=CENTER>+<%= @character.statistics.character_level_bonus %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><BR>
+    <P ALIGN=CENTER>+<%= @character.statistics.bonus_from_skills("Przełamanie") %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: none; padding: 0.04in 0in">
-    <P ALIGN=CENTER><BR>
+    <P ALIGN=CENTER>+<%= @character.statistics.special_break_bonus %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><BR>
+    <P ALIGN=CENTER><%= @character.statistics.calculate_casting %>
     </P>
   </TD>
 </TR>
@@ -1375,19 +1375,19 @@
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=11% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><BR>
+    <P ALIGN=CENTER><%= @character.statistics.main_parameter_bonus %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=12% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><BR>
+    <P ALIGN=CENTER><%= @character.statistics.character_level_bonus %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><BR>
+    <P ALIGN=CENTER><%= @character.statistics.bonus_from_skills("Rzucanie czarów") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><BR>
+    <P ALIGN=CENTER><%= @character.statisctics.calculate_casting %>
     </P>
   </TD>
 </TR>
@@ -1567,7 +1567,7 @@
 </TABLE>
 <P STYLE="margin-bottom: 0in"><BR>
 </P>
-<TABLE WIDTH=755 CELLPADDING=4 CELLSPACING=0>
+<TABLE WIDTH=100% CELLPADDING=4 CELLSPACING=0>
   <COL WIDTH=104>
   <COL WIDTH=46>
   <COL WIDTH=42>
@@ -1812,7 +1812,7 @@
 </TABLE>
 <P STYLE="margin-bottom: 0in"><BR>
 </P>
-<TABLE WIDTH=753 CELLPADDING=4 CELLSPACING=0>
+<TABLE WIDTH=100% CELLPADDING=4 CELLSPACING=0>
   <COL WIDTH=122>
   <COL WIDTH=123>
   <COL WIDTH=123>
@@ -1879,7 +1879,7 @@
 </TABLE>
 <P STYLE="margin-bottom: 0in"><BR>
 </P>
-<TABLE WIDTH=753 CELLPADDING=4 CELLSPACING=0>
+<TABLE WIDTH=100% CELLPADDING=4 CELLSPACING=0>
   <COL WIDTH=116>
   <COL WIDTH=118>
   <COL WIDTH=118>
