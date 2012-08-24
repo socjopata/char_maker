@@ -12,6 +12,10 @@ class Spell < ActiveRecord::Base
   scope :cleric, lambda { |deity_id| where(:profession_id => Profession.find_by_name("Kapłan").id, :deity_id => deity_id ) }
   scope :shaman, lambda { |deity_id| where(:profession_id => Profession.find_by_name("Szaman").id, :deity_id => deity_id ) }
 
+  def to_s
+    name
+  end
+
   def self.set_for(character)
     case character.profession.name
       when "Mag"
