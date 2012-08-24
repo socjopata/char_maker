@@ -110,7 +110,7 @@ class CharacterWizardsController < ApplicationController
 
   def after_skills_step
     if request.get?
-      @weapon_groups = Weapon.all.map(&:group_name).uniq + RangedWeapon.all.map(&:group_name).uniq
+      @weapon_groups = WeaponGroupProficiencySelector.new.weapon_groups
     elsif request.post?
       if @character.any_unfinished_matters_present?
         flash.alert = "Musisz sprecyzować bonusy wynikające z umiejętności"
