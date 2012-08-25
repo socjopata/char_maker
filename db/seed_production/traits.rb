@@ -177,4 +177,5 @@ linking_node = trait.stats_choices.create
 linking_node.stats_modifiers.create(:modifies => "WI", :value => 10, :group_name => "domyślne")
 
 
-#TODO   Fechtmistrz
+
+

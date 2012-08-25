@@ -50,7 +50,7 @@ module Stats
     end
 
     def special_break_bonus
-      0
+      trait_modifier_for_auxiliary_parameter_named("Przełamanie")
     end
 
     def calculate_amount_of_extra_spells

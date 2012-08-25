@@ -178,6 +178,14 @@ class Character < ActiveRecord::Base
       scribe.complete_spellbook
   end
 
+  def valid_for_armament_step?
+    any_unfinished_matters_present? or is_a_shooter_and_didnt_picked_his_bow
+  end
+
+  def is_a_shooter_and_didnt_picked_his_bow
+    profession.name=="Strzelec" && character_weapon_proficiencies.map(&:name).any? {|group_name| RangedWeapon.all.map(&:group_name).uniq.include?(group_name)}
+  end
+
 end
 
 

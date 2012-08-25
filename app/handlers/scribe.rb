@@ -10,7 +10,8 @@ class Scribe
 
 
   def calculate_spells_left
-    5 - @character_spellbook.randomly_drawn_spells.size - @character_spellbook.picked_by_player + @character_spellbook.character.statistics.calculate_amount_of_extra_spells
+    5 - @character_spellbook.randomly_drawn_spells.size - @character_spellbook.picked_by_player
+    + @character_spellbook.character.statistics.calculate_amount_of_extra_spells + trait_modifier_for_auxiliary_parameter_named("Dodatkowe zaklęcia")
   end
 
   def learn_spell(id, choice)

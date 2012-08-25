@@ -78,7 +78,7 @@ class CharacterWeapon < ActiveRecord::Base
     favorite_weapon_bonus = extract_bonus_from_stats_modifier_dsl_definition("Atak", collection_of_stats_modifiers("weapon_name"))
     favorite_weapon_group_bonus = extract_bonus_from_stats_modifier_dsl_definition("Atak", collection_of_stats_modifiers("weapon_group_name"))
 
-    favorite_weapon_bonus.to_i + favorite_weapon_group_bonus.to_i + character.statistics.raw_fencing_when_attacking
+    favorite_weapon_bonus.to_i + favorite_weapon_group_bonus.to_i + character.statistics.raw_fencing_when_attacking + fencing_master_modifier
   end
 
   # this is for weapon group.
@@ -86,7 +86,11 @@ class CharacterWeapon < ActiveRecord::Base
     favorite_weapon_bonus = extract_bonus_from_stats_modifier_dsl_definition("Obrona", collection_of_stats_modifiers("weapon_name"))
     favorite_weapon_group_bonus = extract_bonus_from_stats_modifier_dsl_definition("Obrona", collection_of_stats_modifiers("weapon_group_name"))
 
-    favorite_weapon_bonus.to_i + favorite_weapon_group_bonus.to_i + character.statistics.raw_fencing_when_defending
+    favorite_weapon_bonus.to_i + favorite_weapon_group_bonus.to_i + character.statistics.raw_fencing_when_defending + fencing_master_modifier
+  end
+
+  def fencing_master_modifier
+    character.character_background.traits.include?(Trait.find_by_name("Fechtmistrz")) ? 5 : 0
   end
 
   def two_weapons
