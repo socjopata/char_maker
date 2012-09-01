@@ -101,7 +101,7 @@ skill.skill_requirements.create(:check_applies_to => "experience", :value => "3"
 
 
 skill = Skill.create(:profession_type => "scholar",
-                     :name => "Medycyna",   #TODO check name
+                     :name => "Medycyna",
                      :description => "szkoła, którą ukończył bohater oferuje pełną wiedzę medyczną jaka jest dostępna w cywilizowanym świecie. Postać potrafi nastawiać kości, tamować krwotoki, zwalczać choroby, itd. W zależności od przypadku może potrzebować odpowiednich narzędzi lub leków (decyzja MG).",
                      :way_it_works => "Zasada działania: aby poprawnie przeprowadzić zabieg należy wykonać udany test Inteligencji. MG odpowiednio modyfikuje rzut w zależności od komplikacji zabiegu, stanu narzędzi i wszystkich innych ważnych czynników. Oto kilka modyfikatorów:
 - krwotok -2pkt, złamanie -3pkt, złamanie otwarte -6pkt,

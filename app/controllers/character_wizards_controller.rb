@@ -117,7 +117,7 @@ class CharacterWizardsController < ApplicationController
       else
         flash.alert = ""
         flash.alert << "Musisz sprecyzować bonusy wynikające z umiejętności."  if @character.any_unfinished_matters_present?
-        flash.alert << " Jako strzelec, musisz być biegły przynajmniej w jednej grupie broni dystansowej."  unless @character.is_a_shooter_and_didnt_picked_his_bow
+        flash.alert << " Jako strzelec, musisz być biegły przynajmniej w jednej grupie broni dystansowej."  if @character.is_a_shooter_and_didnt_picked_his_bow
         redirect_to after_skills_step_character_wizard_path(:char_id => @character)
       end
     end

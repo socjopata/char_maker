@@ -179,7 +179,9 @@ class Character < ActiveRecord::Base
   end
 
   def valid_for_armament_step?
-    any_unfinished_matters_present? or is_a_shooter_and_didnt_picked_his_bow
+    return false if any_unfinished_matters_present?
+    return false if is_a_shooter_and_didnt_picked_his_bow
+    true
   end
 
   def is_a_shooter_and_didnt_picked_his_bow
