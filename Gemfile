@@ -17,6 +17,7 @@ gem "exception_logger", :require => "exception_logger"   #TODO run rails g excep
 gem 'galetahub-simple_captcha', :require => 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 gem 'pdfkit'
 gem 'thin'
+gem 'pry'
 
 # Use unicorn as the web server
 # gem 'unicorn'

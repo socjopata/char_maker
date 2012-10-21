@@ -5,31 +5,50 @@ class CharacterWizardsController < ApplicationController
   before_filter :prepare_statistics_hash, :only => [:armament_step, :update_weapons_select, :update_ranged_weapons_select, :update_armors_select, :update_shields_select]
 
   #TODO Disclaimer: I know that things here, with all the logic in this place, suck a big time.
-  #Idea: Refactor using some kind of state machine, or classes,
-  #that after initialization perform various actions on Alantar models, depending on :get or :post
-  #also make some before_filter
+  #NEW: I am refactoring this crap right now.
 
-  def first_step
-    if request.get?
-      @character.character_background.draw_a_trait if @character.hardcore_trait_picking && @character.character_background.origin.blank?
-      @professions = ProfessionSelector.new(@character).results
-      @profession = @professions.first
-      @countries ||= Profession.find_by_name(@profession.name).countries
-      @deities ||= DeitySelector.new(@character, @countries.first.id, @profession.id).deities
-    elsif request.post?
-      if @character.statistics.blank?
-        @stats = @character.build_statistics
-        @stats.draw_stats
-        @stats.save(false)
-      end
-      @character.character_background.set_origin(params[:countries]) if @character.character_background.origin.blank?
-      @character.character_background.update_attribute(:deity_id, params[:deities])
-      @character.pick_a_profession(params[:professions]) if @character.character_profession.blank?
-      @character.character_background.set_social_class if @character.character_background.social_classes.blank?
-      @character.character_background.fill_the_purse_with_gold unless @character.purse.present?
-      redirect_to second_step_character_wizard_path(:char_id => @character.id)
+
+  def show
+    @wizard = Wizard.new(@character, params[:step])
+    render_or_redirect
+  end
+
+  def create
+    @wizard = Wizard.new(@character, params[:step], params)
+    render_or_redirect
+  end
+
+  def render_or_redirect
+    if @wizard.errors
+      redirect_to(@wizard.redirect, :alert => @wizard.errors)
+    elsif @wizard.render
+      render :template => @wizard.render
+    elsif @wizard.redirect
+      redirect_to @wizard.redirect
     end
   end
+
+  #def first_step
+  #  if request.get?
+  #    @character.character_background.draw_a_trait if @character.hardcore_trait_picking && @character.character_background.origin.blank?
+  #    @professions = ProfessionSelector.new(@character).results
+  #    @profession = @professions.first
+  #    @countries ||= Profession.find_by_name(@profession.name).countries
+  #    @deities ||= DeitySelector.new(@character, @countries.first.id, @profession.id).deities
+  #  elsif request.post?
+  #    if @character.statistics.blank?
+  #      @stats = @character.build_statistics
+  #      @stats.draw_stats
+  #      @stats.save(false)
+  #    end
+  #    @character.character_background.set_origin(params[:countries]) if @character.character_background.origin.blank?
+  #    @character.character_background.update_attribute(:deity_id, params[:deities])
+  #    @character.pick_a_profession(params[:professions]) if @character.character_profession.blank?
+  #    @character.character_background.set_social_class if @character.character_background.social_classes.blank?
+  #    @character.character_background.fill_the_purse_with_gold unless @character.purse.present?
+  #    redirect_to second_step_character_wizard_path(:char_id => @character.id)
+  #  end
+  #end
 
   def second_step
     if request.get?
@@ -116,8 +135,8 @@ class CharacterWizardsController < ApplicationController
         redirect_to armament_step_character_wizard_path(:char_id => @character)
       else
         flash.alert = ""
-        flash.alert << "Musisz sprecyzować bonusy wynikające z umiejętności."  if @character.any_unfinished_matters_present?
-        flash.alert << " Jako strzelec, musisz być biegły przynajmniej w jednej grupie broni dystansowej."  if @character.is_a_shooter_and_didnt_picked_his_bow
+        flash.alert << "Musisz sprecyzować bonusy wynikające z umiejętności." if @character.any_unfinished_matters_present?
+        flash.alert << " Jako strzelec, musisz być biegły przynajmniej w jednej grupie broni dystansowej." if @character.is_a_shooter_and_didnt_picked_his_bow
         redirect_to after_skills_step_character_wizard_path(:char_id => @character)
       end
     end
@@ -170,7 +189,7 @@ class CharacterWizardsController < ApplicationController
   def update_countries_select
     @profession = Profession.find(params[:id])
     country_selector = CountrySelector.new(@character, @profession)
-    render :partial => "countries", :locals => {:countries => country_selector.countries}
+    render :partial => "countries", :locals => {:countries => country_selector.countries, :profession => @profession}
   end
 
   def update_deities_select

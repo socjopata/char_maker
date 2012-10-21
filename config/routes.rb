@@ -20,7 +20,7 @@ CharMaker::Application.routes.draw do
   match 'character_wizards/improve_item/', :controller=> 'character_wizards', :action => 'improve_item'
   match 'character_wizards/revert_improvement/', :controller=> 'character_wizards', :action => 'revert_improvement'
 
-  resource 'character_wizard' do
+  resource 'character_wizard', :only => [:show, :create] do
     member do
       get :first_step
       post :first_step

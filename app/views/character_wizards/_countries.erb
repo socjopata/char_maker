@@ -3,7 +3,7 @@
 
 
 <script type="text/javascript">
-    $("#addressDeities").html('<%= escape_javascript(render(:partial => "deities", :locals => {:deities => DeitySelector.new(@character, countries.first.id, @profession.id).deities}).html_safe) -%>');
+    $("#addressDeities").html('<%= escape_javascript(render(:partial => "deities", :locals => {:deities => DeitySelector.new(@character, countries.first.id, profession.id).deities}).html_safe) -%>');
 </script>
 
 
