@@ -50,23 +50,23 @@ class CharacterWizardsController < ApplicationController
   #  end
   #end
 
-  def second_step
-    if request.get?
-      @character.statistics.stats_modifiers.clear #flush stats modifiers from character statistics in case user gets back here from third step
-
-      @profession_skillset = @character.statistics.push_profession_modifiers
-    elsif request.post?
-      @character.lead_parameter = params[:main_skill]
-      @character.statistics.push_social_class_stats_modifiers(params[:social_stat_choices])
-      @character.statistics.push_origin_stats_modifiers(params[:origin_stat_choices])
-      @character.save(false)
-      if @character.valid_for_step_three?
-        redirect_to third_step_character_wizard_path(:char_id => @character.id)
-      else
-        redirect_to second_step_character_wizard_path(:char_id => @character.id), :alert => "Zdaję się, że nie dokonałeś jeszcze wszystkich wyborów wymaganych przez kreator postaci"
-      end
-    end
-  end
+  #def second_step
+  #  if request.get?
+  #    @character.statistics.stats_modifiers.clear #flush stats modifiers from character statistics in case user gets back here from third step
+  #
+  #    @profession_skillset = @character.statistics.push_profession_modifiers
+  #  elsif request.post?
+  #    @character.lead_parameter = params[:main_skill]
+  #    @character.statistics.push_social_class_stats_modifiers(params[:social_stat_choices])
+  #    @character.statistics.push_origin_stats_modifiers(params[:origin_stat_choices])
+  #    @character.save(false)
+  #    if @character.valid_for_step_three?
+  #      redirect_to third_step_character_wizard_path(:char_id => @character.id)
+  #    else
+  #      redirect_to second_step_character_wizard_path(:char_id => @character.id), :alert => "Zdaję się, że nie dokonałeś jeszcze wszystkich wyborów wymaganych przez kreator postaci"
+  #    end
+  #  end
+  #end
 
   def third_step
     if request.get?
