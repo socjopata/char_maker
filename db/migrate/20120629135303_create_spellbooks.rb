@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateSpellbooks < ActiveRecord::Migration
   def self.up
     create_table :spellbooks do |t|

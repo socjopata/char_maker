@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 class Scribe
 
   attr_accessor :class_spells, :character_spellbook, :spells_left, :not_enough_free_spell_points

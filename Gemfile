@@ -19,6 +19,14 @@ gem 'pdfkit'
 gem 'thin'
 gem 'pry'
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'kameleon'
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

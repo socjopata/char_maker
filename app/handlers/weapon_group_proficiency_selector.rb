@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class WeaponGroupProficiencySelector
 
   attr_accessor :weapon_groups
