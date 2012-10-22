@@ -171,6 +171,12 @@ module CharacterWizardHelper
     end
   end
 
+  def statistics_picking_trs(wizard)
+   Statistics::ENGLISH_NAMES.map do |key,value|
+     content_tag(:td, content_tag(:div, (wizard.instance_variable_get("@lead_parameter") if wizard.character.lead_parameter==key), :id => value, :class => "drop #{"lead" if wizard.character.lead_parameter==key}" ) )
+   end.join.html_safe
+  end
+
 end
 
 

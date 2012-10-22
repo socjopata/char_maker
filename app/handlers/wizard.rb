@@ -64,6 +64,35 @@ class Wizard
   end
 
   def picking_statistics
+    if params
+      if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth? && @character.valid_stats_assignment?
+        skill_free_assignment_base, default_skills_ids = @character.statistics.convert_stat_choices_to_skills
+        @character.update_attribute(:session, @character.session.merge({:skill_free_assignment_base => skill_free_assignment_base, :default_skills_ids => default_skills_ids }))
+        @redirect = character_wizard_path(:char_id => @character.id, :step => "picking_fighstyle")
+      else
+        @errors = "Napewno dobrze uzupełniłeś statystyki?"
+        @errors << " Zwróć szczególna uwagę na swój dar: \"#{@character.character_background.traits.first.try(:name)}\" i sposób w jaki musisz przyporządkować drugi najwyższy wylosowany paramter." unless  @character.valid_stats_assignment?
+        @redirect = character_wizard_path(:char_id => @character.id, :step => "picking_statistics")
+      end
+    else
+      @character.update_attribute(:session, @character.session.merge({:skill_free_assignment_base => nil,
+                                                                      :default_skills_ids => nil,
+                                                                       :skills_used => nil,
+                                                                       :weapon_class_preference_left => nil,
+                                                                       :coins_left => nil,
+                                                                     }))
+
+      @character.skills.each { |skill| skill.substract_skill_from(@character.id) }
+
+      roll_set = @character.statistics.initial_dice_roll_set
+      @lead_parameter = roll_set[0..4].max
+      @stats = roll_set.tap { |a| a.delete_at(roll_set[0..4].rindex(roll_set[0..4].max)) }
+
+      set_template_to_render
+    end
+  end
+
+  def picking_fighstyle
 
   end
 

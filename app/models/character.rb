@@ -35,8 +35,14 @@ class Character < ActiveRecord::Base
   validates_presence_of :name, :gender, :user_id
 
   before_save :check_fight_style_choice
-
+  before_create :set_session
   accepts_nested_attributes_for :character_background
+
+  serialize :session, Hash
+
+  def set_session
+    self.session = {}
+  end
 
   def any_unfinished_matters_present?
     skill_choices_to_be_precised.any? { |sm| sm.as_character_skill(self).skill_bonus_preference.blank? }
@@ -174,8 +180,8 @@ class Character < ActiveRecord::Base
   end
 
   def complete_the_creation_of_spellbook
-      scribe = Scribe.new(self)
-      scribe.complete_spellbook
+    scribe = Scribe.new(self)
+    scribe.complete_spellbook
   end
 
   def valid_for_armament_step?
@@ -185,7 +191,7 @@ class Character < ActiveRecord::Base
   end
 
   def is_a_shooter_and_didnt_picked_his_bow
-    profession.name=="Strzelec" && character_weapon_proficiencies.map(&:name).any? {|group_name| RangedWeapon.all.map(&:group_name).uniq.include?(group_name)}
+    profession.name=="Strzelec" && character_weapon_proficiencies.map(&:name).any? { |group_name| RangedWeapon.all.map(&:group_name).uniq.include?(group_name) }
   end
 
 end
