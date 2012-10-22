@@ -57,19 +57,19 @@ class CharacterWizardsController < ApplicationController
   #  end
   #end
 
-  def pick_a_fightstyle_step
-    if request.get?
-      @character.make_rogue_a_finesse_fighter
-      @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
-    elsif request.post?
-      if (@character.fight_style.present? and @character.update_attributes(:wield_style_id => params[:wield_style_id])) || @character.update_attributes(:fight_style_id => params[:fight_style_id], :wield_style_id => params[:wield_style_id])
-        redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
-      else
-        flash.alert = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
-        redirect_to pick_a_fightstyle_step_character_wizard_path(:char_id => @character.id)
-      end
-    end
-  end
+  #def pick_a_fightstyle_step
+  #  if request.get?
+  #    @character.make_rogue_a_finesse_fighter
+  #    @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
+  #  elsif request.post?
+  #    if (@character.fight_style.present? and @character.update_attributes(:wield_style_id => params[:wield_style_id])) || @character.update_attributes(:fight_style_id => params[:fight_style_id], :wield_style_id => params[:wield_style_id])
+  #      redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
+  #    else
+  #      flash.alert = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
+  #      redirect_to pick_a_fightstyle_step_character_wizard_path(:char_id => @character.id)
+  #    end
+  #  end
+  #end
 
   def fourth_step
     if request.get?

@@ -1,0 +1,163 @@
+<%= button_link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "picking_statistics") %>
+<%= button_link_to "Utwórz nową postać", character_path(@wizard.character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
+<%= button_link_to "Dalej", "javascript:void(0)", :onclick => "proceed()" %>
+<br/><br/>
+<p>Wybierz styl, którym będzie walczyła Twoja postać. Pamiętaj, aby wybrać styl brutalny, parametr Siła musi być wyższy
+  lub równy parametrowi Zręczność. I na odwrót, w przypadku stylu finezyjnego.
+</p><br/>
+<%= form_tag :url => character_wizard_path, :method => :post do %>
+    <%= hidden_field_tag :char_id, @wizard.character.id %>
+    <%= hidden_field_tag :step, "picking_fighstyle" %>
+    <% FightStyle.all.each do |style| %>
+        <label><%= style.name %></label><%= radio_button_tag "fight_style_id", style.id, @wizard.character.fight_style_id, :disabled => (@wizard.character.profession.general_type=="rogue" && style.name=="Finezyjny") ? true : false %>
+    <% end %>
+    <br/><br/>
+    <p>Wybierz preferowaną taktykę walki. Wybór posłuży do poprawnego wypełnienia Twojej karty postaci.
+    </p><br/>
+
+    <% WieldStyle.all.each do |style| %>
+        <label><%= style.name %></label><%= radio_button_tag "wield_style_id", style.id, @wizard.character.wield_style_id %>
+    <% end %>
+<% end %>
+
+<br/>
+<br/>
+<p>Poniżej, tabela Twoich aktualnych parametrów wynikająca z pochodzenia, klasy społecznej i posiadanych bazowych
+  umiejętności oraz tabela progów bonusowych.</p>
+<br/>
+<TABLE WIDTH=30% CELLPADDING=4 CELLSPACING=0 class="fltl">
+  <TR VALIGN=TOP>
+    <TD COLSPAN=2 WIDTH=18% class="black alantar_td">
+      <P class="fs_14 white_normal">Parametry Główne</P>
+    </TD>
+    <TD COLSPAN=3 WIDTH=20% class="black alantar_td">
+      <P class="fs_14 white_normal">Wartość Cechy</P>
+    </TD>
+    <TD COLSPAN=2 WIDTH=12% class="black alantar_td">
+      <P class="fs_14 white_normal">Premia/Kara</P>
+    </TD>
+    a
+  </TR>
+  <TR VALIGN=TOP>
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
+      <P class="fs_14 normal">SIŁA</P>
+    </TD>
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_strength">
+      <P class="fs_14 normal"><%= @wizard.instance_variable_get("@strength") %><BR>
+      </P>
+    </TD>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_strength">
+      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@strength")]}" %><BR>
+      </P>
+    </TD>
+  </TR>
+  <TR VALIGN=TOP>
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
+      <P class="fs_14 normal">ZRĘCZNOŚĆ</P>
+    </TD>
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_dexterity">
+      <P class="fs_14 normal"><%= @wizard.instance_variable_get("@dexterity") %><BR>
+      </P>
+    </TD>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_dexterity">
+      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@dexterity")]}" %><BR>
+      </P>
+    </TD>
+  </TR>
+  <TR VALIGN=TOP>
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
+      <P class="fs_14 normal">WYTRZYMAŁOŚĆ</P>
+    </TD>
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_endurance">
+      <P class="fs_14 normal"><%= @wizard.instance_variable_get("@endurance") %><BR>
+      </P>
+    </TD>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_endurance">
+      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@endurance") ]}" %><BR>
+      </P>
+
+  </TR>
+  <TR VALIGN=TOP>
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
+      <P class="fs_14 normal">INTELIGENCJA</P>
+    </TD>
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_intelligence">
+      <P class="fs_14 normal"><%= @wizard.instance_variable_get("@intelligence") %><BR>
+      </P>
+    </TD>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_intelligence">
+      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@intelligence")]}" %><BR>
+      </P>
+    </TD>
+  </TR>
+  <TR VALIGN=TOP>
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
+      <P class="fs_14 normal">WIARA</P>
+    </TD>
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_faith">
+      <P class="fs_14 normal"><%= @wizard.instance_variable_get("@faith") %><BR>
+      </P>
+    </TD>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_faith">
+      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@faith")]}" %><BR>
+      </P>
+    </TD>
+  </TR>
+  <TR VALIGN=TOP>
+    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
+      <P class="fs_14 normal">OGŁADA</P>
+    </TD>
+    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_polish">
+      <P class="fs_14 normal"><%= @wizard.instance_variable_get("@polish") %><BR>
+      </P>
+    </TD>
+    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_polish">
+      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@polish")]}" %><BR>
+      </P>
+    </TD>
+  </TR>
+  <TR VALIGN=TOP>
+  </TR>
+</TABLE>
+
+<div class="itermediate_div fltl"></div>
+
+<div id="bonuses">
+  <TABLE WIDTH=14% CELLPADDING=4 CELLSPACING=0>
+    <TR>
+      <TD WIDTH=50% VALIGN=TOP class="black alantar_td">
+        <P class="white_normal">Parametr</P>
+      </TD>
+      <TD WIDTH=50% VALIGN=TOP class="black alantar_td">
+        <P class="white_normal">Premia/Kara</P>
+      </TD>
+    </TR>
+    <% Statistics::BONUS_OR_PENALTY_RANGES.to_hash.each_pair do |key, value| %>
+        <TR VALIGN=TOP>
+          <TD WIDTH=50% class="alantar_td">
+            <P ALIGN=CENTER class="fs_12 italic normal"><%= key %></P>
+          </TD>
+          <TD WIDTH=50% class="alantar_td">
+            <P ALIGN=CENTER class="fs_12 italic normal">
+              <%= value %>
+            </P>
+          </TD>
+    <% end %>
+    </TR>
+  </TABLE>
+</div>
+
+
+
+<script type="text/javascript">
+
+    function proceed() {
+        var fightsyles = $("input[name='fight_style_id']");
+        var wieldstyles = $("input[name='wield_style_id']");
+        if ((fightsyles.filter(':checked').length == 0) || (wieldstyles.filter(':checked').length == 0)) {
+            alert("Musisz wybrać styl walki, zanim będziesz mógł przejść dalej.")
+        } else {
+            $("form").submit();
+        }
+    }
+</script>

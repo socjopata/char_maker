@@ -31,7 +31,6 @@ class Wizard
       @character.character_background.set_social_class if @character.character_background.social_classes.blank?
       @character.character_background.fill_the_purse_with_gold unless @character.purse.present?
       @redirect = character_wizard_path(:char_id => @character.id, :step => "profession_and_origin_choices")
-
     else
       @character.character_background.draw_a_trait if @character.hardcore_trait_picking && @character.character_background.origin.blank?
       @professions = ProfessionSelector.new(@character).results
@@ -93,7 +92,23 @@ class Wizard
   end
 
   def picking_fighstyle
+   if params
+     if (@character.fight_style.present? and @character.update_attributes(:wield_style_id => params[:wield_style_id])) || @character.update_attributes(:fight_style_id => params[:fight_style_id], :wield_style_id => params[:wield_style_id])
+       @redirect = character_wizard_path(:char_id => @character.id, :step => "skills_picking")
+     else
+       @error = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
+       @redirect = character_wizard_path(:char_id => @character.id, :step => "picking_fighstyle")
+     end
+   else
+     @character.make_rogue_a_finesse_fighter
+     @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
+     set_template_to_render
+   end
+  end
+
+  def skills_picking
 
   end
 
 end
+
