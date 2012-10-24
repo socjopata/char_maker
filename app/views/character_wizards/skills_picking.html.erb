@@ -1,0 +1,113 @@
+<%= render :partial => "character_wizards/skill_tables/main_stats_table" %>
+
+<%= render :partial => "character_wizards/skill_tables/bonus_thresholds" %>
+
+<div class="itermediate_div fltl"></div>
+
+<%= render :partial => "character_wizards/skill_tables/auxiliary_parameters" %>
+
+
+<div class="itermediate_div fltl"></div>
+
+
+<%= render :partial => "character_wizards/skill_tables/main_skills" %>
+
+<br />
+
+<%= render :partial => "character_wizards/skill_tables/caste_skills" %>
+
+<%= render :partial => "character_wizards/skill_tables/profession_skills" %>
+
+
+
+
+<%= button_link_to "Wróć", character_wizard_path(:char_id => @character.id, :step => "picking_fighstyle") %>
+<%= button_link_to "Utwórz nową postać", character_path(@character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
+<%= button_link_to "Dalej", character_wizard_path(:char_id => @character.id, :step => "skills_picking"), :method => :post %>
+
+<script type="text/javascript">
+    $('#spinner')
+            .hide()// hide it initially
+            .ajaxStart(function() {
+                $(this).show();
+            })
+            .ajaxStop(function() {
+                $(this).hide();
+            })
+    ;
+
+    //  an alternative
+    //  http://plugins.jquery.com/project/loading
+
+    function toggle_this_skill(val) {
+        var skill_id = $(val).attr('id');
+        var field_value = val.checked;
+        var char_id = "<%= @character.id -%>";
+        var url = '<%= character_wizards_toggle_skill_path -%>';
+        var data = {'skill_id' : skill_id, 'value' : field_value, 'char_id':char_id };
+        $.ajax({
+            url: url,
+            data: data,
+            dataType: 'script'
+        });
+    }
+
+    jQuery(document).ready(function() {
+
+        $('.skill_qtip').each(function() {
+            $(this).qtip(
+                    {
+                        content: $(this).next().html(),
+                        style: {
+                            'font-size': 16,
+                            classes: 'ui-tooltip-blue ui-tooltip-shadow'
+                        },
+                        position: {
+                            adjust: {
+                                x: -200
+                            },
+                            corner: {
+                                target: "rightMiddle",
+                                tooltip: "leftMiddle"
+                            }
+                        },
+                        show: {
+                            delay: 0
+                        },
+                        hide: {
+                            delay: 50,
+                            fixed: true
+                        }
+                    });
+        });
+
+        $('.show_bonus_ranges').qtip(
+                {
+                    content: $("#bonuses"),
+                    style: {
+                        'font-size': 16,
+                        classes: 'ui-tooltip-blue ui-tooltip-shadow'
+                    },
+                    position: {
+                        adjust: {
+                            x: -200
+                        },
+                        corner: {
+                            target: "rightMiddle",
+                            tooltip: "leftMiddle"
+                        }
+                    },
+                    show: {
+                        delay: 0
+                    },
+                    hide: {
+                        delay: 50,
+                        fixed: true
+                    }
+                });
+
+
+    });
+
+</script>
+
