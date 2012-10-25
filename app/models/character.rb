@@ -131,7 +131,8 @@ class Character < ActiveRecord::Base
       #add errors
       errors << "Nie masz wystarczającej liczby punktów do rozdysponowania"
     end
-    [counter, errors]
+    update_attribute(:session, session.merge(:weapon_class_preference_left => counter))
+    errors
   end
 
   def is_of_scholar_class_type?
@@ -170,13 +171,11 @@ class Character < ActiveRecord::Base
     [weapons + armors + shields + ranged_weapons].flatten.map(&:name).join(", ")
   end
 
-  def finish!(skill_free_assignment_base, _purse, skills_used)
+  def finish!
     update_attributes(:finished => true,
-                      :free_skill_points_left => Skill.calculate_free_skill_amount(self, skill_free_assignment_base, Statistics::BONUS_OR_PENALTY_RANGES[statistics.calculate_int].to_i, skills_used))
-    purse.close_the_bill(_purse)
-
+                      :free_skill_points_left => Skill.calculate_free_skill_amount(self, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[statistics.calculate_int].to_i, session[:skills_used]))
+    purse.close_the_bill(session[:coins_left])
     complete_the_creation_of_spellbook if self.is_of_scholar_class_type?
-
   end
 
   def complete_the_creation_of_spellbook

@@ -1,12 +1,12 @@
 <h2>Wybierz tarczę:</h2>
 
 <%= form_tag(character_wizards_add_item_to_inventory_path, :remote => true) do %>
-    <label>Wybierz grupę tarcz: </label><%= select_tag 'shield_group', options_for_select(@shield_groups) %><br/>
+    <label>Wybierz grupę tarcz: </label><%= select_tag 'shield_group', options_for_select(@wizard.instance_variable_get("@shield_groups")) %><br/>
 
     <div id="shields">
-      <%= render :partial => "character_wizards/armament_stuff/shields", :locals => {:shields => @shields} %>
+      <%= render :partial => "character_wizards/armament_stuff/shields", :locals => {:shields => @wizard.instance_variable_get("@shields")} %>
     </div>
-    <%= hidden_field_tag :char_id, @character.id %>
+    <%= hidden_field_tag :char_id, @wizard.character.id %>
     <%= hidden_field_tag :item_type, "Shield" %>
     <%= submit_tag "Kup!" %>
 <% end %>

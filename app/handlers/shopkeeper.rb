@@ -4,12 +4,13 @@ class Shopkeeper
   attr_reader :character, :weapon_armor_or_shield, :item_to_be_deleted_id
   attr_accessor :purse, :result
 
-  def initialize(character, item_id, item_type, action_type, coins_left, particular_id = nil)
+  def initialize(character, item_id, item_type, action_type, particular_id = nil)
     @character = character
     @weapon_armor_or_shield = item_type.constantize.find(item_id)
     @item_to_be_deleted_id = particular_id
-    @purse = coins_left
+    @purse = character.session[:coins_left]
     @result = (action_type=="add" ? add : remove)
+    @character.update_attribute(:session, @character.session.merge(:coins_left => @purse))
   end
 
 

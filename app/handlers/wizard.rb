@@ -108,7 +108,7 @@ class Wizard
 
   def skills_picking
     if params
-      @character.update_attribute(:session, @character.session.merge({:coins_left =>  @character.purse.update_current}))    if @character.purse.current.blank?
+      @character.update_attribute(:session, @character.session.merge({:coins_left => @character.purse.update_current})) if @character.purse.current.blank?
       @character.update_attribute(:session, @character.session.merge({:weapon_class_preference_left => @character.statistics.calculate_weapon_class_proficiencies_points}))
       @redirect = character_wizard_path(:char_id => @character.id, :step => "clarify_skill_choices")
     else
@@ -140,6 +140,29 @@ class Wizard
   end
 
   def armament_picking
+    if params
+      if @character.has_valid_shopping_list?(@character.session[:coins_left])
+        if @character.is_of_scholar_class_type?
+          @redirect = character_wizard_path(:char_id => @character, :step => "picking_spells")
+        else
+          @character.finish!
+          @redirect = characters_path
+        end
+      else
+        @errors = @character.errors.full_messages.to_sentence(:two_words_connector => ". ")
+        @redirect = character_wizard_path(:char_id => @character, :step => "armament_picking")
+      end
+    else
+      @statistics_hash = @character.calculate_stats_and_store_them_as_a_hash
+      @weapons, @weapon_groups = ArmamentMaster.new(@character, "Weapon", @statistics_hash, {:group_name => nil}).prepare_items_collection
+      @armors, @armor_groups = ArmamentMaster.new(@character, "Armor", @statistics_hash, {:group_name => nil}).prepare_items_collection
+      @shields, @shield_groups = ArmamentMaster.new(@character, "Shield", @statistics_hash, {:group_name => nil}).prepare_items_collection
+      @ranged_weapons, @ranged_weapon_groups = ArmamentMaster.new(@character, "RangedWeapon", @statistics_hash, {:group_name => nil}).prepare_items_collection
+      set_template_to_render
+    end
+  end
+
+  def picking_spells
 
   end
 

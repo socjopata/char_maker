@@ -4,13 +4,14 @@ class Blacksmith
   attr_reader :character, :weapon_armor_or_shield, :improvement_subject_id, :improvement_type
   attr_accessor :purse, :result
 
-  def initialize(character, item_id, item_type, action_type, coins_left, particular_id, improvement_type)
+  def initialize(character, item_id, item_type, action_type, particular_id, improvement_type)
     @character = character
     @weapon_armor_or_shield = item_type.constantize.find(item_id)
     @improvement_subject_id = particular_id
     @improvement_type = improvement_type
-    @purse = coins_left
+    @purse = character.session[:coins_left]
     @result = (action_type=="improve" ? improve : degrade)
+    @character.update_attribute(:session, @character.session.merge(:coins_left => @purse))
   end
 
   def improve

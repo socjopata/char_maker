@@ -1,3 +1,3 @@
 page << "$(\"##{@blacksmith.result.class.name.tableize}_#{@blacksmith.result.id}_#{@blacksmith.improvement_type}\").replaceWith('<p class=\"normal\" id=\"#{@blacksmith.result.class.name.tableize}_#{@blacksmith.result.id}_#{@blacksmith.improvement_type}\">#{item_upgrade_link(@blacksmith.character, @blacksmith.result.resource, @blacksmith.result, @blacksmith.improvement_type)}</p>');"
-page << "$('#purse').text('#{humanize_purse_content(session[:coins_left])}');"
+page << "$('#purse').text('#{humanize_purse_content(@character.session[:coins_left])}');"
 page << "$('#purse').effect('highlight', {color: 'green'}, 1500);"

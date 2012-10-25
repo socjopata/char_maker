@@ -1,0 +1,78 @@
+<p>Tworząc postać, otrzymujesz swoisty
+  rabat na zakup wyposażenia.
+  Kwota zakupów nie może przekroczyć zawartości Twojej sakiewki(<%= humanize_purse_content(@wizard.character.purse.current) %>)
+  powiększonej o bonus <strong>50g</strong> na Twoje
+  wyposażenie.</p>
+
+<div><%= image_tag "sakiewka.gif", :width => "130" %>
+  <p class="fs_16" id="purse"><%= humanize_purse_content(@wizard.character.session[:coins_left]) %></p></div>
+<br/>
+<p>Posiadasz biegłości w:</p>
+<ul>
+  <% @wizard.character.character_weapon_proficiencies.each do |c_w_p| %>
+      <li><%= c_w_p.name %></li>
+  <% end %>
+</ul>
+
+<%= render :partial => "character_wizards/armament_stuff/picking_weapons_stuff" %>
+<%= render :partial => "character_wizards/armament_stuff/picking_armors_stuff" %>
+<%= render :partial => "character_wizards/armament_stuff/picking_shields_stuff" %>
+<%= render :partial => "character_wizards/armament_stuff/picking_ranged_weapons_stuff" %>
+
+<%= button_link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "clarify_skill_choices") %>
+<%= button_link_to "Utwórz nową postać", character_path(@wizard.character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
+<%= button_link_to "Dalej", character_wizard_path(:char_id => @wizard.character.id, :step => "armament_picking"), :method => :post %>
+
+
+<script type="text/javascript">
+
+
+    jQuery(document).ready(function () {
+        $('select').val('');
+    });
+
+    jQuery(function ($) {
+        $("#weapon_group").change(function () {
+            var char_id = "<%= @wizard.character.id  %>";
+            var weapon_group = $('select#weapon_group :selected').val();
+            if (weapon_group == "") weapon_group = "0";
+            jQuery.get('/character_wizards/update_weapons_select', {'weapon_group':weapon_group, 'char_id':char_id}, function (data) {
+                $("#weapons").html(data);
+            })
+            return false;
+        });
+
+        $("#armor_group").change(function () {
+            var char_id = "<%= @wizard.character.id  %>";
+            var armor_group = $('select#armor_group :selected').val();
+            if (armor_group == "") armor_group = "0";
+            jQuery.get('/character_wizards/update_armors_select', {'armor_group':armor_group, 'char_id':char_id}, function (data) {
+                $("#armors").html(data);
+            })
+            return false;
+        });
+
+        $("#shield_group").change(function () {
+            var char_id = "<%= @wizard.character.id  %>";
+            var shield_group = $('select#shield_group :selected').val();
+            if (shield_group == "") shield_group = "0";
+            jQuery.get('/character_wizards/update_shields_select', {'shield_group':shield_group, 'char_id':char_id}, function (data) {
+                $("#shields").html(data);
+            })
+            return false;
+        });
+
+        $("#ranged_weapon_group").change(function () {
+            var char_id = "<%= @wizard.character.id  %>";
+            var ranged_weapon_group = $('select#ranged_weapon_group :selected').val();
+            if (ranged_weapon_group == "") ranged_weapon_group = "0";
+            jQuery.get('/character_wizards/update_ranged_weapons_select', {'ranged_weapon_group':ranged_weapon_group, 'char_id':char_id}, function (data) {
+                $("#ranged_weapons").html(data);
+            })
+            return false;
+        });
+
+    })
+
+
+</script>

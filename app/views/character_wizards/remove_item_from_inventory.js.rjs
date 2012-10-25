@@ -1,4 +1,4 @@
 page << "$('##{@shopkeeper.result.class.name.tableize} tr##{@shopkeeper.result.id}').remove();"
-page << "$('#purse').text('#{humanize_purse_content(session[:coins_left])}');"
+page << "$('#purse').text('#{humanize_purse_content(@character.session[:coins_left])}');"
 page << "$('#purse').effect('highlight', {color: 'green'}, 1500);"
 

@@ -1,12 +1,12 @@
 <h2>Wybierz broń:</h2>
 
 <%= form_tag(character_wizards_add_item_to_inventory_path, :remote => true) do %>
-    <label>Wybierz grupę broni: </label><%= select_tag 'weapon_group', options_for_select(@weapon_groups) %><br/>
+    <label>Wybierz grupę broni: </label><%= select_tag 'weapon_group', options_for_select(@wizard.instance_variable_get("@weapon_groups")) %><br/>
 
     <div id="weapons">
-      <%= render :partial => "character_wizards/armament_stuff/weapons", :locals => {:weapons => @weapons} %>
+      <%= render :partial => "character_wizards/armament_stuff/weapons", :locals => {:weapons => @wizard.instance_variable_get("@weapons")} %>
     </div>
-    <%= hidden_field_tag :char_id, @character.id %>
+    <%= hidden_field_tag :char_id, @wizard.character.id %>
     <%= hidden_field_tag :item_type, "Weapon" %>
     <%= submit_tag "Kup!" %>
 <% end %>
@@ -23,14 +23,14 @@
     <th>Usuń z inwentarza</th>
     </thead>
     <tbody>
-    <% @character.character_weapons.each do |item| %>
+    <% @wizard.character.character_weapons.each do |item| %>
         <tr id=<%= item.id %>>
           <td class="alantar_td"><p class="normal"><%= item.weapon.name -%></p></td>
-          <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_speed" %>><%= item_upgrade_link(@character, item.resource, item, "speed") -%></p></td>
-          <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_damage" %>><%=  item_upgrade_link(@character, item.resource, item, "damage") -%></p></td>
-          <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_attack_bonus" %>><%=  item_upgrade_link(@character, item.resource, item, "attack_bonus") -%></p></td>
-          <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_defense_bonus" %>><%=  item_upgrade_link(@character, item.resource, item, "defense_bonus") -%></p></td>
-          <td class="alantar_td"><p class="normal"><%= link_to image_tag('delete.png'), character_wizards_remove_item_from_inventory_path(:char_id => @character.id, :item_type => "Weapon", :inventory_item => item.resource.id, :delete_id => item.id ), :remote => true %></p></td>
+          <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_speed" %>><%= item_upgrade_link(@wizard.character, item.resource, item, "speed") -%></p></td>
+          <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_damage" %>><%=  item_upgrade_link(@wizard.character, item.resource, item, "damage") -%></p></td>
+          <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_attack_bonus" %>><%=  item_upgrade_link(@wizard.character, item.resource, item, "attack_bonus") -%></p></td>
+          <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_defense_bonus" %>><%=  item_upgrade_link(@wizard.character, item.resource, item, "defense_bonus") -%></p></td>
+          <td class="alantar_td"><p class="normal"><%= link_to image_tag('delete.png'), character_wizards_remove_item_from_inventory_path(:char_id => @wizard.character.id, :item_type => "Weapon", :inventory_item => item.resource.id, :delete_id => item.id ), :remote => true %></p></td>
         </tr>
     <% end %>
     </tbody>
