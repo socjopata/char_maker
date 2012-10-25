@@ -38,9 +38,8 @@ perl -i -p -e 's/<password>/$PG_PASSWORD/g;' config/database.yml
 rake db:setup
 
 h3. Test suite
-
-Sorry... not yet :(
-
+# be sure to setup test database and load seed data first. Yuo can run the suite by issuing:
+rspec
 
 h2. License
 
