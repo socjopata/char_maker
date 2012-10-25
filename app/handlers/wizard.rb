@@ -96,7 +96,7 @@ class Wizard
       if (@character.fight_style.present? and @character.update_attributes(:wield_style_id => params[:wield_style_id])) || @character.update_attributes(:fight_style_id => params[:fight_style_id], :wield_style_id => params[:wield_style_id])
         @redirect = character_wizard_path(:char_id => @character.id, :step => "skills_picking")
       else
-        @error = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
+        @errors = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
         @redirect = character_wizard_path(:char_id => @character.id, :step => "picking_fighstyle")
       end
     else
@@ -163,7 +163,13 @@ class Wizard
   end
 
   def picking_spells
-
+    if params
+      @character.finish!
+      @redirect = characters_path
+    else
+      @scribe = Scribe.new(@character)
+      set_template_to_render
+    end
   end
 
 end

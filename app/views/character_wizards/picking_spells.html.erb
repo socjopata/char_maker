@@ -1,0 +1,32 @@
+<p id="spell_counter">Do wybrania pozostało: <%= @wizard.instance_variable_get("@scribe").spells_left %> zaklęć</p>
+
+
+<br/><br/>
+<ul>
+  <% @wizard.instance_variable_get("@scribe").class_spells.each do |spell| %>
+      <li><label><%= spell.name %></label><%= check_box_tag spell.id, 1, @wizard.instance_variable_get("@scribe").character_spellbook.spells.include?(spell),
+                                                            :disabled => @wizard.instance_variable_get("@scribe").character_spellbook.randomly_drawn_spells.include?(spell.id),
+                                                            :onchange => "toggle_this_spell(this);" %>
+      </li>
+  <% end %>
+</ul>
+
+<%= button_link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "armament_picking") %>
+<%= button_link_to "Utwórz nową postać", character_path(@wizard.character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
+<%= button_link_to "Dalej", character_wizard_path(:char_id => @wizard.character.id, :step => "picking_spells"), :method => :post %>
+
+<script type="text/javascript">
+    function toggle_this_spell(val) {
+        var spell_id = $(val).attr('id');
+        var field_value = val.checked;
+        var char_id = "<%= @wizard.character.id -%>";
+        var url = '<%= character_wizards_toggle_spell_path -%>';
+        var data = {'spell_id' : spell_id, 'value' : field_value, 'char_id':char_id };
+        $.ajax({
+            url: url,
+            data: data,
+            dataType: 'script'
+        });
+    }
+</script>
+

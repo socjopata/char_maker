@@ -3,9 +3,6 @@ class CharacterWizardsController < ApplicationController
 
   before_filter :user_signed_in?, :get_current_character, :disallow_editing_finished_character
   before_filter :prepare_statistics_hash, :only => [:update_weapons_select, :update_ranged_weapons_select, :update_armors_select, :update_shields_select]
-  #TODO Disclaimer: I know that things here, with all the logic in this place, suck a big time.
-  #NEW: I am refactoring this crap right now.
-
 
   def show
     @wizard = Wizard.new(@character, params[:step])
@@ -15,25 +12,6 @@ class CharacterWizardsController < ApplicationController
   def create
     @wizard = Wizard.new(@character, params[:step], params)
     render_or_redirect
-  end
-
-  def render_or_redirect
-    if @wizard.errors
-      redirect_to(@wizard.redirect, :alert => @wizard.errors)
-    elsif @wizard.render
-      render :template => @wizard.render
-    elsif @wizard.redirect
-      redirect_to @wizard.redirect
-    end
-  end
-
-  def picking_spells_step
-    if request.get?
-      @scribe = Scribe.new(@character)
-    elsif request.post?
-      @character.finish!(session[:skill_free_assignment_base], session[:coins_left], session[:skills_used].to_i)
-      redirect_to characters_path
-    end
   end
 
   def toggle_spell
@@ -123,6 +101,16 @@ class CharacterWizardsController < ApplicationController
 
   def disallow_editing_finished_character
     redirect_to characters_path(:alert => "Nie można edytować ukończonych postaci") if @character.finished?
+  end
+
+  def render_or_redirect
+    if @wizard.errors
+      redirect_to(@wizard.redirect, :alert => @wizard.errors)
+    elsif @wizard.render
+      render :template => @wizard.render
+    elsif @wizard.redirect
+      redirect_to @wizard.redirect
+    end
   end
 
 end

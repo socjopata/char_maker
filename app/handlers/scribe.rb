@@ -3,8 +3,10 @@
 class Scribe
 
   attr_accessor :class_spells, :character_spellbook, :spells_left, :not_enough_free_spell_points
+  attr_reader :character
 
   def initialize(character)
+    @character = character
     @character_spellbook = Spellbook.find_or_create_by_character_id(character.id)
     @class_spells = Spell.set_for(character)
     @spells_left = calculate_spells_left
@@ -12,8 +14,7 @@ class Scribe
 
 
   def calculate_spells_left
-    5 - @character_spellbook.randomly_drawn_spells.size - @character_spellbook.picked_by_player
-    + @character_spellbook.character.statistics.calculate_amount_of_extra_spells + trait_modifier_for_auxiliary_parameter_named("Dodatkowe zaklęcia")
+    5 - @character_spellbook.randomly_drawn_spells.size - @character_spellbook.picked_by_player + character.statistics.calculate_amount_of_extra_spells + character.statistics.trait_modifier_for_auxiliary_parameter_named("Dodatkowe zaklęcia")
   end
 
   def learn_spell(id, choice)
@@ -38,7 +39,7 @@ class Scribe
   end
 
   def complete_spellbook
-    @character_spellbook.update_attributes(:mana_points => @character_spellbook.character.statistics.calculate_mana_points)
+    @character_spellbook.update_attributes(:mana_points => character.statistics.calculate_mana_points)
   end
 
 end
