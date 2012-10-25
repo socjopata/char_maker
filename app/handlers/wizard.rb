@@ -66,7 +66,7 @@ class Wizard
     if params
       if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth? && @character.valid_stats_assignment?
         skill_free_assignment_base, default_skills_ids = @character.statistics.convert_stat_choices_to_skills
-        @character.update_attribute(:session, @character.session.merge({:skill_free_assignment_base => skill_free_assignment_base, :default_skills_ids => default_skills_ids }))
+        @character.update_attribute(:session, @character.session.merge({:skill_free_assignment_base => skill_free_assignment_base, :default_skills_ids => default_skills_ids}))
         @redirect = character_wizard_path(:char_id => @character.id, :step => "picking_fighstyle")
       else
         @errors = "Napewno dobrze uzupełniłeś statystyki?"
@@ -76,9 +76,9 @@ class Wizard
     else
       @character.update_attribute(:session, @character.session.merge({:skill_free_assignment_base => nil,
                                                                       :default_skills_ids => nil,
-                                                                       :skills_used => nil,
-                                                                       :weapon_class_preference_left => nil,
-                                                                       :coins_left => nil,
+                                                                      :skills_used => nil,
+                                                                      :weapon_class_preference_left => nil,
+                                                                      :coins_left => nil,
                                                                      }))
 
       @character.skills.each { |skill| skill.substract_skill_from(@character.id) }
@@ -92,21 +92,54 @@ class Wizard
   end
 
   def picking_fighstyle
-   if params
-     if (@character.fight_style.present? and @character.update_attributes(:wield_style_id => params[:wield_style_id])) || @character.update_attributes(:fight_style_id => params[:fight_style_id], :wield_style_id => params[:wield_style_id])
-       @redirect = character_wizard_path(:char_id => @character.id, :step => "skills_picking")
-     else
-       @error = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
-       @redirect = character_wizard_path(:char_id => @character.id, :step => "picking_fighstyle")
-     end
-   else
-     @character.make_rogue_a_finesse_fighter
-     @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
-     set_template_to_render
-   end
+    if params
+      if (@character.fight_style.present? and @character.update_attributes(:wield_style_id => params[:wield_style_id])) || @character.update_attributes(:fight_style_id => params[:fight_style_id], :wield_style_id => params[:wield_style_id])
+        @redirect = character_wizard_path(:char_id => @character.id, :step => "skills_picking")
+      else
+        @error = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
+        @redirect = character_wizard_path(:char_id => @character.id, :step => "picking_fighstyle")
+      end
+    else
+      @character.make_rogue_a_finesse_fighter
+      @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
+      set_template_to_render
+    end
   end
 
   def skills_picking
+    if params
+      @character.update_attribute(:session, @character.session.merge({:coins_left =>  @character.purse.update_current}))    if @character.purse.current.blank?
+      @character.update_attribute(:session, @character.session.merge({:weapon_class_preference_left => @character.statistics.calculate_weapon_class_proficiencies_points}))
+      @redirect = character_wizard_path(:char_id => @character.id, :step => "clarify_skill_choices")
+    else
+      @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
+      @basic_skills = Skill.basic
+      @caste_skills = Skill.fetch_caste_skills_for(@character)
+      @profession_skills = Skill.fetch_profession_skills_for(@character)
+      @cannot_select_skills = Skill.filter_nonselectable((@basic_skills + @caste_skills + @profession_skills), @character, @strength, @dexterity, @endurance, @intelligence, @faith, @polish)
+      @free_skill_amount = Skill.calculate_free_skill_amount(@character, @character.session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@intelligence].to_i, @character.session[:skills_used].to_i)
+      set_template_to_render
+    end
+  end
+
+  def clarify_skill_choices
+    if params
+      if @character.valid_for_armament_step?
+        @redirect = character_wizard_path(:char_id => @character, :step => "armament_picking")
+      else
+        flash_alert = ""
+        flash_alert << "Musisz sprecyzować bonusy wynikające z umiejętności." if @character.any_unfinished_matters_present?
+        flash_alert << " Jako strzelec, musisz być biegły przynajmniej w jednej grupie broni dystansowej." if @character.is_a_shooter_and_didnt_picked_his_bow
+        @errors = flash_alert
+        @redirect = character_wizard_path(:char_id => @character, :step => "clarify_skill_choices")
+      end
+    else
+      @weapon_groups = WeaponGroupProficiencySelector.new(@character).weapon_groups
+      set_template_to_render
+    end
+  end
+
+  def armament_picking
 
   end
 

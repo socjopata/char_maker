@@ -1,33 +1,34 @@
 # -*- encoding : utf-8 -*-
 class SkillToggler
 
-  attr_reader :character, :value, :skill_free_assignment_base
-  attr_accessor :skills_used, :red_flag
+  attr_reader :character, :value, :skill_free_assignment_base, :skill, :free_skill_amount
+  attr_accessor :skills_used, :not_enough_free_skill_points, :commands, :skill_commands
 
-  def initialize(character, skills_used, skill_id, value, skill_free_assignment_base)
+  def initialize(character, skill_id, value)
     @character = character
-    @skills_used = skills_used.to_i
-    @red_flag = nil
+    @skills_used = character.session[:skills_used].to_i
+    @not_enough_free_skill_points = nil
     @value = value
-    @skill_free_assignment_base = skill_free_assignment_base
+    @skill_free_assignment_base = character.session[:skill_free_assignment_base]
     @skill = Skill.find(skill_id)
+    process!
   end
 
   def process!
     if user_is_adding_new_skill?
       if user_allowed_to_pick_another_skill?
-        @skills_used += 1
-        commands, skill_commands = Skill.change(@character, @skill, @value)
+        character.update_attribute(:session, character.session.merge(:skills_used => (skills_used + 1)))
+        @commands, @skill_commands = Skill.change(character, skill, value)
       else
-        @red_flag = true
-        commands, skill_commands = nil
+        @not_enough_free_skill_points = true
+        @commands, @skill_commands = nil
       end
     else
-      @skills_used -= 1
-      commands, skill_commands = Skill.change(@character, @skill, @value)
+      character.update_attribute(:session, character.session.merge(:skills_used => (skills_used - 1)))
+      @commands, @skill_commands = Skill.change(character, skill, value)
     end
 
-    [commands, skill_commands, @red_flag, free_skill_amount, @skills_used]
+    @free_skill_amount = free_skill_amount
   end
 
   def user_allowed_to_pick_another_skill?
@@ -40,7 +41,7 @@ class SkillToggler
   end
 
   def free_skill_amount
-    Skill.calculate_free_skill_amount(@character, @skill_free_assignment_base, Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_int].to_i, @skills_used.to_i)
+    Skill.calculate_free_skill_amount(character, skill_free_assignment_base, Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_int].to_i, character.session[:skills_used].to_i)
   end
 
 end

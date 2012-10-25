@@ -42,7 +42,7 @@
     function toggle_this_skill(val) {
         var skill_id = $(val).attr('id');
         var field_value = val.checked;
-        var char_id = "<%= @character.id -%>";
+        var char_id = "<%= @wizard.character.id -%>";
         var url = '<%= character_wizards_toggle_skill_path -%>';
         var data = {'skill_id' : skill_id, 'value' : field_value, 'char_id':char_id };
         $.ajax({

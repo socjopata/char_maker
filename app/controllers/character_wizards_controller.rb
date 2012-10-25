@@ -27,79 +27,20 @@ class CharacterWizardsController < ApplicationController
     end
   end
 
-  #def third_step
+  #def after_skills_step
   #  if request.get?
-  #    #do a rollback here   #or in characters' new?
-  #    session[:skill_free_assignment_base] = nil
-  #    session[:default_skills_ids] = nil
-  #    session[:skills_used] = nil
-  #    session[:weapon_class_preference_left] = nil
-  #    session[:coins_left] = nil
-  #
-  #    @character.skills.each { |skill| skill.substract_skill_from(@character.id) }
-  #
-  #    roll_set = @character.statistics.initial_dice_roll_set
-  #    @lead_parameter = roll_set[0..4].max
-  #    @stats = roll_set.tap { |a| a.delete_at(roll_set[0..4].rindex(roll_set[0..4].max)) }
-  #
-  #    #do a show
+  #    @weapon_groups = WeaponGroupProficiencySelector.new(@character).weapon_groups
   #  elsif request.post?
-  #    if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth? && @character.valid_stats_assignment?
-  #      skill_free_assignment_base, default_skills_ids = @character.statistics.convert_stat_choices_to_skills
-  #      session[:skill_free_assignment_base] = skill_free_assignment_base
-  #      session[:default_skills_ids] = default_skills_ids
-  #      redirect_to pick_a_fightstyle_step_character_wizard_path(:char_id => @character.id)
+  #    if @character.valid_for_armament_step?
+  #      redirect_to armament_step_character_wizard_path(:char_id => @character)
   #    else
-  #      flash.alert = "Napewno dobrze uzupełniłeś statystyki?"
-  #      flash.alert << " Zwróć szczególna uwagę na swój dar: \"#{@character.character_background.traits.first.try(:name)}\" i sposób w jaki musisz przyporządkować drugi najwyższy wylosowany paramter." unless  @character.valid_stats_assignment?
-  #      redirect_to third_step_character_wizard_path(:char_id => @character.id)
+  #      flash.alert = ""
+  #      flash.alert << "Musisz sprecyzować bonusy wynikające z umiejętności." if @character.any_unfinished_matters_present?
+  #      flash.alert << " Jako strzelec, musisz być biegły przynajmniej w jednej grupie broni dystansowej." if @character.is_a_shooter_and_didnt_picked_his_bow
+  #      redirect_to after_skills_step_character_wizard_path(:char_id => @character)
   #    end
   #  end
   #end
-
-  #def pick_a_fightstyle_step
-  #  if request.get?
-  #    @character.make_rogue_a_finesse_fighter
-  #    @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
-  #  elsif request.post?
-  #    if (@character.fight_style.present? and @character.update_attributes(:wield_style_id => params[:wield_style_id])) || @character.update_attributes(:fight_style_id => params[:fight_style_id], :wield_style_id => params[:wield_style_id])
-  #      redirect_to fourth_step_character_wizard_path(:char_id => @character.id)
-  #    else
-  #      flash.alert = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
-  #      redirect_to pick_a_fightstyle_step_character_wizard_path(:char_id => @character.id)
-  #    end
-  #  end
-  #end
-
-  def fourth_step
-    if request.get?
-      @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats #TODO group in hash or array.
-      @basic_skills = Skill.basic
-      @caste_skills = Skill.fetch_caste_skills_for(@character)
-      @profession_skills = Skill.fetch_profession_skills_for(@character)
-      @cannot_select_skills = Skill.filter_nonselectable((@basic_skills + @caste_skills + @profession_skills), @character, @strength, @dexterity, @endurance, @intelligence, @faith, @polish)
-      @free_skill_amount = Skill.calculate_free_skill_amount(@character, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@intelligence].to_i, session[:skills_used].to_i)
-    elsif request.post?
-      session[:coins_left] = @character.purse.update_current if @character.purse.current.blank?
-      session[:weapon_class_preference_left] = @character.statistics.calculate_weapon_class_proficiencies_points
-      redirect_to after_skills_step_character_wizard_path(:char_id => @character)
-    end
-  end
-
-  def after_skills_step
-    if request.get?
-      @weapon_groups = WeaponGroupProficiencySelector.new(@character).weapon_groups
-    elsif request.post?
-      if @character.valid_for_armament_step?
-        redirect_to armament_step_character_wizard_path(:char_id => @character)
-      else
-        flash.alert = ""
-        flash.alert << "Musisz sprecyzować bonusy wynikające z umiejętności." if @character.any_unfinished_matters_present?
-        flash.alert << " Jako strzelec, musisz być biegły przynajmniej w jednej grupie broni dystansowej." if @character.is_a_shooter_and_didnt_picked_his_bow
-        redirect_to after_skills_step_character_wizard_path(:char_id => @character)
-      end
-    end
-  end
 
   def armament_step
     if request.get?
@@ -157,8 +98,8 @@ class CharacterWizardsController < ApplicationController
   end
 
   def toggle_skill
-    @commands, @skill_commands, @not_enough_free_skill_points, @free_skill_amount, session[:skills_used] = SkillToggler.new(@character, session[:skills_used], params[:skill_id], params[:value]=="true", session[:skill_free_assignment_base]).process!
-    render :layout => "colorbox" if @not_enough_free_skill_points.present?
+    @skill_toggler = SkillToggler.new(@character, params[:skill_id], params[:value]=="true")
+    render :layout => "colorbox" if @skill_toggler.not_enough_free_skill_points.present?
   end
 
   def toggle_weapon_proficiency

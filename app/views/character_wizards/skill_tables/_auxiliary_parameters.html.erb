@@ -17,22 +17,22 @@
   </TD>
 <TR VALIGN=TOP>
   <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_initiative">
-    <P class="number"><%= @character.statistics.calculate_initiative %><BR>
+    <P class="number"><%= @wizard.character.statistics.calculate_initiative %><BR>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-    <P class="number"><%= AuxiliaryParameterSet::INITIATIVE[@character.profession.general_type] %></P>
+    <P class="number"><%= AuxiliaryParameterSet::INITIATIVE[@wizard.character.profession.general_type] %></P>
   </TD>
   <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_initiative">
-    <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %><BR>
+    <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@dexterity")]}" %><BR>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_initiative">
-    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_from_skills") %><BR>
+    <P class="number">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_from_skills") %><BR>
     </P>
   </TD>
   <TD WIDTH=9% class="alantar_td">
-    <P class="number"><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_special")) %><BR>
+    <P class="number"><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_special")) %><BR>
     </P>
   </TD>
 </TR>
@@ -55,23 +55,23 @@
   </TD>
 <TR VALIGN=TOP>
   <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_perception">
-    <P class="number"><%= @character.statistics.calculate_perception %><BR>
+    <P class="number"><%= @wizard.character.statistics.calculate_perception %><BR>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-    <P class="number"><%= AuxiliaryParameterSet::PERCEPTION[@character.profession.general_type] %></P>
+    <P class="number"><%= AuxiliaryParameterSet::PERCEPTION[@wizard.character.profession.general_type] %></P>
   </TD>
   <TD WIDTH=10% class="alantar_td">
-    <P class="number">+<%= @character.current_level %><BR>
+    <P class="number">+<%= @wizard.character.current_level %><BR>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_perception">
-    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_from_skills") %>
+    <P class="number">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_from_skills") %>
       <BR>
     </P>
   </TD>
   <TD WIDTH=9% class="alantar_td">
-    <P class="number"><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_special")) %><BR>
+    <P class="number"><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_special")) %><BR>
     </P>
   </TD>
 </TR>
@@ -95,23 +95,23 @@
   </TD>
 <TR VALIGN=TOP>
   <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_pain_resistance">
-    <P class="number"><%= @character.statistics.calculate_pain_resistance %><BR>
+    <P class="number"><%= @wizard.character.statistics.calculate_pain_resistance %><BR>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-    <P class="number"><%= AuxiliaryParameterSet::PAIN_RESISTANCE[@character.profession.general_type] %></P>
+    <P class="number"><%= AuxiliaryParameterSet::PAIN_RESISTANCE[@wizard.character.profession.general_type] %></P>
   </TD>
   <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_pain_resistance">
-    <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@endurance]}" %><BR>
+    <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@endurance")]}" %><BR>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_pain_resistance">
-    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_from_skills") %>
+    <P class="number">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_from_skills") %>
       <BR>
     </P>
   </TD>
   <TD WIDTH=9% class="alantar_td">
-    <P class="number"><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_special")) %><BR>
+    <P class="number"><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_special")) %><BR>
     </P>
   </TD>
 </TR>
@@ -134,23 +134,23 @@
   </TD>
 <TR VALIGN=TOP>
   <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_fear_resistance">
-    <P class="number"><%= @character.statistics.calculate_fear_resistance %><BR>
+    <P class="number"><%= @wizard.character.statistics.calculate_fear_resistance %><BR>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-    <P class="number"><%= AuxiliaryParameterSet::FEAR_RESISTANCE[@character.profession.general_type] %></P>
+    <P class="number"><%= AuxiliaryParameterSet::FEAR_RESISTANCE[@wizard.character.profession.general_type] %></P>
   </TD>
   <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_fear_resistance">
-    <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@faith]}" %><BR>
+    <P class="number"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[(@wizard.instance_variable_get"@faith")]}" %><BR>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_fear_resistance">
-    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_from_skills") %>
+    <P class="number">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_from_skills") %>
       <BR>
     </P>
   </TD>
   <TD WIDTH=9% class="alantar_td">
-    <P class="number"><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_special")) %><BR>
+    <P class="number"><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_special")) %><BR>
     </P>
   </TD>
 </TR>
@@ -173,23 +173,23 @@
   </TD>
 <TR VALIGN=TOP>
   <TD WIDTH=14% COLSPAN=2 class="alantar_td" id="auxiliary_table_total_magic_resistance">
-    <P class="number"><%= @character.statistics.calculate_magic_resistance %><BR>
+    <P class="number"><%= @wizard.character.statistics.calculate_magic_resistance %><BR>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-    <P class="number"><%= AuxiliaryParameterSet::MAGIC_RESISTANCE[@character.profession.general_type] %></P>
+    <P class="number"><%= AuxiliaryParameterSet::MAGIC_RESISTANCE[@wizard.character.profession.general_type] %></P>
   </TD>
   <TD WIDTH=10% class="alantar_td">
     <P class="number">---<BR>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_magic_resistance">
-    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_from_skills") %>
+    <P class="number">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_from_skills") %>
       <BR>
     </P>
   </TD>
   <TD WIDTH=9% class="alantar_td">
-    <P class="number"><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_special")) %><BR>
+    <P class="number"><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_special")) %><BR>
     </P>
   </TD>
 </TR>
@@ -215,27 +215,27 @@
   </TD>
 <TR VALIGN=TOP>
   <TD WIDTH=7% class="alantar_td" id="auxiliary_table_total_sprinting">
-    <P class="number"><%= @character.statistics.calculate_sprinting %></P>
+    <P class="number"><%= @wizard.character.statistics.calculate_sprinting %></P>
   </TD>
   <TD WIDTH=7% class="alantar_td" id="auxiliary_table_total_running">
-    <P class="number"><%= @character.statistics.calculate_running %></P>
+    <P class="number"><%= @wizard.character.statistics.calculate_running %></P>
   </TD>
   <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-    <P class="number"><%= AuxiliaryParameterSet::RUNNING[@character.profession.general_type] %></P>
+    <P class="number"><%= AuxiliaryParameterSet::RUNNING[@wizard.character.profession.general_type] %></P>
   </TD>
   <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_running">
     <P class="number">
       <!--#TODO will it ever "break"?-->
-      <%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@dexterity]}" %>
+      <%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@dexterity")]}" %>
       <BR>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_running">
-    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Bieg", "only_from_skills") %><BR>
+    <P class="number">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Bieg", "only_from_skills") %><BR>
     </P>
   </TD>
   <TD WIDTH=9% class="alantar_td">
-    <P class="number"><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Bieg", "only_special")) %><BR>
+    <P class="number"><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Bieg", "only_special")) %><BR>
     </P>
   </TD>
 </TR>
@@ -262,18 +262,18 @@
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=8% class="beige alantar_td">
-    <P class="number"><%= AuxiliaryParameterSet::HIT_POINTS[@character.profession.general_type] %></P>
+    <P class="number"><%= AuxiliaryParameterSet::HIT_POINTS[@wizard.character.profession.general_type] %></P>
   </TD>
   <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_life_points">
-    <P class="number">+<%= @character.statistics.calculate_wt %><BR>
+    <P class="number">+<%= @wizard.character.statistics.calculate_wt %><BR>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% class="alantar_td" id="auxiliary_table_skill_bonus_for_life_points">
-    <P class="number">+<%= @character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_from_skills") %><BR>
+    <P class="number">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_from_skills") %><BR>
     </P>
   </TD>
   <TD WIDTH=9% class="alantar_td">
-    <P class="number"><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_special")) %><BR>
+    <P class="number"><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_special")) %><BR>
     </P>
   </TD>
 </TR>

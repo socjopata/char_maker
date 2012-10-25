@@ -13,11 +13,11 @@
     <TD COLSPAN=24 WIDTH=100% VALIGN=TOP class="grey alantar_td">
     </TD>
   </TR>
-  <% @caste_skills.in_groups_of(12, false).each do |skills| %>
+  <% @wizard.instance_variable_get("@caste_skills").in_groups_of(12, false).each do |skills| %>
       <TR VALIGN=TOP>
         <% skills.each do |skill| %>
             <TD WIDTH=7% class="alantar_td">
-              <P ALIGN=CENTER><%= check_box_tag skill.id, 1, @character.skills.include?(skill), :disabled => (session[:default_skills_ids].include?(skill.id) || @cannot_select_skills.include?(skill)), :onchange => "toggle_this_skill(this);" %>
+              <P ALIGN=CENTER><%= check_box_tag skill.id, 1, @wizard.character.skills.include?(skill), :disabled => (@wizard.character.session[:default_skills_ids].include?(skill.id) || @wizard.instance_variable_get("@cannot_select_skills").include?(skill)), :onchange => "toggle_this_skill(this);" %>
                 <BR>
               </P>
             </TD>
