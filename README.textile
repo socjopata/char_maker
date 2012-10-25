@@ -40,6 +40,7 @@ rake db:setup
 h3. Test suite
 
 be sure to setup test database and load seed data first. You can run the suite by issuing:
+
 bc. rspec
 
 h2. License
