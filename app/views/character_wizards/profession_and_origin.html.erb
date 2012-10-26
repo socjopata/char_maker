@@ -41,7 +41,7 @@
             var char_id = "<%= @wizard.character.id  %>";
             var profession = $('select#professions :selected').val();
             if (profession == "") profession = "0";
-            jQuery.get('/character_wizards/update_countries_select', {'id':profession, 'char_id':char_id}, function (data) {
+            jQuery.get('/character_wizard/update_countries_select', {'id':profession, 'char_id':char_id}, function (data) {
                 $("#addressCountries").html(data);
             });
             return false;
@@ -57,7 +57,7 @@
             var country = $('select#countries :selected').val();
             var profession = $('select#professions :selected').val();
             if (country == "") country = "0";
-            jQuery.get('/character_wizards/update_deities_select', {'id':country, 'char_id':char_id, 'profession_id':profession }, function (data) {
+            jQuery.get('/character_wizard/update_deities_select', {'id':country, 'char_id':char_id, 'profession_id':profession }, function (data) {
                 $("#addressDeities").html(data);
             });
             return false;

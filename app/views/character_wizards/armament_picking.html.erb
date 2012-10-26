@@ -36,7 +36,7 @@
             var char_id = "<%= @wizard.character.id  %>";
             var weapon_group = $('select#weapon_group :selected').val();
             if (weapon_group == "") weapon_group = "0";
-            jQuery.get('/character_wizards/update_weapons_select', {'weapon_group':weapon_group, 'char_id':char_id}, function (data) {
+            jQuery.get('/character_wizard/update_weapons_select', {'weapon_group':weapon_group, 'char_id':char_id}, function (data) {
                 $("#weapons").html(data);
             })
             return false;
@@ -46,7 +46,7 @@
             var char_id = "<%= @wizard.character.id  %>";
             var armor_group = $('select#armor_group :selected').val();
             if (armor_group == "") armor_group = "0";
-            jQuery.get('/character_wizards/update_armors_select', {'armor_group':armor_group, 'char_id':char_id}, function (data) {
+            jQuery.get('/character_wizard/update_armors_select', {'armor_group':armor_group, 'char_id':char_id}, function (data) {
                 $("#armors").html(data);
             })
             return false;
@@ -56,7 +56,7 @@
             var char_id = "<%= @wizard.character.id  %>";
             var shield_group = $('select#shield_group :selected').val();
             if (shield_group == "") shield_group = "0";
-            jQuery.get('/character_wizards/update_shields_select', {'shield_group':shield_group, 'char_id':char_id}, function (data) {
+            jQuery.get('/character_wizard/update_shields_select', {'shield_group':shield_group, 'char_id':char_id}, function (data) {
                 $("#shields").html(data);
             })
             return false;
@@ -66,7 +66,7 @@
             var char_id = "<%= @wizard.character.id  %>";
             var ranged_weapon_group = $('select#ranged_weapon_group :selected').val();
             if (ranged_weapon_group == "") ranged_weapon_group = "0";
-            jQuery.get('/character_wizards/update_ranged_weapons_select', {'ranged_weapon_group':ranged_weapon_group, 'char_id':char_id}, function (data) {
+            jQuery.get('/character_wizard/update_ranged_weapons_select', {'ranged_weapon_group':ranged_weapon_group, 'char_id':char_id}, function (data) {
                 $("#ranged_weapons").html(data);
             })
             return false;

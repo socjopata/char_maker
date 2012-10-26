@@ -124,7 +124,7 @@ module CharacterWizardHelper
   def item_upgrade_link(character, item, connecting_object, improvement_type)
     if connecting_object.send(improvement_type.intern).present?
       link_to("Usuń ulepszenie",
-              character_wizards_revert_improvement_path(:char_id => character.id,
+              revert_improvement_character_wizard_path(:char_id => character.id,
                                                         :item_type => item.class.name,
                                                         :inventory_item => item.id,
                                                         :improvement_id => connecting_object.id,
@@ -132,7 +132,7 @@ module CharacterWizardHelper
               :remote => true).html_safe
     else
       link_to("Ulepsz",
-              character_wizards_improve_item_path(:char_id => character.id,
+              improve_item_character_wizard_path(:char_id => character.id,
                                                   :item_type => item.class.name,
                                                   :inventory_item => item.id,
                                                   :improvement_id => connecting_object.id,
@@ -154,7 +154,7 @@ module CharacterWizardHelper
       "Tarcza główna"
     else
       link_to("Ustaw jako główną",
-              character_wizards_set_shield_as_main_path(:char_id => character.id,
+              set_shield_as_main_character_wizard_path(:char_id => character.id,
                                                         :inventory_item => connecting_object.id),
               :remote => true).html_safe
     end
@@ -165,7 +165,7 @@ module CharacterWizardHelper
       "Zbroja główna"
     else
       link_to("Oznacz jako aktualnie używaną",
-              character_wizards_set_armor_as_main_path(:char_id => character.id,
+              set_armor_as_main_character_wizard_path(:char_id => character.id,
                                                        :inventory_item => connecting_object.id),
               :remote => true).html_safe
     end

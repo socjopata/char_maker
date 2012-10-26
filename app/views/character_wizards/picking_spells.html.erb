@@ -20,7 +20,7 @@
         var spell_id = $(val).attr('id');
         var field_value = val.checked;
         var char_id = "<%= @wizard.character.id -%>";
-        var url = '<%= character_wizards_toggle_spell_path -%>';
+        var url = '<%= toggle_spell_character_wizard_path -%>';
         var data = {'spell_id' : spell_id, 'value' : field_value, 'char_id':char_id };
         $.ajax({
             url: url,

@@ -1,6 +1,6 @@
 <h2>Wybierz tarczę:</h2>
 
-<%= form_tag(character_wizards_add_item_to_inventory_path, :remote => true) do %>
+<%= form_tag(add_item_to_inventory_character_wizard_path, :remote => true) do %>
     <label>Wybierz grupę tarcz: </label><%= select_tag 'shield_group', options_for_select(@wizard.instance_variable_get("@shield_groups")) %><br/>
 
     <div id="shields">
