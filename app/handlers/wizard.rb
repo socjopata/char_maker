@@ -32,7 +32,9 @@ class Wizard
       @character.character_background.fill_the_purse_with_gold unless @character.purse.present?
       @redirect = character_wizard_path(:char_id => @character.id, :step => "profession_and_origin_choices")
     else
+      @character_background = @character.build_character_background
       @character.character_background.draw_a_trait if @character.hardcore_trait_picking && @character.character_background.origin.blank?
+      @character_background.save
       @professions = ProfessionSelector.new(@character).results
       @profession = @professions.first
       @countries ||= Profession.find_by_name(@profession.name).countries

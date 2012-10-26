@@ -43,7 +43,6 @@ class CharactersController < ApplicationController
     @character = current_user.characters.build(params[:character])
     respond_to do |format|
       if @character.save
-        @character.create_character_background
         format.html { redirect_to(character_wizard_path(:char_id => @character.id, :step => "profession_and_origin")) }
       else
         format.html { render :action => "new" }
