@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe Wizard do
   before do
-    @character =  FactoryGirl.create(:character)
+    @character = FactoryGirl.create(:character)
     @character.create_character_background
   end
 
@@ -39,7 +39,7 @@ describe Wizard do
 
     context "post" do
       it 'should not build statistics for character if they are present' do
-        params = {:professions => 8, :countries => 1, :deities => 4, :step =>"profession_and_origin", :method => :post}
+        params = {:professions => 8, :countries => 1, :deities => 4, :step => "profession_and_origin", :method => :post}
         stats = @character.build_statistics
         stats.save(:validate => false)
         @wizard = Wizard.new(@character, "profession_and_origin", params)
@@ -47,13 +47,13 @@ describe Wizard do
       end
 
       it 'should build statistics for character if they are blank' do
-        params = {:professions => 8, :countries => 1, :deities => 4, :step =>"profession_and_origin", :method => :post}
+        params = {:professions => 8, :countries => 1, :deities => 4, :step => "profession_and_origin", :method => :post}
         @wizard = Wizard.new(@character, "profession_and_origin", params)
         @wizard.character.statistics.initial_dice_roll_set.size.should == 6
       end
 
       it 'should return valid wizard instance object' do
-        params = {:professions => 8, :countries => 1, :deities => 4, :step =>"profession_and_origin", :method => :post}
+        params = {:professions => 8, :countries => 1, :deities => 4, :step => "profession_and_origin", :method => :post}
         @wizard = Wizard.new(@character, "profession_and_origin", params)
         @wizard.character.character_background.origin.should be_instance_of(Origin)
         @wizard.character.character_background.deity.should be_instance_of(Deity)
@@ -64,15 +64,58 @@ describe Wizard do
       end
 
       it 'should attach default social class for civilized character for hardcore_social_class_picking false' do
-        #TODO
+        profession = Profession.find_by_name("Żołnierz")
+        country = Country.find_by_name("Alantar")
+        params = {:professions => profession.id, :countries => country.id, :deities => country.deities.first.id, :step => "profession_and_origin", :method => :post}
+        @wizard = Wizard.new(@character, "profession_and_origin", params)
+        @wizard.character.character_background.social_classes.first.name.should == "Mieszczanin"
       end
 
       it 'should attach default social class for barbarian character for hardcore_social_class_picking false' do
-        #TODO
+        profession = Profession.find_by_name("Żołnierz")
+        country = Country.find_by_name("Góry Księżycowe i Niczyje")
+        params = {:professions => profession.id, :countries => country.id, :deities => country.deities.first.id, :step => "profession_and_origin", :method => :post}
+        @wizard = Wizard.new(@character, "profession_and_origin", params)
+        @wizard.character.character_background.social_classes.first.name.should == "Wojownik"
       end
-
-
     end
   end
 
+
+  context "profession_and_origin_choices" do
+    before do
+      params = {:professions => 8, :countries => 1, :deities => 4 }
+      @character.character_background.set_origin(params[:countries])
+      @character.character_background.update_attribute(:deity_id, params[:deities])
+      @character.pick_a_profession(params[:professions])
+      @character.character_background.set_social_class
+      @stats = @character.build_statistics
+      @stats.draw_stats
+      @stats.save(false)
+    end
+
+    context "get" do
+      it 'should return valid wizard instance object' do
+        @wizard = Wizard.new(@character, "profession_and_origin_choices")
+        @wizard.instance_variable_get("@profession_skillset").should_not == []
+        @wizard.render.should == "character_wizards/profession_and_origin_choices"
+      end
+    end
+
+    context "post" do
+      it 'should return valid wizard instance object' do
+
+      end
+
+      it 'should redirect to picking_statistics if character is valid' do
+
+      end
+
+      it 'should redirect back if the character is not valid' do
+
+      end
+
+    end
+
+  end
 end
