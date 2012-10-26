@@ -55,10 +55,12 @@ describe Wizard do
       it 'should return valid wizard instance object' do
         params = {:professions => 8, :countries => 1, :deities => 4, :step =>"profession_and_origin", :method => :post}
         @wizard = Wizard.new(@character, "profession_and_origin", params)
-
-        #TODO
-
-       # @wizard.redirect.should
+        @wizard.character.character_background.origin.should be_instance_of(Origin)
+        @wizard.character.character_background.deity.should be_instance_of(Deity)
+        @wizard.character.profession.should be_instance_of(Profession)
+        @wizard.character.character_background.social_classes.size.should == 1
+        Purse.last.character_id.should == @wizard.character.id
+        @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "profession_and_origin_choices")
       end
 
       it 'should attach default social class for civilized character for hardcore_social_class_picking false' do
