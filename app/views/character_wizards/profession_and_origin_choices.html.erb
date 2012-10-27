@@ -33,6 +33,7 @@
       <%= display_default_for_profession_and_origin(default).html_safe %> </ul>
     <br/>
     <% choices_for_profession_and_origin(@wizard.character).each do |choice| %>
+        =============================================================================== <br/><br/>
         <% if applies?(@wizard.character.social_class, choice) %>
             <% _choice = choice.stats_modifiers.map(&:group_name) - @wizard.instance_variable_get("@profession_skillset") %>
             <% if _choice.blank? %>

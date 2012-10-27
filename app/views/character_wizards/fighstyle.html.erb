@@ -1,4 +1,4 @@
-<%= button_link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "picking_statistics") %>
+<%= button_link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "statistics") %>
 <%= button_link_to "Utwórz nową postać", character_path(@wizard.character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
 <%= button_link_to "Dalej", "javascript:void(0)", :onclick => "proceed()" %>
 <br/><br/>
@@ -7,7 +7,7 @@
 </p><br/>
 <%= form_tag :url => character_wizard_path, :method => :post do %>
     <%= hidden_field_tag :char_id, @wizard.character.id %>
-    <%= hidden_field_tag :step, "picking_fighstyle" %>
+    <%= hidden_field_tag :step, "fighstyle" %>
     <% FightStyle.all.each do |style| %>
         <label><%= style.name %></label><%= radio_button_tag "fight_style_id", style.id, @wizard.character.fight_style_id, :disabled => (@wizard.character.profession.general_type=="rogue" && style.name=="Finezyjny") ? true : false %>
     <% end %>

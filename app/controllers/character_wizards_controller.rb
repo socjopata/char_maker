@@ -86,7 +86,7 @@ class CharacterWizardsController < ApplicationController
   end
 
   def revert_improvement
-    @blacksmith = Blacksmith.new(@character, params[:inventory_item], params[:item_type], "revert",  params[:improvement_id], params[:improvement_type])
+    @blacksmith = Blacksmith.new(@character, params[:inventory_item], params[:item_type], "revert", params[:improvement_id], params[:improvement_type])
   end
 
   private

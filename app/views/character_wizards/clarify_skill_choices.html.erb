@@ -25,7 +25,7 @@
     <% end %>
 <% end %>
 <br/><br/><br/>
-<%= button_link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "skills_picking") %>
+<%= button_link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "skills") %>
 <%= button_link_to "Utwórz nową postać", character_path(@wizard.character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
 <%= button_link_to "Dalej", character_wizard_path(:char_id => @wizard.character.id, :step => "clarify_skill_choices"), :method => :post %>
 

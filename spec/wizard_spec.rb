@@ -60,6 +60,7 @@ describe Wizard do
         @wizard.character.profession.should be_instance_of(Profession)
         @wizard.character.character_background.social_classes.size.should == 1
         Purse.last.character_id.should == @wizard.character.id
+        @wizard.errors.should == nil
         @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "profession_and_origin_choices")
       end
 
@@ -84,14 +85,16 @@ describe Wizard do
 
   context "profession_and_origin_choices" do
     before do
-      params = {:professions => 8, :countries => 1, :deities => 4 }
+      profession = Profession.find_by_name("Żołnierz")
+      country = Country.find_by_name("Wielkie Stepy")
+      params = {:professions => profession.id, :countries => country.id, :deities => country.deities.last.id}
       @character.character_background.set_origin(params[:countries])
       @character.character_background.update_attribute(:deity_id, params[:deities])
       @character.pick_a_profession(params[:professions])
-      @character.character_background.set_social_class
+      @character.character_background.social_classes << SocialClass.find_by_name("Członek rady plemienia")
       @stats = @character.build_statistics
-      @stats.draw_stats
-      @stats.save(false)
+      @stats.draw_stats and @stats.save(:validate => false)
+      @character.statistics.push_profession_modifiers
     end
 
     context "get" do
@@ -104,16 +107,42 @@ describe Wizard do
 
     context "post" do
       it 'should return valid wizard instance object' do
-
+        params = {:step => "profession_and_origin_choices", :main_skill => "S",
+                  :social_stat_choices => {"63" => "domyślne", "64" => "domyślne", "65" => "domyślne", "66" => "Jedna wolna umiejętność"},
+                  :origin_stat_choices => {"115" => "checked", "118" => "Sokoli wzrok", "119" => "Handel"}}
+        @wizard = Wizard.new(@character, "profession_and_origin_choices", params)
+        @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "statistics")
+        @wizard.errors.should == nil
       end
 
-      it 'should redirect to picking_statistics if character is valid' do
-
+      it 'should redirect back if the character is not valid, because of bad origin choices' do
+        params = {:step => "profession_and_origin_choices", :main_skill => "S",
+                  :social_stat_choices => {"63" => "domyślne", "64" => "domyślne", "65" => "domyślne", "66" => "Jedna wolna umiejętność"},
+                  :origin_stat_choices => {"115" => "checked", "119" => "Handel"}}
+        @wizard = Wizard.new(@character, "profession_and_origin_choices", params)
+        @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "profession_and_origin_choices")
+        @wizard.errors.should_not == nil
       end
 
-      it 'should redirect back if the character is not valid' do
-
+      it 'should redirect back if the character is not valid, because of bad social class choices' do
+        params = {:step => "profession_and_origin_choices", :main_skill => "S",
+                  :social_stat_choices => {"63" => "domyślne", "64" => "domyślne", "65" => "domyślne", "66" => "Jedna wolna umiejętność"},
+                  :origin_stat_choices => {"115" => "checked", "118" => "Sokoli wzrok"}}
+        @wizard = Wizard.new(@character, "profession_and_origin_choices", params)
+        @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "profession_and_origin_choices")
+        @wizard.errors.should_not == nil
       end
+
+    end
+
+  end
+
+  context "statistics" do
+    context "get" do
+
+    end
+
+    context "post" do
 
     end
 
