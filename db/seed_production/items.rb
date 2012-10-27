@@ -1437,6 +1437,8 @@ item = Shield.create(
     :price => 500
 )
 item.armament_requirements.create(:check_applies_to => "statistics", :name => "strength", :value => "11" )
+s_choice = item.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 2, :group_name => "Obrona Daleka")
 
 item = Shield.create(
     :group_name => "Tarcze Piechoty",
@@ -1448,6 +1450,8 @@ item = Shield.create(
     :price => 700
 )
 item.armament_requirements.create(:check_applies_to => "statistics", :name => "strength", :value => "13" )
+s_choice = item.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 3, :group_name => "Obrona Daleka")
 
 item = Shield.create(
     :group_name => "Tarcze Piechoty",
@@ -1459,6 +1463,8 @@ item = Shield.create(
     :price => 800
 )
 item.armament_requirements.create(:check_applies_to => "statistics", :name => "strength", :value => "15" )
+s_choice = item.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 4, :group_name => "Obrona Daleka")
 
 item = Shield.create(
     :group_name => "Tarcze Piechoty",
@@ -1470,6 +1476,8 @@ item = Shield.create(
     :price => 900
 )
 item.armament_requirements.create(:check_applies_to => "statistics", :name => "strength", :value => "19" )
+s_choice = item.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 5, :group_name => "Obrona Daleka")
 
 item = Shield.create(
     :group_name => "Tarcze Piechoty",
@@ -1493,7 +1501,8 @@ item = Shield.create(
 )
 item.armament_requirements.create(:check_applies_to => "statistics", :name => "strength", :value => "21" )
 item.armament_requirements.create(:check_applies_to => "social_class", :name => "is_elite?")
-
+s_choice = item.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 6, :group_name => "Obrona Daleka")
 
 item = Shield.create(
     :group_name => "Tarcze Piechoty",
@@ -1508,6 +1517,11 @@ item.armament_requirements.create(:check_applies_to => "statistics", :name => "s
 item.armament_requirements.create(:check_applies_to => "social_class", :name => "is_elite?")
 item.armament_requirements.create(:check_applies_to => "origin", :name => "Alantar")
 
+s_choice = item.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 5, :group_name => "Obrona Daleka")
+s_choice.stats_modifiers.create(:modifies => "auxiliary", :value => 3, :group_name => "Odporność na Magię")
+
+
 item = Shield.create(
     :group_name => "Tarcze Jazdy",
     :name => "Okrągła",
@@ -1518,6 +1532,8 @@ item = Shield.create(
     :price => 600
 )
 item.armament_requirements.create(:check_applies_to => "statistics", :name => "strength", :value => "10" )
+s_choice = item.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 3, :group_name => "Obrona Daleka")
 
 item = Shield.create(
     :group_name => "Tarcze Jazdy",
@@ -1529,6 +1545,8 @@ item = Shield.create(
     :price => 900
 )
 item.armament_requirements.create(:check_applies_to => "statistics", :name => "strength", :value => "14" )
+s_choice = item.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 4, :group_name => "Obrona Daleka")
 
 item = Shield.create(
     :group_name => "Tarcze Jazdy",
@@ -1540,6 +1558,9 @@ item = Shield.create(
     :price => 1000
 )
 item.armament_requirements.create(:check_applies_to => "statistics", :name => "strength", :value => "16" )
+s_choice = item.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 3, :group_name => "Obrona Daleka")
+#TODO Używając w połączeniu z Kopią +2pkt do Trafienia
 
 item = Shield.create(
     :group_name => "Tarcze Jazdy",
@@ -1551,6 +1572,8 @@ item = Shield.create(
     :price => 800
 )
 item.armament_requirements.create(:check_applies_to => "statistics", :name => "strength", :value => "15" )
+s_choice = item.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 5, :group_name => "Obrona Daleka")
 
 item = Shield.create(
     :group_name => "Tarcze Jazdy",
@@ -1564,7 +1587,8 @@ item = Shield.create(
 item.armament_requirements.create(:check_applies_to => "statistics", :name => "strength", :value => "19" )
 item.armament_requirements.create(:check_applies_to => "social_class", :name => "is_elite?")
 item.armament_requirements.create(:check_applies_to => "origin", :name => "Alantar")
-
+s_choice = item.stats_choices.create
+s_choice.stats_modifiers.create(:modifies => "fighting", :value => 4, :group_name => "Obrona Daleka")
 
 
 

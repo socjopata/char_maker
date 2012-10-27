@@ -5,6 +5,7 @@ class Armor < ActiveRecord::Base
   include CharacterCanUse
 
   has_many :armament_requirements, :as => :resource, :dependent => :destroy
+  has_many :stats_choices, :as => :resource, :dependent => :destroy
 
   has_many :character_armors, :dependent => :destroy
   has_many :characters, :through => :character_armors

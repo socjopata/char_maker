@@ -5,6 +5,7 @@ class Weapon < ActiveRecord::Base
   include CharacterCanUse
 
   has_many :armament_requirements, :as => :resource, :dependent => :destroy
+  has_many :stats_choices, :as => :resource, :dependent => :destroy
 
   has_many :character_weapons, :dependent => :destroy
   has_many :characters, :through => :character_weapons
@@ -16,7 +17,6 @@ class Weapon < ActiveRecord::Base
       3 => 8,
       4 => 16
   }
-
 
 
 end

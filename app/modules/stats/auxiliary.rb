@@ -18,7 +18,7 @@ module Stats
      end
 
      def calculate_magic_resistance
-       AuxiliaryParameterSet::MAGIC_RESISTANCE[character.profession.general_type] + calculate_auxiliary_bonus("Odporność na Magię")
+       AuxiliaryParameterSet::MAGIC_RESISTANCE[character.profession.general_type] + calculate_auxiliary_bonus("Odporność na Magię") + magic_resistance_shield_bonus_for(character)  #TODO Refactor this, if there is more of item stats modifiers cases
      end
 
      def calculate_life_points
@@ -48,6 +48,16 @@ module Stats
        values = stats_modifiers.select { |sm| sm.modifies=="variable_auxiliary" && sm.group_name==name }.map { |sm| eval(sm.evaluated_instruction).to_i }
        values.present? ? values.sum : 0
      end
+
+
+    def magic_resistance_shield_bonus_for(character)
+      fav_shield = character.character_shields.where(:favorite => true).first
+      if fav_shield
+        fav_shield.stats_choices.first.stats_modifiers.where(:group_name => "Odporność na Magię").first.try(:value)
+      else
+        0
+      end
+    end
 
   end
 end

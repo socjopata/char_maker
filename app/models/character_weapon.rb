@@ -137,4 +137,6 @@ class CharacterWeapon < ActiveRecord::Base
     end
   end
 
+
+
 end

@@ -27,7 +27,7 @@ module Stats
     end
 
     def calculate_o
-      polish + calculate_main_skill_bonus_for("O") + trait_modifier_for_main_skill_named("O")
+      polish + calculate_main_skill_bonus_for("O") + trait_modifier_for_main_skill_named("O") + special_bonus_from_weapons(character) #TODO Refactor this, if there is more of item stats modifiers cases
     end
 
     def calculate_current_zr
@@ -83,6 +83,10 @@ module Stats
       calculate_current_zr - 15 < 0 ? 0 : calculate_current_zr - 15
     end
 
+    def special_bonus_from_weapons(character)
+      noble_mace = character.weapons.where(:name => "Obuszek Szlachecki").first
+      noble_mace ? 1 : 0
+    end
 
   end
 end

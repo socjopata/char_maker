@@ -15,8 +15,8 @@ CharMaker::Application.routes.draw do
       get :update_shields_select
       get :toggle_skill
       get :toggle_weapon_proficiency
-      get :set_skill_preference
-      get :add_item_to_inventory
+      post :set_skill_preference
+      post :add_item_to_inventory
       get :remove_item_from_inventory
       get :improve_item
       get :revert_improvement

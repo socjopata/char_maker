@@ -25,16 +25,21 @@ class CharacterShield < ActiveRecord::Base
     required_strength.present? ? required_strength : "-"
   end
 
-  def total_defense_bonus(melee=true)
+  def total_defense_bonus(melee=true, options = {})
     if character.wield_style.name=="Styl walki bronią i tarczą"
       upgrade_modifier = defense_bonus.to_i
-      item_special_feature_bonus = 0 #TODO this is for pawez + 5 case, for example
+      item_special_feature_bonus = broad_sword_plus_shield_combo(options[:melee_weapon]) #TODO Refactor this, if there is more of item stats modifiers cases
+      shield_special_feature_bonus = (melee ? 0 : ranged_defense_bonus.to_i )
 
-      shield.defense_bonus + upgrade_modifier + item_special_feature_bonus
+      shield.defense_bonus + upgrade_modifier + item_special_feature_bonus + shield_special_feature_bonus
     else
       0
     end
 
+  end
+
+  def broad_sword_plus_shield_combo(weapon)
+    weapon && weapon.name=="Miecz szeroki" ? 1 : 0
   end
 
 end

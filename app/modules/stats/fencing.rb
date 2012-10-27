@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 module Stats
   module Fencing
+    #TODO maybe fix a mess with shattered fencing stuff (sahred between two classes: statistics and character weapon) ?
 
     def raw_fencing_when_defending
        raw_fencing('defense')
