@@ -52,8 +52,8 @@ module Stats
 
     def magic_resistance_shield_bonus_for(character)
       fav_shield = character.character_shields.where(:favorite => true).first
-      if fav_shield
-        fav_shield.stats_choices.first.stats_modifiers.where(:group_name => "Odporność na Magię").first.try(:value)
+      if fav_shield and stats_choice = fav_shield.resource.stats_choices.first
+        stats_choice.stats_modifiers.where(:group_name => "Odporność na Magię").first.try(:value)
       else
         0
       end

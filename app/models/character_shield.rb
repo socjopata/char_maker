@@ -29,7 +29,7 @@ class CharacterShield < ActiveRecord::Base
     if character.wield_style.name=="Styl walki bronią i tarczą"
       upgrade_modifier = defense_bonus.to_i
       item_special_feature_bonus = broad_sword_plus_shield_combo(options[:melee_weapon]) #TODO Refactor this, if there is more of item stats modifiers cases
-      shield_special_feature_bonus = (melee ? 0 : ranged_defense_bonus.to_i )
+      shield_special_feature_bonus = (melee ? 0 : resource.ranged_defense_bonus.to_i )
 
       shield.defense_bonus + upgrade_modifier + item_special_feature_bonus + shield_special_feature_bonus
     else

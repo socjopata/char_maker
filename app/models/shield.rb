@@ -10,7 +10,11 @@ class Shield < ActiveRecord::Base
   has_many :characters, :through => :character_shields
 
   def ranged_defense_bonus
-    bonus = stats_choice.first.stats_modifiers.where(:group_name => "Obrona Daleka").first and bonus.try(:value)
+    if  stats_choices.first
+      bonus = stats_choices.first.stats_modifiers.where(:group_name => "Obrona Daleka").first and bonus.try(:value)
+    else
+      0
+    end
   end
 
   MULTIPLIER = {
