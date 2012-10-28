@@ -18,7 +18,7 @@ module Stats
      end
 
      def calculate_magic_resistance
-       AuxiliaryParameterSet::MAGIC_RESISTANCE[character.profession.general_type] + calculate_auxiliary_bonus("Odporność na Magię") + magic_resistance_shield_bonus_for(character)  #TODO Refactor this, if there is more of item stats modifiers cases
+       AuxiliaryParameterSet::MAGIC_RESISTANCE[character.profession.general_type] + calculate_auxiliary_bonus("Odporność na Magię") + magic_resistance_shield_bonus_for(character) #TODO Refactor this, if there is more of item stats modifiers cases
      end
 
      def calculate_life_points
@@ -53,7 +53,7 @@ module Stats
     def magic_resistance_shield_bonus_for(character)
       fav_shield = character.character_shields.where(:favorite => true).first
       if fav_shield and stats_choice = fav_shield.resource.stats_choices.first
-        stats_choice.stats_modifiers.where(:group_name => "Odporność na Magię").first.try(:value)
+        stats_choice.stats_modifiers.where(:group_name => "Odporność na Magię").first.try(:value).to_i
       else
         0
       end
