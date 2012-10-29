@@ -30,7 +30,7 @@
           <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_dexterity_nerf" %>><%= item_upgrade_link(@character, item.resource, item, "dexterity_nerf") -%></p></td>
           <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_dexterity_cap" %>><%= item_upgrade_link(@character, item.resource, item, "dexterity_cap") -%></p></td>
           <td class="alantar_td"><p class="normal" id=<%= "#{item.class.name.tableize}_#{item.id}_defense_bonus" %>><%= item_upgrade_link(@character, item.resource, item, "defense_bonus") -%></p></td>
-          <td class="alantar_td"><p class="normal"><%= link_to image_tag('delete.png'), character_wizards_remove_item_from_inventory_path(:char_id => @character.id, :item_type => item.resource.class.name, :inventory_item => item.resource.id, :delete_id => item.id ), :remote => true %></p></td>
+          <td class="alantar_td"><p class="normal"><%= link_to image_tag('delete.png'), remove_item_from_inventory_character_wizard_path(:char_id => @character.id, :item_type => item.resource.class.name, :inventory_item => item.resource.id, :delete_id => item.id ), :remote => true %></p></td>
         </tr>
     <% end %>
     </tbody>
