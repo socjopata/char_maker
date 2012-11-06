@@ -13,6 +13,7 @@ class Profession < ActiveRecord::Base
 
   CASTER_CLASSES = ["Mag", "Kapłan", "Szaman", "Czarnoksiężnik", "Alchemik"]
   CLERIC_CLASSES = ["Kapłan", "Szaman"]
+  NON_CASTER_CLASSES = ["Dyplomata"]
 
   #after pushing all check for doubles
   #while rendering add extra check for choice.

@@ -8,7 +8,7 @@ class Spellbook < ActiveRecord::Base
   serialize :randomly_drawn_spells
   DICE_TYPE = 30 #k30
 
-  after_create :draw_spells
+  after_create :draw_spells, :if => -> {self.character.is_of_scholar_class_type? }
 
   def draw_spells
       spell_indexes = [*1..30].sample(5)

@@ -9,7 +9,7 @@ class Scribe
     @character = character
     @character_spellbook = Spellbook.find_or_create_by_character_id(character.id)
     @class_spells = Spell.set_for(character)
-    @spells_left = calculate_spells_left
+    @spells_left = character.is_of_scholar_class_type? ? calculate_spells_left : 0
   end
 
 

@@ -143,6 +143,10 @@ class Character < ActiveRecord::Base
     Profession::CLERIC_CLASSES.include?(profession.name)
   end
 
+  def is_a_non_caster?
+    Profession::NON_CASTER_CLASSES.include?(profession.name)
+  end
+
   def set_shield_as_main(inventory_item_id)
     character_shields.each do |_shield|
       _shield["id"]==inventory_item_id ? _shield.update_attribute(:favorite, true) : _shield.update_attribute(:favorite, false)
