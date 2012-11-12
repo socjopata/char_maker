@@ -125,18 +125,18 @@ module CharacterWizardHelper
     if connecting_object.send(improvement_type.intern).present?
       link_to("Usuń ulepszenie",
               revert_improvement_character_wizard_path(:char_id => character.id,
-                                                        :item_type => item.class.name,
-                                                        :inventory_item => item.id,
-                                                        :improvement_id => connecting_object.id,
-                                                        :improvement_type => improvement_type),
+                                                       :item_type => item.class.name,
+                                                       :inventory_item => item.id,
+                                                       :improvement_id => connecting_object.id,
+                                                       :improvement_type => improvement_type),
               :remote => true).html_safe
     else
       link_to("Ulepsz",
               improve_item_character_wizard_path(:char_id => character.id,
-                                                  :item_type => item.class.name,
-                                                  :inventory_item => item.id,
-                                                  :improvement_id => connecting_object.id,
-                                                  :improvement_type => improvement_type),
+                                                 :item_type => item.class.name,
+                                                 :inventory_item => item.id,
+                                                 :improvement_id => connecting_object.id,
+                                                 :improvement_type => improvement_type),
               :remote => true).html_safe
     end
   end
@@ -155,7 +155,7 @@ module CharacterWizardHelper
     else
       link_to("Ustaw jako główną",
               set_shield_as_main_character_wizard_path(:char_id => character.id,
-                                                        :inventory_item => connecting_object.id),
+                                                       :inventory_item => connecting_object.id),
               :remote => true).html_safe
     end
   end
@@ -166,16 +166,46 @@ module CharacterWizardHelper
     else
       link_to("Oznacz jako aktualnie używaną",
               set_armor_as_main_character_wizard_path(:char_id => character.id,
-                                                       :inventory_item => connecting_object.id),
+                                                      :inventory_item => connecting_object.id),
               :remote => true).html_safe
     end
   end
 
   def statistics_picking_trs(wizard)
-   Statistics::ENGLISH_NAMES.map do |key,value|
-     content_tag(:td, content_tag(:div, (wizard.instance_variable_get("@lead_parameter") if wizard.character.lead_parameter==key), :id => value, :class => "drop #{"lead" if wizard.character.lead_parameter==key}" ) )
-   end.join.html_safe
+    Statistics::ENGLISH_NAMES.map do |key, value|
+      content_tag(:td, content_tag(:div, (wizard.instance_variable_get("@lead_parameter") if wizard.character.lead_parameter==key), :id => value, :class => "drop #{"lead" if wizard.character.lead_parameter==key}"))
+    end.join.html_safe
   end
+
+  def social_class_perks(wizard)
+    elements = "".html_safe
+    wizard.character.social_class_stats_choices.each do |choice|
+      if choice.stats_modifiers.size == 1
+        elements << render(:partial => 'single', :locals => {:stats_modifier => choice.stats_modifiers.first, :radio_group => "social_stat_choices[#{choice.id}]"})
+      else
+        elements << render(:partial => 'choices', :locals => {:stats => choice.stats_modifiers.to_set.classify { |stat| stat.group_name.humanize }, :radio_group => "social_stat_choices[#{choice.id}]"})
+      end
+    end
+    elements
+  end
+
+  def profession_and_origin_perks(wizard)
+    elements = "".html_safe
+    choices_for_profession_and_origin(wizard.character).each do |choice|
+      if applies?(wizard.character.social_class, choice)
+        _choice = choice.stats_modifiers.map(&:group_name) - wizard.instance_variable_get("@profession_skillset")
+        if _choice.blank?
+          elements << render(:partial => 'single', :locals => {:stats_modifier => StatsModifier.default, :radio_group => "origin_stat_choices[#{choice.id}]"})
+        elsif _choice.size == 1
+          elements << render(:partial => 'single', :locals => {:stats_modifier => choice.stats_modifiers.select { |sm| sm.group_name==_choice.first }.first, :radio_group => "origin_stat_choices[#{choice.id}]"})
+        elsif _choice.size > 1
+          elements << render(:partial => 'choices', :locals => {:stats => choice.stats_modifiers.to_set.classify { |stat| stat.group_name.humanize }, :radio_group => "origin_stat_choices[#{choice.id}]"})
+        end
+      end
+    end
+    elements
+  end
+
 
 end
 

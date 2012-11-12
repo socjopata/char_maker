@@ -16,35 +16,20 @@
     <br/>
     <%= select_tag "main_skill", options_from_collection_for_select(fetch_possible_lead_parameters_choices(@wizard.character.character_profession), :name, :display_name) %>
     <h3>Wybierz profity wynikające z klasy społecznej Twojej postaci:</h3>   <br/>
-    <!--#TODO move this spaghetti logic to a helper where it belongs...-->
-    <% @wizard.character.social_class_stats_choices.each do |choice| %>
-        <% if choice.stats_modifiers.size == 1 %>
-            <%= render :partial => 'single', :locals => {:stats_modifier => choice.stats_modifiers.first, :radio_group => "social_stat_choices[#{choice.id}]"} %>
-        <% else %>
-            <%= render :partial => 'choices', :locals => {:stats => choice.stats_modifiers.to_set.classify { |stat| stat.group_name.humanize }, :radio_group => "social_stat_choices[#{choice.id}]"} %>
-        <% end %>
-    <% end %>
+
+    <%= social_class_perks(@wizard) %>
 
     <h3>Wybierz profity wynikające z kraju pochodzenia i profesji Twojej postaci:</h3>   <br/>
     <label><strong>Domyślne:</strong></label>
+
     <% default = @wizard.character.default_origin_modifiers_set %>
     <%= radio_button_tag "origin_stat_choices[#{default.id}]", "checked", true, :disabled => false %>
     <ul>
       <%= display_default_for_profession_and_origin(default).html_safe %> </ul>
     <br/>
-    <% choices_for_profession_and_origin(@wizard.character).each do |choice| %>
-        =============================================================================== <br/><br/>
-        <% if applies?(@wizard.character.social_class, choice) %>
-            <% _choice = choice.stats_modifiers.map(&:group_name) - @wizard.instance_variable_get("@profession_skillset") %>
-            <% if _choice.blank? %>
-                <%= render :partial => 'single', :locals => {:stats_modifier => StatsModifier.default, :radio_group => "origin_stat_choices[#{choice.id}]"} %>
-            <% elsif _choice.size == 1 %>
-                <%= render :partial => 'single', :locals => {:stats_modifier => choice.stats_modifiers.select{|sm| sm.group_name==_choice.first}.first, :radio_group => "origin_stat_choices[#{choice.id}]"} %>
-            <% elsif _choice.size > 1  %>
-                <%= render :partial => 'choices', :locals => {:stats => choice.stats_modifiers.to_set.classify { |stat| stat.group_name.humanize }, :radio_group => "origin_stat_choices[#{choice.id}]"} %>
-            <% end %>
-        <% end %>
-    <% end %>
+
+    <%= profession_and_origin_perks(@wizard) %>
+
 <% end %>
 
 
