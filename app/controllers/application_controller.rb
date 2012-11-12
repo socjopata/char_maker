@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  #TODO examine this further. Atm seem to do the trick.
   before_filter :set_cache_buster
 
   def set_cache_buster

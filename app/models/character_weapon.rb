@@ -64,13 +64,12 @@ class CharacterWeapon < ActiveRecord::Base
     collection_of_stats_modifiers.select { |sm| sm.group_name[characteristic_affected] }.map { |sm| sm.group_name.match(/(?<=#{characteristic_affected})(.*?)(?=,)/)[0].to_i }.sum
   end
 
-     #TODO maybe try to use a scope, like   #SkillBonusPreference.preferences_for_character(3)
   def collection_of_stats_modifiers(entity)
     if entity=="weapon_name"
-      character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten
-    elsif entity=="weapon_group_name"
-      character.character_skills.map(&:skill_bonus_preference).compact.select { |sbp| sbp.choice==weapon.group_name }.map { |skill_bonus_preference| skill_bonus_preference.skill.stats_choices.map(&:stats_modifiers) }.flatten.flatten
-    end
+      StatsModifier.bonus_preferences_for(character.id, weapon.name)
+     elsif entity=="weapon_group_name"
+      StatsModifier.bonus_preferences_for(character.id, weapon.group_name)
+     end
   end
 
   #this is for weapon group.

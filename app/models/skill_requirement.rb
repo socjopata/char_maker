@@ -32,7 +32,7 @@ class SkillRequirement < ActiveRecord::Base
       when "experience"
         "* Poziom doświadczenia: #{value}"
       when "social_class"
-        "* Postać musi mieć odpowiednie pochodzenie" #TODO can be improved
+        "* Postać musi mieć odpowiednie pochodzenie. Zerknij do podręcznika"
       when "caster_class"
         "* Postać musi być Posiadaczem Mocy"
       when "auxiliary"
