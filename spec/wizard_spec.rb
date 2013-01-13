@@ -85,16 +85,7 @@ describe Wizard do
 
   context "profession_and_origin_choices" do
     before do
-      profession = Profession.find_by_name("Żołnierz")
-      country = Country.find_by_name("Wielkie Stepy")
-      params = {:professions => profession.id, :countries => country.id, :deities => country.deities.last.id}
-      @character.character_background.set_origin(params[:countries])
-      @character.character_background.update_attribute(:deity_id, params[:deities])
-      @character.pick_a_profession(params[:professions])
-      @character.character_background.social_classes << SocialClass.find_by_name("Członek rady plemienia")
-      @stats = @character.build_statistics
-      @stats.draw_stats and @stats.save(:validate => false)
-      @character.statistics.push_profession_modifiers
+      setup_profession_and_origin_choices
     end
 
     context "get" do
@@ -138,13 +129,81 @@ describe Wizard do
   end
 
   context "statistics" do
+    before do
+      setup_statistics
+    end
+
     context "get" do
+      it 'should return valid wizard instance object' do
+        @wizard = Wizard.new(@character, "statistics")
+        @wizard.character.skills.should be_empty
+        @wizard.instance_variable_get("@lead_parameter").should_not be_nil
+        @wizard.instance_variable_get("@stats").should_not be_empty
+
+        assert @wizard.instance_variable_get("@stats")[0..3].none? { |number| number > @wizard.instance_variable_get("@lead_parameter") }
+      end
 
     end
 
     context "post" do
+      it 'should return valid wizard instance object' do
+        params = {:statistics =>
+                      {"strength" => "16",
+                       "dexterity" => "5",
+                       "endurance" => "16",
+                       "intelligence" => "17",
+                       "faith" => "15",
+                       "polish" => @character.statistics.initial_dice_roll_set.last},
+        }
+
+        @wizard = Wizard.new(@character, "statistics", params)
+        @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "fighstyle")
+        @wizard.errors.should == nil
+
+        @wizard.character.skills.should_not be_empty
+
+        skill = Skill.find_by_name("Weteran Wojenny")
+        @wizard.character.skills.should include(skill)
+        @wizard.character.session.should have_key(:skill_free_assignment_base)
+        @wizard.character.session.should have_key(:default_skills_ids)
+      end
+
+      it 'should not allow misplacement of polish dice roll' do
+        params = {:statistics =>
+                      {"strength" => "16",
+                       "dexterity" => "5",
+                       "endurance" => "16",
+                       "intelligence" => "17",
+                       "faith" => "15",
+                       "polish" => "0"},
+        }
+        @wizard = Wizard.new(@character, "statistics", params)
+        @wizard.errors.should_not be_empty
+      end
+
+      it 'should enforce proper assignment for choice breaker traits' do
+
+      end
 
     end
 
   end
+
+  def setup_profession_and_origin_choices
+    profession = Profession.find_by_name("Żołnierz")
+    country = Country.find_by_name("Wielkie Stepy")
+    params = {:professions => profession.id, :countries => country.id, :deities => country.deities.last.id}
+    @character.character_background.set_origin(params[:countries])
+    @character.character_background.update_attribute(:deity_id, params[:deities])
+    @character.pick_a_profession(params[:professions])
+    @character.character_background.social_classes << SocialClass.find_by_name("Członek rady plemienia")
+    @stats = @character.build_statistics
+    @stats.draw_stats and @stats.save(:validate => false)
+    @character.statistics.push_profession_modifiers
+  end
+
+  def setup_statistics
+    setup_profession_and_origin_choices
+  end
+
 end
