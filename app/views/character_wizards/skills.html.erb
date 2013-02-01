@@ -21,7 +21,7 @@
 
 
 
-<%= button_link_to "Wróć", character_wizard_path(:char_id => @character.id, :step => "fighstyle") %>
+<%= button_link_to "Wróć", character_wizard_path(:char_id => @character.id, :step => "fightstyle") %>
 <%= button_link_to "Utwórz nową postać", character_path(@character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
 <%= button_link_to "Dalej", character_wizard_path(:char_id => @character.id, :step => "skills"), :method => :post %>
 

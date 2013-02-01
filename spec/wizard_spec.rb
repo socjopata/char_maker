@@ -130,7 +130,7 @@ describe Wizard do
 
   context "statistics" do
     before do
-      setup_statistics
+      setup_profession_and_origin_choices
     end
 
     context "get" do
@@ -139,7 +139,7 @@ describe Wizard do
         @wizard.character.skills.should be_empty
         @wizard.instance_variable_get("@lead_parameter").should_not be_nil
         @wizard.instance_variable_get("@stats").should_not be_empty
-
+        @wizard.render.should == "character_wizards/statistics"
         assert @wizard.instance_variable_get("@stats")[0..3].none? { |number| number > @wizard.instance_variable_get("@lead_parameter") }
       end
 
@@ -157,7 +157,7 @@ describe Wizard do
         }
 
         @wizard = Wizard.new(@character, "statistics", params)
-        @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "fighstyle")
+        @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "fightstyle")
         @wizard.errors.should == nil
 
         @wizard.character.skills.should_not be_empty
@@ -182,12 +182,61 @@ describe Wizard do
       end
 
       it 'should enforce proper assignment for choice breaker traits' do
-
+        #TODO difficult one
       end
+    end
+  end
 
+
+  context "fightstyle" do
+    before do
+      setup_profession_and_origin_choices
+      setup_statistics
     end
 
+
+    context "get" do
+      it 'should return valid wizard instance object' do
+        @wizard = Wizard.new(@character, "fightstyle")
+        @wizard.render.should == "character_wizards/fightstyle"
+      end
+
+      it 'should make rouge a finesse fighter' do
+        @character.pick_a_profession(Profession.find_by_name("Łotr").id)
+        @wizard = Wizard.new(@character, "fightstyle")
+        @wizard.character.fight_style_id.should == FightStyle.find_by_name("Finezyjny").id
+      end
+    end
+
+    context "post" do
+      before do
+        setup_profession_and_origin_choices
+        setup_statistics
+      end
+
+      it 'should return valid wizard instance object' do
+        params = {:fight_style_id => FightStyle.find_by_name("Brutalny").id,
+                  :wield_style_id => WieldStyle.find_by_name("Styl walki dwiema brońmi").id }
+        @wizard = Wizard.new(@character, "fightstyle", params)
+        @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "skills")
+        @wizard.errors.should == nil
+      end
+
+      it 'should not allow to proceed without fightstyle or weapon wield selected' do
+        #we have only a js validation here.
+      end
+
+      it 'should not allow to pick a fightstyle which does not coresponds to statistics' do
+        params = {:fight_style_id => FightStyle.find_by_name("Finezyjny").id,
+                  :wield_style_id => WieldStyle.find_by_name("Styl walki dwiema brońmi").id }
+        @wizard = Wizard.new(@character, "fightstyle", params)
+        @wizard.errors.should_not == nil
+      end
+    end
   end
+
+
+  #=====================================
 
   def setup_profession_and_origin_choices
     profession = Profession.find_by_name("Żołnierz")
@@ -203,7 +252,7 @@ describe Wizard do
   end
 
   def setup_statistics
-    setup_profession_and_origin_choices
+    @character.statistics.update_attributes(:strength => 30, :dexterity => 10, :polish => 10, :faith => 10, :endurance => 10, :intelligence => 10)
   end
 
 end

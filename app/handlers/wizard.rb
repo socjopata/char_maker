@@ -69,7 +69,7 @@ class Wizard
       if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth? && @character.valid_stats_assignment?
         skill_free_assignment_base, default_skills_ids = @character.statistics.convert_stat_choices_to_skills
         @character.update_attribute(:session, @character.session.merge({:skill_free_assignment_base => skill_free_assignment_base, :default_skills_ids => default_skills_ids}))
-        @redirect = character_wizard_path(:char_id => @character.id, :step => "fighstyle")
+        @redirect = character_wizard_path(:char_id => @character.id, :step => "fightstyle")
       else
         @errors = "Napewno dobrze uzupełniłeś statystyki?"
         @errors << " Zwróć szczególna uwagę na swój dar: \"#{@character.character_background.traits.first.try(:name)}\" i sposób w jaki musisz przyporządkować drugi najwyższy wylosowany paramter." unless  @character.valid_stats_assignment?
@@ -93,13 +93,13 @@ class Wizard
     end
   end
 
-  def fighstyle
+  def fightstyle
     if params
       if (@character.fight_style.present? and @character.update_attributes(:wield_style_id => params[:wield_style_id])) || @character.update_attributes(:fight_style_id => params[:fight_style_id], :wield_style_id => params[:wield_style_id])
         @redirect = character_wizard_path(:char_id => @character.id, :step => "skills")
       else
         @errors = "Czy aby napewno zależności Siła/Zręczność a wybrany styl walki, są spełnione?"
-        @redirect = character_wizard_path(:char_id => @character.id, :step => "fighstyle")
+        @redirect = character_wizard_path(:char_id => @character.id, :step => "fightstyle")
       end
     else
       @character.make_rogue_a_finesse_fighter
