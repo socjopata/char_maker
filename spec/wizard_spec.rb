@@ -194,7 +194,6 @@ describe Wizard do
       setup_statistics
     end
 
-
     context "get" do
       it 'should return valid wizard instance object' do
         @wizard = Wizard.new(@character, "fightstyle")
@@ -209,14 +208,9 @@ describe Wizard do
     end
 
     context "post" do
-      before do
-        setup_profession_and_origin_choices
-        setup_statistics
-      end
-
       it 'should return valid wizard instance object' do
         params = {:fight_style_id => FightStyle.find_by_name("Brutalny").id,
-                  :wield_style_id => WieldStyle.find_by_name("Styl walki dwiema brońmi").id }
+                  :wield_style_id => WieldStyle.find_by_name("Styl walki dwiema brońmi").id}
         @wizard = Wizard.new(@character, "fightstyle", params)
         @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "skills")
         @wizard.errors.should == nil
@@ -228,11 +222,123 @@ describe Wizard do
 
       it 'should not allow to pick a fightstyle which does not coresponds to statistics' do
         params = {:fight_style_id => FightStyle.find_by_name("Finezyjny").id,
-                  :wield_style_id => WieldStyle.find_by_name("Styl walki dwiema brońmi").id }
+                  :wield_style_id => WieldStyle.find_by_name("Styl walki dwiema brońmi").id}
         @wizard = Wizard.new(@character, "fightstyle", params)
         @wizard.errors.should_not == nil
       end
     end
+  end
+
+
+  context "skills" do
+    before do
+      setup_profession_and_origin_choices
+      setup_statistics
+      setup_fightstyle_step
+    end
+
+    context "post" do
+      it 'should return valid wizard instance object' do
+        params = {}
+
+        @wizard = Wizard.new(@character, "skills", params)
+        @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "clarify_skill_choices")
+        @wizard.errors.should == nil
+        @wizard.character.session[:coins_left].should_not be_nil
+        @wizard.character.session[:weapon_class_preference_left].should_not be_nil
+      end
+
+    end
+
+    context "get" do
+      it 'should return valid wizard instance object' do
+        @wizard = Wizard.new(@character, "skills")
+        @wizard.render.should == "character_wizards/skills"
+
+        @wizard.instance_variable_get("@strength").should_not be_nil
+        @wizard.instance_variable_get("@dexterity").should_not be_nil
+        @wizard.instance_variable_get("@endurance").should_not be_nil
+        @wizard.instance_variable_get("@intelligence").should_not be_nil
+        @wizard.instance_variable_get("@faith").should_not be_nil
+        @wizard.instance_variable_get("@polish").should_not be_nil
+
+        @wizard.instance_variable_get("@basic_skills").should_not be_empty
+        @wizard.instance_variable_get("@caste_skills").should_not be_empty
+        @wizard.instance_variable_get("@profession_skills").should_not be_empty
+        @wizard.instance_variable_get("@cannot_select_skills").should_not be_empty
+        @wizard.instance_variable_get("@free_skill_amount").should_not be_nil
+      end
+    end
+
+  end
+
+
+  context "clarify_skill_choices" do
+    before do
+
+    end
+
+    context "post" do
+      it 'should return valid wizard instance object' do
+
+      end
+
+
+      #  if @character.valid_for_armament_step?
+
+    end
+
+    context "get" do
+      it 'should return valid wizard instance object' do
+
+      end
+    end
+
+  end
+
+
+  context "armament_picking" do
+    before do
+
+    end
+
+    context "post" do
+      it 'should return valid wizard instance object' do
+
+      end
+
+      #if @character.has_valid_shopping_list?(@character.session[:coins_left])
+
+      #if @character.is_of_scholar_class_type?
+
+    end
+
+    context "get" do
+      it 'should return valid wizard instance object' do
+
+      end
+    end
+
+  end
+
+
+  context "spells" do
+    before do
+
+    end
+
+    context "post" do
+      it 'should return valid wizard instance object' do
+
+      end
+    end
+
+    context "get" do
+      it 'should return valid wizard instance object' do
+
+      end
+    end
+
   end
 
 
@@ -253,6 +359,14 @@ describe Wizard do
 
   def setup_statistics
     @character.statistics.update_attributes(:strength => 30, :dexterity => 10, :polish => 10, :faith => 10, :endurance => 10, :intelligence => 10)
+  end
+
+  def setup_fightstyle_step
+    @character.character_background.fill_the_purse_with_gold
+    skill_free_assignment_base, default_skills_ids = @character.statistics.convert_stat_choices_to_skills
+    @character.update_attributes(:fight_style_id => FightStyle.find_by_name("Brutalny").id,
+                                 :wield_style_id => WieldStyle.find_by_name("Styl walki dwiema brońmi").id,
+                                 :session => @character.session.merge({:skill_free_assignment_base => skill_free_assignment_base, :default_skills_ids => default_skills_ids}))
   end
 
 end
