@@ -131,7 +131,7 @@ class Wizard
       else
         flash_alert = ""
         flash_alert << "Musisz sprecyzować bonusy wynikające z umiejętności." if @character.any_unfinished_matters_present?
-        flash_alert << " Jako strzelec, musisz być biegły przynajmniej w jednej grupie broni dystansowej." if @character.is_a_shooter_and_didnt_picked_his_bow
+        flash_alert << " Jako strzelec, musisz być biegły przynajmniej w jednej grupie broni dystansowej." if @character.is_a_shooter_and_didnt_picked_his_bow_proficiency
         @errors = flash_alert
         @redirect = character_wizard_path(:char_id => @character, :step => "clarify_skill_choices")
       end

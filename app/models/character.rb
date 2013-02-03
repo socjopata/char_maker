@@ -189,12 +189,12 @@ class Character < ActiveRecord::Base
 
   def valid_for_armament_step?
     return false if any_unfinished_matters_present?
-    return false if is_a_shooter_and_didnt_picked_his_bow
+    return false if is_a_shooter_and_didnt_picked_his_bow_proficiency
     true
   end
 
-  def is_a_shooter_and_didnt_picked_his_bow
-    profession.name=="Strzelec" && character_weapon_proficiencies.map(&:name).any? { |group_name| RangedWeapon.all.map(&:group_name).uniq.include?(group_name) }
+  def is_a_shooter_and_didnt_picked_his_bow_proficiency
+    profession.name=="Strzelec" && character_weapon_proficiencies.map(&:name).none? { |group_name| RangedWeapon.all.map(&:group_name).uniq.include?(group_name) }
   end
 
 end

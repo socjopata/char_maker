@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Wizard do
-  before do
+  before(:each) do
     @character = FactoryGirl.create(:character)
     @character.create_character_background
   end
@@ -275,22 +275,43 @@ describe Wizard do
 
   context "clarify_skill_choices" do
     before do
-
+      setup_profession_and_origin_choices
+      setup_statistics
+      setup_fightstyle_step
     end
 
     context "post" do
       it 'should return valid wizard instance object' do
-
+        params = {}
+        @wizard = Wizard.new(@character, "clarify_skill_choices", params)
+        @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "armament_picking")
+        @wizard.errors.should == nil
       end
 
+      it 'should enforce picking bow for a shooter class' do
+        params = {}
+        @character.pick_a_profession(Profession.find_by_name("Strzelec").id)
+        @wizard = Wizard.new(@character, "clarify_skill_choices", params)
+        @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "clarify_skill_choices")
+        @wizard.errors.should match("Jako strzelec,")
+      end
 
-      #  if @character.valid_for_armament_step?
-
+      it 'should enforce making choices for the outcome of picking particular skills' do
+        params = {}
+        Skill.find_by_name("Ulubiona Broń").add_skill_for(@character.id)
+        @character.reload
+        @wizard = Wizard.new(@character, "clarify_skill_choices", params)
+        @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "clarify_skill_choices")
+        @wizard.errors.should match("Musisz sprecyzować bonusy")
+      end
     end
 
     context "get" do
       it 'should return valid wizard instance object' do
-
+        @character.pick_a_profession(Profession.find_by_name("Strzelec").id)
+        @wizard = Wizard.new(@character, "clarify_skill_choices")
+        @wizard.render.should == "character_wizards/clarify_skill_choices"
+        @wizard.instance_variable_get("@weapon_groups").should_not be_nil
       end
     end
 
@@ -299,7 +320,9 @@ describe Wizard do
 
   context "armament_picking" do
     before do
-
+      setup_profession_and_origin_choices
+      setup_statistics
+      setup_fightstyle_step
     end
 
     context "post" do
@@ -315,7 +338,18 @@ describe Wizard do
 
     context "get" do
       it 'should return valid wizard instance object' do
-
+        #TODO
+        #@wizard = Wizard.new(@character, "armament_picking")
+        #@wizard.render.should == "character_wizards/armament_picking"
+        #@wizard.instance_variable_get("@weapon_groups").should_not be_nil
+        #@wizard.instance_variable_get("@weapons").should_not be_empty
+        #@wizard.instance_variable_get("@armors").should_not be_empty
+        #@wizard.instance_variable_get("@armor_groups").should_not be_empty
+        #@wizard.instance_variable_get("@shields").should_not be_empty
+        #@wizard.instance_variable_get("@shield_groups").should_not be_empty
+        #@wizard.instance_variable_get("@ranged_weapons").should_not be_empty
+        #@wizard.instance_variable_get("@ranged_weapon_groups").should_not be_empty
+        #@wizard.instance_variable_get("@statistics_hash").size.should == 6
       end
     end
 
