@@ -225,8 +225,7 @@
   </TD>
   <TD WIDTH=10% class="alantar_td" id="auxiliary_table_main_p_bonus_for_running">
     <P class="number">
-      <!--#TODO will it ever "break"?-->
-      <%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@dexterity")]}" %>
+      <%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.character.statistics.calculate_current_zr]}" %>
       <BR>
     </P>
   </TD>

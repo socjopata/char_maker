@@ -21,10 +21,4 @@ class ArmamentMaster
        [appropriate_collection_for_selection, available_groups_for_select]
    end
 
-
-
 end
-
-
-#ArmamentMaster.new(@character, "Weapon", @character.calculate_stats_and_store_them_as_a_hash, {:group_name => nil} )
-
