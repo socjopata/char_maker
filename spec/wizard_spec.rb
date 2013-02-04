@@ -191,7 +191,7 @@ describe Wizard do
   context "fightstyle" do
     before do
       setup_profession_and_origin_choices
-      setup_statistics
+      setup_for_statistics
     end
 
     context "get" do
@@ -233,8 +233,8 @@ describe Wizard do
   context "skills" do
     before do
       setup_profession_and_origin_choices
-      setup_statistics
-      setup_fightstyle_step
+      setup_for_statistics
+      setup_for_fightstyle_step
     end
 
     context "post" do
@@ -276,8 +276,8 @@ describe Wizard do
   context "clarify_skill_choices" do
     before do
       setup_profession_and_origin_choices
-      setup_statistics
-      setup_fightstyle_step
+      setup_for_statistics
+      setup_for_fightstyle_step
     end
 
     context "post" do
@@ -321,35 +321,51 @@ describe Wizard do
   context "armament_picking" do
     before do
       setup_profession_and_origin_choices
-      setup_statistics
-      setup_fightstyle_step
+      setup_for_statistics
+      setup_for_fightstyle_step
+      setup_for_armament_picking
     end
-
     context "post" do
       it 'should return valid wizard instance object' do
-
+        params = {}
+        @wizard = Wizard.new(@character, "armament_picking", params)
+        @wizard.redirect.should == characters_path
+        @wizard.errors.should == nil
       end
 
-      #if @character.has_valid_shopping_list?(@character.session[:coins_left])
+      it 'should not allow to pass a char with invalid shopping list' do
+        @character.update_attributes(:session => @character.session.merge({:coins_left => -1}))
+        @character.reload
+        params = {}
+        @wizard = Wizard.new(@character, "armament_picking", params)
+        @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "armament_picking")
+        @wizard.errors.should_not be_nil
+      end
 
-      #if @character.is_of_scholar_class_type?
+      it 'should redirect scholar class type char to picking spells step' do
+        params = {}
+        @character.pick_a_profession(Profession.find_by_name("Mag").id)
+        @wizard = Wizard.new(@character, "armament_picking", params)
+        @wizard.redirect.should == character_wizard_path(:char_id => @character, :step => "spells")
+        @wizard.errors.should == nil
+      end
 
     end
 
     context "get" do
+
       it 'should return valid wizard instance object' do
-        #TODO
-        #@wizard = Wizard.new(@character, "armament_picking")
-        #@wizard.render.should == "character_wizards/armament_picking"
-        #@wizard.instance_variable_get("@weapon_groups").should_not be_nil
-        #@wizard.instance_variable_get("@weapons").should_not be_empty
-        #@wizard.instance_variable_get("@armors").should_not be_empty
-        #@wizard.instance_variable_get("@armor_groups").should_not be_empty
-        #@wizard.instance_variable_get("@shields").should_not be_empty
-        #@wizard.instance_variable_get("@shield_groups").should_not be_empty
-        #@wizard.instance_variable_get("@ranged_weapons").should_not be_empty
-        #@wizard.instance_variable_get("@ranged_weapon_groups").should_not be_empty
-        #@wizard.instance_variable_get("@statistics_hash").size.should == 6
+        @wizard = Wizard.new(@character, "armament_picking")
+        @wizard.render.should == "character_wizards/armament_picking"
+        @wizard.instance_variable_get("@weapon_groups").should_not be_nil
+        @wizard.instance_variable_get("@weapons").should_not be_empty
+        @wizard.instance_variable_get("@armors").should_not be_empty
+        @wizard.instance_variable_get("@armor_groups").should_not be_empty
+        @wizard.instance_variable_get("@shields").should_not be_empty
+        @wizard.instance_variable_get("@shield_groups").should_not be_empty
+        @wizard.instance_variable_get("@ranged_weapons").should_not be_empty
+        @wizard.instance_variable_get("@ranged_weapon_groups").should_not be_empty
+        @wizard.instance_variable_get("@statistics_hash").size.should == 6
       end
     end
 
@@ -358,21 +374,29 @@ describe Wizard do
 
   context "spells" do
     before do
-
-    end
+        setup_profession_and_origin_choices
+        setup_for_statistics
+        setup_for_fightstyle_step
+        setup_for_armament_picking
+        @character.pick_a_profession(Profession.find_by_name("Mag").id)
+        @character.reload
+      end
 
     context "post" do
       it 'should return valid wizard instance object' do
-
+        params = {}
+        @wizard = Wizard.new(@character, "spells", params)
+        @wizard.redirect.should == characters_path
+        @wizard.errors.should == nil
       end
     end
 
     context "get" do
       it 'should return valid wizard instance object' do
-
+        @wizard = Wizard.new(@character, "spells")
+        @wizard.render.should == "character_wizards/spells"
       end
     end
-
   end
 
 
@@ -391,16 +415,22 @@ describe Wizard do
     @character.statistics.push_profession_modifiers
   end
 
-  def setup_statistics
+  def setup_for_statistics
     @character.statistics.update_attributes(:strength => 30, :dexterity => 10, :polish => 10, :faith => 10, :endurance => 10, :intelligence => 10)
   end
 
-  def setup_fightstyle_step
+  def setup_for_fightstyle_step
     @character.character_background.fill_the_purse_with_gold
     skill_free_assignment_base, default_skills_ids = @character.statistics.convert_stat_choices_to_skills
     @character.update_attributes(:fight_style_id => FightStyle.find_by_name("Brutalny").id,
                                  :wield_style_id => WieldStyle.find_by_name("Styl walki dwiema brońmi").id,
                                  :session => @character.session.merge({:skill_free_assignment_base => skill_free_assignment_base, :default_skills_ids => default_skills_ids}))
+    @character.reload
+  end
+  
+  def setup_for_armament_picking
+    @character.update_attributes(:session => @character.session.merge({:coins_left => 0}))
+    @character.purse.update_attributes(:current => 5000)
   end
 
 end

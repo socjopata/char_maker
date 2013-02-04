@@ -63,7 +63,7 @@ class Shopkeeper
   end
 
   def self.says_ok?(character, spendings)
-    character.errors.add(:base, "Nie możesz wydać więcej niz posiadasz") if 0 > spendings
+    character.errors.add(:base, "Nie możesz wydać więcej niz posiadasz") if 0 > spendings.to_i
     character.errors.add(:base, "Wybierz jedną z tarcz jako aktualnie używaną.") if character.character_shields.size > 0 &&  character.character_shields.map(&:favorite).compact.blank?
     character.errors.add(:base, "Wybierz jedną ze zbroi jako aktualnie noszoną.") if character.character_armors.size > 0 &&  character.character_armors.map(&:favorite).compact.blank?
     character.errors.blank?
