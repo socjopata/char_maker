@@ -1,5 +1,15 @@
 # -*- encoding : utf-8 -*-
 CharMaker::Application.configure do
+
+# Compress JavaScripts and CSS
+  config.assets.compress = true
+
+# Don't fallback to assets pipeline if a precompiled asset is missed
+  config.assets.compile = false
+
+# Generate digests for assets URLs
+  config.assets.digest = true
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
@@ -48,15 +58,15 @@ CharMaker::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.after_initialize do
-    LoggedExceptionsController.class_eval do
-      before_filter :authorized?
-      protected
-      def authorized?
-        redirect_to "/" unless (current_user.present? && current_user.admin)
-      end
-    end
-  end
+  #config.after_initialize do
+  #  LoggedExceptionsController.class_eval do
+  #    before_filter :authorized?
+  #    protected
+  #    def authorized?
+  #      redirect_to "/" unless (current_user.present? && current_user.admin)
+  #    end
+  #  end
+  #end
 
 
 end

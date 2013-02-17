@@ -1,0 +1,350 @@
+.fs_10 {
+    font-size: 10px !important;
+}
+
+.fs_11 {
+    font-size: 11px !important;
+}
+
+.fs_12 {
+    font-size: 12px !important;
+}
+
+.fs_13 {
+    font-size: 13px !important;
+}
+
+.fs_14 {
+    font-size: 14px !important;
+}
+
+.fs_15 {
+    font-size: 14px !important;
+}
+
+.fs_16 {
+    font-size: 16px !important;
+}
+
+.fat {
+    font-weight: bold !important;
+}
+
+.italic {
+    font-style: italic !important;
+}
+
+.number {
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    font-style: italic;
+}
+
+.normal {
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.white_normal {
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: white;
+    font-style: italic;
+}
+
+.black {
+    background-color: #000000;
+}
+
+.red {
+    background-color: #FF0000;
+}
+
+.grey {
+    background-color: #b3b3b3;
+}
+
+.light_grey {
+    background-color: #c0c0c0;
+}
+
+.beige {
+    background-color: #e6e6e6;
+}
+
+.alantar_td {
+    border: 1.00pt solid #000000;
+    padding-top: 0.04in;
+    padding-bottom: 0.04in;
+    padding-left: 0.04in;
+    padding-right: 0.04in;
+}
+
+.character_sheet_td {
+    border: 1.00pt solid #000000;
+    padding-left: 0.04in;
+    padding-right: 0.04in;
+
+}
+
+.fltr {
+    float: right;
+}
+
+.fltl {
+    float: left;
+}
+
+.position_left_60 {
+    left: 60px;
+}
+
+.stats_area {
+    background: url(/app/assets/images/papyrus4.gif) no-repeat center;
+    width: 400px;
+
+}
+
+.itermediate_div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.dragArea {
+    opacity: 0.5;
+    width: 500px;
+    height: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.dropArea {
+    opacity: 0.5;
+    width: 500px;
+    height: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.drag {
+    background-color: white;
+    width: 30px;
+    height: 20px;
+    border-style: solid;
+    border-color: green;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: move;
+    float: left;
+}
+
+.drop {
+    background-color: white;
+    width: 30px;
+    height: 20px;
+    border-style: solid;
+    border-color: green;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    float: left;
+}
+
+.choice_notice {
+}
+
+.flash-notice {
+    background: url(/app/assets/images/success.png) no-repeat 10px center #b5e060;
+    border: 1px solid #9acb3c;
+    color: #2F7038;
+    border-radius: 4px;
+    font-weight: bold;
+    clear: both;
+    margin: 10px 0 10px;
+    padding: 12px 12px 12px 43px;
+}
+
+.flash-error {
+    background: url(/app/assets/images/error.png) no-repeat 10px center #d8412d;
+    border: 1px solid #ab2e1e;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: bold;
+    clear: both;
+    margin: 10px 0 10px;
+    padding: 12px 12px 12px 43px;
+}
+
+/*	Layout 8	*/
+.Layout8_1 {
+    width: 100%;
+    height: 1700px;
+    float: left;
+    background: url(/app/assets/images/background.jpg);
+    padding: 0px 12px 0px 12px;
+    margin: 0 auto;
+    font-size: 16px
+}
+
+.Layout8_header {
+    background-color: #add8e6;
+    width: 100%;
+    height: 70px;
+    margin: 0 auto;
+}
+
+.clear {
+    /* generic container (i.e. div) for floating buttons */
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 26px;
+
+}
+
+a.button {
+    background: transparent url('/app/assets/images/bg_button_a.gif') no-repeat scroll top right;
+    color: #444;
+    display: block;
+    float: left;
+    font: normal 12px arial, sans-serif;
+    height: 24px;
+    margin-right: 12px;
+    margin-left: 12px;
+    padding-right: 18px; /* sliding doors padding */
+    text-decoration: none;
+
+}
+
+a.button span {
+    background: transparent url('/app/assets/images/bg_button_span.gif') no-repeat;
+    display: block;
+    line-height: 14px;
+    padding: 5px 0px 5px 18px;
+
+}
+
+a.button:active {
+    background-position: bottom right;
+    color: #000;
+    outline: none; /* hide dotted outline in Firefox */
+}
+
+a.button:active span {
+    background-position: bottom left;
+    padding: 6px 0 4px 18px; /* push text down 1px */
+}
+
+@media print {
+
+    .fs_10 {
+        font-size: 10px !important;
+    }
+
+    .fs_11 {
+        font-size: 11px !important;
+    }
+
+    .fs_12 {
+        font-size: 12px !important;
+    }
+
+    .fs_13 {
+        font-size: 13px !important;
+    }
+
+    .fs_14 {
+        font-size: 14px !important;
+    }
+
+    .fs_15 {
+        font-size: 14px !important;
+    }
+
+    .fs_16 {
+        font-size: 16px !important;
+    }
+
+    .fat {
+        font-weight: bold !important;
+    }
+
+    .italic {
+        font-style: italic !important;
+    }
+
+    .number {
+        font-weight: bold;
+        font-size: 14px;
+        text-align: center;
+        font-style: italic;
+    }
+
+    .normal {
+        text-align: center;
+        font-weight: bold;
+        font-size: 10px;
+    }
+
+    .white_normal {
+        text-align: center;
+        font-weight: bold;
+        font-size: 12px;
+        color: white;
+        font-style: italic;
+    }
+
+    .black {
+        background-color: #000000;
+    }
+
+    .grey {
+        background-color: #b3b3b3;
+    }
+
+    .light_grey {
+        background-color: #c0c0c0;
+    }
+
+    .beige {
+        background-color: #e6e6e6;
+    }
+
+    .alantar_td {
+        border: 1.00pt solid #000000;
+        padding-top: 0.04in;
+        padding-bottom: 0.04in;
+        padding-left: 0.04in;
+        padding-right: 0.04in;
+    }
+
+    .character_sheet_td {
+        border: 1.00pt solid #000000;
+        padding-left: 0.04in;
+        padding-right: 0.04in;
+
+    }
+
+    .fltr {
+        float: right;
+    }
+
+    .fltl {
+        float: left;
+    }
+
+
+
+}
+
