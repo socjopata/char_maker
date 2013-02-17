@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.2.11'
 
 
 gem 'pg'#, '>= 0.14.1'
@@ -26,10 +26,15 @@ group :development, :test do
   gem 'ffaker'
 end
 
-#
-#group :assets do
-#  gem 'sass-rails', "  ~> 3.1.0"
-#  gem 'coffee-rails', "~> 3.1.0"
-#  gem 'uglifier'
-#end
-#
+
+group :assets do
+  gem 'sass-rails', '~> 3.2.5'
+  gem 'coffee-rails', '~> 3.2.2'
+  gem 'uglifier', '>= 1.0.3'
+  gem 'turbo-sprockets-rails3' , '>=0.3.2'
+  gem 'therubyracer', '>= 0.11.0beta8', :platform => :ruby
+  gem 'libv8'
+end
+
+
+

@@ -2,38 +2,31 @@
 <html>
 <head>
   <title>Alantar</title>
-  <%= stylesheet_link_tag :application %>
-  <%= javascript_include_tag :application %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-<div class=templateholder>
-  <div class=Layout8_header>
-    <div id="user_nav" class="fltr">
-      <% if user_signed_in? %>
-          Zalogowany jako <%= current_user.email %>. To nie Ty?
-          <%= link_to "Wyloguj", destroy_user_session_path, :method => :delete %>
-      <% else %>
-          <%= link_to "Zarejestruj się", new_user_registration_path %> lub
-          <%= link_to "Zaloguj", new_user_session_path %>
-      <% end %>
-    </div>
-    <div id="spinner" style="display:none;" class="fs_16 normal">
-      <img alt="Spinner" src="/images/ajax-loader.gif"> Chwileczkę, pracuję...
-    </div>
-  </div>
-  <div class=Layout8_1>
-    <div id="page">
-      <% if flash[:alert] %>
-          <p class="flash-error"><%= flash[:alert] %></p>
-      <% end %>
-      <% if flash[:notice] %>
-          <p class="flash-notice"><%= flash[:notice] %></p>
-      <% end %>
-    </div><%= yield %></div>
-</div>
 
-<!--<%#= render :partial => "javascripts" %>-->
+<% if user_signed_in? %>
+    Zalogowany jako <%= current_user.email %>. To nie Ty?
+    <%= link_to "Wyloguj", destroy_user_session_path, :method => :delete %>
+<% else %>
+    <%= link_to "Zarejestruj się", new_user_registration_path %> lub
+    <%= link_to "Zaloguj", new_user_session_path %>
+<% end %>
+
+
+<div id="page">
+  <% if flash[:alert] %>
+      <p class="flash-error"><%= flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+      <p class="flash-notice"><%= flash[:notice] %></p>
+  <% end %>
+  <%= yield %>
+
+  <!--<%#= render :partial => "javascripts" %>-->
 
 </body>
 </html>
