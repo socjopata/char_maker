@@ -1,0 +1,31 @@
+/*Rubymine can't format this crap :(*/
+
+<% if @skill_toggler.not_enough_free_skill_points.present? %>
+<% else %>
+    <% @skill_toggler.commands.each do |command| %>
+         jQuery('#<%= command.key %> p').text('<%= command.value %>');
+        <% if params[:value]=="true"  %>
+             jQuery('#<%= command.key %>').effect('highlight', {color:'green'}, 1500);
+        <% else %>
+             jQuery('#<%= command.key %>').effect('highlight', {color:'red'}, 1500);
+        <% end %>
+    <% end %>
+    <% @skill_toggler.skill_commands.each do |_command |  %>
+    <% if _command.value == "enable"  %>
+    jQuery('input#<%= _command.key %>').removeAttr('disabled');
+    <% else %>
+    jQuery('input#<%= _command.key %>').attr('disabled', 'true');
+    <% end %>
+    <% if _command.value == "enable"  %>
+    jQuery('input#<%= _command.key %>').parent().effect('highlight', {color:'green'}, 1500);
+    <% else %>
+    jQuery('input#<%= _command.key %>').parent().effect('highlight', {color:'green'}, 1500);
+    <% end %>
+    <% end %>
+            jQuery('#skill_counter').text('Pozostało wolnych umiejętności: <%= @skill_toggler.free_skill_amount %>');
+        <% if params[:value]=="true"  %>
+                jQuery('#skill_counter').effect('highlight', {color:'red'}, 1500);
+        <% else %>
+             jQuery('#skill_counter').effect('highlight', {color:'green'}, 1500);
+        <% end %>
+<% end %>
