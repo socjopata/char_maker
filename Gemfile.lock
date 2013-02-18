@@ -167,6 +167,9 @@ GEM
       libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
       rubyzip
+    simple_form (2.0.4)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     slop (3.3.3)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -222,6 +225,7 @@ DEPENDENCIES
   rmagick
   rspec-rails
   sass-rails (~> 3.2.5)
+  simple_form
   therubyracer (>= 0.11.0beta8)
   thin
   turbo-sprockets-rails3 (>= 0.3.2)

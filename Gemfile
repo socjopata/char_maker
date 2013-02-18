@@ -15,6 +15,7 @@ gem 'galetahub-simple_captcha', :require => 'simple_captcha', :git => 'git://git
 gem 'pdfkit'
 gem 'thin'
 gem 'pry'
+gem 'simple_form'
 
 group :development, :test do
   gem 'rspec-rails'

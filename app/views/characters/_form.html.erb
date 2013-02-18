@@ -1,50 +1,27 @@
-<%= form_for @character, :html => {:multipart => true} do |f| %>
-    <% if @character.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@character.errors.count, "error") %> prohibited this character from being saved:</h2>
+<%= simple_form_for @character, :html => {:class => 'form-horizontal'} do |f| %>
+    <%= f.error_notification %>
+    <%= display_base_errors @character %>
 
-          <ul>
-            <% @character.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-    <!--<h3>Avatar</h3>-->
-    <!--<p>-->
-    <!--<label>Mój Avatar</label>-->
-    <!--<#%= image_tag(@character.avatar_url(:regular)) if @character.avatar? %>-->
-    <!--<#%= f.file_field :avatar %>-->
-    <!--<#%= f.hidden_field :avatar_cache %>-->
-    <!--</p>-->
+    <legend>Informacje ogólne</legend>
 
-    <h3>Informacje ogólne</h3>
-    <%= f.label "Imię" %>
-    <%= f.text_field :name %><br/>
-    <%= f.label "Płeć" %>
-    <%= f.select :gender, options_for_select(["Mężczyzna", 'Kobieta'], @character.gender) %><br/><br/>
-    <%= f.label "Gram hardcorowo - wylosuj dla mnie pochodzenie." %>
-    <%= f.check_box :hardcore_social_class_picking %><br/><br/>
-    <%= f.label "Gram hardcorowo - niech komputer rzuci za mnie na klątwę lub dar." %>
-    <%= f.check_box :hardcore_trait_picking %><br/><br/>
-    <%= f.label "Kreator pomoże mi w wyborze bóstwa" %>
-    <%= f.check_box :easy_deity_picking, :default => true %><br/><br/>
+    <%= f.input :name, :input_html => {:class => "span6"},
+                :label => "Imię" %>
+    <%= f.input :gender, :collection => ["Mężczyzna", 'Kobieta'],
+                :label => "Płeć", :include_blank => false %>
 
-    <h4>Uwaga: wybór bóstwa jest jednym z najważniejszych wyborów podejmowanych przez gracza w systemie Alantar. Polecamy
-      zostawic zaznaczoną opcję "Kreator pomoże mi w wyborze bóstwa" oraz przeczytać odpowiedni dział podręcznika.</h4>
-
-    <br/>
-
-    <div id="stats">
-    </div>
-    <br/><br/>
-
-    <div class="actions">
-      <%= button_link_to "Dalej", "javascript:void(0)", :class => "button fltr", :onclick => "submit_form()" %>
-    </div>
+    <%= f.input :hardcore_social_class_picking, :as => :boolean, :label => "Gram hardcorowo - wylosuj dla mnie pochodzenie." %>
+    <%= f.input :hardcore_trait_picking, :as => :boolean, :label => "Gram hardcorowo - niech komputer rzuci za mnie na klątwę lub dar." %>
+    <%= f.input :easy_deity_picking, :as => :boolean, :label => "Kreator pomoże mi w wyborze bóstwa.", :hint => 'Uwaga: wybór bóstwa jest jednym z najważniejszych wyborów podejmowanych przez gracza w systemie Alantar. Polecamy
+      zostawić tą opcję zaznaczoną oraz przeczytać odpowiedni dział podręcznika.' %>
 <% end %>
-<br/>
-<%= button_link_to "Wróć do indeksu", characters_path %>
+
+<div class="row">
+  <div class="span2"><%= link_to "Wróć do indeksu", characters_path, :class => "btn" %></div>
+  <div class="span1 offset8"><%= link_to "Dalej", "javascript:void(0)", :class => "btn", :onclick => "submit_form()" %></div>
+</div>
+
+
+
 <script type="text/javascript">
 
     function submit_form() {
