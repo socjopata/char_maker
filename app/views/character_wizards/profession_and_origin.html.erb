@@ -8,10 +8,8 @@
 <legend>Profesja i pochodzenie:</legend>
 
 <%= form_tag({:url => character_wizard_path, :method => :post}, {:class => "simple_form form-horizontal" }) do %>
-    <fieldset>
       <label>Wybierz profesję:</label>
       <%= select_tag 'professions', options_from_collection_for_select(@wizard.instance_variable_get("@professions"), "id", "name") %><br/>
-    </fieldset>
 
     <div id="addressCountries">
       <%= render :partial => 'countries', :locals => {:countries => @wizard.instance_variable_get("@countries"), :profession => @wizard.instance_variable_get("@profession")} %>
@@ -21,21 +19,18 @@
       <%= render :partial => 'deities', :locals => {:deities => @wizard.instance_variable_get("@deities")} %>
     </div>
 
-
     <%= hidden_field_tag :char_id, @wizard.character.id %>
     <%= hidden_field_tag :step, "profession_and_origin" %>
 
 <% end %>
 
-<br/><br/><br/><br/>
+<br/><br/>
 
-
-<div class="clear">
-  <%= button_link_to "Wróć", new_character_path(:char_id => @wizard.character.id), :class => "fltl" %>
-  <%= button_link_to "Utwórz nową postać", character_path(@wizard.character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
-  <%= button_link_to "Dalej", "javascript:void(0)", :class => "fltr", :onclick => "submit_form_and_proceed()" %>
+<div class="row">
+  <div class="span1"><%= link_to "Wróć",  new_character_path(:char_id => @wizard.character.id), :class => "btn" %></div>
+  <div class="span2 offset4"><%= link_to "Utwórz nową postać", character_path(@wizard.character), :class => "btn", :confirm => 'Napewno?', :method => :delete %></div>
+  <div class="span1 offset4"><%= link_to "Dalej", "javascript:void(0)", :class => "btn", :onclick => "submit_form_and_proceed()" %></div>
 </div>
-
 
 <script type="text/javascript">
     jQuery(function ($) {
