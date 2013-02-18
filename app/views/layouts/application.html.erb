@@ -1,35 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-  <title>Alantar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Alantar - kreator postaci" %></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tag %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
 </head>
 <body>
-
-<% if user_signed_in? %>
-    Zalogowany jako <%= current_user.email %>. To nie Ty?
-    <%= link_to "Wyloguj", destroy_user_session_path, :method => :delete %>
-<% else %>
-    <%= link_to "Zarejestruj się", new_user_registration_path %> lub
-    <%= link_to "Zaloguj", new_user_session_path %>
-<% end %>
-
-
-<div id="page">
-  <% if flash[:alert] %>
-      <p class="flash-error"><%= flash[:alert] %></p>
-  <% end %>
-  <% if flash[:notice] %>
-      <p class="flash-notice"><%= flash[:notice] %></p>
-  <% end %>
-  <%= yield %>
-
-  <!--<%#= render :partial => "javascripts" %>-->
-
+<header class="navbar navbar-fixed-top">
+  <nav class="navbar-inner">
+    <div class="container">
+      <%= render 'layouts/navigation' %>
+    </div>
+  </nav>
+</header>
+<div id="main" role="main">
+  <div class="container">
+    <div class="content">
+      <div class="row">
+        <div class="span12">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+        </div>
+      </div>
+      <footer>
+      </footer>
+    </div>
+  </div> <!--! end of .container -->
+</div> <!--! end of #main -->
 </body>
 </html>
-
-
-

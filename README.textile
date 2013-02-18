@@ -16,8 +16,8 @@ And here comes the online characters generator :)
 
 h2. Environment
 
-* ruby <1.9.3-p194>
-* rails <3.0.20>
+* ruby <1.9.3-p194> or newer
+* rails <3.2.11>
 * bundler
 * gems are described in Gemfile and also some are packed by bundler into the project.
 * PostgreSQL <8.4> or <9.1>

@@ -29,6 +29,7 @@ end
 
 group :assets do
   gem 'sass-rails', '~> 3.2.5'
+  gem 'bootstrap-sass'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.0.3'
   gem 'turbo-sprockets-rails3' , '>=0.3.2'

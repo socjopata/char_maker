@@ -1,19 +1,37 @@
-<h1 style="font-size: 30pt">Witaj graczu!</h1><br/>
+<div class="container">
 
-<p style="font-size: 14pt">Witaj w kreatorze postaci online dla systemu RPG Alantar!</p>
+  <div class="hero-unit">
+    <h1>Witaj graczu!</h1>
+    <p>Witaj w kreatorze postaci online dla systemu dark fantasy RPG Alantar. Wszystko zaczęło się pewnego pięknego wieczoru w Tawernie Morgan, gdy Artur zagadnął mnie (wiedząc, że jestem programistą), czy nie mógłbym mu napisać programu komputerowego, który przeprowadziłby gracza.</p>
 
+    <p>Jak wiadomo, kiedy dostajesz do rąk podręcznik do gry RPG, której jeszcze nie znasz, wszystko wydaje się dość skomplikowane. Trzeba przebrnąć przez wiele stron, zanim ogarnie się dany system, choćby na tyle by bez problemów stworzyć sobie swoje alter-ego i nie korzystać z tych kilku postaci stworzonych przez autora podręcznika.</p>
 
+    <p>Arturowi wydawało się, że to na co teraz patrzysz, zajmie mi może dwa wieczory. Ja jednak od początku wiedziałem, że będzie to dla mnie początkiem długiej, ciekawej i pełnej wyzwań przygody. Zupełnie w opowieści z Alantaru, prowadzonej przez Artura.</p>
+    <p><%= link_to "Dowiedz się więcej &raquo;".html_safe, "#", :class => "btn btn-primary btn-large" %></p>
+  </div>
 
+  <div class="row">
+    <div class="span4">
+      <h2>Stwórz nową postać</h2>
+      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+      <p><%= link_to "Stwórz nową postać &raquo;".html_safe, new_character_path, :class => "btn"   %></p>
+    </div>
+    <div class="span4">
+      <h2>Przeglądaj utworzone postacie</h2>
+      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+      <p><%= link_to "Przeglądaj postacie &raquo;".html_safe, characters_path, :class => "btn"   %></p>
+    </div>
+    <div class="span4">
+      <h2>Masz pytania? sugestie?</h2>
+      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      <p><%= link_to "Napisz do mnie! &raquo;".html_safe, new_message_path, :class => "btn"  %></p>
+    </div>
+  </div>
 
-<br/>
-<br/>
-<br/>
-<% if current_user %>
-    <p style="font-size: 12pt"><%= link_to "Kliknij tutaj", new_character_path %> jeśli chcesz utworzyć nową
-      postać! </p>
-    <p style="font-size: 12pt">Lub <%= link_to "kliknij tutaj", characters_path %> jeśli chcesz przeglądnąć dotychczas
-      utworzone postacie. </p><br/>
+  <hr>
 
-<% end %>
- <p style="font-size: 12pt">Masz pytania? sugestie? <%= link_to "Napisz do mnie!", new_message_path %>   </p>
+  <footer>
+    <p>&copy; Radosław Jędryszczak  2011 - 2013</p>
+  </footer>
 
+</div> <!-- /container -->
