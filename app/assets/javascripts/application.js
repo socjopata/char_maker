@@ -2,7 +2,7 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 //= require jquery
+//= require jquery-migrate
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap
-//= require_tree .

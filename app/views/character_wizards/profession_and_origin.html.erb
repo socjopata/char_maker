@@ -1,13 +1,17 @@
+<legend>Podstawowe informacje:</legend>
+
 <strong>Imię: </strong><%= @wizard.character.name %><br/>
 <strong>Płeć: </strong><%= translate_gender(@wizard.character.gender) %><br/>
 <%= raw display_curse_or_blessing(@wizard.character) %>
 <br/><br/>
-<strong>Profesja i pochodzenie: </strong>
-<br/><br/>
-<%= form_tag :url => character_wizard_path, :method => :post do %>
 
-    <label>Wybierz
-      profesję: </label><%= select_tag 'professions', options_from_collection_for_select(@wizard.instance_variable_get("@professions"), "id", "name") %><br/>
+<legend>Profesja i pochodzenie:</legend>
+
+<%= form_tag({:url => character_wizard_path, :method => :post}, {:class => "simple_form form-horizontal" }) do %>
+    <fieldset>
+      <label>Wybierz profesję:</label>
+      <%= select_tag 'professions', options_from_collection_for_select(@wizard.instance_variable_get("@professions"), "id", "name") %><br/>
+    </fieldset>
 
     <div id="addressCountries">
       <%= render :partial => 'countries', :locals => {:countries => @wizard.instance_variable_get("@countries"), :profession => @wizard.instance_variable_get("@profession")} %>
