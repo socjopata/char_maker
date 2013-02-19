@@ -60,8 +60,8 @@ module CharacterWizardHelper
 
   def display_default_for_profession_and_origin(stats_choice)
     stats_choice.stats_modifiers.collect do |choice_part|
-      content_tag("li", display_choice_part(choice_part))
-    end.join(" ")
+      display_choice_part(choice_part)
+    end.join("<br/>")
   end
 
   def choices_for_profession_and_origin(character)

@@ -39,32 +39,13 @@
       <p>Zestawienie Twoich aktualnych parametrów wynikająca z pochodzenia, klasy społecznej i posiadanych bazowych
         umiejętności oraz tabela progów bonusowych.</p>
 
-      <!--#TODO move to partial and reuse-->
-      <table class="table table-bordered">
-        <caption>...</caption>
-        <thead>
-        <tr>
-          <th>Parametry Główne</th>
-          <th>Wartość Cechy</th>
-          <th>Premia/Kara</th>
-        </tr>
-        </thead>
-        <tbody>
-    <% ["S", "ZR", "WT", "INT", "WI", "O"].each do |stat| %>
-        <tr>
-          <td><%= Statistics::POLISH_NAMES[stat] %></td>
-          <td><%=  @wizard.instance_variable_get("@#{Statistics::ENGLISH_NAMES[stat]}") %></td>
-          <td><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@#{Statistics::ENGLISH_NAMES[stat]}")]}" %></td>
-        </tr>
-        <% end %>
-        </tbody>
-      </table>
+      <%= render :partial => 'character_wizards/skill_tables/main_stats_table' %>
 
       <!--#TODO ask Artur and pick one!-->
       <button class="btn" id="stats_qtip"> Pokaż tabelę progów</button>
       <a href="#" id="first_tooltip" data-toggle="tooltip">tabela progów on hover</a>
 
-      <%= render :partial => "bonus_or_penalty_ranges" %>
+      <%= render :partial => "character_wizards/skill_tables/bonus_thresholds" %>
 
     </div>
   </div>

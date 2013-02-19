@@ -1,10 +1,10 @@
 <% stats.each do |group_name, choice_parts| %>
-    <label><strong><%= group_name %></strong></label><%= radio_button_tag radio_group, group_name %><br/>
-    <ul>
+    <label><strong><%= group_name %></strong></label>
+    <label class="radio">
+      <%= radio_button_tag radio_group, group_name %>
       <% choice_parts.each do |choice_part| %>
-          <li><%= display_choice_part(choice_part) %></li>
+          <%= display_choice_part(choice_part) %><br />
       <% end %>
-    </ul>
+    </label>
 <% end %>
 
-  =============================================================================== <br/><br/>

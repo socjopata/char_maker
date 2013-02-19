@@ -1,97 +1,20 @@
-<TABLE WIDTH=30% CELLPADDING=4 CELLSPACING=0 class="fltl">
-  <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% class="black alantar_td">
-      <P class="fs_14 white_normal">Parametry Główne</P>
-    </TD>
-    <TD COLSPAN=3 WIDTH=20% class="black alantar_td">
-      <P class="fs_14 white_normal">Wartość Cechy</P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=12% class="black alantar_td">
-      <P class="fs_14 white_normal">Premia/Kara</P>
-    </TD>
-  </TR>
-  <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
-      <P class="fs_14 normal">SIŁA</P>
-    </TD>
-    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_strength">
-      <P class="fs_14 normal"><%= @wizard.instance_variable_get("@strength") %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_strength">
-      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@strength")]}" %><BR>
-      </P>
-    </TD>
-  </TR>
-  <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
-      <P class="fs_14 normal">ZRĘCZNOŚĆ</P>
-    </TD>
-    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_dexterity">
-      <P class="fs_14 normal"><%= @wizard.instance_variable_get("@dexterity") %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_dexterity">
-      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@dexterity")]}" %><BR>
-      </P>
-    </TD>
-  </TR>
-  <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
-      <P class="fs_14 normal">WYTRZYMAŁOŚĆ</P>
-    </TD>
-    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_endurance">
-      <P class="fs_14 normal"><%= @wizard.instance_variable_get("@endurance") %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_endurance">
-      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@endurance")]}" %><BR>
-      </P>
-
-  </TR>
-  <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
-      <P class="fs_14 normal">INTELIGENCJA</P>
-    </TD>
-    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_intelligence">
-      <P class="fs_14 normal"><%= @wizard.instance_variable_get("@intelligence")  %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_intelligence">
-      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@intelligence")]}" %><BR>
-      </P>
-    </TD>
-  </TR>
-  <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
-      <P class="fs_14 normal">WIARA</P>
-    </TD>
-    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_faith">
-      <P class="fs_14 normal"><%= @wizard.instance_variable_get("@faith") %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_faith">
-      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@faith")]}" %><BR>
-      </P>
-    </TD>
-  </TR>
-  <TR VALIGN=TOP>
-    <TD COLSPAN=2 WIDTH=18% class="grey alantar_td">
-      <P class="fs_14 normal">OGŁADA</P>
-    </TD>
-    <TD COLSPAN=3 WIDTH=20% class="alantar_td" id="main_table_value_polish">
-      <P class="fs_14 normal"><%= @wizard.instance_variable_get("@polish") %><BR>
-      </P>
-    </TD>
-    <TD COLSPAN=2 WIDTH=12% class="alantar_td" id="main_table_bonus_polish">
-      <P class="fs_14 normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@polish")]}" %><BR>
-      </P>
-    </TD>
-  </TR>
-  <TR VALIGN=TOP>
-  </TR>
-    <TR VALIGN=TOP>
-  <%= link_to "Pokaż tabelę progów", "javascript:void(0)", :class => "show_bonus_ranges" %>
-    </TR>
-</TABLE>
+<table class="table table-bordered">
+  <caption>...</caption>
+  <thead>
+  <tr>
+    <th>Parametry Główne</th>
+    <th>Wartość Cechy</th>
+    <th>Premia/Kara</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% ["S", "ZR", "WT", "INT", "WI", "O"].each do |stat| %>
+      <tr>
+        <td><%= Statistics::POLISH_NAMES[stat] %></td>
+        <td id="main_table_value_<%= Statistics::ENGLISH_NAMES[stat]-%>"><%=  @wizard.instance_variable_get("@#{Statistics::ENGLISH_NAMES[stat]}") %></td>
+        <td id="main_table_bonus_<%= Statistics::ENGLISH_NAMES[stat]-%>"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@#{Statistics::ENGLISH_NAMES[stat]}")]}" %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 

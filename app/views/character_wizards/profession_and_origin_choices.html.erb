@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span8">
@@ -17,9 +16,10 @@
           <label><strong>Domyślne:</strong></label>
 
           <% default = @wizard.character.default_origin_modifiers_set %>
-          <%= radio_button_tag "origin_stat_choices[#{default.id}]", "checked", true, :disabled => false %>
-          <ul>
-            <%= display_default_for_profession_and_origin(default).html_safe %> </ul>
+          <label class="radio">
+            <%= radio_button_tag "origin_stat_choices[#{default.id}]", "checked", true, :disabled => false %>
+            <%= display_default_for_profession_and_origin(default).html_safe %>
+          </label>
           <br/>
 
           <%= profession_and_origin_perks(@wizard) %>
@@ -29,14 +29,20 @@
     </div>
     <div class="span4">
       <legend>Podstawowe informacje:</legend>
-      <strong>Imię: </strong><%= @wizard.character.name %><br/>
-      <strong>Płeć: </strong><%= translate_gender(@wizard.character.gender) %><br/>
+      <strong>Imię: </strong><%= @wizard.character.name %>
+      <br/>
+      <strong>Płeć: </strong><%= translate_gender(@wizard.character.gender) %>
+      <br/>
       <%= raw display_curse_or_blessing(@wizard.character) %>
       <br/>
-      <strong>Profesja:</strong> <%= @wizard.character.character_profession %><br/>
-      <strong>Pochodzenie:</strong> <%= @wizard.character.character_background.origin %><br/>
-      <strong>Klasa Społeczna:</strong> <%= @wizard.character.character_background.social_classes.first.name %><br/>
-      <strong>Sakiewka:</strong> <%= humanize_purse_content(@wizard.character.purse.starting) %><br/>
+      <strong>Profesja:</strong> <%= @wizard.character.character_profession %>
+      <br/>
+      <strong>Pochodzenie:</strong> <%= @wizard.character.character_background.origin %>
+      <br/>
+      <strong>Klasa Społeczna:</strong> <%= @wizard.character.character_background.social_classes.first.name %>
+      <br/>
+      <strong>Sakiewka:</strong> <%= humanize_purse_content(@wizard.character.purse.starting) %>
+      <br/>
       <br/>
     </div>
   </div>

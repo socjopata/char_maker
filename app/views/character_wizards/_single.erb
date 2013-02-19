@@ -1,5 +1,5 @@
 <label><strong><%= stats_modifier.group_name.humanize %></strong></label>
-<%= radio_button_tag radio_group, stats_modifier.group_name, true, :disabled => false %><br/>
-<ul>
-  <li><%= display_choice_part(stats_modifier) %></li>
-</ul>
+<label class="radio">
+  <%= radio_button_tag radio_group, stats_modifier.group_name, true, :disabled => false %>
+  <%= display_choice_part(stats_modifier) %><
+</label>
