@@ -2,116 +2,116 @@
   <caption>...</caption>
 
   <tr>
-    <td>Inicjatywa</td>
-    <td COLSPAN=2>Podstawa</td>
+    <td colspan=2>Inicjatywa</td>
+    <td>Podstawa</td>
     <td>Premia ze ZR</td>
-    <td COLSPAN=2>Umiejętności</td>
+    <td>Umiejętności</td>
     <td>Specjalne</td>
   </tr>
 
   <tr>
-    <td id="auxiliary_table_total_initiative"><%= @wizard.character.statistics.calculate_initiative %></td>
-    <td COLSPAN=2><%= AuxiliaryParameterSet::INITIATIVE[@wizard.character.profession.general_type] %></td>
+    <td colspan=2 id="auxiliary_table_total_initiative"><%= @wizard.character.statistics.calculate_initiative %></td>
+    <td><%= AuxiliaryParameterSet::INITIATIVE[@wizard.character.profession.general_type] %></td>
     <td id="auxiliary_table_main_p_bonus_for_initiative"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@dexterity")]}" %></td>
-    <td COLSPAN=2 id="auxiliary_table_skill_bonus_for_initiative">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_from_skills") %></td>
+    <td id="auxiliary_table_skill_bonus_for_initiative">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_from_skills") %></td>
     <td><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_special")) %></td>
   </tr>
 
   <tr>
-    <td>Spostrzegawczość</td>
-    <td COLSPAN=2>Podstawa</td>
+    <td colspan=2>Spostrzegawczość</td>
+    <td>Podstawa</td>
     <td>+1pkt/poziom</td>
-    <td COLSPAN=2>Umiejętności</td>
+    <td>Umiejętności</td>
     <td>Specjalne</td>
   </tr>
 
   <tr>
-    <td id="auxiliary_table_total_perception"><%= @wizard.character.statistics.calculate_perception %></td>
-    <td COLSPAN=2><%= AuxiliaryParameterSet::PERCEPTION[@wizard.character.profession.general_type] %></td>
+    <td colspan=2 id="auxiliary_table_total_perception"><%= @wizard.character.statistics.calculate_perception %></td>
+    <td><%= AuxiliaryParameterSet::PERCEPTION[@wizard.character.profession.general_type] %></td>
     <td>+<%= @wizard.character.current_level %></td>
-    <td COLSPAN=2 id="auxiliary_table_skill_bonus_for_perception">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_from_skills") %></td>
+    <td id="auxiliary_table_skill_bonus_for_perception">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_from_skills") %></td>
     <td><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_special")) %></td>
   </tr>
 
   <tr>
-    <td>Odp. na Ból</td>
-    <td COLSPAN=2>Podstawa</td>
+    <td colspan=2>Odp. na Ból</td>
+    <td>Podstawa</td>
     <td>Premia ze WT</td>
-    <td COLSPAN=2>Umiejętności</td>
+    <td>Umiejętności</td>
     <td>Specjalne</td>
   </tr>
 
   <tr>
-    <td id="auxiliary_table_total_pain_resistance"><%= @wizard.character.statistics.calculate_pain_resistance %></td>
-    <td COLSPAN=2><%= AuxiliaryParameterSet::PAIN_RESISTANCE[@wizard.character.profession.general_type] %></td>
+    <td colspan=2 id="auxiliary_table_total_pain_resistance"><%= @wizard.character.statistics.calculate_pain_resistance %></td>
+    <td><%= AuxiliaryParameterSet::PAIN_RESISTANCE[@wizard.character.profession.general_type] %></td>
     <td id="auxiliary_table_main_p_bonus_for_pain_resistance"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@endurance")]}" %></td>
-    <td COLSPAN=2 id="auxiliary_table_skill_bonus_for_pain_resistance">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_from_skills") %></td>
+    <td id="auxiliary_table_skill_bonus_for_pain_resistance">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_from_skills") %></td>
     <td><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_special")) %></td>
   </tr>
 
   <tr>
-    <td>Odp. na Strach</td>
-    <td COLSPAN=2>Podstawa</td>
+    <td colspan=2>Odp. na Strach</td>
+    <td>Podstawa</td>
     <td>Premia ze WI</td>
-    <td COLSPAN=2>Umiejętności</td>
+    <td>Umiejętności</td>
     <td>Specjalne</td>
   </tr>
 
   <tr>
-    <td id="auxiliary_table_total_fear_resistance"><%= @wizard.character.statistics.calculate_fear_resistance %></td>
-    <td COLSPAN=2><%= AuxiliaryParameterSet::FEAR_RESISTANCE[@wizard.character.profession.general_type] %></td>
-    <td id="auxiliary_table_main_p_bonus_for_fear_resistance"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[(@wizard.instance_variable_get"@faith")]}" %></td>
-    <td COLSPAN=2 id="auxiliary_table_skill_bonus_for_fear_resistance">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_from_skills") %></td>
+    <td colspan=2 id="auxiliary_table_total_fear_resistance"><%= @wizard.character.statistics.calculate_fear_resistance %></td>
+    <td><%= AuxiliaryParameterSet::FEAR_RESISTANCE[@wizard.character.profession.general_type] %></td>
+    <td id="auxiliary_table_main_p_bonus_for_fear_resistance"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[(@wizard.instance_variable_get "@faith")]}" %></td>
+    <td id="auxiliary_table_skill_bonus_for_fear_resistance">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_from_skills") %></td>
     <td><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_special")) %></td>
   </tr>
 
   <tr>
-    <td>Odp. na Magię</td>
-    <td COLSPAN=2>Podstawa</td>
+    <td colspan=2>Odp. na Magię</td>
+    <td>Podstawa</td>
     <td>Tymczasowe</td>
-    <td COLSPAN=2>Umiejętności</td>
+    <td>Umiejętności</td>
     <td>Specjalne</td>
   </tr>
 
   <tr>
-    <td id="auxiliary_table_total_magic_resistance"><%= @wizard.character.statistics.calculate_magic_resistance %></td>
-    <td COLSPAN=2><%= AuxiliaryParameterSet::MAGIC_RESISTANCE[@wizard.character.profession.general_type] %></td>
+    <td colspan=2 id="auxiliary_table_total_magic_resistance"><%= @wizard.character.statistics.calculate_magic_resistance %></td>
+    <td><%= AuxiliaryParameterSet::MAGIC_RESISTANCE[@wizard.character.profession.general_type] %></td>
     <td>---</td>
-    <td COLSPAN=2 id="auxiliary_table_skill_bonus_for_magic_resistance">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_from_skills") %></td>
+    <td id="auxiliary_table_skill_bonus_for_magic_resistance">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_from_skills") %></td>
     <td><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_special")) %></td>
   </tr>
 
   <tr>
     <td>Sprint</td>
     <td>Bieg</td>
-    <td COLSPAN=2>Podstawa</td>
+    <td>Podstawa</td>
     <td>Premia ze ZR akt</td>
-    <td COLSPAN=2>Umiejętności</td>
+    <td>Umiejętności</td>
     <td>Specjalne</td>
   </tr>
 
   <tr>
     <td id="auxiliary_table_total_sprinting"><%= @wizard.character.statistics.calculate_sprinting %></td>
     <td id="auxiliary_table_total_running"><%= @wizard.character.statistics.calculate_running %></td>
-    <td COLSPAN=2><%= AuxiliaryParameterSet::RUNNING[@wizard.character.profession.general_type] %></td>
+    <td><%= AuxiliaryParameterSet::RUNNING[@wizard.character.profession.general_type] %></td>
     <td id="auxiliary_table_main_p_bonus_for_running"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.character.statistics.calculate_current_zr]}" %></td>
-    <td COLSPAN=2 id="auxiliary_table_skill_bonus_for_running">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Bieg", "only_from_skills") %></td>
+    <td id="auxiliary_table_skill_bonus_for_running">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Bieg", "only_from_skills") %></td>
     <td><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Bieg", "only_special")) %></td>
   </tr>
 
   <tr>
-    <td>Punkty Życia</td>
-    <td COLSPAN=2>Podstawa</td>
+    <td colspan=2>Punkty Życia</td>
+    <td>Podstawa</td>
     <td>Wytrzymałość</td>
-    <td COLSPAN=2>Umiejętności</td>
+    <td>Umiejętności</td>
     <td>Aktualne PŻ</td>
   </tr>
 
   <tr>
-    <td id="auxiliary_table_total_life_points"><%= @character.statistics.calculate_life_points %></td>
-    <td COLSPAN=2 id="auxiliary_table_main_p_bonus_for_life_points"><%= AuxiliaryParameterSet::HIT_POINTS[@wizard.character.profession.general_type] %></td>
+    <td colspan=2 id="auxiliary_table_total_life_points"><%= @character.statistics.calculate_life_points %></td>
+    <td id="auxiliary_table_main_p_bonus_for_life_points"><%= AuxiliaryParameterSet::HIT_POINTS[@wizard.character.profession.general_type] %></td>
     <td>+<%= @wizard.character.statistics.calculate_wt %></td>
-    <td COLSPAN=2 id="auxiliary_table_skill_bonus_for_life_points">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_from_skills") %></td>
+    <td id="auxiliary_table_skill_bonus_for_life_points">+<%= @wizard.character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_from_skills") %></td>
     <td><%= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_special")) %></td>
   </tr>
 </table>
