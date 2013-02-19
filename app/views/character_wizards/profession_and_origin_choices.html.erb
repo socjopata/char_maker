@@ -1,42 +1,54 @@
-<strong>Imię: </strong><%= @wizard.character.name %><br/>
-<strong>Płeć: </strong><%= translate_gender(@wizard.character.gender) %><br/>
-<%= raw display_curse_or_blessing(@wizard.character) %>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span8">
+      <%= form_tag :url => character_wizard_path, :method => :post do %>
+          <%= hidden_field_tag :char_id, @wizard.character.id %>
+          <%= hidden_field_tag :step, "profession_and_origin_choices" %>
+
+          <legend>Wybierz parametr wiodący dla swojej postaci:</legend>
+
+          <%= select_tag "main_skill", options_from_collection_for_select(fetch_possible_lead_parameters_choices(@wizard.character.character_profession), :name, :display_name) %>
+          <legend>Wybierz profity wynikające z klasy społecznej Twojej postaci:</legend>
+
+          <%= social_class_perks(@wizard) %>
+
+          <legend>Wybierz profity wynikające z kraju pochodzenia i profesji Twojej postaci:</legend>
+          <label><strong>Domyślne:</strong></label>
+
+          <% default = @wizard.character.default_origin_modifiers_set %>
+          <%= radio_button_tag "origin_stat_choices[#{default.id}]", "checked", true, :disabled => false %>
+          <ul>
+            <%= display_default_for_profession_and_origin(default).html_safe %> </ul>
+          <br/>
+
+          <%= profession_and_origin_perks(@wizard) %>
+
+      <% end %>
+
+    </div>
+    <div class="span4">
+      <legend>Podstawowe informacje:</legend>
+      <strong>Imię: </strong><%= @wizard.character.name %><br/>
+      <strong>Płeć: </strong><%= translate_gender(@wizard.character.gender) %><br/>
+      <%= raw display_curse_or_blessing(@wizard.character) %>
+      <br/>
+      <strong>Profesja:</strong> <%= @wizard.character.character_profession %><br/>
+      <strong>Pochodzenie:</strong> <%= @wizard.character.character_background.origin %><br/>
+      <strong>Klasa Społeczna:</strong> <%= @wizard.character.character_background.social_classes.first.name %><br/>
+      <strong>Sakiewka:</strong> <%= humanize_purse_content(@wizard.character.purse.starting) %><br/>
+      <br/>
+    </div>
+  </div>
+</div>
+
 <br/>
-<strong>Profesja:</strong> <%= @wizard.character.character_profession %><br/>
-<strong>Pochodzenie:</strong> <%= @wizard.character.character_background.origin %><br/>
-<strong>Klasa Społeczna:</strong> <%= @wizard.character.character_background.social_classes.first.name %><br/>
-<strong>Sakiewka:</strong> <%= humanize_purse_content(@wizard.character.purse.starting) %><br/>
-<br/><br/>
 
-<%= form_tag :url => character_wizard_path, :method => :post do %>
-    <%= hidden_field_tag :char_id, @wizard.character.id %>
-    <%= hidden_field_tag :step, "profession_and_origin_choices" %>
-
-    <h3>Wybierz parametr wiodący dla swojej postaci:</h3>
-    <br/>
-    <%= select_tag "main_skill", options_from_collection_for_select(fetch_possible_lead_parameters_choices(@wizard.character.character_profession), :name, :display_name) %>
-    <h3>Wybierz profity wynikające z klasy społecznej Twojej postaci:</h3>   <br/>
-
-    <%= social_class_perks(@wizard) %>
-
-    <h3>Wybierz profity wynikające z kraju pochodzenia i profesji Twojej postaci:</h3>   <br/>
-    <label><strong>Domyślne:</strong></label>
-
-    <% default = @wizard.character.default_origin_modifiers_set %>
-    <%= radio_button_tag "origin_stat_choices[#{default.id}]", "checked", true, :disabled => false %>
-    <ul>
-      <%= display_default_for_profession_and_origin(default).html_safe %> </ul>
-    <br/>
-
-    <%= profession_and_origin_perks(@wizard) %>
-
-<% end %>
-
-
-<br/><br/>
-<!--for various reasons there is no back button-->
-<%= button_link_to "Utwórz nową postać", character_path(@wizard.character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
-<%= button_link_to "Dalej", "javascript:void(0)", :class => "fltr", :onclick => "submit_form_and_proceed()" %>
+<div class="row">
+  <!--for various reasons there is no back button-->
+  <div class="span2 offset4"><%= link_to "Utwórz nową postać", character_path(@wizard.character), :class => "btn", :confirm => 'Napewno?', :method => :delete %></div>
+  <div class="span1 offset4"><%= link_to "Dalej", "javascript:void(0)", :class => "btn", :onclick => "submit_form_and_proceed()" %></div>
+</div>
 
 
 <script type="text/javascript">

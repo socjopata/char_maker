@@ -1,0 +1,16 @@
+<table id="stats_qtip_table" class="table table-bordered" style="visibility: hidden;">
+  <thead>
+  <tr>
+    <th>Parametr</th>
+    <th>Premia/Kara</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% Statistics::BONUS_OR_PENALTY_RANGES.to_hash.each_pair do |key, value| %>
+      <tr>
+        <td><%= key %></td>
+        <td>  <%= value %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
