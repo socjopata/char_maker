@@ -1,21 +1,31 @@
-<h1>Lista postaci</h1>
+<legend>Lista postaci</legend>
 
-<table>
+<table class="table-striped table-bordered">
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Imię postaci</th>
+    <th>Wyświetl kartę postaci</th>
+    <th>Usuń postać</th>
   </tr>
 
-<% @characters.each do |character| %>
-  <tr>
-    <td><%= image_tag(character.avatar_url(:thumb)) if character.avatar? %> <%= character.name %></td>
-    <td><%= link_to 'Pokaż', character %></td>
-    <td><%= link_to 'Usuń', character_path(character), :confirm => 'Napewno?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <% @characters.each do |character| %>
+      <tr>
+        <td><%= image_tag(character.avatar_url(:thumb)) if character.avatar? %> <%= character.name %></td>
+        <td><%= link_to 'Pokaż', character, :class => "btn btn-small btn-primary" %></td>
+        <td><%= link_to 'Usuń', character_path(character), :confirm => 'Napewno?', :method => :delete, :class => "btn btn-small btn-danger" %></td>
+      </tr>
+  <% end %>
 </table>
 
-<br />
+<br/>
 
-<%= link_to 'Nowa Postać', new_character_path %> <%= link_to 'Wróć do indeksu', root_path %>
+<div class="row">
+
+  <div class="span2 ">
+    <%= link_to 'Wróć do indeksu', root_path, :class => "btn" %>
+  </div>
+
+  <div class="span2 offset4">
+    <%= link_to 'Nowa Postać', new_character_path, :class => "btn" %>
+  </div>
+
+</div>
