@@ -68,7 +68,7 @@ CharMaker::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.after_initialize do
-    LoggedExceptionsController.class_eval do
+    ExceptionLogger::LoggedExceptionsController.class_eval do
       before_filter :authorized?
       protected
       def authorized?
