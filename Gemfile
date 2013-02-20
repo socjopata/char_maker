@@ -10,12 +10,13 @@ gem 'rmagick'
 
 gem 'jquery-rails'
 gem 'magic_encoding' ## coding: utf-8  type magic_encoding in the console
-#gem 'exception_logger', :require => 'exception_logger', :git =>  'git://github.com/ryancheung/exception_logger.git'
+gem 'exception_logger', :require => 'exception_logger', :git =>  'git://github.com/ryancheung/exception_logger.git'
 gem 'galetahub-simple_captcha', :require => 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 gem 'pdfkit'
 gem 'thin'
 gem 'pry'
 gem 'simple_form'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'rspec-rails'

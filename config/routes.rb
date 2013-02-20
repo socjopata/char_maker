@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 CharMaker::Application.routes.draw do
+  mount ExceptionLogger::Engine => "/exception_logger"
+
   resources :characters
 
   resource 'character_wizard', :only => [:show, :create] do
@@ -26,6 +28,7 @@ CharMaker::Application.routes.draw do
   resources :messages, :only => [:new, :create]
 
   get "home/index"
+  get "home/show"
   root :to => "home#index"
   devise_for :users
 
