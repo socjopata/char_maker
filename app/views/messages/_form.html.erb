@@ -1,25 +1,19 @@
-<% form_for @message do |f| %>
-    <% if @message.errors.any? %>
-        <ul>
-          <% @message.errors.values.flatten.each do |msg| %>
-              <li><%= msg %></li>
-          <% end %>
-        </ul>
-    <% end %>
-    <p>
-      <%= f.label "Twój email" %><br/>
-      <%= f.text_field :email, :value => current_user.try(:email) %>
-    </p>
-    <p>
-      <%= f.label "Twoje imię" %><br/>
-      <%= f.text_field :name %>
-    </p>
-    <p>
-      <%= f.label "Twoja wiadomość" %><br/>
-      <%= f.text_area :content %>
-    </p>
-    <%= show_simple_captcha(:label => "") unless current_user %>
-    <p><%= f.submit "Wyślij" %></p>
+<legend>Wypełnij poniższy formularz:</legend>
+
+<%= simple_form_for @message, :html => {:class => 'form-horizontal'} do |f| %>
+    <%= f.error_notification %>
+    <%= display_base_errors @message %>
+
+    <%= f.input :email, :label => "Twój email", :value => current_user.try(:email) %>
+    <%= f.input :name, :label => "Twoje imię" %>
+    <%= f.input :content, :label => "Twoja wiadomość", :as => :text %>
+
+    <span class="help-block offset2"><%= show_simple_captcha(:label => "") unless current_user %></span>
+
 <% end %>
-<p><%= link_to "Wróć na stronę główną", root_path %></p>
+
+<div class="row">
+  <span class="offset1"><%= link_to "Wyślij", "#", :class => "btn btn-primary", :onclick => "$('form').submit()" %></span>
+  <span class="offset2"><%= link_to "Wróć na stronę główną", root_path, :class => "btn" %></span>
+</div>
 
