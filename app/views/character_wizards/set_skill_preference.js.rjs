@@ -1,5 +1,0 @@
-page << "jQuery('.choice_notice').remove();"
-page << "jQuery('#choice_no_#{@stats_modifier.id}').prepend('<p class=\"choice_notice\">Wybrano: #{@stats_modifier.as_character_skill(@character).skill_bonus_preference.choice}</p>');"
-page << "jQuery('.choice_notice').effect('highlight', {color: 'green'}, 1500);"
-
-
