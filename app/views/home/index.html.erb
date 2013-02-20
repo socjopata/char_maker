@@ -27,7 +27,7 @@
         condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec
         sed odio dui. </p>
 
-      <p><%= link_to "Stwórz nową postać &raquo;".html_safe, new_character_path, :class => "btn" %></p>
+      <p><%= link_to "Stwórz nową postać &raquo;".html_safe, (current_user ? new_character_path : new_user_session_path), :class => "btn"  %></p>
     </div>
     <div class="span4">
       <h2>Przeglądaj utworzone postacie</h2>
@@ -36,7 +36,7 @@
         condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec
         sed odio dui. </p>
 
-      <p><%= link_to "Przeglądaj postacie &raquo;".html_safe, characters_path, :class => "btn" %></p>
+      <p><%= link_to "Przeglądaj postacie &raquo;".html_safe, (current_user ? characters_path : new_user_session_path), :class => "btn" %></p>
     </div>
     <div class="span4">
       <h2>Masz pytania? sugestie?</h2>
