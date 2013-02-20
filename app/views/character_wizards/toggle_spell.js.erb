@@ -1,0 +1,14 @@
+<% if @scribe.not_enough_free_spell_points %>
+    jQuery('input#<%= params[:spell_id] -%>').removeAttr('checked');
+    $.colorbox({html:'<%= escape_javascript(render(:partial => 'not_enough_points')) %>'});
+<% else %>
+    jQuery('#spell_counter').text('Do wybrania pozostało: <%= @scribe.spells_left -%> zaklęć');
+    <% if params[:value]=="true" %>
+        jQuery('#spell_counter').effect('highlight', {color:'red'}, 1500);
+    <% else %>
+        jQuery('#spell_counter').effect('highlight', {color:'green'}, 1500);
+    <% end %>
+<% end  %>
+
+
+

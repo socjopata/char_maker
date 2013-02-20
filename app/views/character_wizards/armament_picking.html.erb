@@ -1,28 +1,49 @@
-<p>Tworząc postać, otrzymujesz swoisty
-  rabat na zakup wyposażenia.
-  Kwota zakupów nie może przekroczyć zawartości Twojej sakiewki(<%= humanize_purse_content(@wizard.character.purse.current) %>)
-  powiększonej o bonus <strong>50g</strong> na Twoje
-  wyposażenie.</p>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span8">
+      <legend>Tworząc postać, otrzymujesz swoisty rabat na zakup wyposażenia, w wysokości <strong>50g</strong>. Sama
+        kwota zakupów nie może przekroczyć zawartości Twojej sakiewki
+        (<%= humanize_purse_content(@wizard.character.purse.current) %>) powiększonej o wspomniany bonus.
+      </legend>
+      <p>Posiadasz biegłości w następujacych grupach broni:</p>
+      <ul>
+        <% @wizard.character.character_weapon_proficiencies.each do |c_w_p| %>
+            <li><%= c_w_p.name %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="span4">
+      <div><%= image_tag "sakiewka.gif", :width => "130" %>
+        <p class="fs_16" id="purse"><%= humanize_purse_content(@wizard.character.session[:coins_left]) %></p>Tyle możesz
+        maksymalnie wydać ;)
+      </div>
+    </div>
 
-<div><%= image_tag "sakiewka.gif", :width => "130" %>
-  <p class="fs_16" id="purse"><%= humanize_purse_content(@wizard.character.session[:coins_left]) %></p></div>
-<br/>
-<p>Posiadasz biegłości w:</p>
-<ul>
-  <% @wizard.character.character_weapon_proficiencies.each do |c_w_p| %>
-      <li><%= c_w_p.name %></li>
-  <% end %>
-</ul>
+    <div class="row-fluid">
+      <%= render :partial => "character_wizards/armament_stuff/picking_weapons_stuff" %>
+    </div>
 
-<%= render :partial => "character_wizards/armament_stuff/picking_weapons_stuff" %>
-<%= render :partial => "character_wizards/armament_stuff/picking_armors_stuff" %>
-<%= render :partial => "character_wizards/armament_stuff/picking_shields_stuff" %>
-<%= render :partial => "character_wizards/armament_stuff/picking_ranged_weapons_stuff" %>
+    <div class="row-fluid">
+      <%= render :partial => "character_wizards/armament_stuff/picking_armors_stuff" %>
+    </div>
 
-<%= button_link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "clarify_skill_choices") %>
-<%= button_link_to "Utwórz nową postać", character_path(@wizard.character), :confirm => 'Napewno?', :method => :delete, :class => "fltl position_left_60" %>
-<%= button_link_to "Dalej", character_wizard_path(:char_id => @wizard.character.id, :step => "armament_picking"), :method => :post %>
+    <div class="row-fluid">
+      <%= render :partial => "character_wizards/armament_stuff/picking_shields_stuff" %>
+    </div>
 
+    <div class="row-fluid">
+      <%= render :partial => "character_wizards/armament_stuff/picking_ranged_weapons_stuff" %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span1"><%= link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "clarify_skill_choices"), :class => "btn" %></div>
+  <div class="span4 offset4"><%= link_to "Utwórz nową postać", character_path(@wizard.character), :class => "btn", :confirm => 'Napewno?', :method => :delete %></div>
+  <div class="span1 offset2"><%= link_to "Dalej", character_wizard_path(:char_id => @wizard.character.id, :step => "armament_picking"), :method => :post, :class => "btn" %></div>
+</div>
+
+<br /><br />
 
 <script type="text/javascript">
 

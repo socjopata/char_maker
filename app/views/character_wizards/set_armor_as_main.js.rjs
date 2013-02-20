@@ -1,7 +1,0 @@
-
-@character.character_armors.all.each do |armor|
-  page <<  "$(\"#set_armor_#{armor.id}\").replaceWith('<p class=\"normal set_armor\" id=\"set_armor_#{armor.id}\">#{set_armor_as_main(@character, armor)}</p>')"
-end
-
-
-

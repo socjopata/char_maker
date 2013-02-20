@@ -1,3 +1,4 @@
+<div class="span5">
 <h2>Wybierz broń:</h2>
 
 <%= form_tag(add_item_to_inventory_character_wizard_path, :remote => true) do %>
@@ -8,12 +9,14 @@
     </div>
     <%= hidden_field_tag :char_id, @wizard.character.id %>
     <%= hidden_field_tag :item_type, "Weapon" %>
-    <%= submit_tag "Kup!" %>
-<% end %>
+    <%= submit_tag "Kup!", :class => "btn btn-small btn-primary" %>
 
+<% end %>
+</div>
+<div class="span7">
 <div id="weapons_owned">
   <p>Posiadane bronie:</p>
-  <table id="character_weapons" WIDTH=60%>
+  <table id="character_weapons" class="table table-bordered">
     <thead>
     <th>Nazwa</th>
     <th>Ulepszenie tempa</th>
@@ -35,4 +38,5 @@
     <% end %>
     </tbody>
   </table>
+</div>
 </div>
