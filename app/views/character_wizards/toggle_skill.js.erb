@@ -1,9 +1,8 @@
 /*Rubymine can't format this crap :(*/
-
 <% if @skill_toggler.not_enough_free_skill_points.present? %>
 <% else %>
     <% @skill_toggler.commands.each do |command| %>
-         jQuery('#<%= command.keys.first %> p').text('<%= command.values.first %>');
+         jQuery('#<%= command.keys.first %>').text('<%= command.values.first %>');
         <% if params[:value]=="true"  %>
              jQuery('#<%= command.keys.first %>').effect('highlight', {color:'green'}, 1500);
         <% else %>
@@ -22,10 +21,10 @@
     jQuery('input#<%= _command.keys.first %>').parent().effect('highlight', {color:'green'}, 1500);
     <% end %>
     <% end %>
-            jQuery('#skill_counter').text('Pozostało wolnych umiejętności: <%= @skill_toggler.free_skill_amount %>');
+            jQuery('#free_skill_amount').text('Pozostało wolnych umiejętności: <%= @skill_toggler.free_skill_amount %>');
         <% if params[:value]=="true"  %>
-                jQuery('#skill_counter').effect('highlight', {color:'red'}, 1500);
+                jQuery('#free_skill_amount').effect('highlight', {color:'red'}, 1500);
         <% else %>
-             jQuery('#skill_counter').effect('highlight', {color:'green'}, 1500);
+             jQuery('#free_skill_amount').effect('highlight', {color:'green'}, 1500);
         <% end %>
 <% end %>

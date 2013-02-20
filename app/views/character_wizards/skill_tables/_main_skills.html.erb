@@ -1,36 +1,13 @@
-<TABLE WIDTH=30% CELLPADDING=4 CELLSPACING=0>
-  <COL WIDTH=100*>
-  <COL WIDTH=18*>
-  <COL WIDTH=121*>
-  <COL WIDTH=17*>
-  <TR>
-    <TD COLSPAN=8 WIDTH=100% VALIGN=TOP class="black alantar_td">
-      <P class="white_normal">Umiejętności
-        Ogólne</P>
-    </TD>
-  </TR>
-  <TR>
-    <TD COLSPAN=8 WIDTH=100% VALIGN=TOP class="grey alantar_td" id="free_skill_amount">
-      <P class="fs_14 white_normal" id="skill_counter">Pozostało wolnych umiejętności: <%= @wizard.instance_variable_get("@free_skill_amount") %></P>
-    </TD>
-  </TR>
+<table class="table table-bordered table-condensed">
+  <caption>Umiejętności Ogólne</caption>
+  <tbody>
   <% @wizard.instance_variable_get("@basic_skills").in_groups_of(4, false).each do |skills| %>
-      <TR VALIGN=TOP>
+      <tr>
         <% skills.each do |skill| %>
-            <TD WIDTH=7% class="alantar_td">
-              <P ALIGN=CENTER><%= check_box_tag skill.id, 1, @wizard.character.skills.include?(skill), :disabled => (@wizard.character.session[:default_skills_ids].include?(skill.id) || @wizard.instance_variable_get("@cannot_select_skills").include?(skill)), :onchange => "toggle_this_skill(this);" %>
-                <BR>
-              </P>
-            </TD>
-            <TD WIDTH=39% class="alantar_td">
-              <P ALIGN=CENTER class="fs_12 italic normal skill_qtip"><%= skill.name %></P>
-
-              <p class="skill_explanation_qtip" style="display:none;">
-                <%= nice_and_shiny_description(skill) %>
-              </p>
-            </TD>
-
+            <td><%= check_box_tag skill.id, 1, @wizard.character.skills.include?(skill), :disabled => (@wizard.character.session[:default_skills_ids].include?(skill.id) || @wizard.instance_variable_get("@cannot_select_skills").include?(skill)), :onchange => "toggle_this_skill(this);" %></td>
+            <td><%= skill.name %></td>
         <% end %>
-      </TR>
+      </tr>
   <% end %>
-</TABLE>
+  </tbody>
+</table>
