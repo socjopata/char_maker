@@ -18,7 +18,7 @@
     Change the following styles to modify the appearance of ColorBox.  They are
     ordered & tabbed in a way that represents the nesting of the generated HTML.
 */
-#cboxOverlay{background:asset_url('app/assets/images/overlay.png', image) repeat 0 0;}
+#cboxOverlay{background:asset_url('overlay.png', image) repeat 0 0;}
 #colorbox{}
     #cboxTopLeft{width:21px; height:21px; background:asset_url('controls.png', image) no-repeat -101px 0;}
     #cboxTopRight{width:21px; height:21px; background:asset_url('controls.png', image) no-repeat -130px 0;}
