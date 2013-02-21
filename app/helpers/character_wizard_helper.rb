@@ -87,7 +87,7 @@ module CharacterWizardHelper
   def nice_and_shiny_description(skill)
     description_base = [skill.description && skill.description.humanize, skill.way_it_works && skill.way_it_works.humanize, skill.limitations && skill.limitations.humanize].join("<br /> <br />")
     requirements = skill.skill_requirements.map(&:make_human_readable).join("<br />")
-    (description_base + "<br /> <br /><strong>Wymagania: </strong><br /> <br />" + requirements).html_safe
+    (description_base + (requirements.present? ? ("<br /> <br /><strong>Wymagania: </strong><br /> <br />" + requirements) : "" )).html_safe
   end
 
   def present_choice_subject(sm)
