@@ -6,3 +6,4 @@
 //= require jquery_ujs
 //= require jquery-ui-1.10.1.custom.min
 //= require bootstrap
+//= require jquery.colorbox-min
