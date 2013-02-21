@@ -1,52 +1,37 @@
-<strong>Parametry: </strong>
-<br/><br/>
+<legend>Parametry:</legend>
+
 <p style="font-size: 16px">Twój najwyższy rzut został przyporządkowany do parametru wiodącego.</p>
 <%= display_trait_warning_if_applicable(@wizard.character) %>
 <p style="font-size: 16px">Ponadto rzut, który przyporządkowujesz Ogładzie <strong>nie może być nizszy</strong> niż
   nominalny, czyli: <%= @wizard.instance_variable_get("@stats").last %></p>
 <div id="display_container" class="stats_area">
   <div class="dragArea">
-    <br/>
-    <table>
-      <thead>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      </thead>
-      <tbody>
-      <tr>
+    <div class="container-fluid">
+      <div class="row-fluid">
         <% @wizard.instance_variable_get("@stats").each_with_index do |roll, index| %>
-            <%= content_tag(:td, roll, :id => index, :class => "drag #{'position_left_60' if index==4}") %>
+            <div class="span2 fancy_number">
+              <%= content_tag(:div, roll, :id => index, :class => "drag #{'position_left_60' if index==4}") %>
+            </div>
         <% end %>
-      </tr>
-      </tbody>
-    </table>
+      </div>
+    </div>
   </div>
+  <br/><br/><span class="help-block">Złap myszką powyższe cyfry i upuść je na wybranych współczynnikach. Jeśli chcesz zmienić swóje wybory,  <%= link_to_function "Zresetuj pola", "reset_stat_fields()", :class => "btn btn-warning btn-small" %></span><br/><br/>
 
   <div class="dropArea">
-    <table>
-      <thead>
-      <!--#IDEA: description of each skill as a qtip-->
-      <th>S</th>
-      <th>ZR</th>
-      <th>WT</th>
-      <th>INT</th>
-      <th>WI</th>
-      <th>O</th>
-      </thead>
-      <tbody>
-      <tr>
-        <%= statistics_picking_trs(@wizard) %>
-      </tr>
-      </tbody>
-    </table>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <% Statistics::ENGLISH_NAMES.map do |key, value| %>
+            <div class="span2 fancy_number">
+              <p style="font-size: 16px; text-align:left"><%= t(value) %></p>
+              <%= content_tag(:div, (@wizard.instance_variable_get("@lead_parameter") if @wizard.character.lead_parameter==key), :id => value, :class => "drop #{"lead" if @wizard.character.lead_parameter==key}") %>
+            </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <%= link_to_function "Resetuj pola", "reset_stat_fields()" %>
 </div>
-<br/>
+<br/><br/>
 
 <div id="user_stats_form">
   <%= form_for @wizard.character.statistics, :url => character_wizard_path(:char_id => @character.id, :step => "statistics"), :html => {:id => "user_stats_form", :method => :post} do |f| %>
@@ -59,7 +44,7 @@
   <% end %>
 </div>
 
-
+<br/><br/><br/><br/>
 <div class="row">
   <div class="span1"><%= link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "profession_and_origin_choices"), :class => "btn" %></div>
   <div class="span2 offset4"><%= link_to "Utwórz nową postać", character_path(@wizard.character), :class => "btn", :confirm => 'Napewno?', :method => :delete %></div>
@@ -91,7 +76,7 @@
                   :label => "Wiara" %>
       <%= f.input :polish, :input_html => {},
                   :label => "Ogłada" %>
-      <%= f.submit "Zapisz",  :class => 'btn-primary offset3'%>
+      <%= f.submit "Zapisz", :class => 'btn-primary offset3' %>
   <% end %>
 </div>
 

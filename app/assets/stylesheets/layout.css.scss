@@ -1,7 +1,5 @@
 .dragArea {
   opacity: 0.5;
-  width: 500px;
-  height: 100px;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 10px;
@@ -10,8 +8,6 @@
 
 .dropArea {
   opacity: 0.5;
-  width: 500px;
-  height: 100px;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 10px;
@@ -20,10 +16,10 @@
 
 .drag {
   background-color: white;
-  width: 30px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   border-style: solid;
-  border-color: green;
+  border-color: transparent;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 10px;
@@ -34,8 +30,8 @@
 
 .drop {
   background-color: white;
-  width: 30px;
-  height: 20px;
+  width: 40px;
+  height: 30px;
   border-style: solid;
   border-color: green;
   margin-top: 10px;
@@ -45,7 +41,7 @@
   float: left;
 }
 
-.stats_area {
-  background: asset_url('papyrus4.gif', image) no-repeat center;
-  width: 400px;
+.fancy_number {
+  font-size: 22px;
+  text-align:center;
 }

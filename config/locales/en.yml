@@ -3,3 +3,9 @@
 
 en:
   hello: "Hello world"
+  strength: Strength
+  dexterity: Dexterity
+  endurance: Endurance
+  intelligence: Intelligence
+  faith: Faith
+  polish: Polish
