@@ -226,7 +226,7 @@ skill = Skill.create(:profession_type => "Dziecię Sirtol",
                      II Stopień: moc postaci wzrasta dzięki czemu potrafi tak zbałamucić demona (oczywiście nadal na powyższych zasadach), iż ten nie zaatakuje jej ani jej towarzyszy. Dodatkowo podczas przeciwstawnego testu Inteligencji postać może dodać premię ze swej Ogłady.
                      III Stopień: umiejętność może zostać skierowana również przeciw ludziom lub raczej w trakcie rozmowy z nimi. Po wygraniu przeciwstawnego testu na Inteligencję (z wybranym rozmówcą) może zmienić jego nastawienie wobec siebie lub danej sprawy, o której rozmawiali. Sztuczka ta wpływa na nastawienie zmieniając je w dowolny sposób. Na korzystniejsze lub wręcz przeciwnie często służyć będzie aby wywołać negatywne emocji u słuchacza. Niestety efekt ten jest chwilowy i utrzymuje przez: k30minut +5minut/poziom. Warto również nadmienić o tym, że postać nie jest wstanie zmieniać nastawienia osób o bardzo silnych przekonaniach. Dotyczy to nie tylko fanatyków religijnych, oddanych służących, wiernych rycerzy ale spraw, które dla wybranej postaci mogą być wielce kontrowersyjne lub całkowicie amoralne, w takich sytuacjach i wielu innych tu nie opisanych decyzję zawsze podejmuje MG (czy można taką osobę do czegoś przekonać czy też jest to nie możliwe).")
 
-
+                   #TODO małe litery !
 
 #####DYPLOMATA
 

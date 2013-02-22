@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Blacksmith
 
-  attr_reader :character, :weapon_armor_or_shield, :improvement_subject_id, :improvement_type
+  attr_reader :character, :weapon_armor_or_shield, :improvement_subject_id, :improvement_type, :js_fuck_up
   attr_accessor :purse, :result
 
   def initialize(character, item_id, item_type, action_type, particular_id, improvement_type)
@@ -16,16 +16,24 @@ class Blacksmith
 
   def improve
     _item = find!
-    _item[improvement_type] = true
-    _item.save!
-    deduct_money(_item) and return _item
+    if _item[improvement_type] == true
+      @js_fuck_up = true
+    else
+      _item[improvement_type] = true
+      _item.save!
+      deduct_money(_item) and return _item
+    end
   end
 
   def degrade
     _item = find!
-    _item[improvement_type] = false
-    _item.save!
-    refund_money(_item) and return _item
+    if _item[improvement_type] == false
+      @js_fuck_up = true
+    else
+      _item[improvement_type] = false
+      _item.save!
+      refund_money(_item) and return _item
+    end
   end
 
   def find!
