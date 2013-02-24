@@ -8,12 +8,12 @@
           <legend>Wybierz parametr wiodący dla swojej postaci:</legend>
 
           <%= select_tag "main_skill", options_from_collection_for_select(fetch_possible_lead_parameters_choices(@wizard.character.character_profession), :name, :display_name) %>
-          <legend>Wybierz profity wynikające z klasy społecznej Twojej postaci:</legend>
+          <legend>Profity wynikające z klasy społecznej Twojej postaci:</legend>
 
           <%= social_class_perks(@wizard) %>
 
-          <legend>Wybierz profity wynikające z kraju pochodzenia i profesji Twojej postaci:</legend>
-          <label><strong>Domyślne:</strong></label>
+          <legend>Profity wynikające z kraju pochodzenia i profesji Twojej postaci:</legend>
+          <label><strong>Domyślne dla tej postaci:</strong></label>
 
           <% default = @wizard.character.default_origin_modifiers_set %>
           <label class="radio">
@@ -21,9 +21,10 @@
             <%= display_default_for_profession_and_origin(default).html_safe %>
           </label>
           <br/>
-
-          <%= profession_and_origin_perks(@wizard) %>
-
+          <% if choices = profession_and_origin_perks(@wizard) and choices.present? %>
+              <legend>Wymagające wyboru</legend>
+              <%= choices %>
+          <% end %>
       <% end %>
 
     </div>
@@ -52,7 +53,7 @@
 
 <div class="row">
   <!--for various reasons there is no back button-->
-  <div class="span2 offset4"><%= link_to "Utwórz nową postać", character_path(@wizard.character), :class => "btn", :confirm => 'Napewno?', :method => :delete %></div>
+  <div class="span2 offset4"><%= link_to "Zrezygnuj i zacznij od samego początku", character_path(@wizard.character), :class => "btn", :confirm => 'Napewno?', :method => :delete %></div>
   <div class="span1 offset4"><%= link_to "Dalej", "javascript:void(0)", :class => "btn", :onclick => "submit_form_and_proceed()" %></div>
 </div>
 
