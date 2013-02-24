@@ -1,5 +1,5 @@
 <% if @errors.present? %>
-  jQuery("input[name='weapon_proficiency']").filter("input[value='#{<%= params[:name] -%>}']").removeAttr('checked');
+  jQuery("input[name='weapon_proficiency']").filter("input[value='<%= params[:name] -%>']").removeAttr('checked');
   $.colorbox({html: "<%= escape_javascript(render(:partial => 'not_enough_points')) -%>"});
 <% else %>
   jQuery('#skill_counter').text('Liczba wolnych biegłości: <%= @character.session[:weapon_class_preference_left] -%>');

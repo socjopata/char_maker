@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class CharacterWeapon < ActiveRecord::Base
+  include Stats::SharedWeaponCalculationMethods
   belongs_to :character
   belongs_to :weapon
 
@@ -52,24 +53,6 @@ class CharacterWeapon < ActiveRecord::Base
 
   def special_defense_bonus_for_total_defense_listing
     character.statistics.stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Obrona Bliska" }.collect(&:value).sum
-  end
-
-  def extract_bonus_from_stats_modifier_dsl_definition(type, stats_modifiers)
-    if stats_modifiers.present?
-      sum_of_skill_preference_modifiers_for_weapon_or_weapon_group_specialisation(type, stats_modifiers)
-    end
-  end
-
-  def sum_of_skill_preference_modifiers_for_weapon_or_weapon_group_specialisation(characteristic_affected, collection_of_stats_modifiers)
-    collection_of_stats_modifiers.select { |sm| sm.group_name[characteristic_affected] }.map { |sm| sm.group_name.match(/(?<=#{characteristic_affected})(.*?)(?=,)/)[0].to_i }.sum
-  end
-
-  def collection_of_stats_modifiers(entity)
-    if entity=="weapon_name"
-      StatsModifier.bonus_preferences_for(character.id, weapon.name)
-     elsif entity=="weapon_group_name"
-      StatsModifier.bonus_preferences_for(character.id, weapon.group_name)
-     end
   end
 
   #this is for weapon group.

@@ -10,7 +10,7 @@
 
           <% FightStyle.all.each do |style| %>
               <label class="radio inline">
-                <%= radio_button_tag "fight_style_id", style.id, @wizard.character.fight_style_id, :disabled => (@wizard.character.profession.general_type=="rogue" && style.name=="Finezyjny") ? true : false %> <%= style.name %>
+                <%= radio_button_tag "fight_style_id", style.id, @wizard.character.fight_style_id, :disabled => (@wizard.character.profession.general_type=="rogue") ? true : false %> <%= style.name %>
               </label>
           <% end %>
 
@@ -29,8 +29,8 @@
       <% end %>
       <br/>
       <div class="row">
-        <div class="span1"><%= link_to "Wróć",   character_wizard_path(:char_id => @wizard.character.id, :step => "statistics"), :class => "btn" %></div>
-        <div class="span4 offset2"><%= link_to "Zrezygnuj i zacznij od samego początku", character_path(@wizard.character), :class => "btn", :confirm => 'Napewno?', :method => :delete %></div>
+        <div class="span1"><%= link_to "Wróć",  character_wizard_path(:char_id => @wizard.character.id, :step => "statistics"), :class => "btn" %></div>
+        <div class="span4 offset2"><%= link_to "Zacznij od początku", character_path(@wizard.character), :class => "btn btn-danger", :confirm => 'Napewno?', :method => :delete %></div>
         <div class="span1 offset1"><%= link_to "Dalej", "javascript:void(0)", :class => "btn", :onclick => "proceed()" %></div>
       </div>
 
@@ -41,9 +41,7 @@
 
       <%= render :partial => 'character_wizards/skill_tables/main_stats_table' %>
 
-      <!--#TODO ask Artur and pick one!-->
-      <button class="btn" id="stats_qtip"> Pokaż tabelę progów</button>
-      <a href="#" id="first_tooltip" data-toggle="tooltip">tabela progów on hover</a>
+      <a href="#" id="first_tooltip" data-toggle="tooltip">Najedź myszką aby zobaczyć tabelę progów.</a>
 
       <%= render :partial => "character_wizards/skill_tables/bonus_thresholds" %>
 
@@ -65,25 +63,29 @@
             $("form").submit();
         }
     }
+//
+//    popover example
+//    <button class="btn" id="stats_qtip"> Pokaż tabelę progów</button>
+//    $(document).ready(function() {
+//        $(function () {
+//            $("#stats_qtip").popover({
+//                offset: 10,
+//                placement: 'left',
+//                html: true,
+//                content: function() {
+//                    return $('#stats_qtip_table').html();
+//                }
+//            })
+//
+//        })
+//    });
 
-    $(document).ready(function() {
-        $(function () {
-            $("#stats_qtip").popover({
-                offset: 10,
-                placement: 'left',
-                html: true,
-                content: function() {
-                    return $('#stats_qtip_table').html();
-                }
-            })
-
-        })
-    });
 
     $(document).ready(function() {
         $(function () {
             $("#first_tooltip").tooltip({
                html: true,
+               placement: 'left',
                title: function() {
                 return $('#stats_qtip_table').html();
             }

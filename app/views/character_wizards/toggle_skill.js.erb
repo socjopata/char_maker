@@ -1,5 +1,6 @@
 /*Rubymine can't format this crap :(*/
 <% if @skill_toggler.not_enough_free_skill_points.present? %>
+    jQuery('input#<%= params[:skill_id] -%>').removeAttr('checked');
     $.colorbox({html:'<%= escape_javascript(render(:partial => 'not_enough_points')) %>'});
 <% else %>
     <% @skill_toggler.commands.each do |command| %>
