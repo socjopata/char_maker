@@ -27,8 +27,12 @@ CharMaker::Application.routes.draw do
 
   resources :messages, :only => [:new, :create]
 
+
   get "home/index"
   get "home/show"
+  get "home/example_character_list"
+  get "home/example_character_show"
+
   root :to => "home#index"
   devise_for :users
 

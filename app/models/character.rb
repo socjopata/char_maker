@@ -150,13 +150,13 @@ class Character < ActiveRecord::Base
   def set_shield_as_main(inventory_item_id)
     character_shields.each do |_shield|
       _shield["id"]==inventory_item_id ? _shield.update_attribute(:favorite, true) : _shield.update_attribute(:favorite, false)
-    end
+    end if inventory_item_id.present?
   end
 
   def set_armor_as_main(inventory_item_id)
     character_armors.each do |_armor|
       _armor["id"]==inventory_item_id ? _armor.update_attribute(:favorite, true) : _armor.update_attribute(:favorite, false)
-    end
+    end if inventory_item_id.present?
   end
 
   def calculate_stats_and_store_them_as_a_hash

@@ -3,40 +3,32 @@
   <div class="hero-unit">
 
     <h1>Witaj graczu!</h1>
-
-    <p>Witaj w kreatorze postaci online dla systemu dark fantasy RPG Alantar. Wszystko zaczęło się pewnego pięknego
-      wieczoru w Tawernie Morgan, gdy Artur zagadnął mnie (wiedząc, że jestem programistą), czy nie mógłbym mu napisać
-      programu komputerowego, który przeprowadziłby gracza przez proces tworzenia postaci.</p>
-
-    <p>Jak wiadomo, kiedy dostajesz do rąk podręcznik do gry RPG, której jeszcze nie znasz, wszystko wydaje się dość
-      skomplikowane. Trzeba przebrnąć przez wiele stron, zanim ogarnie się dany system, choćby na tyle by bez problemów
-      stworzyć sobie swoje alter-ego i nie korzystać z tych kilku postaci stworzonych przez autora podręcznika.</p>
-
-    <p>Arturowi wydawało się, że to na co teraz patrzysz, zajmie mi może dwa wieczory. Ja jednak od początku wiedziałem,
-      że będzie to dla mnie początkiem długiej, ciekawej i pełnej wyzwań przygody. Zupełnie jak w opowieści z Alantaru,
-      prowadzonej przez Artura.</p>
-
-    <p><%= link_to "Dowiedz się więcej &raquo;".html_safe, home_show_path(:page => "about"), :class => "btn btn-primary btn-large" %></p>
+    <br/><br/>
+    <p>Witaj w kreatorze postaci online dla systemu dark fantasy RPG Alantar. Jesteś tu zapewnie po to aby szybko i wygodnie stworzyć sobie kartę postaci do gry.
+    Jeśli jednak trafiłeś tu jakoś przypadkiem, być moze odpowiedzi na kłębiące się pytania znajdziesz <%= link_to "tutaj &raquo;".html_safe, home_show_path(:page => "about") %></p>
+    <br/><br/>
+    <p><%= link_to "Stwórz nową postać &raquo;".html_safe, (current_user ? new_character_path : new_user_session_path), :class => "btn btn-primary btn-large" %></p>
   </div>
+
 
   <div class="row">
     <div class="span4">
-      <h2>Stwórz nową postać</h2>
+      <h2>Zobacz jak wygląda przykładowa postać.</h2>
 
       <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
         condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec
         sed odio dui. </p>
 
-      <p><%= link_to "Stwórz nową postać &raquo;".html_safe, (current_user ? new_character_path : new_user_session_path), :class => "btn"  %></p>
+      <p><%= link_to "Przykładowe postacie &raquo;".html_safe, home_example_character_list_path, :class => "btn"  %></p>
     </div>
     <div class="span4">
-      <h2>Przeglądaj utworzone postacie</h2>
+      <h2>Przeglądaj postacie utworzone przez siebie.</h2>
 
       <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
         condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec
         sed odio dui. </p>
 
-      <p><%= link_to "Przeglądaj postacie &raquo;".html_safe, (current_user ? characters_path : new_user_session_path), :class => "btn" %></p>
+      <p><%= link_to "Przeglądaj &raquo;".html_safe, (current_user ? characters_path : new_user_session_path), :class => "btn" %></p>
     </div>
     <div class="span4">
       <h2>Masz pytania? sugestie?</h2>

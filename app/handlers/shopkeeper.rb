@@ -64,11 +64,34 @@ class Shopkeeper
 
   def self.says_ok?(character, spendings)
     character.errors.add(:base, "Nie możesz wydać więcej niz posiadasz") if 0 > spendings.to_i
-    character.errors.add(:base, "Wybierz jedną z tarcz jako aktualnie używaną.") if character.character_shields.size > 0 &&  character.character_shields.map(&:favorite).compact.blank?
-    character.errors.add(:base, "Wybierz jedną ze zbroi jako aktualnie noszoną.") if character.character_armors.size > 0 &&  character.character_armors.map(&:favorite).compact.blank?
+    if self.there_is_chance_to_make_it_smooth(character)
+      self.dont_complain_and_make_it_smooth(character)
+    else
+      character.errors.add(:base, "Wybierz jedną z tarcz jako aktualnie używaną.") if character.character_shields.size > 0 && character.character_shields.map(&:favorite).compact.blank?
+      character.errors.add(:base, "Wybierz jedną ze zbroi jako aktualnie noszoną.") if character.character_armors.size > 0 && character.character_armors.map(&:favorite).compact.blank?
+    end
+
     character.errors.blank?
   end
 
+  def self.there_is_chance_to_make_it_smooth(character)
+    number_of_shields = character.character_shields.size
+    number_of_armors = character.character_armors.size
+
+    if number_of_shields==1 && number_of_armors==1
+      return true
+    elsif number_of_shields==0 && number_of_armors==1
+      return true
+    elsif number_of_shields==1 && number_of_armors==0
+      return true
+    end
+    false
+  end
+
+  def self.dont_complain_and_make_it_smooth(character)
+    character.set_shield_as_main(character.character_shields.first.try(:id))
+    character.set_armor_as_main(character.character_armors.first.try(:id))
+  end
 
 end
 

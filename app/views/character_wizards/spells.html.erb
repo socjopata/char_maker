@@ -1,4 +1,4 @@
-<legend id="spell_counter">Do wybrania pozostało: <%= @wizard.instance_variable_get("@scribe").spells_left %>zaklęć
+<legend id="spell_counter">Zaklęć pozostałych do wybrania: <%= @wizard.instance_variable_get("@scribe").spells_left %>
 </legend>
 
 
@@ -24,7 +24,7 @@
 <div class="row">
   <div class="span1"><%= link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "armament_picking"), :class => "btn" %></div>
   <div class="span4 offset4"><%= link_to "Zacznij od początku", character_path(@wizard.character), :class => "btn btn-danger", :confirm => 'Napewno?', :method => :delete %></div>
-  <div class="span1 offset2"><%= link_to "Zakończ", character_wizard_path(:char_id => @wizard.character.id, :step => "spells"), :method => :post, :class => "btn" %></div>
+  <div class="span1 offset2"><%= link_to "Zakończ", character_wizard_path(:char_id => @wizard.character.id, :step => "spells"), :method => :post, :class => "btn btn-primary" %></div>
 </div>
 
 

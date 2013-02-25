@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 module CharactersHelper
 
-  def render_character_sheet(character)
-    case character.profession.general_type
+  def render_character_sheet(character_sheet)
+    case character_sheet.character.profession.general_type
       when "scholar" then
         render :partial => 'characters/scholar' #, :locals => locals
       when "rogue" then

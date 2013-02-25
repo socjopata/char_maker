@@ -52,11 +52,11 @@
     <P ALIGN=CENTER><FONT SIZE=2><I><B>SIŁA</B></I></FONT></P>
   </TD>
   <TD COLSPAN=3 WIDTH=20% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_s %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_s %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_s]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_s]}" %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border: none; padding: 0in">
@@ -67,7 +67,7 @@
     <P ALIGN=CENTER><FONT SIZE=2><I><B>Profesja</B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=29% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= @character.profession.name %>
+    <P ALIGN=CENTER><%= @character_sheet.character.profession.name %>
     </P>
   </TD>
 </TR>
@@ -76,11 +76,11 @@
     <P ALIGN=CENTER><FONT SIZE=2><I><B>ZRĘCZNOŚĆ</B></I></FONT></P>
   </TD>
   <TD COLSPAN=3 WIDTH=20% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_zr %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_zr %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_zr]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_zr]}" %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border: none; padding: 0in">
@@ -91,7 +91,7 @@
     <P ALIGN=CENTER><FONT SIZE=2><I><B>Klasa Społeczna</B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=29% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= @character.social_class.name %>
+    <P ALIGN=CENTER><%= @character_sheet.character.social_class.name %>
     </P>
   </TD>
 </TR>
@@ -100,11 +100,11 @@
     <P ALIGN=CENTER><FONT SIZE=2><I><B>WYTRZYMAŁOŚĆ</B></I></FONT></P>
   </TD>
   <TD COLSPAN=3 WIDTH=20% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER STYLE="font-style: normal"><%= @character.statistics.calculate_wt %>
+    <P ALIGN=CENTER STYLE="font-style: normal"><%= @character_sheet.character.statistics.calculate_wt %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wt]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wt]}" %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border: none; padding: 0in">
@@ -115,7 +115,7 @@
     <P ALIGN=CENTER><FONT SIZE=2><I><B>Imię Postaci</B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=29% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= @character.name %>
+    <P ALIGN=CENTER><%= @character_sheet.character.name %>
     </P>
   </TD>
 </TR>
@@ -124,11 +124,11 @@
     <P ALIGN=CENTER><FONT SIZE=2><I><B>INTELIGENCJA</B></I></FONT></P>
   </TD>
   <TD COLSPAN=3 WIDTH=20% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_int %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_int %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_int]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_int]}" %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border: none; padding: 0in">
@@ -139,7 +139,7 @@
     <P ALIGN=CENTER><FONT SIZE=2><I><B>Kraj Pochodzenia</B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=29% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= @character.character_background.origin %>
+    <P ALIGN=CENTER><%= @character_sheet.character.character_background.origin %>
     </P>
   </TD>
 </TR>
@@ -148,11 +148,11 @@
     <P ALIGN=CENTER><FONT SIZE=2><I><B>WIARA</B></I></FONT></P>
   </TD>
   <TD COLSPAN=3 WIDTH=20% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_wi %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_wi %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wi]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi]}" %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border: none; padding: 0in">
@@ -172,11 +172,11 @@
     <P ALIGN=CENTER><FONT SIZE=2><I><B>OGŁADA</B></I></FONT></P>
   </TD>
   <TD COLSPAN=3 WIDTH=20% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER STYLE="font-style: normal"><%= @character.statistics.calculate_o %>
+    <P ALIGN=CENTER STYLE="font-style: normal"><%= @character_sheet.character.statistics.calculate_o %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_o]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_o]}" %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border: none; padding: 0in">
@@ -187,7 +187,7 @@
     <P ALIGN=CENTER><FONT SIZE=2><I><B>Religia</B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=29% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= @character.character_background.deity %>
+    <P ALIGN=CENTER><%= @character_sheet.character.character_background.deity %>
     </P>
   </TD>
 </TR>
@@ -212,7 +212,7 @@
     <P ALIGN=CENTER><FONT SIZE=2><I><B>Dar /  Klątwa</B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=29% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= @character.character_background.traits.first.try(:name) %>
+    <P ALIGN=CENTER><%= @character_sheet.character.character_background.traits.first.try(:name) %>
     </P>
   </TD>
 </TR>
@@ -315,22 +315,22 @@
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=2 WIDTH=14% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_initiative %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_initiative %>
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::INITIATIVE[@character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::INITIATIVE[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_zr]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_zr]}" %>
     </P>
   </TD>
   <TD WIDTH=9% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: none; padding: 0.04in 0in">
-    <P ALIGN=CENTER>+<%= @character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_from_skills") %>
+    <P ALIGN=CENTER>+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_from_skills") %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_special")) %>
+    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_special")) %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -342,7 +342,7 @@
       Magii</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Adept Magii") %><BR>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Adept Magii") %><BR>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
@@ -350,7 +350,7 @@
       na Magię</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0in; padding-right: 0.04in">
-    <P><%= "X" if @skill_names.include?("Odporność na Magię") %>
+    <P><%= "X" if @character_sheet.skill_names.include?("Odporność na Magię") %>
     </P>
   </TD>
 </TR>
@@ -384,7 +384,7 @@
       Mocy</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Amulet Mocy") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Amulet Mocy") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
@@ -392,7 +392,7 @@
       Medytacji</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Podstawy Medytacji") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Podstawy Medytacji") %>
     </P>
   </TD>
 </TR>
@@ -422,35 +422,35 @@
       Magii</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Analiza Magii") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Analiza Magii") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Perfekcjonizm</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Perfekcjonizm") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Perfekcjonizm") %>
     </P>
   </TD>
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=2 WIDTH=14% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_perception %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_perception %>
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::PERCEPTION[@character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::PERCEPTION[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER>+<%= @character.current_level %>
+    <P ALIGN=CENTER>+<%= @character_sheet.character.current_level %>
     </P>
   </TD>
   <TD WIDTH=9% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: none; padding: 0.04in 0in">
-    <P ALIGN=CENTER>+<%= @character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_from_skills") %>
+    <P ALIGN=CENTER>+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_from_skills") %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_special")) %>
+    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_special")) %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -461,7 +461,7 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Astrologia</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Astrologia") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Astrologia") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
@@ -469,7 +469,7 @@
       Doświadczenia</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Potęga Doświadczenia") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Potęga Doświadczenia") %>
     </P>
   </TD>
 </TR>
@@ -503,7 +503,7 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Blitz</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Blitz") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Blitz") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
@@ -511,7 +511,7 @@
       Magii</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Potęga Magii") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Potęga Magii") %>
     </P>
   </TD>
 </TR>
@@ -540,7 +540,7 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Chowaniec</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Chowaniec") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Chowaniec") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
@@ -548,28 +548,28 @@
       Spokoju</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Potęga Spokoju") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Potęga Spokoju") %>
     </P>
   </TD>
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=2 WIDTH=14% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_pain_resistance %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_pain_resistance %>
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::PAIN_RESISTANCE[@character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::PAIN_RESISTANCE[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wt]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wt]}" %>
     </P>
   </TD>
   <TD WIDTH=9% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: none; padding: 0.04in 0in">
-    <P ALIGN=CENTER>+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_from_skills") %>
+    <P ALIGN=CENTER>+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_from_skills") %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_special")) %>
+    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_special")) %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -581,7 +581,7 @@
       Studia</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Dogłębne Studia") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Dogłębne Studia") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
@@ -589,7 +589,7 @@
       Umysłu</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Potęga Umysłu") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Potęga Umysłu") %>
     </P>
   </TD>
 </TR>
@@ -623,14 +623,14 @@
       Mocy</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Gromadzenie Mocy") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Gromadzenie Mocy") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Religioznawstwo</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Religioznawstwo") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Religioznawstwo") %>
     </P>
   </TD>
 </TR>
@@ -660,35 +660,35 @@
       Klasyczny</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Język Klasyczny") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Język Klasyczny") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border-top: none; border-bottom: none; border-left: 1px solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Rozpr. i N. Magii</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Rozproszenie i Niszczenie Magii") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Rozproszenie i Niszczenie Magii") %>
     </P>
   </TD>
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=2 WIDTH=14% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_fear_resistance %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_fear_resistance %>
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::FEAR_RESISTANCE[@character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::FEAR_RESISTANCE[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wi]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi]}" %>
     </P>
   </TD>
   <TD WIDTH=9% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER>+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_from_skills") %>
+    <P ALIGN=CENTER>+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_from_skills") %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_special")) %>
+    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_special")) %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -700,14 +700,14 @@
       Ofiara</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Krwawa Ofiara") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Krwawa Ofiara") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Runy Doskonałe</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Runy Doskonałe") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Runy Doskonałe") %>
     </P>
   </TD>
 </TR>
@@ -740,14 +740,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Medycyna</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Medycyna") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Medycyna") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Runy Proste</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Runy Proste") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Runy Proste") %>
     </P>
   </TD>
 </TR>
@@ -775,35 +775,35 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Medytacja</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Medytacja") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Medytacja") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Runy Złożone</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Runy Złożone") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Runy Złożone") %>
     </P>
   </TD>
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=2 WIDTH=14% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_magic_resistance %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_magic_resistance %>
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::MAGIC_RESISTANCE[@character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::MAGIC_RESISTANCE[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><BR>
     </P>
   </TD>
   <TD WIDTH=9% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER>+<%= @character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_from_skills") %>
+    <P ALIGN=CENTER>+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_from_skills") %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_special")) %>
+    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_special")) %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -815,14 +815,14 @@
       Czarów</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Mistrz Czarów") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Mistrz Czarów") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Rz. Czarów bez Gestów</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0in; padding-left: 0in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Rzucanie Czarów bez Gestów") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Rzucanie Czarów bez Gestów") %>
     </P>
   </TD>
 </TR>
@@ -856,14 +856,14 @@
       Magii</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Mistrz Magii") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Mistrz Magii") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Starożytny Splot</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Starożytny Splot") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Starożytny Splot") %>
     </P>
   </TD>
 </TR>
@@ -893,39 +893,39 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Mistrz Runów</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: none; padding: 0.04in 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Mistrz Runów") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Mistrz Runów") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Tworzenie Mikstur</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Tworzenie Mikstur") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Tworzenie Mikstur") %>
     </P>
   </TD>
 </TR>
 <TR VALIGN=TOP>
   <TD WIDTH=7% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_sprinting %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_sprinting %>
     </P>
   </TD>
   <TD WIDTH=7% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_running %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_running %>
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::RUNNING[@character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::RUNNING[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER STYLE="font-style: normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_zr]}" %>
+    <P ALIGN=CENTER STYLE="font-style: normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_zr]}" %>
     </P>
   </TD>
   <TD WIDTH=9% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER STYLE="font-style: normal">+<%= @character.statistics.calculate_auxiliary_bonus("Bieg", "only_from_skills") %>
+    <P ALIGN=CENTER STYLE="font-style: normal">+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Bieg", "only_from_skills") %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER STYLE="font-style: normal"><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Bieg", "only_special")) %>
+    <P ALIGN=CENTER STYLE="font-style: normal"><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Bieg", "only_special")) %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -936,14 +936,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Mistrz Rytuałów</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: none; border-right: none; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Mistrz Rytuałów") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Mistrz Rytuałów") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Zakazana Wiedza</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Zakazana Wiedza") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Zakazana Wiedza") %>
     </P>
   </TD>
 </TR>
@@ -976,7 +976,7 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Moc Krwi</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Moc Krwi") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Moc Krwi") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -1014,7 +1014,7 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Nieomylność</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Nieomylność") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Nieomylność") %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=21% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
@@ -1028,22 +1028,22 @@
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=2 WIDTH=14% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_life_points %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_life_points %>
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::HIT_POINTS[@character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::HIT_POINTS[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER>+<%= @character.statistics.calculate_wt %>
+    <P ALIGN=CENTER>+<%= @character_sheet.character.statistics.calculate_wt %>
     </P>
   </TD>
   <TD WIDTH=9% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER>+<%= @character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_from_skills") %>
+    <P ALIGN=CENTER>+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_from_skills") %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_special")) %>
+    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_special")) %>
     </P>
   </TD>
 </TR>
@@ -1081,14 +1081,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Akrobatyka</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Akrobatyka") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Akrobatyka") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Refleks</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Refleks") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Refleks") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -1105,14 +1105,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Czytanie i Pisanie</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Czytanie i Pisanie") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Czytanie i Pisanie") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Rzemiosło</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Rzemiosło") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Rzemiosło") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -1130,14 +1130,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Dworskość</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Dworskość") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Dworskość") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Sokoli Wzrok</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Sokoli Wzrok") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Sokoli Wzrok") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -1156,14 +1156,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Dykcja i Przemawianie</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Dykcja i Przemawianie") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Dykcja i Przemawianie") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Szulerka</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Szulerka") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Szulerka") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -1171,7 +1171,7 @@
     </P>
   </TD>
   <TD ROWSPAN=2 COLSPAN=5 WIDTH=24% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.mana_points %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.mana_points %>
     </P>
   </TD>
   <TD ROWSPAN=2 COLSPAN=5 WIDTH=24% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
@@ -1184,14 +1184,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Handel</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Handel") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Handel") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Śledzenie i Skradanie się</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Śledzenie i Skradanie się") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Śledzenie i Skradanie się") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -1204,14 +1204,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Heraldyka i Historia</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Heraldyka i Historia") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Heraldyka i Historia") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Torturowanie</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Torturowanie") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Torturowanie") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -1228,7 +1228,7 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Jeździectwo</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Jeździectwo") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Jeździectwo") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
@@ -1236,7 +1236,7 @@
       Polowanie i Kamuflaż</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Polowanie i Kamuflaż") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Polowanie i Kamuflaż") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -1264,14 +1264,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Leczenie Ran i Chorób</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Leczenie Ran i Chorób") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Leczenie Ran i Chorób") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Twardziel</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Twardziel") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Twardziel") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -1279,23 +1279,23 @@
     </P>
   </TD>
   <TD WIDTH=10% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.main_parameter_bonus %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.main_parameter_bonus %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER>+<%= @character.statistics.character_level_bonus %>
+    <P ALIGN=CENTER>+<%= @character_sheet.character.statistics.character_level_bonus %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=9% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER>+<%= @character.statistics.bonus_from_skills("Przełamanie") %>
+    <P ALIGN=CENTER>+<%= @character_sheet.character.statistics.bonus_from_skills("Przełamanie") %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=9% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: none; padding: 0.04in 0in">
-    <P ALIGN=CENTER>+<%= @character.statistics.special_break_bonus %>
+    <P ALIGN=CENTER>+<%= @character_sheet.character.statistics.special_break_bonus %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_casting %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_casting %>
     </P>
   </TD>
 </TR>
@@ -1304,14 +1304,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Mistrzowska Oburęczność</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Mistrzowska Oburęczność") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Mistrzowska Oburęczność") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER>„<FONT SIZE=1 STYLE="font-size: 8pt"><I><B>"Wino, Śpiew i Kobiety"</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Wino, Śpiew i Kobiety") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Wino, Śpiew i Kobiety") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -1327,14 +1327,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Nauczyciel Fechtunku</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Nauczyciel Fechtunku") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Nauczyciel Fechtunku") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Woltyżerka</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Woltyżerka") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Woltyżerka") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -1360,14 +1360,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Nieustraszony</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Nieustraszony") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Nieustraszony") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Wykształcenie Akademickie</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Wykształcenie Akademickie") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Wykształcenie Akademickie") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -1375,19 +1375,19 @@
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=11% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.main_parameter_bonus %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.main_parameter_bonus %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=12% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER>+<%= @character.statistics.character_level_bonus %>
+    <P ALIGN=CENTER>+<%= @character_sheet.character.statistics.character_level_bonus %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER>+<%= @character.statistics.bonus_from_skills("Rzucanie czarów") %>
+    <P ALIGN=CENTER>+<%= @character_sheet.character.statistics.bonus_from_skills("Rzucanie czarów") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_casting %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_casting %>
     </P>
   </TD>
 </TR>
@@ -1396,14 +1396,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Niezłomność</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Niezłomność") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Niezłomność") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Zabijaka</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Zabijaka") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Zabijaka") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -1432,14 +1432,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Oburęczność</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Oburęczność") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Oburęczność") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Zielarstwo</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Zielarstwo") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Zielarstwo") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -1455,14 +1455,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Odporność</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Odporność") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Odporność") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Znajomość Regionu:                     </B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Znajomość Regionu Pochodzenia") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Znajomość Regionu Pochodzenia") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -1470,11 +1470,11 @@
     </P>
   </TD>
   <TD COLSPAN=5 WIDTH=24% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @extra_skills[0]  %>
+    <P ALIGN=CENTER><%= @character_sheet.extra_skills[0]  %>
     </P>
   </TD>
   <TD COLSPAN=5 WIDTH=24% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= @extra_skills[1]  %>
+    <P ALIGN=CENTER><%= @character_sheet.extra_skills[1]  %>
     </P>
   </TD>
 </TR>
@@ -1484,7 +1484,7 @@
       i Nurkowanie</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Pływanie i Nurkowanie") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Pływanie i Nurkowanie") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
@@ -1492,7 +1492,7 @@
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Żeglarstwo i Nawigacja") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Żeglarstwo i Nawigacja") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -1500,11 +1500,11 @@
     </P>
   </TD>
   <TD COLSPAN=5 WIDTH=24% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @extra_skills[2]  %>
+    <P ALIGN=CENTER><%= @character_sheet.extra_skills[2]  %>
     </P>
   </TD>
   <TD COLSPAN=5 WIDTH=24% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= @extra_skills[3]  %>
+    <P ALIGN=CENTER><%= @character_sheet.extra_skills[3]  %>
     </P>
   </TD>
 </TR>
@@ -1513,7 +1513,7 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Podstawy Akrobatyki</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Podstawy Akrobatyki") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Podstawy Akrobatyki") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
@@ -1528,11 +1528,11 @@
     </P>
   </TD>
   <TD COLSPAN=5 WIDTH=24% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @extra_skills[4]  %>
+    <P ALIGN=CENTER><%= @character_sheet.extra_skills[4]  %>
     </P>
   </TD>
   <TD COLSPAN=5 WIDTH=24% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= @extra_skills[5]  %>
+    <P ALIGN=CENTER><%= @character_sheet.extra_skills[5]  %>
     </P>
   </TD>
 </TR>
@@ -1541,14 +1541,14 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><I><B>Posłuch i Zastraszenie</B></I></FONT></P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "X" if @skill_names.include?("Posłuch i Zastraszenie") %>
+    <P ALIGN=CENTER><%= "X" if @character_sheet.skill_names.include?("Posłuch i Zastraszenie") %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=22% BGCOLOR="#000000" STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P class="P10">UMIEJĘTNOŚCI WOLNE</P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.free_skill_points_left %>
+    <P ALIGN=CENTER><%= @character_sheet.character.free_skill_points_left %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding: 0in 0.04in">
@@ -1556,11 +1556,11 @@
     </P>
   </TD>
   <TD COLSPAN=5 WIDTH=24% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P><%= @extra_skills[6]  %>
+    <P><%= @character_sheet.extra_skills[6]  %>
     </P>
   </TD>
   <TD COLSPAN=5 WIDTH=24% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-    <P><%= @extra_skills[7]  %>
+    <P><%= @character_sheet.extra_skills[7]  %>
     </P>
   </TD>
 </TR>
@@ -1616,43 +1616,43 @@
   </TR>
   <TR VALIGN=TOP>
     <TD WIDTH=104 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%=  @weapons[0].present? ? @weapons[0].weapon.name : "<br/>".html_safe %>
+      <P ALIGN=CENTER><%=  @character_sheet.weapons[0].present? ? @character_sheet.weapons[0].weapon.name : "<br/>".html_safe %>
       </P>
     </TD>
     <TD WIDTH=46 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @weapons[0].weapon.weapon_type if @weapons[0].present? %>
+      <P ALIGN=CENTER><%= @character_sheet.weapons[0].weapon.weapon_type if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
     <TD WIDTH=42 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @weapons[0].weapon.range if @weapons[0].present? %>
+      <P ALIGN=CENTER><%= @character_sheet.weapons[0].weapon.range if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
     <TD WIDTH=42 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @weapons[0].calculate_speed if @weapons[0].present? %>
+      <P ALIGN=CENTER><%= @character_sheet.weapons[0].calculate_speed if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
     <TD WIDTH=99 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @weapons[0].calculate_damage if @weapons[0].present? %>
+      <P ALIGN=CENTER><%= @character_sheet.weapons[0].calculate_damage if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
     <TD WIDTH=99 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @weapons[0].weapon.special_rules if @weapons[0].present? %>
+      <P ALIGN=CENTER><%= @character_sheet.weapons[0].weapon.special_rules if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
     <TD WIDTH=51 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @weapons[0].calculate_attack_bonus_for_particular_weapon if @weapons[0].present? %>
+      <P ALIGN=CENTER><%= @character_sheet.weapons[0].calculate_attack_bonus_for_particular_weapon if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
     <TD WIDTH=66 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @weapons[0].attack_fencing_parameter if @weapons[0].present? %>
+      <P ALIGN=CENTER><%= @character_sheet.weapons[0].attack_fencing_parameter if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
     <TD WIDTH=59 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @character.statistics.calculate_dexterity_and_strength_bonus if @weapons[0].present? %>
+      <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_dexterity_and_strength_bonus if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
     <TD WIDTH=65 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-      <P ALIGN=CENTER class="<%= weapon_proficiency_bonus(@weapons[0]) %>"><%= @weapons[0].hit_parameter if @weapons[0].present? %>
+      <P ALIGN=CENTER class="<%= weapon_proficiency_bonus(@character_sheet.weapons[0]) %>"><%= @character_sheet.weapons[0].hit_parameter if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
   </TR>
@@ -1689,38 +1689,38 @@
   </TR>
   <TR VALIGN=TOP>
     <TD WIDTH=104 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @ranged_weapon.present? ? @ranged_weapon.ranged_weapon.name : "<br/>".html_safe %>
+      <P ALIGN=CENTER><%= @character_sheet.ranged_weapon.present? ? @character_sheet.ranged_weapon.ranged_weapon.name : "<br/>".html_safe %>
       </P>
     </TD>
     <TD COLSPAN=2 WIDTH=97 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @ranged_weapon.shooting_ranges if @ranged_weapon.present? %></P>
+      <P ALIGN=CENTER><%= @character_sheet.ranged_weapon.shooting_ranges if @character_sheet.ranged_weapon.present? %></P>
     </TD>
     <TD WIDTH=42 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @ranged_weapon.calculate_speed if @ranged_weapon.present? %>
+      <P ALIGN=CENTER><%= @character_sheet.ranged_weapon.calculate_speed if @character_sheet.ranged_weapon.present? %>
       </P>
     </TD>
     <TD WIDTH=99 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @ranged_weapon.calculate_damage if @ranged_weapon.present?  %>
+      <P ALIGN=CENTER><%= @character_sheet.ranged_weapon.calculate_damage if @character_sheet.ranged_weapon.present?  %>
       </P>
     </TD>
     <TD WIDTH=99 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @ranged_weapon.bonus_from_special_rules if @ranged_weapon.present?  %>
+      <P ALIGN=CENTER><%= @character_sheet.ranged_weapon.bonus_from_special_rules if @character_sheet.ranged_weapon.present?  %>
       </P>
     </TD>
     <TD WIDTH=51 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @ranged_weapon.weapon_accuracy if @ranged_weapon.present?  %>
+      <P ALIGN=CENTER><%= @character_sheet.ranged_weapon.weapon_accuracy if @character_sheet.ranged_weapon.present?  %>
       </P>
     </TD>
     <TD WIDTH=66 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @ranged_weapon.character_shooting_skill if @ranged_weapon.present?  %>
+      <P ALIGN=CENTER><%= @character_sheet.ranged_weapon.character_shooting_skill if @character_sheet.ranged_weapon.present?  %>
       </P>
     </TD>
     <TD WIDTH=59 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character.statistics.calculate_dexterity_bonus)  if @ranged_weapon.present?  %>
+      <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_dexterity_bonus)  if @character_sheet.ranged_weapon.present?  %>
       </P>
     </TD>
     <TD WIDTH=65 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-      <P ALIGN=CENTER><%= @ranged_weapon.total_hit_chance_parameter if @ranged_weapon.present?  %>
+      <P ALIGN=CENTER><%= @character_sheet.ranged_weapon.total_hit_chance_parameter if @character_sheet.ranged_weapon.present?  %>
       </P>
     </TD>
   </TR>
@@ -1774,73 +1774,73 @@
       <P class="P18">Obrona</P>
     </TD>
   </TR>
-  <% if @character.wield_style.name=="Styl walki dwiema brońmi" %>
+  <% if @character_sheet.character.wield_style.name=="Styl walki dwiema brońmi" %>
   <TR VALIGN=TOP>
     <TD WIDTH=16% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @weapons[0].present? ? @weapons[0].dual_wield_names : "<br/>".html_safe %>
+      <P ALIGN=CENTER><%= @character_sheet.weapons[0].present? ? @character_sheet.weapons[0].dual_wield_names : "<br/>".html_safe %>
       </P>
     </TD>
     <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @weapons[0].defense_fencing_parameter if @weapons[0].present? %>
+      <P ALIGN=CENTER><%= @character_sheet.weapons[0].defense_fencing_parameter if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
     <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @weapons[0].calculate_defense_bonus_for_dual_wield if @weapons[0].present? %>
+      <P ALIGN=CENTER><%= @character_sheet.weapons[0].calculate_defense_bonus_for_dual_wield if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
     <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @shield.total_defense_bonus(true) if @shield.present? %>
+      <P ALIGN=CENTER><%= @character_sheet.shield.total_defense_bonus(true) if @character_sheet.shield.present? %>
       </P>
     </TD>
     <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_current_zr] %>
+      <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_current_zr] %>
       </P>
     </TD>
     <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wi] if @weapons[0].present? %>
+      <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
     <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @weapons[0].special_defense_bonus_for_total_defense_listing if @weapons[0].present? %>
+      <P ALIGN=CENTER><%= @character_sheet.weapons[0].special_defense_bonus_for_total_defense_listing if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
     <TD WIDTH=13% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-      <P ALIGN=CENTER class="<%= weapon_proficiency_bonus(@weapons[0]) %>"><%= @weapons[0].total_defense(true, @shield) if @weapons[0].present?  %>
+      <P ALIGN=CENTER class="<%= weapon_proficiency_bonus(@character_sheet.weapons[0]) %>"><%= @character_sheet.weapons[0].total_defense(true, @character_sheet.shield) if @character_sheet.weapons[0].present?  %>
       </P>
     </TD>
   </TR>
     <% else %>
       <TR VALIGN=TOP>
         <TD WIDTH=16% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-          <P ALIGN=CENTER><%= @weapons[0].present? ? @weapons[0].weapon.name : "<br/>".html_safe %>
+          <P ALIGN=CENTER><%= @character_sheet.weapons[0].present? ? @character_sheet.weapons[0].weapon.name : "<br/>".html_safe %>
           </P>
         </TD>
         <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-          <P ALIGN=CENTER><%= @weapons[0].defense_fencing_parameter if @weapons[0].present? %>
+          <P ALIGN=CENTER><%= @character_sheet.weapons[0].defense_fencing_parameter if @character_sheet.weapons[0].present? %>
           </P>
         </TD>
         <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-          <P ALIGN=CENTER><%= @weapons[0].calculate_defense_bonus_for_particular_weapon if @weapons[0].present? %>
+          <P ALIGN=CENTER><%= @character_sheet.weapons[0].calculate_defense_bonus_for_particular_weapon if @character_sheet.weapons[0].present? %>
           </P>
         </TD>
         <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-          <P ALIGN=CENTER><%= (@shield.present? && @weapons[0].present?) ? @shield.total_defense_bonus(true) : "-" %>
+          <P ALIGN=CENTER><%= (@character_sheet.shield.present? && @character_sheet.weapons[0].present?) ? @character_sheet.shield.total_defense_bonus(true) : "-" %>
           </P>
         </TD>
         <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-          <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_current_zr] if @weapons[0].present? %>
+          <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_current_zr] if @character_sheet.weapons[0].present? %>
           </P>
         </TD>
         <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-          <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wi] if @weapons[0].present? %>
+          <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[0].present? %>
           </P>
         </TD>
         <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-          <P ALIGN=CENTER><%= @weapons[0].special_defense_bonus_for_total_defense_listing if @weapons[0].present? %>
+          <P ALIGN=CENTER><%= @character_sheet.weapons[0].special_defense_bonus_for_total_defense_listing if @character_sheet.weapons[0].present? %>
           </P>
         </TD>
         <TD WIDTH=13% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-          <P ALIGN=CENTER class="<%= weapon_proficiency_bonus(@weapons[1]) %>"><%= @weapons[0].total_defense(false, @shield) if @weapons[0].present?  %>
+          <P ALIGN=CENTER class="<%= weapon_proficiency_bonus(@character_sheet.weapons[1]) %>"><%= @character_sheet.weapons[0].total_defense(false, @character_sheet.shield) if @character_sheet.weapons[0].present?  %>
           </P>
         </TD>
       </TR>
@@ -1892,23 +1892,23 @@
       <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><B>20</B></FONT></P>
     </TD>
     <TD WIDTH=123 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @character.statistics.the_above_fifteen_zr_bonus %>
+      <P ALIGN=CENTER><%= @character_sheet.character.statistics.the_above_fifteen_zr_bonus %>
       </P>
     </TD>
     <TD WIDTH=123 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @shield.present? ? @shield.total_defense_bonus(true) : "-" %>
+      <P ALIGN=CENTER><%= @character_sheet.shield.present? ? @character_sheet.shield.total_defense_bonus(true) : "-" %>
       </P>
     </TD>
     <TD WIDTH=123 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @character.statistics.ranged_defense_bonus_from_skills %>
+      <P ALIGN=CENTER><%= @character_sheet.character.statistics.ranged_defense_bonus_from_skills %>
       </P>
     </TD>
     <TD WIDTH=123 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @character.statistics.special_ranged_defense_parameter %>
+      <P ALIGN=CENTER><%= @character_sheet.character.statistics.special_ranged_defense_parameter %>
       </P>
     </TD>
     <TD WIDTH=86 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-      <P ALIGN=CENTER><%= @character.statistics.total_ranged_defense(@shield) %>
+      <P ALIGN=CENTER><%= @character_sheet.character.statistics.total_ranged_defense(@character_sheet.shield) %>
       </P>
     </TD>
   </TR>
@@ -1951,40 +1951,40 @@
   </TR>
   <TR VALIGN=TOP>
     <TD WIDTH=116 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%=  @primary_armor.present? ? @primary_armor.armor.name : "<br/>".html_safe %>
+      <P ALIGN=CENTER><%=  @character_sheet.primary_armor.present? ? @character_sheet.primary_armor.armor.name : "<br/>".html_safe %>
       </P>
     </TD>
     <TD WIDTH=118 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @primary_armor.protection_levels if @primary_armor.present?  %>
+      <P ALIGN=CENTER><%= @character_sheet.primary_armor.protection_levels if @character_sheet.primary_armor.present?  %>
       </P>
     </TD>
     <TD WIDTH=118 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @primary_armor.calculate_dexterity_nerf if @primary_armor.present? %>/<%= @primary_armor.calculate_dexterity_cap if @primary_armor.present? %></P>
+      <P ALIGN=CENTER><%= @character_sheet.primary_armor.calculate_dexterity_nerf if @character_sheet.primary_armor.present? %>/<%= @character_sheet.primary_armor.calculate_dexterity_cap if @character_sheet.primary_armor.present? %></P>
     </TD>
     <TD WIDTH=118 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @primary_armor.required_strength if @primary_armor.present?  %>
+      <P ALIGN=CENTER><%= @character_sheet.primary_armor.required_strength if @character_sheet.primary_armor.present?  %>
       </P>
     </TD>
     <TD WIDTH=118 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
       <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><B>- -</B></FONT></P>
     </TD>
     <TD WIDTH=115 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-      <P ALIGN=CENTER><%= @primary_armor.armor.special_rules if @primary_armor.present?  %>
+      <P ALIGN=CENTER><%= @character_sheet.primary_armor.armor.special_rules if @character_sheet.primary_armor.present?  %>
       </P>
     </TD>
   </TR>
   <TR VALIGN=TOP>
     <TD WIDTH=116 BGCOLOR="#e6e6e6" STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><%= @shield.shield.name if @shield.present?  %></P>
+      <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><%= @character_sheet.shield.shield.name if @character_sheet.shield.present?  %></P>
     </TD>
     <TD WIDTH=118 BGCOLOR="#e6e6e6" STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
       <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><B>- -</B></FONT></P>
     </TD>
     <TD WIDTH=118 BGCOLOR="#e6e6e6" STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @shield.calculate_dexterity_nerf if @shield.present? %>/<%= @shield.calculate_dexterity_cap if @shield.present? %></P>
+      <P ALIGN=CENTER><%= @character_sheet.shield.calculate_dexterity_nerf if @character_sheet.shield.present? %>/<%= @character_sheet.shield.calculate_dexterity_cap if @character_sheet.shield.present? %></P>
     </TD>
     <TD WIDTH=118 BGCOLOR="#e6e6e6" STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @shield.required_strength if @shield.present?  %>
+      <P ALIGN=CENTER><%= @character_sheet.shield.required_strength if @character_sheet.shield.present?  %>
       </P>
     </TD>
     <TD WIDTH=118 BGCOLOR="#e6e6e6" STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
@@ -1992,7 +1992,7 @@
       </P>
     </TD>
     <TD WIDTH=115 BGCOLOR="#e6e6e6" STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-      <P ALIGN=CENTER><%= @shield.shield.special_rules if @shield.present?  %>
+      <P ALIGN=CENTER><%= @character_sheet.shield.shield.special_rules if @character_sheet.shield.present?  %>
       </P>
     </TD>
   </TR>
@@ -2123,23 +2123,23 @@
 </TR>
 <TR VALIGN=TOP>
   <TD WIDTH=11% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.range_change_base %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.range_change_base %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=11% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character.statistics.calculate_dexterity_bonus) %>
+    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_dexterity_bonus) %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=11% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character.statistics.calculate_strength_bonus ) %>
+    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_strength_bonus ) %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=10% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character.statistics.calculate_range_change_bonus_from_skills) %>
+    <P ALIGN=CENTER><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_range_change_bonus_from_skills) %>
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%=  @character.statistics.total_range_change %>
+    <P ALIGN=CENTER><%=  @character_sheet.character.statistics.total_range_change %>
     </P>
   </TD>
   <TD WIDTH=11% BGCOLOR="#c0c0c0" STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
@@ -2264,23 +2264,23 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><B>Bijatyka</B></FONT></P>
   </TD>
   <TD WIDTH=8% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.raw_fencing_when_attacking %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.raw_fencing_when_attacking %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=8% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_dexterity_and_strength_bonus %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_dexterity_and_strength_bonus %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=8% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_brawl_bonus_from_special_rules %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_brawl_bonus_from_special_rules %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=9% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_brawl_bonus_from_skills %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_brawl_bonus_from_skills %>
     </P>
   </TD>
   <TD WIDTH=8% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_total_brawling("attack") %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_total_brawling("attack") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -2350,23 +2350,23 @@
     <P ALIGN=CENTER><FONT SIZE=1 STYLE="font-size: 8pt"><B>Bijatyka</B></FONT></P>
   </TD>
   <TD WIDTH=8% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.raw_fencing_when_defending %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.raw_fencing_when_defending %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=8% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_current_zr] %>
+    <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_current_zr] %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=8% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character.statistics.calculate_wi]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi]}" %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=9% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_brawl_bonus_from_skills %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_brawl_bonus_from_skills %>
     </P>
   </TD>
   <TD WIDTH=8% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= @character.statistics.calculate_total_brawling("defense") %>
+    <P ALIGN=CENTER><%= @character_sheet.character.statistics.calculate_total_brawling("defense") %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -2442,7 +2442,7 @@
 </TR>
 <TR VALIGN=TOP>
   <TD ROWSPAN=2 COLSPAN=3 WIDTH=21% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER STYLE="background: transparent"><%= @character.items %>
+    <P ALIGN=CENTER STYLE="background: transparent"><%= @character_sheet.character.items %>
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=11% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -2703,15 +2703,15 @@
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=11% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=RIGHT><%= @purse[0] %>
+    <P ALIGN=RIGHT><%= @character_sheet.purse[0] %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=11% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=RIGHT><%= @purse[1] %>
+    <P ALIGN=RIGHT><%= @character_sheet.purse[1] %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=11% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0in; padding-right: 0.04in">
-    <P ALIGN=RIGHT><%= @purse[2] %>
+    <P ALIGN=RIGHT><%= @character_sheet.purse[2] %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border: none; padding: 0in">
@@ -2781,11 +2781,11 @@
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=5 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[0] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[0] %>
     </P>
   </TD>
   <TD COLSPAN=8 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[1] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[1] %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -2809,11 +2809,11 @@
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=5 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[2] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[2] %>
     </P>
   </TD>
   <TD COLSPAN=8 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[3] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[3] %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -2837,11 +2837,11 @@
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=5 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[4] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[4] %>
     </P>
   </TD>
   <TD COLSPAN=8 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[5] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[5] %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -2865,11 +2865,11 @@
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=5 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[6] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[6] %>
     </P>
   </TD>
   <TD COLSPAN=8 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[7] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[7] %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -2895,11 +2895,11 @@
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=5 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[8] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[8] %>
     </P>
   </TD>
   <TD COLSPAN=8 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[9] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[9] %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -2929,11 +2929,11 @@
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=5 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[10] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[10] %>
     </P>
   </TD>
   <TD COLSPAN=8 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[11] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[11] %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -2946,11 +2946,11 @@
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=5 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[12] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[12] %>
     </P>
   </TD>
   <TD COLSPAN=8 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[13] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[13] %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
@@ -2976,11 +2976,11 @@
 </TR>
 <TR VALIGN=TOP>
   <TD COLSPAN=5 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[14] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[14] %>
     </P>
   </TD>
   <TD COLSPAN=8 WIDTH=27% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= @scribe.character_spellbook.spells[15] %>
+    <P ALIGN=CENTER><%= @character_sheet.scribe.character_spellbook.spells[15] %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border-top: none; border-bottom: none; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0in">

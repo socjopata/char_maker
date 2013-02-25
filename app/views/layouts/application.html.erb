@@ -16,6 +16,9 @@
   <nav class="navbar-inner">
     <div class="container">
       <%= render 'layouts/navigation' %>
+      <div class="navbar-beuinner">
+        <%= link_to  step_progress(@wizard), "#", :class => 'brand' if @wizard.present?  %>
+      </div>
     </div>
   </nav>
 </header>

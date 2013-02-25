@@ -13,19 +13,7 @@ class CharactersController < ApplicationController
 
 
   def show
-    @all_skills = @character.skills
-    @extra_skills = Skill.fetch_profession_skills_for(@character).select{|skill| @all_skills.include? skill }
-    @skill_names = @all_skills.map(&:name)
-
-    @weapons = @character.character_weapons
-    @shield = @character.character_shields.detect {|shield| shield.favorite?}
-    @primary_armor = @character.character_armors.where(:favorite => true).first
-    @secondary_armor =  @character.character_armors.where(:favorite => false).first
-
-    @ranged_weapon = @character.character_ranged_weapons.first
-
-    @purse =  view_context.purse_content(@character.purse.base)
-    @scribe = Scribe.new(@character)
+    @character_sheet = CharacterSheet.new(@character)
     render :layout => 'office'
   end
 

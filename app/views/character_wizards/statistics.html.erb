@@ -48,7 +48,7 @@
 <div class="row">
   <div class="span1"><%= link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "profession_and_origin_choices"), :class => "btn" %></div>
   <div class="span2 offset4"><%= link_to "Zacznij od początku", character_path(@wizard.character), :class => "btn btn-danger", :confirm => 'Napewno?', :method => :delete %></div>
-  <div class="span1 offset4"><%= link_to "Dalej", "javascript:void(0)", :class => "btn", :onclick => "attach_choices_and_proceed()" %></div>
+  <div class="span2 offset3"><%= link_to "Kolejny krok", "javascript:void(0)", :class => "btn btn-primary", :onclick => "attach_choices_and_proceed()" %></div>
 </div>
 
 

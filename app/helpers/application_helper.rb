@@ -1,6 +1,14 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
 
+  def step_progress(wizard)
+    if wizard.character.profession && wizard.character.is_of_scholar_class_type?
+      "Pozostało kroków: ~#{Wizard::SCHOLAR_STEPS - wizard.step_number}"
+    else
+      "Pozostało kroków: ~#{Wizard::REGULAR_STEPS - wizard.step_number}"
+    end
+  end
+
   def render_home_partial(page)
     case page
       when "about" then

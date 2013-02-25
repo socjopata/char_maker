@@ -4,13 +4,26 @@ class Wizard
   include Rails.application.routes.url_helpers
 
   attr_accessor :character
-  attr_reader :step, :render, :redirect, :params, :errors
+  attr_reader :step, :render, :redirect, :params, :errors, :step_number
+
+  SCHOLAR_STEPS = 8
+  REGULAR_STEPS = 7
+
+  STEP_NUMBERS = {'profession_and_origin' => 1,
+                  'profession_and_origin_choices' => 2,
+                  'statistics' => 3,
+                  'fightstyle' => 4,
+                  'skills' => 5,
+                  'clarify_skill_choices' => 6,
+                  'armament_picking' => 7,
+                  'spells' => 8
+  }
 
   def initialize(character, step, params=nil)
     @character = character
     @step = step
     @params = params
-
+    @step_number = STEP_NUMBERS[step]
     self.send(step.to_sym)
   end
 
