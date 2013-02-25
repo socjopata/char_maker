@@ -15,7 +15,7 @@
         <td><%= image_tag(character.avatar_url(:thumb)) if character.avatar? %> <%= character.name %></td>
         <td><%= character.profession.name %></td>
         <td><%= character.gender %></td>
-        <td><%= link_to 'Wyświetl karte postaci', character, :class => "btn btn-small btn-primary" %>
+        <td><%= link_to 'Wyświetl kartę postaci', character, :class => "btn btn-small btn-primary" %>
         <%= link_to 'Usuń', character_path(character), :confirm => 'Napewno?', :method => :delete, :class => "btn btn-small btn-danger" %></td>
       </tr>
   <% end %>
