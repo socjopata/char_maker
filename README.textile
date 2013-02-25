@@ -1,4 +1,4 @@
-bc.
+bc. @alantar
    _____  .__                 __
   /  _  \ |  | _____    _____/  |______ _______
  /  /_\  \|  | \__  \  /    \   __\__  \\_  __ \
@@ -46,4 +46,3 @@ bc. rspec
 h2. License
 
 I release this piece of code under MIT license.
-
