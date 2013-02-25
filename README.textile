@@ -14,10 +14,6 @@ He might be excited to try it, but the process of creating a character for play 
 
 And here comes the online characters generator :)
 
-Do you like it? Please endorse me on coderwall:
-
-"!http://api.coderwall.com/socjopata/endorsecount.png!":http://coderwall.com/socjopata"
-
 h2. Environment
 
 * ruby <1.9.3-p194> or newer
