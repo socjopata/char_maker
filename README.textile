@@ -18,7 +18,7 @@ h2. Demo
 
 Currently the application demo can be found here:
 
-[Alantar demo](http://tranquil-wave-4492.herokuapp.com/)
+http://tranquil-wave-4492.herokuapp.com/
 
 Please be patient while the application loads for the first time, as it is only one dino spawning on request.
 
