@@ -10,7 +10,7 @@ class HomeController < ApplicationController
   end
 
   def example_character_list
-    @characters = User.find_by_email("socjopata@gmail.com").characters
+    @characters = User.find_by_email("socjopata@gmail.com").characters.where(:finished => true).order("name")
   end
 
   def example_character_show
