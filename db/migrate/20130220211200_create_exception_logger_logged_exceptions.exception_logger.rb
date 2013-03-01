@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 # This migration comes from exception_logger (originally 20120507081835)
 #modifed to drop old exception logger table
 class CreateExceptionLoggerLoggedExceptions < ActiveRecord::Migration

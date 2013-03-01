@@ -34,7 +34,6 @@ CharMaker::Application.routes.draw do
   get "home/example_character_show"
 
   root :to => "home#index"
-  devise_for :users
-
+  devise_for :users, :controllers => {:registrations => "registrations"}
 
 end

@@ -1,4 +1,4 @@
-<h2>Edytuj <%= resource_name.to_s.humanize %></h2>
+<h2>Edytuj swój login / hasło</h2>
 
 <div class="container-fluid">
   <div class="row-fluid">
@@ -7,6 +7,9 @@
           <%= devise_error_messages! %>
           <fieldset>
             <label><%= f.label :email %></label>
+            <% if current_user && current_user.guest? %>
+                <span class="help-block">(oczywiście zmień ten długi i dziwny ciąg znaków na swój email)</span>
+            <% end %>
             <%= f.email_field :email %>
             <br/>
             <label><%= f.label "Hasło" %></label><span class="help-block">(zostaw puiste jeśli nie chcesz zmieniać)</span>
@@ -15,8 +18,13 @@
             <label><%= f.label "Potwierdź hasło" %></label>
             <%= f.password_field :password_confirmation %>
             <br/>
-            <label><%= f.label "Obecne hasło" %></label><span class="help-block">(potrzebujemy Twojego obecnego hasła by potwierdzić zmiany)</span>
-            <%= f.password_field :current_password %>
+            <% if current_user && current_user.guest? %>
+                <%= f.hidden_field :current_password, :value => "password" %>
+            <% else %>
+                <label><%= f.label "Obecne hasło" %></label><span class="help-block">(potrzebujemy Twojego obecnego hasła by potwierdzić zmiany)</span>
+                <%= f.password_field :current_password %>
+            <% end %>
+
             <br/>
             <%= f.submit "Uaktualnij", :class => "btn btn-primary" %>
           </fieldset>

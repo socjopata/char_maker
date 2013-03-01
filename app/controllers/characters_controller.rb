@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class CharactersController < ApplicationController
 
+  before_filter :create_guest_user_if_needed
   before_filter :user_signed_in?
   before_filter :fetch_character, :except => [:index, :create, :new]
 
@@ -56,6 +57,13 @@ class CharactersController < ApplicationController
   end
 
   private
+
+  def create_guest_user_if_needed
+    if current_user.blank?
+    user = User.create_guest and sign_in(:user, user)
+    @current_user = user
+    end
+  end
 
   def fetch_character
     @character = current_user.characters.find_by_id(params[:id])
