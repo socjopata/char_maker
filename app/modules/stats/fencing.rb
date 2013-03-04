@@ -30,8 +30,16 @@ module Stats
 
      def total_ranged_defense(shield)
        result = 20 + the_above_fifteen_zr_bonus + ranged_defense_bonus_from_skills
-       shield.present? ? (result + shield.total_defense_bonus(false) + shield.special_ranged_defense_parameter): result
+       shield.present? ? (result + shield.total_defense_bonus(false) + special_ranged_defense_parameter(shield)) : result
      end
+
+    def special_ranged_defense_parameter(shield=nil)
+      character.current_level + heavy_shield_bonus(shield)
+    end
+
+    def heavy_shield_bonus(shield)
+      shield.present? ? shield.resource.special_rules.match(/(?<=[+])(.+)(?=pkt)/)[0].to_i : 0
+    end
 
   end
 end

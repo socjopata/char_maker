@@ -732,7 +732,7 @@
     <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16"> <%= @character_sheet.character.statistics.the_above_fifteen_zr_bonus %></p></td>
     <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16"> <%= @character_sheet.shield.present? ? @character_sheet.shield.total_defense_bonus(true) : "" %></p></td>
     <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16"> <%= @character_sheet.character.statistics.ranged_defense_bonus_from_skills %></p></td>
-    <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16"> <%= @character_sheet.shield.try(:special_ranged_defense_parameter) %></p></td>
+    <td style="text-align:left;width:1.3701in; " class="Tabela5_A3"><p class="P16"> <%= @character_sheet.character.statistics.special_ranged_defense_parameter(@character_sheet.shield) %></p></td>
     <td style="text-align:left;width:0.9924in; " class="Tabela5_F3"><p class="P16"> <%= @character_sheet.character.statistics.total_ranged_defense(@character_sheet.shield) %></p></td>
   </tr>
   <tr>

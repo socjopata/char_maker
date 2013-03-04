@@ -24,14 +24,6 @@ class CharacterShield < ActiveRecord::Base
     required_strength.present? ? required_strength : "-"
   end
 
-  def special_ranged_defense_parameter
-    character.current_level + heavy_shield_bonus
-  end
-
-  def heavy_shield_bonus
-    resource.present? ? resource.special_rules.match(/(?<=[+])(.+)(?=pkt)/)[0].to_i : 0
-  end
-
   def total_defense_bonus(melee=true, options = {})
     if character.wield_style.name=="Styl walki bronią i tarczą"
       upgrade_modifier = defense_bonus.to_i
