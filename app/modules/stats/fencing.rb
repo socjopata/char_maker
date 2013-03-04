@@ -38,7 +38,7 @@ module Stats
     end
 
     def heavy_shield_bonus(shield)
-      shield.present? ? shield.resource.special_rules.match(/(?<=[+])(.+)(?=pkt)/)[0].to_i : 0
+      shield.present? ? shield.resource.special_rules.match(/(?<=[+])(.+)(?=pkt)/).to_a[0].to_i : 0
     end
 
   end
