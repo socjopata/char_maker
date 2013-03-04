@@ -29,8 +29,8 @@ module Stats
      end
 
      def total_ranged_defense(shield)
-       result = 20 + the_above_fifteen_zr_bonus + ranged_defense_bonus_from_skills + shield.special_ranged_defense_parameter
-       shield.present? ? result + shield.total_defense_bonus(false) : result
+       result = 20 + the_above_fifteen_zr_bonus + ranged_defense_bonus_from_skills
+       shield.present? ? (result + shield.total_defense_bonus(false) + shield.special_ranged_defense_parameter): result
      end
 
   end

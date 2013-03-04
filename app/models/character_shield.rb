@@ -29,15 +29,15 @@ class CharacterShield < ActiveRecord::Base
   end
 
   def heavy_shield_bonus
-    resource.special_rules.match(/(?<=[+])(.+)(?=pkt)/)[0].to_i  if resource.present?
+    resource.present? ? resource.special_rules.match(/(?<=[+])(.+)(?=pkt)/)[0].to_i : 0
   end
 
   def total_defense_bonus(melee=true, options = {})
     if character.wield_style.name=="Styl walki bronią i tarczą"
       upgrade_modifier = defense_bonus.to_i
-      shield_special_feature_bonus = (melee ? 0 : resource.ranged_defense_bonus.to_i )
+      shield_special_feature_bonus = (melee ? 0 : resource.ranged_defense_bonus.to_i)
 
-      shield.defense_bonus + upgrade_modifier +  shield_special_feature_bonus
+      shield.defense_bonus + upgrade_modifier + shield_special_feature_bonus
     else
       0
     end
