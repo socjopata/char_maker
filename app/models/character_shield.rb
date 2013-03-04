@@ -29,7 +29,7 @@ class CharacterShield < ActiveRecord::Base
   end
 
   def heavy_shield_bonus
-    resource.special_rules.match(/(?<=[+])(.+)(?=pkt)/)[0].to_i
+    resource.special_rules.match(/(?<=[+])(.+)(?=pkt)/)[0].to_i  if resource.present?
   end
 
   def total_defense_bonus(melee=true, options = {})
