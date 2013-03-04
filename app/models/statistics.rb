@@ -8,7 +8,7 @@ class Statistics < ActiveRecord::Base
   include Stats::RangeChange
   include Stats::Scholar
 
-  set_table_name "statistics"
+  self.table_name = "statistics"
 
   serialize :initial_dice_roll_set
   belongs_to :character

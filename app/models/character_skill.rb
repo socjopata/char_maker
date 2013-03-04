@@ -5,7 +5,7 @@ class CharacterSkill < ActiveRecord::Base
 
   has_one :skill_bonus_preference, :dependent => :destroy
 
-  set_table_name "character_skills"
+  self.table_name = "character_skills"
 
   after_create :push_modifiers
   after_destroy :suck_modifiers_back

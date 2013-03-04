@@ -52,7 +52,12 @@ class CharacterWeapon < ActiveRecord::Base
   end
 
   def special_defense_bonus_for_total_defense_listing
-    character.statistics.stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Obrona Bliska" }.collect(&:value).sum
+    character.statistics.stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Obrona Bliska" }.collect(&:value).sum +
+        broad_sword_and_shield_modifier
+  end
+
+  def broad_sword_and_shield_modifier
+     (character.character_shields.present? && resource.name=="Miecz Szeroki") ? 1 : 0       #TODO should this be applied to ranged defense as well? makes little sense
   end
 
   #this is for weapon group.

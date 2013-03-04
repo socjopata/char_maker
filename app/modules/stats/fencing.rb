@@ -24,16 +24,12 @@ module Stats
        overall_shooting_bonus.to_i + profession_base_parameter.to_i
      end
 
-     def special_ranged_defense_parameter
-       character.current_level
-     end
-
      def ranged_defense_bonus_from_skills
        stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Obrona Daleka" }.collect(&:value).sum
      end
 
      def total_ranged_defense(shield)
-       result = 20 + the_above_fifteen_zr_bonus + ranged_defense_bonus_from_skills + special_ranged_defense_parameter
+       result = 20 + the_above_fifteen_zr_bonus + ranged_defense_bonus_from_skills + shield.special_ranged_defense_parameter
        shield.present? ? result + shield.total_defense_bonus(false) : result
      end
 

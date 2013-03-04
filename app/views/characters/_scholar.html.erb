@@ -1824,7 +1824,7 @@
           </P>
         </TD>
         <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-          <P ALIGN=CENTER><%= (@character_sheet.shield.present? && @character_sheet.weapons[0].present?) ? @character_sheet.shield.total_defense_bonus(true) : "-" %>
+          <P ALIGN=CENTER><%= (@character_sheet.shield.present? && @character_sheet.weapons[0].present?) ? @character_sheet.shield.total_defense_bonus(true) : "" %>
           </P>
         </TD>
         <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
@@ -1896,7 +1896,7 @@
       </P>
     </TD>
     <TD WIDTH=123 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @character_sheet.shield.present? ? @character_sheet.shield.total_defense_bonus(true) : "-" %>
+      <P ALIGN=CENTER><%= @character_sheet.shield.present? ? @character_sheet.shield.total_defense_bonus(true) : "" %>
       </P>
     </TD>
     <TD WIDTH=123 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
@@ -1904,7 +1904,7 @@
       </P>
     </TD>
     <TD WIDTH=123 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= @character_sheet.character.statistics.special_ranged_defense_parameter %>
+      <P ALIGN=CENTER><%= @character_sheet.shield.special_ranged_defense_parameter %>
       </P>
     </TD>
     <TD WIDTH=86 STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">

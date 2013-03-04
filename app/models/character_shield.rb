@@ -7,7 +7,6 @@ class CharacterShield < ActiveRecord::Base
     shield
   end
 
-
   def calculate_dexterity_nerf
     dexterity_nerf.present? ? shield_upgrade_modifier = 2 : shield_upgrade_modifier = 0
     skills_modifier = character.statistics.stats_modifiers.select { |sm| sm.modifies=="armament,shields" && sm.group_name=="dexterity_nerf" && eval(sm.evaluated_instruction) }.collect(&:value).sum
@@ -25,21 +24,24 @@ class CharacterShield < ActiveRecord::Base
     required_strength.present? ? required_strength : "-"
   end
 
+  def special_ranged_defense_parameter
+    character.current_level + heavy_shield_bonus
+  end
+
+  def heavy_shield_bonus
+    resource.special_rules.match(/(?<=[+])(.+)(?=pkt)/)[0].to_i
+  end
+
   def total_defense_bonus(melee=true, options = {})
     if character.wield_style.name=="Styl walki bronią i tarczą"
       upgrade_modifier = defense_bonus.to_i
-      item_special_feature_bonus = broad_sword_plus_shield_combo(options[:melee_weapon]) #TODO Refactor this, if there is more of item stats modifiers cases
       shield_special_feature_bonus = (melee ? 0 : resource.ranged_defense_bonus.to_i )
 
-      shield.defense_bonus + upgrade_modifier + item_special_feature_bonus + shield_special_feature_bonus
+      shield.defense_bonus + upgrade_modifier +  shield_special_feature_bonus
     else
       0
     end
 
-  end
-
-  def broad_sword_plus_shield_combo(weapon)
-    weapon && weapon.name=="Miecz szeroki" ? 1 : 0
   end
 
 end
