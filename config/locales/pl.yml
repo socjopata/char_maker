@@ -9,4 +9,7 @@ en:
   intelligence: Inteligencja
   faith: Wiara
   polish: Ogłada
-
+  gold:
+    one: sztuka
+    few: sztuki
+    other: sztuk

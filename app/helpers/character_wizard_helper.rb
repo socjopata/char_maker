@@ -24,17 +24,16 @@ module CharacterWizardHelper
   end
 
   def display_choice_part(choice_part)
-
     if ["S", "ZR", "WT", "INT", "WI", "O"].include?(choice_part.modifies)
-      "#{Statistics::POLISH_NAMES[choice_part.modifies]} zostanie zmodyfikowana o #{bonus_orientation(choice_part.value)}#{choice_part.value}"
+      "<strong>#{Statistics::POLISH_NAMES[choice_part.modifies]}</strong> zostanie zmodyfikowana o <strong>#{bonus_orientation(choice_part.value)}#{choice_part.value}</strong>".html_safe
     elsif choice_part.modifies=="skills"
-      "Postać otrzyma: #{choice_part.group_name}"
+      "Postać otrzyma: <strong>#{choice_part.group_name}</strong>".html_safe
     elsif choice_part.modifies=="other"
-      "Postać otrzyma: #{choice_part.group_name}"
+      "Postać otrzyma: <strong>#{choice_part.group_name}</strong>".html_safe
     elsif choice_part.modifies=="fighting"
       "Postać otrzyma: biegłości w broni."
     elsif choice_part.modifies=="auxiliary"
-      "Parametr #{choice_part.group_name} zostanie zmodyfikowany o #{bonus_orientation(choice_part.value)}#{choice_part.value}"
+      "Parametr <strong>#{choice_part.group_name}</strong> zostanie zmodyfikowany o <strong>#{bonus_orientation(choice_part.value)}#{choice_part.value}</strong>".html_safe
     else
       "nie zdefiniowano #TODO"
     end
@@ -87,7 +86,7 @@ module CharacterWizardHelper
   def nice_and_shiny_description(skill)
     description_base = [skill.description && skill.description.humanize, skill.way_it_works && skill.way_it_works.humanize, skill.limitations && skill.limitations.humanize].join("<br /> <br />")
     requirements = skill.skill_requirements.map(&:make_human_readable).join("<br />")
-    (description_base + (requirements.present? ? ("<br /> <br /><strong>Wymagania: </strong><br /> <br />" + requirements) : "" )).html_safe
+    (description_base + (requirements.present? ? ("<br /> <br /><strong>Wymagania: </strong><br /> <br />" + requirements) : "")).html_safe
   end
 
   def present_choice_subject(sm)
@@ -206,6 +205,11 @@ module CharacterWizardHelper
     elements
   end
 
+  def checked_fightstyle(wizard, style)
+    return true if style=="Brutalny" && (wizard.character.statistics.calculate_s > wizard.character.statistics.calculate_zr)
+    return true if style=="Finezyjny" && (wizard.character.statistics.calculate_s < wizard.character.statistics.calculate_zr)
+    wizard.character.fight_style.try(:name)==style
+  end
 
 end
 
