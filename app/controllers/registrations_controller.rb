@@ -4,7 +4,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   def new
     if current_user.blank?
-      super
+      resource = build_resource({})
+      render "devise/registrations/new"
     else
       self.resource = current_user
       render "devise/registrations/edit"

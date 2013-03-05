@@ -1,4 +1,4 @@
-<h2>Edytuj swój login / hasło</h2>
+<%= content_tag :h2, (current_user.guest? ? "Ustaw swój login i hasło" : "Edytuj swój login / hasło") %>
 
 <div class="container-fluid">
   <div class="row-fluid">
@@ -8,11 +8,15 @@
           <fieldset>
             <label><%= f.label :email %></label>
             <% if current_user && current_user.guest? %>
-                <span class="help-block">(oczywiście zmień ten długi i dziwny ciąg znaków na swój email)</span>
+                <%= f.email_field :email, :value => "" %>
+            <% else %>
+                <%= f.email_field :email %>
             <% end %>
-            <%= f.email_field :email %>
             <br/>
-            <label><%= f.label "Hasło" %></label><span class="help-block">(zostaw puiste jeśli nie chcesz zmieniać)</span>
+            <label><%= f.label "Hasło" %></label>
+            <% unless current_user && current_user.guest? %>
+                <span class="help-block">(zostaw puiste jeśli nie chcesz zmieniać)</span>
+            <% end %>
             <%= f.password_field :password %>
             <br/>
             <label><%= f.label "Potwierdź hasło" %></label>
@@ -31,11 +35,12 @@
       <% end %>
     </div>
     <div class="span6">
-      <h3>Usuń moje konto</h3>
+      <% unless current_user && current_user.guest? %>
+          <h3>Usuń moje konto</h3>
 
-      Niezadowolony? <%= link_to "Usuń moje konto", registration_path(resource_name), :confirm => "Napewno?", :method => :delete, :class => 'btn btn-danger' %>
+          Niezadowolony? <%= link_to "Usuń moje konto", registration_path(resource_name), :confirm => "Napewno?", :method => :delete, :class => 'btn btn-danger' %>
+      <% end %>
       <br/>
-      <%= link_to "Cofnij", :back, :class => 'btn' %>
     </div>
   </div>
 </div>
