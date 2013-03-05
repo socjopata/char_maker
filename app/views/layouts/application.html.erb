@@ -15,9 +15,12 @@
 <header class="navbar navbar-fixed-top">
   <nav class="navbar-inner">
     <div class="container">
-      <%= render 'layouts/navigation' %>
-      <div class="navbar-beuinner">
-        <%= link_to  step_progress(@wizard), "#", :class => 'brand' if @wizard.present?  %>
+      <div class="span6">
+        <%= render 'layouts/navigation' %></div>
+      <div class="span4 navbar-padding">
+        <div class="progress progress-striped active">
+          <div class="bar" style="width: <%= step_progress(@wizard)-%>%;"></div>
+        </div>
       </div>
     </div>
   </nav>
@@ -34,7 +37,9 @@
       <footer>
       </footer>
     </div>
-  </div> <!--! end of .container -->
-</div> <!--! end of #main -->
+  </div>
+  <!--! end of .container -->
+</div>
+<!--! end of #main -->
 </body>
 </html>

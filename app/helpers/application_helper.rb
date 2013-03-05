@@ -2,10 +2,14 @@
 module ApplicationHelper
 
   def step_progress(wizard)
-    if wizard.character.profession && wizard.character.is_of_scholar_class_type?
-      "Pozostało kroków: ~#{Wizard::SCHOLAR_STEPS - wizard.step_number}"
+    if wizard
+      if wizard.character.profession && wizard.character.is_of_scholar_class_type?
+        ((wizard.step_number.to_f / Wizard::SCHOLAR_STEPS.to_f) * 100).round
+      else
+        ((wizard.step_number.to_f / Wizard::REGULAR_STEPS.to_f) * 100).round
+      end
     else
-      "Pozostało kroków: ~#{Wizard::REGULAR_STEPS - wizard.step_number}"
+      0
     end
   end
 
