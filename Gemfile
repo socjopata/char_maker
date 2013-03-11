@@ -2,23 +2,24 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
 
-
 gem 'pg'#, '>= 0.14.1'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
-
 gem 'jquery-rails'
-gem 'magic_encoding' ## coding: utf-8  type magic_encoding in the console
 gem 'exception_logger', :require => 'exception_logger', :git =>  'git://github.com/ryancheung/exception_logger.git'
 gem 'galetahub-simple_captcha', :require => 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 gem 'pdfkit'
 gem 'thin'
-gem 'pry'
+
 gem 'simple_form'
 gem 'will_paginate'
 
 group :development, :test do
+  gem 'magic_encoding' ## coding: utf-8  type magic_encoding in the console
+  gem 'pry'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'rspec-rails'
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem 'launchy'
