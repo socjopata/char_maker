@@ -1,53 +1,53 @@
 # Additional translations at http://github.com/plataformatec/devise/wiki/I18n
 
-en:
+pl:
   errors:
     messages:
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      already_confirmed: "was already confirmed, please try signing in"
-      not_locked: "was not locked"
+      expired: "stracił ważność, prosze wyślij zapytanie o nowy"
+      not_found: "nie znaleziono"
+      already_confirmed: "został juz potwierdzony, może spróbuj się zalogowac?"
+      not_locked: "nie był zablokowany"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "nastepujący błąd uniemożliwił zapisanie %{resource} :"
+        other: "wystąpiły błędy w ilości: %{count}. %{resource} nie mógł być zapisany ponieważ:"
 
   devise:
     failure:
-      already_authenticated: 'You are already signed in.'
-      unauthenticated: 'You need to sign in or sign up before continuing.'
-      unconfirmed: 'You have to confirm your account before continuing.'
-      locked: 'Your account is locked.'
-      invalid: 'Invalid email or password.'
-      invalid_token: 'Invalid authentication token.'
-      timeout: 'Your session expired, please sign in again to continue.'
-      inactive: 'Your account was not activated yet.'
+      already_authenticated: 'Już jesteś zalogowany.'
+      unauthenticated: 'Aby kontynuować musisz się zalogować.'
+      unconfirmed: 'Aby kontynuować musisz uaktywnić swoje konto.'
+      locked: 'Twoje konto zostało zablokowane.'
+      invalid: 'Nieprawidłowy email bądź hasło.'
+      invalid_token: 'Nieprawidłowy token autoryzacyjny.'
+      timeout: 'Twoja sesja wygasła, musisz się zalogować jeszcze raz.'
+      inactive: 'Twoje konto nie zostało jeszcze aktywowanet.'
     sessions:
-      signed_in: 'Signed in successfully.'
-      signed_out: 'Signed out successfully.'
+      signed_in: 'Zostałeś prawidłowo zalogowany.'
+      signed_out: 'Zostałeś prawidłowo wylogowany.'
     passwords:
-      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: 'Your password was changed successfully. You are now signed in.'
-      send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
+      send_instructions: 'W ciągu kilku minut powinieneś otrzymać e-maila z instrukcjami jak aktywować konto.'
+      updated: 'Hasło zostało pomyslnie zmienione. Zostałeś zalogowany'
+      send_paranoid_instructions: "Jesli Twój email istnieje w naszej abzie danych, otrzymasz e-maila z instrukcją jak zresetować hasło."
     confirmations:
-      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
-      send_paranoid_instructions: 'If your e-mail exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+      send_instructions: 'W ciągu kilku minut powinieneś otrzymać email z instrukcjami jak potwierdzić swoje konto.'
+      send_paranoid_instructions: 'Jesli Twój email istnieje w naszej abzie danych, otrzymasz e-maila z instrukcją jak aktywować konto.'
+      confirmed: 'Kontio zostało pomyślnie aktywowane. Zostałeś zalogowany.'
     registrations:
-      signed_up: 'Welcome! You have signed up successfully.'
-      inactive_signed_up: 'You have signed up successfully. However, we could not sign you in because your account is %{reason}.'
-      updated: 'You updated your account successfully.'
-      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      signed_up: 'Witamy! Zostałeś pomyślnie zalogowany.'
+      inactive_signed_up: 'Zarejestrowałeś sie pomyślnie. Aczkolwiek nie mogliśmy Cię automatycznie zalogować ponieważ %{reason}.'
+      updated: 'Zmiany zostały pomyślnie zapisane.'
+      destroyed: 'Z przykrością żegnamy :( Twoje konto zostało pomyślnie usunięte.'
     unlocks:
-      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
-      unlocked: 'Your account was successfully unlocked. You are now signed in.'
-      send_paranoid_instructions: 'If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.'
+      send_instructions: 'W ciągu kilku minut powinieneś otrzymać email z instrukcjami jak odblokować swoje konto.'
+      unlocked: 'Twoje konto zostało pomyślnie odblokowane. Zostałeś zalogowany.'
+      send_paranoid_instructions: 'Jeśli Twoje konto istnieje, w ciagu kilku minut otrzymasz instrukcje jak je odblokować.'
     omniauth_callbacks:
-      success: 'Successfully authorized from %{kind} account.'
-      failure: 'Could not authorize you from %{kind} because "%{reason}".'
+      success: 'Uwierzytelniony pomyślnie dzięki %{kind}.'
+      failure: 'Nie mogliśmy cię zalogować poprzez %{kind} ponieważ "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'Confirmation instructions'
+        subject: 'Potwierdzenie Twojego konta'
       reset_password_instructions:
-        subject: 'Reset password instructions'
+        subject: 'Resetowanie hasła'
       unlock_instructions:
-        subject: 'Unlock Instructions'
+        subject: 'Odblokowywanie konta'
