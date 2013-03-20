@@ -60,7 +60,7 @@ s_choice.stats_modifiers.create(:modifies => "skills", :value => 0, :group_name 
 
 
 _profession = Profession.create(:name => "Dziecię Sirtol", :general_type => "soldier", :skill_points => 2, :attack => 6 ,:defense => 19 , :shooting => 12, :starting_weapon_proficiency => 2, :preferred_weapon_proficiency => nil , :available_armors => "Lekkie, Typowe, Ciężkie")
-_profession.countries << [Country.find_all_by_name(["Wielkie Stepy", "Góry Księżycowe i Niczyje"])]
+_profession.countries << [Country.find_all_by_name(["Alantar", "Archipelag Południowy", "Góry Księżycowe i Niczyje", "Nimer", "Pelmir", "Wielkie Stepy", "Księstwa Wysp Północy", "Ziemie Sirtol", "Złote Królestwa"])]
 
 s_choice = _profession.stats_choices.create(:applies_to => nil, :condition => nil )
 
