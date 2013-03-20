@@ -42,7 +42,7 @@ class CharactersController < ApplicationController
   def update
     respond_to do |format|
       if @character.update_attributes(params[:character])
-        format.html { redirect_to(first_step_character_wizard_path(:char_id => @character.id)) }
+        format.html {  redirect_to(character_wizard_path(:char_id => @character.id, :step => "profession_and_origin")) }
       else
         format.html { render :action => "edit" }
       end
