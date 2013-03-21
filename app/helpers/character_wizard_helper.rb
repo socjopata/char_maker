@@ -206,9 +206,12 @@ module CharacterWizardHelper
   end
 
   def checked_fightstyle(wizard, style)
-    return true if style=="Brutalny" && (wizard.character.statistics.calculate_s > wizard.character.statistics.calculate_zr)
-    return true if style=="Finezyjny" && (wizard.character.statistics.calculate_s < wizard.character.statistics.calculate_zr)
-    wizard.character.fight_style.try(:name)==style
+    if wizard.character.fight_style.present?
+      return true if wizard.character.fight_style.name==style.name
+    else
+      return true if style.name=="Brutalny" && (wizard.character.statistics.calculate_s > wizard.character.statistics.calculate_zr)
+      return true if style.name=="Finezyjny" && (wizard.character.statistics.calculate_s < wizard.character.statistics.calculate_zr)
+    end
   end
 
 end

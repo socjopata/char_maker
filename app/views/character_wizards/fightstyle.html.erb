@@ -10,7 +10,7 @@
 
           <% FightStyle.all.each do |style| %>
               <label class="radio inline">
-                <%= radio_button_tag "fight_style_id", style.id, :checked => checked_fightstyle(@wizard, style), :disabled => (@wizard.character.profession.general_type=="rogue") ? true : false %> <%= style.name %>
+                <%= radio_button_tag "fight_style_id", style.id, checked_fightstyle(@wizard, style), :disabled => (@wizard.character.profession.general_type=="rogue") ? true : false %> <%= style.name %>
               </label>
           <% end %>
 
