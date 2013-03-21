@@ -622,7 +622,7 @@
     <td style="text-align:left;width:1.1125in; " class="Tabela1_F6"><p class="P16"> <%= @character_sheet.ranged_weapon.bonus_from_special_rules if @character_sheet.ranged_weapon.present?  %> </p></td>
     <td style="text-align:left;width:0.6111in; " class="Tabela1_G6"><p class="P16"> <%= @character_sheet.ranged_weapon.weapon_accuracy if @character_sheet.ranged_weapon.present?  %></p></td>
     <td style="text-align:left;width:0.7708in; " class="Tabela1_H6"><p class="P16"> <%= @character_sheet.ranged_weapon.character_shooting_skill if @character_sheet.ranged_weapon.present?  %> </p></td>
-    <td style="text-align:left;width:0.6944in; " class="Tabela1_I6"><p class="P16"> <%= parameter_with_bonus_orientation(@character.statistics.calculate_dexterity_bonus)  if @character_sheet.ranged_weapon.present?  %> </p></td>
+    <td style="text-align:left;width:0.6944in; " class="Tabela1_I6"><p class="P16"> <%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_dexterity_bonus)  if @character_sheet.ranged_weapon.present?  %> </p></td>
     <td style="text-align:left;width:0.7688in; " class="Tabela1_J6"><p class="P16"> <%= @character_sheet.ranged_weapon.total_hit_chance_parameter if @character_sheet.ranged_weapon.present?  %> </p></td>
   </tr>
 </table>
