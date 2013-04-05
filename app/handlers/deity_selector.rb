@@ -7,10 +7,10 @@ class DeitySelector
   WARRIOR_CLERIC_DEITIES = ["Alaj", "Durgil", "Fortuna", "Kastor", "Smoczy Bóg", "Sirtol", "Syrion"]
   SHAMAN_DEITIES = ["Magni", "Kal-Kalar", "Galos i Malos", "Calisto"]
 
-  attr_accessor :deities
+  attr_accessor :deities, :country
 
   def initialize(character, country_id, profession_id)
-    country = Country.find(country_id)
+    @country = Country.find(country_id)
     profession = Profession.find(profession_id)
     @deities = prepare_deities_list(character, country, profession)
   end

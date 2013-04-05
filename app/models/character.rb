@@ -135,8 +135,8 @@ class Character < ActiveRecord::Base
     errors
   end
 
-  def is_of_scholar_class_type?
-    Profession::CASTER_CLASSES.include?(profession.name)
+  def is_of_scholar_class_type?(except=[])
+    (Profession::CASTER_CLASSES - Array.wrap(except)).include?(profession.name)
   end
 
   def is_a_cleric?

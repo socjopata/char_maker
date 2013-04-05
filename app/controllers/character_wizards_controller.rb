@@ -36,7 +36,7 @@ class CharacterWizardsController < ApplicationController
 
   def update_deities_select
     deity_selector = DeitySelector.new(@character, params[:id], params[:profession_id])
-    render :partial => "deities", :locals => {:deities => deity_selector.deities}
+    render :partial => "deities", :locals => {:deities => deity_selector.deities, :country => deity_selector.country}
   end
 
   def toggle_skill

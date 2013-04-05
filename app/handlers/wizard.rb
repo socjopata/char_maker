@@ -157,7 +157,7 @@ class Wizard
   def armament_picking
     if params
       if @character.has_valid_shopping_list?(@character.session[:coins_left])
-        if @character.is_of_scholar_class_type?
+        if @character.is_of_scholar_class_type?("Alchemik")
           @redirect = character_wizard_path(:char_id => @character, :step => "spells")
         else
           @character.finish!
