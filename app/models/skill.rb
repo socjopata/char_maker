@@ -7,7 +7,8 @@ class Skill < ActiveRecord::Base
 
 
   scope :basic, where(:profession_type => "default")
-  scope :fetch_for_type, lambda { |type| {:conditions => {:profession_type => type}} }
+  scope :fetch_for_type, lambda { |type| where(:profession_type => type) }
+  scope :fetch_for_level, lambda {|level| joins(:skill_requirements).where("skill_requirements.check_applies_to = 'experience' AND  skill_requirements.value = ?", level)}
 
   #IDEA how about the concept of favorite weapon? Some skills give bonuses to certain weapons and armors.
   #Each skill would give an option to set up something on a screen after skill choice step but before arment step. Favorites would clear if going backwards

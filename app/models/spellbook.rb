@@ -12,7 +12,8 @@ class Spellbook < ActiveRecord::Base
 
   def draw_spells
       spell_indexes = [*1..30].sample(5)
-      spells = Spell.set_for(character).select {|s| spell_indexes.include?(s.index) }
+      spells = Spell.set_for(character)
+      spells = spells.select {|s| spell_indexes.include?(s.index) } if character.profession.name != "Alchemik"
 
       spells.each do |spell|
         SpellbookSpell.create(:spellbook_id => self.id, :spell_id => spell.id)
