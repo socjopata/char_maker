@@ -127,13 +127,18 @@ class Wizard
       @character.update_attribute(:session, @character.session.merge({:weapon_class_preference_left => @character.statistics.calculate_weapon_class_proficiencies_points}))
       @redirect = character_wizard_path(:char_id => @character.id, :step => "clarify_skill_choices")
     else
-      @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
-      @basic_skills = Skill.basic
-      @caste_skills = Skill.fetch_caste_skills_for(@character)
-      @profession_skills = Skill.fetch_profession_skills_for(@character)
-      @cannot_select_skills = Skill.filter_nonselectable((@basic_skills + @caste_skills + @profession_skills), @character, @strength, @dexterity, @endurance, @intelligence, @faith, @polish)
-      @free_skill_amount = Skill.calculate_free_skill_amount(@character, @character.session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@intelligence].to_i, @character.session[:skills_used].to_i)
-      set_template_to_render
+      if @character.session[:skill_free_assignment_base].nil?
+        @redirect = character_wizard_path(:char_id => @character.id, :step => "statistics")
+        @errors = "Używaj przycisków <<Kolejny krok>> oraz <<Wróć>> do nawigowania po aplikacji. Używanie 'strzałek przeglądarki może powodować ten błąd'."
+      else
+        @strength, @dexterity, @endurance, @intelligence, @faith, @polish = @character.statistics.calculate_main_stats
+        @basic_skills = Skill.basic
+        @caste_skills = Skill.fetch_caste_skills_for(@character)
+        @profession_skills = Skill.fetch_profession_skills_for(@character)
+        @cannot_select_skills = Skill.filter_nonselectable((@basic_skills + @caste_skills + @profession_skills), @character, @strength, @dexterity, @endurance, @intelligence, @faith, @polish)
+        @free_skill_amount = Skill.calculate_free_skill_amount(@character, @character.session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@intelligence].to_i, @character.session[:skills_used].to_i)
+        set_template_to_render
+      end
     end
   end
 
