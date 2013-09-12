@@ -665,7 +665,7 @@ item = Weapon.create(
   :crushing_dmg => 0,
   :attack_bonus => 2,
   :defense_bonus => 5,
-  :special_rules => "Trafienie Krytyczne na 29-30",
+  :special_rules => "",
   :price => 3000
   )
 item.armament_requirements.create(:check_applies_to => "fightstyle", :name => "Finezyjny" )
