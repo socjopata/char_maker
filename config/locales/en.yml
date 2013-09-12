@@ -9,3 +9,7 @@ en:
   intelligence: Intelligence
   faith: Faith
   polish: Polish
+  gold:
+    one: piece of
+    few: peices of
+    other: pieces of
