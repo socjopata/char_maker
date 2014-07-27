@@ -24,11 +24,9 @@ group :development, :test do
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem 'launchy'
   gem 'database_cleaner'
-  gem 'kameleon'
   gem 'factory_girl_rails', "~> 4.0"
   gem 'ffaker'
 end
-
 
 group :assets do
   gem 'sass-rails', '~> 3.2.5'
