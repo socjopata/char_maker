@@ -238,7 +238,7 @@ skill = Skill.create(:profession_type => "finesse",
                      :way_it_works => "kara za celowanie w głowę lub inną kończynę zmniejszana jest o 1pkt/poziom postaci.
 Umiejętność Pasywna." )
 
-skill.skill_requirements.create(:check_applies_to => "skill", :name => "Celny cios" )
+skill.skill_requirements.create(:check_applies_to => "skill", :name => "Celny Cios" )
 
 skill = Skill.create(:profession_type => "finesse",
                      :name => "Responsa",
