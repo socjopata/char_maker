@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 require 'spec_helper'
 
+#TODO These are a legacy specs, to be removed, after properly written specs are in place.
+
 describe Wizard do
   before(:each) do
     @character = FactoryGirl.create(:character)
