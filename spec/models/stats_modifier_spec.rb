@@ -43,5 +43,16 @@ describe StatsModifier do
 
     it { expect(StatsModifier.bonus_preferences_for(character_skill.character.id, choice_name)).to eq [stats_modifier] }
   end
+
+  describe '.of_group' do
+    let!(:stats_modifier) { create(:stats_modifier, group_name: group_name) }
+    let(:group_name) { 'Special group' }
+
+    it { expect(StatsModifier.of_group(group_name)).to eq [stats_modifier] }
+  end
+
+  describe '.default' do
+    pending 'database dependent test'
+  end
 end
 
