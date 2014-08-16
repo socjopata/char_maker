@@ -54,5 +54,23 @@ describe StatsModifier do
   describe '.default' do
     pending 'database dependent test'
   end
+
+  describe '#grand_daddy' do
+    let(:stats_modifier) { create(:stats_modifier) }
+
+    before do
+      stats_modifier.stub_chain(:stats_choice, :resource).and_return('resource')
+    end
+
+    it { expect(stats_modifier.grand_daddy).to eq 'resource' }
+  end
+
+  describe '#as_character_skill' do
+    let(:stats_choice) { create(:stats_choice, resource: character_skill.skill) }
+    let!(:stats_modifier) { create(:stats_modifier, stats_choice: stats_choice) }
+    let(:character_skill) { create(:character_skill) }
+
+    it { expect(stats_modifier.as_character_skill(character_skill.character)).to eq character_skill }
+  end
 end
 
