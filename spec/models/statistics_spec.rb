@@ -74,4 +74,28 @@ describe Statistics do
 
     it {expect(statistics.push_origin_stats_modifiers(params)).to be_true}
   end
+
+  describe '#push_stats' do
+    let(:statistics) { Statistics.new }
+    let(:params) { {stats_choice.id => 'Inteligencja'} }
+    let(:stats_choice) { create(:stats_choice) }
+    let!(:stats_modifier) { create(:stats_modifier, stats_choice: stats_choice) }
+
+    before do
+      statistics.push_stats(params)
+    end
+
+    it { expect(statistics.stats_modifiers).to eq [stats_modifier] }
+  end
+
+  describe '#push_profession_modifiers' do
+    let(:statistics) { Statistics.new }
+    let(:stats_modifiers) { [create(:stats_modifier, modifies: 'skills', group_name: 'Czytanie i Pisanie')] }
+
+    before do
+      statistics.stub_chain(:character, :profession, :stats_choices, :collect).and_return(stats_modifiers)
+    end
+
+    it { expect(statistics.push_profession_modifiers).to eq [stats_modifiers.first.group_name] }
+  end
 end
