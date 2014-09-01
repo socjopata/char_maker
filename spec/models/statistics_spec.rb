@@ -98,4 +98,19 @@ describe Statistics do
 
     it { expect(statistics.push_profession_modifiers).to eq [stats_modifiers.first.group_name] }
   end
+
+  describe '#convert_stat_choices_to_skills' do
+    let(:statistics) { Statistics.new }
+    let(:character) { create(:character) }
+    let!(:stats_modifiers) { [create(:stats_modifier, modifies: 'skills', group_name: 'test skill')] }
+    let!(:skill) { create(:skill, name: 'test skill' )}
+
+    before do
+      statistics.stub_chain(:character, :id) { character.id }
+      statistics.stub_chain(:character, :profession, :skill_points).and_return(1)
+      statistics.stats_modifiers << stats_modifiers
+    end
+
+    it {expect(statistics.convert_stat_choices_to_skills).to eq [1, [skill.id]]}
+  end
 end
