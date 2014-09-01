@@ -61,7 +61,7 @@ describe Statistics do
       statistics.stub(:push_stats).and_return(true)
     end
 
-    it {expect(statistics.push_social_class_stats_modifiers(params)).to be_true}
+    it { expect(statistics.push_social_class_stats_modifiers(params)).to be_true }
   end
 
   describe '#push_origin_stats_modifiers' do
@@ -72,7 +72,7 @@ describe Statistics do
       statistics.stub(:push_stats).and_return(true)
     end
 
-    it {expect(statistics.push_origin_stats_modifiers(params)).to be_true}
+    it { expect(statistics.push_origin_stats_modifiers(params)).to be_true }
   end
 
   describe '#push_stats' do
@@ -103,7 +103,7 @@ describe Statistics do
     let(:statistics) { Statistics.new }
     let(:character) { create(:character) }
     let!(:stats_modifiers) { [create(:stats_modifier, modifies: 'skills', group_name: 'test skill')] }
-    let!(:skill) { create(:skill, name: 'test skill' )}
+    let!(:skill) { create(:skill, name: 'test skill') }
 
     before do
       statistics.stub_chain(:character, :id) { character.id }
@@ -111,6 +111,16 @@ describe Statistics do
       statistics.stats_modifiers << stats_modifiers
     end
 
-    it {expect(statistics.convert_stat_choices_to_skills).to eq [1, [skill.id]]}
+    it { expect(statistics.convert_stat_choices_to_skills).to eq [1, [skill.id]] }
+  end
+
+  describe '#calculate_weapon_class_proficiencies_points' do
+    let(:statistics) { Statistics.new }
+
+    before do
+      statistics.stub_chain(:character, :profession, :starting_weapon_proficiency).and_return(1)
+    end
+
+    it { expect(statistics.calculate_weapon_class_proficiencies_points).to eq 1 }
   end
 end
