@@ -39,11 +39,9 @@ module Stats
       combined_dexterity_nerf = armor.try(:calculate_dexterity_nerf).to_i + shield.try(:calculate_dexterity_nerf).to_i
 
       result = combined_dexterity_nerf + calculate_zr
-
       return 1 if result < 1
       return combined_dexterity_cap if result > combined_dexterity_cap
-      return result if result < combined_dexterity_cap
-
+      return result if result <= combined_dexterity_cap
     end
 
     def calculate_main_skill_bonus_for(name)
