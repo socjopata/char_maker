@@ -22,7 +22,7 @@ module Stats
      end
 
      def calculate_life_points
-       AuxiliaryParameterSet::HIT_POINTS[character.profession.general_type] + character.statistics.calculate_wt + calculate_auxiliary_bonus("Punkty Życia")
+       AuxiliaryParameterSet::HIT_POINTS[character.profession.general_type] + calculate_wt + calculate_auxiliary_bonus("Punkty Życia")
      end
 
      def calculate_running
