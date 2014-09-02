@@ -162,4 +162,103 @@ describe Statistics do
       it { expect(statistics.calculate_current_zr).to eq 19 }
     end
   end
+
+  describe '#calculate_main_skill_bonus_for' do
+    let(:statistics) { Statistics.new(dexterity: 20) }
+    let(:name) { 'some name' }
+    let!(:stats_modifiers) { [create(:stats_modifier, modifies: name, group_name: 'test skill')] }
+
+    before do
+      statistics.stats_modifiers << stats_modifiers
+    end
+
+    it { expect(statistics.calculate_main_skill_bonus_for(name)).to eq 2 }
+  end
+
+  #TODO consider refactoring two following specs
+  describe '#trait_modifier_for_main_skill_named' do
+    let(:statistics) { Statistics.new(dexterity: 20) }
+    let(:name) { 'some name' }
+    let!(:stats_modifiers) { [create(:stats_modifier, modifies: name, group_name: 'test skill')] }
+
+    before do
+      statistics.stub_chain(:character, :character_background, :traits, :present?).and_return(true)
+      statistics.stub_chain(:character, :character_background, :traits, :first, :stats_choices, :present?).and_return(true)
+      statistics.stub_chain(:character, :character_background, :traits, :first, :stats_choices, :first, :stats_modifiers).and_return(stats_modifiers)
+    end
+
+    it { expect(statistics.trait_modifier_for_main_skill_named(name)).to eq 2 }
+  end
+
+  describe '#trait_modifier_for_auxiliary_parameter_named' do
+    let(:statistics) { Statistics.new(dexterity: 20) }
+    let(:name) { 'some name' }
+    let!(:stats_modifiers) { [create(:stats_modifier, modifies: 'test', group_name: name)] }
+
+    before do
+      statistics.stub_chain(:character, :character_background, :traits, :present?).and_return(true)
+      statistics.stub_chain(:character, :character_background, :traits, :first, :stats_choices, :present?).and_return(true)
+      statistics.stub_chain(:character, :character_background, :traits, :first, :stats_choices, :first, :stats_modifiers).and_return(stats_modifiers)
+    end
+
+    it { expect(statistics.trait_modifier_for_auxiliary_parameter_named(name)).to eq 2 }
+  end
+
+  describe '#calculate_dexterity_bonus' do
+    let(:statistics) { Statistics.new }
+
+    before { statistics.stub(:calculate_zr) { 13 } }
+
+    it { expect(statistics.calculate_dexterity_bonus).to eq 1 }
+  end
+
+  describe '#calculate_strength_bonus' do
+    let(:statistics) { Statistics.new }
+
+    before { statistics.stub(:calculate_s) { 13 } }
+
+    it { expect(statistics.calculate_strength_bonus).to eq 1 }
+  end
+
+  describe '#calculate_dexterity_and_strength_bonus' do
+    let(:statistics) { Statistics.new }
+
+    before { statistics.stub(:calculate_zr) { 13 } }
+    before { statistics.stub(:calculate_s) { 16 } }
+
+    it { expect(statistics.calculate_dexterity_and_strength_bonus).to eq 2 }
+  end
+
+  describe '#the_above_fifteen_zr_bonus' do
+    let(:statistics) { Statistics.new }
+
+    context 'character dexterity is pretty low' do
+      before { statistics.stub(:calculate_current_zr) { 10 } }
+
+      it { expect(statistics.the_above_fifteen_zr_bonus).to eq 0 }
+    end
+
+    context 'character dexterity is high enough for bonus to be present' do
+      before { statistics.stub(:calculate_current_zr) { 19 } }
+
+      it { expect(statistics.the_above_fifteen_zr_bonus).to eq 4 }
+    end
+  end
+
+  describe '#special_bonus_from_weapons' do
+    let(:statistics) { Statistics.new }
+    let(:character) { double }
+
+    context 'character has noble mace equiped' do
+      before { character.stub_chain(:weapons, :where, :first).and_return(true) }
+
+      it { expect(statistics.special_bonus_from_weapons(character)).to eq 1 }
+    end
+
+    context 'character has some other weapon equiped' do
+      before { character.stub_chain(:weapons, :where, :first).and_return(false) }
+
+      it { expect(statistics.special_bonus_from_weapons(character)).to eq 0 }
+    end
+  end
 end
