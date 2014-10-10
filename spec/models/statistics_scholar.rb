@@ -52,4 +52,17 @@ describe Statistics do
 
     it { expect(statistics.mana_bonuses_from_skills).to be_within(5).of(10) }
   end
+
+  describe '#calculate_casting' do
+    let(:statistics) { Statistics.new }
+
+    before do
+      statistics.stub(:main_parameter_bonus) { 1 }
+      statistics.stub(:character_level_bonus) { 1 }
+      statistics.stub(:bonus_from_skills) { 1 }
+      statistics.stub(:special_casting_bonus) { 1 }
+    end
+
+    it { expect(statistics.calculate_casting).to eq 4 }
+  end
 end
