@@ -15,8 +15,8 @@ module Stats
 
     def mana_bonuses_from_skills
       bonuses = stats_modifiers.select { |sm| sm.modifies=="power level" }
-      evaluated_bonuses = bonuses.select { |sm| sm.value==0 }.map { |sm| sm.group_name.split("k").first.to_i.d(sm.group_name.split("k").last.to_i) }.collect(&:value).sum
-      evaluated_bonuses + bonuses.collect(&:value).sum
+      evaluated_bonuses = bonuses.select { |sm| sm.value==0 }.map { |sm| sm.group_name.split("k").first.to_i.d(sm.group_name.split("k").last.to_i) }
+      (evaluated_bonuses + bonuses.collect(&:value)).sum
     end
 
     #----------------------
