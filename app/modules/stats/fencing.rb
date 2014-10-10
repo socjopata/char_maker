@@ -37,8 +37,8 @@ module Stats
       character.current_level + heavy_shield_bonus(shield)
     end
 
-    def heavy_shield_bonus(shield)
-      shield.present? ? shield.resource.special_rules.match(/(?<=[+])(.+)(?=pkt)/).to_a[0].to_i : 0
+    def heavy_shield_bonus(character_shield)
+      character_shield.present? ? character_shield.resource.special_rules.match(/(?<=[+])(.+)(?=pkt)/).to_a[0].to_i : 0
     end
 
   end
