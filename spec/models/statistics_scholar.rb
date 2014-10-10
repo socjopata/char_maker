@@ -40,4 +40,16 @@ describe Statistics do
       it { expect(statistics.calculate_mana_points).to be_within(5).of(56) }
     end
   end
+
+  describe 'mana_bonuses_from_skills' do
+    let(:statistics) { Statistics.new }
+    let!(:stats_modifiers) { [create(:stats_modifier, modifies: 'power level', value: 5),
+                              create(:stats_modifier, modifies: 'power level', value: 0, group_name: '1k10')] }
+
+    before do
+      statistics.stats_modifiers << stats_modifiers
+    end
+
+    it { expect(statistics.mana_bonuses_from_skills).to be_within(5).of(10) }
+  end
 end
