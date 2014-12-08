@@ -8,8 +8,10 @@ class SkillRequirement < ActiveRecord::Base
     case self.check_applies_to
       when "skill"
         !character.skills.map(&:name).include?(self.name)
-      when "statistics"
-        (self.name.match /OR:\s/).present? ? (name.gsub("OR: ", "").split(",").none? { |string| self.value.to_i > skills[SkillRequirement::INDEX[string]] }) : (self.value.to_i > skills[SkillRequirement::INDEX[self.name]])
+      when 'statistics'
+        (self.name.match /OR:\s/).present? ?
+            (name.gsub("OR: ", "").split(",").reject { |string| self.value.to_i > skills[SkillRequirement::INDEX[string]] }.size.zero?) :
+            (self.value.to_i > skills[SkillRequirement::INDEX[self.name]])
       when "experience"
         true #currently all characters are 1 lvl, so..
       when "social_class"
