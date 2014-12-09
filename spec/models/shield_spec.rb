@@ -9,6 +9,6 @@ describe Shield do
       subject.stub_chain(:stats_choices, :first, :stats_modifiers, :where, :first) { StatsModifier.new(value: 1) }
     end
 
-    it { expect(subject.ranged_defense_bonus).to eq 1}
+    it { expect(subject.ranged_defense_bonus).to eq 1 }
   end
 end
