@@ -263,14 +263,49 @@ describe CharacterWeapon do
 
   #TODO included methods
   describe '#collection_of_stats_modifiers' do
+    let(:character_weapon) { CharacterWeapon.new }
+    let(:name) { 'name' }
+    let(:id) { 1 }
 
+    context 'weapon_name' do
+      it do
+        character_weapon.stub_chain(:resource, :name).and_return(name)
+        character_weapon.stub_chain(:character, :id).and_return(id)
+        allow(StatsModifier).to receive(:bonus_preferences_for)
+        character_weapon.collection_of_stats_modifiers('weapon_name')
+      end
+    end
+
+    context 'weapon_group_name' do
+      it do
+        character_weapon.stub_chain(:resource, :group_name).and_return(name)
+        character_weapon.stub_chain(:character, :id).and_return(id)
+        allow(StatsModifier).to receive(:bonus_preferences_for)
+        character_weapon.collection_of_stats_modifiers('weapon_group_name')
+      end
+    end
   end
 
   describe '#extract_bonus_from_stats_modifier_dsl_definition' do
+    let(:character_weapon) { CharacterWeapon.new }
 
+    context 'stats_modifiers is present' do
+      before do
+        character_weapon.stub(:sum_of_skill_preference_modifiers_for_weapon_or_weapon_group_specialisation) { 1 }
+      end
+
+      it { expect(character_weapon.extract_bonus_from_stats_modifier_dsl_definition('type', [1])).to eq 1 }
+    end
+
+    context 'stats_modifiers is not present' do
+      it { expect(character_weapon.extract_bonus_from_stats_modifier_dsl_definition('type', nil)).to eq nil }
+    end
   end
 
   describe '#sum_of_skill_preference_modifiers_for_weapon_or_weapon_group_specialisation' do
+    let(:character_weapon) { CharacterWeapon.new }
+    let(:stats_modifiers) { [StatsModifier.new(modifies: 'fighting', value: 1, evaluated_instruction: nil, group_name: 'Wybrana broń, Atak+1, Obrona+1, Tempo-1,')] }
 
+    it { expect(character_weapon.sum_of_skill_preference_modifiers_for_weapon_or_weapon_group_specialisation('Tempo', stats_modifiers)).to eq -1 }
   end
 end
