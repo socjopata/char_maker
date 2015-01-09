@@ -83,13 +83,24 @@ describe CharacterRangedWeapon do
   end
 
   describe '#weapon_accuracy' do
+    let(:character_ranged_weapon) { CharacterRangedWeapon.new(attack_bonus: true) }
 
+    before do
+      character_ranged_weapon.stub_chain(:resource, :accuracy_bonus, :to_i).and_return(1)
+    end
+
+    it { expect(character_ranged_weapon.weapon_accuracy).to eq 2 }
   end
 
   describe '#character_shooting_skill' do
+    let(:character_ranged_weapon) { CharacterRangedWeapon.new }
 
+    before do
+      character_ranged_weapon.stub_chain(:character, :statistics, :raw_shooting).and_return(1)
+    end
+
+    it { expect(character_ranged_weapon.character_shooting_skill).to eq 1 }
   end
-
 
   describe '#total_hit_chance_parameter' do
 
