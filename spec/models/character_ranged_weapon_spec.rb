@@ -103,6 +103,15 @@ describe CharacterRangedWeapon do
   end
 
   describe '#total_hit_chance_parameter' do
+    let(:character_ranged_weapon) { CharacterRangedWeapon.new }
 
+    before do
+      character_ranged_weapon.stub(:bonus_from_special_rules) { 1 }
+      character_ranged_weapon.stub(:weapon_accuracy) { 1 }
+      character_ranged_weapon.stub(:character_shooting_skill) { 1 }
+      character_ranged_weapon.stub_chain(:character, :statistics, :calculate_dexterity_bonus).and_return(1)
+    end
+
+    it { expect(character_ranged_weapon.total_hit_chance_parameter).to eq 4 }
   end
 end
