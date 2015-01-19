@@ -53,4 +53,85 @@ describe Character do
       end
     end
   end
+
+  describe '#check_fight_style_choice' do
+    context 'style choice is invalid' do
+      before do
+        character.stub(:fight_style_id_changed?) { true }
+        character.stub(:style_invalid?) { true }
+      end
+
+      it { expect(character.check_fight_style_choice).to eq false }
+    end
+
+    context 'style choice is valid' do
+      before do
+        character.stub(:fight_style_id_changed?) { false }
+        character.stub(:style_invalid?) { true }
+      end
+
+      it { expect(character.check_fight_style_choice).to eq true }
+    end
+  end
+
+  describe '#style_invalid?' do
+    context 'invalid for brutal' do
+      before do
+        character.stub_chain(:fight_style, :name).and_return('Brutalny')
+        character.stub_chain(:statistics, :calculate_s).and_return(15)
+        character.stub_chain(:statistics, :calculate_zr).and_return(20)
+      end
+
+      it { expect(character.style_invalid?).to eq true }
+    end
+
+    context 'invalid for finesse' do
+      before do
+        character.stub_chain(:fight_style, :name).and_return('Finezyjny')
+        character.stub_chain(:statistics, :calculate_s).and_return(20)
+        character.stub_chain(:statistics, :calculate_zr).and_return(15)
+      end
+
+      it { expect(character.style_invalid?).to eq true }
+    end
+
+    context 'valid' do
+      before do
+        character.stub_chain(:fight_style, :name).and_return('Finezyjny')
+        character.stub_chain(:statistics, :calculate_s).and_return(15)
+        character.stub_chain(:statistics, :calculate_zr).and_return(20)
+      end
+
+      it { expect(character.style_invalid?).to eq false }
+    end
+  end
+
+  describe '#pick_a_profession' do
+    it do
+      character.stub(:create_character_profession)
+      character.pick_a_profession(1)
+    end
+  end
+
+  describe '#social_class_stats_choices' do
+    it do
+      character.stub_chain(:character_background, :social_classes, :first, :stats_choices)
+      character.social_class_stats_choices
+    end
+  end
+
+  describe '#social_class_stats_choices' do
+    it do
+      character.stub_chain(:character_background, :social_classes, :first)
+      character.social_class
+    end
+  end
+
+  describe '#default_origin_modifiers_set' do
+    it do
+      character.stub_chain(:character_background, :country, :stats_choices, :find_by_applies_to)
+      character.stub_chain(:profession, :general_type)
+      character.default_origin_modifiers_set
+    end
+  end
 end
