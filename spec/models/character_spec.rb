@@ -134,4 +134,145 @@ describe Character do
       character.default_origin_modifiers_set
     end
   end
+
+  describe '#valid_for_picking_statistics?' do
+    context 'is valid' do
+      before do
+        character.stub_chain(:social_class_stats_choices).and_return([])
+        character.stub_chain(:character_background, :origin, :country, :stats_choices, :find_all_by_applies_to, :select).and_return([])
+        character.stub(:default_origin_modifiers_set) { 1 }
+        character.stub_chain(:profession, :stats_choices) { [] }
+        character.stub_chain(:statistics, :stats_modifiers, :collect, :uniq).and_return([1])
+      end
+
+      it { expect(character.valid_for_picking_statistics?).to eq true }
+    end
+
+    context 'invalid' do
+      before do
+        character.stub_chain(:social_class_stats_choices).and_return([])
+        character.stub_chain(:character_background, :origin, :country, :stats_choices, :find_all_by_applies_to, :select).and_return([2])
+        character.stub(:default_origin_modifiers_set) { 1 }
+        character.stub_chain(:profession, :stats_choices) { [] }
+        character.stub_chain(:statistics, :stats_modifiers, :collect, :uniq).and_return([1])
+      end
+
+      it { expect(character.valid_for_picking_statistics?).to eq false }
+    end
+  end
+
+  describe '#valid_for_step_fourth?' do
+    context 'is valid' do
+      before do
+        character.stub_chain(:statistics, :polish).and_return(2)
+        character.stub_chain(:statistics, :initial_dice_roll_set, :last, :to_i).and_return(2)
+      end
+
+      it { expect(character.valid_for_step_fourth?).to eq true }
+    end
+
+    context 'invalid' do
+      before do
+        character.stub_chain(:statistics, :polish).and_return(1)
+        character.stub_chain(:statistics, :initial_dice_roll_set, :last, :to_i).and_return(2)
+      end
+
+      it { expect(character.valid_for_step_fourth?).to eq false }
+    end
+  end
+
+  describe '#has_valid_shopping_list?' do
+    let(:spendings) { 1 }
+
+    it do
+      allow(Shopkeeper).to receive(:says_ok?).with(character, spendings)
+      character.has_valid_shopping_list?(spendings)
+    end
+  end
+
+  describe '#valid_stats_assignment?' do
+    context 'is valid' do
+      before do
+        character.stub_chain(:character_background, :traits, :map, :try).and_return('Akrobata')
+        character.stub_chain(:character_background, :traits, :first, :statistics_it_affects).and_return('something')
+        character.stub(:lead_parameter) { 'something' }
+      end
+
+      it { expect(character.valid_stats_assignment?).to eq true }
+    end
+
+    context 'invalid' do
+      before do
+        character.stub_chain(:character_background, :traits, :map, :try).and_return('Akrobata')
+        character.stub_chain(:character_background, :traits, :first, :statistics_it_affects).and_return('something')
+        character.stub(:lead_parameter) { 'something else' }
+        character.stub_chain(:statistics, :initial_dice_roll_set, :tap).and_return([1, 2, 3, 4])
+
+        character.stub_chain(:character_background, :traits, :first, :statistics_it_affects).and_return('S')
+        character.stub_chain(:statistics, :strength).and_return(3)
+      end
+
+      it { expect(character.valid_stats_assignment?).to eq false }
+    end
+  end
+
+  describe '#current_level' do
+    it { expect(character.current_level).to eq 1 }
+  end
+
+  describe '#toggle_weapon_class_preference' do
+    let(:name) { 'name' }
+    let(:points_left) { 1 }
+    let(:character_weapon_proficiencies) { double }
+    let(:session) { double }
+
+    context 'create proficiency and decrease a counter' do
+      let(:value) { 'true' }
+      let(:counter) { 0 }
+
+      before do
+        character.stub(:character_weapon_proficiencies) { character_weapon_proficiencies }
+        allow(character_weapon_proficiencies).to receive(:find_by_name).with(name).and_return('')
+        character.stub_chain(:character_weapon_proficiencies, :create!)
+        character.stub(:update_attribute)
+        character.stub(:session) { session }
+        allow(session).to receive(:merge).with(weapon_class_preference_left: counter)
+      end
+
+      it { expect(character.toggle_weapon_class_preference(name, value, points_left)).to eq [] }
+    end
+
+    context 'delete proficiency and increase a counter' do
+      let(:value) { 'false' }
+      let(:counter) { 2 }
+      let(:proficiency) { double }
+      before do
+        character.stub(:character_weapon_proficiencies) { character_weapon_proficiencies }
+        allow(character_weapon_proficiencies).to receive(:find_by_name).with(name).and_return(proficiency)
+        proficiency.stub(:destroy)
+        character.stub(:update_attribute)
+        character.stub(:session) { session }
+        allow(session).to receive(:merge).with(weapon_class_preference_left: counter)
+      end
+
+      it { expect(character.toggle_weapon_class_preference(name, value, points_left)).to eq [] }
+    end
+
+    context 'add errors' do
+      let(:value) { 'true' }
+      let(:counter) { 0 }
+      let(:proficiency) { double }
+      let(:points_left) { 0 }
+
+      before do
+        character.stub(:character_weapon_proficiencies) { character_weapon_proficiencies }
+        allow(character_weapon_proficiencies).to receive(:find_by_name).with(name).and_return('')
+        character.stub(:update_attribute)
+        character.stub(:session) { session }
+        allow(session).to receive(:merge).with(weapon_class_preference_left: counter)
+      end
+
+      it { expect(character.toggle_weapon_class_preference(name, value, points_left)).to eq ['Nie masz wystarczającej liczby punktów do rozdysponowania'] }
+    end
+  end
 end
