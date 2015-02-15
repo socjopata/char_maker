@@ -275,4 +275,108 @@ describe Character do
       it { expect(character.toggle_weapon_class_preference(name, value, points_left)).to eq ['Nie masz wystarczającej liczby punktów do rozdysponowania'] }
     end
   end
+
+  describe '#set_shield_as_main' do
+    context 'id is blank' do
+      let(:inventory_item_id) { nil }
+      it { expect(character.set_shield_as_main(inventory_item_id)).to be_nil }
+    end
+
+    context 'id is present' do
+      let(:shield) { Shield.new }
+      let(:inventory_item_id) { 1 }
+
+      before do
+        character.stub(:character_shields) { [shield] }
+        allow(shield).to receive(:update_attribute).with(:favorite, false)
+      end
+
+      it { expect(character.set_shield_as_main(inventory_item_id)).to eq [shield] }
+    end
+  end
+
+  describe '#calculate_stats_and_store_them_as_a_hash' do
+    let(:statistics) { Statistics.new }
+
+    it do
+      character.stub(:statistics) { statistics }
+      statistics.stub(:calculate_s)
+      statistics.stub(:calculate_zr)
+      statistics.stub(:calculate_wt)
+      statistics.stub(:calculate_int)
+      statistics.stub(:calculate_wi)
+      statistics.stub(:calculate_o)
+      character.calculate_stats_and_store_them_as_a_hash
+    end
+  end
+
+  describe '#items' do
+    before do
+      character.stub(:weapons) { [Weapon.new(name: 'Weapon')] }
+      character.stub(:armors) { [Armor.new(name: 'Armor')] }
+      character.stub(:shields) { [Shield.new(name: 'Shield')] }
+      character.stub(:ranged_weapons) { [RangedWeapon.new] }
+    end
+
+    it { expect(character.items).to eq 'Weapon, Armor, Shield, ' }
+  end
+
+  describe '#finish!' do
+    it do
+      character.stub_chain(:statistics, :calculate_int)
+      character.stub(:update_attributes)
+      character.stub_chain(:purse, :close_the_bill)
+      character.stub(:is_of_scholar_class_type?) { true }
+      character.stub(:complete_the_creation_of_spellbook)
+      allow(Skill).to receive(:calculate_free_skill_amount)
+      character.finish!
+    end
+  end
+
+  describe '#complete_the_creation_of_spellbook' do
+    let(:scribe) { double }
+
+    it do
+      allow(Scribe).to receive(:new).with(character).and_return { scribe }
+      scribe.stub(:complete_spellbook)
+      character.complete_the_creation_of_spellbook
+    end
+  end
+
+  describe '#valid_for_armament_step?' do
+    context 'unfinished matters are present' do
+      before do
+        character.stub(:any_unfinished_matters_present?) { true }
+      end
+
+      it { expect(character.valid_for_armament_step?).to be_false }
+    end
+
+    context 'shooter did not pick his bow proficiency' do
+      before do
+        character.stub(:any_unfinished_matters_present?) { false }
+        character.stub(:is_a_shooter_and_didnt_picked_his_bow_proficiency) { true }
+      end
+
+      it { expect(character.valid_for_armament_step?).to be_false }
+    end
+
+    context 'all is cool' do
+      before do
+        character.stub(:any_unfinished_matters_present?) { false }
+        character.stub(:is_a_shooter_and_didnt_picked_his_bow_proficiency) { false }
+      end
+
+      it { expect(character.valid_for_armament_step?).to be_true }
+    end
+  end
+
+  describe '#is_a_shooter_and_didnt_picked_his_bow_proficiency' do
+    before do
+      character.stub_chain(:profession, :name) { 'Strzelec' }
+      character.stub_chain(:character_weapon_proficiencies, :map, :none?) { true }
+    end
+
+    it { expect(character.is_a_shooter_and_didnt_picked_his_bow_proficiency).to be_true }
+  end
 end
