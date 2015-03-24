@@ -33,7 +33,5 @@ class CharacterShield < ActiveRecord::Base
     else
       0
     end
-
   end
-
 end

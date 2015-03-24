@@ -33,6 +33,4 @@ class CharacterArmor < ActiveRecord::Base
     required_strength = armor.armament_requirements.detect { |req| req.name=="strength" }.try(:value)
     required_strength.present? ? required_strength : "-"
   end
-
 end
-

@@ -39,11 +39,11 @@ class Shopkeeper
     return weapon_armor_or_shield.price if number.zero?
     case inventory_item.resource.class.name
       when "Weapon"
-        weapon_armor_or_shield.price * Weapon::MULTIPLIER[number] + evaluate_worth(inventory_item, (number-1))
+        weapon_armor_or_shield.price * Weapon::MULTIPLIER_MAP[number] + evaluate_worth(inventory_item, (number-1))
       when "RangedWeapon"
-        weapon_armor_or_shield.price * RangedWeapon::MULTIPLIER[number] + evaluate_worth(inventory_item, (number-1))
+        weapon_armor_or_shield.price * RangedWeapon::MULTIPLIER_MAP[number] + evaluate_worth(inventory_item, (number-1))
       when "Shield"
-        weapon_armor_or_shield.price * Shield::MULTIPLIER[number] + evaluate_worth(inventory_item, (number-1))
+        weapon_armor_or_shield.price * Shield::MULTIPLIER_MAP[number] + evaluate_worth(inventory_item, (number-1))
       when "Armor"
         Armor::EXTRA_COST_MAP[number] + (weapon_armor_or_shield.is_rare_or_exotic? ? 2 : 1) * evaluate_worth(inventory_item, (number-1))
     end

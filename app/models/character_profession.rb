@@ -6,7 +6,4 @@ class CharacterProfession < ActiveRecord::Base
   def to_s
     self.profession.name
   end
-
-
-
 end

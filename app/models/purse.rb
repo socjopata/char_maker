@@ -1,10 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Purse < ActiveRecord::Base
-  belongs_to :character
-
   DICE_TYPE = 20 #k20
-
-  BASE =
+  BASE_MAP =
       {
           'Niewolnik' => 0,
           'Niewolnik barbarzyński' => 0,
@@ -23,7 +20,7 @@ class Purse < ActiveRecord::Base
           'Potomek Wodza' => 100000
       }
 
-  MULTIPLIER = {
+  MULTIPLIER_MAP = {
       'Niewolnik' => 0,
       'Niewolnik barbarzyński' => 0,
       'Chłop Ubogi' => 2,
@@ -40,6 +37,8 @@ class Purse < ActiveRecord::Base
       'Członek rady plemienia' => 2,
       'Potomek Wodza' => 0
   }
+
+  belongs_to :character
 
   def close_the_bill(amount_after_shopping)
     amount_after_shopping < current ? update_attribute(:base, amount_after_shopping) : update_attribute(:base, current)
@@ -70,14 +69,12 @@ class Purse < ActiveRecord::Base
 
   def extract_multiplier(base)
     case base
-      when "g" then
+      when "g"
         100
-      when "s" then
+      when "s"
         10
-      when "c" then
+      when "c"
         1
     end
   end
-
-
 end

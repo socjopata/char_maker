@@ -47,4 +47,3 @@ class AuxiliaryParameterSet < ActiveRecord::Base
 
   belongs_to :character
 end
-

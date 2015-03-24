@@ -6,5 +6,4 @@ class Origin < ActiveRecord::Base
   def to_s
     self.country.name
   end
-
 end

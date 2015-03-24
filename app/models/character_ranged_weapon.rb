@@ -17,7 +17,6 @@ class CharacterRangedWeapon < ActiveRecord::Base
     total_long = long.to_i + (character.skills.map(&:name).include?("Odległość nie ma Znaczenia") ? 25 : 0 )
 
     [total_close, total_medium, total_long].compact.join("/")
-
   end
 
   def calculate_speed

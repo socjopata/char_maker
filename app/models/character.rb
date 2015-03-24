@@ -1,42 +1,40 @@
 # -*- encoding : utf-8 -*-
 class Character < ActiveRecord::Base
-  belongs_to :user
-  has_one :character_background, :dependent => :destroy
-  has_one :statistics, :class_name => "Statistics", :dependent => :destroy
+  mount_uploader :avatar, AvatarUploader
 
+  belongs_to :user
+  belongs_to :fight_style
+  belongs_to :wield_style
+
+  has_one :character_background, dependent: :destroy
+  has_one :statistics, class_name: Statistics, dependent: :destroy
   has_one :character_profession
-  has_one :profession, :through => :character_profession
+  has_one :profession, through: :character_profession
   has_one :purse
   has_one :auxiliary_parameter_set
 
   has_many :character_skills
-  has_many :skills, :through => :character_skills
-  belongs_to :fight_style
-  belongs_to :wield_style
+  has_many :skills, through: :character_skills
   has_many :character_weapon_proficiencies
-
-  has_many :character_weapons, :dependent => :destroy
-  has_many :weapons, :through => :character_weapons
-  has_many :character_armors, :dependent => :destroy
-  has_many :armors, :through => :character_armors
-  has_many :character_shields, :dependent => :destroy
-  has_many :shields, :through => :character_shields
-  has_many :character_ranged_weapons, :dependent => :destroy
-  has_many :ranged_weapons, :through => :character_ranged_weapons
-  #^^ I really considered has-many-through-and-polymorphic-associations here before I started
-  # Now i feel the pain.
-
+  has_many :character_weapons, dependent: :destroy
+  has_many :weapons, through: :character_weapons
+  has_many :character_armors, dependent: :destroy
+  has_many :armors, through: :character_armors
+  has_many :character_shields, dependent: :destroy
+  has_many :shields, through: :character_shields
+  has_many :character_ranged_weapons, dependent: :destroy
+  has_many :ranged_weapons, through: :character_ranged_weapons
   has_many :character_spells
-  has_many :spells, :through => :character_spells
-
-  mount_uploader :avatar, AvatarUploader
-  scope :belongs_to_user, lambda { |user| {:conditions => {:user_id => user.id}} }
+  has_many :spells, through: :character_spells
 
   validates_presence_of :name, :gender, :user_id
 
   before_save :check_fight_style_choice
   before_create :set_session
+
   accepts_nested_attributes_for :character_background
+
+  scope :belongs_to_user, ->(user) { where(user_id: user.id) }
 
   serialize :session, Hash
 
@@ -49,11 +47,14 @@ class Character < ActiveRecord::Base
   end
 
   def skill_choices_to_be_precised
-    statistics.stats_modifiers.select { |sm| (sm.group_name.match("Fechtunek w Grupie Broni") || sm.group_name.match("Wybrana broń") || sm.group_name.match("Wybrana tarcza") || sm.group_name.match("Wybrana grupa broni")) }
+    statistics.stats_modifiers.select { |sm| (sm.group_name.match("Fechtunek w Grupie Broni") ||
+        sm.group_name.match("Wybrana broń") ||
+        sm.group_name.match("Wybrana tarcza") ||
+        sm.group_name.match("Wybrana grupa broni")) }
   end
 
   def make_rogue_a_finesse_fighter
-    self.update_attribute(:fight_style_id, FightStyle.find_by_name("Finezyjny").id) if self.profession.present? && self.profession.general_type=="rogue"
+    update_attribute(:fight_style_id, FightStyle.find_by_name("Finezyjny").id) if profession.present? && profession.general_type == "rogue"
   end
 
   def check_fight_style_choice
@@ -71,7 +72,7 @@ class Character < ActiveRecord::Base
   end
 
   def pick_a_profession(prof_id)
-    self.create_character_profession(:profession_id => prof_id)
+    self.create_character_profession(profession_id: prof_id)
   end
 
   def social_class_stats_choices
@@ -87,7 +88,9 @@ class Character < ActiveRecord::Base
   end
 
   def valid_for_picking_statistics?
-    all_stats_choices_for_character = social_class_stats_choices + character_background.origin.country.stats_choices.find_all_by_applies_to("special").select { |stats_choice| social_class.send(stats_choice.condition.intern) } + [default_origin_modifiers_set] + profession.stats_choices
+    all_stats_choices_for_character = social_class_stats_choices +
+        character_background.origin.country.stats_choices.find_all_by_applies_to("special").select { |stats_choice| social_class.send(stats_choice.condition.intern) } +
+        [default_origin_modifiers_set] + profession.stats_choices
     all_stats_choices_made = statistics.stats_modifiers.collect(&:stats_choice).uniq
     (all_stats_choices_made.size - all_stats_choices_for_character.size).zero?
   end
@@ -119,23 +122,23 @@ class Character < ActiveRecord::Base
     counter = points_left
     proficiency = character_weapon_proficiencies.find_by_name(name)
 
-    if proficiency.blank? && value=="true" && points_left > 0
+    if proficiency.blank? && value == "true" && points_left > 0
       #create proficiency  and decrease a counter
-      character_weapon_proficiencies.create!(:name => name)
+      character_weapon_proficiencies.create!(name: name)
       counter -= 1
-    elsif  proficiency.present? && value=="false"
+    elsif  proficiency.present? && value == "false"
       #delete proficiency and increase a counter
       proficiency.destroy
       counter += 1
-    elsif proficiency.blank? && value=="true" && points_left == 0
+    elsif proficiency.blank? && value == "true" && points_left == 0
       #add errors
       errors << "Nie masz wystarczającej liczby punktów do rozdysponowania"
     end
-    update_attribute(:session, session.merge(:weapon_class_preference_left => counter))
+    update_attribute(:session, session.merge(weapon_class_preference_left: counter))
     errors
   end
 
-  def is_of_scholar_class_type?(except=[])
+  def is_of_scholar_class_type?(except = [])
     (Profession::CASTER_CLASSES - Array.wrap(except)).include?(profession.name)
   end
 
@@ -167,7 +170,6 @@ class Character < ActiveRecord::Base
         "intelligence" => statistics.calculate_int,
         "faith" => statistics.calculate_wi,
         "polish" => statistics.calculate_o
-
     }
   end
 
@@ -176,10 +178,10 @@ class Character < ActiveRecord::Base
   end
 
   def finish!
-    update_attributes(:finished => true,
-                      :free_skill_points_left => Skill.calculate_free_skill_amount(self, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[statistics.calculate_int].to_i, session[:skills_used].to_i))
+    update_attributes(finished: true,
+                      free_skill_points_left: Skill.calculate_free_skill_amount(self, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[statistics.calculate_int].to_i, session[:skills_used].to_i))
     purse.close_the_bill(session[:coins_left])
-    complete_the_creation_of_spellbook if self.is_of_scholar_class_type?
+    complete_the_creation_of_spellbook if is_of_scholar_class_type?
   end
 
   def complete_the_creation_of_spellbook
@@ -196,7 +198,4 @@ class Character < ActiveRecord::Base
   def is_a_shooter_and_didnt_picked_his_bow_proficiency
     profession.name=="Strzelec" && character_weapon_proficiencies.map(&:name).none? { |group_name| RangedWeapon.all.map(&:group_name).uniq.include?(group_name) }
   end
-
 end
-
-
