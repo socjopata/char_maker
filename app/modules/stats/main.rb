@@ -65,11 +65,11 @@ module Stats
     end
 
     def calculate_dexterity_bonus
-      Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i
+      Statistics::BONUS_OR_PENALTY_RANGES_MAP[calculate_zr].to_i
     end
 
     def calculate_strength_bonus
-      Statistics::BONUS_OR_PENALTY_RANGES[calculate_s].to_i
+      Statistics::BONUS_OR_PENALTY_RANGES_MAP[calculate_s].to_i
     end
 
     def calculate_dexterity_and_strength_bonus

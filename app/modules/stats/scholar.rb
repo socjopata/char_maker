@@ -27,9 +27,9 @@ module Stats
 
     def main_parameter_bonus
       if character.is_a_cleric?
-        Statistics::BONUS_OR_PENALTY_RANGES[calculate_wi]
+        Statistics::BONUS_OR_PENALTY_RANGES_MAP[calculate_wi]
       else
-        Statistics::BONUS_OR_PENALTY_RANGES[calculate_int]
+        Statistics::BONUS_OR_PENALTY_RANGES_MAP[calculate_int]
       end
     end
 

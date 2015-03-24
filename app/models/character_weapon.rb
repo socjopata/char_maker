@@ -28,7 +28,7 @@ class CharacterWeapon < ActiveRecord::Base
   end
 
   def calculate_damage
-    strength_bonus = Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_s].to_i
+    strength_bonus = Statistics::BONUS_OR_PENALTY_RANGES_MAP[character.statistics.calculate_s].to_i
     skill_bonuses = character.statistics.stats_modifiers.select { |sm| sm.modifies=="melee_damage" && (sm.group_name=="All" || sm.group_name=="Except shooting and boxing") }.collect(&:value).sum
     weapon_upgrade_modifier = damage.to_i
 
@@ -104,21 +104,21 @@ class CharacterWeapon < ActiveRecord::Base
   def total_defense(dual_wield, shield = nil)
     if dual_wield
       result = defense_fencing_parameter +
-          Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_current_zr].to_i +
-          Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_wi].to_i +
+          Statistics::BONUS_OR_PENALTY_RANGES_MAP[character.statistics.calculate_current_zr].to_i +
+          Statistics::BONUS_OR_PENALTY_RANGES_MAP[character.statistics.calculate_wi].to_i +
           special_defense_bonus_for_total_defense_listing +
           calculate_defense_bonus_for_dual_wield + weapon_proficiency_bonus
     elsif character.wield_style.name=="Styl walki jedną bronią (jednoręczną/dwuręczną)"
       result = defense_fencing_parameter +
           calculate_defense_bonus_for_particular_weapon +
-          Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_current_zr].to_i +
-          Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_wi].to_i +
+          Statistics::BONUS_OR_PENALTY_RANGES_MAP[character.statistics.calculate_current_zr].to_i +
+          Statistics::BONUS_OR_PENALTY_RANGES_MAP[character.statistics.calculate_wi].to_i +
           special_defense_bonus_for_total_defense_listing + weapon_proficiency_bonus
     elsif character.wield_style.name=="Styl walki bronią i tarczą"
       result = defense_fencing_parameter +
           calculate_defense_bonus_for_particular_weapon +
-          Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_current_zr].to_i +
-          Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_wi].to_i +
+          Statistics::BONUS_OR_PENALTY_RANGES_MAP[character.statistics.calculate_current_zr].to_i +
+          Statistics::BONUS_OR_PENALTY_RANGES_MAP[character.statistics.calculate_wi].to_i +
           special_defense_bonus_for_total_defense_listing + weapon_proficiency_bonus
       shield.present? ? result = result + shield.total_defense_bonus(true) : result
     end

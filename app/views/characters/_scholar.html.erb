@@ -56,7 +56,7 @@
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_s]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_s]}" %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border: none; padding: 0in">
@@ -80,7 +80,7 @@
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_zr]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_zr]}" %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border: none; padding: 0in">
@@ -104,7 +104,7 @@
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border-top: 1.00pt solid #000000; border-bottom: none; border-left: 1.00pt solid #000000; border-right: 1.00pt solid #000000; padding-top: 0.04in; padding-bottom: 0in; padding-left: 0.04in; padding-right: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wt]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wt]}" %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border: none; padding: 0in">
@@ -128,7 +128,7 @@
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_int]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_int]}" %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border: none; padding: 0in">
@@ -152,7 +152,7 @@
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi]}" %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border: none; padding: 0in">
@@ -176,7 +176,7 @@
     </P>
   </TD>
   <TD COLSPAN=2 WIDTH=12% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_o]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_o]}" %>
     </P>
   </TD>
   <TD WIDTH=3% STYLE="border: none; padding: 0in">
@@ -322,7 +322,7 @@
     <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::INITIATIVE_MAP[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_zr]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_zr]}" %>
     </P>
   </TD>
   <TD WIDTH=9% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: none; padding: 0.04in 0in">
@@ -561,7 +561,7 @@
     <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::PAIN_RESISTANCE_MAP[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wt]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wt]}" %>
     </P>
   </TD>
   <TD WIDTH=9% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: none; border-right: none; padding: 0.04in 0in">
@@ -680,7 +680,7 @@
     <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::FEAR_RESISTANCE_MAP[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi]}" %>
     </P>
   </TD>
   <TD WIDTH=9% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
@@ -917,7 +917,7 @@
     <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::RUNNING_MAP[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER STYLE="font-style: normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_zr]}" %>
+    <P ALIGN=CENTER STYLE="font-style: normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_zr]}" %>
     </P>
   </TD>
   <TD WIDTH=9% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
@@ -1793,11 +1793,11 @@
       </P>
     </TD>
     <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_current_zr] %>
+      <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_current_zr] %>
       </P>
     </TD>
     <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-      <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[0].present? %>
+      <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[0].present? %>
       </P>
     </TD>
     <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
@@ -1828,11 +1828,11 @@
           </P>
         </TD>
         <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-          <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_current_zr] if @character_sheet.weapons[0].present? %>
+          <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_current_zr] if @character_sheet.weapons[0].present? %>
           </P>
         </TD>
         <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-          <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[0].present? %>
+          <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[0].present? %>
           </P>
         </TD>
         <TD WIDTH=12% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
@@ -2354,11 +2354,11 @@
     </P>
   </TD>
   <TD COLSPAN=4 WIDTH=8% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_current_zr] %>
+    <P ALIGN=CENTER><%= Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_current_zr] %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=8% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi]}" %>
+    <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi]}" %>
     </P>
   </TD>
   <TD COLSPAN=3 WIDTH=9% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">

@@ -1,42 +1,25 @@
 # -*- encoding : utf-8 -*-
 class Statistics < ActiveRecord::Base
-
-  include Stats::Main
-  include Stats::Auxiliary
-  include Stats::Fencing
-  include Stats::Brawl
-  include Stats::RangeChange
-  include Stats::Scholar
-
   self.table_name = "statistics"
 
-  serialize :initial_dice_roll_set
-  belongs_to :character
-  has_and_belongs_to_many :stats_modifiers
-
-  validates_presence_of :strength, :dexterity, :endurance, :intelligence, :faith, :polish
-
   DICE_TYPE = 20 #k20
-
-  POLISH_NAMES =
-      {"S" => "Siła",
-       "ZR" => "Zręczność",
-       "WT" => "Wytrzymałość",
-       "INT" => "Inteligencja",
-       "WI" => "Wiara",
-       "O" => "Ogłada"
+  POLISH_NAMES_MAP =
+      { "S" => "Siła",
+        "ZR" => "Zręczność",
+        "WT" => "Wytrzymałość",
+        "INT" => "Inteligencja",
+        "WI" => "Wiara",
+        "O" => "Ogłada"
       }
-
   ENGLISH_NAMES_MAP =
-      {"S" => "strength",
-       "ZR" => "dexterity",
-       "WT" => "endurance",
-       "INT" => "intelligence",
-       "WI" => "faith",
-       "O" => "polish"
+      { "S" => "strength",
+        "ZR" => "dexterity",
+        "WT" => "endurance",
+        "INT" => "intelligence",
+        "WI" => "faith",
+        "O" => "polish"
       }
-
-  BONUS_OR_PENALTY_RANGES = RangedHash.new(
+  BONUS_OR_PENALTY_RANGES_MAP = RangedHash.new(
       1..3 => "-3",
       4..6 => "-2",
       7..9 => "-1",
@@ -56,17 +39,32 @@ class Statistics < ActiveRecord::Base
       49..51 => "+13"
   )
 
+  include Stats::Main
+  include Stats::Auxiliary
+  include Stats::Fencing
+  include Stats::Brawl
+  include Stats::RangeChange
+  include Stats::Scholar
+
+  belongs_to :character
+
+  has_and_belongs_to_many :stats_modifiers
+
+  serialize :initial_dice_roll_set
+
+  validates_presence_of :strength, :dexterity, :endurance, :intelligence, :faith, :polish
+
   def draw_stats
     initial_stats = []
     loop do
       7.times do
         initial_stats << 1.d(Statistics::DICE_TYPE)
       end
-      initial_stats = Statistics.normalize_dice_rolls(initial_stats, character.character_background.traits.first.try(:name) =="Błogosławiony")
+      initial_stats = Statistics.normalize_dice_rolls(initial_stats, character.character_background.traits.first.try(:name) == "Błogosławiony")
       break if initial_stats.sum > 55
       initial_stats = []
     end
-    initial_stats << (character.character_background.traits.first.try(:name)=="Piękniś" ? 25 : (1.d(Statistics::DICE_TYPE))) #extra dice roll for polish ("Ogłada"))
+    initial_stats << (character.character_background.traits.first.try(:name) == "Piękniś" ? 25 : (1.d(Statistics::DICE_TYPE))) #extra dice roll for polish ("Ogłada"))
     self.initial_dice_roll_set = initial_stats
   end
 
@@ -88,7 +86,7 @@ class Statistics < ActiveRecord::Base
       modifiers = []
       modifiers << StatsChoice.find_all_by_id(params.keys).collect(&:stats_modifiers)
       modifiers.flatten.each do |modifier|
-        self.stats_modifiers << modifier unless self.stats_modifiers.exists?(:id => modifier.id)
+        self.stats_modifiers << modifier unless stats_modifiers.exists?(id: modifier.id)
       end
     end
   end
@@ -97,25 +95,22 @@ class Statistics < ActiveRecord::Base
     modifiers = []
     modifiers << character.profession.stats_choices.collect(&:stats_modifiers)
     modifiers.flatten.each do |modifier|
-      self.stats_modifiers << modifier unless self.stats_modifiers.exists?(:id => modifier.id)
+      self.stats_modifiers << modifier unless self.stats_modifiers.exists?(id: modifier.id)
     end
-    modifiers.flatten.select { |modifier| modifier.modifies=="skills" }.collect(&:group_name) #return skills on exit
+    modifiers.flatten.select { |modifier| modifier.modifies == "skills" }.collect(&:group_name) #return skills on exit
   end
 
-
   def convert_stat_choices_to_skills
-
-    skill_names_array = stats_modifiers.select { |sm| sm.modifies=="skills" }.collect { |sm| sm.group_name.split("oraz").collect { |name| name.strip } }.flatten
-    free_skill_counter = skill_names_array.select { |name| name=="Jedna wolna umiejętność" }.size
+    skill_names_array = stats_modifiers.select { |sm| sm.modifies == "skills" }.collect { |sm| sm.group_name.split("oraz").collect { |name| name.strip } }.flatten
+    free_skill_counter = skill_names_array.select { |name| name == "Jedna wolna umiejętność" }.size
     skill_names_array.delete("Jedna wolna umiejętność") if skill_names_array.include?("Jedna wolna umiejętność")
     free_skill_counter = free_skill_counter + (skill_names_array.size - skill_names_array.uniq.size) #if there are doubles...
 
     skill_free_assignment_base = free_skill_counter + character.profession.skill_points
 
-
     skills = Skill.find_all_by_name(skill_names_array.uniq)
     skills.each do |skill|
-      skill.character_skills.create(:character_id => character.id)
+      skill.character_skills.create(character_id: character.id)
     end
 
     default_skills_ids = skills.map(&:id)
@@ -124,10 +119,6 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_weapon_class_proficiencies_points
-    character.profession.starting_weapon_proficiency + stats_modifiers.select { |sm| sm.modifies=="fighting" && sm.group_name=="Biegłość w Grupie Broni" }.collect(&:value).sum
+    character.profession.starting_weapon_proficiency + stats_modifiers.select { |sm| sm.modifies == "fighting" && sm.group_name == "Biegłość w Grupie Broni" }.collect(&:value).sum
   end
-
-
 end
-
-

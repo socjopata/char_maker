@@ -22,11 +22,11 @@ class CharacterBackground < ActiveRecord::Base
   end
 
   def attach_a_curse(num)
-    traits << Trait.find_by_name(Trait::DICE_RESULT_FOR_CURSE[num])
+    traits << Trait.find_by_name(Trait::DICE_RESULT_FOR_CURSE_MAP[num])
   end
 
   def attach_a_blessing(num)
-    traits << Trait.find_by_name(Trait::DICE_RESULT_FOR_BLESSING[num])
+    traits << Trait.find_by_name(Trait::DICE_RESULT_FOR_BLESSING_MAP[num])
   end
 
   def set_origin(country_id)

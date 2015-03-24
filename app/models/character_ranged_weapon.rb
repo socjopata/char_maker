@@ -31,7 +31,7 @@ class CharacterRangedWeapon < ActiveRecord::Base
   end
 
   def calculate_damage
-    strength_bonus = Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_s].to_i
+    strength_bonus = Statistics::BONUS_OR_PENALTY_RANGES_MAP[character.statistics.calculate_s].to_i
     skill_bonuses = character.statistics.stats_modifiers.select { |sm| sm.modifies=="melee_damage" && (sm.group_name=="All" or sm.group_name=="Ranged") }.collect(&:value).sum
     weapon_upgrade_modifier = damage.to_i
 

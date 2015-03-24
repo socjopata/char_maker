@@ -179,7 +179,7 @@ class Character < ActiveRecord::Base
 
   def finish!
     update_attributes(finished: true,
-                      free_skill_points_left: Skill.calculate_free_skill_amount(self, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[statistics.calculate_int].to_i, session[:skills_used].to_i))
+                      free_skill_points_left: Skill.calculate_free_skill_amount(self, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES_MAP[statistics.calculate_int].to_i, session[:skills_used].to_i))
     purse.close_the_bill(session[:coins_left])
     complete_the_creation_of_spellbook if is_of_scholar_class_type?
   end

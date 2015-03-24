@@ -1,9 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Trait < ActiveRecord::Base
-  has_and_belongs_to_many :character_backgrounds
-  has_many :stats_choices, :as => :resource, :dependent => :destroy
-
-  TRAIT_TYPE = {
+  TRAIT_TYPE_MAP = {
       "curse" => 0,
       "blessing" => 1
   }
@@ -13,7 +10,7 @@ class Trait < ActiveRecord::Base
 
   CHOICE_BREAKERS = ['Mędrzec', 'Siłacz', 'Akrobata', 'Wybraniec Boży']
 
-  DICE_RESULT_FOR_CURSE = {
+  DICE_RESULT_FOR_CURSE_MAP = {
       1 => "Schizofrenik",
       2 => "Schizofrenik",
       3 => "Megaloman",
@@ -46,7 +43,7 @@ class Trait < ActiveRecord::Base
       30 => "Głupek"
   }
 
-  DICE_RESULT_FOR_BLESSING = {
+  DICE_RESULT_FOR_BLESSING_MAP = {
       1 => "Piękniś",
       2 => "Piękniś",
       3 => "Dar Niebios",
@@ -80,9 +77,10 @@ class Trait < ActiveRecord::Base
   }
 
   DICE_TYPE = 30 #k30
+  has_and_belongs_to_many :character_backgrounds
+  has_many :stats_choices, as: :resource, dependent: :destroy
 
   def statistics_it_affects
     stats_choices.first.stats_modifiers.first.modifies
   end
-
 end

@@ -551,7 +551,7 @@ skill = Skill.create(:profession_type => "Rycerz",
                      :way_it_works => "postać zwiększa ilość Punktów Życia o premię ze swej Wytrzymałości.
 Umiejętność Pasywna.")
 s_choice = skill.stats_choices.create
-s_choice.stats_modifiers.create(:modifies => "variable_auxiliary", :evaluated_instruction => "Statistics::BONUS_OR_PENALTY_RANGES[calculate_wt]", :group_name => "Punkty Życia")
+s_choice.stats_modifiers.create(:modifies => "variable_auxiliary", :evaluated_instruction => "Statistics::BONUS_OR_PENALTY_RANGES_MAP[calculate_wt]", :group_name => "Punkty Życia")
 
 
 skill = Skill.create(:profession_type => "Rycerz",

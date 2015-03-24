@@ -41,7 +41,7 @@ class SkillToggler
   end
 
   def free_skill_amount
-    Skill.calculate_free_skill_amount(character, skill_free_assignment_base, Statistics::BONUS_OR_PENALTY_RANGES[character.statistics.calculate_int].to_i, character.session[:skills_used].to_i)
+    Skill.calculate_free_skill_amount(character, skill_free_assignment_base, Statistics::BONUS_OR_PENALTY_RANGES_MAP[character.statistics.calculate_int].to_i, character.session[:skills_used].to_i)
   end
 
 end

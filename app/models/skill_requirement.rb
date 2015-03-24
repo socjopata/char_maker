@@ -30,7 +30,7 @@ class SkillRequirement < ActiveRecord::Base
       when "skill"
         "* Umiejętność #{(name)}"
       when "statistics"
-        (name.match /OR:\s/).present? ? "* Jeden z Parametrów, #{name.gsub("OR: ", "").split(",").join(" lub ")} powinien mieć wartość conajmniej #{value.to_i}" : "* Parametr #{Statistics::POLISH_NAMES[name]} musi mieć wartość conajmniej #{value.to_i}"
+        (name.match /OR:\s/).present? ? "* Jeden z Parametrów, #{name.gsub("OR: ", "").split(",").join(" lub ")} powinien mieć wartość conajmniej #{value.to_i}" : "* Parametr #{Statistics::POLISH_NAMES_MAP[name]} musi mieć wartość conajmniej #{value.to_i}"
       when "experience"
         "* Poziom doświadczenia: #{value}"
       when "social_class"

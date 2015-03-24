@@ -136,7 +136,7 @@ class Wizard
         @caste_skills = Skill.fetch_caste_skills_for(@character)
         @profession_skills = Skill.fetch_profession_skills_for(@character)
         @cannot_select_skills = Skill.filter_nonselectable((@basic_skills + @caste_skills + @profession_skills), @character, @strength, @dexterity, @endurance, @intelligence, @faith, @polish)
-        @free_skill_amount = Skill.calculate_free_skill_amount(@character, @character.session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES[@intelligence].to_i, @character.session[:skills_used].to_i)
+        @free_skill_amount = Skill.calculate_free_skill_amount(@character, @character.session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES_MAP[@intelligence].to_i, @character.session[:skills_used].to_i)
         set_template_to_render
       end
     end

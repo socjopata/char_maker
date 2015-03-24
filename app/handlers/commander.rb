@@ -37,7 +37,7 @@ class Commander
       base_skill_value = @character.statistics.send("calculate_#{modifier.modifies.downcase}".intern)
       result << [
           Hash["main_table_value_#{Statistics::ENGLISH_NAMES_MAP[modifier.modifies]}", base_skill_value],
-          Hash["main_table_bonus_#{Statistics::ENGLISH_NAMES_MAP[modifier.modifies]}", Statistics::BONUS_OR_PENALTY_RANGES[base_skill_value]]
+          Hash["main_table_bonus_#{Statistics::ENGLISH_NAMES_MAP[modifier.modifies]}", Statistics::BONUS_OR_PENALTY_RANGES_MAP[base_skill_value]]
       ]
       case modifier.modifies
         when "S"
@@ -46,15 +46,15 @@ class Commander
           #initiative and running and sprinting
           result << [
               Hash["auxiliary_table_total_initiative", @character.statistics.calculate_initiative],
-              Hash["auxiliary_table_main_p_bonus_for_initiative", Statistics::BONUS_OR_PENALTY_RANGES[base_skill_value]],
+              Hash["auxiliary_table_main_p_bonus_for_initiative", Statistics::BONUS_OR_PENALTY_RANGES_MAP[base_skill_value]],
               Hash["auxiliary_table_total_running", @character.statistics.calculate_running],
-              Hash["auxiliary_table_main_p_bonus_for_running", Statistics::BONUS_OR_PENALTY_RANGES[base_skill_value]],
+              Hash["auxiliary_table_main_p_bonus_for_running", Statistics::BONUS_OR_PENALTY_RANGES_MAP[base_skill_value]],
               Hash["auxiliary_table_total_sprinting", @character.statistics.calculate_sprinting]
           ]
         when "WT"
           result << [
               Hash["auxiliary_table_total_pain_resistance", @character.statistics.calculate_pain_resistance],
-              Hash["auxiliary_table_main_p_bonus_for_pain_resistance", Statistics::BONUS_OR_PENALTY_RANGES[base_skill_value]],
+              Hash["auxiliary_table_main_p_bonus_for_pain_resistance", Statistics::BONUS_OR_PENALTY_RANGES_MAP[base_skill_value]],
               Hash["auxiliary_table_total_life_points", @character.statistics.calculate_life_points],
               Hash["auxiliary_table_main_p_bonus_for_life_points", base_skill_value]
           ]
@@ -65,7 +65,7 @@ class Commander
         when "WI"
           result << [
               Hash["auxiliary_table_total_fear_resistance", @character.statistics.calculate_fear_resistance],
-              Hash["auxiliary_table_main_p_bonus_for_fear_resistance", Statistics::BONUS_OR_PENALTY_RANGES[base_skill_value]]
+              Hash["auxiliary_table_main_p_bonus_for_fear_resistance", Statistics::BONUS_OR_PENALTY_RANGES_MAP[base_skill_value]]
           ]
       end
     elsif modifier.modifies=="auxiliary"

@@ -10,10 +10,10 @@ module CharacterWizardHelper
   def display_curse_or_blessing(char)
     if char.character_background.traits.blank?
       "<strong>Klątwy i Dary: </strong> brak."
-    elsif  char.character_background.traits.first.effect_type==Trait::TRAIT_TYPE["curse"]
+    elsif  char.character_background.traits.first.effect_type==Trait::TRAIT_TYPE_MAP["curse"]
       "<strong>Klątwy i Dary: </strong> #{char.character_background.traits.first.name} (klątwa) <br>
      <strong>Opis: </strong> #{char.character_background.traits.first.description} <br>"
-    elsif  char.character_background.traits.first.effect_type==Trait::TRAIT_TYPE["blessing"]
+    elsif  char.character_background.traits.first.effect_type==Trait::TRAIT_TYPE_MAP["blessing"]
       "<strong>Klątwy i Dary: </strong> #{char.character_background.traits.first.name} (dar) <br>
      <strong>Opis: </strong> #{char.character_background.traits.first.description} <br>"
     end
@@ -25,7 +25,7 @@ module CharacterWizardHelper
 
   def display_choice_part(choice_part)
     if ["S", "ZR", "WT", "INT", "WI", "O"].include?(choice_part.modifies)
-      "<strong>#{Statistics::POLISH_NAMES[choice_part.modifies]}</strong> zostanie zmodyfikowana o <strong>#{bonus_orientation(choice_part.value)}#{choice_part.value}</strong>".html_safe
+      "<strong>#{Statistics::POLISH_NAMES_MAP[choice_part.modifies]}</strong> zostanie zmodyfikowana o <strong>#{bonus_orientation(choice_part.value)}#{choice_part.value}</strong>".html_safe
     elsif choice_part.modifies=="skills"
       "Postać otrzyma: <strong>#{choice_part.group_name}</strong>".html_safe
     elsif choice_part.modifies=="other"

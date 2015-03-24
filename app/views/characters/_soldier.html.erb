@@ -23,7 +23,7 @@
   <tr>
     <td colspan="2" style="text-align:left;width:1.1097in; " class="Tabela2_A2"><p class="P15">SIŁA</p></td>
     <td colspan="3" style="text-align:left;width:0.3438in; " class="Tabela2_C2"><p class="P15"><%= @character_sheet.character.statistics.calculate_s %></p></td>
-    <td colspan="2" style="text-align:left;width:0.2521in; " class="Tabela2_F2"><p class="P144"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_s]}" %></p></td>
+    <td colspan="2" style="text-align:left;width:0.2521in; " class="Tabela2_F2"><p class="P144"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_s]}" %></p></td>
     <td style="text-align:left;width:0.2132in; " class="Tabela2_H9"><p class="P14"> </p></td>
     <td style="text-align:left;width:1.4264in; " class="Tabela2_A2"><p class="P15">Profesja</p></td>
     <td colspan="2" style="text-align:left;width:1.1625in; " class="Tabela2_J9"><p class="P144"><%= @character_sheet.character.profession.name %></p></td>
@@ -31,7 +31,7 @@
   <tr>
     <td colspan="2" style="text-align:left;width:1.1097in; " class="Tabela2_A3"><p class="P15">ZRĘCZNOŚĆ</p></td>
     <td colspan="3" style="text-align:left;width:0.3438in; " class="Tabela2_C3"><p class="P15"><%= @character_sheet.character.statistics.calculate_zr %></p></td>
-    <td colspan="2" style="text-align:left;width:0.2521in; " class="Tabela2_C3"><p class="P144"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_zr]}" %></p></td>
+    <td colspan="2" style="text-align:left;width:0.2521in; " class="Tabela2_C3"><p class="P144"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_zr]}" %></p></td>
     <td style="text-align:left;width:0.2132in; " class="Tabela2_H9"><p class="P10"> </p></td>
     <td style="text-align:left;width:1.4264in; " class="Tabela2_I3"><p class="P15">Klasa Społeczna</p></td>
     <td colspan="2" style="text-align:left;width:1.1625in; " class="Tabela2_C3"><p class="P144"><%= @character_sheet.character.social_class.name %></p></td>
@@ -39,7 +39,7 @@
   <tr>
     <td colspan="2" style="text-align:left;width:1.1097in; " class="Tabela2_A2"><p class="P15">WYTRZYMAŁOŚĆ</p></td>
     <td colspan="3" style="text-align:left;width:0.3438in; " class="Tabela2_C3"><p class="P15"><%= @character_sheet.character.statistics.calculate_wt %></p></td>
-    <td colspan="2" style="text-align:left;width:0.2521in; " class="Tabela2_F4"><p class="P144"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wt]}" %></p></td>
+    <td colspan="2" style="text-align:left;width:0.2521in; " class="Tabela2_F4"><p class="P144"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wt]}" %></p></td>
     <td style="text-align:left;width:0.2132in; " class="Tabela2_H4"><p class="P14"> </p></td>
     <td style="text-align:left;width:1.4264in; " class="Tabela2_A3"><p class="P15">Imię Postaci</p></td>
     <td colspan="2" style="text-align:left;width:1.1625in; " class="Tabela2_J4"><p class="P144"><%= @character_sheet.character.name %></p></td>
@@ -47,7 +47,7 @@
   <tr>
     <td colspan="2" style="text-align:left;width:1.1097in; " class="Tabela2_A2"><p class="P15">INTELIGENCJA</p></td>
     <td colspan="3" style="text-align:left;width:0.3438in; " class="Tabela2_C7"><p class="P15"><%= @character_sheet.character.statistics.calculate_int %></p></td>
-    <td colspan="2" style="text-align:left;width:0.2521in; " class="Tabela2_F7"><p class="P144"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_int]}" %></p></td>
+    <td colspan="2" style="text-align:left;width:0.2521in; " class="Tabela2_F7"><p class="P144"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_int]}" %></p></td>
     <td style="text-align:left;width:0.2132in; " class="Tabela2_H9"><p class="P14"> </p></td>
     <td style="text-align:left;width:1.4264in; " class="Tabela2_A2"><p class="P15">Kraj Pochodzenia</p></td>
     <td colspan="2" style="text-align:left;width:1.1625in; " class="Tabela2_J9"><p class="P144"><%= @character_sheet.character.character_background.origin %></p></td>
@@ -55,7 +55,7 @@
   <tr>
     <td colspan="2" style="text-align:left;width:1.1097in; " class="Tabela2_A2"><p class="P15">WIARA</p></td>
     <td colspan="3" style="text-align:left;width:0.3438in; " class="Tabela2_C7"><p class="P15"><%= @character_sheet.character.statistics.calculate_wi %></p></td>
-    <td colspan="2" style="text-align:left;width:0.2521in; " class="Tabela2_F7"><p class="P144"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi]}" %></p></td>
+    <td colspan="2" style="text-align:left;width:0.2521in; " class="Tabela2_F7"><p class="P144"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi]}" %></p></td>
     <td style="text-align:left;width:0.2132in; " class="Tabela2_H9"><p class="P14"> </p></td>
     <td rowspan="2" style="text-align:left;width:1.4264in; " class="Tabela2_A2"><p class="P13"> </p>
 
@@ -65,7 +65,7 @@
   <tr>
     <td colspan="2" style="text-align:left;width:1.1097in; " class="Tabela2_A2"><p class="P15">OGŁADA</p></td>
     <td colspan="3" style="text-align:left;width:0.3438in; " class="Tabela2_C7"><p class="P15"><%= @character_sheet.character.statistics.calculate_o %></p></td>
-    <td colspan="2" style="text-align:left;width:0.2521in; " class="Tabela2_F7"><p class="P144"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_o]}" %></p></td>
+    <td colspan="2" style="text-align:left;width:0.2521in; " class="Tabela2_F7"><p class="P144"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_o]}" %></p></td>
     <td style="text-align:left;width:0.2132in; " class="Tabela2_H9"><p class="P14"> </p></td>
   </tr>
   <tr>
@@ -89,7 +89,7 @@
   <tr>
     <td style="text-align:left;width:1.1097in; " class="Tabela2_C3"><p class="P13"><%= @character_sheet.character.statistics.calculate_initiative %></p></td>
     <td colspan="2" style="text-align:left;width:0.3083in; " class="Tabela2_B10"><p class="P100"><%= AuxiliaryParameterSet::INITIATIVE_MAP[@character_sheet.character.profession.general_type] %></p></td>
-    <td style="text-align:left;width:0.7604in; " class="Tabela2_C3"><p class="P13"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_zr]}" %></p></td>
+    <td style="text-align:left;width:0.7604in; " class="Tabela2_C3"><p class="P13"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_zr]}" %></p></td>
     <td colspan="2" style="text-align:left;width:0.4493in; " class="Tabela2_C3"><p class="P13">+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_from_skills") %></p></td>
     <td style="text-align:left;width:0.6632in; " class="Tabela2_G10"><p class="P13"><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_special")) %></p></td>
     <td style="text-align:left;width:0.2132in; " class="Tabela2_H10"><p class="P14"> </p></td>
@@ -165,7 +165,7 @@
   <tr>
     <td colspan="2" style="text-align:left;width:0.5569in; " class="Tabela4_A17"><p class="P100"><%= @character_sheet.character.statistics.calculate_pain_resistance %></p></td>
     <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C5"><p class="P100"><%= AuxiliaryParameterSet::PAIN_RESISTANCE_MAP[@character_sheet.character.profession.general_type] %></p></td>
-    <td colspan="2" style="text-align:left;width:0.0576in; " class="Tabela4_E2"><p class="P100"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wt]}" %></p></td>
+    <td colspan="2" style="text-align:left;width:0.0576in; " class="Tabela4_E2"><p class="P100"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wt]}" %></p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela4_G2"><p class="P100">+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_from_skills") %></p></td>
     <td colspan="2" style="text-align:left;width:0.4118in; " class="Tabela4_H8"><p class="P100"><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_special")) %></p></td>
     <td style="text-align:left;width:0.2194in; " class="Tabela4_J35"><p class="P10"> </p></td>
@@ -201,7 +201,7 @@
   <tr>
     <td colspan="2" style="text-align:left;width:0.5569in; " class="Tabela4_A17"><p class="P100"><%= @character_sheet.character.statistics.calculate_fear_resistance %></p></td>
     <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C5"><p class="P100"><%= AuxiliaryParameterSet::FEAR_RESISTANCE_MAP[@character_sheet.character.profession.general_type] %></p></td>
-    <td colspan="2" style="text-align:left;width:0.0576in; " class="Tabela4_E8"><p class="P100"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi]}" %></p></td>
+    <td colspan="2" style="text-align:left;width:0.0576in; " class="Tabela4_E8"><p class="P100"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi]}" %></p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela4_E8"><p class="P100">+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_from_skills") %></p></td>
     <td colspan="2" style="text-align:left;width:0.4118in; " class="Tabela4_H8"><p class="P100"><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_special")) %></p></td>
     <td style="text-align:left;width:0.2194in; " class="Tabela4_J35"><p class="P10"> </p></td>
@@ -275,7 +275,7 @@
     <td style="text-align:left;width:0.5569in; " class="Tabela4_A14"><p class="P100"><%= @character_sheet.character.statistics.calculate_sprinting %></p></td>
     <td style="text-align:left;width:0.5604in; " class="Tabela4_B14"><p class="P100"><%= @character_sheet.character.statistics.calculate_running %></p></td>
     <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C11"><p class="P100"><%= AuxiliaryParameterSet::RUNNING_MAP[@character_sheet.character.profession.general_type] %></p></td>
-    <td colspan="2" style="text-align:left;width:0.0576in; " class="Tabela4_E8"><p class="P100"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_zr]}" %></p></td>
+    <td colspan="2" style="text-align:left;width:0.0576in; " class="Tabela4_E8"><p class="P100"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_zr]}" %></p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela4_E8"><p class="P100">+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Bieg", "only_from_skills") %></p></td>
     <td colspan="2" style="text-align:left;width:0.4118in; " class="Tabela4_E2"><p class="P100"><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Bieg", "only_special")) %></p></td>
     <td style="text-align:left;width:0.2194in; " class="Tabela4_J35"><p class="P10"> </p></td>
@@ -664,8 +664,8 @@
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @character_sheet.weapons[0].defense_fencing_parameter if @character_sheet.weapons[0].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @character_sheet.weapons[0].calculate_defense_bonus_for_dual_wield if @character_sheet.weapons[0].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @character_sheet.shield.total_defense_bonus(true) if @character_sheet.shield.present? %></p></td>
-         <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_current_zr] %></p></td>
-         <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[0].present? %></p></td>
+         <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_current_zr] %></p></td>
+         <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[0].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @character_sheet.weapons[0].special_defense_bonus_for_total_defense_listing if @character_sheet.weapons[0].present? %></p></td>
          <td style="text-align:left;width:1.0243in; " class="Tabela3_H3 <%= weapon_proficiency_bonus(@character_sheet.weapons[0]) %>"><p class="P16"> <%= @character_sheet.weapons[0].total_defense(true, @character_sheet.shield) if @character_sheet.weapons[0].present?  %></p></td>
        </tr>
@@ -685,8 +685,8 @@
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @character_sheet.weapons[0].defense_fencing_parameter if @character_sheet.weapons[0].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @character_sheet.weapons[0].calculate_defense_bonus_for_particular_weapon if @character_sheet.weapons[0].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= (@character_sheet.shield.present? && @character_sheet.weapons[0].present?) ? @character_sheet.shield.total_defense_bonus(true) : "-" %></p></td>
-         <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_current_zr] if @character_sheet.weapons[0].present? %></p></td>
-         <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[0].present? %></p></td>
+         <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_current_zr] if @character_sheet.weapons[0].present? %></p></td>
+         <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[0].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A3"><p class="P16"> <%= @character_sheet.weapons[0].special_defense_bonus_for_total_defense_listing if @character_sheet.weapons[0].present? %></p></td>
          <td style="text-align:left;width:1.0243in; " class="Tabela3_H3 <%= weapon_proficiency_bonus(@character_sheet.weapons[0]) %>"><p class="P16"> <%= @character_sheet.weapons[0].total_defense(false, @character_sheet.shield) if @character_sheet.weapons[0].present?  %></p></td>
        </tr>
@@ -695,8 +695,8 @@
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= @character_sheet.weapons[1].defense_fencing_parameter if @character_sheet.weapons[1].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= @character_sheet.weapons[1].calculate_defense_bonus_for_particular_weapon if @character_sheet.weapons[1].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= (@character_sheet.shield.present? && @character_sheet.weapons[1].present?) ? @character_sheet.shield.total_defense_bonus(true) : "" %></p></td>
-         <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_current_zr] if @character_sheet.weapons[1].present? %></p></td>
-         <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[1].present? %></p></td>
+         <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_current_zr] if @character_sheet.weapons[1].present? %></p></td>
+         <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[1].present? %></p></td>
          <td style="text-align:left;width:0.9347in; " class="Tabela3_A4"><p class="P16"> <%= @character_sheet.weapons[1].special_defense_bonus_for_total_defense_listing if @character_sheet.weapons[1].present? %></p></td>
          <td style="text-align:left;width:1.0243in; " class="Tabela3_H4 <%= weapon_proficiency_bonus(@character_sheet.weapons[1]) %>"><p class="P16"> <%= @character_sheet.weapons[1].total_defense(false, @character_sheet.shield) if @character_sheet.weapons[1].present?  %></p></td>
        </tr>
@@ -932,8 +932,8 @@
   <tr>
     <td style="text-align:left;width:0.8007in; " class="Tabela7_A8"><p class="P16">Bijatyka</p></td>
     <td style="text-align:left;width:0.6417in; " class="Tabela7_A7"><p class="P16"> <%= @character_sheet.character.statistics.raw_fencing_when_defending %> </p></td>
-    <td colspan="2" style="text-align:left;width:0.1597in; " class="Tabela7_A7"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_current_zr] %></p></td>
-    <td colspan="2" style="text-align:left;width:0.3299in; " class="Tabela7_A7"><p class="P16"> <%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi]}" %></p></td>
+    <td colspan="2" style="text-align:left;width:0.1597in; " class="Tabela7_A7"><p class="P16"> <%= Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_current_zr] %></p></td>
+    <td colspan="2" style="text-align:left;width:0.3299in; " class="Tabela7_A7"><p class="P16"> <%= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi]}" %></p></td>
     <td colspan="2" style="text-align:left;width:0.4604in; " class="Tabela7_A7"><p class="P16"> <%= @character_sheet.character.statistics.calculate_brawl_bonus_from_skills %></p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela7_I8"><p class="P16"> <%= @character_sheet.character.statistics.calculate_total_brawling("defense") %></p></td>
     <td style="text-align:left;width:0.2104in; " class="Tabela7_J24"><p class="P16"> </p></td>

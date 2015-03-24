@@ -2,7 +2,7 @@
 module Stats
   module Auxiliary
     def calculate_initiative
-       AuxiliaryParameterSet::INITIATIVE_MAP[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_zr].to_i + calculate_auxiliary_bonus("Inicjatywa")
+       AuxiliaryParameterSet::INITIATIVE_MAP[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES_MAP[calculate_zr].to_i + calculate_auxiliary_bonus("Inicjatywa")
      end
 
      def calculate_perception
@@ -10,11 +10,11 @@ module Stats
      end
 
      def calculate_pain_resistance
-       AuxiliaryParameterSet::PAIN_RESISTANCE_MAP[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_wt].to_i + calculate_auxiliary_bonus("Odporność na Ból")
+       AuxiliaryParameterSet::PAIN_RESISTANCE_MAP[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES_MAP[calculate_wt].to_i + calculate_auxiliary_bonus("Odporność na Ból")
      end
 
      def calculate_fear_resistance
-       AuxiliaryParameterSet::FEAR_RESISTANCE_MAP[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_wi].to_i + calculate_auxiliary_bonus("Odporność na Strach")
+       AuxiliaryParameterSet::FEAR_RESISTANCE_MAP[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES_MAP[calculate_wi].to_i + calculate_auxiliary_bonus("Odporność na Strach")
      end
 
      def calculate_magic_resistance
@@ -26,11 +26,11 @@ module Stats
      end
 
      def calculate_running
-       AuxiliaryParameterSet::RUNNING_MAP[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_current_zr].to_i + calculate_auxiliary_bonus("Bieg")
+       AuxiliaryParameterSet::RUNNING_MAP[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES_MAP[calculate_current_zr].to_i + calculate_auxiliary_bonus("Bieg")
      end
 
      def calculate_sprinting
-       AuxiliaryParameterSet::RUNNING_MAP[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES[calculate_current_zr].to_i + 10 + calculate_auxiliary_bonus("Bieg")
+       AuxiliaryParameterSet::RUNNING_MAP[character.profession.general_type] + Statistics::BONUS_OR_PENALTY_RANGES_MAP[calculate_current_zr].to_i + 10 + calculate_auxiliary_bonus("Bieg")
      end
 
      def calculate_auxiliary_bonus(name, total="yep, I want total")

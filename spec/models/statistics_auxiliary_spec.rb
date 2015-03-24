@@ -103,7 +103,7 @@ describe Statistics do
     let(:statistics) { Statistics.new(endurance: 20) }
     let(:group_name) { 'Punkty Życia' }
     let!(:stats_modifiers) { [create(:stats_modifier, modifies: 'variable_auxiliary', group_name: group_name, value: 2,
-                                     evaluated_instruction: 'Statistics::BONUS_OR_PENALTY_RANGES[calculate_wt]')] }
+                                     evaluated_instruction: 'Statistics::BONUS_OR_PENALTY_RANGES_MAP[calculate_wt]')] }
     before do
       statistics.stats_modifiers << stats_modifiers
       statistics.stub(:calculate_wt).and_return(23)
