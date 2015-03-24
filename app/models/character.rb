@@ -105,7 +105,7 @@ class Character < ActiveRecord::Base
     if Trait::CHOICE_BREAKERS.include?(character_background.traits.map(&:name).try(:first)) && character_background.traits.first.statistics_it_affects != lead_parameter
       roll_set_without_lead_parameter = statistics.initial_dice_roll_set.tap { |a| a.delete_at(statistics.initial_dice_roll_set[0..4].rindex(statistics.initial_dice_roll_set[0..4].max)) }
       second_highest = roll_set_without_lead_parameter.max
-      return (statistics.send(Statistics::ENGLISH_NAMES[character_background.traits.first.statistics_it_affects].intern) == second_highest)
+      return (statistics.send(Statistics::ENGLISH_NAMES_MAP[character_background.traits.first.statistics_it_affects].intern) == second_highest)
     end
     true
   end

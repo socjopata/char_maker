@@ -1,8 +1,6 @@
 # -*- encoding : utf-8 -*-
 class AuxiliaryParameterSet < ActiveRecord::Base
-  belongs_to :character
-
-  ENGLISH_NAMES = {
+  ENGLISH_NAMES_MAP = {
       "Odporność na Ból" => "pain_resistance",
       "Odporność na Strach" => "fear_resistance",
       "Punkty Życia" => "life_points",
@@ -11,56 +9,42 @@ class AuxiliaryParameterSet < ActiveRecord::Base
       "Spostrzegawczość" => "perception",
       "Inicjatywa" => "initiative"
   }
-
-  INITIATIVE = {
+  INITIATIVE_MAP = {
    "rogue" => 15,
    "soldier" => 15,
    "scholar" => 15
   }
-
-   PERCEPTION = {
+  PERCEPTION_MAP = {
    "rogue" => 18,
    "soldier" => 10,
    "scholar" => 15
   }
-
-   PAIN_RESISTANCE = {
+  PAIN_RESISTANCE_MAP = {
    "rogue" => 10,
    "soldier" => 12,
    "scholar" => 10
   }
-
-   FEAR_RESISTANCE = {
+  FEAR_RESISTANCE_MAP = {
    "rogue" => 8,
    "soldier" => 12,
    "scholar" => 10
   }
-
-   RUNNING = {
+  RUNNING_MAP = {
    "rogue" => 10,
    "soldier" => 10,
    "scholar" => 10
   }
-
-   HIT_POINTS = {
+  HIT_POINTS_MAP = {
    "rogue" => 14,
    "soldier" => 16,
    "scholar" => 12
   }
-
-   MAGIC_RESISTANCE = {
+  MAGIC_RESISTANCE_MAP = {
    "rogue" => 0,
    "soldier" => 0,
    "scholar" => 3
   }
 
-
-      #t.integer :initiative  #inicjatywa
-      #t.integer :perception #spostrzegawczość
-
-      #t.integer :pain_resistance #odp. na ból
-      #t.integer :fear_resistance #odp na strach
-      #t.integer :running #bieg
-      #t.integer :hit_points #punkty życia
-
+  belongs_to :character
 end
+

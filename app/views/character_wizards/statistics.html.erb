@@ -21,7 +21,7 @@
   <div class="dropArea">
     <div class="container-fluid">
       <div class="row-fluid">
-        <% Statistics::ENGLISH_NAMES.map do |key, value| %>
+        <% Statistics::ENGLISH_NAMES_MAP.map do |key, value| %>
             <div class="span2 fancy_number">
               <p style="font-size: 16px; text-align:left"><%= t(value) %></p>
               <%= content_tag(:div, (@wizard.instance_variable_get("@lead_parameter") if @wizard.character.lead_parameter==key), :id => value, :class => "drop #{"lead" if @wizard.character.lead_parameter==key}") %>

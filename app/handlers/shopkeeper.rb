@@ -45,7 +45,7 @@ class Shopkeeper
       when "Shield"
         weapon_armor_or_shield.price * Shield::MULTIPLIER[number] + evaluate_worth(inventory_item, (number-1))
       when "Armor"
-        Armor::EXTRA_COST[number] + (weapon_armor_or_shield.is_rare_or_exotic? ? 2 : 1) * evaluate_worth(inventory_item, (number-1))
+        Armor::EXTRA_COST_MAP[number] + (weapon_armor_or_shield.is_rare_or_exotic? ? 2 : 1) * evaluate_worth(inventory_item, (number-1))
     end
   end
 

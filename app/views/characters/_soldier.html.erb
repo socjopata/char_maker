@@ -88,7 +88,7 @@
   </tr>
   <tr>
     <td style="text-align:left;width:1.1097in; " class="Tabela2_C3"><p class="P13"><%= @character_sheet.character.statistics.calculate_initiative %></p></td>
-    <td colspan="2" style="text-align:left;width:0.3083in; " class="Tabela2_B10"><p class="P100"><%= AuxiliaryParameterSet::INITIATIVE[@character_sheet.character.profession.general_type] %></p></td>
+    <td colspan="2" style="text-align:left;width:0.3083in; " class="Tabela2_B10"><p class="P100"><%= AuxiliaryParameterSet::INITIATIVE_MAP[@character_sheet.character.profession.general_type] %></p></td>
     <td style="text-align:left;width:0.7604in; " class="Tabela2_C3"><p class="P13"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_zr]}" %></p></td>
     <td colspan="2" style="text-align:left;width:0.4493in; " class="Tabela2_C3"><p class="P13">+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_from_skills") %></p></td>
     <td style="text-align:left;width:0.6632in; " class="Tabela2_G10"><p class="P13"><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_special")) %></p></td>
@@ -128,7 +128,7 @@
   </tr>
   <tr>
     <td colspan="2" style="text-align:left;width:0.5569in; " class="Tabela4_A17"><p class="P100"><%= @character_sheet.character.statistics.calculate_perception %></p></td>
-    <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C2"><p class="P100"><%= AuxiliaryParameterSet::PERCEPTION[@character_sheet.character.profession.general_type] %></p></td>
+    <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C2"><p class="P100"><%= AuxiliaryParameterSet::PERCEPTION_MAP[@character_sheet.character.profession.general_type] %></p></td>
     <td colspan="2" style="text-align:left;width:0.0576in; " class="Tabela4_E2"><p class="P100">+<%= @character_sheet.character.current_level %></p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela4_G2"><p class="P100">+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_from_skills") %></p></td>
     <td colspan="2" style="text-align:left;width:0.4118in; " class="Tabela4_H8"><p class="P100"><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_special")) %></p></td>
@@ -164,7 +164,7 @@
   </tr>
   <tr>
     <td colspan="2" style="text-align:left;width:0.5569in; " class="Tabela4_A17"><p class="P100"><%= @character_sheet.character.statistics.calculate_pain_resistance %></p></td>
-    <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C5"><p class="P100"><%= AuxiliaryParameterSet::PAIN_RESISTANCE[@character_sheet.character.profession.general_type] %></p></td>
+    <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C5"><p class="P100"><%= AuxiliaryParameterSet::PAIN_RESISTANCE_MAP[@character_sheet.character.profession.general_type] %></p></td>
     <td colspan="2" style="text-align:left;width:0.0576in; " class="Tabela4_E2"><p class="P100"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wt]}" %></p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela4_G2"><p class="P100">+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_from_skills") %></p></td>
     <td colspan="2" style="text-align:left;width:0.4118in; " class="Tabela4_H8"><p class="P100"><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_special")) %></p></td>
@@ -200,7 +200,7 @@
   </tr>
   <tr>
     <td colspan="2" style="text-align:left;width:0.5569in; " class="Tabela4_A17"><p class="P100"><%= @character_sheet.character.statistics.calculate_fear_resistance %></p></td>
-    <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C5"><p class="P100"><%= AuxiliaryParameterSet::FEAR_RESISTANCE[@character_sheet.character.profession.general_type] %></p></td>
+    <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C5"><p class="P100"><%= AuxiliaryParameterSet::FEAR_RESISTANCE_MAP[@character_sheet.character.profession.general_type] %></p></td>
     <td colspan="2" style="text-align:left;width:0.0576in; " class="Tabela4_E8"><p class="P100"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi]}" %></p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela4_E8"><p class="P100">+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_from_skills") %></p></td>
     <td colspan="2" style="text-align:left;width:0.4118in; " class="Tabela4_H8"><p class="P100"><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_special")) %></p></td>
@@ -236,7 +236,7 @@
   </tr>
   <tr>
     <td colspan="2" style="text-align:left;width:0.5569in; " class="Tabela4_A17"><p class="P100"><%= @character_sheet.character.statistics.calculate_magic_resistance %></p></td>
-    <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C11"><p class="P100"><%= AuxiliaryParameterSet::MAGIC_RESISTANCE[@character_sheet.character.profession.general_type] %></p></td>
+    <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C11"><p class="P100"><%= AuxiliaryParameterSet::MAGIC_RESISTANCE_MAP[@character_sheet.character.profession.general_type] %></p></td>
     <td colspan="2" style="text-align:left;width:0.0576in; " class="Tabela4_E8"><p class="P100">---</p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela4_E8"><p class="P100">+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_from_skills") %></p></td>
     <td colspan="2" style="text-align:left;width:0.4118in; " class="Tabela4_H11"><p class="P100"><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_special")) %></p></td>
@@ -274,7 +274,7 @@
   <tr>
     <td style="text-align:left;width:0.5569in; " class="Tabela4_A14"><p class="P100"><%= @character_sheet.character.statistics.calculate_sprinting %></p></td>
     <td style="text-align:left;width:0.5604in; " class="Tabela4_B14"><p class="P100"><%= @character_sheet.character.statistics.calculate_running %></p></td>
-    <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C11"><p class="P100"><%= AuxiliaryParameterSet::RUNNING[@character_sheet.character.profession.general_type] %></p></td>
+    <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C11"><p class="P100"><%= AuxiliaryParameterSet::RUNNING_MAP[@character_sheet.character.profession.general_type] %></p></td>
     <td colspan="2" style="text-align:left;width:0.0576in; " class="Tabela4_E8"><p class="P100"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_zr]}" %></p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela4_E8"><p class="P100">+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Bieg", "only_from_skills") %></p></td>
     <td colspan="2" style="text-align:left;width:0.4118in; " class="Tabela4_E2"><p class="P100"><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Bieg", "only_special")) %></p></td>
@@ -311,7 +311,7 @@
   </tr>
   <tr>
     <td colspan="2" style="text-align:left;width:0.5569in; " class="Tabela4_A17"><p class="P100"><%= @character_sheet.character.statistics.calculate_life_points %></p></td>
-    <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C11"><p class="P100"><%= AuxiliaryParameterSet::HIT_POINTS[@character_sheet.character.profession.general_type] %></p></td>
+    <td colspan="2" style="text-align:left;width:0.3958in; " class="Tabela4_C11"><p class="P100"><%= AuxiliaryParameterSet::HIT_POINTS_MAP[@character_sheet.character.profession.general_type] %></p></td>
     <td colspan="2" style="text-align:left;width:0.0576in; " class="Tabela4_E8"><p class="P100">+<%= @character_sheet.character.statistics.calculate_wt %></p></td>
     <td style="text-align:left;width:0.6778in; " class="Tabela4_E8"><p class="P100">+<%= @character_sheet.character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_from_skills") %></p></td>
     <td colspan="2" style="text-align:left;width:0.4118in; " class="Tabela4_H17"><p class="P100"><%= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_special")) %></p></td>

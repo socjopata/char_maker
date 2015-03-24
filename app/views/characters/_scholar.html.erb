@@ -319,7 +319,7 @@
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::INITIATIVE[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::INITIATIVE_MAP[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
     <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_zr]}" %>
@@ -439,7 +439,7 @@
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::PERCEPTION[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::PERCEPTION_MAP[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
     <P ALIGN=CENTER>+<%= @character_sheet.character.current_level %>
@@ -558,7 +558,7 @@
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::PAIN_RESISTANCE[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::PAIN_RESISTANCE_MAP[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border: 1.00pt solid #000000; padding: 0.04in">
     <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wt]}" %>
@@ -677,7 +677,7 @@
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border: 1.00pt solid #000000; padding: 0.04in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::FEAR_RESISTANCE[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::FEAR_RESISTANCE_MAP[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_wi]}" %>
@@ -792,7 +792,7 @@
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::MAGIC_RESISTANCE[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::MAGIC_RESISTANCE_MAP[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border-top: none; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER><BR>
@@ -914,7 +914,7 @@
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::RUNNING[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::RUNNING_MAP[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER STYLE="font-style: normal"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@character_sheet.character.statistics.calculate_zr]}" %>
@@ -1032,7 +1032,7 @@
     </P>
   </TD>
   <TD WIDTH=8% BGCOLOR="#e6e6e6" STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
-    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::HIT_POINTS[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
+    <P ALIGN=CENTER><FONT SIZE=2 STYLE="font-size: 9pt"><I><B><%= AuxiliaryParameterSet::HIT_POINTS_MAP[@character_sheet.character.profession.general_type] %></B></I></FONT></P>
   </TD>
   <TD COLSPAN=2 WIDTH=10% STYLE="border-top: 1.00pt solid #000000; border-bottom: 1.00pt solid #000000; border-left: 1.00pt solid #000000; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
     <P ALIGN=CENTER>+<%= @character_sheet.character.statistics.calculate_wt %>

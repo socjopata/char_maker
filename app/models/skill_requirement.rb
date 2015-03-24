@@ -19,7 +19,7 @@ class SkillRequirement < ActiveRecord::Base
       when "caster_class"
         !Profession::CASTER_CLASSES.include?(character.profession.name)
       when "auxiliary"
-        self.value.to_i > character.statistics.send("calculate_#{AuxiliaryParameterSet::ENGLISH_NAMES[name]}".intern)
+        self.value.to_i > character.statistics.send("calculate_#{AuxiliaryParameterSet::ENGLISH_NAMES_MAP[name]}".intern)
       when "fighting"
         self.value.to_i > character.statistics.send(self.name.intern)
     end

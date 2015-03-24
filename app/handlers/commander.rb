@@ -36,8 +36,8 @@ class Commander
     if ["S", "ZR", "WT", "INT", "WI", "O"].include?(modifier.modifies)
       base_skill_value = @character.statistics.send("calculate_#{modifier.modifies.downcase}".intern)
       result << [
-          Hash["main_table_value_#{Statistics::ENGLISH_NAMES[modifier.modifies]}", base_skill_value],
-          Hash["main_table_bonus_#{Statistics::ENGLISH_NAMES[modifier.modifies]}", Statistics::BONUS_OR_PENALTY_RANGES[base_skill_value]]
+          Hash["main_table_value_#{Statistics::ENGLISH_NAMES_MAP[modifier.modifies]}", base_skill_value],
+          Hash["main_table_bonus_#{Statistics::ENGLISH_NAMES_MAP[modifier.modifies]}", Statistics::BONUS_OR_PENALTY_RANGES[base_skill_value]]
       ]
       case modifier.modifies
         when "S"
@@ -69,12 +69,12 @@ class Commander
           ]
       end
     elsif modifier.modifies=="auxiliary"
-      result << [Hash["auxiliary_table_total_#{AuxiliaryParameterSet::ENGLISH_NAMES[modifier.group_name]}", @character.statistics.send("calculate_#{AuxiliaryParameterSet::ENGLISH_NAMES[modifier.group_name]}".intern)],
-                 Hash["auxiliary_table_skill_bonus_for_#{AuxiliaryParameterSet::ENGLISH_NAMES[modifier.group_name]}", @character.statistics.calculate_auxiliary_bonus(modifier.group_name, "only_from_skills")]
+      result << [Hash["auxiliary_table_total_#{AuxiliaryParameterSet::ENGLISH_NAMES_MAP[modifier.group_name]}", @character.statistics.send("calculate_#{AuxiliaryParameterSet::ENGLISH_NAMES_MAP[modifier.group_name]}".intern)],
+                 Hash["auxiliary_table_skill_bonus_for_#{AuxiliaryParameterSet::ENGLISH_NAMES_MAP[modifier.group_name]}", @character.statistics.calculate_auxiliary_bonus(modifier.group_name, "only_from_skills")]
       ]
     elsif modifier.modifies=="variable_auxiliary"   #for special stuff like "Hardy"
-      result << [Hash["auxiliary_table_total_#{AuxiliaryParameterSet::ENGLISH_NAMES[modifier.group_name]}", @character.statistics.send("calculate_#{AuxiliaryParameterSet::ENGLISH_NAMES[modifier.group_name]}".intern)],
-                 Hash["auxiliary_table_skill_bonus_for_#{AuxiliaryParameterSet::ENGLISH_NAMES[modifier.group_name]}", @character.statistics.calculate_auxiliary_bonus(modifier.group_name, "only_from_skills")]
+      result << [Hash["auxiliary_table_total_#{AuxiliaryParameterSet::ENGLISH_NAMES_MAP[modifier.group_name]}", @character.statistics.send("calculate_#{AuxiliaryParameterSet::ENGLISH_NAMES_MAP[modifier.group_name]}".intern)],
+                 Hash["auxiliary_table_skill_bonus_for_#{AuxiliaryParameterSet::ENGLISH_NAMES_MAP[modifier.group_name]}", @character.statistics.calculate_auxiliary_bonus(modifier.group_name, "only_from_skills")]
       ]
     end
     result.flatten

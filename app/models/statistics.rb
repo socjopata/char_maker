@@ -27,7 +27,7 @@ class Statistics < ActiveRecord::Base
        "O" => "Ogłada"
       }
 
-  ENGLISH_NAMES =
+  ENGLISH_NAMES_MAP =
       {"S" => "strength",
        "ZR" => "dexterity",
        "WT" => "endurance",

@@ -57,7 +57,7 @@ class Blacksmith
       when "Shield"
         weapon_armor_or_shield.price * (Shield::MULTIPLIER[[inventory_item.defense_bonus, inventory_item.dexterity_nerf, inventory_item.dexterity_cap].map(&:to_i).sum+ (caller[0][/`.*'/][1..-2]=="refund_money" ? 1 : 0)]) #   #conditional +1 to ensure we are refunding proper amount
       when "Armor"
-        (weapon_armor_or_shield.is_rare_or_exotic? ? 2 : 1) * (Armor::EXTRA_COST[[inventory_item.defense_bonus, inventory_item.dexterity_nerf, inventory_item.dexterity_cap].map(&:to_i).sum + (caller[0][/`.*'/][1..-2]=="refund_money" ? 1 : 0)])
+        (weapon_armor_or_shield.is_rare_or_exotic? ? 2 : 1) * (Armor::EXTRA_COST_MAP[[inventory_item.defense_bonus, inventory_item.dexterity_nerf, inventory_item.dexterity_cap].map(&:to_i).sum + (caller[0][/`.*'/][1..-2]=="refund_money" ? 1 : 0)])
     end
   end
 

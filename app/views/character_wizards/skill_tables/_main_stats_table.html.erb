@@ -11,8 +11,8 @@
   <% ["S", "ZR", "WT", "INT", "WI", "O"].each do |stat| %>
       <tr>
         <td><%= Statistics::POLISH_NAMES[stat] %></td>
-        <td id="main_table_value_<%= Statistics::ENGLISH_NAMES[stat]-%>"><%=  @wizard.instance_variable_get("@#{Statistics::ENGLISH_NAMES[stat]}") %></td>
-        <td id="main_table_bonus_<%= Statistics::ENGLISH_NAMES[stat]-%>"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@#{Statistics::ENGLISH_NAMES[stat]}")]}" %></td>
+        <td id="main_table_value_<%= Statistics::ENGLISH_NAMES_MAP[stat]-%>"><%=  @wizard.instance_variable_get("@#{Statistics::ENGLISH_NAMES_MAP[stat]}") %></td>
+        <td id="main_table_bonus_<%= Statistics::ENGLISH_NAMES_MAP[stat]-%>"><%= "#{Statistics::BONUS_OR_PENALTY_RANGES[@wizard.instance_variable_get("@#{Statistics::ENGLISH_NAMES_MAP[stat]}")]}" %></td>
       </tr>
   <% end %>
   </tbody>
