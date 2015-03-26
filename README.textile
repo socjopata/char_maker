@@ -27,10 +27,10 @@ Please be patient while the application loads for the first time, as it is only 
 h2. Environment
 
 * ruby <1.9.3-p194> or newer
-* rails <3.2.12>
+* rails <3.2.21>
 * bundler
 * gems are described in Gemfile and also some are packed by bundler into the project.
-* PostgreSQL <8.4> or <9.1>
+* PostgreSQL <8.4> or <9.1> or newer
 * wkhtmltopdf
 
 h3. Developer Setup

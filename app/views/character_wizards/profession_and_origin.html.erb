@@ -12,17 +12,17 @@
 
       <legend>Profesja i pochodzenie:</legend>
 
-      <%= form_tag({:url => character_wizard_path, :method => :post}, {:class => "simple_form form-horizontal"}) do %>
+      <%= form_tag({ :url => character_wizard_path, :method => :post }, { :class => "simple_form form-horizontal" }) do %>
           <label>Wybierz profesję:</label>
           <%= select_tag 'professions', options_from_collection_for_select(@wizard.instance_variable_get("@professions"), "id", "name") %>
           <br/>
 
           <div id="addressCountries">
-            <%= render :partial => 'countries', :locals => {:countries => @wizard.instance_variable_get("@countries"), :profession => @wizard.instance_variable_get("@profession")} %>
+            <%= render :partial => 'countries', :locals => { :countries => @wizard.instance_variable_get("@countries"), :profession => @wizard.instance_variable_get("@profession") } %>
           </div>
 
           <div id="addressDeities">
-            <%= render :partial => 'deities', :locals => {:deities => @wizard.instance_variable_get("@deities"), :country => @wizard.instance_variable_get("@countries").first} %>
+            <%= render :partial => 'deities', :locals => { :deities => @wizard.instance_variable_get("@deities"), :country => @wizard.instance_variable_get("@countries").first } %>
           </div>
 
           <%= hidden_field_tag :char_id, @wizard.character.id %>
@@ -72,36 +72,31 @@
             var char_id = "<%= @wizard.character.id  %>";
             var profession = $('select#professions :selected').val();
             if (profession == "") profession = "0";
-            jQuery.get('/character_wizard/update_countries_select', {'id':profession, 'char_id':char_id}, function (data) {
+            jQuery.get('/character_wizard/update_countries_select', {'id': profession, 'char_id': char_id}, function (data) {
                 $("#addressCountries").html(data);
             });
             return false;
         });
 
-        $("#countries").live('change', function () {
-
+        $("#main").on("change", "#countries", function () {
             var char_id = "<%= @wizard.character.id  %>";
             var country = $('select#countries :selected').val();
             var profession = $('select#professions :selected').val();
             if (country == "") country = "0";
-            jQuery.get('/character_wizard/update_deities_select', {'id':country, 'char_id':char_id, 'profession_id':profession }, function (data) {
+            jQuery.get('/character_wizard/update_deities_select', {'id': country, 'char_id': char_id, 'profession_id': profession }, function (data) {
                 $("#addressDeities").html(data);
             });
             return false;
         });
-
-        $("#deities").live('change', function () {
-            var deity_text =  $('span#' + $('select#deities :selected').text()).text();
+        $("#main").on("change", "#deities", function () {
+            var deity_text = $('span#' + $('select#deities :selected').text()).text();
             $('#deity_description').text(" " + deity_text);
             return false;
         });
 
     });
 
-
     function submit_form_and_proceed() {
         $("form").submit();
     }
-
 </script>
-
