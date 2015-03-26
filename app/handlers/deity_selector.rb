@@ -1,7 +1,5 @@
 # -*- encoding : utf-8 -*-
-
 class DeitySelector
-
   ATHEISM_FORBIDDEN_PROFESSIONS = ["Kapłan", "Rycerz Zakonny", "Szaman"]
   CLERIC_DEITIES = ["Sirtol", "Kastor", "Smoczy Bóg", "Kalastra", "Syrion", "Alaj", "Calisto", "Durgil",]
   WARRIOR_CLERIC_DEITIES = ["Alaj", "Durgil", "Fortuna", "Kastor", "Smoczy Bóg", "Sirtol", "Syrion"]
@@ -51,7 +49,4 @@ class DeitySelector
       [Deity.find_all_by_name(SHAMAN_DEITIES)]
     end
   end
-
-
 end
-

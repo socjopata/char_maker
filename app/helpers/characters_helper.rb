@@ -1,33 +1,30 @@
 # -*- encoding : utf-8 -*-
 module CharactersHelper
-
   def render_character_sheet(character_sheet)
     case character_sheet.character.profession.general_type
-      when "scholar" then
-        render :partial => 'characters/scholar' #, :locals => locals
-      when "rogue" then
-        render :partial => 'characters/rogue' #, :locals => locals
-      when "soldier" then
-        render :partial => 'characters/soldier' #, :locals => locals
+      when "scholar"
+        render partial: 'characters/scholar'
+      when "rogue"
+        render partial: 'characters/rogue'
+      when "soldier"
+        render partial: 'characters/soldier'
     end
   end
 
   def display_character_sheet_name(character)
     case character.profession.general_type
-      when "scholar" then
+      when "scholar"
         "Uczonych"
-      when "rogue" then
+      when "rogue"
         "Łotrowska"
-      when "soldier" then
+      when "soldier"
         "Żołnierska"
     end
   end
 
   def weapon_proficiency_bonus(weapon)
-    if weapon.present? && weapon.weapon_proficiency_bonus==-5
+    if weapon.present? && weapon.weapon_proficiency_bonus == -5
       "red"
     end
   end
 end
-
-

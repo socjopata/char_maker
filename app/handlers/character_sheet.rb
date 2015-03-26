@@ -1,8 +1,6 @@
 # -*- encoding : utf-8 -*-
 class CharacterSheet
-
   include CharacterWizardHelper
-
   attr_reader :character, :all_skills, :extra_skills, :skill_names, :weapons, :shield, :primary_armor, :secondary_armor, :ranged_weapon, :purse, :scribe
 
   def initialize(character)
@@ -21,6 +19,4 @@ class CharacterSheet
     @purse =  purse_content(character.purse.base)
     @scribe = Scribe.new(character)
   end
-
-
 end

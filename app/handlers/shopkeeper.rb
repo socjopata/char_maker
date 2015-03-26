@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 class Shopkeeper
-
   attr_reader :character, :weapon_armor_or_shield, :item_to_be_deleted_id
   attr_accessor :purse, :result
 
@@ -10,12 +9,11 @@ class Shopkeeper
     @item_to_be_deleted_id = particular_id
     @purse = character.session[:coins_left]
     @result = (action_type=="add" ? add : remove)
-    @character.update_attribute(:session, @character.session.merge(:coins_left => @purse))
+    @character.update_attribute(:session, @character.session.merge(coins_left: @purse))
   end
 
-
   def add
-    _item = "Character#{weapon_armor_or_shield.class.name}".constantize.new(:character_id => character.id)
+    _item = "Character#{weapon_armor_or_shield.class.name}".constantize.new(character_id: character.id)
     _item["#{weapon_armor_or_shield.class.name.tableize.singularize}_id"] = weapon_armor_or_shield.id
     _item.save!
     deduct_money and return _item
@@ -64,8 +62,8 @@ class Shopkeeper
 
   def self.says_ok?(character, spendings)
     character.errors.add(:base, "Nie możesz wydać więcej niz posiadasz") if 0 > spendings.to_i
-    if self.there_is_chance_to_make_it_smooth(character)
-      self.dont_complain_and_make_it_smooth(character)
+    if there_is_chance_to_make_it_smooth(character)
+      dont_complain_and_make_it_smooth(character)
     else
       character.errors.add(:base, "Wybierz jedną z tarcz jako aktualnie używaną.") if character.character_shields.size > 0 && character.character_shields.map(&:favorite).compact.blank?
       character.errors.add(:base, "Wybierz jedną ze zbroi jako aktualnie noszoną.") if character.character_armors.size > 0 && character.character_armors.map(&:favorite).compact.blank?
@@ -78,11 +76,11 @@ class Shopkeeper
     number_of_shields = character.character_shields.size
     number_of_armors = character.character_armors.size
 
-    if number_of_shields==1 && number_of_armors==1
+    if number_of_shields == 1 && number_of_armors == 1
       return true
-    elsif number_of_shields==0 && number_of_armors==1
+    elsif number_of_shields == 0 && number_of_armors == 1
       return true
-    elsif number_of_shields==1 && number_of_armors==0
+    elsif number_of_shields == 1 && number_of_armors == 0
       return true
     end
     false
@@ -92,6 +90,4 @@ class Shopkeeper
     character.set_shield_as_main(character.character_shields.first.try(:id))
     character.set_armor_as_main(character.character_armors.first.try(:id))
   end
-
 end
-

@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 class Blacksmith
-
   attr_reader :character, :weapon_armor_or_shield, :improvement_subject_id, :improvement_type, :js_fuck_up
   attr_accessor :purse, :result
 

@@ -4,9 +4,6 @@ class CountrySelector
 
   def initialize(character, profession)
     @countries = profession.countries
-    @countries = [@countries.detect{|c| c.name=="Złote Królestwa"}] if @countries.present? && profession.name=="Rycerz" && character.gender=="Kobieta" #Overwrite for the special case of a women being a knight...
+    @countries = [@countries.detect { |c| c.name=="Złote Królestwa" }] if @countries.present? && profession.name=="Rycerz" && character.gender=="Kobieta" #Overwrite for the special case of a women being a knight...
   end
-
-
 end
-

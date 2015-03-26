@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
-
   def step_progress(wizard)
     if wizard
       if wizard.character.profession && wizard.character.is_of_scholar_class_type?
@@ -15,13 +14,12 @@ module ApplicationHelper
 
   def render_home_partial(page)
     case page
-      when "about" then
-        render :partial => 'home/about'
+      when "about"
+        render partial: 'home/about'
       else
-        render :text => "#TODO"
+        render text: "#TODO"
     end
   end
-
 
   def display_base_errors resource
     return '' if (resource.errors.empty?) or (resource.errors[:base].empty?)
@@ -34,16 +32,4 @@ module ApplicationHelper
     HTML
     html.html_safe
   end
-
-  #Use the view helper in a form like this:
-  #
-  #<%= simple_form_for ... %>
-  #<%= f.error_notification %>
-  #<%= display_base_errors resource %>
-  #                              .
-  #                              .
-  #                              .
-  # <% end %>
-
-
 end
