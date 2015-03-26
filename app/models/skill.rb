@@ -1,32 +1,25 @@
 # -*- encoding : utf-8 -*-
 class Skill < ActiveRecord::Base
-  has_many :stats_choices, :as => :resource, :dependent => :destroy
-  has_many :skill_requirements, :dependent => :destroy
+  has_many :stats_choices, as: :resource, dependent: :destroy
+  has_many :skill_requirements, dependent: :destroy
   has_many :character_skills
-  has_many :characters, :through => :character_skills
+  has_many :characters, through: :character_skills
 
-
-  scope :basic, where(:profession_type => "default")
-  scope :fetch_for_type, lambda { |type| where(:profession_type => type) }
-  scope :fetch_for_level, lambda { |level| joins(:skill_requirements).where("skill_requirements.check_applies_to = 'experience' AND  skill_requirements.value = ?", level) }
-
-  #IDEA how about the concept of favorite weapon? Some skills give bonuses to certain weapons and armors.
-  #Each skill would give an option to set up something on a screen after skill choice step but before arment step. Favorites would clear if going backwards
-  #fetch_caste_skills_for(character)
-  #fetch_profession_skills_for(character)
+  scope :basic, where(profession_type: "default")
+  scope :fetch_for_type, ->(type) { where(profession_type: type) }
+  scope :fetch_for_level, ->(level) { joins(:skill_requirements).where("skill_requirements.check_applies_to = 'experience' AND skill_requirements.value = ?", level) }
 
   def self.fetch_caste_skills_for(character)
     case character.profession.general_type
-      when "scholar" then
+      when "scholar"
         Skill.fetch_for_type("scholar")
-      when "rogue" then
+      when "rogue"
         Skill.fetch_for_type("rogue") + Skill.fetch_for_type("finesse") + Skill.fetch_for_type("shooter")
-      when "soldier" then
+      when "soldier"
         Skill.fetch_for_type("soldier") +
             Skill.fetch_for_type(character.fight_style.name=="Finezyjny" ? "finesse" : "brutal") +
             Skill.fetch_for_type("shooter")
     end
-
   end
 
   def self.fetch_profession_skills_for(character)
@@ -58,15 +51,12 @@ class Skill < ActiveRecord::Base
     result > 0 ? result : 0
   end
 
-
   def add_skill_for(character_id)
-    character_skills.create(:character_id => character_id) unless CharacterSkill.exists?(:character_id => character_id, :skill_id => id)
+    character_skills.create(character_id: character_id) unless CharacterSkill.exists?(character_id: character_id, skill_id: id)
   end
 
   def substract_skill_from(character_id)
     skill = character_skills.find_by_character_id_and_skill_id(character_id, id)
     skill.present? && skill.destroy
   end
-
 end
-

@@ -16,7 +16,7 @@ class StatsModifier < ActiveRecord::Base
   end
 
   scope :default_for_social_class, ->(social_class_id) do
-     belongs_to_social_class(social_class_id).where('stats_modifiers.default_for_social_class IS TRUE')
+    belongs_to_social_class(social_class_id).where('stats_modifiers.default_for_social_class IS TRUE')
   end
 
   scope :must_choose_for_social_class, ->(social_class_id) do

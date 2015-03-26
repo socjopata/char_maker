@@ -95,7 +95,7 @@ class Statistics < ActiveRecord::Base
     modifiers = []
     modifiers << character.profession.stats_choices.collect(&:stats_modifiers)
     modifiers.flatten.each do |modifier|
-      self.stats_modifiers << modifier unless self.stats_modifiers.exists?(id: modifier.id)
+      self.stats_modifiers << modifier unless stats_modifiers.exists?(id: modifier.id)
     end
     modifiers.flatten.select { |modifier| modifier.modifies == "skills" }.collect(&:group_name) #return skills on exit
   end
@@ -119,6 +119,7 @@ class Statistics < ActiveRecord::Base
   end
 
   def calculate_weapon_class_proficiencies_points
-    character.profession.starting_weapon_proficiency + stats_modifiers.select { |sm| sm.modifies == "fighting" && sm.group_name == "Biegłość w Grupie Broni" }.collect(&:value).sum
+    character.profession.starting_weapon_proficiency +
+        stats_modifiers.select { |sm| sm.modifies == "fighting" && sm.group_name == "Biegłość w Grupie Broni" }.collect(&:value).sum
   end
 end

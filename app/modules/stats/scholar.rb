@@ -1,8 +1,6 @@
 # -*- encoding : utf-8 -*-
-
 module Stats
   module Scholar
-
     def calculate_mana_points
       if character.is_a_cleric?
         calculate_wi + (calculate_int.to_f/2).ceil + (character.current_level * 1) + character.current_level.d(10) + mana_bonuses_from_skills
@@ -58,6 +56,5 @@ module Stats
     def calculate_amount_of_extra_spells
       stats_modifiers.select { |sm| sm.modifies=="casting" && sm.group_name=="Dodatkowe zaklęcia" }.collect(&:value).sum
     end
-
   end
 end

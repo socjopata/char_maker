@@ -2,7 +2,6 @@
 class RangedWeapon < ActiveRecord::Base
   BOWS = ["Strzelecka Łuki Proste", "Strzelecka Łuki Refleksyjne"]
   SLINGS = ["Miotana Proce"]
-
   MULTIPLIER_MAP = {
       0 => 1,
       1 => 2,

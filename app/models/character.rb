@@ -72,7 +72,7 @@ class Character < ActiveRecord::Base
   end
 
   def pick_a_profession(prof_id)
-    self.create_character_profession(profession_id: prof_id)
+    create_character_profession(profession_id: prof_id)
   end
 
   def social_class_stats_choices

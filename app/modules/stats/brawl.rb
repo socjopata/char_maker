@@ -1,7 +1,6 @@
 # -*- encoding : utf-8 -*-
 module Stats
   module Brawl
-
     def calculate_brawl_bonus_from_special_rules
       0
     end
@@ -17,6 +16,5 @@ module Stats
         raw_fencing_when_defending + Statistics::BONUS_OR_PENALTY_RANGES_MAP[calculate_current_zr].to_i + Statistics::BONUS_OR_PENALTY_RANGES_MAP[calculate_wi].to_i + calculate_brawl_bonus_from_skills
       end
     end
-
   end
 end

@@ -1,32 +1,39 @@
 # -*- encoding : utf-8 -*-
-
 class SkillRequirement < ActiveRecord::Base
+  INDEX_MAP = { "S" => 0,
+            "ZR" => 1,
+            "WT" => 2,
+            "INT" => 3,
+            "WI" => 4,
+            "O" => 5
+
+  }
   belongs_to :skill
 
   def skill_fails_to_meet_requirements(character, strength, dexterity, endurance, intelligence, faith, polish)
     skills = [strength, dexterity, endurance, intelligence, faith, polish]
-    case self.check_applies_to
+    case check_applies_to
       when "skill"
-        !character.skills.map(&:name).include?(self.name)
+        !character.skills.map(&:name).include?(name)
       when 'statistics'
-        (self.name.match /OR:\s/).present? ?
-            (name.gsub("OR: ", "").split(",").reject { |string| self.value.to_i > skills[SkillRequirement::INDEX[string]] }.size.zero?) :
-            (self.value.to_i > skills[SkillRequirement::INDEX[self.name]])
+        (name.match /OR:\s/).present? ?
+            (name.gsub("OR: ", "").split(",").reject { |string| value.to_i > skills[SkillRequirement::INDEX_MAP[string]] }.size.zero?) :
+            (value.to_i > skills[SkillRequirement::INDEX_MAP[name]])
       when "experience"
         true #currently all characters are 1 lvl, so..
       when "social_class"
-        !character.social_class.send(self.name.intern)
+        !character.social_class.send(name.intern)
       when "caster_class"
         !Profession::CASTER_CLASSES.include?(character.profession.name)
       when "auxiliary"
-        self.value.to_i > character.statistics.send("calculate_#{AuxiliaryParameterSet::ENGLISH_NAMES_MAP[name]}".intern)
+        value.to_i > character.statistics.send("calculate_#{AuxiliaryParameterSet::ENGLISH_NAMES_MAP[name]}".intern)
       when "fighting"
-        self.value.to_i > character.statistics.send(self.name.intern)
+        value.to_i > character.statistics.send(name.intern)
     end
   end
 
   def make_human_readable
-    case self.check_applies_to
+    case check_applies_to
       when "skill"
         "* Umiejętność #{(name)}"
       when "statistics"
@@ -41,15 +48,4 @@ class SkillRequirement < ActiveRecord::Base
         "* Paramter #{name} musi wynosić conajmniej #{value.to_i}"
     end
   end
-
-
-  INDEX = {"S" => 0,
-           "ZR" => 1,
-           "WT" => 2,
-           "INT" => 3,
-           "WI" => 4,
-           "O" => 5
-
-  }
-
 end

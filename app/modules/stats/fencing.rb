@@ -2,7 +2,6 @@
 module Stats
   module Fencing
     #TODO maybe fix a mess with shattered fencing stuff (shared between two classes: statistics and character weapon) ?
-
     def raw_fencing_when_defending
        raw_fencing('defense')
      end
@@ -40,6 +39,5 @@ module Stats
     def heavy_shield_bonus(character_shield)
       character_shield.present? ? character_shield.resource.special_rules.match(/(?<=[+])(.+)(?=pkt)/).to_a[0].to_i : 0
     end
-
   end
 end

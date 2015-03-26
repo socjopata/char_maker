@@ -8,7 +8,7 @@ class CharacterBackground < ActiveRecord::Base
   has_and_belongs_to_many :traits
 
   def draw_a_trait
-    if self.new_record?
+    if new_record?
       dice_roll = 1.d(Trait::DICE_TYPE)
       case dice_roll
         when Trait::CURSE_RANGE
@@ -30,7 +30,7 @@ class CharacterBackground < ActiveRecord::Base
   end
 
   def set_origin(country_id)
-    self.create_origin(country_id: country_id)
+    create_origin(country_id: country_id)
   end
 
   def set_social_class
@@ -43,7 +43,7 @@ class CharacterBackground < ActiveRecord::Base
     else
       if character.hardcore_social_class_picking?
         dice_roll = 1.d(SocialClass::DICE_TYPE)
-        self.social_classes << SocialClass.find_by_name(SocialClass::DICE_RESULT___CIVILIZED[dice_roll])
+        self.social_classes << SocialClass.find_by_name(SocialClass::CIVILIZED_DICE_RESULT_MAP[dice_roll])
       else
         self.social_classes << SocialClass.find_by_name("Mieszczanin")
       end
@@ -53,7 +53,7 @@ class CharacterBackground < ActiveRecord::Base
   def attach_barbarian_origin
     if character.hardcore_social_class_picking?
       dice_roll = 1.d(SocialClass::DICE_TYPE)
-      self.social_classes << SocialClass.find_by_name(SocialClass::DICE_RESULT___BARBARIAN[dice_roll])
+      self.social_classes << SocialClass.find_by_name(SocialClass::BARBARIAN_DICE_RESULT_MAP[dice_roll])
     else
       self.social_classes << SocialClass.find_by_name("Wojownik")
     end

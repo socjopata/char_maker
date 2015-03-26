@@ -4,6 +4,6 @@ class Origin < ActiveRecord::Base
   belongs_to :country
 
   def to_s
-    self.country.name
+    country.name
   end
 end

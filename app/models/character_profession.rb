@@ -4,6 +4,6 @@ class CharacterProfession < ActiveRecord::Base
   belongs_to :profession
 
   def to_s
-    self.profession.name
+    profession.name
   end
 end
