@@ -20,8 +20,8 @@ class RegistrationsController < Devise::RegistrationsController
     if current_user
       params[:user].delete(:current_password)
       if current_user.update_attributes(params[:user])
-        sign_in(:user, current_user, :bypass => true)    #a bypass gotcha
-        redirect_to home_index_path, :notice => "Rejestracja przebiegła pomyślnie!"
+        sign_in(:user, current_user, bypass: true)    #a bypass gotcha
+        redirect_to home_index_path, notice: "Rejestracja przebiegła pomyślnie!"
       else
         respond_with current_user
       end

@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
-  include ExceptionLogger::ExceptionLoggable # loades the module
-  rescue_from Exception, :with => :log_exception_handler # tells rails to forward the 'Exception' (you can change the type) to the handler of the module
+  include ExceptionLogger::ExceptionLoggable
+  rescue_from Exception, with: :log_exception_handler
 
   protect_from_forgery
 
@@ -12,5 +12,4 @@ class ApplicationController < ActionController::Base
     response.headers["Pragma"] = "no-cache"
     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
-
 end

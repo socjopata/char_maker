@@ -1,21 +1,19 @@
 # -*- encoding : utf-8 -*-
 class CharactersController < ApplicationController
-
   before_filter :create_guest_user_if_needed
   before_filter :user_signed_in?
-  before_filter :fetch_character, :except => [:index, :create, :new]
+  before_filter :fetch_character, except: [:index, :create, :new]
 
   def index
-    @characters = current_user.characters.where(:finished => true).order("name")
+    @characters = current_user.characters.where(finished: true).order("name")
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
     end
   end
 
-
   def show
     @character_sheet = CharacterSheet.new(@character)
-    render :layout => 'office'
+    render layout: 'office'
   end
 
   def edit
@@ -24,7 +22,7 @@ class CharactersController < ApplicationController
   def new
     params[:char_id].present? ? @character = current_user.characters.find(params[:char_id]) : @character = current_user.characters.build
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
     end
   end
 
@@ -32,9 +30,9 @@ class CharactersController < ApplicationController
     @character = current_user.characters.build(params[:character])
     respond_to do |format|
       if @character.save
-        format.html { redirect_to(character_wizard_path(:char_id => @character.id, :step => "profession_and_origin")) }
+        format.html { redirect_to(character_wizard_path(char_id: @character.id, step: "profession_and_origin")) }
       else
-        format.html { render :action => "new" }
+        format.html { render action: "new" }
       end
     end
   end
@@ -42,9 +40,9 @@ class CharactersController < ApplicationController
   def update
     respond_to do |format|
       if @character.update_attributes(params[:character])
-        format.html {  redirect_to(character_wizard_path(:char_id => @character.id, :step => "profession_and_origin")) }
+        format.html { redirect_to(character_wizard_path(char_id: @character.id, step: "profession_and_origin")) }
       else
-        format.html { render :action => "edit" }
+        format.html { render action: "edit" }
       end
     end
   end
@@ -60,13 +58,12 @@ class CharactersController < ApplicationController
 
   def create_guest_user_if_needed
     if current_user.blank?
-    user = User.create_guest and sign_in(:user, user)
-    @current_user = user
+      user = User.create_guest and sign_in(:user, user)
+      @current_user = user
     end
   end
 
   def fetch_character
     @character = current_user.characters.find_by_id(params[:id])
   end
-
 end
