@@ -4,7 +4,7 @@ ruby "2.2.1"
 gem "rails", github: "rails/rails", branch: "3-2-stable" #3.2.21 has an issue with .size (when used with ruby 2.2)
 
 gem 'pg', '~> 0.18.1'
-gem 'devise'
+gem 'devise', '~> 2.2.8'
 gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick', '~> 2.13.4'
 gem 'jquery-rails', '~> 3.1.2'
