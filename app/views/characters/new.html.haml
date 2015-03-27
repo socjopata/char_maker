@@ -1,0 +1,8 @@
+%h1 Nowa postać
+
+= render 'form'
+
+= content_for :javascripts do
+  :coffeescript
+    $(document).ready ->
+      Characters.new()

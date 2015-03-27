@@ -16,6 +16,7 @@ gem 'pdfkit', '~> 0.6.2'
 gem 'thin', '~> 1.6.3'
 gem 'simple_form', '~> 2.1.2'
 gem 'will_paginate', '~> 3.0.7'
+gem "haml-rails", '~> 0.4.0' #bump to a newer version and use converters
 
 group :development, :test do
   gem 'test-unit'  #Handling error, https://github.com/rspec/rspec-rails/issues/1273
