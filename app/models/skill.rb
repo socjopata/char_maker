@@ -5,7 +5,7 @@ class Skill < ActiveRecord::Base
   has_many :character_skills
   has_many :characters, through: :character_skills
 
-  scope :basic, where(profession_type: "default")
+  scope :basic, -> { where(profession_type: "default") }
   scope :fetch_for_type, ->(type) { where(profession_type: type) }
   scope :fetch_for_level, ->(level) { joins(:skill_requirements).where("skill_requirements.check_applies_to = 'experience' AND skill_requirements.value = ?", level) }
 

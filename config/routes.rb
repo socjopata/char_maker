@@ -4,7 +4,7 @@ CharMaker::Application.routes.draw do
 
   resources :characters
 
-  resource 'character_wizard', :only => [:show, :create] do
+  resource 'character_wizard', only: [:show, :create] do
     member do
       get :update_countries_select
       get :update_deities_select
@@ -25,15 +25,13 @@ CharMaker::Application.routes.draw do
     end
   end
 
-  resources :messages, :only => [:new, :create]
-
+  resources :messages, only: [:new, :create]
 
   get "home/index"
   get "home/show"
   get "home/example_character_list"
   get "home/example_character_show"
 
-  root :to => "home#index"
-  devise_for :users, :controllers => {:registrations => "registrations"}
-
+  root to: "home#index"
+  devise_for :users, controllers: { registrations: "registrations" }
 end
