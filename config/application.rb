@@ -50,22 +50,12 @@ module CharMaker
 
     config.middleware.use "PDFKit::Middleware", :print_media_type => true
 
-
     #Rails 3.2+ stuff
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
 
-
-    # Enable the asset pipeline
-    config.assets.enabled = true
-
-    # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'
-
-
     #heroku fix
-
     config.assets.initialize_on_precompile = false
   end
 end
