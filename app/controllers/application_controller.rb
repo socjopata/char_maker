@@ -1,8 +1,5 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
-  include ExceptionLogger::ExceptionLoggable
-  rescue_from Exception, with: :log_exception_handler
-
   protect_from_forgery
 
   before_filter :set_cache_buster

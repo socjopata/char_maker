@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
 
   has_many :characters, dependent: :destroy
 
-  attr_protected :admin
-
   after_validation :un_guest, on: :update
 
   def self.create_guest

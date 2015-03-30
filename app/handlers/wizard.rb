@@ -78,7 +78,7 @@ class Wizard
 
   def statistics
     if params
-      if @character.statistics.update_attributes(params[:statistics]) && @character.valid_for_step_fourth? && @character.valid_stats_assignment?
+      if @character.statistics.update_attributes(statistics_params) && @character.valid_for_step_fourth? && @character.valid_stats_assignment?
         skill_free_assignment_base, default_skills_ids = @character.statistics.convert_stat_choices_to_skills
         @character.update_attribute(:session, @character.session.merge({ skill_free_assignment_base: skill_free_assignment_base, default_skills_ids: default_skills_ids }))
         @redirect = character_wizard_path(char_id: @character.id, step: "fightstyle")
@@ -192,5 +192,11 @@ class Wizard
       @scribe = Scribe.new(@character)
       set_template_to_render
     end
+  end
+
+  private
+
+  def statistics_params
+    params.require(:statistics).permit!
   end
 end

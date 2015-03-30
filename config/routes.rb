@@ -1,7 +1,5 @@
 # -*- encoding : utf-8 -*-
 CharMaker::Application.routes.draw do
-  mount ExceptionLogger::Engine => "/exception_logger"
-
   resources :characters
 
   resource 'character_wizard', only: [:show, :create] do

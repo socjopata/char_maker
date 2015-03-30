@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 CharMaker::Application.configure do
-
+  config.eager_load = true
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
@@ -66,18 +66,4 @@ CharMaker::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-
-  config.after_initialize do
-    ExceptionLogger::LoggedExceptionsController.class_eval do
-      before_filter :authorized?
-      protected
-      def authorized?
-        redirect_to "/" unless (current_user.present? && current_user.admin)
-      end
-
-      #sets the application name for the rss feeds
-      self.application_name = "Alantar - kreator postaci"
-    end
-  end
-
 end

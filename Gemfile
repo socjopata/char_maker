@@ -1,22 +1,22 @@
 source 'http://rubygems.org'
 ruby "2.2.1"
 
-gem "rails", github: "rails/rails", branch: "3-2-stable" #3.2.21 has an issue with .size (when used with ruby 2.2)
+gem "rails", '~> 4.0.13'
 
 gem 'pg', '~> 0.18.1'
-gem 'devise', '~> 2.2.8'
+gem 'devise', '~> 3.0.4'
 gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick', '~> 2.13.4'
 gem 'jquery-rails', '~> 3.1.2'
 gem 'jquery-ui-rails', '~> 5.0.3'
 gem 'jquery-colorbox-rails', '~> 0.2.3'
-gem 'exception_logger', require: 'exception_logger', git: 'git://github.com/ryancheung/exception_logger.git' #updating requires rails 4
-gem 'galetahub-simple_captcha', '~>0.1.5', require: 'simple_captcha'
+gem 'simple_captcha2', '~> 0.2.2', require: 'simple_captcha'
 gem 'pdfkit', '~> 0.6.2'
 gem 'thin', '~> 1.6.3'
-gem 'simple_form', '~> 2.1.2'
+gem 'simple_form', '~> 3.1.0'
 gem 'will_paginate', '~> 3.0.7'
 gem "haml-rails", '~> 0.4.0' #bump to a newer version and use converters
+gem 'activerecord-session_store', '~> 0.1.1'
 
 group :development, :test do
   gem 'test-unit'  #Handling error, https://github.com/rspec/rspec-rails/issues/1273
@@ -32,10 +32,9 @@ group :development, :test do
   gem 'ffaker', '~> 2.0.0'
 end
 
-gem 'sass-rails', '~> 3.2.6'
+gem 'sass-rails', '~> 5.0.1'
 gem 'bootstrap-sass', '~> 2.3.0.0' #max bump 3.1.1.0, but breaks styling. bumping it higher requires rails 4
-gem 'coffee-rails', '~> 3.2.2'
+gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '~> 2.7.1'
-gem 'turbo-sprockets-rails3', '~> 0.3.14'
 gem 'therubyracer', '~> 0.12.1', platform: :ruby
 gem 'libv8', '~> 3.16.14.7'

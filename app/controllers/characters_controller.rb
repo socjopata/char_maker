@@ -27,7 +27,7 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @character = current_user.characters.build(params[:character])
+    @character = current_user.characters.build(character_params)
     respond_to do |format|
       if @character.save
         format.html { redirect_to(character_wizard_path(char_id: @character.id, step: "profession_and_origin")) }
@@ -39,7 +39,7 @@ class CharactersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @character.update_attributes(params[:character])
+      if @character.update_attributes(character_params)
         format.html { redirect_to(character_wizard_path(char_id: @character.id, step: "profession_and_origin")) }
       else
         format.html { render action: "edit" }
@@ -65,5 +65,9 @@ class CharactersController < ApplicationController
 
   def fetch_character
     @character = current_user.characters.find_by_id(params[:id])
+  end
+
+  def character_params
+    params.require(:character).permit!
   end
 end
