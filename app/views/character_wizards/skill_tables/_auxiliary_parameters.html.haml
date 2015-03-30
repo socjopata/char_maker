@@ -1,0 +1,97 @@
+%table.table.table-bordered.table-condensed.table-special
+  %caption Parametry pomocnicze
+  %tr
+    %td{:colspan => "2"} Inicjatywa
+    %td Podstawa
+    %td Premia ze ZR
+    %td Umiejętności
+    %td Specjalne
+  %tr
+    %td#auxiliary_table_total_initiative{:colspan => "2"}= @wizard.character.statistics.calculate_initiative
+    %td= AuxiliaryParameterSet::INITIATIVE_MAP[@wizard.character.profession.general_type]
+    %td#auxiliary_table_main_p_bonus_for_initiative= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@wizard.instance_variable_get("@dexterity")]}"
+    %td#auxiliary_table_skill_bonus_for_initiative
+      +#{@wizard.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_from_skills")}
+    %td= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_special"))
+  %tr
+    %td{:colspan => "2"} Spostrzegawczość
+    %td Podstawa
+    %td +1pkt/poziom
+    %td Umiejętności
+    %td Specjalne
+  %tr
+    %td#auxiliary_table_total_perception{:colspan => "2"}= @wizard.character.statistics.calculate_perception
+    %td= AuxiliaryParameterSet::PERCEPTION_MAP[@wizard.character.profession.general_type]
+    %td
+      +#{@wizard.character.current_level}
+    %td#auxiliary_table_skill_bonus_for_perception
+      +#{@wizard.character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_from_skills")}
+    %td= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_special"))
+  %tr
+    %td{:colspan => "2"} Odp. na Ból
+    %td Podstawa
+    %td Premia ze WT
+    %td Umiejętności
+    %td Specjalne
+  %tr
+    %td#auxiliary_table_total_pain_resistance{:colspan => "2"}= @wizard.character.statistics.calculate_pain_resistance
+    %td= AuxiliaryParameterSet::PAIN_RESISTANCE_MAP[@wizard.character.profession.general_type]
+    %td#auxiliary_table_main_p_bonus_for_pain_resistance= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@wizard.instance_variable_get("@endurance")]}"
+    %td#auxiliary_table_skill_bonus_for_pain_resistance
+      +#{@wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_from_skills")}
+    %td= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_special"))
+  %tr
+    %td{:colspan => "2"} Odp. na Strach
+    %td Podstawa
+    %td Premia ze WI
+    %td Umiejętności
+    %td Specjalne
+  %tr
+    %td#auxiliary_table_total_fear_resistance{:colspan => "2"}= @wizard.character.statistics.calculate_fear_resistance
+    %td= AuxiliaryParameterSet::FEAR_RESISTANCE_MAP[@wizard.character.profession.general_type]
+    %td#auxiliary_table_main_p_bonus_for_fear_resistance= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[(@wizard.instance_variable_get "@faith")]}"
+    %td#auxiliary_table_skill_bonus_for_fear_resistance
+      +#{@wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_from_skills")}
+    %td= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_special"))
+  %tr
+    %td{:colspan => "2"} Odp. na Magię
+    %td Podstawa
+    %td Tymczasowe
+    %td Umiejętności
+    %td Specjalne
+  %tr
+    %td#auxiliary_table_total_magic_resistance{:colspan => "2"}= @wizard.character.statistics.calculate_magic_resistance
+    %td= AuxiliaryParameterSet::MAGIC_RESISTANCE_MAP[@wizard.character.profession.general_type]
+    %td ---
+    %td#auxiliary_table_skill_bonus_for_magic_resistance
+      +#{@wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_from_skills")}
+    %td= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_special"))
+  %tr
+    %td Sprint
+    %td Bieg
+    %td Podstawa
+    %td Premia ze ZR akt
+    %td Umiejętności
+    %td Specjalne
+  %tr
+    %td#auxiliary_table_total_sprinting= @wizard.character.statistics.calculate_sprinting
+    %td#auxiliary_table_total_running= @wizard.character.statistics.calculate_running
+    %td= AuxiliaryParameterSet::RUNNING_MAP[@wizard.character.profession.general_type]
+    %td#auxiliary_table_main_p_bonus_for_running= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@wizard.character.statistics.calculate_current_zr]}"
+    %td#auxiliary_table_skill_bonus_for_running
+      +#{@wizard.character.statistics.calculate_auxiliary_bonus("Bieg", "only_from_skills")}
+    %td= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Bieg", "only_special"))
+  %tr
+    %td{:colspan => "2"} Punkty Życia
+    %td Podstawa
+    %td Wytrzymałość
+    %td Umiejętności
+    %td Aktualne PŻ
+  %tr
+    %td#auxiliary_table_total_life_points{:colspan => "2"}= @character.statistics.calculate_life_points
+    %td#auxiliary_table_main_p_bonus_for_life_points= AuxiliaryParameterSet::HIT_POINTS_MAP[@wizard.character.profession.general_type]
+    %td
+      +#{@wizard.character.statistics.calculate_wt}
+    %td#auxiliary_table_skill_bonus_for_life_points
+      +#{@wizard.character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_from_skills")}
+    %td= parameter_with_bonus_orientation(@wizard.character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_special"))

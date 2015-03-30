@@ -1,0 +1,1813 @@
+%table.Tabela2{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+  %colgroup
+    %col{:width => "123"}/
+    %col{:width => "34"}/
+    %col{:width => "38"}/
+    %col{:width => "84"}/
+    %col{:width => "50"}/
+    %col{:width => "28"}/
+    %col{:width => "74"}/
+    %col{:width => "24"}/
+    %col{:width => "158"}/
+    %col{:width => "129"}/
+    %col{:width => "132"}/
+  %tr
+    %td.Tabela2_A1{:colspan => "2", :style => "text-align:left;width:1.1097in; "}
+      %p.P14 Parametry Główne
+    %td.Tabela2_A1{:colspan => "3", :style => "text-align:left;width:0.3438in; "}
+      %p.P14 Wartość Cechy
+    %td.Tabela2_F1{:colspan => "2", :style => "text-align:left;width:0.2521in; "}
+      %p.P14 Premia/Kara
+    %td.Tabela2_H9{:style => "text-align:left;width:0.2132in; "}
+      %p.P14  
+    %td.Tabela2_A1{:style => "text-align:left;width:1.4264in; "}
+      %p.P14 Kasta
+    %td.Tabela2_F1{:colspan => "2", :style => "text-align:left;width:1.1625in; "}
+      %p.P14 ŻOŁNIERSKA
+  %tr
+    %td.Tabela2_A2{:colspan => "2", :style => "text-align:left;width:1.1097in; "}
+      %p.P15 SIŁA
+    %td.Tabela2_C2{:colspan => "3", :style => "text-align:left;width:0.3438in; "}
+      %p.P15= @character_sheet.character.statistics.calculate_s
+    %td.Tabela2_F2{:colspan => "2", :style => "text-align:left;width:0.2521in; "}
+      %p.P144= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_s]}"
+    %td.Tabela2_H9{:style => "text-align:left;width:0.2132in; "}
+      %p.P14  
+    %td.Tabela2_A2{:style => "text-align:left;width:1.4264in; "}
+      %p.P15 Profesja
+    %td.Tabela2_J9{:colspan => "2", :style => "text-align:left;width:1.1625in; "}
+      %p.P144= @character_sheet.character.profession.name
+  %tr
+    %td.Tabela2_A3{:colspan => "2", :style => "text-align:left;width:1.1097in; "}
+      %p.P15 ZRĘCZNOŚĆ
+    %td.Tabela2_C3{:colspan => "3", :style => "text-align:left;width:0.3438in; "}
+      %p.P15= @character_sheet.character.statistics.calculate_zr
+    %td.Tabela2_C3{:colspan => "2", :style => "text-align:left;width:0.2521in; "}
+      %p.P144= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_zr]}"
+    %td.Tabela2_H9{:style => "text-align:left;width:0.2132in; "}
+      %p.P10  
+    %td.Tabela2_I3{:style => "text-align:left;width:1.4264in; "}
+      %p.P15 Klasa Społeczna
+    %td.Tabela2_C3{:colspan => "2", :style => "text-align:left;width:1.1625in; "}
+      %p.P144= @character_sheet.character.social_class.name
+  %tr
+    %td.Tabela2_A2{:colspan => "2", :style => "text-align:left;width:1.1097in; "}
+      %p.P15 WYTRZYMAŁOŚĆ
+    %td.Tabela2_C3{:colspan => "3", :style => "text-align:left;width:0.3438in; "}
+      %p.P15= @character_sheet.character.statistics.calculate_wt
+    %td.Tabela2_F4{:colspan => "2", :style => "text-align:left;width:0.2521in; "}
+      %p.P144= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wt]}"
+    %td.Tabela2_H4{:style => "text-align:left;width:0.2132in; "}
+      %p.P14  
+    %td.Tabela2_A3{:style => "text-align:left;width:1.4264in; "}
+      %p.P15 Imię Postaci
+    %td.Tabela2_J4{:colspan => "2", :style => "text-align:left;width:1.1625in; "}
+      %p.P144= @character_sheet.character.name
+  %tr
+    %td.Tabela2_A2{:colspan => "2", :style => "text-align:left;width:1.1097in; "}
+      %p.P15 INTELIGENCJA
+    %td.Tabela2_C7{:colspan => "3", :style => "text-align:left;width:0.3438in; "}
+      %p.P15= @character_sheet.character.statistics.calculate_int
+    %td.Tabela2_F7{:colspan => "2", :style => "text-align:left;width:0.2521in; "}
+      %p.P144= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_int]}"
+    %td.Tabela2_H9{:style => "text-align:left;width:0.2132in; "}
+      %p.P14  
+    %td.Tabela2_A2{:style => "text-align:left;width:1.4264in; "}
+      %p.P15 Kraj Pochodzenia
+    %td.Tabela2_J9{:colspan => "2", :style => "text-align:left;width:1.1625in; "}
+      %p.P144= @character_sheet.character.character_background.origin
+  %tr
+    %td.Tabela2_A2{:colspan => "2", :style => "text-align:left;width:1.1097in; "}
+      %p.P15 WIARA
+    %td.Tabela2_C7{:colspan => "3", :style => "text-align:left;width:0.3438in; "}
+      %p.P15= @character_sheet.character.statistics.calculate_wi
+    %td.Tabela2_F7{:colspan => "2", :style => "text-align:left;width:0.2521in; "}
+      %p.P144= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi]}"
+    %td.Tabela2_H9{:style => "text-align:left;width:0.2132in; "}
+      %p.P14  
+    %td.Tabela2_A2{:rowspan => "2", :style => "text-align:left;width:1.4264in; "}
+      %p.P13  
+      %p.P15 Charakter
+    %td.Tabela2_J9{:colspan => "2", :rowspan => "2", :style => "text-align:left;width:1.1625in; "}
+      %p.P14  
+  %tr
+    %td.Tabela2_A2{:colspan => "2", :style => "text-align:left;width:1.1097in; "}
+      %p.P15 OGŁADA
+    %td.Tabela2_C7{:colspan => "3", :style => "text-align:left;width:0.3438in; "}
+      %p.P15= @character_sheet.character.statistics.calculate_o
+    %td.Tabela2_F7{:colspan => "2", :style => "text-align:left;width:0.2521in; "}
+      %p.P144= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_o]}"
+    %td.Tabela2_H9{:style => "text-align:left;width:0.2132in; "}
+      %p.P14  
+  %tr
+    %td.Tabela2_H4{:colspan => "2", :style => "text-align:left;width:1.1097in; "}
+      %p.P14  
+    %td.Tabela2_H4{:colspan => "3", :style => "text-align:left;width:0.3438in; "}
+      %p.P14  
+    %td.Tabela2_H4{:colspan => "2", :style => "text-align:left;width:0.2521in; "}
+      %p.P14  
+    %td.Tabela2_H9{:style => "text-align:left;width:0.2132in; "}
+      %p.P14  
+    %td.Tabela2_A2{:style => "text-align:left;width:1.4264in; "}
+      %p.P15 Religia
+    %td.Tabela2_J9{:colspan => "2", :style => "text-align:left;width:1.1625in; "}
+      %p.P144= @character_sheet.character.character_background.deity
+  %tr
+    %td.Tabela2_F1{:style => "text-align:left;width:1.1097in; "}
+      %p.P10 Inicjatywa
+    %td.Tabela2_B9{:colspan => "2", :style => "text-align:left;width:0.3083in; "}
+      %p.P122 Podstawa
+    %td.Tabela2_D9{:style => "text-align:left;width:0.7604in; "}
+      %p.P122 Premia ze ZR
+    %td.Tabela2_E9{:colspan => "2", :style => "text-align:left;width:0.4493in; "}
+      %p.P122 Umiejętności
+    %td.Tabela2_G9{:style => "text-align:left;width:0.6632in; "}
+      %p.P122 Specjalne
+    %td.Tabela2_H9{:style => "text-align:left;width:0.2132in; "}
+      %p.P14  
+    %td.Tabela2_A2{:style => "text-align:left;width:1.4264in; "}
+      %p.P15 Dar /  Klątwa
+    %td.Tabela2_J9{:colspan => "2", :style => "text-align:left;width:1.1625in; "}
+      %p.P144= @character_sheet.character.character_background.traits.first.try(:name)
+  %tr
+    %td.Tabela2_C3{:style => "text-align:left;width:1.1097in; "}
+      %p.P13= @character_sheet.character.statistics.calculate_initiative
+    %td.Tabela2_B10{:colspan => "2", :style => "text-align:left;width:0.3083in; "}
+      %p.P100= AuxiliaryParameterSet::INITIATIVE_MAP[@character_sheet.character.profession.general_type]
+    %td.Tabela2_C3{:style => "text-align:left;width:0.7604in; "}
+      %p.P13= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_zr]}"
+    %td.Tabela2_C3{:colspan => "2", :style => "text-align:left;width:0.4493in; "}
+      %p.P13
+        +#{@character_sheet.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_from_skills")}
+    %td.Tabela2_G10{:style => "text-align:left;width:0.6632in; "}
+      %p.P13= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Inicjatywa", "only_special"))
+    %td.Tabela2_H10{:style => "text-align:left;width:0.2132in; "}
+      %p.P14  
+    %td.Tabela2_A2{:style => "text-align:left;width:1.4264in; "}
+      %p.P15 Poziom /  P. D.
+    %td.Tabela2_J10{:style => "text-align:left;width:1.1625in; "}
+      %p.P144 1
+    %td.Tabela2_K10{:style => "text-align:left;width:1.1868in; "}
+      %p.P14  
+%p.Standard  
+%table.Tabela4{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+  %colgroup
+    %col{:width => "62"}/
+    %col{:width => "62"}/
+    %col{:width => "44"}/
+    %col{:width => "24"}/
+    %col{:width => "6"}/
+    %col{:width => "84"}/
+    %col{:width => "75"}/
+    %col{:width => "46"}/
+    %col{:width => "28"}/
+    %col{:width => "24"}/
+    %col{:width => "182"}/
+    %col{:width => "27"}/
+    %col{:width => "183"}/
+    %col{:width => "27"}/
+  %tr
+    %td.Tabela4_A1{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P10 Spostrzegawczość
+    %td.Tabela4_C1{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P122 Podstawa
+    %td.Tabela4_E1{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P122 +1pkt/poziom
+    %td.Tabela4_E1{:style => "text-align:left;width:0.6778in; "}
+      %p.P122 Umiejętności
+    %td.Tabela4_H1{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P122 Specjalne
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K1{:colspan => "4", :style => "text-align:left;width:1.6382in; "}
+      %p.P10 Umiejętności Żołnierskie
+  %tr
+    %td.Tabela4_A17{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P100= @character_sheet.character.statistics.calculate_perception
+    %td.Tabela4_C2{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P100= AuxiliaryParameterSet::PERCEPTION_MAP[@character_sheet.character.profession.general_type]
+    %td.Tabela4_E2{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P100
+        +#{@character_sheet.character.current_level}
+    %td.Tabela4_G2{:style => "text-align:left;width:0.6778in; "}
+      %p.P100
+        +#{@character_sheet.character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_from_skills")}
+    %td.Tabela4_H8{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P100= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Spostrzegawczość", "only_special"))
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K2{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Atak i Obrona
+    %td.Tabela4_L2{:style => "text-align:left;width:0.2403in; "}
+      %p.P17
+        = "X" if @character_sheet.skill_names.include?("Atak i Obrona")
+         
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Responsa
+    %td.Tabela4_N2{:style => "text-align:left;width:0.2389in; "}
+      %p.P2= "X" if @character_sheet.skill_names.include?("Responsa")
+  %tr
+    %td.Tabela4_A18{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P10  
+    %td.Tabela4_C18{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P10  
+    %td.Tabela4_E18{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P10  
+    %td.Tabela4_G18{:style => "text-align:left;width:0.6778in; "}
+      %p.P10  
+    %td.Tabela4_H15{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P10  
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K3{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Błyskawiczny Atak
+    %td.Tabela4_L3{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Błyskawiczny Atak")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Riposta
+    %td.Tabela4_N3{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Riposta")
+  %tr
+    %td.Tabela4_K1{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P10 Odp. na Ból
+    %td.Tabela4_C1{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P122 Podstawa
+    %td.Tabela4_E1{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P122 Premia z WT
+    %td.Tabela4_C1{:style => "text-align:left;width:0.6778in; "}
+      %p.P122 Umiejętności
+    %td.Tabela4_E1{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P122 Specjalne
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K19{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Celny Cios
+    %td.Tabela4_L21{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Celny Cios")
+    %td.Tabela4_K19{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Celny Cios
+    %td.Tabela4_N21{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Silny Cios")
+  %tr
+    %td.Tabela4_A17{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P100= @character_sheet.character.statistics.calculate_pain_resistance
+    %td.Tabela4_C5{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P100= AuxiliaryParameterSet::PAIN_RESISTANCE_MAP[@character_sheet.character.profession.general_type]
+    %td.Tabela4_E2{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P100= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wt]}"
+    %td.Tabela4_G2{:style => "text-align:left;width:0.6778in; "}
+      %p.P100
+        +#{@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_from_skills")}
+    %td.Tabela4_H8{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P100= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Ból", "only_special"))
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K19{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Ciężkozbrojny
+    %td.Tabela4_L21{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Ciężkozbrojny")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Seria
+    %td.Tabela4_N21{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Seria")
+  %tr
+    %td.Tabela4_A18{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P10  
+    %td.Tabela4_C18{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P10  
+    %td.Tabela4_E18{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P10  
+    %td.Tabela4_G18{:style => "text-align:left;width:0.6778in; "}
+      %p.P10  
+    %td.Tabela4_H15{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P10  
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K19{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Cios Śmierci
+    %td.Tabela4_L21{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Cios Śmierci")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Starcie
+    %td.Tabela4_N21{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Starcie")
+  %tr
+    %td.Tabela4_K1{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P10 Odp. na Strach
+    %td.Tabela4_C7{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P122 Podstawa
+    %td.Tabela4_E1{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P122 Premia z WI
+    %td.Tabela4_E1{:style => "text-align:left;width:0.6778in; "}
+      %p.P122 Umiejętności
+    %td.Tabela4_E1{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P122 Specjalne
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K19{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Doskonały Strzał
+    %td.Tabela4_L21{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Doskonały Strzał")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Strzał w Dziesiątkę
+    %td.Tabela4_N21{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Strzał w Dziesiątkę")
+  %tr
+    %td.Tabela4_A17{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P100= @character_sheet.character.statistics.calculate_fear_resistance
+    %td.Tabela4_C5{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P100= AuxiliaryParameterSet::FEAR_RESISTANCE_MAP[@character_sheet.character.profession.general_type]
+    %td.Tabela4_E8{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P100= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi]}"
+    %td.Tabela4_E8{:style => "text-align:left;width:0.6778in; "}
+      %p.P100
+        +#{@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_from_skills")}
+    %td.Tabela4_H8{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P100= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Strach", "only_special"))
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K19{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Doświadczony Strzelec
+    %td.Tabela4_L21{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Doświadczony Strzelec")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Szał Bitewny
+    %td.Tabela4_N21{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Szał Bitewny")
+  %tr
+    %td.Tabela4_A18{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P10  
+    %td.Tabela4_C18{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P10  
+    %td.Tabela4_E18{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P10  
+    %td.Tabela4_G18{:style => "text-align:left;width:0.6778in; "}
+      %p.P10  
+    %td.Tabela4_H15{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P10  
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K19{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Finezyjny Atak
+    %td.Tabela4_L21{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Finezyjny Atak")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Szarża
+    %td.Tabela4_N11{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Szarża")
+  %tr
+    %td.Tabela4_A10{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P10 Odp. na Magię
+    %td.Tabela4_E1{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P122 Podstawa
+    %td.Tabela4_E1{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P122 Tymczasowe
+    %td.Tabela4_E1{:style => "text-align:left;width:0.6778in; "}
+      %p.P122 Umiejętności
+    %td.Tabela4_E1{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P122 Specjalne
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K18{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Finta
+    %td.Tabela4_L21{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Finta")
+    %td.Tabela4_M10{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Szarża Kawaleryjska
+    %td.Tabela4_N21{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Szarża Kawaleryjska")
+  %tr
+    %td.Tabela4_A17{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P100= @character_sheet.character.statistics.calculate_magic_resistance
+    %td.Tabela4_C11{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P100= AuxiliaryParameterSet::MAGIC_RESISTANCE_MAP[@character_sheet.character.profession.general_type]
+    %td.Tabela4_E8{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P100 ---
+    %td.Tabela4_E8{:style => "text-align:left;width:0.6778in; "}
+      %p.P100
+        +#{@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_from_skills")}
+    %td.Tabela4_H11{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P100= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Odporność na Magię", "only_special"))
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K19{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Głęboka Rana
+    %td.Tabela4_L19{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Głęboka Rana")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P7 Szybkość Lothmir'a
+    %td.Tabela4_N11{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Szybkość Lothmir'a")
+  %tr
+    %td.Tabela4_A18{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P10  
+    %td.Tabela4_C18{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P10  
+    %td.Tabela4_E18{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P10  
+    %td.Tabela4_G18{:style => "text-align:left;width:0.6778in; "}
+      %p.P10  
+    %td.Tabela4_H15{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P10  
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K18{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Kontratak
+    %td.Tabela4_L21{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Kontratak")
+    %td.Tabela4_M18{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Tarczownik
+    %td.Tabela4_N21{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Tarczownik")
+  %tr
+    %td.Tabela4_A1{:style => "text-align:left;width:0.5569in; "}
+      %p.P10 Sprint
+    %td.Tabela4_K1{:style => "text-align:left;width:0.5604in; "}
+      %p.P10 Bieg
+    %td.Tabela4_E1{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P122 Podstawa
+    %td.Tabela4_E13{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P122 Premia z ZR Akt
+    %td.Tabela4_E1{:style => "text-align:left;width:0.6778in; "}
+      %p.P122 Umiejętności
+    %td.Tabela4_E1{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P122 Specjalne
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K19{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Kusznik
+    %td.Tabela4_L19{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Kusznik")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P7 Technika Defensywna
+    %td.Tabela4_N13{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Technika Defensywna")
+  %tr
+    %td.Tabela4_A14{:style => "text-align:left;width:0.5569in; "}
+      %p.P100= @character_sheet.character.statistics.calculate_sprinting
+    %td.Tabela4_B14{:style => "text-align:left;width:0.5604in; "}
+      %p.P100= @character_sheet.character.statistics.calculate_running
+    %td.Tabela4_C11{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P100= AuxiliaryParameterSet::RUNNING_MAP[@character_sheet.character.profession.general_type]
+    %td.Tabela4_E8{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P100= "#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_zr]}"
+    %td.Tabela4_E8{:style => "text-align:left;width:0.6778in; "}
+      %p.P100
+        +#{@character_sheet.character.statistics.calculate_auxiliary_bonus("Bieg", "only_from_skills")}
+    %td.Tabela4_E2{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P100= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Bieg", "only_special"))
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K18{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Miażdżący Atak
+    %td.Tabela4_L21{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Miażdżący Atak")
+    %td.Tabela4_M18{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Technika Ofensywna
+    %td.Tabela4_N18{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Technika Ofensywna")
+  %tr
+    %td.Tabela4_A18{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P10  
+    %td.Tabela4_C18{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P10  
+    %td.Tabela4_E18{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P10  
+    %td.Tabela4_G18{:style => "text-align:left;width:0.6778in; "}
+      %p.P10  
+    %td.Tabela4_H15{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P10  
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K19{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Mierzony Strzał
+    %td.Tabela4_L19{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Mierzony Strzał")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Twardy Skurwysyn
+    %td.Tabela4_N21{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Twardy Skurwysyn")
+  %tr
+    %td.Tabela4_K1{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P10 Punkty Życia
+    %td.Tabela4_E13{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P122 Podstawa
+    %td.Tabela4_E13{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P122 Wytrzymałość
+    %td.Tabela4_E13{:style => "text-align:left;width:0.6778in; "}
+      %p.P122 Umiejętności
+    %td.Tabela4_E1{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P122 Aktualne PŻ
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K18{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Mistrz Walki na Dystans
+    %td.Tabela4_L21{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Mistrz Walki na Dystans")
+    %td.Tabela4_M18{:style => "text-align:left;width:1.65in; "}
+      %p.P17
+        Ulubiona Broń: #{@character_sheet.all_skills.detect{|skill| skill.name=="Ulubiona Broń"}.character_skills.first.skill_bonus_preference.choice  if @character_sheet.skill_names.include?("Ulubiona Broń")}       
+    %td.Tabela4_N18{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Ulubiona Broń")
+  %tr
+    %td.Tabela4_A17{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P100= @character_sheet.character.statistics.calculate_life_points
+    %td.Tabela4_C11{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P100= AuxiliaryParameterSet::HIT_POINTS_MAP[@character_sheet.character.profession.general_type]
+    %td.Tabela4_E8{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P100
+        +#{@character_sheet.character.statistics.calculate_wt}
+    %td.Tabela4_E8{:style => "text-align:left;width:0.6778in; "}
+      %p.P100
+        +#{@character_sheet.character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_from_skills")}
+    %td.Tabela4_H17{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P100= parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_auxiliary_bonus("Punkty Życia", "only_special"))
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P100
+    %td.Tabela4_K19{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Mistrzowski Kontratak
+    %td.Tabela4_L19{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Mistrzowski Kontratak")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Walka na Dystans
+    %td.Tabela4_N21{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Walka na Dystans")
+  %tr
+    %td.Tabela4_A18{:colspan => "2", :style => "text-align:left;width:0.5569in; "}
+      %p.P10  
+    %td.Tabela4_C18{:colspan => "2", :style => "text-align:left;width:0.3958in; "}
+      %p.P10  
+    %td.Tabela4_E18{:colspan => "2", :style => "text-align:left;width:0.0576in; "}
+      %p.P10  
+    %td.Tabela4_G18{:style => "text-align:left;width:0.6778in; "}
+      %p.P10  
+    %td.Tabela4_H18{:colspan => "2", :style => "text-align:left;width:0.4118in; "}
+      %p.P10  
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K18{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Najszybszy Wygrywa
+    %td.Tabela4_L21{:style => "text-align:left;width:0.2403in; "}
+      %p.P17
+         #{"X" if @character_sheet.skill_names.include?("Najszybszy Wygrywa")}
+    %td.Tabela4_M18{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Walka w Trudnych Warunkach
+    %td.Tabela4_N18{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Walka w Trudnych Warunkach")
+  %tr
+    %td.Tabela4_K1{:colspan => "9", :style => "text-align:left;width:0.5569in; "}
+      %p.P10 Umiejętności Ogólne
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K19{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Natarcie i Powstrzymanie
+    %td.Tabela4_L19{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Natarcie i Powstrzymanie")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Walka z Wieloma Przeciwnikami
+    %td.Tabela4_N21{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Walka z Wieloma Przeciwnikami")
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Akrobatyka
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Akrobatyka")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 Refleks
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Refleks")
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K26{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Nieczysta Zagrywka
+    %td.Tabela4_L21{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Nieczysta Zagrywka")
+    %td.Tabela4_M20{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Wcelowanie
+    %td.Tabela4_N26{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Wcelowanie")
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Czytanie i Pisanie
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Czytanie i Pisanie")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 Rzemiosło
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Rzemiosło")
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K26{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Niewzruszony
+    %td.Tabela4_L21{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Niewzruszony")
+    %td.Tabela4_M21{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Weteran
+    %td.Tabela4_N21{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Weteran")
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Dworskość
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Dworskość")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 Sokoli Wzrok
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Sokoli Wzrok")
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K26{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Odbicie Tarczą
+    %td.Tabela4_L26{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Odbicie Tarczą")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Wrażliwe Miejsce
+    %td.Tabela4_N26{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Wrażliwe Miejsce")
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Dykcja i Przemawianie
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Dykcja i Przemawianie")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 Szulerka
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Szulerka")
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K26{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Parada
+    %td.Tabela4_L26{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Parada")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Zaawansowana Szarża
+    %td.Tabela4_N26{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Zaawansowana Szarża")
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Handel
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Handel")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 Śledzenie i Skradanie się
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Śledzenie i Skradanie się")
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P17  
+    %td.Tabela4_K26{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Pewny Strzał
+    %td.Tabela4_L26{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Pewny Strzał")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Zaawansowane Powalenie
+    %td.Tabela4_N26{:style => "text-align:left;width:0.2389in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Zaawansowane Powalenie")
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Heraldyka i Historia
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Heraldyka i Historia")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 Torturowanie
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Torturowanie")
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K26{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Postawa Kalmora
+    %td.Tabela4_L26{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Postawa Kalmora")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Zaawansowane Starcie
+    %td.Tabela4_N26{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Zaawansowane Starcie")
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Jeździectwo
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Jeździectwo")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 Tropienie, Polowanie i Kamuflaż
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Tropienie, Polowanie i Kamuflaż")
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K26{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Potężny Cios
+    %td.Tabela4_L26{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Potężny Cios")
+    %td.Tabela4_M26{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Zaawansowane Wrażliwe Miejsce
+    %td.Tabela4_N26{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Zaawansowane Wrażliwe Miejsce")
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Leczenie Ran i Chorób
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Leczenie Ran i Chorób")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 Twardziel
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Twardziel")
+    %td.Tabela4_J29{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K27{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Powalenie
+    %td.Tabela4_E2{:style => "text-align:left;width:0.2403in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Powalenie")
+    %td.Tabela4_M27{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Zaawansowany Tarczownik
+    %td.Tabela4_E2{:style => "text-align:left;width:0.2389in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Zaawansowany Tarczownik")
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Mistrzowska Oburęczność
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Mistrzowska Oburęczność")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 „Wino, Śpiew, Kobiety”
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("„Wino, Śpiew i Kobiety”")
+    %td.Tabela4_J29{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_E2{:style => "text-align:left;width:1.6382in; "}
+      %p.P17 Precyzyjny Cios
+    %td.Tabela4_G2{:style => "text-align:left;width:0.2403in; "}
+      %p.P10= "X" if @character_sheet.skill_names.include?("Precyzyjny Cios")
+    %td.Tabela4_E2{:style => "text-align:left;width:1.65in; "}
+      %p.P17 Zmyłka
+    %td.Tabela4_M27{:style => "text-align:left;width:0.2389in; "}
+      %p.P10= "X" if @character_sheet.skill_names.include?("Zmyłka")
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Nauczyciel Fechtunku
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Nauczyciel Fechtunku Jednej Broni") or @character_sheet.skill_names.include?("Nauczyciel Fechtunku Wielu Broni")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 Woltyżerka
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Woltyżerka")
+    %td.Tabela4_J29{:style => "text-align:left;width:0.2194in; "}
+      %p.P17  
+    %td.Tabela4_K29{:style => "text-align:left;width:1.6382in; "}
+      %p.P19 Precyzyjny Strzał
+    %td.Tabela4_L29{:style => "text-align:left;width:0.2403in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Precyzyjny Strzał")
+    %td.Tabela4_L29{:style => "text-align:left;width:1.65in; "}
+      %p.P17  
+    %td.Tabela4_N29{:style => "text-align:left;width:0.2389in; "}
+      %p.P17  
+  %tr.Tabela430
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Nieustraszony
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Nieustraszony")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 Wykształcenie Akademickie
+    %td.Tabela4_I30{:style => "text-align:left;width:0.2563in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Wykształcenie Akademickie")
+    %td.Tabela4_J30{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K30{:colspan => "4", :style => "text-align:left;width:1.6382in; "}
+      %p.P10  
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Niezłomność
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17
+         #{"X" if @character_sheet.skill_names.include?("Niezłomność")}
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 Zabijaka
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Zabijaka")
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K31{:colspan => "4", :style => "text-align:left;width:1.6382in; "}
+      %p.P10 Umiejętności Specjalne i Zapożyczone
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Oburęczność
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Oburęczność")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 Zielarstwo
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Zielarstwo")
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K34{:colspan => "2", :style => "text-align:left;width:1.6382in; "}
+      %p.P13= @character_sheet.extra_skills[0]
+    %td.Tabela4_M33{:colspan => "2", :style => "text-align:left;width:1.65in; "}
+      %p.P13= @character_sheet.extra_skills[1]
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Odporność
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Odporność")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17
+        Znajomość Regionu: #{@character_sheet.character.character_background.origin} 
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P13 X
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K34{:colspan => "2", :style => "text-align:left;width:1.6382in; "}
+      %p.P13= @character_sheet.extra_skills[2]
+    %td.Tabela4_M33{:colspan => "2", :style => "text-align:left;width:1.65in; "}
+      %p.P13= @character_sheet.extra_skills[3]
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Pływanie i Nurkowanie
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Pływanie i Nurkowanie")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17 Żeglarstwo i Nawigacja
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Żeglarstwo i Nawigacja")
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_K34{:colspan => "2", :style => "text-align:left;width:1.6382in; "}
+      %p.P13= @character_sheet.extra_skills[4]
+    %td.Tabela4_E2{:colspan => "2", :style => "text-align:left;width:1.65in; "}
+      %p.P13= @character_sheet.extra_skills[5]
+  %tr
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Podstawy Akrobatyki
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P17= "X" if @character_sheet.skill_names.include?("Podstawy Akrobatyki")
+    %td.Tabela4_F35{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P17  
+    %td.Tabela4_I35{:style => "text-align:left;width:0.2563in; "}
+      %p.P13  
+    %td.Tabela4_J35{:style => "text-align:left;width:0.2194in; "}
+      %p.P10  
+    %td.Tabela4_E8{:colspan => "2", :style => "text-align:left;width:1.6382in; "}
+      %p.P13= @character_sheet.extra_skills[6]
+    %td.Tabela4_H17{:colspan => "2", :style => "text-align:left;width:1.65in; "}
+      %p.P13= @character_sheet.extra_skills[7]
+  %tr.Tabela436
+    %td.Tabela4_A36{:colspan => "3", :style => "text-align:left;width:0.5569in; "}
+      %p.P17 Posłuch i Zastraszenie
+    %td.Tabela4_D36{:colspan => "2", :style => "text-align:left;width:0.2188in; "}
+      %p.P13= "X" if @character_sheet.skill_names.include?("Posłuch i Zastraszenie")
+    %td.Tabela4_A10{:colspan => "3", :style => "text-align:left;width:0.7535in; "}
+      %p.P177 UMIEJĘTNOŚCI WOLNE
+    %td.Tabela4_E8{:style => "text-align:left;width:0.2563in; "}
+      %p.P13= @character_sheet.character.free_skill_points_left
+    %td.Tabela4_J36{:style => "text-align:left;width:0.2194in; "}
+      %p.P10
+    %td.Tabela4_E8{:colspan => "2", :style => "text-align:left;width:1.6382in; "}
+      %p.P13= @character_sheet.extra_skills[8]
+    %td.Tabela4_H17{:colspan => "2", :style => "text-align:left;width:1.65in; "}
+      %p.P13= @character_sheet.extra_skills[9]
+%p.P1  
+%table.Tabela1{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+  %colgroup
+    %col{:width => "131"}/
+    %col{:width => "63"}/
+    %col{:width => "58"}/
+    %col{:width => "58"}/
+    %col{:width => "123"}/
+    %col{:width => "123"}/
+    %col{:width => "68"}/
+    %col{:width => "86"}/
+    %col{:width => "77"}/
+    %col{:width => "85"}/
+  %tr
+    %td.Tabela1_A1{:style => "text-align:left;width:1.1819in; "}
+      %p.P11 Broń do Walki Wręcz / Miotana
+    %td.Tabela1_A1{:style => "text-align:left;width:0.5681in; "}
+      %p.P11 Typ
+    %td.Tabela1_A1{:style => "text-align:left;width:0.5215in; "}
+      %p.P11 Zasięg
+    %td.Tabela1_A1{:style => "text-align:left;width:0.5215in; "}
+      %p.P11 Tempo
+    %td.Tabela1_A1{:style => "text-align:left;width:1.1125in; "}
+      %p.P11 Obrażenia
+    %td.Tabela1_A1{:style => "text-align:left;width:1.1125in; "}
+      %p.P11 Zasady
+      %p.P11 Specjalne
+    %td.Tabela1_A1{:style => "text-align:left;width:0.6111in; "}
+      %p.P11 Atak Broni
+    %td.Tabela1_A1{:style => "text-align:left;width:0.7708in; "}
+      %p.P11 Fechtunek
+      %p.P11 w Ataku
+    %td.Tabela1_A1{:style => "text-align:left;width:0.6944in; "}
+      %p.P11
+        Premia z
+        = succeed "/2" do
+          %span.T1 (S+ZR)
+    %td.Tabela1_J1{:style => "text-align:left;width:0.7688in; "}
+      %p.P18 Trafienie
+  %tr
+    %td.Tabela1_A6{:style => "text-align:left;width:1.1819in; "}
+      %p.P16
+        = @character_sheet.weapons[0].weapon.name if @character_sheet.weapons[0].present?
+         
+    %td.Tabela1_B4{:style => "text-align:left;width:0.5681in; "}
+      %p.P16
+        = @character_sheet.weapons[0].weapon.weapon_type if @character_sheet.weapons[0].present?
+         
+    %td.Tabela1_D6{:style => "text-align:left;width:0.5215in; "}
+      %p.P16
+         #{@character_sheet.weapons[0].weapon.range if @character_sheet.weapons[0].present?}
+    %td.Tabela1_D6{:style => "text-align:left;width:0.5215in; "}
+      %p.P16
+         #{@character_sheet.weapons[0].calculate_speed if @character_sheet.weapons[0].present?}
+    %td.Tabela1_F6{:style => "text-align:left;width:1.1125in; "}
+      %p.P16
+         #{@character_sheet.weapons[0].calculate_damage if @character_sheet.weapons[0].present?}
+    %td.Tabela1_F6{:style => "text-align:left;width:1.1125in; "}
+      %p.P16
+         #{@character_sheet.weapons[0].weapon.special_rules if @character_sheet.weapons[0].present?}
+    %td.Tabela1_G6{:style => "text-align:left;width:0.6111in; "}
+      %p.P16
+         #{@character_sheet.weapons[0].calculate_attack_bonus_for_particular_weapon if @character_sheet.weapons[0].present?}
+    %td.Tabela1_H6{:style => "text-align:left;width:0.7708in; "}
+      %p.P16
+         #{@character_sheet.weapons[0].attack_fencing_parameter if @character_sheet.weapons[0].present?}
+    %td.Tabela1_I6{:style => "text-align:left;width:0.6944in; "}
+      %p.P16
+        = @character_sheet.character.statistics.calculate_dexterity_and_strength_bonus if @character_sheet.weapons[0].present?
+    %td{:class => "Tabela1_J6 #{weapon_proficiency_bonus(@character_sheet.weapons[0])}", :style => "text-align:left;width:0.7688in; "}
+      %p.P16
+         #{@character_sheet.weapons[0].hit_parameter if @character_sheet.weapons[0].present?}
+  %tr
+    %td.Tabela1_A3{:style => "text-align:left;width:1.1819in; "}
+      %p.P16
+        = @character_sheet.weapons[1].weapon.name if @character_sheet.weapons[1].present?
+         
+    %td.Tabela1_A3{:style => "text-align:left;width:0.5681in; "}
+      %p.P16
+        = @character_sheet.weapons[1].weapon.weapon_type if @character_sheet.weapons[1].present?
+         
+    %td.Tabela1_A3{:style => "text-align:left;width:0.5215in; "}
+      %p.P16
+         #{@character_sheet.weapons[1].weapon.range if @character_sheet.weapons[1].present?}
+    %td.Tabela1_A3{:style => "text-align:left;width:0.5215in; "}
+      %p.P16
+         #{@character_sheet.weapons[1].calculate_speed if @character_sheet.weapons[1].present?}
+    %td.Tabela1_A3{:style => "text-align:left;width:1.1125in; "}
+      %p.P16
+         #{@character_sheet.weapons[1].calculate_damage if @character_sheet.weapons[1].present?}
+    %td.Tabela1_A3{:style => "text-align:left;width:1.1125in; "}
+      %p.P16
+         #{@character_sheet.weapons[1].weapon.special_rules if @character_sheet.weapons[1].present?}
+    %td.Tabela1_A3{:style => "text-align:left;width:0.6111in; "}
+      %p.P16
+         #{@character_sheet.weapons[1].calculate_attack_bonus_for_particular_weapon if @character_sheet.weapons[1].present?}
+    %td.Tabela1_A3{:style => "text-align:left;width:0.7708in; "}
+      %p.P16
+         #{@character_sheet.weapons[1].attack_fencing_parameter if @character_sheet.weapons[1].present?}
+    %td.Tabela1_A3{:style => "text-align:left;width:0.6944in; "}
+      %p.P16
+         #{@character_sheet.character.statistics.calculate_dexterity_and_strength_bonus if @character_sheet.weapons[1].present?}
+    %td{:class => "Tabela1_J3 #{weapon_proficiency_bonus(@character_sheet.weapons[1])}", :style => "text-align:left;width:0.7688in; "}
+      %p.P16
+         #{@character_sheet.weapons[1].hit_parameter if @character_sheet.weapons[1].present?}
+  %tr
+    %td.Tabela1_A6{:style => "text-align:left;width:1.1819in; "}
+      %p.P16
+         #{@character_sheet.weapons[2].weapon.name if @character_sheet.weapons[2].present?}
+    %td.Tabela1_B4{:style => "text-align:left;width:0.5681in; "}
+      %p.P16
+         #{@character_sheet.weapons[2].weapon.weapon_type if @character_sheet.weapons[2].present?}
+    %td.Tabela1_D6{:style => "text-align:left;width:0.5215in; "}
+      %p.P16
+         #{@character_sheet.weapons[2].weapon.range if @character_sheet.weapons[2].present?}
+    %td.Tabela1_D6{:style => "text-align:left;width:0.5215in; "}
+      %p.P16
+         #{@character_sheet.weapons[2].calculate_speed if @character_sheet.weapons[2].present?}
+    %td.Tabela1_F6{:style => "text-align:left;width:1.1125in; "}
+      %p.P16
+         #{@character_sheet.weapons[2].calculate_damage if @character_sheet.weapons[2].present?}
+    %td.Tabela1_F6{:style => "text-align:left;width:1.1125in; "}
+      %p.P16
+         #{@character_sheet.weapons[2].weapon.special_rules if @character_sheet.weapons[2].present?}
+    %td.Tabela1_G6{:style => "text-align:left;width:0.6111in; "}
+      %p.P16
+         #{@character_sheet.weapons[2].calculate_attack_bonus_for_particular_weapon if @character_sheet.weapons[2].present?}
+    %td.Tabela1_H6{:style => "text-align:left;width:0.7708in; "}
+      %p.P16
+         #{@character_sheet.weapons[2].attack_fencing_parameter if @character_sheet.weapons[2].present?}
+    %td.Tabela1_I6{:style => "text-align:left;width:0.6944in; "}
+      %p.P16
+         #{@character_sheet.character.statistics.calculate_dexterity_and_strength_bonus if @character_sheet.weapons[2].present?}
+    %td{:class => "Tabela1_J6 #{weapon_proficiency_bonus(@character_sheet.weapons[2])}", :style => "text-align:left;width:0.7688in; "}
+      %p.P16
+         #{@character_sheet.weapons[2].hit_parameter if @character_sheet.weapons[2].present?}
+  %tr
+    %td.Tabela1_A5{:style => "text-align:left;width:1.1819in; "}
+      %p.P20 Broń Dystansowa
+    %td.Tabela1_A5{:colspan => "2", :style => "text-align:left;width:0.5681in; "}
+      %p.P20 Zasięg
+    %td.Tabela1_A5{:style => "text-align:left;width:0.5215in; "}
+      %p.P20 Tempo
+    %td.Tabela1_A5{:style => "text-align:left;width:1.1125in; "}
+      %p.P20 Obrażenia
+    %td.Tabela1_A5{:style => "text-align:left;width:1.1125in; "}
+      %p.P20 Zasady
+      %p.P20 Specjalne
+    %td.Tabela1_A5{:style => "text-align:left;width:0.6111in; "}
+      %p.P20 Celność
+      %p.P20 Broni
+    %td.Tabela1_A5{:style => "text-align:left;width:0.7708in; "}
+      %p.P20 Umiejętności Strzeleckie
+    %td.Tabela1_A5{:style => "text-align:left;width:0.6944in; "}
+      %p.P20 Premia ze Zręczności
+    %td.Tabela1_J5{:style => "text-align:left;width:0.7688in; "}
+      %p.P21 Trafienie
+  %tr
+    %td.Tabela1_A6{:style => "text-align:left;width:1.1819in; "}
+      %p.P16
+         #{@character_sheet.ranged_weapon.ranged_weapon.name if @character_sheet.ranged_weapon.present?}
+    %td.Tabela1_B6{:colspan => "2", :style => "text-align:left;width:0.5681in; "}
+      %p.P16
+         #{@character_sheet.ranged_weapon.shooting_ranges if @character_sheet.ranged_weapon.present?}
+    %td.Tabela1_D6{:style => "text-align:left;width:0.5215in; "}
+      %p.P16
+         #{@character_sheet.ranged_weapon.calculate_speed if @character_sheet.ranged_weapon.present?}
+    %td.Tabela1_F6{:style => "text-align:left;width:1.1125in; "}
+      %p.P16
+         #{@character_sheet.ranged_weapon.calculate_damage if @character_sheet.ranged_weapon.present?}
+    %td.Tabela1_F6{:style => "text-align:left;width:1.1125in; "}
+      %p.P16
+         #{@character_sheet.ranged_weapon.bonus_from_special_rules if @character_sheet.ranged_weapon.present?}
+    %td.Tabela1_G6{:style => "text-align:left;width:0.6111in; "}
+      %p.P16
+         #{@character_sheet.ranged_weapon.weapon_accuracy if @character_sheet.ranged_weapon.present?}
+    %td.Tabela1_H6{:style => "text-align:left;width:0.7708in; "}
+      %p.P16
+         #{@character_sheet.ranged_weapon.character_shooting_skill if @character_sheet.ranged_weapon.present?}
+    %td.Tabela1_I6{:style => "text-align:left;width:0.6944in; "}
+      %p.P16
+         #{parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_dexterity_bonus)  if @character_sheet.ranged_weapon.present?}
+    %td.Tabela1_J6{:style => "text-align:left;width:0.7688in; "}
+      %p.P16
+         #{@character_sheet.ranged_weapon.total_hit_chance_parameter if @character_sheet.ranged_weapon.present?}
+%p.P1  
+%table.Tabela3{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+  %colgroup
+    %col{:width => "138"}/
+    %col{:width => "104"}/
+    %col{:width => "104"}/
+    %col{:width => "104"}/
+    %col{:width => "104"}/
+    %col{:width => "104"}/
+    %col{:width => "104"}/
+    %col{:width => "114"}/
+  %tr
+    %td.Tabela3_A1{:colspan => "8", :style => "text-align:left;width:1.241in; "}
+      %p.P11 Obrona w Walce Wręcz
+  %tr
+    %td.Tabela3_A2{:style => "text-align:left;width:1.241in; "}
+      %p.P16 Nazwa Broni
+    %td.Tabela3_A2{:style => "text-align:left;width:0.9347in; "}
+      %p.P16 Fechtunek
+      %p.P16 w Obronie
+    %td.Tabela3_A2{:style => "text-align:left;width:0.9347in; "}
+      %p.P16 Obrona Broni
+    %td.Tabela3_A2{:style => "text-align:left;width:0.9347in; "}
+      %p.P16 Obrona Tarczy
+    %td.Tabela3_A2{:style => "text-align:left;width:0.9347in; "}
+      %p.P16 Premia/Kara
+      %p.P16 ze ZR Aktualnej
+    %td.Tabela3_A2{:style => "text-align:left;width:0.9347in; "}
+      %p.P16 Premia/Kara
+      %p.P16 z Wiary
+    %td.Tabela3_A2{:style => "text-align:left;width:0.9347in; "}
+      %p.P16 Zasady Specjalne
+    %td.Tabela3_H2{:style => "text-align:left;width:1.0243in; "}
+      %p.P18 Obrona
+  - if @character_sheet.character.wield_style.name=="Styl walki dwiema brońmi"
+    %tr
+      %td.Tabela3_A3{:style => "text-align:left;width:1.241in; "}
+        %p.P16
+            #{@character_sheet.weapons[0].dual_wield_names if @character_sheet.weapons[0].present?}
+      %td.Tabela3_A3{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{@character_sheet.weapons[0].defense_fencing_parameter if @character_sheet.weapons[0].present?}
+      %td.Tabela3_A3{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{@character_sheet.weapons[0].calculate_defense_bonus_for_dual_wield if @character_sheet.weapons[0].present?}
+      %td.Tabela3_A3{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{@character_sheet.shield.total_defense_bonus(true) if @character_sheet.shield.present?}
+      %td.Tabela3_A3{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_current_zr]}
+      %td.Tabela3_A3{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[0].present?}
+      %td.Tabela3_A3{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{@character_sheet.weapons[0].special_defense_bonus_for_total_defense_listing if @character_sheet.weapons[0].present?}
+      %td{:class => "Tabela3_H3 #{weapon_proficiency_bonus(@character_sheet.weapons[0])}", :style => "text-align:left;width:1.0243in; "}
+        %p.P16
+           #{@character_sheet.weapons[0].total_defense(true, @character_sheet.shield) if @character_sheet.weapons[0].present?}
+    %tr
+      %td.Tabela3_A4{:style => "text-align:left;width:1.241in; "}
+        %p.P16  
+      %td.Tabela3_A4{:style => "text-align:left;width:0.9347in; "}
+        %p.P16  
+      %td.Tabela3_A4{:style => "text-align:left;width:0.9347in; "}
+        %p.P16  
+      %td.Tabela3_A4{:style => "text-align:left;width:0.9347in; "}
+        %p.P16  
+      %td.Tabela3_A4{:style => "text-align:left;width:0.9347in; "}
+        %p.P16  
+      %td.Tabela3_A4{:style => "text-align:left;width:0.9347in; "}
+        %p.P16  
+      %td.Tabela3_A4{:style => "text-align:left;width:0.9347in; "}
+        %p.P16  
+      %td.Tabela3_H4{:style => "text-align:left;width:1.0243in; "}
+        %p.P16  
+  - else
+    %tr
+      %td.Tabela3_A3{:style => "text-align:left;width:1.241in; "}
+        %p.P16
+            #{@character_sheet.weapons[0].weapon.name if @character_sheet.weapons[0].present?}
+      %td.Tabela3_A3{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{@character_sheet.weapons[0].defense_fencing_parameter if @character_sheet.weapons[0].present?}
+      %td.Tabela3_A3{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{@character_sheet.weapons[0].calculate_defense_bonus_for_particular_weapon if @character_sheet.weapons[0].present?}
+      %td.Tabela3_A3{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{(@character_sheet.shield.present? && @character_sheet.weapons[0].present?) ? @character_sheet.shield.total_defense_bonus(true) : "-"}
+      %td.Tabela3_A3{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_current_zr] if @character_sheet.weapons[0].present?}
+      %td.Tabela3_A3{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[0].present?}
+      %td.Tabela3_A3{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{@character_sheet.weapons[0].special_defense_bonus_for_total_defense_listing if @character_sheet.weapons[0].present?}
+      %td{:class => "Tabela3_H3 #{weapon_proficiency_bonus(@character_sheet.weapons[0])}", :style => "text-align:left;width:1.0243in; "}
+        %p.P16
+           #{@character_sheet.weapons[0].total_defense(false, @character_sheet.shield) if @character_sheet.weapons[0].present?}
+    %tr
+      %td.Tabela3_A4{:style => "text-align:left;width:1.241in; "}
+        %p.P16
+            #{@character_sheet.weapons[1].weapon.name if @character_sheet.weapons[1].present?}
+      %td.Tabela3_A4{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{@character_sheet.weapons[1].defense_fencing_parameter if @character_sheet.weapons[1].present?}
+      %td.Tabela3_A4{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{@character_sheet.weapons[1].calculate_defense_bonus_for_particular_weapon if @character_sheet.weapons[1].present?}
+      %td.Tabela3_A4{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{(@character_sheet.shield.present? && @character_sheet.weapons[1].present?) ? @character_sheet.shield.total_defense_bonus(true) : ""}
+      %td.Tabela3_A4{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_current_zr] if @character_sheet.weapons[1].present?}
+      %td.Tabela3_A4{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi] if @character_sheet.weapons[1].present?}
+      %td.Tabela3_A4{:style => "text-align:left;width:0.9347in; "}
+        %p.P16
+           #{@character_sheet.weapons[1].special_defense_bonus_for_total_defense_listing if @character_sheet.weapons[1].present?}
+      %td{:class => "Tabela3_H4 #{weapon_proficiency_bonus(@character_sheet.weapons[1])}", :style => "text-align:left;width:1.0243in; "}
+        %p.P16
+           #{@character_sheet.weapons[1].total_defense(false, @character_sheet.shield) if @character_sheet.weapons[1].present?}
+%p.P1  
+%table.Tabela5{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+  %colgroup
+    %col{:width => "152"}/
+    %col{:width => "152"}/
+    %col{:width => "152"}/
+    %col{:width => "152"}/
+    %col{:width => "152"}/
+    %col{:width => "110"}/
+  %tr
+    %td.Tabela5_A1{:colspan => "6", :style => "text-align:left;width:1.3701in; "}
+      %p.P11 Obrona Dystansowa
+  %tr
+    %td.Tabela5_A2{:style => "text-align:left;width:1.3701in; "}
+      %p.P16 Wartość Podstawowa
+      %p.P16 (nieruchomy cel)
+    %td.Tabela5_A2{:style => "text-align:left;width:1.3701in; "}
+      %p.P16 Zręczność Akt. Powyżej 15pkt
+    %td.Tabela5_A2{:style => "text-align:left;width:1.3701in; "}
+      %p.P16 Obrona Tarczy
+    %td.Tabela5_A2{:style => "text-align:left;width:1.3701in; "}
+      %p.P16 Umiejętności
+    %td.Tabela5_A2{:style => "text-align:left;width:1.3701in; "}
+      %p.P16 Zasady Specjalne +1pkt/Poziom
+    %td.Tabela5_F2{:style => "text-align:left;width:0.9924in; "}
+      %p.P18 Obrona
+  %tr
+    %td.Tabela5_A3{:style => "text-align:left;width:1.3701in; "}
+      %p.P16 20
+    %td.Tabela5_A3{:style => "text-align:left;width:1.3701in; "}
+      %p.P16
+         #{@character_sheet.character.statistics.the_above_fifteen_zr_bonus}
+    %td.Tabela5_A3{:style => "text-align:left;width:1.3701in; "}
+      %p.P16
+         #{@character_sheet.shield.present? ? @character_sheet.shield.total_defense_bonus(true) : ""}
+    %td.Tabela5_A3{:style => "text-align:left;width:1.3701in; "}
+      %p.P16
+         #{@character_sheet.character.statistics.ranged_defense_bonus_from_skills}
+    %td.Tabela5_A3{:style => "text-align:left;width:1.3701in; "}
+      %p.P16
+         #{@character_sheet.character.statistics.special_ranged_defense_parameter(@character_sheet.shield)}
+    %td.Tabela5_F3{:style => "text-align:left;width:0.9924in; "}
+      %p.P16
+         #{@character_sheet.character.statistics.total_ranged_defense(@character_sheet.shield)}
+  %tr
+    %td.Tabela5_A4{:style => "text-align:left;width:1.3701in; "}
+      %p.P16  
+    %td.Tabela5_A4{:style => "text-align:left;width:1.3701in; "}
+      %p.P16  
+    %td.Tabela5_A4{:style => "text-align:left;width:1.3701in; "}
+      %p.P16  
+    %td.Tabela5_A4{:style => "text-align:left;width:1.3701in; "}
+      %p.P16  
+    %td.Tabela5_A4{:style => "text-align:left;width:1.3701in; "}
+      %p.P16  
+    %td.Tabela5_F4{:style => "text-align:left;width:0.9924in; "}
+      %p.P16  
+  %tr
+    %td.Tabela5_E5{:style => "text-align:left;width:1.3701in; "}
+      %p.P16  
+    %td.Tabela5_E5{:style => "text-align:left;width:1.3701in; "}
+      %p.P16  
+    %td.Tabela5_E5{:style => "text-align:left;width:1.3701in; "}
+      %p.P16  
+    %td.Tabela5_E5{:style => "text-align:left;width:1.3701in; "}
+      %p.P16  
+    %td.Tabela5_E5{:style => "text-align:left;width:1.3701in; "}
+      %p.P16  
+    %td.Tabela5_F5{:style => "text-align:left;width:0.9924in; "}
+      %p.P16  
+%p.P1  
+%table.Tabela6{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+  %colgroup
+    %col{:width => "145"}/
+    %col{:width => "146"}/
+    %col{:width => "146"}/
+    %col{:width => "146"}/
+    %col{:width => "146"}/
+    %col{:width => "143"}/
+  %tr
+    %td.Tabela6_A1{:colspan => "6", :style => "text-align:left;width:1.3021in; "}
+      %p.P11 Pancerze, Zbroje i Tarcze
+  %tr
+    %td.Tabela6_A2{:style => "text-align:left;width:1.3021in; "}
+      %p.P16 Nazwa
+    %td.Tabela6_A2{:style => "text-align:left;width:1.3118in; "}
+      %p.P16 Parametry Ochronne
+    %td.Tabela6_A2{:style => "text-align:left;width:1.3125in; "}
+      %p.P16 Ograniczenia
+    %td.Tabela6_A2{:style => "text-align:left;width:1.3118in; "}
+      %p.P16 Wymagania Siły
+    %td.Tabela6_A2{:style => "text-align:left;width:1.3125in; "}
+      %p.P16 Odporność na Ciosy
+    %td.Tabela6_F2{:style => "text-align:left;width:1.2924in; "}
+      %p.P16 Zasady Specjalne
+  %tr
+    %td.Tabela6_A5{:style => "text-align:left;width:1.3021in; "}
+      %p.P16
+        = @character_sheet.primary_armor.armor.name if @character_sheet.primary_armor.present?
+         
+    %td.Tabela6_D5{:style => "text-align:left;width:1.3118in; "}
+      %p.P16
+         #{@character_sheet.primary_armor.protection_levels if @character_sheet.primary_armor.present?}
+    %td.Tabela6_E5{:style => "text-align:left;width:1.3125in; "}
+      %p.P16
+        = @character_sheet.primary_armor.calculate_dexterity_nerf if @character_sheet.primary_armor.present?
+        \/#{@character_sheet.primary_armor.calculate_dexterity_cap if @character_sheet.primary_armor.present?}
+    %td.Tabela6_D5{:style => "text-align:left;width:1.3118in; "}
+      %p.P16
+        = @character_sheet.primary_armor.required_strength if @character_sheet.primary_armor.present?
+         
+    %td.Tabela6_E5{:style => "text-align:left;width:1.3125in; "}
+      %p.P16 - -
+    %td.Tabela6_F5{:style => "text-align:left;width:1.2924in; "}
+      %p.P16
+        = @character_sheet.primary_armor.armor.special_rules if @character_sheet.primary_armor.present?
+         
+  %tr
+    %td.Tabela6_A4{:style => "text-align:left;width:1.3021in; "}
+      %p.P16
+         #{@character_sheet.secondary_armor.armor.name if @character_sheet.secondary_armor.present?}
+    %td.Tabela6_A4{:style => "text-align:left;width:1.3118in; "}
+      %p.P16
+         #{@character_sheet.secondary_armor.protection_levels if @character_sheet.secondary_armor.present?}
+    %td.Tabela6_A4{:style => "text-align:left;width:1.3125in; "}
+      %p.P16
+        = @character_sheet.secondary_armor.calculate_dexterity_nerf if @character_sheet.secondary_armor.present?
+        \/#{@character_sheet.secondary_armor.calculate_dexterity_cap if @character_sheet.secondary_armor.present?}
+    %td.Tabela6_A4{:style => "text-align:left;width:1.3118in; "}
+      %p.P16
+         #{@character_sheet.secondary_armor.required_strength if @character_sheet.secondary_armor.present?}
+    %td.Tabela6_A4{:style => "text-align:left;width:1.3125in; "}
+      %p.P16 - -
+    %td.Tabela6_F4{:style => "text-align:left;width:1.2924in; "}
+      %p.P16
+         #{@character_sheet.secondary_armor.armor.special_rules if @character_sheet.secondary_armor.present?}
+  %tr
+    %td.Tabela6_A5{:style => "text-align:left;width:1.3021in; "}
+      %p.P16
+        = @character_sheet.shield.shield.name if @character_sheet.shield.present?
+    %td.Tabela6_D5{:style => "text-align:left;width:1.3118in; "}
+      %p.P16 - -
+    %td.Tabela6_E5{:style => "text-align:left;width:1.3125in; "}
+      %p.P16
+        = @character_sheet.shield.calculate_dexterity_nerf if @character_sheet.shield.present?
+        \/#{@character_sheet.shield.calculate_dexterity_cap if @character_sheet.shield.present?}
+    %td.Tabela6_D5{:style => "text-align:left;width:1.3118in; "}
+      %p.P16
+         #{@character_sheet.shield.required_strength if @character_sheet.shield.present?}
+    %td.Tabela6_E5{:style => "text-align:left;width:1.3125in; "}
+      %p.P16  
+    %td.Tabela6_F5{:style => "text-align:left;width:1.2924in; "}
+      %p.P16
+         #{@character_sheet.shield.shield.special_rules if @character_sheet.shield.present?}
+%p.P1  
+%table.Tabela7{:border => "0", :cellpadding => "0", :cellspacing => "0"}
+  %colgroup
+    %col{:width => "89"}/
+    %col{:width => "71"}/
+    %col{:width => "18"}/
+    %col{:width => "56"}/
+    %col{:width => "37"}/
+    %col{:width => "41"}/
+    %col{:width => "51"}/
+    %col{:width => "27"}/
+    %col{:width => "75"}/
+    %col{:width => "23"}/
+    %col{:width => "90"}/
+    %col{:width => "90"}/
+    %col{:width => "21"}/
+    %col{:width => "95"}/
+    %col{:width => "91"}/
+  %tr
+    %td.Tabela7_A1{:colspan => "9", :style => "text-align:left;width:0.8007in; "}
+      %p.P11 Zmiana Zasięgu
+    %td.Tabela7_J4{:style => "text-align:left;width:0.2104in; "}
+      %p.P11  
+    %td.Tabela7_A1{:colspan => "2", :style => "text-align:left;width:0.8097in; "}
+      %p.P11 Test Przeciwstawny
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P11  
+    %td.Tabela7_A1{:style => "text-align:left;width:0.8514in; "}
+      %p.P4 Parametr
+    %td.Tabela7_O1{:style => "text-align:left;width:0.8215in; "}
+      %p.P4 Premia/Kara
+  %tr
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8007in; "}
+      %p.P16 FwA + FwO / 2
+    %td.Tabela7_A2{:colspan => "2", :style => "text-align:left;width:0.6417in; "}
+      %p.P16 Premia ze ZR
+    %td.Tabela7_A2{:colspan => "2", :style => "text-align:left;width:0.5014in; "}
+      %p.P16 Premia z Siły
+    %td.Tabela7_A2{:colspan => "2", :style => "text-align:left;width:0.3708in; "}
+      %p.P16 Umiejętności
+    %td.Tabela7_A2{:colspan => "2", :style => "text-align:left;width:0.2417in; "}
+      %p.P16 SUMA
+    %td.Tabela7_J4{:rowspan => "2", :style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_A2{:rowspan => "2", :style => "text-align:left;width:0.8097in; "}
+      %p.P16 Postać Inicjująca Test
+    %td.Tabela7_A2{:rowspan => "2", :style => "text-align:left;width:0.8097in; "}
+      %p.P16 Sukces na k30
+      %p.P16 od - do:
+    %td.Tabela7_M18{:rowspan => "2", :style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_N2{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 1-3
+    %td.Tabela7_O2{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 -3
+  %tr
+    %td.Tabela7_N2{:style => "text-align:left;width:0.8007in; "}
+      %p.P16
+        = @character_sheet.character.statistics.range_change_base
+         
+    %td.Tabela7_N2{:colspan => "2", :style => "text-align:left;width:0.6417in; "}
+      %p.P16
+         #{parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_dexterity_bonus)}
+    %td.Tabela7_N2{:colspan => "2", :style => "text-align:left;width:0.5014in; "}
+      %p.P16
+         #{parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_strength_bonus )}
+    %td.Tabela7_N2{:colspan => "2", :style => "text-align:left;width:0.3708in; "}
+      %p.P16
+         #{parameter_with_bonus_orientation(@character_sheet.character.statistics.calculate_range_change_bonus_from_skills)}
+    %td.Tabela7_N2{:colspan => "2", :style => "text-align:left;width:0.2417in; "}
+      %p.P16
+         #{@character_sheet.character.statistics.total_range_change}
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 4-6
+    %td.Tabela7_O3{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 -2
+  %tr
+    %td.Tabela7_A4{:style => "text-align:left;width:0.8007in; "}
+      %p.P16  
+    %td.Tabela7_A4{:colspan => "2", :style => "text-align:left;width:0.6417in; "}
+      %p.P16  
+    %td.Tabela7_A4{:colspan => "2", :style => "text-align:left;width:0.5014in; "}
+      %p.P16  
+    %td.Tabela7_A4{:colspan => "2", :style => "text-align:left;width:0.3708in; "}
+      %p.P16  
+    %td.Tabela7_A4{:colspan => "2", :style => "text-align:left;width:0.2417in; "}
+      %p.P16  
+    %td.Tabela7_J4{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 Itd.
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 Itd.
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_N18{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 7-9
+    %td.Tabela7_O18{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 -1
+  %tr
+    %td.Tabela7_A5{:style => "text-align:left;width:0.8007in; "}
+      %p.P16  
+    %td.Tabela7_B5{:colspan => "2", :style => "text-align:left;width:0.6417in; "}
+      %p.P16  
+    %td.Tabela7_D5{:colspan => "2", :style => "text-align:left;width:0.5014in; "}
+      %p.P16  
+    %td.Tabela7_F5{:colspan => "2", :style => "text-align:left;width:0.3708in; "}
+      %p.P16  
+    %td.Tabela7_H24{:colspan => "2", :style => "text-align:left;width:0.2417in; "}
+      %p.P16  
+    %td.Tabela7_J25{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 -6
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-9
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 10-12
+    %td.Tabela7_O3{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 -
+  %tr
+    %td.Tabela7_A6{:colspan => "9", :style => "text-align:left;width:0.8007in; "}
+      %p.P16  
+    %td.Tabela7_J6{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 -5
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-10
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_N18{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 13-15
+    %td.Tabela7_O18{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 +1
+  %tr
+    %td.Tabela7_A7{:style => "text-align:left;width:0.8007in; "}
+      %p.P16  
+    %td.Tabela7_B7{:style => "text-align:left;width:0.6417in; "}
+      %p.P16 FwA
+    %td.Tabela7_B7{:colspan => "2", :style => "text-align:left;width:0.1597in; "}
+      %p.P16 P. (S+Z)/2
+    %td.Tabela7_B7{:colspan => "2", :style => "text-align:left;width:0.3299in; "}
+      %p.P16 Z. Specjalne
+    %td.Tabela7_B7{:colspan => "2", :style => "text-align:left;width:0.4604in; "}
+      %p.P16 Umiejętności
+    %td.Tabela7_I7{:style => "text-align:left;width:0.6778in; "}
+      %p.P16 Trafienie
+    %td.Tabela7_J7{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 -4
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-11
+    %td.Tabela7_M7{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 16-18
+    %td.Tabela7_O3{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 +2
+  %tr
+    %td.Tabela7_A8{:style => "text-align:left;width:0.8007in; "}
+      %p.P16 Bijatyka
+    %td.Tabela7_A7{:style => "text-align:left;width:0.6417in; "}
+      %p.P16
+        = @character_sheet.character.statistics.raw_fencing_when_attacking
+         
+    %td.Tabela7_A7{:colspan => "2", :style => "text-align:left;width:0.1597in; "}
+      %p.P16
+        = @character_sheet.character.statistics.calculate_dexterity_and_strength_bonus
+         
+    %td.Tabela7_A7{:colspan => "2", :style => "text-align:left;width:0.3299in; "}
+      %p.P16
+         #{@character_sheet.character.statistics.calculate_brawl_bonus_from_special_rules}
+    %td.Tabela7_A7{:colspan => "2", :style => "text-align:left;width:0.4604in; "}
+      %p.P16
+         #{@character_sheet.character.statistics.calculate_brawl_bonus_from_skills}
+    %td.Tabela7_I8{:style => "text-align:left;width:0.6778in; "}
+      %p.P16
+         #{@character_sheet.character.statistics.calculate_total_brawling("attack")}
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 -3
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-12
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_N18{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 19-21
+    %td.Tabela7_O18{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 +3
+  %tr.Tabela79
+    %td.Tabela7_N2{:style => "text-align:left;width:0.8007in; "}
+      %p.P16  
+    %td.Tabela7_B7{:style => "text-align:left;width:0.6417in; "}
+      %p.P16 FwO
+    %td.Tabela7_B7{:colspan => "2", :style => "text-align:left;width:0.1597in; "}
+      %p.P16 P. z ZR a.
+    %td.Tabela7_B7{:colspan => "2", :style => "text-align:left;width:0.3299in; "}
+      %p.P16 P. z Wiary
+    %td.Tabela7_B7{:colspan => "2", :style => "text-align:left;width:0.4604in; "}
+      %p.P16 Umiejętności
+    %td.Tabela7_I7{:style => "text-align:left;width:0.6778in; "}
+      %p.P16 Obrona
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 -2
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-13
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 22-24
+    %td.Tabela7_O3{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 +4
+  %tr
+    %td.Tabela7_A8{:style => "text-align:left;width:0.8007in; "}
+      %p.P16 Bijatyka
+    %td.Tabela7_A7{:style => "text-align:left;width:0.6417in; "}
+      %p.P16
+         #{@character_sheet.character.statistics.raw_fencing_when_defending}
+    %td.Tabela7_A7{:colspan => "2", :style => "text-align:left;width:0.1597in; "}
+      %p.P16
+        = Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_current_zr]
+    %td.Tabela7_A7{:colspan => "2", :style => "text-align:left;width:0.3299in; "}
+      %p.P16
+         #{"#{Statistics::BONUS_OR_PENALTY_RANGES_MAP[@character_sheet.character.statistics.calculate_wi]}"}
+    %td.Tabela7_A7{:colspan => "2", :style => "text-align:left;width:0.4604in; "}
+      %p.P16
+         #{@character_sheet.character.statistics.calculate_brawl_bonus_from_skills}
+    %td.Tabela7_I8{:style => "text-align:left;width:0.6778in; "}
+      %p.P16
+         #{@character_sheet.character.statistics.calculate_total_brawling("defense")}
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 -1
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-14
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_N18{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 25-27
+    %td.Tabela7_O18{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 +5
+  %tr
+    %td.Tabela7_A6{:colspan => "9", :style => "text-align:left;width:0.8007in; "}
+      %p.P16  
+    %td.Tabela7_J11{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 0
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-15
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 28-30
+    %td.Tabela7_O3{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 +6
+  %tr
+    %td.Tabela7_A12{:colspan => "9", :style => "text-align:left;width:0.8007in; "}
+      %p.P22 Ekwipunek, Majątek i Pieniądze
+    %td.Tabela7_J7{:style => "text-align:left;width:0.2104in; "}
+      %p.P16
+    %td.Tabela7_N2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +1
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-16
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_N18{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 31-33
+    %td.Tabela7_O18{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 +7
+  %tr
+    %td.Tabela7_A22{:colspan => "9", :rowspan => "2", :style => "text-align:left;width:0.8007in; "}
+      %p.P16
+        = @character_sheet.character.items
+         
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +2
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-17
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 34-36
+    %td.Tabela7_O3{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 +8
+  %tr
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +3
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-18
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_N18{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 37-39
+    %td.Tabela7_O18{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 +9
+  %tr
+    %td.Tabela7_A20{:colspan => "9", :rowspan => "2", :style => "text-align:left;width:0.8007in; "}
+      %p.Standard  
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +4
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-19
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 40-42
+    %td.Tabela7_O3{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 +10
+  %tr
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +5
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-20
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_N18{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 43-45
+    %td.Tabela7_O18{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 +11
+  %tr
+    %td.Tabela7_A22{:colspan => "9", :rowspan => "2", :style => "text-align:left;width:0.8007in; "}
+      %p.Standard  
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +6
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-21
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 46-48
+    %td.Tabela7_O3{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 +12
+  %tr
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +7
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-22
+    %td.Tabela7_M18{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_N18{:style => "text-align:left;width:0.8514in; "}
+      %p.P3 49-51
+    %td.Tabela7_O18{:style => "text-align:left;width:0.8215in; "}
+      %p.P3 +13
+  %tr
+    %td.Tabela7_A20{:colspan => "9", :rowspan => "2", :style => "text-align:left;width:0.8007in; "}
+      %p.Standard  
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +8
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-23
+    %td.Tabela7_M20{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_N19{:style => "text-align:left;width:0.8514in; "}
+      %p.P3  
+    %td.Tabela7_O19{:style => "text-align:left;width:0.8215in; "}
+      %p.P3  
+  %tr
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +9
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-24
+    %td.Tabela7_M20{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_J11{:colspan => "2", :style => "text-align:left;width:0.8514in; "}
+      %p.P3  
+  %tr
+    %td.Tabela7_A22{:colspan => "9", :rowspan => "2", :style => "text-align:left;width:0.8007in; "}
+      %p.Standard  
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +10
+    %td.Tabela7_L21{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-25
+    %td.Tabela7_M25{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_J11{:style => "text-align:left;width:0.8514in; "}
+      %p.P3  
+    %td.Tabela7_J11{:style => "text-align:left;width:0.8215in; "}
+      %p.P3  
+  %tr
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +11
+    %td.Tabela7_L24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-26
+    %td.Tabela7_M25{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_J11{:style => "text-align:left;width:0.8514in; "}
+      %p.P3  
+    %td.Tabela7_J11{:style => "text-align:left;width:0.8215in; "}
+      %p.P3  
+  %tr
+    %td.Tabela7_A1{:rowspan => "2", :style => "text-align:left;width:0.8007in; "}
+      %p.P9  
+      %p.P8 Pieniądze
+    %td.Tabela7_B23{:colspan => "2", :style => "text-align:left;width:0.6417in; "}
+      %p.P5 Platyna
+    %td.Tabela7_B23{:colspan => "2", :style => "text-align:left;width:0.5014in; "}
+      %p.P5 Złoto
+    %td.Tabela7_B23{:colspan => "2", :style => "text-align:left;width:0.3708in; "}
+      %p.P5 Srebro
+    %td.Tabela7_H23{:colspan => "2", :style => "text-align:left;width:0.2417in; "}
+      %p.P5 Mosiądz
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_A2{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +12
+    %td.Tabela7_O3{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-27
+    %td.Tabela7_M25{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_J11{:colspan => "2", :style => "text-align:left;width:0.8514in; "}
+      %p.P3  
+  %tr
+    %td.Tabela7_B24{:colspan => "2", :style => "text-align:left;width:0.6417in; "}
+      %p.P6  
+    %td.Tabela7_F24{:colspan => "2", :style => "text-align:left;width:0.5014in; "}
+      %p.P6
+         #{@character_sheet.purse[0]}
+    %td.Tabela7_F24{:colspan => "2", :style => "text-align:left;width:0.3708in; "}
+      %p.P6
+         #{@character_sheet.purse[1]}
+    %td.Tabela7_H24{:colspan => "2", :style => "text-align:left;width:0.2417in; "}
+      %p.P6
+         #{@character_sheet.purse[2]}
+    %td.Tabela7_J24{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_K24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +13
+    %td.Tabela7_L24{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-28
+    %td.Tabela7_M25{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_J11{:style => "text-align:left;width:0.8514in; "}
+      %p.P3  
+    %td.Tabela7_J11{:style => "text-align:left;width:0.8215in; "}
+      %p.P3  
+  %tr
+    %td.Tabela7_O1{:colspan => "3", :style => "text-align:left;width:0.8007in; "}
+      %p.P14 Imię Gracza
+    %td.Tabela7_A7{:colspan => "2", :style => "text-align:left;width:0.5014in; "}
+      %p.P16  
+    %td.Tabela7_F25{:colspan => "4", :style => "text-align:left;width:0.3708in; "}
+      %p.P16  
+    %td.Tabela7_J25{:style => "text-align:left;width:0.2104in; "}
+      %p.P16  
+    %td.Tabela7_B7{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 +14 i więcej
+    %td.Tabela7_I7{:style => "text-align:left;width:0.8097in; "}
+      %p.P5 1-29
+    %td.Tabela7_M25{:style => "text-align:left;width:0.1889in; "}
+      %p.P16  
+    %td.Tabela7_J11{:style => "text-align:left;width:0.8514in; "}
+      %p.P3  
+    %td.Tabela7_J11{:style => "text-align:left;width:0.8215in; "}
+      %p.P3  

@@ -1,0 +1,4 @@
+jQuery('.choice_notice').remove();
+jQuery('#choice_no_#{@stats_modifier.id}').prepend('<p class=\"choice_notice text-info\">Wybrano: #{@stats_modifier.as_character_skill(@character).skill_bonus_preference.choice}
+');
+jQuery('.choice_notice').effect('highlight', {color:'green'}, 1500);

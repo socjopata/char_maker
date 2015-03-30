@@ -1,0 +1,13 @@
+%h2 Zapomniałeś hasła?
+.container-fluid
+  .row-fluid
+    .span6
+      = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+        = devise_error_messages!
+        %fieldset
+          %label= f.label :email
+          = f.email_field :email
+          %br/
+          = f.submit "Wyślij mi email z linkiem do zresetowania hasła", :class => "btn btn-primary"
+    .span6
+      = render :partial => "devise/shared/links"

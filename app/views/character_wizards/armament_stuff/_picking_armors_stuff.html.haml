@@ -1,0 +1,39 @@
+.span5
+  %h2 Przywdziej zbroję:
+  = form_tag(add_item_to_inventory_character_wizard_path, :remote => true) do
+    %label
+      Wybierz grupę
+      zbroi:
+    = select_tag 'armor_group', options_for_select(@wizard.instance_variable_get("@armor_groups"))
+    %br/
+    #armors
+      = render :partial => "character_wizards/armament_stuff/armors", :locals => {:armors => @wizard.instance_variable_get("@armors")}
+    = hidden_field_tag :char_id, @wizard.character.id
+    = hidden_field_tag :item_type, "Armor"
+    = submit_tag "Kup!", :class => "btn btn-small btn-primary"
+.span7
+  #armors_owned
+    %p Posiadane zbroje:
+    %table#character_armors.table.table-bordered
+      %thead
+        %th Nazwa
+        %th Oznacz zbroję jako aktualnie używaną
+        %th Zmniejszenie ograniczenia Zręczności o 2pkt
+        %th Zwiększenie limitu Zręczności o 3pkt
+        %th Zwiększenie wszystkich Parametrów Ochronnych Zbroi lub Pancerza o +1pkt
+        %th Usuń z inwentarza
+      %tbody
+        - @wizard.character.character_armors.each do |item|
+          <tr id=#{item.id}>
+          %td.alantar_td
+            %p.normal= item.armor.name
+          %td.alantar_td
+            <p class="normal set_armor" id=#{"set_armor_#{item.id}"}>#{set_armor_as_main(@wizard.character, item)}
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_dexterity_nerf"}>#{item_upgrade_link(@wizard.character, item.resource, item, "dexterity_nerf")}
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_dexterity_cap"}>#{item_upgrade_link(@wizard.character, item.resource, item, "dexterity_cap")}
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_defense_bonus"}>#{item_upgrade_link(@wizard.character, item.resource, item, "defense_bonus")}
+          %td.alantar_td
+            %p.normal= link_to image_tag('delete.png'), remove_item_from_inventory_character_wizard_path(:char_id => @wizard.character.id, :item_type => "Armor", :inventory_item => item.resource.id, :delete_id => item.id), :remote => true

@@ -1,0 +1,5 @@
+%label Wybierz bóstwo:
+= select_tag 'deities', options_from_collection_for_select(deities, "id", "name")
+:javascript
+  $("#country_description").text(' #{escape_javascript(country.description).html_safe}');
+  $("#deity_description").text(' #{escape_javascript(deities.first.description).html_safe}');

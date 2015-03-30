@@ -1,0 +1,101 @@
+%legend Parametry:
+%p{:style => "font-size: 16px"} Twój najwyższy rzut został przyporządkowany do parametru wiodącego.
+= display_trait_warning_if_applicable(@wizard.character)
+%p{:style => "font-size: 16px"}
+  Ponadto rzut, który przyporządkowujesz Ogładzie
+  %strong nie może być nizszy
+  niż
+  nominalny, czyli: #{@wizard.instance_variable_get("@stats").last}
+#display_container.stats_area
+  .dragArea
+    .container-fluid
+      .row-fluid
+        - @wizard.instance_variable_get("@stats").each_with_index do |roll, index|
+          .span2.fancy_number
+            = content_tag(:div, roll, :id => index, :class => "drag #{'position_left_60' if index==4}")
+  %br/
+  %br/
+  %span.help-block
+    Złap myszką powyższe cyfry i upuść je na wybranych współczynnikach. Jeśli chcesz zmienić swóje wybory,  #{link_to_function "Zresetuj pola", "reset_stat_fields()", :class => "btn btn-warning btn-small"}
+  %br/
+  %br/
+  .dropArea
+    .container-fluid
+      .row-fluid
+        - Statistics::ENGLISH_NAMES_MAP.map do |key, value|
+          .span2.fancy_number
+            %p{:style => "font-size: 16px; text-align:left"}= t(value)
+            = content_tag(:div, (@wizard.instance_variable_get("@lead_parameter") if @wizard.character.lead_parameter==key), :id => value, :class => "drop #{"lead" if @wizard.character.lead_parameter==key}")
+%br/
+%br/
+#user_stats_form
+  = form_for @wizard.character.statistics, :url => character_wizard_path(:char_id => @character.id, :step => "statistics"), :html => {:id => "user_stats_form", :method => :post} do |f|
+    = f.hidden_field :strength
+    = f.hidden_field :dexterity
+    = f.hidden_field :endurance
+    = f.hidden_field :intelligence
+    = f.hidden_field :faith
+    = f.hidden_field :polish
+%br/
+%br/
+%br/
+%br/
+.row
+  .span1= link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "profession_and_origin_choices"), :class => "btn"
+  .span2.offset4= link_to "Zacznij od początku", character_path(@wizard.character), :class => "btn btn-danger", :confirm => 'Napewno?', :method => :delete
+  .span2.offset3= link_to "Kolejny krok", "javascript:void(0)", :class => "btn btn-primary", :onclick => "attach_choices_and_proceed()"
+%br/
+%br/
+- if current_user.admin?
+  %fieldset
+    %label.checkbox
+      = check_box_tag :admin, 'yes', false, :onchange => "$('#admin_stats_form').toggle();"
+      Jestem adminem i chce ustawić rzuty ręcznie
+%br/
+%br/
+#admin_stats_form{:style => "display: none;"}
+  = simple_form_for @wizard.character.statistics, url: character_wizard_path(char_id: @character.id, step: "statistics"), html: {class: 'form-horizontal', id: "admin_stats_form", method: :post} do |f|
+    = f.input :strength, input_html: {}, label: "Siła"
+    = f.input :dexterity, input_html: {}, label: "Zręczność"
+    = f.input :endurance, input_html: {}, label: "Wytrzymałość"
+    = f.input :intelligence, input_html: {}, label: "Inteligencja"
+    = f.input :faith, input_html: {}, label: "Wiara"
+    = f.input :polish, input_html: {}, label: "Ogłada"
+    = f.submit "Zapisz", class: 'btn-primary offset3'
+:javascript
+  function reset_stat_fields() {
+      $('.ui-draggable').show();
+      $('.drop').not('.lead').text('');
+  }
+
+  function attach_choices_and_proceed() {
+      $("div#user_stats_form #statistics_strength").val($("#strength").text());
+      $("div#user_stats_form #statistics_dexterity").val($("#dexterity").text());
+      $("div#user_stats_form #statistics_endurance").val($("#endurance").text());
+      $("div#user_stats_form #statistics_intelligence").val($("#intelligence").text());
+      $("div#user_stats_form #statistics_faith").val($("#faith").text());
+      $("div#user_stats_form #statistics_polish").val($("#polish").text());
+      $("div#user_stats_form #user_stats_form").submit();
+  }
+
+  function make_draggable() {
+      $(".drag").draggable(
+              {containment:"#display_container", revert:true,
+                  revertDuration:750});
+  }
+
+
+  function make_droppable() {
+      $(".drop").droppable({
+          accept:".drag",
+          hoverClass:"active",
+          drop:function (event, props) {
+              $(this).text($(props.draggable).text());
+              $(props.draggable).hide();
+          }
+      });
+  }
+  $(function () {
+      make_draggable();
+      make_droppable();
+  });

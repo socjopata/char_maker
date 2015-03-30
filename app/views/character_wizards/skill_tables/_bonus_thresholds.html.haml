@@ -1,0 +1,11 @@
+%table#stats_qtip_table.table.table-bordered{:style => "visibility: hidden;"}
+  %thead
+    %tr
+      %th Parametr
+      %th Premia/Kara
+  %tbody
+    - Statistics::BONUS_OR_PENALTY_RANGES_MAP.to_hash.each_pair do |key, value|
+      %tr
+        %td= key
+        %td
+          = value

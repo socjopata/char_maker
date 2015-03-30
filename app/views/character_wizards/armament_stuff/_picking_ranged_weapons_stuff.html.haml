@@ -1,0 +1,37 @@
+.span5
+  %h2 Wybierz broń dystansową:
+  = form_tag(add_item_to_inventory_character_wizard_path, :remote => true) do
+    %label Wybierz grupę broni:
+    = select_tag 'ranged_weapon_group', options_for_select(@wizard.instance_variable_get("@ranged_weapon_groups"))
+    %br/
+    #ranged_weapons
+      = render :partial => "character_wizards/armament_stuff/ranged_weapons", :locals => {:ranged_weapons => @wizard.instance_variable_get("@ranged_weapons")}
+    = hidden_field_tag :char_id, @wizard.character.id
+    = hidden_field_tag :item_type, "RangedWeapon"
+    = submit_tag "Kup!", :class => "btn btn-small btn-primary"
+.span7
+  #ranged_weapons_owned
+    %p Posiadane bronie dystansowe:
+    %table#character_ranged_weapons.table.table-bordered
+      %thead
+        %th Nazwa
+        %th Zmniejszenie Tempa strzału: Łuków o 1pkt.
+        %th Zwiększenie Obrażeń Kusz o +2pkt lub Łuków o +1pkt.
+        %th Zwiększenie Celności o +1pkt.
+        %th Zwiększenie zasięgu Średniego i Długiego o +25m.
+        %th Usuń z inwentarza
+      %tbody
+        - @wizard.character.character_ranged_weapons.each do |item|
+          <tr id=#{item.id}>
+          %td.alantar_td
+            %p.normal= item.ranged_weapon.name
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_speed"}>#{item_upgrade_link(@wizard.character, item.resource, item, "speed")}
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_damage"}>#{item_upgrade_link(@wizard.character, item.resource, item, "damage")}
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_attack_bonus"}>#{item_upgrade_link(@wizard.character, item.resource, item, "attack_bonus")}
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_range"}>#{ranged_weapon_speed_upgrade_link(@wizard.character, item.resource, item, "range")}
+          %td.alantar_td
+            %p.normal= link_to image_tag('delete.png'), remove_item_from_inventory_character_wizard_path(:char_id => @wizard.character.id, :item_type => "RangedWeapon", :inventory_item => item.resource.id, :delete_id => item.id ), :remote => true

@@ -1,0 +1,7 @@
+%label
+  Wybierz
+  pochodzenie:
+= select_tag 'countries', options_from_collection_for_select(countries, "id", "name")
+:javascript
+  $("#country_description").text(' #{escape_javascript(countries.first.description).html_safe}');
+  $("#addressDeities").html('#{escape_javascript(render(:partial => "deities", :locals => {:deities => DeitySelector.new(@character, countries.first.id, profession.id).deities, :country => countries.first}).html_safe)}');

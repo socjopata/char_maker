@@ -1,0 +1,19 @@
+%h2 Zaloguj się
+.container-fluid
+  .row-fluid
+    .span6
+      = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+        %fieldset
+          %label= f.label :email
+          = f.email_field :email
+          %br/
+          %label= f.label "Hasło"
+          = f.password_field :password
+          %br/
+          - if devise_mapping.rememberable?
+            %label.checkbox
+              = f.check_box :remember_me
+              = f.label "Zapamiętaj mnie"
+          = f.submit "Zaloguj", :class => "btn btn-primary"
+    .span6
+      = render :partial => "devise/shared/links"

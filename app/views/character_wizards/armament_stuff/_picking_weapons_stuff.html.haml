@@ -1,0 +1,37 @@
+.span5
+  %h2 Wybierz broń do walki w zwarciu:
+  = form_tag(add_item_to_inventory_character_wizard_path, :remote => true) do
+    %label Wybierz grupę broni:
+    = select_tag 'weapon_group', options_for_select(@wizard.instance_variable_get("@weapon_groups"))
+    %br/
+    #weapons
+      = render :partial => "character_wizards/armament_stuff/weapons", :locals => {:weapons => @wizard.instance_variable_get("@weapons")}
+    = hidden_field_tag :char_id, @wizard.character.id
+    = hidden_field_tag :item_type, "Weapon"
+    = submit_tag "Kup!", :class => "btn btn-small btn-primary"
+.span7
+  #weapons_owned
+    %p Posiadane bronie:
+    %table#character_weapons.table.table-bordered
+      %thead
+        %th Nazwa
+        %th Ulepszenie tempa
+        %th Ulepszenie obrażeń
+        %th Ulepszenie ataku
+        %th Ulepszenie obrony
+        %th Usuń z inwentarza
+      %tbody
+        - @wizard.character.character_weapons.each do |item|
+          <tr id=#{item.id}>
+          %td.alantar_td
+            %p.normal= item.weapon.name
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_speed"}>#{item_upgrade_link(@wizard.character, item.resource, item, "speed")}
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_damage"}>#{item_upgrade_link(@wizard.character, item.resource, item, "damage")}
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_attack_bonus"}>#{item_upgrade_link(@wizard.character, item.resource, item, "attack_bonus")}
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_defense_bonus"}>#{item_upgrade_link(@wizard.character, item.resource, item, "defense_bonus")}
+          %td.alantar_td
+            %p.normal= link_to image_tag('delete.png'), remove_item_from_inventory_character_wizard_path(:char_id => @wizard.character.id, :item_type => "Weapon", :inventory_item => item.resource.id, :delete_id => item.id ), :remote => true

@@ -1,0 +1,25 @@
+%legend Lista postaci
+.container-fluid
+  .row-fluid
+    %table.table.table-striped.table-bordered
+      %tr
+        %th Imię postaci
+        %th Klasa
+        %th Płeć
+        %th Akcje
+      - @characters.each do |character|
+        %tr
+          %td
+            = image_tag(character.avatar_url(:thumb)) if character.avatar?
+            = character.name
+          %td= character.profession.name
+          %td= character.gender
+          %td
+            = link_to 'Wyświetl kartę postaci', character, :class => "btn btn-small btn-primary"
+            = link_to 'Usuń', character_path(character), :confirm => 'Napewno?', :method => :delete, :class => "btn btn-small btn-danger"
+%br/
+.row
+  .span4
+    = link_to 'Powrót do strony głównej', root_path, :class => "btn"
+  .span2.offset6
+    = link_to 'Nowa Postać', new_character_path, :class => "btn"

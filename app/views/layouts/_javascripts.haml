@@ -1,0 +1,7 @@
+:javascript
+  jQuery(document).ready(function() {
+  #{yield :run_javascript}
+  });
+/ #TODO Consider wrapping javascripts like this
+/ <#% content_for :run_javascript do %>
+/ <#% end %>

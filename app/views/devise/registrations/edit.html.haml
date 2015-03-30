@@ -1,0 +1,34 @@
+= content_tag :h2, (current_user.guest? ? "Ustaw swój login i hasło" : "Edytuj swój login / hasło")
+.container-fluid
+  .row-fluid
+    .span6
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put}) do |f|
+        = devise_error_messages!
+        %fieldset
+          %label= f.label :email
+          - if current_user && current_user.guest?
+            = f.email_field :email, :value => ""
+          - else
+            = f.email_field :email
+          %br/
+          %label= f.label "Hasło"
+          - unless current_user && current_user.guest?
+            %span.help-block (zostaw puiste jeśli nie chcesz zmieniać)
+          = f.password_field :password
+          %br/
+          %label= f.label "Potwierdź hasło"
+          = f.password_field :password_confirmation
+          %br/
+          - if current_user && current_user.guest?
+            = f.hidden_field :current_password, :value => "password"
+          - else
+            %label= f.label "Obecne hasło"
+            %span.help-block (potrzebujemy Twojego obecnego hasła by potwierdzić zmiany)
+            = f.password_field :current_password
+          %br/
+          = f.submit "Zapisz", :class => "btn btn-primary"
+    .span6
+      - unless current_user && current_user.guest?
+        %h3 Usuń moje konto
+        Niezadowolony? #{link_to "Usuń moje konto", registration_path(resource_name), :confirm => "Napewno?", :method => :delete, :class => 'btn btn-danger'}
+      %br/

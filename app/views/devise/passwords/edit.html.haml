@@ -1,0 +1,17 @@
+%h2 Zmień hasło
+.container-fluid
+  .row-fluid
+    .span6
+      = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :put}) do |f|
+        = devise_error_messages!
+        = f.hidden_field :reset_password_token
+        %fieldset
+          %label= f.label "Nowe hasło"
+          = f.password_field :password
+          %br/
+          %label= f.label "Potwierdź nowe hasło"
+          = f.password_field :password_confirmation
+          %br/
+          = f.submit "Zmień hasło", :class => "btn btn-primary"
+    .span6
+      = render :partial => "devise/shared/links"

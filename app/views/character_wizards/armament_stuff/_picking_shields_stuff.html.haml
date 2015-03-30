@@ -1,0 +1,39 @@
+.span5
+  %h2 Wybierz tarczę:
+  = form_tag(add_item_to_inventory_character_wizard_path, :remote => true) do
+    %label
+      Wybierz grupę
+      tarcz:
+    = select_tag 'shield_group', options_for_select(@wizard.instance_variable_get("@shield_groups"))
+    %br/
+    #shields
+      = render :partial => "character_wizards/armament_stuff/shields", :locals => {:shields => @wizard.instance_variable_get("@shields")}
+    = hidden_field_tag :char_id, @wizard.character.id
+    = hidden_field_tag :item_type, "Shield"
+    = submit_tag "Kup!", :class => "btn btn-small btn-primary"
+.span7
+  #shields_owned
+    %p Posiadane tarcze:
+    %table#character_shields.table.table-bordered
+      %thead
+        %th Nazwa
+        %th Ustaw jako główna tarczę
+        %th Zmniejszenie ograniczenia Zręczności o 2pkt
+        %th Zwiększenie limitu Zręczności o 3pkt
+        %th Zwiększenie Obrony Tarczy o +1pkt
+        %th Usuń z inwentarza
+      %tbody
+        - @character.character_shields.each do |item|
+          <tr id=#{item.id}>
+          %td.alantar_td
+            %p.normal= item.shield.name
+          %td.alantar_td
+            <p class="normal set_shield" id=#{"set_shield_#{item.id}"}>#{set_shield_as_main(@character, item)}
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_dexterity_nerf"}>#{item_upgrade_link(@character, item.resource, item, "dexterity_nerf")}
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_dexterity_cap"}>#{item_upgrade_link(@character, item.resource, item, "dexterity_cap")}
+          %td.alantar_td
+            <p class="normal" id=#{"#{item.class.name.tableize}_#{item.id}_defense_bonus"}>#{item_upgrade_link(@character, item.resource, item, "defense_bonus")}
+          %td.alantar_td
+            %p.normal= link_to image_tag('delete.png'), remove_item_from_inventory_character_wizard_path(:char_id => @character.id, :item_type => item.resource.class.name, :inventory_item => item.resource.id, :delete_id => item.id), :remote => true

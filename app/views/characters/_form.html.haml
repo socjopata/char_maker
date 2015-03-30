@@ -1,0 +1,13 @@
+= simple_form_for @character, html: { class: 'form-horizontal' } do |f|
+  = f.error_notification
+  = display_base_errors @character
+  %legend Informacje ogólne
+  = f.input :name, input_html: { class: "span6" }, label: "Imię"
+  = f.input :gender, collection: ["Mężczyzna", 'Kobieta'], label: "Płeć", include_blank: false
+  = f.input :hardcore_social_class_picking, as: :boolean, label: "Wylosuj dla mnie pochodzenie.", hint: "Jeśli nie zaznaczysz tej opcji będziesz Mieszczaninem lub Wojownikiem. Losując, mozesz  między innymi zostać, oprócz wcześniej wymienionych: Niewolnikiem, Ubogim Chłopem, ale także Szlachcicem albo Wielmożą"
+  = f.input :hardcore_trait_picking, as: :boolean, label: "Chce mieć szansę na klątwę lub dar.", hint: "Jesli nie chcesz ryzykować, nie zaznaczaj tej opcji."
+  = f.input :easy_deity_picking, as: :boolean, label: "Kreator pomoże mi w wyborze bóstwa.", hint: 'Uwaga: wybór bóstwa jest jednym z najważniejszych wyborów podejmowanych przez gracza w systemie Alantar. Polecamy |
+    zostawić tą opcję zaznaczoną oraz przeczytać odpowiedni dział podręcznika.'                                                                                                                                       |
+.row
+  .span2= link_to "Wróć do indeksu", characters_path, class: "btn"
+  .span2.offset8= link_to "Kolejny krok", "javascript:void(0)", class: "btn btn-primary", id: 'next_step'

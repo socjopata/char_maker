@@ -1,0 +1,59 @@
+.container-fluid
+  .row-fluid
+    .span6
+      = form_tag :url => character_wizard_path, :method => :post do
+        = hidden_field_tag :char_id, @wizard.character.id
+        = hidden_field_tag :step, "fightstyle"
+        %legend Wybierz styl walki.
+        %span.help-block
+          Pamiętaj, aby wybrać styl brutalny, parametr Siła musi być wyższy
+          lub równy parametrowi Zręczność. I na odwrót, w przypadku stylu finezyjnego.
+        - FightStyle.all.each do |style|
+          %label.radio.inline
+            = radio_button_tag "fight_style_id", style.id, checked_fightstyle(@wizard, style), :disabled => (@wizard.character.profession.general_type=="rogue") ? true : false
+            = style.name
+        %br/
+        %br/
+        %legend Wybierz preferowaną taktykę walki.
+        %span.help-block Wybór posłuży do poprawnego wypełnienia Twojej karty postaci.
+        - WieldStyle.all.each do |style|
+          %label.radio
+            = radio_button_tag "wield_style_id", style.id, @wizard.character.wield_style_id
+            = style.name
+      %br/
+      .row
+        .span1= link_to "Wróć",  character_wizard_path(:char_id => @wizard.character.id, :step => "statistics"), :class => "btn"
+        .span4.offset2= link_to "Zacznij od początku", character_path(@wizard.character), :class => "btn btn-danger", :confirm => 'Napewno?', :method => :delete
+        .span3.offset1= link_to "Kolejny krok", "javascript:void(0)", :class => "btn btn-primary", :onclick => "proceed()"
+    .span6
+      %p
+        Zestawienie Twoich aktualnych parametrów wynikająca z pochodzenia, klasy społecznej i posiadanych bazowych
+        umiejętności oraz tabela progów bonusowych.
+      = render :partial => 'character_wizards/skill_tables/main_stats_table'
+      %a#first_tooltip{"data-toggle" => "tooltip", :href => "#"} Najedź myszką aby zobaczyć tabelę progów.
+      = render :partial => "character_wizards/skill_tables/bonus_thresholds"
+  %br/
+  %br/
+:javascript
+  function proceed() {
+          var fightsyles = $("input[name='fight_style_id']");
+          var wieldstyles = $("input[name='wield_style_id']");
+          if ((fightsyles.filter(':checked').length == 0) || (wieldstyles.filter(':checked').length == 0)) {
+              alert("Musisz wybrać styl walki, zanim będziesz mógł przejść dalej.")
+          } else {
+              $("form").submit();
+          }
+      }
+
+      $(document).ready(function() {
+          $(function () {
+              $("#first_tooltip").tooltip({
+                 html: true,
+                 placement: 'left',
+                 title: function() {
+                  return $('#stats_qtip_table').html();
+              }
+              })
+  
+          })
+      });
