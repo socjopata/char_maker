@@ -139,7 +139,7 @@ describe Character do
     context 'is valid' do
       before do
         character.stub_chain(:social_class_stats_choices).and_return([])
-        character.stub_chain(:character_background, :origin, :country, :stats_choices, :find_all_by_applies_to, :select).and_return([])
+        character.stub_chain(:character_background, :origin, :country, :stats_choices, :where, :select).and_return([])
         character.stub(:default_origin_modifiers_set) { 1 }
         character.stub_chain(:profession, :stats_choices) { [] }
         character.stub_chain(:statistics, :stats_modifiers, :collect, :uniq).and_return([1])
@@ -151,7 +151,7 @@ describe Character do
     context 'invalid' do
       before do
         character.stub_chain(:social_class_stats_choices).and_return([])
-        character.stub_chain(:character_background, :origin, :country, :stats_choices, :find_all_by_applies_to, :select).and_return([2])
+        character.stub_chain(:character_background, :origin, :country, :stats_choices, :where, :select).and_return([2])
         character.stub(:default_origin_modifiers_set) { 1 }
         character.stub_chain(:profession, :stats_choices) { [] }
         character.stub_chain(:statistics, :stats_modifiers, :collect, :uniq).and_return([1])

@@ -2,8 +2,8 @@
 class Wizard
   include Rails.application.routes.url_helpers
 
-  attr_accessor :character
-  attr_reader :step, :render, :redirect, :params, :errors, :step_number
+  attr_accessor :character, :params
+  attr_reader :step, :render, :redirect, :errors, :step_number
 
   SCHOLAR_STEPS = 8
   REGULAR_STEPS = 7

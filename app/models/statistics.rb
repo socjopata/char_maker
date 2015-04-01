@@ -84,7 +84,7 @@ class Statistics < ActiveRecord::Base
   def push_stats(params)
     if params.present?
       modifiers = []
-      modifiers << StatsChoice.find_all_by_id(params.keys).collect(&:stats_modifiers)
+      modifiers << StatsChoice.where(id: params.keys).map(&:stats_modifiers)
       modifiers.flatten.each do |modifier|
         self.stats_modifiers << modifier unless stats_modifiers.exists?(id: modifier.id)
       end
@@ -108,7 +108,7 @@ class Statistics < ActiveRecord::Base
 
     skill_free_assignment_base = free_skill_counter + character.profession.skill_points
 
-    skills = Skill.find_all_by_name(skill_names_array.uniq)
+    skills = Skill.where(name: skill_names_array.uniq)
     skills.each do |skill|
       skill.character_skills.create(character_id: character.id)
     end
