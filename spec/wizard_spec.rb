@@ -149,14 +149,14 @@ describe Wizard do
 
     context "post" do
       it 'should return valid wizard instance object' do
-        params = {:statistics =>
+        params = ActionController::Parameters.new({:statistics =>
                       {"strength" => "16",
                        "dexterity" => "5",
                        "endurance" => "16",
                        "intelligence" => "17",
                        "faith" => "15",
                        "polish" => @character.statistics.initial_dice_roll_set.last},
-        }
+        })
 
         @wizard = Wizard.new(@character, "statistics", params)
         @wizard.redirect.should == character_wizard_path(:char_id => @character.id, :step => "fightstyle")
@@ -171,14 +171,14 @@ describe Wizard do
       end
 
       it 'should not allow misplacement of polish dice roll' do
-        params = {:statistics =>
+        params = ActionController::Parameters.new({:statistics =>
                       {"strength" => "16",
                        "dexterity" => "5",
                        "endurance" => "16",
                        "intelligence" => "17",
                        "faith" => "15",
                        "polish" => "0"},
-        }
+        })
         @wizard = Wizard.new(@character, "statistics", params)
         @wizard.errors.should_not be_empty
       end
