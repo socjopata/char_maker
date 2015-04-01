@@ -4,15 +4,9 @@ class StatsModifier < ActiveRecord::Base
   has_and_belongs_to_many :statistics, class_name: Statistics
 
   scope :belongs_to_social_class, ->(social_class_id) do
-    {
-        select: 'stats_modifiers.*',
-        from: 'stats_modifiers, stats_choices, social_classes',
-        conditions: "
-        stats_modifiers.stats_choice_id = stats_choices.id AND
-        stats_choices.resource_id = social_classes.id AND
-        stats_choices.resource_type = 'SocialClass' AND
-        social_classes.id = #{social_class_id.to_i}"
-    }
+    joins("JOIN stats_choices ON stats_modifiers.stats_choice_id = stats_choices.id
+           JOIN social_classes ON stats_choices.resource_id = social_classes.id AND
+           stats_choices.resource_type = 'SocialClass' AND social_classes.id = #{social_class_id.to_i}")
   end
 
   scope :default_for_social_class, ->(social_class_id) do
@@ -24,16 +18,10 @@ class StatsModifier < ActiveRecord::Base
   end
 
   scope :must_choose_for_origin, ->(country_id) do
-    {
-        select: 'stats_modifiers.*',
-        from: 'stats_modifiers',
-        joins: '
-        join stats_choices ON stats_modifiers.stats_choice_id = stats_choices.id
-        join countries ON stats_choices.resource_id = countries.id',
-        conditions: "stats_modifiers.default_for_origin IS FALSE AND
+    joins('JOIN stats_choices ON stats_modifiers.stats_choice_id = stats_choices.id
+        JOIN countries ON stats_choices.resource_id = countries.id').where("stats_modifiers.default_for_origin IS FALSE AND
         stats_choices.resource_type = 'Country' AND
-        countries.id = #{country_id.to_i}"
-    }
+        countries.id = #{country_id.to_i}")
   end
 
   scope :bonus_preferences_for, ->(char_id, choice_name) do
