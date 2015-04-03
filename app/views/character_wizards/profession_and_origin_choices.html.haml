@@ -46,8 +46,8 @@
 .row
   / for various reasons there is no back button
   .span2.offset4= link_to "Zacznij od początku", character_path(@wizard.character), :class => "btn btn-danger", :confirm => 'Napewno?', :method => :delete
-  .span2.offset3= link_to "Kolejny krok", "javascript:void(0)", :class => "btn btn-primary", :onclick => "submit_form_and_proceed()"
-:javascript
-  function submit_form_and_proceed() {
-      $("form").submit();
-  }
+  .span2.offset3= link_to "Kolejny krok", "javascript:void(0)", :class => "btn btn-primary", id: 'next_step'
+= content_for :javascripts do
+  :coffeescript
+    $(document).ready ->
+      ProfessionAndOriginChoices.init()
