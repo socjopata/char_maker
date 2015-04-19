@@ -16,3 +16,10 @@ pl:
   common:
     save: Zapisz
     go_back: 'Wróć'
+    start_from_scratch: "Zacznij od początku"
+    are_you_sure: "Napewno?"
+    next_step: "Kolejny krok"
+    go_back: "Wróć"
+  statistics:
+    i_am_admin: "Jestem adminem i chce ustawić rzuty ręcznie"
+
