@@ -20,6 +20,7 @@ pl:
     are_you_sure: "Napewno?"
     next_step: "Kolejny krok"
     go_back: "Wróć"
+    finish: "Zakończ"
   statistics:
     i_am_admin: "Jestem adminem i chce ustawić rzuty ręcznie"
 
