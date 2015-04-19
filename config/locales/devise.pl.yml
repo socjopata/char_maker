@@ -51,3 +51,9 @@ pl:
         subject: 'Resetowanie hasła'
       unlock_instructions:
         subject: 'Odblokowywanie konta'
+  common:
+    start_from_scratch: "Zacznij od początku"
+    are_you_sure: "Napewno?"
+    next_step: "Kolejny krok"
+  statistics:
+    i_am_admin: "Jestem adminem i chce ustawić rzuty ręcznie"

@@ -13,3 +13,6 @@ pl:
     one: sztuka
     few: sztuki
     other: sztuk
+  common:
+    save: Zapisz
+    go_back: 'Wróć'
