@@ -1,9 +1,9 @@
-= link_to "Strona główna", root_path, :class => 'brand'
+= link_to "Strona główna", root_path, class: 'brand'
 %ul.nav
   - if user_signed_in? && current_user.guest?
   - elsif user_signed_in? && !current_user.guest?
     %li
-      = link_to('Wyloguj się', destroy_user_session_path, :method => 'delete')
+      = link_to('Wyloguj się', destroy_user_session_path, method: 'delete')
   - else
     %li
       = link_to('Zaloguj się', new_user_session_path)

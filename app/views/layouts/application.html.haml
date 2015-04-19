@@ -1,12 +1,12 @@
 <!doctype html>
 %html
   %head
-    %meta{:charset => "utf-8"}/
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{charset: "utf-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
     %title= content_for?(:title) ? yield(:title) : "Alantar - kreator postaci"
-    %meta{:content => "", :name => "description"}/
-    %meta{:content => "", :name => "author"}/
-    = stylesheet_link_tag "application", :media => "all"
+    %meta{:content => "", name: "description"}/
+    %meta{:content => "", name: "author"}/
+    = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield(:head)
@@ -18,7 +18,7 @@
             = render 'layouts/navigation'
           .span4.navbar-padding
             .progress.progress-striped.active
-              .bar{:style => "width: #{step_progress(@wizard)}%;"}
+              .bar{style: "width: #{step_progress(@wizard)}%;"}
     #main{:role => "main"}
       .container
         .content

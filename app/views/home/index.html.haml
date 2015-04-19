@@ -8,7 +8,7 @@
       Jeśli jednak trafiłeś tu jakoś przypadkiem, to być może odpowiedzi na kłębiące się w Twojej głowie pytania znajdziesz #{link_to "tutaj &raquo;".html_safe, home_show_path(:page => "about")}
     %br/
     %p By korzystać z kreatora postaci nie musisz się rejestrować. Jeśli jednak chcesz po pewnym czasie wrócić i przeglądać postacie utworzone przez siebie, rejestracja jest wskazana.
-    %p= link_to "Stwórz nową postać &raquo;".html_safe,  new_character_path, :class => "btn btn-primary btn-large"
+    %p= link_to "Stwórz nową postać &raquo;".html_safe,  new_character_path, class: "btn btn-primary btn-large"
   .row
     .span4
       %h2 Zobacz jak wygląda przykładowa postać.
@@ -16,22 +16,22 @@
         Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
         condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec
         sed odio dui.
-      %p= link_to "Przykładowe postacie &raquo;".html_safe, home_example_character_list_path, :class => "btn"
+      %p= link_to "Przykładowe postacie &raquo;".html_safe, home_example_character_list_path, class: "btn"
     .span4
       %h2 Przeglądaj postacie utworzone przez siebie.
       %p
         Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
         condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec
         sed odio dui.
-      %p= link_to "Przeglądaj &raquo;".html_safe, (current_user ? characters_path : new_user_session_path), :class => "btn"
+      %p= link_to "Przeglądaj &raquo;".html_safe, (current_user ? characters_path : new_user_session_path), class: "btn"
     .span4
       %h2 Masz pytania? sugestie?
       %p
         Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta
         felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
         massa justo sit amet risus.
-      %p= link_to "Napisz do mnie! &raquo;".html_safe, new_message_path, :class => "btn"
+      %p= link_to "Napisz do mnie! &raquo;".html_safe, new_message_path, class: "btn"
   %hr/
   %footer
-    %p &copy; Radosław Jędryszczak 2011 - 2013
+    %p &copy; Radosław Jędryszczak 2011 - 2015
 / /container
