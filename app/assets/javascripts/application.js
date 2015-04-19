@@ -6,4 +6,5 @@
 //= require jquery-ui
 //= require jquery.colorbox
 //= require bootstrap
+//= require js-routes
 //= require_directory ./pages

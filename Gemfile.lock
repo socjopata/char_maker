@@ -112,6 +112,9 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.3)
       railties (>= 3.2.16)
+    js-routes (1.0.1)
+      railties (>= 3.2)
+      sprockets-rails
     json (1.8.2)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -237,6 +240,7 @@ DEPENDENCIES
   jquery-colorbox-rails (~> 0.2.3)
   jquery-rails (~> 3.1.2)
   jquery-ui-rails (~> 5.0.3)
+  js-routes
   launchy (~> 2.4.3)
   libv8 (~> 3.16.14.7)
   magic_encoding

@@ -17,6 +17,7 @@ gem 'simple_form', '~> 3.1.0'
 gem 'will_paginate', '~> 3.0.7'
 gem "haml-rails", '~> 0.9'
 gem 'activerecord-session_store', '~> 0.1.1'
+gem 'js-routes', '~> 1.0.1'
 
 group :development, :test do
   gem 'test-unit'  #Handling error, https://github.com/rspec/rspec-rails/issues/1273
