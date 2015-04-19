@@ -12,6 +12,6 @@ class HomeController < ApplicationController
 
   def example_character_show
     @character_sheet = CharacterSheet.new(User.find_by_email("socjopata@gmail.com").characters.where(id: params[:id]).first)
-    render :layout => 'office'
+    render layout: 'office'
   end
 end

@@ -21,6 +21,8 @@ pl:
     next_step: "Kolejny krok"
     go_back: "Wróć"
     finish: "Zakończ"
+    send: "Wyślij"
+    return_to_main_page: "Wróć na stronę główną"
   statistics:
     i_am_admin: "Jestem adminem i chce ustawić rzuty ręcznie"
 
