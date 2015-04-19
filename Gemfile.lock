@@ -240,7 +240,7 @@ DEPENDENCIES
   jquery-colorbox-rails (~> 0.2.3)
   jquery-rails (~> 3.1.2)
   jquery-ui-rails (~> 5.0.3)
-  js-routes
+  js-routes (~> 1.0.1)
   launchy (~> 2.4.3)
   libv8 (~> 3.16.14.7)
   magic_encoding
