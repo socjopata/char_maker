@@ -253,7 +253,7 @@ DEPENDENCIES
   pg (~> 0.18.1)
   pry (~> 0.10.1)
   rails (~> 4.0.13)
-  rails_12factor
+  rails_12factor (~> 0.0.3)
   rmagick (~> 2.13.4)
   rspec-rails (~> 2.14.2)
   sass-rails (~> 5.0.1)
