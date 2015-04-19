@@ -23,3 +23,5 @@ pl:
   statistics:
     i_am_admin: "Jestem adminem i chce ustawić rzuty ręcznie"
 
+  submit:
+    accept_choice: "Zaakceptuj wybór"

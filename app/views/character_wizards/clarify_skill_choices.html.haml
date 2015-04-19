@@ -1,3 +1,4 @@
+#char_id{'data-char-id' => @wizard.character.id}
 %legend
   Określ prosze, w jakich broniach będziesz biegły.</legend
   %span.help-block
@@ -9,31 +10,25 @@
       .span12
         - @wizard.instance_variable_get("@weapon_groups").each do |weapon_group|
           %label.checkbox
-            = check_box_tag "weapon_proficiency", weapon_group, @wizard.character.character_weapon_proficiencies.detect { |wp| wp.name==weapon_group }, :onclick => "append_to_form_and_submit($(\"input[name='weapon_proficiency']\").filter(\"input[value='#{weapon_group}']\"))"
+            = check_box_tag "weapon_proficiency", weapon_group, @wizard.character.character_weapon_proficiencies.detect { |wp| wp.name==weapon_group }, class: "append_to_form_and_submit"
             = weapon_group
   - if @wizard.character.skill_choices_to_be_precised.present?
     %br/
     %legend Ponadto musisz doprecyzować swoje wybory jeśli chodzi o drzewo umiejętności.
     - @wizard.character.skill_choices_to_be_precised.each do |choice_subject|
-      %div{:id => "choice_no_#{choice_subject.id}"}
-        = form_tag({:action => :set_skill_preference}, {:remote => true, :class => "simple_form form-horizontal"}) do
+      %div{id: "choice_no_#{choice_subject.id}"}
+        = form_tag({action: :set_skill_preference}, {remote: true, class: "simple_form form-horizontal"}) do
           = present_choice_subject(choice_subject)
           = hidden_field_tag :id, choice_subject.id
           = hidden_field_tag :char_id, @wizard.character.id
-          = submit_tag "Zaakceptuj wybór"
+          = submit_tag t('submit.accept_choice')
       %br/
   %br/
   .row
-    .span1= link_to "Wróć", character_wizard_path(:char_id => @wizard.character.id, :step => "skills"), :class => "btn"
-    .span4.offset4= link_to "Zacznij od początku", character_path(@wizard.character), :class => "btn btn-danger", :confirm => 'Napewno?', :method => :delete
-    .span2.offset1= link_to "Kolejny krok", character_wizard_path(:char_id => @wizard.character.id, :step => "clarify_skill_choices"), :method => :post, :class => "btn btn-primary"
-  :javascript
-    function append_to_form_and_submit(checkbox) {
-        var url = '#{toggle_weapon_proficiency_character_wizard_path}';
-        var data = {'name':checkbox.val(), 'value':checkbox.is(':checked'), 'char_id':'#{@wizard.character.id}' };
-        $.ajax({
-            url:url,
-            data:data,
-            dataType:'script'
-        });
-    }
+    .span1= link_to t('common.go_back'), character_wizard_path(char_id: @wizard.character.id, step: "skills"), class: "btn"
+    .span4.offset4= link_to t('common.start_from_scratch'), character_path(@wizard.character), class: "btn btn-danger", confirm: t('common.are_you_sure'), method: :delete
+    .span2.offset1= link_to t('common.next_step'), character_wizard_path(char_id: @wizard.character.id, step: "clarify_skill_choices"), method: :post, class: "btn btn-primary"
+= content_for :javascripts do
+  :coffeescript
+    $(document).ready ->
+      ClarifySkillChoices.init()
