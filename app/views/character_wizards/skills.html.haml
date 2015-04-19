@@ -1,41 +1,27 @@
+#char_id{'data-char-id' => @wizard.character.id}
 .row
-  .span1= link_to "Wróć", character_wizard_path(:char_id => @character.id, :step => "fightstyle"), :class => "btn"
-  .span4.offset4= link_to "Zacznij od początku", character_path(@wizard.character), :class => "btn btn-danger", :confirm => 'Napewno?', :method => :delete
-  .span2.offset1= link_to "Kolejny krok", character_wizard_path(:char_id => @character.id, :step => "skills"), :method => :post, :class => "btn btn-primary"
+  .span1= link_to t('common.go_back'), character_wizard_path(char_id: @character.id, step: "fightstyle"), class: "btn"
+  .span4.offset4= link_to t('common.start_from_scratch'), character_path(@wizard.character), class: "btn btn-danger", confirm: t('common.are_you_sure'), method: :delete
+  .span2.offset1= link_to t('common.next_step'), character_wizard_path(char_id: @character.id, step: "skills"), method: :post, class: "btn btn-primary"
 .container-fluid
   .row-fluid
     .span6
-      = render :partial => "character_wizards/skill_tables/main_stats_table"
-      = render :partial => "character_wizards/skill_tables/profession_skills"
-      = render :partial => "character_wizards/skill_tables/skills_left"
+      = render partial: "character_wizards/skill_tables/main_stats_table"
+      = render partial: "character_wizards/skill_tables/profession_skills"
+      = render partial: "character_wizards/skill_tables/skills_left"
     .span6
-      = render :partial => "character_wizards/skill_tables/auxiliary_parameters"
+      = render partial: "character_wizards/skill_tables/auxiliary_parameters"
   .row-fluid
     .span12
-      = render :partial => "character_wizards/skill_tables/main_skills"
-      = render :partial => "character_wizards/skill_tables/caste_skills"
+      = render partial: "character_wizards/skill_tables/main_skills"
+      = render partial: "character_wizards/skill_tables/caste_skills"
 .row
-  .span1= link_to "Wróć", character_wizard_path(:char_id => @character.id, :step => "fightstyle"), :class => "btn"
-  .span4.offset4= link_to "Zacznij od początku", character_path(@wizard.character), :class => "btn btn-danger", :confirm => 'Napewno?', :method => :delete
-  .span2.offset1= link_to "Kolejny krok", character_wizard_path(:char_id => @character.id, :step => "skills"), :method => :post, :class => "btn btn-primary"
-= render :partial => "character_wizards/skill_tables/bonus_thresholds"
-:javascript
-  function toggle_this_skill(val) {
-      var skill_id = $(val).attr('id');
-      var field_value = val.checked;
-      var char_id = "#{@wizard.character.id}";
-      var url = '#{toggle_skill_character_wizard_path}';
-      var data = {'skill_id':skill_id, 'value':field_value, 'char_id':char_id };
-      $.ajax({
-          url:url,
-          data:data,
-          dataType:'script'
-      });
-  }
+  .span1= link_to t('common.go_back'), character_wizard_path(char_id: @character.id, step: "fightstyle"), class: "btn"
+  .span4.offset4= link_to t('common.start_from_scratch'), character_path(@wizard.character), class: "btn btn-danger", confirm: t('common.are_you_sure'), method: :delete
+  .span2.offset1= link_to t('common.next_step'), character_wizard_path(char_id: @character.id, step: "skills"), method: :post, class: "btn btn-primary"
 
-  $(document).ready(function () {
-      $('a.skill_qtip').tooltip(
-              {html: true,
-              placement: 'right'}
-      );
-  });
+= render partial: "character_wizards/skill_tables/bonus_thresholds"
+= content_for :javascripts do
+  :coffeescript
+    $(document).ready ->
+      Skills.init()

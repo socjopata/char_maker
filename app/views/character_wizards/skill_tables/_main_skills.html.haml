@@ -4,5 +4,7 @@
     - @wizard.instance_variable_get("@basic_skills").in_groups_of(4, false).each do |skills|
       %tr
         - skills.each do |skill|
-          %td= check_box_tag skill.id, 1, @wizard.character.skills.include?(skill), :disabled => (@wizard.character.session[:default_skills_ids].include?(skill.id) || @wizard.instance_variable_get("@cannot_select_skills").include?(skill)), :onchange => "toggle_this_skill(this);"
-          %td= link_to skill.name, "#", :class => "skill_qtip", 'data-original-title' => nice_and_shiny_description(skill)
+          %td= check_box_tag skill.id, 1, @wizard.character.skills.include?(skill),
+          disabled: (@wizard.character.session[:default_skills_ids].include?(skill.id) || @wizard.instance_variable_get("@cannot_select_skills").include?(skill)),
+          class: "toggle_this_skill"
+          %td= link_to skill.name, "#", class: "skill_qtip", 'data-original-title' => nice_and_shiny_description(skill)
