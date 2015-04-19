@@ -6,7 +6,7 @@ class Skills
 
     $('#main').on 'click', '.toggle_this_skill', (event) ->
       skill_id = $(event.target).attr('id')
-      field_value = $(event.target).checked
+      field_value = $(event.target).prop('checked')
       char_id = $('#char_id').data('char-id')
       url = Routes.toggle_skill_character_wizard_path()
       data =
