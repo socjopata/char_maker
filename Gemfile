@@ -33,6 +33,8 @@ group :development, :test do
   gem 'ffaker', '~> 2.0.0'
 end
 
+gem 'rails_12factor', '~> 0.0.3', group: :production
+
 gem 'sass-rails', '~> 5.0.1'
 gem 'bootstrap-sass', '~> 2.3.0.0' #max bump 3.1.1.0, but breaks styling. bumping it higher requires rails 4
 gem 'coffee-rails', '~> 4.1.0'
