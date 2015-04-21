@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class CharacterShield < ActiveRecord::Base
+  include SkillModifierFor
   belongs_to :character
   belongs_to :shield
 
@@ -9,14 +10,13 @@ class CharacterShield < ActiveRecord::Base
 
   def calculate_dexterity_nerf
     dexterity_nerf.present? ? shield_upgrade_modifier = 2 : shield_upgrade_modifier = 0
-    skills_modifier = character.statistics.stats_modifiers.select { |sm| sm.modifies=="armament,shields" && sm.group_name=="dexterity_nerf" && eval(sm.evaluated_instruction) }.collect(&:value).sum
+    skills_modifier = skill_modifier_for("armament,shields", "dexterity_nerf")
     ((skills_modifier + shield_upgrade_modifier) - shield.dexterity_nerf) > 0 ? "-" : ((skills_modifier + shield_upgrade_modifier) - shield.dexterity_nerf)
   end
 
   def calculate_dexterity_cap
     dexterity_cap.present? ? shield_upgrade_modifier = 2 : shield_upgrade_modifier = 0
-    skills_modifier = character.statistics.stats_modifiers.select { |sm| sm.modifies=="armament,shields" && sm.group_name=="dexterity_cap" && eval(sm.evaluated_instruction) }.collect(&:value).sum
-    shield.dexterity_cap + shield_upgrade_modifier + skills_modifier
+    shield.dexterity_cap + shield_upgrade_modifier + skill_modifier_for("armament,shields", "dexterity_cap")
   end
 
   def required_strength

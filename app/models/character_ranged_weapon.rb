@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class CharacterRangedWeapon < ActiveRecord::Base
   include Stats::SharedWeaponCalculationMethods
+  include SkillModifierFor
 
   belongs_to :character
   belongs_to :ranged_weapon

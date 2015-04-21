@@ -54,7 +54,15 @@ class Character < ActiveRecord::Base
   end
 
   def make_rogue_a_finesse_fighter
-    update_attribute(:fight_style_id, FightStyle.find_by_name("Finezyjny").id) if profession.present? && profession.general_type == "rogue"
+    update_attribute(:fight_style_id, finesse_fightstyle_id) if rouge?
+  end
+
+  def rouge?
+    profession.present? && profession.general_type == "rogue"
+  end
+
+  def finesse_fightstyle_id
+    FightStyle.find_by_name("Finezyjny").id
   end
 
   def check_fight_style_choice
@@ -66,9 +74,15 @@ class Character < ActiveRecord::Base
   end
 
   def style_invalid?
-    return true if fight_style.name=="Brutalny" && (statistics.calculate_s < statistics.calculate_zr)
-    return true if fight_style.name=="Finezyjny" && (statistics.calculate_s > statistics.calculate_zr)
-    false
+    brutal_style_misaligned? || finesse_style_misaligned?
+  end
+
+  def brutal_style_misaligned?
+    fight_style.name=="Brutalny" && (statistics.calculate_s < statistics.calculate_zr)
+  end
+
+  def finesse_style_misaligned?
+    fight_style.name=="Finezyjny" && (statistics.calculate_s > statistics.calculate_zr)
   end
 
   def pick_a_profession(prof_id)
@@ -88,11 +102,17 @@ class Character < ActiveRecord::Base
   end
 
   def valid_for_picking_statistics?
-    all_stats_choices_for_character = social_class_stats_choices +
+    (all_stats_choices_made.size - all_stats_choices_for_character.size).zero?
+  end
+
+  def all_stats_choices_for_character
+    @all_stats_choices_for_character ||= social_class_stats_choices +
         character_background.origin.country.stats_choices.where(applies_to: "special").select { |stats_choice| social_class.send(stats_choice.condition.intern) } +
         [default_origin_modifiers_set] + profession.stats_choices
-    all_stats_choices_made = statistics.stats_modifiers.collect(&:stats_choice).uniq
-    (all_stats_choices_made.size - all_stats_choices_for_character.size).zero?
+  end
+
+  def all_stats_choices_made
+    @all_stats_choices_made ||= statistics.stats_modifiers.collect(&:stats_choice).uniq
   end
 
   def valid_for_step_fourth?
@@ -179,7 +199,10 @@ class Character < ActiveRecord::Base
 
   def finish!
     update_attributes(finished: true,
-                      free_skill_points_left: Skill.calculate_free_skill_amount(self, session[:skill_free_assignment_base], Statistics::BONUS_OR_PENALTY_RANGES_MAP[statistics.calculate_int].to_i, session[:skills_used].to_i))
+                      free_skill_points_left: Skill.calculate_free_skill_amount(self,
+                                                                                session[:skill_free_assignment_base],
+                                                                                Statistics::BONUS_OR_PENALTY_RANGES_MAP[statistics.calculate_int].to_i,
+                                                                                session[:skills_used].to_i))
     purse.close_the_bill(session[:coins_left])
     complete_the_creation_of_spellbook if is_of_scholar_class_type?
   end
@@ -190,9 +213,7 @@ class Character < ActiveRecord::Base
   end
 
   def valid_for_armament_step?
-    return false if any_unfinished_matters_present?
-    return false if is_a_shooter_and_didnt_picked_his_bow_proficiency
-    true
+    !(any_unfinished_matters_present? || is_a_shooter_and_didnt_picked_his_bow_proficiency)
   end
 
   def is_a_shooter_and_didnt_picked_his_bow_proficiency

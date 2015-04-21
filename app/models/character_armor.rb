@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class CharacterArmor < ActiveRecord::Base
+  include SkillModifierFor
   belongs_to :character
   belongs_to :armor
 
@@ -19,14 +20,13 @@ class CharacterArmor < ActiveRecord::Base
 
   def calculate_dexterity_nerf
     dexterity_nerf.present? ? armor_upgrade_modifier = 2 : armor_upgrade_modifier = 0
-    skills_modifier = character.statistics.stats_modifiers.select { |sm| sm.modifies=="armament,armors" && sm.group_name=="dexterity_nerf" && eval(sm.evaluated_instruction)  }.collect(&:value).sum
+    skills_modifier = skill_modifier_for("armament,armors", "dexterity_nerf")
     ((skills_modifier + armor_upgrade_modifier) - armor.dexterity_nerf) > 0 ? "-" : ((skills_modifier + armor_upgrade_modifier) - armor.dexterity_nerf)
   end
 
   def calculate_dexterity_cap
     dexterity_cap.present? ? armor_upgrade_modifier = 3 : armor_upgrade_modifier = 0
-    skills_modifier = character.statistics.stats_modifiers.select { |sm| sm.modifies=="armament,armors" && sm.group_name=="dexterity_cap" && eval(sm.evaluated_instruction)  }.collect(&:value).sum
-    armor.dexterity_cap + armor_upgrade_modifier + skills_modifier
+    armor.dexterity_cap + armor_upgrade_modifier + skill_modifier_for("armament,armors", "dexterity_cap")
   end
 
   def required_strength
