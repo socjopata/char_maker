@@ -57,14 +57,6 @@ class Character < ActiveRecord::Base
     update_attribute(:fight_style_id, finesse_fightstyle_id) if rouge?
   end
 
-  def rouge?
-    profession.present? && profession.general_type == "rogue"
-  end
-
-  def finesse_fightstyle_id
-    FightStyle.find_by_name("Finezyjny").id
-  end
-
   def check_fight_style_choice
     if fight_style_id_changed? && style_invalid?
       errors.add(:styl_walki, "jest niepoprawny")
@@ -75,14 +67,6 @@ class Character < ActiveRecord::Base
 
   def style_invalid?
     brutal_style_misaligned? || finesse_style_misaligned?
-  end
-
-  def brutal_style_misaligned?
-    fight_style.name=="Brutalny" && (statistics.calculate_s < statistics.calculate_zr)
-  end
-
-  def finesse_style_misaligned?
-    fight_style.name=="Finezyjny" && (statistics.calculate_s > statistics.calculate_zr)
   end
 
   def pick_a_profession(prof_id)
@@ -218,5 +202,23 @@ class Character < ActiveRecord::Base
 
   def is_a_shooter_and_didnt_picked_his_bow_proficiency
     profession.name=="Strzelec" && character_weapon_proficiencies.map(&:name).none? { |group_name| RangedWeapon.all.map(&:group_name).uniq.include?(group_name) }
+  end
+
+  private
+
+  def rouge?
+    profession.present? && profession.general_type == "rogue"
+  end
+
+  def finesse_fightstyle_id
+    FightStyle.find_by_name("Finezyjny").id
+  end
+
+  def brutal_style_misaligned?
+    fight_style.name=="Brutalny" && (statistics.calculate_s < statistics.calculate_zr)
+  end
+
+  def finesse_style_misaligned?
+    fight_style.name=="Finezyjny" && (statistics.calculate_s > statistics.calculate_zr)
   end
 end
