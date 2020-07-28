@@ -115,7 +115,7 @@ GEM
     js-routes (1.0.1)
       railties (>= 3.2)
       sprockets-rails
-    json (1.8.2)
+    json (2.3.1)
     launchy (2.4.3)
       addressable (~> 2.3)
     libv8 (3.16.14.7)
