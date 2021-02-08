@@ -5,7 +5,7 @@ gem "rails", '~> 4.0.13'
 
 gem 'pg', '~> 0.18.1'
 gem 'devise', '~> 3.0.4'
-gem 'carrierwave', '~> 0.10.0'
+gem 'carrierwave', '~> 1.3.2'
 gem 'rmagick', '~> 2.13.4'
 gem 'jquery-rails', '~> 3.1.2'
 gem 'jquery-ui-rails', '~> 5.0.3'
