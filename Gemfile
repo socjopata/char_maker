@@ -23,7 +23,7 @@ group :development, :test do
   gem 'test-unit'  #Handling error, https://github.com/rspec/rspec-rails/issues/1273
   gem 'magic_encoding' ## coding: utf-8  type magic_encoding in the console
   gem 'pry', '~> 0.10.1'
-  gem 'better_errors', '~> 2.1.1'
+  gem 'better_errors', '~> 2.9.1'
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'rspec-rails', "~> 2.14.2"
   gem 'capybara', git: 'git://github.com/jnicklas/capybara.git'
