@@ -216,7 +216,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
-    tzinfo (0.3.43)
+    tzinfo (0.3.61)
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
